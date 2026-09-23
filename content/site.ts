@@ -35,7 +35,7 @@ export const welcome = {
   cta: "Here's how it all started",
   ctaHref: '#story',
   chapterLabel: 'Lena in the Wild',
-  bigWord: 'WILD',
+  bigWord: 'LIFESTYLE',
   chapters: [
     { number: '01', label: 'My Story' },
     { number: '02', label: 'Freedom' },
