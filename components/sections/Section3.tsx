@@ -277,6 +277,20 @@ export default function Section3() {
 
           <ScrollReveal delay={0.2}>
             <div className="relative mx-auto mt-24 h-80 w-full max-w-2xl sm:h-96">
+              {/* Hand-drawn dashed squiggle connecting the statement above
+                  to the envelope, like the reference's doodle line. */}
+              <svg
+                className="pointer-events-none absolute -top-16 left-0 hidden h-20 w-28 text-bark/30 sm:block"
+                viewBox="0 0 100 90"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeDasharray="4 5"
+                aria-hidden="true"
+              >
+                <path d="M8 4 C 60 4, 95 20, 60 40 C 30 57, 55 60, 55 75" strokeLinecap="round" />
+              </svg>
+
               {/* Envelope pocket + flap as one silhouette, so it reads as an
                   actual envelope (not a plain card) even with photos poking
                   out the top of it. */}
@@ -294,42 +308,47 @@ export default function Section3() {
                 />
               </svg>
 
-              <div className="absolute top-[76px] left-[8%] z-10 flex h-28 w-24 rotate-6 flex-col justify-center bg-sage p-3 shadow-xl sm:h-32 sm:w-28">
+              {/* Tops kept below the flap's apex so the triangular flap
+                  silhouette stays visible above the photos. The sage card
+                  is woven into the fan (like the reference's paperclipped
+                  brand card) instead of floating apart from it, and the
+                  crops use flips/tone shifts since they all share one
+                  source photo. */}
+              <Polaroid
+                className="absolute top-[110px] left-[2%] z-10 h-28 w-24 -rotate-12 sm:h-32 sm:w-28"
+                objectPosition="70% 35%"
+                imgClassName="grayscale-[0.5]"
+              />
+
+              <div className="absolute top-[72px] left-[19%] z-20 flex h-32 w-28 -rotate-6 flex-col justify-center bg-sage p-3 shadow-xl sm:h-36 sm:w-32">
                 <p className="font-body text-[0.55rem] font-semibold uppercase tracking-wide text-cream/80">{freedomSeeker.envelope.cardLabel}</p>
                 <p className="mt-1 font-body text-[0.6rem] leading-snug text-cream">{freedomSeeker.envelope.places.join(', ')}</p>
-                <svg className="absolute -left-4 -top-6 h-9 w-9 -rotate-12 text-stone" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                <svg className="absolute -left-4 -top-6 h-9 w-9 -rotate-12 text-cream/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
                   <path d="M8 12V6a4 4 0 1 1 8 0v9a2.5 2.5 0 0 1-5 0V8" strokeLinecap="round" />
                 </svg>
               </div>
 
-              {/* Tops kept below the flap's apex (~15-148px) so the
-                  triangular flap silhouette stays visible above the
-                  photos. A tighter horizontal cluster (was spread across
-                  nearly the full width) plus a horizontal flip and a
-                  grayscale treatment on two of the four crops, since all
-                  four are the same source photo and read as obviously
-                  duplicated when framed too similarly. */}
               <Polaroid
-                className="absolute top-[100px] left-[26%] z-10 h-32 w-28 -rotate-12 sm:h-36 sm:w-32"
-                objectPosition="70% 35%"
-                imgClassName="grayscale-[0.4]"
-              />
-              <Polaroid
-                className="absolute top-[64px] left-[40%] z-10 h-40 w-36 -rotate-2 shadow-2xl sm:h-44 sm:w-40"
+                className="absolute top-[58px] left-[36%] z-10 h-40 w-32 -rotate-2 shadow-2xl sm:h-44 sm:w-40"
                 objectPosition="25% 75%"
               />
               <Polaroid
-                className="absolute top-[104px] left-[56%] z-10 h-32 w-28 rotate-3 sm:h-36 sm:w-32"
+                className="absolute top-[96px] left-[54%] z-10 h-28 w-24 rotate-3 sm:h-32 sm:w-28"
                 objectPosition="55% 15%"
                 imgClassName="-scale-x-100"
               />
               <Polaroid
-                className="absolute top-[120px] right-[14%] z-10 h-28 w-24 rotate-12 sm:h-32 sm:w-28"
+                className="absolute top-[70px] left-[68%] z-10 h-32 w-28 -rotate-6 sm:h-36 sm:w-32"
+                objectPosition="40% 55%"
+                imgClassName="sepia-[0.25]"
+              />
+              <Polaroid
+                className="absolute top-[110px] right-[4%] z-10 h-28 w-24 rotate-12 sm:h-32 sm:w-28"
                 objectPosition="85% 10%"
                 imgClassName="-scale-x-100 sepia-[0.3]"
               />
 
-              <span className="absolute -right-2 top-4 z-10 -rotate-3 rounded-sm bg-bark px-3 py-6 font-body text-[0.6rem] font-semibold uppercase tracking-wide text-cream shadow-md [writing-mode:vertical-rl]">
+              <span className="absolute -right-2 top-4 z-20 -rotate-3 rounded-sm bg-sage px-3 py-6 font-body text-[0.6rem] font-semibold uppercase tracking-wide text-cream shadow-md [writing-mode:vertical-rl]">
                 {freedomSeeker.envelope.ribbon}
               </span>
             </div>
@@ -354,8 +373,9 @@ export default function Section3() {
         </div>
       </div>
 
-      {/* Band 6 — light: contact, with a safety pin holding a stack of
-          photos, mirroring the reference's "Ready to Start? Let's Talk". */}
+      {/* Band 6 — light: contact, with a safety pin holding a scattered
+          stack of photos, mirroring the reference's "Ready to Start?
+          Let's Talk". */}
       <div className="bg-sand px-6 py-28 sm:py-36">
         <div className="container-editorial grid gap-16 lg:grid-cols-2 lg:items-start">
           <div>
@@ -381,7 +401,7 @@ export default function Section3() {
               </p>
               {submitted ? (
                 <p className="mt-4 rounded-sm border border-sage/30 bg-sage/10 px-5 py-4 font-body text-sm text-bark" role="status">
-                  Thanks — that's landed with me. I'll get back to you shortly.
+                  Thanks — that&apos;s landed with me. I&apos;ll get back to you shortly.
                 </p>
               ) : (
                 <form
@@ -426,25 +446,48 @@ export default function Section3() {
             </ScrollReveal>
           </div>
 
-          <ScrollReveal delay={0.1} className="relative mx-auto h-96 w-full max-w-sm">
-            {/* A single safety pin, diagonal, piercing a small stack of two
-                photos — spring coil at the hinge end, a hooked clasp
-                cupping the point at the other end. */}
+          <ScrollReveal delay={0.1} className="relative mx-auto h-96 w-full max-w-sm sm:max-w-md">
+            {/* A single safety pin, larger and more diagonal, piercing a
+                looser scattered stack of photos (was just 2, reference
+                shows a denser 5-piece collage) — spring coil at the hinge
+                end, a hooked clasp cupping the point at the other end. */}
             <svg
-              className="absolute -top-6 right-4 z-20 h-14 w-44 text-stone drop-shadow-lg sm:right-8"
-              viewBox="0 0 170 70"
+              className="absolute left-2 top-4 z-30 h-24 w-64 text-stone drop-shadow-lg sm:left-4 sm:top-6 sm:h-28 sm:w-72"
+              viewBox="0 0 280 100"
               fill="none"
               stroke="currentColor"
-              strokeWidth="3.5"
+              strokeWidth="4"
               aria-hidden="true"
             >
-              <path d="M24 58 a10 10 0 1 1 11 -17 a7.5 7.5 0 1 1 -8 13" strokeLinecap="round" />
-              <path d="M24 58 L132 20" strokeLinecap="round" />
-              <path d="M132 20 a13 13 0 1 1 0 22" strokeLinecap="round" />
+              <path d="M32 84 a13 13 0 1 1 14 -22 a9 9 0 1 1 -10 16" strokeLinecap="round" />
+              <path d="M32 84 L228 24" strokeLinecap="round" />
+              <path d="M228 24 a16 16 0 1 1 0 27" strokeLinecap="round" />
             </svg>
 
-            <Polaroid className="absolute left-1/2 top-6 h-44 w-36 -translate-x-1/2 -rotate-3 shadow-2xl sm:h-48 sm:w-40" objectPosition="50% 10%" />
-            <Polaroid className="absolute right-0 top-16 h-40 w-32 rotate-8 sm:h-44 sm:w-36" objectPosition="75% 45%" />
+            <Polaroid
+              className="absolute left-0 top-24 z-10 h-32 w-24 -rotate-12 sm:h-36 sm:w-28"
+              objectPosition="15% 55%"
+              imgClassName="grayscale-[0.6]"
+            />
+            <Polaroid
+              className="absolute left-8 top-4 z-20 h-40 w-32 -rotate-3 shadow-2xl sm:h-44 sm:w-36"
+              objectPosition="55% 5%"
+            />
+            <Polaroid
+              className="absolute right-6 top-16 z-10 h-32 w-24 rotate-6 sm:h-36 sm:w-28"
+              objectPosition="75% 45%"
+              imgClassName="grayscale-[0.6]"
+            />
+            <Polaroid
+              className="absolute right-0 top-40 z-20 h-36 w-28 rotate-12 sm:h-40 sm:w-32"
+              objectPosition="35% 70%"
+              imgClassName="-scale-x-100"
+            />
+            <Polaroid
+              className="absolute left-1/2 top-52 z-10 h-28 w-24 -translate-x-1/2 rotate-2 sm:top-56"
+              objectPosition="60% 20%"
+              imgClassName="-scale-x-100 sepia-[0.25]"
+            />
           </ScrollReveal>
         </div>
       </div>
