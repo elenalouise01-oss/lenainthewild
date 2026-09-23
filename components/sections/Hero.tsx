@@ -22,10 +22,10 @@ type Scatter = {
 // tuned by eye to feel scattered but still readable, echoing the reference's
 // kinetic-typography intro.
 const SCATTER: Scatter[] = [
-  { char: 'L', x: -170, y: -70, rotate: -18, echoX: 16, echoY: 12 },
-  { char: 'I', x: -30, y: 100, rotate: 25, echoX: -14, echoY: 16 },
-  { char: 'T', x: 70, y: -110, rotate: -15, echoX: 14, echoY: -14 },
-  { char: 'W', x: 220, y: 55, rotate: 13, echoX: -16, echoY: -12 },
+  { char: 'L', x: -120, y: -35, rotate: -16, echoX: 14, echoY: 10 },
+  { char: 'I', x: -20, y: 45, rotate: 18, echoX: -12, echoY: 14 },
+  { char: 'T', x: 50, y: -45, rotate: -13, echoX: 12, echoY: -12 },
+  { char: 'W', x: 150, y: 25, rotate: 11, echoX: -14, echoY: -10 },
 ];
 
 function KineticLetter({
@@ -52,12 +52,14 @@ function KineticLetter({
     <motion.span style={{ x, y, rotate }} className="relative inline-block">
       <motion.span
         aria-hidden
-        style={{ x: echoX, y: echoY, opacity: echoOpacity, WebkitTextStroke: '1.5px rgba(59,45,14,0.8)' }}
+        style={{ x: echoX, y: echoY, opacity: echoOpacity, WebkitTextStroke: '2px rgba(59,45,14,0.85)' }}
         className="absolute inset-0 text-transparent"
       >
         {letter.char}
       </motion.span>
-      <span className="relative">{letter.char}</span>
+      <span className="relative" style={{ WebkitTextStroke: '1.5px rgba(59,45,14,0.9)' }}>
+        {letter.char}
+      </span>
     </motion.span>
   );
 }
@@ -105,7 +107,7 @@ export default function Hero() {
           <div className="flex flex-1 flex-col items-center justify-center px-6 text-center">
             <h1
               aria-label={hero.kinetic}
-              className="flex select-none font-body text-display-1 font-black uppercase leading-[0.9] tracking-tight text-bark"
+              className="flex select-none font-body text-display-1 font-black uppercase leading-[0.9] tracking-tight text-cream"
             >
               <span aria-hidden="true" className="flex">
                 {SCATTER.map((letter, i) => (
