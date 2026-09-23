@@ -57,7 +57,13 @@ function KineticLetter({
       >
         {letter.char}
       </motion.span>
-      <span className="relative" style={{ filter: 'drop-shadow(0 1px 3px rgba(59,45,14,0.45))' }}>
+      <span
+        className="relative"
+        style={{
+          textShadow:
+            '1.5px 0 0 rgba(59,45,14,0.9), -1.5px 0 0 rgba(59,45,14,0.9), 0 1.5px 0 rgba(59,45,14,0.9), 0 -1.5px 0 rgba(59,45,14,0.9), 1.5px 1.5px 0 rgba(59,45,14,0.9), -1.5px -1.5px 0 rgba(59,45,14,0.9), 1.5px -1.5px 0 rgba(59,45,14,0.9), -1.5px 1.5px 0 rgba(59,45,14,0.9)',
+        }}
+      >
         {letter.char}
       </span>
     </motion.span>
