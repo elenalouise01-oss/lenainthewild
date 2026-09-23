@@ -126,7 +126,7 @@ export default function Hero() {
               <p className="mt-5 font-body text-sm font-semibold uppercase tracking-widest2 text-umber">
                 {hero.headline}
               </p>
-              <p className="mx-auto mt-3 max-w-md font-body text-base leading-relaxed text-bark/75">
+              <p className="mx-auto mt-3 max-w-xl font-body text-xl font-medium leading-snug text-bark/80 sm:text-2xl">
                 {hero.sub}
               </p>
               <div className="mt-8 flex justify-center">
