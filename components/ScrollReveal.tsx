@@ -48,7 +48,10 @@ export default function ScrollReveal({
           observer.disconnect();
         }
       },
-      { rootMargin: '-10% 0px -10% 0px' }
+      // Positive bottom margin fires the reveal just before the element
+      // actually scrolls into view, so text is already animating in (not
+      // still hidden) the moment it's visible — avoids a "blank" beat.
+      { rootMargin: '0px 0px 15% 0px' }
     );
     observer.observe(el);
     return () => observer.disconnect();

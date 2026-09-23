@@ -84,7 +84,10 @@ export default function Hero() {
   // before starting to fade for the wash transition.
   const contentOpacity = useTransform(scrollYProgress, [0.62, 0.8], [1, 0]);
   const contentY = useTransform(scrollYProgress, [0.62, 0.85], [0, -40]);
-  const washOpacity = useTransform(scrollYProgress, [0.65, 0.9], [0, 1]);
+  // Reaches full opacity right as the pinned section ends, instead of
+  // holding a solid color for a long stretch of scroll before Section1's
+  // text can appear — that hold read as "the page is stuck/blank".
+  const washOpacity = useTransform(scrollYProgress, [0.78, 0.98], [0, 1]);
 
   return (
     <section ref={sectionRef} id="top" className={`relative ${reduced ? 'h-screen' : 'h-[250vh]'}`}>
