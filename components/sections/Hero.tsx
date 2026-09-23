@@ -22,10 +22,10 @@ type Scatter = {
 // tuned by eye to feel scattered but still readable, echoing the reference's
 // kinetic-typography intro.
 const SCATTER: Scatter[] = [
-  { char: 'L', x: -145, y: -42, rotate: -16, echoX: 16, echoY: 12 },
-  { char: 'I', x: -24, y: 55, rotate: 18, echoX: -14, echoY: 16 },
-  { char: 'T', x: 60, y: -55, rotate: -13, echoX: 14, echoY: -14 },
-  { char: 'W', x: 180, y: 30, rotate: 11, echoX: -16, echoY: -12 },
+  { char: 'L', x: -100, y: -30, rotate: -16, echoX: 12, echoY: 8 },
+  { char: 'I', x: -17, y: 38, rotate: 18, echoX: -10, echoY: 11 },
+  { char: 'T', x: 42, y: -38, rotate: -13, echoX: 10, echoY: -10 },
+  { char: 'W', x: 125, y: 21, rotate: 11, echoX: -11, echoY: -8 },
 ];
 
 function KineticLetter({
@@ -125,16 +125,13 @@ export default function Hero() {
             </h1>
 
             <motion.div
-              className="mt-14 sm:mt-16 lg:mt-20"
-              style={{
-                ...(reduced ? undefined : { opacity: subOpacity, y: subY }),
-                filter: 'drop-shadow(0 1px 6px rgba(255,250,236,0.8)) drop-shadow(0 1px 2px rgba(255,250,236,0.9))',
-              }}
+              className="mt-3 sm:mt-4"
+              style={reduced ? undefined : { opacity: subOpacity, y: subY }}
             >
-              <p className="mt-5 font-body text-lg font-semibold uppercase tracking-widest2 text-bark sm:text-xl">
+              <p className="font-body text-2xl font-bold uppercase tracking-wide text-bark sm:text-3xl">
                 {hero.headline}
               </p>
-              <p className="mx-auto mt-3 max-w-xl font-body text-xl font-medium leading-snug text-bark sm:text-2xl">
+              <p className="mx-auto mt-3 max-w-md font-body text-base leading-relaxed text-bark/80 sm:text-lg">
                 {hero.sub}
               </p>
               <div className="mt-8 flex justify-center">
