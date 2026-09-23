@@ -264,14 +264,25 @@ export default function Section3() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <div className="relative mx-auto mt-16 h-72 w-full max-w-2xl sm:h-80">
-              <div className="absolute inset-x-0 bottom-0 h-2/3 bg-cream shadow-2xl" />
-              <div
-                className="absolute inset-x-0 bottom-[calc(66.6%-1px)] h-24 bg-sand"
-                style={{ clipPath: 'polygon(0 100%, 50% 20%, 100% 100%)' }}
-              />
+            <div className="relative mx-auto mt-24 h-80 w-full max-w-2xl sm:h-96">
+              {/* Envelope pocket + flap as one silhouette, so it reads as an
+                  actual envelope (not a plain card) even with photos poking
+                  out the top of it. */}
+              <svg
+                viewBox="0 0 400 260"
+                preserveAspectRatio="none"
+                className="absolute inset-x-0 bottom-0 h-full w-full drop-shadow-2xl"
+                aria-hidden="true"
+              >
+                <path
+                  d="M0,100 L200,38 L400,100 L400,260 L0,260 Z"
+                  className="fill-cream"
+                  stroke="rgba(59,45,14,0.12)"
+                  strokeWidth="2"
+                />
+              </svg>
 
-              <div className="absolute -top-4 left-[2%] flex h-28 w-24 rotate-6 flex-col justify-center bg-sage p-3 shadow-xl sm:h-32 sm:w-28">
+              <div className="absolute top-[70px] left-[2%] z-10 flex h-28 w-24 rotate-6 flex-col justify-center bg-sage p-3 shadow-xl sm:h-32 sm:w-28">
                 <p className="font-body text-[0.55rem] font-semibold uppercase tracking-wide text-cream/80">{freedomSeeker.envelope.cardLabel}</p>
                 <p className="mt-1 font-body text-[0.6rem] leading-snug text-cream">{freedomSeeker.envelope.places.join(', ')}</p>
                 <svg className="absolute -left-4 -top-6 h-9 w-9 -rotate-12 text-stone" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
@@ -279,12 +290,15 @@ export default function Section3() {
                 </svg>
               </div>
 
-              <Polaroid className="absolute -top-14 left-[20%] h-32 w-28 -rotate-12 sm:h-36 sm:w-32" objectPosition="60% 40%" />
-              <Polaroid className="absolute -top-20 left-[38%] h-40 w-36 -rotate-2 shadow-2xl sm:h-44 sm:w-40" objectPosition="30% 70%" />
-              <Polaroid className="absolute -top-10 left-[58%] h-32 w-28 rotate-3 sm:h-36 sm:w-32" objectPosition="50% 20%" />
-              <Polaroid className="absolute -top-2 right-[4%] h-28 w-24 rotate-12 sm:h-32 sm:w-28" objectPosition="80% 15%" />
+              {/* Tops kept below the flap's apex (~56-148px) so the
+                  triangular flap silhouette stays visible above the
+                  photos instead of being covered by them. */}
+              <Polaroid className="absolute top-[96px] left-[20%] z-10 h-32 w-28 -rotate-12 sm:h-36 sm:w-32" objectPosition="60% 40%" />
+              <Polaroid className="absolute top-[64px] left-[38%] z-10 h-40 w-36 -rotate-2 shadow-2xl sm:h-44 sm:w-40" objectPosition="30% 70%" />
+              <Polaroid className="absolute top-[104px] left-[58%] z-10 h-32 w-28 rotate-3 sm:h-36 sm:w-32" objectPosition="50% 20%" />
+              <Polaroid className="absolute top-[120px] right-[4%] z-10 h-28 w-24 rotate-12 sm:h-32 sm:w-28" objectPosition="80% 15%" />
 
-              <span className="absolute -right-2 top-0 -rotate-3 rounded-sm bg-bark px-3 py-6 font-body text-[0.6rem] font-semibold uppercase tracking-wide text-cream shadow-md [writing-mode:vertical-rl]">
+              <span className="absolute -right-2 top-4 z-10 -rotate-3 rounded-sm bg-bark px-3 py-6 font-body text-[0.6rem] font-semibold uppercase tracking-wide text-cream shadow-md [writing-mode:vertical-rl]">
                 {freedomSeeker.envelope.ribbon}
               </span>
             </div>
@@ -367,23 +381,24 @@ export default function Section3() {
           </div>
 
           <ScrollReveal delay={0.1} className="relative mx-auto h-96 w-full max-w-sm">
-            {/* Safety pin */}
+            {/* A single safety pin, diagonal, piercing a small stack of two
+                photos — spring coil at the hinge end, a hooked clasp
+                cupping the point at the other end. */}
             <svg
-              className="absolute -top-8 right-8 z-20 h-16 w-40 text-stone drop-shadow-lg"
-              viewBox="0 0 160 64"
+              className="absolute -top-6 right-4 z-20 h-14 w-44 text-stone drop-shadow-lg sm:right-8"
+              viewBox="0 0 170 70"
               fill="none"
               stroke="currentColor"
-              strokeWidth="3"
+              strokeWidth="3.5"
               aria-hidden="true"
             >
-              <path d="M10 54 L120 10" strokeLinecap="round" />
-              <circle cx="120" cy="10" r="9" fill="none" />
-              <path d="M10 54 a10 10 0 1 0 14 -14" strokeLinecap="round" />
+              <path d="M24 58 a10 10 0 1 1 11 -17 a7.5 7.5 0 1 1 -8 13" strokeLinecap="round" />
+              <path d="M24 58 L132 20" strokeLinecap="round" />
+              <path d="M132 20 a13 13 0 1 1 0 22" strokeLinecap="round" />
             </svg>
 
-            <Polaroid className="absolute left-2 top-16 h-40 w-32 -rotate-6 sm:h-44 sm:w-36" objectPosition="20% 60%" />
-            <Polaroid className="absolute left-1/2 top-4 h-44 w-36 -translate-x-1/2 rotate-2 shadow-2xl sm:h-48 sm:w-40" objectPosition="50% 10%" />
-            <Polaroid className="absolute right-0 top-20 h-40 w-32 rotate-12 sm:h-44 sm:w-36" objectPosition="75% 45%" />
+            <Polaroid className="absolute left-1/2 top-6 h-44 w-36 -translate-x-1/2 -rotate-3 shadow-2xl sm:h-48 sm:w-40" objectPosition="50% 10%" />
+            <Polaroid className="absolute right-0 top-16 h-40 w-32 rotate-8 sm:h-44 sm:w-36" objectPosition="75% 45%" />
           </ScrollReveal>
         </div>
       </div>
