@@ -20,6 +20,7 @@ export default function Section1() {
   const sandRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: sandRef, offset: ['start end', 'end start'] });
   const marqueeX = useTransform(scrollYProgress, [0, 1], ['6%', '-42%']);
+  const wordX = useTransform(scrollYProgress, [0, 0.55], ['60%', '-110%']);
 
   return (
     <section id="story">
@@ -51,16 +52,6 @@ export default function Section1() {
       </div>
 
       <div ref={sandRef} className="relative overflow-hidden bg-sand px-6 py-20 sm:px-10 lg:px-16">
-        {!reduced && (
-          <motion.div
-            aria-hidden="true"
-            style={{ x: marqueeX, WebkitTextStroke: '1.5px rgba(59,45,14,0.1)' }}
-            className="pointer-events-none absolute left-0 top-[16%] z-0 select-none whitespace-nowrap font-body text-[16vw] font-black uppercase leading-none text-transparent sm:top-[8%]"
-          >
-            Life Reinvention &nbsp;•&nbsp; Life Reinvention
-          </motion.div>
-        )}
-
         <div className="relative z-10 mx-auto w-full max-w-content">
           <div className="sticky top-6 z-20 flex items-center gap-8 bg-sand/90 py-2 backdrop-blur-sm">
             <span className="hidden shrink-0 -rotate-90 whitespace-nowrap font-body text-xs font-semibold uppercase tracking-widest2 text-stone sm:block">
@@ -82,15 +73,31 @@ export default function Section1() {
             </ScrollReveal>
           </div>
 
-          <ScrollReveal delay={0.15}>
-            <div
-              className="mt-6 select-none bg-cover bg-center bg-clip-text font-body text-[38vw] font-black uppercase leading-none text-transparent sm:text-[26vw]"
-              style={{ backgroundImage: "url('/images/hero.jpg')" }}
+          {/* Same beat as the reference: the photo-filled word itself slides
+              across the screen (not just a static letter with something
+              sliding behind it), trailed by a ghost outline of the same
+              phrase drifting at a different rate. */}
+          <div className="relative mt-6 h-[38vw] sm:h-[26vw]">
+            {!reduced && (
+              <motion.div
+                aria-hidden="true"
+                style={{ x: marqueeX, WebkitTextStroke: '1.5px rgba(59,45,14,0.12)' }}
+                className="pointer-events-none absolute inset-y-0 left-0 flex select-none items-center whitespace-nowrap font-body text-[38vw] font-black uppercase leading-none text-transparent sm:text-[26vw]"
+              >
+                Life Reinvention&nbsp;&nbsp;&nbsp;Life Reinvention
+              </motion.div>
+            )}
+            <motion.div
+              style={{
+                backgroundImage: "url('/images/hero.jpg')",
+                ...(reduced ? {} : { x: wordX }),
+              }}
+              className="absolute inset-y-0 left-0 flex select-none items-center whitespace-nowrap bg-cover bg-center bg-clip-text font-body text-[38vw] font-black uppercase leading-none text-transparent sm:text-[26vw]"
               aria-hidden="true"
             >
-              {welcome.bigLetter}
-            </div>
-          </ScrollReveal>
+              {welcome.bigWord}
+            </motion.div>
+          </div>
 
           <ScrollReveal delay={0.1}>
             <div className="relative mt-24 sm:mt-32">
