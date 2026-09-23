@@ -6,7 +6,7 @@ import Button from '@/components/Button';
 import Navigation from '@/components/Navigation';
 import PlaceholderImage from '@/components/PlaceholderImage';
 import SpinningBadge from '@/components/SpinningBadge';
-import { hero, nav, welcome } from '@/content/site';
+import { hero, nav } from '@/content/site';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 
 type Scatter = {
@@ -22,10 +22,10 @@ type Scatter = {
 // tuned by eye to feel scattered but still readable, echoing the reference's
 // kinetic-typography intro.
 const SCATTER: Scatter[] = [
-  { char: 'L', x: -18, y: -22, rotate: -16, echoX: 6, echoY: 5 },
-  { char: 'I', x: 26, y: 18, rotate: 22, echoX: -5, echoY: 6 },
-  { char: 'T', x: -30, y: 20, rotate: -10, echoX: 5, echoY: -5 },
-  { char: 'W', x: 20, y: -16, rotate: 14, echoX: -6, echoY: -4 },
+  { char: 'L', x: -170, y: -70, rotate: -18, echoX: 16, echoY: 12 },
+  { char: 'I', x: -30, y: 100, rotate: 25, echoX: -14, echoY: 16 },
+  { char: 'T', x: 70, y: -110, rotate: -15, echoX: 14, echoY: -14 },
+  { char: 'W', x: 220, y: 55, rotate: 13, echoX: -16, echoY: -12 },
 ];
 
 function KineticLetter({
@@ -73,8 +73,6 @@ export default function Hero() {
   const subOpacity = useTransform(scrollYProgress, [0.38, 0.5], [0, 1]);
   const subY = useTransform(scrollYProgress, [0.38, 0.5], [16, 0]);
   const washOpacity = useTransform(scrollYProgress, [0.55, 0.85], [0, 1]);
-  const nextOpacity = useTransform(scrollYProgress, [0.68, 0.92], [0, 1]);
-  const nextY = useTransform(scrollYProgress, [0.68, 0.92], [28, 0]);
 
   return (
     <section ref={sectionRef} id="top" className={`relative ${reduced ? 'h-screen' : 'h-[250vh]'}`}>
@@ -89,8 +87,7 @@ export default function Hero() {
             src={hero.imageSrc ?? undefined}
           />
         </div>
-        <div className="absolute inset-0 bg-cream/35" />
-        <div className="absolute inset-0 bg-gradient-to-t from-cream/45 via-cream/15 to-cream/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-cream/55 via-transparent to-cream/20" />
 
         <motion.div
           style={reduced ? undefined : { opacity: contentOpacity, y: contentY }}
@@ -117,7 +114,7 @@ export default function Hero() {
               </span>
             </h1>
 
-            <motion.div style={reduced ? undefined : { opacity: subOpacity, y: subY }}>
+            <motion.div className="mt-14 sm:mt-16 lg:mt-20" style={reduced ? undefined : { opacity: subOpacity, y: subY }}>
               <p className="mt-5 font-body text-sm font-semibold uppercase tracking-widest2 text-umber">
                 {hero.headline}
               </p>
@@ -142,18 +139,12 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
+        {/* Plain color wash only — no text here. Section1's own headline is
+            the only place this copy appears; showing a preview of it here
+            (centered) duplicated against Section1's real heading (left-
+            aligned) as the two scrolled past each other. */}
         {!reduced && (
-          <motion.div
-            style={{ opacity: washOpacity }}
-            className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center bg-bark px-6"
-          >
-            <motion.h2
-              style={{ opacity: nextOpacity, y: nextY }}
-              className="max-w-2xl text-center font-display text-display-3 italic text-cream"
-            >
-              {welcome.headline}
-            </motion.h2>
-          </motion.div>
+          <motion.div style={{ opacity: washOpacity }} className="pointer-events-none absolute inset-0 z-20 bg-bark" />
         )}
       </div>
     </section>
