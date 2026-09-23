@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- Licensed display/accent fonts. Drop the files into /public/fonts
+   (see public/fonts/README.md). Until then these rules simply never match
+   and the fontFamily fallbacks in tailwind.config.ts take over. ---- */
+@font-face {
+  font-family: 'Giaza';
+  src: url('/fonts/giaza.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AC Fifindrel';
+  src: url('/fonts/ac-fifindrel.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Biro Script';
+  src: url('/fonts/biro-script.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-giaza: 'Giaza';
+  --font-fifindrel: 'AC Fifindrel';
+  --font-biro: 'Biro Script';
+}
+
+@layer base {
+  * {
+    @apply border-bark/10;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-bark font-body antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    @apply bg-sage text-cream;
+  }
+}
+
+@layer utilities {
+  .container-editorial {
+    @apply mx-auto w-full max-w-content px-6 sm:px-10 lg:px-16;
+  }
+
+  .text-outline {
+    -webkit-text-stroke: 1.5px currentColor;
+    color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

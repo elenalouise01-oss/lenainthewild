@@ -1,0 +1,37 @@
+'use client';
+
+import { useId } from 'react';
+
+type SpinningBadgeProps = {
+  text: string;
+  tone?: 'light' | 'dark';
+  className?: string;
+};
+
+const toneStyles: Record<'light' | 'dark', { fill: string; dot: string }> = {
+  light: { fill: 'fill-cream', dot: 'bg-cream' },
+  dark: { fill: 'fill-bark', dot: 'bg-bark' },
+};
+
+// A continuously-rotating circular tag with text running around its rim —
+// spins forever, independent of scroll (like a stamp/seal).
+export default function SpinningBadge({ text, tone = 'light', className = '' }: SpinningBadgeProps) {
+  const pathId = useId();
+  const { fill, dot } = toneStyles[tone];
+
+  return (
+    <div className={`relative h-16 w-16 animate-spin-slow ${className}`} aria-hidden="true">
+      <svg viewBox="0 0 100 100" className="h-full w-full">
+        <defs>
+          <path id={pathId} d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
+        </defs>
+        <text className={`${fill} font-body`} style={{ fontSize: '8.5px', letterSpacing: '0.15em' }}>
+          <textPath href={`#${pathId}`} startOffset="0%">
+            {text}
+          </textPath>
+        </text>
+      </svg>
+      <span className={`absolute inset-0 m-auto h-1.5 w-1.5 rounded-full ${dot}`} />
+    </div>
+  );
+}
