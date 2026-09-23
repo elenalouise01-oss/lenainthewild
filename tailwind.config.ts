@@ -30,7 +30,7 @@ const config: Config = {
         fifindrel: ['var(--font-fifindrel)', 'var(--font-gochi)', 'cursive'],
       },
       fontSize: {
-        'display-1': ['clamp(4.5rem, 22vw, 14rem)', { lineHeight: '0.9', letterSpacing: '-0.02em' }],
+        'display-1': ['clamp(5rem, 25vw, 17rem)', { lineHeight: '0.9', letterSpacing: '-0.02em' }],
         'display-2': ['clamp(2.75rem, 6.5vw, 6.5rem)', { lineHeight: '0.95', letterSpacing: '-0.015em' }],
         'display-3': ['clamp(2.25rem, 4.5vw, 4.25rem)', { lineHeight: '1', letterSpacing: '-0.01em' }],
         'display-4': ['clamp(1.75rem, 3vw, 2.75rem)', { lineHeight: '1.05' }],

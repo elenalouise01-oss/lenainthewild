@@ -22,10 +22,10 @@ type Scatter = {
 // tuned by eye to feel scattered but still readable, echoing the reference's
 // kinetic-typography intro.
 const SCATTER: Scatter[] = [
-  { char: 'L', x: -120, y: -35, rotate: -16, echoX: 14, echoY: 10 },
-  { char: 'I', x: -20, y: 45, rotate: 18, echoX: -12, echoY: 14 },
-  { char: 'T', x: 50, y: -45, rotate: -13, echoX: 12, echoY: -12 },
-  { char: 'W', x: 150, y: 25, rotate: 11, echoX: -14, echoY: -10 },
+  { char: 'L', x: -145, y: -42, rotate: -16, echoX: 16, echoY: 12 },
+  { char: 'I', x: -24, y: 55, rotate: 18, echoX: -14, echoY: 16 },
+  { char: 'T', x: 60, y: -55, rotate: -13, echoX: 14, echoY: -14 },
+  { char: 'W', x: 180, y: 30, rotate: 11, echoX: -16, echoY: -12 },
 ];
 
 function KineticLetter({
@@ -76,11 +76,13 @@ export default function Hero() {
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end end'] });
 
   const scrollHintOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
-  const contentOpacity = useTransform(scrollYProgress, [0.5, 0.7], [1, 0]);
-  const contentY = useTransform(scrollYProgress, [0.5, 0.75], [0, -40]);
-  const subOpacity = useTransform(scrollYProgress, [0.38, 0.5], [0, 1]);
-  const subY = useTransform(scrollYProgress, [0.38, 0.5], [16, 0]);
-  const washOpacity = useTransform(scrollYProgress, [0.55, 0.85], [0, 1]);
+  const subOpacity = useTransform(scrollYProgress, [0.32, 0.42], [0, 1]);
+  const subY = useTransform(scrollYProgress, [0.32, 0.42], [16, 0]);
+  // Content holds fully visible from 0.42 to 0.62 (a real reading window)
+  // before starting to fade for the wash transition.
+  const contentOpacity = useTransform(scrollYProgress, [0.62, 0.8], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0.62, 0.85], [0, -40]);
+  const washOpacity = useTransform(scrollYProgress, [0.65, 0.9], [0, 1]);
 
   return (
     <section ref={sectionRef} id="top" className={`relative ${reduced ? 'h-screen' : 'h-[250vh]'}`}>
@@ -95,7 +97,7 @@ export default function Hero() {
             src={hero.imageSrc ?? undefined}
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-cream/55 via-transparent to-cream/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-cream/15 via-transparent to-cream/15" />
 
         <motion.div
           style={reduced ? undefined : { opacity: contentOpacity, y: contentY }}
@@ -122,11 +124,17 @@ export default function Hero() {
               </span>
             </h1>
 
-            <motion.div className="mt-14 sm:mt-16 lg:mt-20" style={reduced ? undefined : { opacity: subOpacity, y: subY }}>
-              <p className="mt-5 font-body text-sm font-semibold uppercase tracking-widest2 text-umber">
+            <motion.div
+              className="mt-14 sm:mt-16 lg:mt-20"
+              style={{
+                ...(reduced ? undefined : { opacity: subOpacity, y: subY }),
+                filter: 'drop-shadow(0 1px 6px rgba(255,250,236,0.8)) drop-shadow(0 1px 2px rgba(255,250,236,0.9))',
+              }}
+            >
+              <p className="mt-5 font-body text-lg font-semibold uppercase tracking-widest2 text-bark sm:text-xl">
                 {hero.headline}
               </p>
-              <p className="mx-auto mt-3 max-w-xl font-body text-xl font-medium leading-snug text-bark/80 sm:text-2xl">
+              <p className="mx-auto mt-3 max-w-xl font-body text-xl font-medium leading-snug text-bark sm:text-2xl">
                 {hero.sub}
               </p>
               <div className="mt-8 flex justify-center">
@@ -141,7 +149,9 @@ export default function Hero() {
             style={reduced ? undefined : { opacity: scrollHintOpacity }}
             className="container-editorial flex justify-center pb-8"
           >
-            <span className="font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark/60">
+            <span
+              className="rounded-full bg-cream/70 px-4 py-1.5 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark"
+            >
               {hero.scrollLabel}
             </span>
           </motion.div>
