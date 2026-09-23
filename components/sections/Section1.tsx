@@ -1,13 +1,26 @@
+'use client';
+
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import { hero, welcome } from '@/content/site';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 
 // Mirrors the S1 reference exactly: a normal (non-pinned) tall bold-color
 // block — left-aligned bold statement up top, a two-column support-text
 // block sitting right-of-center further down, then a light block with a
 // vertical side label, a horizontal numbered chapter bar, and a giant
-// letter filled with a photo (here, the real cutout hero shot).
+// letter filled with a photo (here, the real cutout hero shot). Behind
+// the letter, a giant outline word drifts horizontally as you scroll —
+// the reference's big ghost typography slides sideways rather than
+// sitting static.
 export default function Section1() {
+  const reduced = useReducedMotion();
+  const sandRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: sandRef, offset: ['start end', 'end start'] });
+  const marqueeX = useTransform(scrollYProgress, [0, 1], ['6%', '-42%']);
+
   return (
     <section id="story">
       <div className="bg-bark px-6 py-24 sm:px-10 sm:py-32 lg:px-16">
@@ -37,8 +50,18 @@ export default function Section1() {
         </div>
       </div>
 
-      <div className="relative overflow-hidden bg-sand px-6 py-20 sm:px-10 lg:px-16">
-        <div className="mx-auto w-full max-w-content">
+      <div ref={sandRef} className="relative overflow-hidden bg-sand px-6 py-20 sm:px-10 lg:px-16">
+        {!reduced && (
+          <motion.div
+            aria-hidden="true"
+            style={{ x: marqueeX, WebkitTextStroke: '1.5px rgba(59,45,14,0.1)' }}
+            className="pointer-events-none absolute left-0 top-[16%] z-0 select-none whitespace-nowrap font-body text-[16vw] font-black uppercase leading-none text-transparent sm:top-[8%]"
+          >
+            Life Reinvention &nbsp;•&nbsp; Life Reinvention
+          </motion.div>
+        )}
+
+        <div className="relative z-10 mx-auto w-full max-w-content">
           <div className="sticky top-6 z-20 flex items-center gap-8 bg-sand/90 py-2 backdrop-blur-sm">
             <span className="hidden shrink-0 -rotate-90 whitespace-nowrap font-body text-xs font-semibold uppercase tracking-widest2 text-stone sm:block">
               {welcome.chapterLabel}
