@@ -8,17 +8,26 @@ import { freedomSeeker, hero } from '@/content/site';
 function Polaroid({
   className = '',
   objectPosition,
+  imgClassName = '',
   children,
 }: {
   className?: string;
   objectPosition: string;
+  imgClassName?: string;
   children?: React.ReactNode;
 }) {
   return (
     <div className={`bg-cream p-1.5 shadow-xl ${className}`}>
       <div className="relative h-full w-full overflow-hidden">
         {hero.imageSrc && (
-          <Image src={hero.imageSrc} alt="" fill className="object-cover" style={{ objectPosition }} aria-hidden="true" />
+          <Image
+            src={hero.imageSrc}
+            alt=""
+            fill
+            className={`object-cover ${imgClassName}`}
+            style={{ objectPosition }}
+            aria-hidden="true"
+          />
         )}
       </div>
       {children}
@@ -275,14 +284,14 @@ export default function Section3() {
                 aria-hidden="true"
               >
                 <path
-                  d="M0,100 L200,38 L400,100 L400,260 L0,260 Z"
+                  d="M0,100 L200,10 L400,100 L400,260 L0,260 Z"
                   className="fill-cream"
-                  stroke="rgba(59,45,14,0.12)"
+                  stroke="rgba(59,45,14,0.14)"
                   strokeWidth="2"
                 />
               </svg>
 
-              <div className="absolute top-[70px] left-[2%] z-10 flex h-28 w-24 rotate-6 flex-col justify-center bg-sage p-3 shadow-xl sm:h-32 sm:w-28">
+              <div className="absolute top-[76px] left-[8%] z-10 flex h-28 w-24 rotate-6 flex-col justify-center bg-sage p-3 shadow-xl sm:h-32 sm:w-28">
                 <p className="font-body text-[0.55rem] font-semibold uppercase tracking-wide text-cream/80">{freedomSeeker.envelope.cardLabel}</p>
                 <p className="mt-1 font-body text-[0.6rem] leading-snug text-cream">{freedomSeeker.envelope.places.join(', ')}</p>
                 <svg className="absolute -left-4 -top-6 h-9 w-9 -rotate-12 text-stone" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
@@ -290,13 +299,32 @@ export default function Section3() {
                 </svg>
               </div>
 
-              {/* Tops kept below the flap's apex (~56-148px) so the
+              {/* Tops kept below the flap's apex (~15-148px) so the
                   triangular flap silhouette stays visible above the
-                  photos instead of being covered by them. */}
-              <Polaroid className="absolute top-[96px] left-[20%] z-10 h-32 w-28 -rotate-12 sm:h-36 sm:w-32" objectPosition="60% 40%" />
-              <Polaroid className="absolute top-[64px] left-[38%] z-10 h-40 w-36 -rotate-2 shadow-2xl sm:h-44 sm:w-40" objectPosition="30% 70%" />
-              <Polaroid className="absolute top-[104px] left-[58%] z-10 h-32 w-28 rotate-3 sm:h-36 sm:w-32" objectPosition="50% 20%" />
-              <Polaroid className="absolute top-[120px] right-[4%] z-10 h-28 w-24 rotate-12 sm:h-32 sm:w-28" objectPosition="80% 15%" />
+                  photos. A tighter horizontal cluster (was spread across
+                  nearly the full width) plus a horizontal flip and a
+                  grayscale treatment on two of the four crops, since all
+                  four are the same source photo and read as obviously
+                  duplicated when framed too similarly. */}
+              <Polaroid
+                className="absolute top-[100px] left-[26%] z-10 h-32 w-28 -rotate-12 sm:h-36 sm:w-32"
+                objectPosition="70% 35%"
+                imgClassName="grayscale-[0.4]"
+              />
+              <Polaroid
+                className="absolute top-[64px] left-[40%] z-10 h-40 w-36 -rotate-2 shadow-2xl sm:h-44 sm:w-40"
+                objectPosition="25% 75%"
+              />
+              <Polaroid
+                className="absolute top-[104px] left-[56%] z-10 h-32 w-28 rotate-3 sm:h-36 sm:w-32"
+                objectPosition="55% 15%"
+                imgClassName="-scale-x-100"
+              />
+              <Polaroid
+                className="absolute top-[120px] right-[14%] z-10 h-28 w-24 rotate-12 sm:h-32 sm:w-28"
+                objectPosition="85% 10%"
+                imgClassName="-scale-x-100 sepia-[0.3]"
+              />
 
               <span className="absolute -right-2 top-4 z-10 -rotate-3 rounded-sm bg-bark px-3 py-6 font-body text-[0.6rem] font-semibold uppercase tracking-wide text-cream shadow-md [writing-mode:vertical-rl]">
                 {freedomSeeker.envelope.ribbon}

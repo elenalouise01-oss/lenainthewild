@@ -90,7 +90,7 @@ export default function Section1() {
                 style={{ x: marqueeX, WebkitTextStroke: '1.5px rgba(59,45,14,0.55)' }}
                 className="pointer-events-none absolute inset-y-0 left-0 flex select-none items-center whitespace-nowrap font-body text-[38vw] font-black uppercase leading-none text-transparent sm:text-[26vw]"
               >
-                Reinvention
+                Design
               </motion.div>
             )}
             <motion.div
