@@ -19,7 +19,10 @@ export default function Section1() {
   const reduced = useReducedMotion();
   const sandRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: sandRef, offset: ['start end', 'end start'] });
-  const marqueeX = useTransform(scrollYProgress, [0, 1], ['6%', '-42%']);
+  // A single pass (not 3 repeats overlapping at once) across a generous
+  // vw distance over the full scroll range, so it crawls slowly enough
+  // to actually read as it passes instead of whipping by.
+  const marqueeX = useTransform(scrollYProgress, [0, 1], ['170vw', '-260vw']);
   // Slides in from off-screen, holds fully in view for a readable beat
   // (so the first letter is actually visible, not clipped mid-entrance),
   // then exits left.
@@ -84,10 +87,10 @@ export default function Section1() {
             {!reduced && (
               <motion.div
                 aria-hidden="true"
-                style={{ x: marqueeX, WebkitTextStroke: '2px rgba(59,45,14,0.4)' }}
+                style={{ x: marqueeX, WebkitTextStroke: '1.5px rgba(59,45,14,0.55)' }}
                 className="pointer-events-none absolute inset-y-0 left-0 flex select-none items-center whitespace-nowrap font-body text-[38vw] font-black uppercase leading-none text-transparent sm:text-[26vw]"
               >
-                Reinvention&nbsp;&nbsp;&nbsp;Reinvention&nbsp;&nbsp;&nbsp;Reinvention
+                Reinvention
               </motion.div>
             )}
             <motion.div
