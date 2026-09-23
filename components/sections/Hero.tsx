@@ -75,7 +75,9 @@ export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end end'] });
 
-  const scrollHintOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
+  // Stays visible through the letter-assemble phase so users mid-scroll
+  // still see it — the pinned scroll can otherwise feel "stuck".
+  const scrollHintOpacity = useTransform(scrollYProgress, [0.22, 0.38], [1, 0]);
   const subOpacity = useTransform(scrollYProgress, [0.32, 0.42], [0, 1]);
   const subY = useTransform(scrollYProgress, [0.32, 0.42], [16, 0]);
   // Content holds fully visible from 0.42 to 0.62 (a real reading window)
@@ -128,14 +130,20 @@ export default function Hero() {
               className="mt-3 sm:mt-4"
               style={reduced ? undefined : { opacity: subOpacity, y: subY }}
             >
-              <p className="font-body text-2xl font-bold uppercase tracking-wide text-bark sm:text-3xl">
+              <p
+                className="font-body text-2xl font-bold uppercase tracking-wide text-cream sm:text-3xl"
+                style={{ textShadow: '0 1px 6px rgba(0,0,0,0.35)' }}
+              >
                 {hero.headline}
               </p>
-              <p className="mx-auto mt-3 max-w-md font-body text-base leading-relaxed text-bark/80 sm:text-lg">
+              <p
+                className="mx-auto mt-3 max-w-md font-body text-base leading-relaxed text-cream/90 sm:text-lg"
+                style={{ textShadow: '0 1px 6px rgba(0,0,0,0.3)' }}
+              >
                 {hero.sub}
               </p>
               <div className="mt-8 flex justify-center">
-                <Button href={hero.ctaHref} tone="dark">
+                <Button href={hero.ctaHref} tone="light">
                   {hero.ctaLabel}
                 </Button>
               </div>
