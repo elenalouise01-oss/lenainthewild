@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -41,6 +42,8 @@ function Polaroid({
 // (light), the modeling statement (dark), then the pinned-photo contact
 // section (light).
 export default function Section3() {
+  const [submitted, setSubmitted] = useState(false);
+
   return (
     <section id="freedom-seeker">
       {/* Band 1 — the offer: dark, punchy */}
@@ -376,35 +379,50 @@ export default function Section3() {
               <p className="mt-10 font-body text-xs font-semibold uppercase tracking-widest2 text-stone">
                 {freedomSeeker.contact.listLabel}
               </p>
-              <form className="mt-4 flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
-                <label className="block">
-                  <span className="sr-only">{freedomSeeker.contact.fields.name}</span>
-                  <input
-                    type="text"
-                    placeholder={freedomSeeker.contact.fields.name}
-                    className="w-full border-0 border-b border-bark/25 bg-transparent py-3 font-body text-bark placeholder:text-bark/40 focus:border-bark focus:outline-none"
-                  />
-                </label>
-                <label className="block">
-                  <span className="sr-only">{freedomSeeker.contact.fields.email}</span>
-                  <input
-                    type="email"
-                    placeholder={freedomSeeker.contact.fields.email}
-                    className="w-full border-0 border-b border-bark/25 bg-transparent py-3 font-body text-bark placeholder:text-bark/40 focus:border-bark focus:outline-none"
-                  />
-                </label>
-                <label className="block">
-                  <span className="sr-only">{freedomSeeker.contact.fields.message}</span>
-                  <textarea
-                    rows={3}
-                    placeholder={freedomSeeker.contact.fields.message}
-                    className="w-full resize-none border-0 border-b border-bark/25 bg-transparent py-3 font-body text-bark placeholder:text-bark/40 focus:border-bark focus:outline-none"
-                  />
-                </label>
-                <button type="submit" className="self-start font-body text-xs font-semibold uppercase tracking-widest2 text-sage transition-colors hover:text-bark">
-                  {freedomSeeker.contact.cta} →
-                </button>
-              </form>
+              {submitted ? (
+                <p className="mt-4 rounded-sm border border-sage/30 bg-sage/10 px-5 py-4 font-body text-sm text-bark" role="status">
+                  Thanks — that's landed with me. I'll get back to you shortly.
+                </p>
+              ) : (
+                <form
+                  className="mt-4 flex flex-col gap-6"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    setSubmitted(true);
+                  }}
+                >
+                  <label className="block">
+                    <span className="sr-only">{freedomSeeker.contact.fields.name}</span>
+                    <input
+                      type="text"
+                      required
+                      placeholder={freedomSeeker.contact.fields.name}
+                      className="w-full border-0 border-b border-bark/25 bg-transparent py-3 font-body text-bark placeholder:text-bark/40 focus:border-bark focus:outline-none"
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="sr-only">{freedomSeeker.contact.fields.email}</span>
+                    <input
+                      type="email"
+                      required
+                      placeholder={freedomSeeker.contact.fields.email}
+                      className="w-full border-0 border-b border-bark/25 bg-transparent py-3 font-body text-bark placeholder:text-bark/40 focus:border-bark focus:outline-none"
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="sr-only">{freedomSeeker.contact.fields.message}</span>
+                    <textarea
+                      rows={3}
+                      required
+                      placeholder={freedomSeeker.contact.fields.message}
+                      className="w-full resize-none border-0 border-b border-bark/25 bg-transparent py-3 font-body text-bark placeholder:text-bark/40 focus:border-bark focus:outline-none"
+                    />
+                  </label>
+                  <button type="submit" className="self-start font-body text-xs font-semibold uppercase tracking-widest2 text-sage transition-colors hover:text-bark">
+                    {freedomSeeker.contact.cta} →
+                  </button>
+                </form>
+              )}
             </ScrollReveal>
           </div>
 

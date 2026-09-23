@@ -22,7 +22,7 @@ export const hero = {
   scrollLabel: 'Scroll to Begin',
   badgeText: 'LENA IN THE WILD • LENA IN THE WILD • ',
   ctaLabel: 'Come along',
-  ctaHref: '#next',
+  ctaHref: '#story',
   imageSrc: '/images/hero.jpg' as string | null,
 };
 

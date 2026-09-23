@@ -27,7 +27,14 @@ export default function Navigation({ className = '', iconClassName = '', childre
       if (e.key === 'Escape') setOpen(false);
     };
     window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
+    // Lock background scroll while the full-screen menu is open — otherwise
+    // the page keeps scrolling behind the overlay, which is disorienting.
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = prevOverflow;
+    };
   }, [open]);
 
   return (

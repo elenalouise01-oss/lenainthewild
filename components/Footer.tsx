@@ -1,5 +1,16 @@
+'use client';
+
 import Link from 'next/link';
 import { footer, nav } from '@/content/site';
+
+// Links that resolve to a real section on this page; everything else in
+// the footer points to a page that doesn't exist yet, so it's left inert
+// (rather than href="#", which jumps the whole page to the top on click —
+// a jarring, confusing move for someone reading down near the footer).
+const REAL_ANCHORS: Record<string, string> = {
+  Blog: '#blog',
+  About: '#about',
+};
 
 export default function Footer() {
   return (
@@ -11,13 +22,23 @@ export default function Footer() {
               {column.label}
             </p>
             <ul className="mt-4 space-y-3">
-              {column.links.map((link) => (
-                <li key={link}>
-                  <Link href="#" className="font-body text-sm text-bark/80 transition-colors hover:text-bark">
-                    {link}
-                  </Link>
-                </li>
-              ))}
+              {column.links.map((link) => {
+                const href = REAL_ANCHORS[link];
+                return (
+                  <li key={link}>
+                    <Link
+                      href={href ?? '#'}
+                      onClick={href ? undefined : (e) => e.preventDefault()}
+                      aria-disabled={href ? undefined : true}
+                      className={`font-body text-sm transition-colors ${
+                        href ? 'text-bark/80 hover:text-bark' : 'cursor-default text-bark/40'
+                      }`}
+                    >
+                      {link}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         ))}

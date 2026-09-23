@@ -85,13 +85,28 @@ export default function Section1() {
               phrase drifting at a different rate. */}
           <div className="relative mt-6 h-[38vw] sm:h-[26vw]">
             {!reduced && (
-              <motion.div
-                aria-hidden="true"
-                style={{ x: marqueeX, WebkitTextStroke: '1.5px rgba(59,45,14,0.55)' }}
-                className="pointer-events-none absolute inset-y-0 left-0 flex select-none items-center whitespace-nowrap font-body text-[38vw] font-black uppercase leading-none text-transparent sm:text-[26vw]"
-              >
-                Design
-              </motion.div>
+              <>
+                {/* Two solid-fill copies (dark, slightly larger, behind a
+                    sand-colored copy at 100%) instead of text-stroke —
+                    -webkit-text-stroke self-intersects on compound glyphs
+                    (hit this on the hero's "W", now on "G"/"E" here too),
+                    producing stray triangle fragments. A pure fill-on-fill
+                    halo can't produce that artifact. */}
+                <motion.div
+                  aria-hidden="true"
+                  style={{ x: marqueeX, scale: 1.045, color: 'rgba(59,45,14,0.55)' }}
+                  className="pointer-events-none absolute inset-y-0 left-0 flex select-none items-center whitespace-nowrap font-body text-[38vw] font-bold uppercase leading-none sm:text-[26vw]"
+                >
+                  Design
+                </motion.div>
+                <motion.div
+                  aria-hidden="true"
+                  style={{ x: marqueeX }}
+                  className="pointer-events-none absolute inset-y-0 left-0 flex select-none items-center whitespace-nowrap font-body text-[38vw] font-bold uppercase leading-none text-sand sm:text-[26vw]"
+                >
+                  Design
+                </motion.div>
+              </>
             )}
             <motion.div
               style={{
