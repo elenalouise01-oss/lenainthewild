@@ -84,7 +84,7 @@ export default function Section1() {
             {!reduced && (
               <motion.div
                 aria-hidden="true"
-                style={{ x: marqueeX, WebkitTextStroke: '1.5px rgba(59,45,14,0.12)' }}
+                style={{ x: marqueeX, WebkitTextStroke: '2px rgba(59,45,14,0.4)' }}
                 className="pointer-events-none absolute inset-y-0 left-0 flex select-none items-center whitespace-nowrap font-body text-[38vw] font-black uppercase leading-none text-transparent sm:text-[26vw]"
               >
                 Reinvention&nbsp;&nbsp;&nbsp;Reinvention&nbsp;&nbsp;&nbsp;Reinvention
