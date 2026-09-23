@@ -1,5 +1,6 @@
+import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
-import { welcome } from '@/content/site';
+import { hero, welcome } from '@/content/site';
 
 // Mirrors the S1 reference exactly: a normal (non-pinned) tall bold-color
 // block — left-aligned bold statement up top, a two-column support-text
@@ -36,26 +37,27 @@ export default function Section1() {
         </div>
       </div>
 
-      <div className="relative flex min-h-[70vh] items-center overflow-hidden bg-sand px-6 py-20 sm:px-10 lg:px-16">
-        <span className="absolute left-3 top-1/2 hidden -translate-y-1/2 -rotate-90 whitespace-nowrap font-body text-xs font-semibold uppercase tracking-widest2 text-stone sm:block">
-          {welcome.chapterLabel}
-        </span>
-
+      <div className="relative overflow-hidden bg-sand px-6 py-20 sm:px-10 lg:px-16">
         <div className="mx-auto w-full max-w-content">
-          <ScrollReveal>
-            <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">
-              {welcome.chapters.map((chapter, i) => (
-                <span
-                  key={chapter.label}
-                  className={`font-body text-sm font-bold uppercase tracking-wide ${
-                    i === 0 ? 'text-sage' : 'text-bark/40'
-                  }`}
-                >
-                  {chapter.number} {chapter.label}
-                </span>
-              ))}
-            </nav>
-          </ScrollReveal>
+          <div className="sticky top-6 z-20 flex items-center gap-8 bg-sand/90 py-2 backdrop-blur-sm">
+            <span className="hidden shrink-0 -rotate-90 whitespace-nowrap font-body text-xs font-semibold uppercase tracking-widest2 text-stone sm:block">
+              {welcome.chapterLabel}
+            </span>
+            <ScrollReveal>
+              <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">
+                {welcome.chapters.map((chapter, i) => (
+                  <span
+                    key={chapter.label}
+                    className={`font-body text-sm font-bold uppercase tracking-wide ${
+                      i === 0 ? 'text-sage' : 'text-bark/40'
+                    }`}
+                  >
+                    {chapter.number} {chapter.label}
+                  </span>
+                ))}
+              </nav>
+            </ScrollReveal>
+          </div>
 
           <ScrollReveal delay={0.15}>
             <div
@@ -64,6 +66,36 @@ export default function Section1() {
               aria-hidden="true"
             >
               {welcome.bigLetter}
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <div className="relative mt-24 sm:mt-32">
+              <div
+                className="pointer-events-none absolute -left-10 -top-10 -z-10 h-40 w-40 rounded-full border-[14px] border-bark/10 sm:h-56 sm:w-56"
+                aria-hidden="true"
+              />
+              <div className="flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:gap-14">
+                <div className="relative h-48 w-36 flex-shrink-0 overflow-hidden shadow-lg sm:h-64 sm:w-48">
+                  <div
+                    className="pointer-events-none absolute -right-6 -top-6 -z-10 h-24 w-14 rotate-[35deg] bg-zing-pink/70 sm:h-32 sm:w-20"
+                    aria-hidden="true"
+                  />
+                  {hero.imageSrc && (
+                    <Image
+                      src={hero.imageSrc}
+                      alt="Lena, out in it"
+                      fill
+                      sizes="200px"
+                      className="object-cover"
+                      style={{ objectPosition: '65% 15%' }}
+                    />
+                  )}
+                </div>
+                <p className="flex-1 font-display text-2xl italic leading-snug text-bark sm:text-4xl sm:leading-tight">
+                  {welcome.statBlock.text}
+                </p>
+              </div>
             </div>
           </ScrollReveal>
         </div>

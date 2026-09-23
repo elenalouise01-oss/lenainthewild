@@ -43,6 +43,9 @@ export const welcome = {
     { number: '04', label: 'Wellness' },
     { number: '05', label: 'Shop' },
   ],
+  statBlock: {
+    text: '36 years old when I walked away from the life everyone said I should want — and I never looked back.',
+  },
 };
 
 export const myStory = {
