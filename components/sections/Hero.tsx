@@ -90,8 +90,8 @@ export default function Hero() {
   const washOpacity = useTransform(scrollYProgress, [0.78, 0.98], [0, 1]);
 
   return (
-    <section ref={sectionRef} id="top" className={`relative ${reduced ? 'h-screen' : 'h-[250vh]'}`}>
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+    <section ref={sectionRef} id="top" className={`relative ${reduced ? 'h-dvh' : 'h-[250dvh]'}`}>
+      <div className="sticky top-0 h-dvh w-full overflow-hidden">
         <div className="absolute inset-0">
           <PlaceholderImage
             alt="Lena, out in it — behind the scenes"
