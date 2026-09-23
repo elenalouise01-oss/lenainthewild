@@ -94,7 +94,7 @@ export default function Section1() {
                     halo can't produce that artifact. */}
                 <motion.div
                   aria-hidden="true"
-                  style={{ x: marqueeX, scale: 1.045, color: 'rgba(59,45,14,0.55)' }}
+                  style={{ x: marqueeX, scale: 1.016, color: 'rgba(59,45,14,0.55)' }}
                   className="pointer-events-none absolute inset-y-0 left-0 flex select-none items-center whitespace-nowrap font-body text-[38vw] font-bold uppercase leading-none sm:text-[26vw]"
                 >
                   Design
