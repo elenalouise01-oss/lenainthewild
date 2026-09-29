@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import OffersCarousel from '@/components/OffersCarousel';
 import ScrollReveal from '@/components/ScrollReveal';
-import { freedomSeeker, hero, offerLinks } from '@/content/site';
+import { freedomSeeker, hero } from '@/content/site';
 
 function Polaroid({
   className = '',
@@ -46,100 +47,8 @@ export default function Section3() {
 
   return (
     <section id="freedom-seeker">
-      {/* Band 1 — the offer: dark, punchy */}
-      <div className="bg-bark px-6 py-28 sm:py-36">
-        <div className="container-editorial">
-          <div className="relative">
-            <div className="absolute left-0 top-0 hidden -translate-y-6 -rotate-6 bg-cream p-2 shadow-xl md:block">
-              <div className="relative h-28 w-28 overflow-hidden">
-                {hero.imageSrc && (
-                  <Image src={hero.imageSrc} alt="" fill className="object-cover" style={{ objectPosition: '30% 10%' }} aria-hidden="true" />
-                )}
-              </div>
-            </div>
-            <ScrollReveal>
-              <h2 className="mx-auto max-w-2xl text-center font-display text-display-2 italic leading-[1.05] text-cream">
-                {freedomSeeker.headline}
-              </h2>
-            </ScrollReveal>
-            <div className="absolute right-0 top-0 hidden -translate-y-6 rotate-6 bg-cream p-2 shadow-xl md:block">
-              <div className="relative h-28 w-28 overflow-hidden">
-                {hero.imageSrc && (
-                  <Image src={hero.imageSrc} alt="" fill className="object-cover" style={{ objectPosition: '80% 60%' }} aria-hidden="true" />
-                )}
-              </div>
-            </div>
-          </div>
-
-          <ScrollReveal delay={0.1}>
-            <p className="mx-auto mt-6 max-w-xl text-center font-body text-base leading-relaxed text-cream/70">
-              {freedomSeeker.sub}
-            </p>
-          </ScrollReveal>
-
-          <div className="mt-16 space-y-6">
-            {freedomSeeker.tiers.map((tier, i) => (
-              <ScrollReveal key={tier.title} delay={0.1 * i}>
-                <div className="border border-cream/15 p-8 sm:grid sm:grid-cols-[5fr_2fr_5fr] sm:items-start">
-                  <div>
-                    <h3 className="font-display text-3xl text-cream sm:text-4xl">{tier.title}</h3>
-                    <p className="mt-3 max-w-md font-body text-sm leading-relaxed text-cream/70">{tier.body}</p>
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      {tier.tags.map((tag) => (
-                        <span key={tag} className="rounded-full border border-cream/25 px-3 py-1 font-body text-[0.65rem] font-semibold uppercase tracking-wide text-cream/70">
-                          {tag}
-                        </span>
-                      ))}
-                      {tier.price && (
-                        <span className="rounded-full bg-zing-yellow px-3 py-1 font-body text-[0.65rem] font-semibold uppercase tracking-wide text-bark">
-                          {tier.price}
-                        </span>
-                      )}
-                    </div>
-                    {offerLinks[tier.title] && (
-                      <a
-                        href={offerLinks[tier.title]}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-6 inline-block font-body text-xs font-semibold uppercase tracking-widest2 text-cream underline decoration-cream/40 underline-offset-8 transition-colors hover:decoration-cream"
-                      >
-                        Find out more →
-                      </a>
-                    )}
-                  </div>
-
-                  <div className="col-start-3 mt-6 sm:mt-0">
-                    <div className="text-right font-body text-sm text-cream/40">{tier.number}</div>
-                    <div className="relative mt-3 aspect-[5/3] w-full overflow-hidden">
-                      {hero.imageSrc && (
-                        <Image
-                          src={hero.imageSrc}
-                          alt=""
-                          fill
-                          className="object-cover"
-                          style={{ objectPosition: `${20 + i * 25}% ${10 + i * 15}%` }}
-                          aria-hidden="true"
-                        />
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <ScrollReveal delay={0.3}>
-            <div className="mt-14 text-center">
-              <Link
-                href={freedomSeeker.ctaHref}
-                className="inline-flex items-center gap-2 border border-cream px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest2 text-cream transition-colors hover:bg-cream hover:text-bark"
-              >
-                {freedomSeeker.cta} →
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </div>
+      {/* Band 1 — the offers, as an album-cover carousel */}
+      <OffersCarousel />
 
       {/* Band 2 — light: the binder-clip note + "Creative Work" pitch,
           then the Marketing Experience statement. */}
