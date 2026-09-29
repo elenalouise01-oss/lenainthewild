@@ -16,9 +16,9 @@ const config: Config = {
         sage: '#366560',
         stone: '#7b776f',
         zing: {
-          yellow: '#CBA1D4',
+          yellow: '#FEEB9C',
           pink: '#ff8bb8',
-          green: '#FEEB9C',
+          green: '#CBA1D4',
         },
       },
       fontFamily: {
