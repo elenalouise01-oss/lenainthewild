@@ -368,11 +368,11 @@ export default function Section3() {
           </div>
 
           <ScrollReveal delay={0.1} className="relative mx-auto h-96 w-full max-w-sm sm:max-w-md">
-            {/* Signature soft circle, in lilac here */}
+            {/* Small lilac circle, just behind the "say hi!" sticker */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[105%] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.45]"
-              style={{ background: 'radial-gradient(circle, #CBA1D4 0, #CBA1D4 40%, transparent 70%)' }}
+              className="pointer-events-none absolute -bottom-[4.5rem] -right-[3.5rem] h-56 w-56 rounded-full"
+              style={{ background: 'radial-gradient(circle, #CBA1D4 0, #CBA1D4 45%, transparent 70%)' }}
             />
             <div className="absolute -bottom-2 right-2 z-40 flex h-24 w-24 rotate-12 items-center justify-center rounded-full bg-zing-yellow p-3 text-center font-script text-lg leading-[0.95] text-bark shadow-md">
               say hi!
