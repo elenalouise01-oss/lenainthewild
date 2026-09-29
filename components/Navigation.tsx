@@ -60,7 +60,7 @@ export default function Navigation({ className = '', iconClassName = '', childre
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: reduced ? 0.01 : 0.35, ease: EASE }}
-            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-cream px-6"
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#FFFAEC] px-6"
             onClick={(e) => {
               if (e.target === overlayRef.current) setOpen(false);
             }}
