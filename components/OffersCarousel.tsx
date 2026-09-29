@@ -355,9 +355,22 @@ function SleeveArt({
           onPointerDownCapture={(e) => e.stopPropagation()}
           aria-label={`Buy ${tier.title} on The Leap`}
           title="Buy on The Leap"
-          className="absolute left-[6%] top-[6%] text-[clamp(1.4rem,3.4vw,2.2rem)] leading-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.35)] transition-transform hover:scale-110"
+          className="absolute left-[6%] top-[6%] flex aspect-square w-[12%] items-center justify-center rounded-full bg-[#141414] text-cream shadow-lg transition-transform hover:scale-110"
         >
-          <span aria-hidden="true">🛒</span>
+          {/* Line-style shopping bag */}
+          <svg
+            viewBox="0 0 24 24"
+            className="h-[48%] w-[48%]"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M6 7h12l1 13H5L6 7z" />
+            <path d="M9 7V6a3 3 0 0 1 6 0v1" />
+          </svg>
         </a>
       )}
     </div>
