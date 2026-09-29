@@ -110,10 +110,10 @@ export default function OffersCarousel() {
         </AnimatePresence>
       </div>
 
-      {/* Soft edges: fade in from My Story's sand and out into the
-          sand below, so the colour arrives rather than cuts in. */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-sand to-transparent sm:h-32" />
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-sand to-transparent sm:h-32" />
+      {/* Soft edges: fade in from the white above and out into the white
+          below, so the colour arrives rather than cuts in. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-cream to-transparent sm:h-32" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-cream to-transparent sm:h-32" />
 
       <p className="relative mb-8 font-body text-xs font-semibold uppercase tracking-widest2 text-bark/70 sm:absolute sm:left-10 sm:top-10 sm:mb-0">
         {freedomSeeker.label}

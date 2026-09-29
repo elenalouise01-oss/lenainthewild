@@ -17,7 +17,7 @@ const REAL_ANCHORS: Record<string, string> = {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-bark/10 bg-sand px-6 py-16">
+    <footer className="border-t border-bark/10 bg-cream px-6 py-16">
       <div className="container-editorial grid gap-10 sm:grid-cols-4">
         {footer.columns.map((column) => (
           <div key={column.label}>
