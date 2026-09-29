@@ -5,8 +5,14 @@ import { newsletter } from '@/content/site';
 
 export default function Newsletter() {
   return (
-    <section id="subscribe" className="bg-porcelain px-6 py-28 sm:py-32">
-      <div className="container-editorial text-center">
+    <section id="subscribe" className="relative overflow-hidden bg-porcelain px-6 py-28 sm:py-32">
+      {/* Signature soft circle, in pink here */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[min(56rem,140vw)] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-40"
+        style={{ background: 'radial-gradient(circle, #ff8bb8 0, #ff8bb8 45%, transparent 70%)' }}
+      />
+      <div className="container-editorial relative text-center">
         <ScrollReveal>
           <SectionLabel>{newsletter.eyebrow}</SectionLabel>
         </ScrollReveal>
@@ -21,7 +27,7 @@ export default function Newsletter() {
         <ScrollReveal delay={0.3}>
           <Link
             href={newsletter.ctaHref}
-            className="mt-10 inline-block bg-rose px-10 py-5 font-body text-xs font-semibold uppercase tracking-widest2 text-bark transition-colors hover:bg-blush"
+            className="mt-10 inline-block rounded-full bg-[#141414] px-10 py-5 font-body text-xs font-semibold uppercase tracking-widest2 text-cream transition-colors hover:bg-sage hover:text-bark"
           >
             {newsletter.cta} →
           </Link>

@@ -29,7 +29,7 @@ export default function Blog() {
         <ScrollReveal delay={0.3}>
           <Link
             href={blog.ctaHref}
-            className="mt-14 inline-block font-body text-xs font-semibold uppercase tracking-widest2 text-sage transition-colors hover:text-bark"
+            className="mt-14 inline-block font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark"
           >
             {blog.cta} →
           </Link>

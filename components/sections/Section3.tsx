@@ -76,7 +76,7 @@ export default function Section3() {
               </ScrollReveal>
               <ScrollReveal delay={0.1}>
                 <p className="mt-5 max-w-md font-body text-sm leading-relaxed text-umber">{freedomSeeker.creativeWork.body}</p>
-                <Link href={freedomSeeker.creativeWork.ctaHref} className="relative mt-6 inline-block font-body text-xs font-semibold uppercase tracking-widest2 text-sage transition-colors hover:text-bark">
+                <Link href={freedomSeeker.creativeWork.ctaHref} className="relative mt-6 inline-block font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark">
                   {freedomSeeker.creativeWork.cta}
                 </Link>
               </ScrollReveal>
@@ -359,7 +359,7 @@ export default function Section3() {
                       className="w-full resize-none border-0 border-b border-bark/25 bg-transparent py-3 font-body text-bark placeholder:text-bark/40 focus:border-bark focus:outline-none"
                     />
                   </label>
-                  <button type="submit" className="self-start font-body text-xs font-semibold uppercase tracking-widest2 text-sage transition-colors hover:text-bark">
+                  <button type="submit" className="self-start font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark">
                     {freedomSeeker.contact.cta} →
                   </button>
                 </form>
@@ -368,6 +368,15 @@ export default function Section3() {
           </div>
 
           <ScrollReveal delay={0.1} className="relative mx-auto h-96 w-full max-w-sm sm:max-w-md">
+            {/* Signature soft circle, in lilac here */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[130%] -translate-x-1/2 -translate-y-1/2 rounded-full"
+              style={{ background: 'radial-gradient(circle, #CBA1D4 0, #CBA1D4 50%, transparent 70%)' }}
+            />
+            <div className="absolute -bottom-2 right-2 z-40 flex h-24 w-24 rotate-12 items-center justify-center rounded-full bg-zing-yellow p-3 text-center font-script text-lg leading-[0.95] text-bark shadow-md">
+              say hi!
+            </div>
             {/* A single safety pin, larger and more diagonal, piercing a
                 looser scattered stack of photos (was just 2, reference
                 shows a denser 5-piece collage) — spring coil at the hinge

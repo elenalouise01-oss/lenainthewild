@@ -69,7 +69,7 @@ export default function Section1() {
                   <span
                     key={chapter.label}
                     className={`font-body text-sm font-bold uppercase tracking-wide ${
-                      i === 0 ? 'text-sage' : 'text-bark/40'
+                      i === 0 ? 'text-bark underline decoration-sage decoration-2 underline-offset-4' : 'text-bark/40'
                     }`}
                   >
                     {chapter.number} {chapter.label}
