@@ -5,7 +5,7 @@ import { newsletter } from '@/content/site';
 
 export default function Newsletter() {
   return (
-    <section id="subscribe" className="relative overflow-hidden bg-porcelain px-6 py-28 sm:py-32">
+    <section id="subscribe" className="relative overflow-hidden border-t border-bark/10 bg-sand px-6 py-28 sm:py-32">
       <div className="container-editorial relative text-center">
         <ScrollReveal>
           <SectionLabel>{newsletter.eyebrow}</SectionLabel>

@@ -52,7 +52,7 @@ export default function Section3() {
 
       {/* Band 2 — light: the binder-clip note + "Creative Work" pitch,
           then the Marketing Experience statement. */}
-      <div className="bg-porcelain px-6 py-28 sm:py-36">
+      <div className="bg-sand px-6 py-28 sm:py-36">
         <div className="container-editorial">
           <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
             <ScrollReveal className="relative mx-auto max-w-xs">
@@ -90,7 +90,7 @@ export default function Section3() {
             <ScrollReveal delay={0.1}>
               <p className="mt-6 max-w-4xl font-display text-3xl italic leading-snug text-bark sm:text-4xl">
                 {freedomSeeker.experienceLead}{' '}
-                <span className="mx-1 inline-block rounded-full bg-rose px-4 py-1 align-middle font-body text-sm font-semibold not-italic uppercase tracking-wide text-bark">
+                <span className="mx-1 inline-block rounded-full bg-zing-yellow px-4 py-1 align-middle font-body text-sm font-semibold not-italic uppercase tracking-wide text-bark">
                   {freedomSeeker.experienceHighlight}
                 </span>{' '}
                 {freedomSeeker.experienceTail}
@@ -167,7 +167,7 @@ export default function Section3() {
 
       {/* Band 4 — light: the journey statement + two-column, then the
           envelope of Polaroids spilling out. */}
-      <div className="bg-blush px-6 py-28 sm:py-36">
+      <div className="bg-sand px-6 py-28 sm:py-36">
         <div className="container-editorial">
           <ScrollReveal>
             <p className="text-center font-body text-xs font-semibold uppercase tracking-widest2 text-stone">
