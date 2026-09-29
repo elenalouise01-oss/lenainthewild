@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionLabel from '@/components/SectionLabel';
-import { hero, myStory } from '@/content/site';
+import { myStory } from '@/content/site';
 
 // Mirrors the Section 2 reference: a tilted Polaroid-style photo collage
 // with a sticker badge, paired with a pull-quote + bio.
@@ -13,9 +13,15 @@ export default function Section2() {
         <ScrollReveal className="relative mx-auto aspect-square w-full max-w-md">
           <div className="absolute inset-0 -rotate-6 bg-cream p-3 shadow-xl">
             <div className="relative h-full w-full overflow-hidden">
-              {hero.imageSrc && (
-                <Image src={hero.imageSrc} alt="Lena, out in it" fill className="object-cover" />
-              )}
+              <Image
+                src="/images/lena-sunrise.jpg"
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 28rem, 90vw"
+                className="object-cover"
+                style={{ objectPosition: '30% 50%' }}
+                aria-hidden="true"
+              />
             </div>
           </div>
           <div className="absolute inset-6 translate-x-6 translate-y-4 rotate-3 bg-cream p-3 shadow-xl">
