@@ -74,7 +74,7 @@ function KineticLetter({
   );
 }
 
-export default function Hero() {
+export default function Hero({ washClassName = 'bg-bark' }: { washClassName?: string }) {
   const reduced = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end end'] });
@@ -177,7 +177,7 @@ export default function Hero() {
             (centered) duplicated against Section1's real heading (left-
             aligned) as the two scrolled past each other. */}
         {!reduced && (
-          <motion.div style={{ opacity: washOpacity }} className="pointer-events-none absolute inset-0 z-20 bg-bark" />
+          <motion.div style={{ opacity: washOpacity }} className={`pointer-events-none absolute inset-0 z-20 ${washClassName}`} />
         )}
       </div>
     </section>

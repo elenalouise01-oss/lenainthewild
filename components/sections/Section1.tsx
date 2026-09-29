@@ -15,7 +15,7 @@ import { useReducedMotion } from '@/lib/useReducedMotion';
 // the letter, a giant outline word drifts horizontally as you scroll —
 // the reference's big ghost typography slides sideways rather than
 // sitting static.
-export default function Section1() {
+export default function Section1({ hideWelcome = false }: { hideWelcome?: boolean }) {
   const reduced = useReducedMotion();
   const sandRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: sandRef, offset: ['start end', 'end start'] });
@@ -29,7 +29,8 @@ export default function Section1() {
   const wordX = useTransform(scrollYProgress, [0, 0.18, 0.42, 0.6], ['110vw', '0vw', '0vw', '-130vw']);
 
   return (
-    <section id="story">
+    <section id={hideWelcome ? undefined : 'story'}>
+      {!hideWelcome && (
       <div className="bg-bark px-6 py-28 sm:px-10 sm:py-40 lg:px-16">
         <div className="mx-auto max-w-content">
           <ScrollReveal>
@@ -56,6 +57,7 @@ export default function Section1() {
           </div>
         </div>
       </div>
+      )}
 
       <div ref={sandRef} className="relative overflow-hidden bg-cream px-6 py-24 sm:px-10 sm:py-32 lg:px-16">
         <div className="relative z-10 mx-auto w-full max-w-content">
