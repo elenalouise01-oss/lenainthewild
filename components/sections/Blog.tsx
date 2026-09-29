@@ -5,7 +5,7 @@ import { blog } from '@/content/site';
 
 export default function Blog() {
   return (
-    <section id="blog" className="bg-sand px-6 py-28 sm:py-36">
+    <section id="blog" className="bg-cream px-6 py-28 sm:py-36">
       <div className="container-editorial text-center">
         <ScrollReveal>
           <SectionLabel>{blog.eyebrow}</SectionLabel>
