@@ -165,7 +165,6 @@ export default function OffersCarousel() {
                 {isActive && (
                   <NowPlaying
                     tier={tier}
-                    href={href}
                     reduced={reduced}
                     onPrev={() => go(-1)}
                     onNext={() => go(1)}
@@ -197,14 +196,12 @@ export default function OffersCarousel() {
 // fades in, like the reference.
 function NowPlaying({
   tier,
-  href,
   reduced,
   onPrev,
   onNext,
   onDetails,
 }: {
   tier: Tier;
-  href?: string;
   reduced: boolean;
   onPrev: () => void;
   onNext: () => void;
@@ -228,25 +225,16 @@ function NowPlaying({
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3, delay: reduced ? 0 : 0.8 }}
       >
-        {href ? (
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Open ${tier.title}`}
-            className="shrink-0 transition-transform hover:scale-110"
-          >
-            <svg viewBox="0 0 24 24" className="h-6 w-6 sm:h-7 sm:w-7" fill="currentColor" aria-hidden="true">
-              <path d="M5 3l16 9-16 9z" />
-            </svg>
-          </a>
-        ) : (
-          <span className="shrink-0" aria-label="Locked">
-            <svg viewBox="0 0 24 24" className="h-6 w-6 sm:h-7 sm:w-7" fill="currentColor" aria-hidden="true">
-              <path d="M7 10V8a5 5 0 0 1 10 0v2h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1zm2 0h6V8a3 3 0 0 0-6 0v2z" />
-            </svg>
-          </span>
-        )}
+        <button
+          type="button"
+          onClick={stop(onDetails)}
+          aria-label={`Open ${tier.title}`}
+          className="shrink-0 transition-transform hover:scale-110"
+        >
+          <svg viewBox="0 0 24 24" className="h-6 w-6 sm:h-7 sm:w-7" fill="currentColor" aria-hidden="true">
+            <path d="M5 3l16 9-16 9z" />
+          </svg>
+        </button>
         <div className="min-w-0 flex-1 leading-tight">
           <p className="truncate font-body text-[0.7rem] font-bold sm:text-sm">
             {tier.number.replace(/[()]/g, '')}.{tier.title}
@@ -367,7 +355,7 @@ function SleeveArt({
           onPointerDownCapture={(e) => e.stopPropagation()}
           aria-label={`Buy ${tier.title} on The Leap`}
           title="Buy on The Leap"
-          className="absolute left-[6%] top-[6%] flex aspect-square w-[13%] items-center justify-center rounded-full bg-cream/90 text-[clamp(1rem,2.6vw,1.6rem)] shadow-md transition-transform hover:scale-110"
+          className="absolute left-[6%] top-[6%] text-[clamp(1.4rem,3.4vw,2.2rem)] leading-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.35)] transition-transform hover:scale-110"
         >
           <span aria-hidden="true">🛒</span>
         </a>
