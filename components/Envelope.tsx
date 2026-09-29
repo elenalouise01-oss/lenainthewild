@@ -19,7 +19,7 @@ const PHOTOS: { src: string; pos: string; x: number; y: number; w: number; h: nu
   { src: '/images/road/road-5.jpg', pos: '50% 30%', x: 296, y: 28, w: 338, h: 240, rotate: 0, z: 1 },
   { src: '/images/road/road-3.jpg', pos: '50% 60%', x: 62, y: 122, w: 112, h: 112, rotate: -8, z: 3 },
   { src: '/images/road/road-1.jpg', pos: '40% 60%', x: 133, y: 142, w: 135, h: 130, rotate: 3, z: 4 },
-  { src: '/images/road/road-9.jpg', pos: '55% 70%', x: 402, y: 88, w: 132, h: 180, rotate: -6, z: 5 },
+  { src: '/images/road/road-7.jpg', pos: '50% 75%', x: 402, y: 88, w: 132, h: 180, rotate: -6, z: 5 },
   // Lena on the scooter, the hero print at the front
   { src: '/images/road/road-2.jpg', pos: '50% 35%', x: 526, y: 70, w: 190, h: 230, rotate: 3, z: 6 },
   { src: '/images/road/road-4.jpg', pos: '50% 70%', x: 700, y: 88, w: 158, h: 140, rotate: -3, z: 4 },
