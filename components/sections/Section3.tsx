@@ -52,7 +52,7 @@ export function Offers() {
 // Why me: the experience statement, then the journey + envelope of photos.
 export function WhyMe() {
   return (
-    <section id="experience" className="border-t border-bark/10 bg-cream">
+    <section id="experience" className="border-t border-bark/10 bg-sand">
       <div className="px-6 pt-28 sm:pt-36">
         <div className="container-editorial">
             <ScrollReveal>
@@ -186,7 +186,7 @@ export function WhyMe() {
 // feels free".
 export function NoteToSelf() {
   return (
-    <section className="bg-cream px-6 py-28 sm:py-36">
+    <section className="bg-sand px-6 py-28 sm:py-36">
       <div className="container-editorial">
           <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
             <ScrollReveal className="relative mx-auto max-w-xs">
@@ -321,7 +321,7 @@ export function LetsTalk() {
 
   return (
     <section id="contact">
-      <div className="bg-cream px-6 py-28 sm:py-36">
+      <div className="bg-sand px-6 py-28 sm:py-36">
         <div className="container-editorial grid gap-16 lg:grid-cols-2 lg:items-start">
           <div>
             <ScrollReveal>
