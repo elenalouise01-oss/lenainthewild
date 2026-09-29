@@ -134,7 +134,7 @@ export default function Hero() {
               style={reduced ? undefined : { opacity: subOpacity, y: subY }}
             >
               <p
-                className="font-body text-2xl font-bold uppercase tracking-wide text-cream sm:text-3xl"
+                className="font-body text-2xl font-bold lowercase tracking-wide text-cream sm:text-3xl"
                 style={{ textShadow: '0 1px 6px rgba(0,0,0,0.35)' }}
               >
                 {hero.headline}
