@@ -261,7 +261,7 @@ function NowPlaying({
 
   return (
     <motion.div
-      className="absolute inset-x-[11%] bottom-[4%] origin-center rounded-full bg-bark text-cream shadow-xl"
+      className="absolute inset-x-[11%] bottom-[4%] origin-center rounded-full bg-[#141414] text-cream shadow-xl"
       initial={reduced ? false : { scaleX: 0.12, scaleY: 0.35, opacity: 0 }}
       animate={{ scaleX: 1, scaleY: 1, opacity: 1 }}
       transition={{ duration: 0.45, delay: reduced ? 0 : 0.45, ease: [0.16, 1, 0.3, 1] }}
