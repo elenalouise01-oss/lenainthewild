@@ -152,7 +152,14 @@ export default function OffersCarousel() {
                 style={isActive ? { rotateX, rotateY, transformPerspective: 900 } : undefined}
               >
                 <div className="relative h-full w-full shadow-[0_24px_50px_-18px_rgba(59,45,14,0.55)]">
-                  <SleeveArt tier={tier} look={tierLook} sizes="(min-width: 640px) 60vh, 74vw" />
+                  <SleeveArt
+                    tier={tier}
+                    look={tierLook}
+                    sizes="(min-width: 640px) 60vh, 74vw"
+                    onStickerClick={isActive ? () => setDetails(i) : undefined}
+                    cartHref={isActive ? href : undefined}
+                    reduced={reduced}
+                  />
                 </div>
 
                 {isActive && (
@@ -271,7 +278,40 @@ function NowPlaying({
 
 // The front of a sleeve: full-bleed photo, plastic-sheen highlight and the
 // round sticker. Shared by the carousel and the gatefold pop-up.
-function SleeveArt({ tier, look, sizes }: { tier: Tier; look: Look; sizes: string }) {
+function SleeveArt({
+  tier,
+  look,
+  sizes,
+  onStickerClick,
+  cartHref,
+  reduced = false,
+}: {
+  tier: Tier;
+  look: Look;
+  sizes: string;
+  // When set, the sticker is a button (opens the gatefold) and gently pulses
+  // so it reads as clickable.
+  onStickerClick?: () => void;
+  // When set, a cart button links to the offer page.
+  cartHref?: string;
+  reduced?: boolean;
+}) {
+  const stickerContent = (
+    <>
+      <span className="font-script text-[clamp(0.85rem,3.4vw,1.6rem)] leading-[0.95]">
+        {tier.title.replace(/^The /, '')}
+      </span>
+      <span className="mt-[6%] font-body text-[clamp(0.4rem,1.1vw,0.55rem)] font-semibold uppercase leading-tight tracking-wide text-bark/80">
+        {tier.tags.join(' · ')}
+      </span>
+      {tier.price && (
+        <span className="mt-[5%] font-body text-[clamp(0.7rem,2.2vw,1.05rem)] font-bold leading-none">{tier.price}</span>
+      )}
+    </>
+  );
+  const stickerClass =
+    'absolute right-[6%] top-[6%] flex aspect-square w-[32%] flex-col items-center justify-center rounded-full px-[4%] text-center text-bark shadow-md';
+
   return (
     <div className="relative h-full w-full overflow-hidden">
       {hero.imageSrc && (
@@ -294,20 +334,44 @@ function SleeveArt({ tier, look, sizes }: { tier: Tier; look: Look; sizes: strin
             'linear-gradient(125deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 62%, rgba(255,255,255,0.16) 78%, rgba(255,255,255,0) 100%)',
         }}
       />
-      <div
-        className="absolute right-[6%] top-[6%] flex aspect-square w-[32%] -rotate-6 flex-col items-center justify-center rounded-full px-[4%] text-center text-bark shadow-md"
-        style={{ backgroundColor: look.sticker }}
-      >
-        <span className="font-script text-[clamp(0.85rem,3.4vw,1.6rem)] leading-[0.95]">
-          {tier.title.replace(/^The /, '')}
-        </span>
-        <span className="mt-[6%] font-body text-[clamp(0.4rem,1.1vw,0.55rem)] font-semibold uppercase leading-tight tracking-wide text-bark/80">
-          {tier.tags.join(' · ')}
-        </span>
-        {tier.price && (
-          <span className="mt-[5%] font-body text-[clamp(0.7rem,2.2vw,1.05rem)] font-bold leading-none">{tier.price}</span>
-        )}
-      </div>
+      {onStickerClick ? (
+        <motion.button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            onStickerClick();
+          }}
+          onPointerDownCapture={(e) => e.stopPropagation()}
+          aria-label={`Learn more about ${tier.title}`}
+          className={`${stickerClass} cursor-pointer`}
+          style={{ backgroundColor: look.sticker, rotate: -6 }}
+          animate={reduced ? undefined : { scale: [1, 1.06, 1] }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+          whileHover={{ scale: 1.12, rotate: 0 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {stickerContent}
+        </motion.button>
+      ) : (
+        <div className={`${stickerClass} -rotate-6`} style={{ backgroundColor: look.sticker }}>
+          {stickerContent}
+        </div>
+      )}
+
+      {cartHref && (
+        <a
+          href={cartHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          onPointerDownCapture={(e) => e.stopPropagation()}
+          aria-label={`Buy ${tier.title} on The Leap`}
+          title="Buy on The Leap"
+          className="absolute left-[6%] top-[6%] flex aspect-square w-[13%] items-center justify-center rounded-full bg-cream/90 text-[clamp(1rem,2.6vw,1.6rem)] shadow-md transition-transform hover:scale-110"
+        >
+          <span aria-hidden="true">🛒</span>
+        </a>
+      )}
     </div>
   );
 }
