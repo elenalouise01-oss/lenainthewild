@@ -30,10 +30,10 @@ export default function Section1() {
 
   return (
     <section id="story">
-      <div className="bg-zing-yellow px-6 py-24 sm:px-10 sm:py-32 lg:px-16">
+      <div className="bg-bark px-6 py-24 sm:px-10 sm:py-32 lg:px-16">
         <div className="mx-auto max-w-content">
           <ScrollReveal>
-            <h2 className="max-w-3xl font-display text-display-2 italic leading-[1.05] text-bark">
+            <h2 className="max-w-3xl font-display text-display-2 italic leading-[1.05] text-cream">
               {welcome.headline}
             </h2>
           </ScrollReveal>
@@ -41,13 +41,13 @@ export default function Section1() {
           <div className="mt-24 flex justify-end sm:mt-36">
             <div className="grid max-w-2xl gap-10 text-left sm:grid-cols-2">
               <ScrollReveal>
-                <p className="font-body text-base leading-relaxed text-bark/80">{welcome.supportLeft}</p>
+                <p className="font-body text-base leading-relaxed text-cream/80">{welcome.supportLeft}</p>
               </ScrollReveal>
               <ScrollReveal delay={0.1}>
-                <p className="font-body text-base leading-relaxed text-bark/80">{welcome.supportRight}</p>
+                <p className="font-body text-base leading-relaxed text-cream/80">{welcome.supportRight}</p>
                 <a
                   href={welcome.ctaHref}
-                  className="mt-6 inline-block font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-bark/40 underline-offset-8 transition-colors hover:decoration-bark"
+                  className="mt-6 inline-block font-body text-xs font-semibold uppercase tracking-widest2 text-zing-yellow underline decoration-zing-yellow/40 underline-offset-8 transition-colors hover:decoration-zing-yellow"
                 >
                   {welcome.cta} →
                 </a>

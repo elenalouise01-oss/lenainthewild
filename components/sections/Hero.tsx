@@ -170,7 +170,7 @@ export default function Hero() {
             (centered) duplicated against Section1's real heading (left-
             aligned) as the two scrolled past each other. */}
         {!reduced && (
-          <motion.div style={{ opacity: washOpacity }} className="pointer-events-none absolute inset-0 z-20 bg-zing-yellow" />
+          <motion.div style={{ opacity: washOpacity }} className="pointer-events-none absolute inset-0 z-20 bg-bark" />
         )}
       </div>
     </section>
