@@ -473,19 +473,25 @@ function OfferDetails({
         >
           {/* Inside face */}
           <div className="absolute inset-0 overflow-hidden" style={{ backfaceVisibility: 'hidden' }}>
-            {hero.imageSrc && (
+            {/* Offers with their own artwork show it inside too; the shared
+                photo is tinted in the offer's colour instead. */}
+            {(look.src ?? hero.imageSrc) && (
               <Image
-                src={hero.imageSrc}
+                src={(look.src ?? hero.imageSrc) as string}
                 alt=""
                 fill
                 sizes="(min-width: 768px) 40vw, 84vw"
-                className="object-cover grayscale"
+                className={`object-cover ${look.src ? '' : 'grayscale'}`}
                 style={{ objectPosition: look.photo }}
                 aria-hidden="true"
               />
             )}
-            <div className="absolute inset-0 mix-blend-multiply" style={{ backgroundColor: look.bg }} />
-            <div className="absolute inset-0 bg-gradient-to-t from-bark/70 via-transparent to-transparent" />
+            {!look.src && <div className="absolute inset-0 mix-blend-multiply" style={{ backgroundColor: look.bg }} />}
+            <div
+              className={`absolute inset-0 bg-gradient-to-t to-transparent ${
+                look.src ? 'from-bark/85 via-bark/25' : 'from-bark/70 via-transparent'
+              }`}
+            />
             <span className="absolute left-[7%] top-[6%] font-body text-xs font-bold tracking-widest2 text-cream/90">
               {tier.number}
             </span>
