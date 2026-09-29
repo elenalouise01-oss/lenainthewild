@@ -30,7 +30,7 @@ export default function Section1() {
 
   return (
     <section id="story">
-      <div className="bg-bark px-6 py-24 sm:px-10 sm:py-32 lg:px-16">
+      <div className="bg-bark px-6 py-28 sm:px-10 sm:py-40 lg:px-16">
         <div className="mx-auto max-w-content">
           <ScrollReveal>
             <h2 className="max-w-3xl font-display text-display-2 italic leading-[1.05] text-cream">
@@ -57,7 +57,7 @@ export default function Section1() {
         </div>
       </div>
 
-      <div ref={sandRef} className="relative overflow-hidden bg-cream px-6 py-20 sm:px-10 lg:px-16">
+      <div ref={sandRef} className="relative overflow-hidden bg-cream px-6 py-24 sm:px-10 sm:py-32 lg:px-16">
         <div className="relative z-10 mx-auto w-full max-w-content">
           <div className="sticky top-6 z-20 flex items-center gap-8 bg-cream/90 py-2 backdrop-blur-sm">
             <span className="hidden shrink-0 -rotate-90 whitespace-nowrap font-body text-xs font-semibold uppercase tracking-widest2 text-stone sm:block">

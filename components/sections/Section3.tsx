@@ -56,7 +56,7 @@ export function Offers() {
 export function WhyMe() {
   return (
     <section id="experience" className="border-t border-bark/10 bg-sand">
-      <div className="px-6 pt-28 sm:pt-36">
+      <div className="px-6 pt-32 sm:pt-44">
         <div className="container-editorial">
             <ScrollReveal>
               <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-stone">{freedomSeeker.experienceLabel}</p>
@@ -72,7 +72,7 @@ export function WhyMe() {
             </ScrollReveal>
         </div>
       </div>
-      <div className="px-6 py-28 sm:py-36">
+      <div className="px-6 py-32 sm:py-44">
         <div className="container-editorial">
           <ScrollReveal>
             <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-stone">
@@ -86,7 +86,7 @@ export function WhyMe() {
             </p>
           </ScrollReveal>
 
-          <div className="mt-10 grid max-w-2xl gap-8 sm:grid-cols-2">
+          <div className="mt-12 grid max-w-2xl gap-8 sm:grid-cols-2">
             <ScrollReveal delay={0.15}>
               <p className="font-body text-sm font-semibold leading-relaxed text-bark">{freedomSeeker.contentJourney.colBold}</p>
             </ScrollReveal>
@@ -114,7 +114,7 @@ export function WhyMe() {
 // feels free".
 export function NoteToSelf() {
   return (
-    <section className="bg-sand px-6 py-28 sm:py-36">
+    <section className="bg-sand px-6 py-32 sm:py-44">
       <div className="container-editorial">
           <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
             <ScrollReveal className="relative mx-auto max-w-xs">
@@ -153,7 +153,7 @@ export function NoteToSelf() {
 export function OnTheRoad() {
   return (
     <section id="on-the-road">
-      <div className="bg-bark px-6 py-28 sm:py-36">
+      <div className="bg-bark px-6 py-32 sm:py-44">
         <div className="container-editorial">
           <div className="flex items-end justify-between">
             <div>
@@ -166,7 +166,7 @@ export function OnTheRoad() {
             </div>
           </div>
 
-          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
+          <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-8">
             {freedomSeeker.pillars.map((pillar, i) => (
               <ScrollReveal key={pillar.title} delay={0.08 * i}>
                 <div className="relative aspect-[3/4] w-full overflow-hidden border border-cream/10">
@@ -194,7 +194,7 @@ export function OnTheRoad() {
             ))}
           </div>
 
-          <div className="mt-24">
+          <div className="mt-32">
             <ScrollReveal>
               <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-cream/50">{freedomSeeker.brandCampaigns.label}</p>
             </ScrollReveal>
@@ -220,7 +220,7 @@ export function OnTheRoad() {
 export function ComeSayHi() {
   return (
     <section>
-      <div className="bg-[#E8DCE2] px-6 py-28 sm:py-36">
+      <div className="bg-[#E8DCE2] px-6 py-32 sm:py-44">
         <div className="container-editorial text-center">
           <ScrollReveal>
             <div className="mx-auto inline-block -rotate-1 bg-cream px-10 py-8 shadow-2xl">
@@ -245,7 +245,7 @@ export function LetsTalk() {
 
   return (
     <section id="contact">
-      <div className="bg-sand px-6 py-28 sm:py-36">
+      <div className="bg-sand px-6 py-32 sm:py-44">
         <div className="container-editorial grid gap-16 lg:grid-cols-2 lg:items-start">
           <div>
             <ScrollReveal>
@@ -265,7 +265,7 @@ export function LetsTalk() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.15}>
-              <p className="mt-10 font-body text-xs font-semibold uppercase tracking-widest2 text-stone">
+              <p className="mt-14 font-body text-xs font-semibold uppercase tracking-widest2 text-stone">
                 {freedomSeeker.contact.listLabel}
               </p>
               {submitted ? (
