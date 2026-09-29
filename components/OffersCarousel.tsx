@@ -15,7 +15,7 @@ import { useReducedMotion } from '@/lib/useReducedMotion';
 const LOOKS: { bg: string; circle: string; sticker: string; photo: string; src?: string }[] = [
   { bg: '#CBA1D4', circle: '#fffba0', sticker: '#ff8bb8', photo: '50% 50%', src: '/images/cover-5-day-reconnect.webp' },
   { bg: '#ff8bb8', circle: '#CBA1D4', sticker: '#fffba0', photo: '50% 50%', src: '/images/cover-freedom-frequency.webp' },
-  { bg: '#fffba0', circle: '#ff8bb8', sticker: '#bee5b0', photo: '80% 45%' },
+  { bg: '#fffba0', circle: '#ff8bb8', sticker: '#CBA1D4', photo: '50% 50%', src: '/images/cover-aligned-circle.webp' },
 ];
 
 const SWIPE_THRESHOLD = 60;
