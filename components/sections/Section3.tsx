@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
-import { freedomSeeker, hero } from '@/content/site';
+import { freedomSeeker, hero, offerLinks } from '@/content/site';
 
 function Polaroid({
   className = '',
@@ -90,10 +90,22 @@ export default function Section3() {
                           {tag}
                         </span>
                       ))}
-                      <span className="rounded-full bg-zing-yellow px-3 py-1 font-body text-[0.65rem] font-semibold uppercase tracking-wide text-bark">
-                        {tier.price}
-                      </span>
+                      {tier.price && (
+                        <span className="rounded-full bg-zing-yellow px-3 py-1 font-body text-[0.65rem] font-semibold uppercase tracking-wide text-bark">
+                          {tier.price}
+                        </span>
+                      )}
                     </div>
+                    {offerLinks[tier.title] && (
+                      <a
+                        href={offerLinks[tier.title]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-6 inline-block font-body text-xs font-semibold uppercase tracking-widest2 text-cream underline decoration-cream/40 underline-offset-8 transition-colors hover:decoration-cream"
+                      >
+                        Find out more →
+                      </a>
+                    )}
                   </div>
 
                   <div className="col-start-3 mt-6 sm:mt-0">

@@ -56,6 +56,27 @@ export const myStory = {
   ctaHref: '#about',
 };
 
+export const socialLinks: Record<string, string> = {
+  Instagram: 'https://www.instagram.com/lenainthewild/',
+  TikTok: 'https://www.tiktok.com/@lenainthewild',
+};
+
+// Where each offer lives on The Leap. Used by the offer cards and the footer.
+export const offerLinks: Record<string, string> = {
+  'The 5 Day Reconnect': 'https://theleap.co/@naluri/course/the-5-day-reconnect',
+  'The Freedom Frequency':
+    'https://theleap.co/@naluri/email_capture/the-freedom-frequency-your-next-chapter',
+};
+
+type Tier = {
+  number: string;
+  // Leave out to hide the price pill on that card.
+  price?: string;
+  title: string;
+  body: string;
+  tags: string[];
+};
+
 export const freedomSeeker = {
   label: 'The Freedom Seeker',
   headline: 'From stagnation to a life that feels like you.',
@@ -63,10 +84,10 @@ export const freedomSeeker = {
   tiers: [
     {
       number: '(01)',
-      price: 'Free',
+      price: '$22',
       title: 'The 5 Day Reconnect',
-      body: 'A free audio journey to help you slow down, get out of your head, and hear yourself again.',
-      tags: ['Audio Journey', 'Self-Paced', 'Free Access'],
+      body: 'An audio journey to help you slow down, get out of your head, and hear yourself again.',
+      tags: ['Audio Journey', 'Self-Paced'],
     },
     {
       number: '(02)',
@@ -82,7 +103,7 @@ export const freedomSeeker = {
       body: 'A 3-month intimate mastermind for people ready to live this new chapter.',
       tags: ['3-Month Mastermind', 'Small Group', '1:1 Support'],
     },
-  ],
+  ] as Tier[],
   cta: "Yes, I'm ready to reconnect",
   ctaHref: '#freedom-seeker',
   experienceLabel: 'My Experience',
@@ -215,7 +236,7 @@ export const footer = {
     },
     {
       label: 'Connect',
-      links: ['About', 'Instagram', 'Substack'],
+      links: ['About', 'Instagram', 'TikTok', 'Substack'],
     },
   ],
   currently: {
