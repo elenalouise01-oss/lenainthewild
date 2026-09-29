@@ -11,7 +11,7 @@ export default function Newsletter() {
           <SectionLabel>{newsletter.eyebrow}</SectionLabel>
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <h2 className="mt-6 font-display text-display-3 text-bark">{newsletter.headline}</h2>
+          <h2 className="mt-6 font-display text-display-3 italic text-bark">{newsletter.headline}</h2>
         </ScrollReveal>
         <ScrollReveal delay={0.2}>
           <p className="mx-auto mt-6 max-w-xl font-body text-base leading-relaxed text-umber">

@@ -57,7 +57,7 @@ export default function Section2() {
           <ScrollReveal delay={0.3}>
             <Link
               href={myStory.ctaHref}
-              className="mt-8 inline-flex items-center gap-2 border border-bark px-7 py-3 font-body text-xs font-semibold uppercase tracking-widest2 text-bark transition-colors hover:bg-bark hover:text-cream"
+              className="mt-8 inline-flex items-center gap-2 rounded-full border border-bark px-7 py-3 font-body text-xs font-semibold uppercase tracking-widest2 text-bark transition-colors hover:bg-bark hover:text-cream"
             >
               {myStory.cta}
             </Link>

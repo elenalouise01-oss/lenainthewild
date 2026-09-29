@@ -3,10 +3,8 @@
 import Link from 'next/link';
 import { footer, nav, offerLinks, socialLinks } from '@/content/site';
 
-// Links that resolve to a real section on this page or a live offer page;
-// everything else in the footer points to a page that doesn't exist yet, so
-// it's left inert (rather than href="#", which jumps the whole page to the
-// top on click — a jarring, confusing move for someone reading down near the footer).
+// Links that resolve to a real section on this page or a live offer page.
+// Footer links to pages that don't exist yet are hidden until they do.
 const REAL_ANCHORS: Record<string, string> = {
   Blog: '#blog',
   About: '#about',
@@ -25,7 +23,7 @@ export default function Footer() {
               {column.label}
             </p>
             <ul className="mt-4 space-y-3">
-              {column.links.map((link) => {
+              {column.links.filter((link) => REAL_ANCHORS[link]).map((link) => {
                 const href = REAL_ANCHORS[link];
                 return (
                   <li key={link}>

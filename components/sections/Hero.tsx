@@ -106,7 +106,10 @@ export default function Hero() {
             src={hero.imageSrc ?? undefined}
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-cream/15 via-transparent to-cream/15" />
+        <div
+          className="absolute inset-0"
+          style={{ background: 'radial-gradient(ellipse 70% 55% at 50% 50%, rgba(0,0,0,0.38), transparent 75%)' }}
+        />
 
         <motion.div
           style={reduced ? undefined : { opacity: contentOpacity, y: contentY }}

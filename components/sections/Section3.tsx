@@ -12,19 +12,21 @@ function Polaroid({
   className = '',
   objectPosition,
   imgClassName = '',
+  src,
   children,
 }: {
   className?: string;
   objectPosition: string;
   imgClassName?: string;
+  src?: string;
   children?: React.ReactNode;
 }) {
   return (
     <div className={`bg-cream p-1.5 shadow-xl ${className}`}>
       <div className="relative h-full w-full overflow-hidden">
-        {hero.imageSrc && (
+        {(src ?? hero.imageSrc) && (
           <Image
-            src={hero.imageSrc}
+            src={(src ?? hero.imageSrc) as string}
             alt=""
             fill
             className={`object-cover ${imgClassName}`}
@@ -73,18 +75,18 @@ export function WhyMe() {
       <div className="px-6 py-28 sm:py-36">
         <div className="container-editorial">
           <ScrollReveal>
-            <p className="text-center font-body text-xs font-semibold uppercase tracking-widest2 text-stone">
+            <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-stone">
               {freedomSeeker.contentJourney.label}
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <p className="mx-auto mt-4 max-w-3xl text-center font-display text-2xl leading-snug text-bark sm:text-3xl">
-              <span className="font-bold not-italic">{freedomSeeker.contentJourney.lead}</span>{' '}
+            <p className="mt-6 max-w-3xl font-display text-2xl leading-snug text-bark sm:text-3xl">
+              {freedomSeeker.contentJourney.lead}{' '}
               <span className="italic">{freedomSeeker.contentJourney.tail}</span>
             </p>
           </ScrollReveal>
 
-          <div className="mx-auto mt-12 grid max-w-2xl gap-8 text-left sm:grid-cols-2">
+          <div className="mt-10 grid max-w-2xl gap-8 sm:grid-cols-2">
             <ScrollReveal delay={0.15}>
               <p className="font-body text-sm font-semibold leading-relaxed text-bark">{freedomSeeker.contentJourney.colBold}</p>
             </ScrollReveal>
@@ -94,7 +96,7 @@ export function WhyMe() {
           </div>
 
           <ScrollReveal delay={0.1}>
-            <p className="mx-auto mt-20 max-w-2xl text-center font-display text-2xl italic leading-snug text-bark sm:text-3xl">
+            <p className="mx-auto mt-24 max-w-2xl text-center font-display text-2xl italic leading-snug text-bark sm:text-3xl">
               {freedomSeeker.envelope.leadBold} {freedomSeeker.envelope.leadRest}
             </p>
           </ScrollReveal>
@@ -170,16 +172,15 @@ export function OnTheRoad() {
                 <div className="relative aspect-[3/4] w-full overflow-hidden border border-cream/10">
                   {hero.imageSrc && (
                     <Image
-                      src={hero.imageSrc}
+                      src={[hero.imageSrc, '/images/lena-sunrise.jpg', '/images/rainbow-beach.jpg', hero.imageSrc][i % 4]}
                       alt=""
                       fill
                       className="object-cover"
-                      style={{ objectPosition: `${30 + i * 15}% ${5 + i * 8}%` }}
+                      style={{ objectPosition: ['30% 5%', '75% 50%', '45% 55%', '75% 30%'][i % 4] }}
                       aria-hidden="true"
                     />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-bark/85 via-bark/10 to-transparent" />
-                  <span className="absolute right-2 top-2 h-6 w-6 rounded-full border border-cream/50 bg-bark/40" aria-hidden="true" />
                   <div className="absolute inset-x-0 bottom-0 p-4">
                     <p className="font-body text-[0.6rem] font-semibold uppercase tracking-widest2 text-zing-yellow">{pillar.category}</p>
                     <h4 className="mt-1.5 font-display text-lg text-cream">{pillar.title}</h4>
@@ -203,12 +204,9 @@ export function OnTheRoad() {
 
             <ScrollReveal delay={0.15}>
               <div className="relative mt-14 flex h-44 items-center justify-center gap-2 sm:h-52">
-                <Polaroid className="h-40 w-32 -rotate-6 sm:h-48 sm:w-36" objectPosition="15% 30%" />
-                <Polaroid className="z-10 h-44 w-36 rotate-3 sm:h-52 sm:w-40" objectPosition="55% 10%" />
+                <Polaroid className="h-40 w-32 -rotate-6 sm:h-48 sm:w-36" objectPosition="40% 60%" src="/images/rainbow-beach.jpg" />
+                <Polaroid className="z-10 h-44 w-36 rotate-3 sm:h-52 sm:w-40" objectPosition="72% 50%" src="/images/lena-sunrise.jpg" />
                 <Polaroid className="h-40 w-32 rotate-12 sm:h-48 sm:w-36" objectPosition="85% 50%" />
-                <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-2xl" aria-hidden="true">
-                  🌼
-                </span>
               </div>
             </ScrollReveal>
           </div>
