@@ -292,11 +292,11 @@ export function OnTheRoad() {
   );
 }
 
-// Lilac "Behind the scenes / COME SAY HI" band leading into the contact form.
+// Pale-lilac "Behind the scenes / COME SAY HI" band leading into the contact form.
 export function ComeSayHi() {
   return (
     <section>
-      <div className="bg-sage px-6 py-28 sm:py-36">
+      <div className="bg-[#E8DCE2] px-6 py-28 sm:py-36">
         <div className="container-editorial text-center">
           <ScrollReveal>
             <div className="mx-auto inline-block -rotate-1 bg-cream px-10 py-8 shadow-2xl">
@@ -392,12 +392,6 @@ export function LetsTalk() {
           </div>
 
           <ScrollReveal delay={0.1} className="relative mx-auto h-96 w-full max-w-sm sm:max-w-md">
-            {/* Small lilac circle, just behind the "say hi!" sticker */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -bottom-[4.5rem] -right-[3.5rem] h-56 w-56 rounded-full"
-              style={{ background: 'radial-gradient(circle, #CBA1D4 0, #CBA1D4 45%, transparent 70%)' }}
-            />
             <div className="absolute -bottom-2 right-2 z-40 flex h-24 w-24 rotate-12 items-center justify-center rounded-full bg-zing-yellow p-3 text-center font-script text-lg leading-[0.95] text-bark shadow-md">
               say hi!
             </div>
