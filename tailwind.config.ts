@@ -13,12 +13,12 @@ const config: Config = {
         rose: '#edb8b6',
         bark: '#3b2d0e',
         umber: '#52421b',
-        sage: '#366560',
+        sage: '#CBA1D4',
         stone: '#7b776f',
         zing: {
           yellow: '#fffba0',
           pink: '#ff8bb8',
-          green: '#CBA1D4',
+          green: '#bee5b0',
         },
       },
       fontFamily: {
