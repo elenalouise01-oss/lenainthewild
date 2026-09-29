@@ -113,16 +113,14 @@ export default function Section1() {
               <div className="flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:gap-14">
                 <div className="relative flex-shrink-0">
                 <div className="relative h-48 w-36 overflow-hidden shadow-lg sm:h-64 sm:w-48">
-                  {hero.imageSrc && (
-                    <Image
-                      src={hero.imageSrc}
-                      alt="Lena, out in it"
-                      fill
-                      sizes="200px"
-                      className="object-cover"
-                      style={{ objectPosition: '65% 15%' }}
-                    />
-                  )}
+                  <Image
+                    src="/images/rainbow-beach.jpg"
+                    alt="A rainbow over the beach in Sydney"
+                    fill
+                    sizes="200px"
+                    className="object-cover"
+                    style={{ objectPosition: '60% 50%' }}
+                  />
                 </div>
                 </div>
                 <p className="flex-1 font-display text-2xl italic leading-snug text-bark sm:text-4xl sm:leading-tight">
