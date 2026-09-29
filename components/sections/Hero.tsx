@@ -109,7 +109,10 @@ export default function Hero() {
           className="relative z-10 flex h-full flex-col"
         >
           <div className="container-editorial flex items-center justify-between pt-8">
-            <span className="font-logo text-sm font-bold uppercase tracking-wider text-bark sm:text-base">
+            <span
+              className="font-body text-sm font-bold uppercase tracking-wider text-cream sm:text-base"
+              style={{ textShadow: '0 1px 6px rgba(0,0,0,0.35)' }}
+            >
               {nav.logo}
             </span>
             <Navigation iconClassName="cursor-pointer">
