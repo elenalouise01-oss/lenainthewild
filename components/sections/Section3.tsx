@@ -371,8 +371,8 @@ export default function Section3() {
             {/* Signature soft circle, in lilac here */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[130%] -translate-x-1/2 -translate-y-1/2 rounded-full"
-              style={{ background: 'radial-gradient(circle, #CBA1D4 0, #CBA1D4 50%, transparent 70%)' }}
+              className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[105%] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.45]"
+              style={{ background: 'radial-gradient(circle, #CBA1D4 0, #CBA1D4 40%, transparent 70%)' }}
             />
             <div className="absolute -bottom-2 right-2 z-40 flex h-24 w-24 rotate-12 items-center justify-center rounded-full bg-zing-yellow p-3 text-center font-script text-lg leading-[0.95] text-bark shadow-md">
               say hi!

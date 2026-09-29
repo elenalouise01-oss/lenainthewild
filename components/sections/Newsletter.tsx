@@ -6,12 +6,6 @@ import { newsletter } from '@/content/site';
 export default function Newsletter() {
   return (
     <section id="subscribe" className="relative overflow-hidden bg-porcelain px-6 py-28 sm:py-32">
-      {/* Signature soft circle, in pink here */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[min(56rem,140vw)] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-40"
-        style={{ background: 'radial-gradient(circle, #ff8bb8 0, #ff8bb8 45%, transparent 70%)' }}
-      />
       <div className="container-editorial relative text-center">
         <ScrollReveal>
           <SectionLabel>{newsletter.eyebrow}</SectionLabel>

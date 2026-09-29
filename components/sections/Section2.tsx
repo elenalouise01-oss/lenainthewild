@@ -11,12 +11,6 @@ export default function Section2() {
     <section id="about" className="overflow-hidden bg-sand px-6 py-28 sm:py-36">
       <div className="container-editorial grid items-center gap-16 lg:grid-cols-2">
         <ScrollReveal className="relative mx-auto aspect-square w-full max-w-md">
-          {/* Signature soft circle, echoing the offers section */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -inset-[22%] rounded-full"
-            style={{ background: 'radial-gradient(circle, #fffba0 0, #fffba0 50%, transparent 70%)' }}
-          />
           <div className="absolute inset-0 -rotate-6 bg-cream p-3 shadow-xl">
             <div className="relative h-full w-full overflow-hidden">
               {hero.imageSrc && (

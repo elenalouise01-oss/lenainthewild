@@ -110,16 +110,15 @@ export default function Section1() {
 
           <ScrollReveal delay={0.1}>
             <div className="relative mt-24 sm:mt-32">
-              <div
-                className="pointer-events-none absolute -left-10 -top-10 -z-10 h-40 w-40 rounded-full border-[14px] border-bark/10 sm:h-56 sm:w-56"
-                aria-hidden="true"
-              />
               <div className="flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:gap-14">
-                <div className="relative h-48 w-36 flex-shrink-0 overflow-hidden shadow-lg sm:h-64 sm:w-48">
+                <div className="relative flex-shrink-0">
+                  {/* Small signature circle, echoing the offers section */}
                   <div
-                    className="pointer-events-none absolute -right-6 -top-6 -z-10 h-24 w-14 rotate-[35deg] bg-zing-pink/70 sm:h-32 sm:w-20"
                     aria-hidden="true"
+                    className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[180%] -translate-x-1/2 -translate-y-1/2 rounded-full"
+                    style={{ background: 'radial-gradient(circle, #fffba0 0, #fffba0 45%, transparent 70%)' }}
                   />
+                <div className="relative h-48 w-36 overflow-hidden shadow-lg sm:h-64 sm:w-48">
                   {hero.imageSrc && (
                     <Image
                       src={hero.imageSrc}
@@ -130,6 +129,7 @@ export default function Section1() {
                       style={{ objectPosition: '65% 15%' }}
                     />
                   )}
+                </div>
                 </div>
                 <p className="flex-1 font-display text-2xl italic leading-snug text-bark sm:text-4xl sm:leading-tight">
                   {welcome.statBlock.text}
