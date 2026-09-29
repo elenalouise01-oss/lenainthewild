@@ -21,6 +21,7 @@ const SWIPE_THRESHOLD = 60;
 const MAX_TILT = 14;
 
 type Tier = (typeof freedomSeeker.tiers)[number];
+type Look = (typeof LOOKS)[number];
 
 export default function OffersCarousel() {
   const reduced = useReducedMotion();
@@ -28,7 +29,6 @@ export default function OffersCarousel() {
   const count = tiers.length;
   const [active, setActive] = useState(0);
   const [details, setDetails] = useState<number | null>(null);
-  const [hovering, setHovering] = useState(false);
 
   // 3D tilt of the centre sleeve, following the pointer / drag.
   const tiltX = useMotionValue(0);
@@ -39,14 +39,10 @@ export default function OffersCarousel() {
     tiltX.set(0);
     tiltY.set(0);
   };
-  const onPointerLeave = () => {
-    setHovering(false);
-    resetTilt();
-  };
+
 
   const go = (step: number) => {
     resetTilt();
-    setHovering(false);
     setActive((a) => (a + step + count) % count);
   };
 
@@ -147,63 +143,16 @@ export default function OffersCarousel() {
               transition={spring}
               style={{ zIndex: isActive ? 20 : 10 }}
               onClick={isActive ? undefined : () => go(d)}
-              onPointerEnter={isActive ? () => setHovering(true) : undefined}
               onPointerMove={isActive ? onPointerMove : undefined}
-              onPointerLeave={isActive ? onPointerLeave : undefined}
+              onPointerLeave={isActive ? resetTilt : undefined}
               aria-hidden={isActive ? undefined : true}
             >
               <motion.div
                 className="relative h-full w-full"
                 style={isActive ? { rotateX, rotateY, transformPerspective: 900 } : undefined}
               >
-                {/* Sleeve: full-bleed photo with a plastic-sheen highlight */}
-                <div className="relative h-full w-full overflow-hidden shadow-[0_24px_50px_-18px_rgba(59,45,14,0.55)]">
-                  {hero.imageSrc && (
-                    <Image
-                      src={hero.imageSrc}
-                      alt=""
-                      fill
-                      sizes="(min-width: 640px) 60vh, 74vw"
-                      className="object-cover"
-                      style={{ objectPosition: tierLook.photo }}
-                      aria-hidden="true"
-                      draggable={false}
-                    />
-                  )}
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0"
-                    style={{
-                      background:
-                        'linear-gradient(125deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 62%, rgba(255,255,255,0.16) 78%, rgba(255,255,255,0) 100%)',
-                    }}
-                  />
-
-                  {/* Hover: a short description slides over the sleeve */}
-                  {isActive && (
-                    <div
-                      className={`pointer-events-none absolute inset-0 flex items-start bg-gradient-to-b from-bark/85 via-bark/55 to-transparent p-[8%] pr-[40%] transition-opacity duration-500 ${
-                        hovering ? 'opacity-100' : 'opacity-0'
-                      }`}
-                    >
-                      <p className="font-display text-[clamp(0.95rem,2.4vw,1.35rem)] italic leading-snug text-cream">
-                        {tier.body}
-                      </p>
-                    </div>
-                  )}
-
-                  {/* Round sticker: script title, tiny print underneath */}
-                  <div
-                    className="absolute right-[6%] top-[6%] flex aspect-square w-[32%] -rotate-6 flex-col items-center justify-center rounded-full px-[4%] text-center text-bark shadow-md"
-                    style={{ backgroundColor: tierLook.sticker }}
-                  >
-                    <span className="font-script text-[clamp(0.85rem,3.4vw,1.6rem)] leading-[0.95]">
-                      {tier.title.replace(/^The /, '')}
-                    </span>
-                    <span className="mt-[6%] font-body text-[clamp(0.4rem,1.1vw,0.55rem)] font-semibold uppercase leading-tight tracking-wide text-bark/80">
-                      {tier.tags.join(' · ')}
-                    </span>
-                  </div>
+                <div className="relative h-full w-full shadow-[0_24px_50px_-18px_rgba(59,45,14,0.55)]">
+                  <SleeveArt tier={tier} look={tierLook} sizes="(min-width: 640px) 60vh, 74vw" />
                 </div>
 
                 {isActive && (
@@ -226,7 +175,7 @@ export default function OffersCarousel() {
         {details !== null && (
           <OfferDetails
             tier={tiers[details]}
-            index={details}
+            look={LOOKS[details % LOOKS.length]}
             href={offerLinks[tiers[details].title]}
             reduced={reduced}
             onClose={() => setDetails(null)}
@@ -302,7 +251,6 @@ function NowPlaying({
           >
             Learn more +
           </button>
-          {tier.price && <p className="font-body text-[0.55rem] text-cream/55 sm:text-[0.65rem]">{tier.price}</p>}
         </div>
         <div className="flex shrink-0 items-center gap-2">
           <button type="button" onClick={stop(onPrev)} aria-label="Previous offer" className="opacity-90 hover:opacity-100">
@@ -321,21 +269,82 @@ function NowPlaying({
   );
 }
 
-// Pop-up with the original dark offer card: title, description, tags,
-// price, photo and a link to the offer page.
+// The front of a sleeve: full-bleed photo, plastic-sheen highlight and the
+// round sticker. Shared by the carousel and the gatefold pop-up.
+function SleeveArt({ tier, look, sizes }: { tier: Tier; look: Look; sizes: string }) {
+  return (
+    <div className="relative h-full w-full overflow-hidden">
+      {hero.imageSrc && (
+        <Image
+          src={hero.imageSrc}
+          alt=""
+          fill
+          sizes={sizes}
+          className="object-cover"
+          style={{ objectPosition: look.photo }}
+          aria-hidden="true"
+          draggable={false}
+        />
+      )}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(125deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 62%, rgba(255,255,255,0.16) 78%, rgba(255,255,255,0) 100%)',
+        }}
+      />
+      <div
+        className="absolute right-[6%] top-[6%] flex aspect-square w-[32%] -rotate-6 flex-col items-center justify-center rounded-full px-[4%] text-center text-bark shadow-md"
+        style={{ backgroundColor: look.sticker }}
+      >
+        <span className="font-script text-[clamp(0.85rem,3.4vw,1.6rem)] leading-[0.95]">
+          {tier.title.replace(/^The /, '')}
+        </span>
+        <span className="mt-[6%] font-body text-[clamp(0.4rem,1.1vw,0.55rem)] font-semibold uppercase leading-tight tracking-wide text-bark/80">
+          {tier.tags.join(' · ')}
+        </span>
+        {tier.price && (
+          <span className="mt-[5%] font-body text-[clamp(0.7rem,2.2vw,1.05rem)] font-bold leading-none">{tier.price}</span>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function useIsNarrow() {
+  const [narrow, setNarrow] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches,
+  );
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    const update = () => setNarrow(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+  return narrow;
+}
+
+// "Learn more": the sleeve opens like a gatefold record. The front cover
+// swings open on its hinge to reveal the inside — photo on one side, liner
+// notes (description, tracklist of what's included, price) on the other —
+// and the record slides out. Stacks vertically and opens upwards on phones.
 function OfferDetails({
   tier,
-  index,
+  look,
   href,
   reduced,
   onClose,
 }: {
   tier: Tier;
-  index: number;
+  look: Look;
   href?: string;
   reduced: boolean;
   onClose: () => void;
 }) {
+  const narrow = useIsNarrow();
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -349,81 +358,140 @@ function OfferDetails({
     };
   }, [onClose]);
 
+  const hinge = narrow
+    ? { closed: { rotateX: -180, rotateY: 0 }, open: { rotateX: 0, rotateY: 0 }, origin: '50% 100%', back: 'rotateX(180deg)' }
+    : { closed: { rotateX: 0, rotateY: 180 }, open: { rotateX: 0, rotateY: 0 }, origin: '100% 50%', back: 'rotateY(180deg)' };
+  const ease = [0.65, 0, 0.35, 1] as const;
+  const number = tier.number.replace(/[()]/g, '');
+
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-bark/60 p-4 backdrop-blur-sm sm:p-8"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-bark/60 p-4 backdrop-blur-sm"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      exit={{ opacity: 0, transition: { duration: reduced ? 0 : 0.35, delay: reduced ? 0 : 0.55 } }}
       transition={{ duration: reduced ? 0 : 0.3 }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label={tier.title}
     >
-      <motion.div
-        className="relative max-h-full w-full max-w-4xl overflow-y-auto bg-bark p-8 sm:grid sm:grid-cols-[5fr_2fr_5fr] sm:items-start sm:p-10"
-        initial={reduced ? false : { y: 30, scale: 0.97 }}
-        animate={{ y: 0, scale: 1 }}
-        exit={reduced ? undefined : { y: 20, opacity: 0 }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+      <button
+        type="button"
+        onClick={onClose}
+        className="absolute right-5 top-5 z-10 font-body text-xs font-semibold uppercase tracking-widest2 text-cream/80 transition-colors hover:text-cream sm:right-8 sm:top-8"
+      >
+        Close ×
+      </button>
+
+      <div
+        className="relative flex flex-col md:flex-row"
+        style={{ perspective: 1800 }}
         onClick={(e) => e.stopPropagation()}
       >
-        <button
-          type="button"
-          onClick={onClose}
-          className="absolute right-5 top-4 font-body text-xs font-semibold uppercase tracking-widest2 text-cream/60 transition-colors hover:text-cream"
+        {/* Inside left (top on phones): the cover. Closed, it lies folded
+            over the liner notes showing its front; it swings open to show
+            the inside photo. */}
+        <motion.div
+          className="relative z-20 aspect-square w-[min(84vw,40dvh)] md:w-[min(40vw,66dvh)]"
+          style={{ transformOrigin: hinge.origin, transformStyle: 'preserve-3d' }}
+          initial={reduced ? false : hinge.closed}
+          animate={hinge.open}
+          exit={reduced ? undefined : { ...hinge.closed, transition: { duration: 0.6, ease } }}
+          transition={{ duration: 0.9, delay: 0.25, ease }}
         >
-          Close ×
-        </button>
-
-        <div className="mt-6 sm:mt-0">
-          <h3 className="font-display text-3xl text-cream sm:text-4xl">{tier.title}</h3>
-          <p className="mt-3 max-w-md font-body text-sm leading-relaxed text-cream/70">{tier.body}</p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {tier.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-cream/25 px-3 py-1 font-body text-[0.65rem] font-semibold uppercase tracking-wide text-cream/70"
-              >
-                {tag}
-              </span>
-            ))}
-            {tier.price && (
-              <span className="rounded-full bg-zing-yellow px-3 py-1 font-body text-[0.65rem] font-semibold uppercase tracking-wide text-bark">
-                {tier.price}
-              </span>
-            )}
-          </div>
-          {href && (
-            <a
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-block font-body text-xs font-semibold uppercase tracking-widest2 text-cream underline decoration-cream/40 underline-offset-8 transition-colors hover:decoration-cream"
-            >
-              Find out more →
-            </a>
-          )}
-        </div>
-
-        <div className="col-start-3 mt-6 sm:mt-0">
-          <div className="text-right font-body text-sm text-cream/40 sm:mt-6">{tier.number}</div>
-          <div className="relative mt-3 aspect-[5/3] w-full overflow-hidden">
+          {/* Inside face */}
+          <div className="absolute inset-0 overflow-hidden" style={{ backfaceVisibility: 'hidden' }}>
             {hero.imageSrc && (
               <Image
                 src={hero.imageSrc}
                 alt=""
                 fill
-                sizes="(min-width: 640px) 24rem, 90vw"
-                className="object-cover"
-                style={{ objectPosition: `${20 + index * 25}% ${10 + index * 15}%` }}
+                sizes="(min-width: 768px) 40vw, 84vw"
+                className="object-cover grayscale"
+                style={{ objectPosition: look.photo }}
                 aria-hidden="true"
               />
             )}
+            <div className="absolute inset-0 mix-blend-multiply" style={{ backgroundColor: look.bg }} />
+            <div className="absolute inset-0 bg-gradient-to-t from-bark/70 via-transparent to-transparent" />
+            <span className="absolute left-[7%] top-[6%] font-body text-xs font-bold tracking-widest2 text-cream/90">
+              {tier.number}
+            </span>
+            <p className="absolute bottom-[7%] left-[7%] right-[7%] font-display text-[clamp(1.6rem,4.2vw,3rem)] italic leading-[1] text-cream">
+              {tier.title}
+            </p>
+          </div>
+          {/* Front face (seen while closed) */}
+          <div className="absolute inset-0" style={{ backfaceVisibility: 'hidden', transform: hinge.back }}>
+            <SleeveArt tier={tier} look={look} sizes="(min-width: 768px) 40vw, 84vw" />
+          </div>
+        </motion.div>
+
+        {/* Inside right (bottom on phones): liner notes, with the record
+            sliding out from behind. */}
+        <div className="relative aspect-square w-[min(84vw,40dvh)] md:w-[min(40vw,66dvh)]">
+          <motion.div
+            aria-hidden="true"
+            className="absolute inset-[4%] hidden rounded-full md:block"
+            style={{
+              background: `radial-gradient(circle, ${look.sticker} 0 16%, #141414 16.5% 17.5%, transparent 18%), repeating-radial-gradient(circle, #141414 0 2px, #262626 2px 3px)`,
+            }}
+            initial={reduced ? false : { x: '0%', rotate: 0 }}
+            animate={{ x: '42%', rotate: 180 }}
+            exit={reduced ? undefined : { x: '0%', transition: { duration: 0.35 } }}
+            transition={{ duration: 1.1, delay: reduced ? 0 : 1.05, ease: [0.16, 1, 0.3, 1] }}
+          />
+          <div className="relative flex h-full w-full flex-col overflow-y-auto bg-[#FFFAEC] p-[7%] text-bark shadow-2xl">
+            <div className="flex items-baseline justify-between border-b border-bark/15 pb-3">
+              <p className="font-body text-[0.6rem] font-semibold uppercase tracking-widest2 text-bark/60 sm:text-xs">
+                {freedomSeeker.label}
+              </p>
+              <p className="font-body text-[0.6rem] font-semibold uppercase tracking-widest2 text-bark/60 sm:text-xs">
+                No. {number}
+              </p>
+            </div>
+
+            <p className="mt-[5%] font-display text-[clamp(0.95rem,1.8vw,1.35rem)] italic leading-snug">{tier.body}</p>
+
+            <ol className="mt-[6%] space-y-2">
+              {tier.tags.map((tag, i) => (
+                <li
+                  key={tag}
+                  className="flex items-baseline gap-3 border-b border-dashed border-bark/15 pb-2 font-body text-[0.65rem] font-semibold uppercase tracking-wide sm:text-xs"
+                >
+                  <span className="text-bark/45">A{i + 1}</span>
+                  <span>{tag}</span>
+                </li>
+              ))}
+            </ol>
+
+            <div className="mt-auto flex items-center justify-between gap-3 pt-[6%]">
+              {tier.price && (
+                <span
+                  className="rounded-full px-3 py-1 font-body text-xs font-bold text-bark"
+                  style={{ backgroundColor: look.sticker }}
+                >
+                  {tier.price}
+                </span>
+              )}
+              {href && (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#141414] px-4 py-2.5 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-cream transition-transform hover:scale-105 sm:text-xs"
+                >
+                  <svg viewBox="0 0 24 24" className="h-3 w-3" fill="currentColor" aria-hidden="true">
+                    <path d="M5 3l16 9-16 9z" />
+                  </svg>
+                  Find out more
+                </a>
+              )}
+            </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 }
