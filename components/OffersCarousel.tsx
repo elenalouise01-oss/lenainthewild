@@ -10,10 +10,11 @@ import { useReducedMotion } from '@/lib/useReducedMotion';
 // in front of a big soft circle that grows out of the centre and keeps
 // breathing, neighbours tilted at the edges, a round sticker and a
 // "now playing" bar. Sleeves tilt in 3D as you grab or move over them.
-// Brand palette only; `photo` is the crop of the shared photo.
-const LOOKS = [
+// Brand palette only; `photo` is the crop of the shared photo, `src` an
+// offer's own cover artwork when it has one.
+const LOOKS: { bg: string; circle: string; sticker: string; photo: string; src?: string }[] = [
   { bg: '#CBA1D4', circle: '#fffba0', sticker: '#ff8bb8', photo: '30% 12%' },
-  { bg: '#ff8bb8', circle: '#CBA1D4', sticker: '#fffba0', photo: '60% 25%' },
+  { bg: '#ff8bb8', circle: '#CBA1D4', sticker: '#fffba0', photo: '50% 50%', src: '/images/cover-freedom-frequency.webp' },
   { bg: '#fffba0', circle: '#ff8bb8', sticker: '#bee5b0', photo: '80% 45%' },
 ];
 
@@ -307,9 +308,9 @@ function SleeveArt({
 
   return (
     <div className="relative h-full w-full overflow-hidden">
-      {hero.imageSrc && (
+      {(look.src ?? hero.imageSrc) && (
         <Image
-          src={hero.imageSrc}
+          src={(look.src ?? hero.imageSrc) as string}
           alt=""
           fill
           sizes={sizes}
