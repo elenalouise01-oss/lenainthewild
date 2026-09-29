@@ -1,15 +1,17 @@
 'use client';
 
 import Link from 'next/link';
-import { footer, nav } from '@/content/site';
+import { footer, nav, offerLinks, socialLinks } from '@/content/site';
 
-// Links that resolve to a real section on this page; everything else in
-// the footer points to a page that doesn't exist yet, so it's left inert
-// (rather than href="#", which jumps the whole page to the top on click —
-// a jarring, confusing move for someone reading down near the footer).
+// Links that resolve to a real section on this page or a live offer page;
+// everything else in the footer points to a page that doesn't exist yet, so
+// it's left inert (rather than href="#", which jumps the whole page to the
+// top on click — a jarring, confusing move for someone reading down near the footer).
 const REAL_ANCHORS: Record<string, string> = {
   Blog: '#blog',
   About: '#about',
+  ...offerLinks,
+  ...socialLinks,
 };
 
 export default function Footer() {
@@ -29,6 +31,8 @@ export default function Footer() {
                     <Link
                       href={href ?? '#'}
                       onClick={href ? undefined : (e) => e.preventDefault()}
+                      target={href?.startsWith('http') ? '_blank' : undefined}
+                      rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
                       aria-disabled={href ? undefined : true}
                       className={`font-body text-sm transition-colors ${
                         href ? 'text-bark/80 hover:text-bark' : 'cursor-default text-bark/40'

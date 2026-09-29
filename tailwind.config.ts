@@ -5,7 +5,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: '#FFFAEC',
+        cream: '#FFFFFF',
         sand: '#f1efe7',
         linen: '#e6e6dd',
         porcelain: '#f4e9dc',
