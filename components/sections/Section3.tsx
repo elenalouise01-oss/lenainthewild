@@ -292,11 +292,11 @@ export function OnTheRoad() {
   );
 }
 
-// Dark "Behind the scenes / COME SAY HI" band leading into the contact form.
+// Lilac "Behind the scenes / COME SAY HI" band leading into the contact form.
 export function ComeSayHi() {
   return (
     <section>
-      <div className="bg-bark px-6 py-28 sm:py-36">
+      <div className="bg-sage px-6 py-28 sm:py-36">
         <div className="container-editorial text-center">
           <ScrollReveal>
             <div className="mx-auto inline-block -rotate-1 bg-cream px-10 py-8 shadow-2xl">
@@ -305,7 +305,7 @@ export function ComeSayHi() {
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.15}>
-            <h3 className="mt-10 font-display text-[14vw] font-bold uppercase leading-none text-cream sm:text-[9vw]">
+            <h3 className="mt-10 font-display text-[14vw] font-bold uppercase leading-none text-bark sm:text-[9vw]">
               {freedomSeeker.bigStatement}
             </h3>
           </ScrollReveal>
