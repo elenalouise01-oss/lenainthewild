@@ -112,12 +112,6 @@ export default function Section1() {
             <div className="relative mt-24 sm:mt-32">
               <div className="flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:gap-14">
                 <div className="relative flex-shrink-0">
-                  {/* Small signature circle, echoing the offers section */}
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[180%] -translate-x-1/2 -translate-y-1/2 rounded-full"
-                    style={{ background: 'radial-gradient(circle, #fffba0 0, #fffba0 45%, transparent 70%)' }}
-                  />
                 <div className="relative h-48 w-36 overflow-hidden shadow-lg sm:h-64 sm:w-48">
                   {hero.imageSrc && (
                     <Image
