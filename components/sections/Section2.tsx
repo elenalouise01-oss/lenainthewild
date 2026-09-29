@@ -20,15 +20,14 @@ export default function Section2() {
           </div>
           <div className="absolute inset-6 translate-x-6 translate-y-4 rotate-3 bg-cream p-3 shadow-xl">
             <div className="relative h-full w-full overflow-hidden">
-              {hero.imageSrc && (
-                <Image
-                  src={hero.imageSrc}
-                  alt="Lena, behind the scenes"
-                  fill
-                  className="object-cover"
-                  style={{ objectPosition: '70% 20%' }}
-                />
-              )}
+              <Image
+                src="/images/lena-sunrise.jpg"
+                alt="Lena at sunrise above the clouds"
+                fill
+                sizes="(min-width: 1024px) 28rem, 90vw"
+                className="object-cover"
+                style={{ objectPosition: '70% 50%' }}
+              />
             </div>
           </div>
           <div className="absolute -bottom-4 -left-4 flex h-24 w-24 -rotate-12 items-center justify-center rounded-full bg-zing-pink p-3 text-center font-script text-lg leading-[0.95] text-bark shadow-md">

@@ -119,14 +119,16 @@ export default function Section1() {
                     style={{ background: 'radial-gradient(circle, #fffba0 0, #fffba0 45%, transparent 70%)' }}
                   />
                 <div className="relative h-48 w-36 overflow-hidden shadow-lg sm:h-64 sm:w-48">
-                  <Image
-                    src="/images/lena-sunrise.jpg"
-                    alt="Lena at sunrise above the clouds"
-                    fill
-                    sizes="200px"
-                    className="object-cover"
-                    style={{ objectPosition: '72% 50%' }}
-                  />
+                  {hero.imageSrc && (
+                    <Image
+                      src={hero.imageSrc}
+                      alt="Lena, out in it"
+                      fill
+                      sizes="200px"
+                      className="object-cover"
+                      style={{ objectPosition: '65% 15%' }}
+                    />
+                  )}
                 </div>
                 </div>
                 <p className="flex-1 font-display text-2xl italic leading-snug text-bark sm:text-4xl sm:leading-tight">
