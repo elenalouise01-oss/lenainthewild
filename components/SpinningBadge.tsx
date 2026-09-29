@@ -25,8 +25,11 @@ export default function SpinningBadge({ text, tone = 'light', className = '' }: 
         <defs>
           <path id={pathId} d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
         </defs>
-        <text className={`${fill} font-body font-bold`} style={{ fontSize: '9.5px', letterSpacing: '0.13em' }}>
-          <textPath href={`#${pathId}`} startOffset="0%">
+        {/* textLength = the circle's circumference (2π × 38), so the text
+            spreads evenly around the full ring and the last word never
+            runs into the first one. */}
+        <text className={`${fill} font-body font-bold`} style={{ fontSize: '8px', letterSpacing: '0.08em' }}>
+          <textPath href={`#${pathId}`} startOffset="0%" textLength="238" lengthAdjust="spacing">
             {text}
           </textPath>
         </text>
