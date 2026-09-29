@@ -9,7 +9,7 @@ type ButtonProps = {
 };
 
 const toneStyles: Record<'light' | 'dark', string> = {
-  light: 'border-cream/70 text-cream hover:bg-cream hover:text-bark',
+  light: 'border-cream/70 text-cream hover:border-zing-yellow hover:bg-zing-yellow hover:text-bark',
   dark: 'border-bark/70 text-bark hover:bg-bark hover:text-cream',
 };
 

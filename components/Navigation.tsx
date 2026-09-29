@@ -73,7 +73,7 @@ export default function Navigation({ className = '', iconClassName = '', childre
               {nav.closeLabel} ×
             </button>
 
-            <p className="font-display text-4xl italic text-umber sm:text-5xl">{nav.menuLogo}</p>
+            <p className="font-display text-4xl italic text-umber sm:text-5xl">{nav.logo}</p>
             <div className="mt-6 h-px w-16 bg-bark/20" />
 
             <nav className="mt-10 flex flex-col items-center gap-7">
