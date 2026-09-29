@@ -12,10 +12,11 @@ import { useReducedMotion } from '@/lib/useReducedMotion';
 // "now playing" bar. Sleeves tilt in 3D as you grab or move over them.
 // Brand palette only; `photo` is the crop of the shared photo, `src` an
 // offer's own cover artwork when it has one.
-const LOOKS: { bg: string; circle: string; sticker: string; photo: string; src?: string }[] = [
+// `zoom` enlarges artwork whose subject is drawn smaller than the others.
+const LOOKS: { bg: string; circle: string; sticker: string; photo: string; src?: string; zoom?: number }[] = [
   { bg: '#CBA1D4', circle: '#fffba0', sticker: '#ff8bb8', photo: '50% 50%', src: '/images/cover-5-day-reconnect.webp' },
   { bg: '#ff8bb8', circle: '#CBA1D4', sticker: '#fffba0', photo: '50% 50%', src: '/images/cover-freedom-frequency.webp' },
-  { bg: '#fffba0', circle: '#ff8bb8', sticker: '#CBA1D4', photo: '50% 50%', src: '/images/cover-aligned-circle.webp' },
+  { bg: '#fffba0', circle: '#ff8bb8', sticker: '#CBA1D4', photo: '50% 50%', src: '/images/cover-aligned-circle.webp', zoom: 1.35 },
 ];
 
 const SWIPE_THRESHOLD = 60;
@@ -315,7 +316,7 @@ function SleeveArt({
           fill
           sizes={sizes}
           className="object-cover"
-          style={{ objectPosition: look.photo }}
+          style={{ objectPosition: look.photo, transform: look.zoom ? `scale(${look.zoom})` : undefined }}
           aria-hidden="true"
           draggable={false}
         />
@@ -482,7 +483,7 @@ function OfferDetails({
                 fill
                 sizes="(min-width: 768px) 40vw, 84vw"
                 className={`object-cover ${look.src ? '' : 'grayscale'}`}
-                style={{ objectPosition: look.photo }}
+                style={{ objectPosition: look.photo, transform: look.zoom ? `scale(${look.zoom})` : undefined }}
                 aria-hidden="true"
               />
             )}
