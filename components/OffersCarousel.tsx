@@ -385,7 +385,7 @@ function OfferDetails({
       </button>
 
       <div
-        className="relative flex flex-col md:flex-row"
+        className="relative flex flex-col md:flex-row md:pr-[min(19vw,33dvh)]"
         style={{ perspective: 1800 }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -393,7 +393,7 @@ function OfferDetails({
             over the liner notes showing its front; it swings open to show
             the inside photo. */}
         <motion.div
-          className="relative z-20 aspect-square w-[min(84vw,40dvh)] md:w-[min(40vw,66dvh)]"
+          className="relative z-20 aspect-square w-[min(84vw,40dvh)] md:w-[min(36vw,62dvh)]"
           style={{ transformOrigin: hinge.origin, transformStyle: 'preserve-3d' }}
           initial={reduced ? false : hinge.closed}
           animate={hinge.open}
@@ -430,18 +430,61 @@ function OfferDetails({
 
         {/* Inside right (bottom on phones): liner notes, with the record
             sliding out from behind. */}
-        <div className="relative aspect-square w-[min(84vw,40dvh)] md:w-[min(40vw,66dvh)]">
+        <div className="relative aspect-square w-[min(84vw,40dvh)] md:w-[min(36vw,62dvh)]">
+          {/* The record: slides out, then spins slowly. Grooves, run-out
+              band, rim and printed label turn; the light reflections stay
+              put, like a real record under a lamp. */}
           <motion.div
             aria-hidden="true"
-            className="absolute inset-[4%] hidden rounded-full md:block"
-            style={{
-              background: `radial-gradient(circle, ${look.sticker} 0 16%, #141414 16.5% 17.5%, transparent 18%), repeating-radial-gradient(circle, #141414 0 2px, #262626 2px 3px)`,
-            }}
-            initial={reduced ? false : { x: '0%', rotate: 0 }}
-            animate={{ x: '42%', rotate: 180 }}
+            className="absolute inset-[4%] hidden rounded-full shadow-[0_18px_40px_-12px_rgba(0,0,0,0.6)] md:block"
+            initial={reduced ? false : { x: '0%' }}
+            animate={{ x: '62%' }}
             exit={reduced ? undefined : { x: '0%', transition: { duration: 0.35 } }}
             transition={{ duration: 1.1, delay: reduced ? 0 : 1.05, ease: [0.16, 1, 0.3, 1] }}
-          />
+          >
+            <motion.div
+              className="absolute inset-0 rounded-full"
+              style={{
+                background: [
+                  // spindle hole
+                  'radial-gradient(circle, #0b0b0b 0 1.3%, transparent 1.5%)',
+                  // printed label with a thin edge
+                  `radial-gradient(circle, ${look.sticker} 0 21.6%, rgba(0,0,0,0.35) 21.8% 22.1%, transparent 22.2%)`,
+                  // smooth run-out band around the label
+                  'radial-gradient(circle, transparent 0 22.2%, #181818 22.2% 27%, transparent 27%)',
+                  // lighter outer rim
+                  'radial-gradient(circle, transparent 0 68.6%, #2c2c2c 69% 70.7%, transparent 70.7%)',
+                  // fine grooves, with a few wider gaps between "tracks"
+                  'radial-gradient(circle, transparent 0 42%, rgba(255,255,255,0.05) 42.3%, transparent 42.8%, transparent 0 56%, rgba(255,255,255,0.05) 56.3%, transparent 56.8%)',
+                  // faint shimmer across the grooves, so the turning reads
+                  'conic-gradient(rgba(255,255,255,0.05), transparent 20%, rgba(255,255,255,0.035) 45%, transparent 62%, rgba(255,255,255,0.05) 85%, rgba(255,255,255,0.05))',
+                  'repeating-radial-gradient(circle, #121212 0 1px, #1d1d1d 1px 2px)',
+                ].join(', '),
+              }}
+              animate={reduced ? undefined : { rotate: 360 }}
+              transition={{ duration: 7, repeat: Infinity, ease: 'linear' }}
+            >
+              {/* Label print: turns with the record, so the spin reads */}
+              <div className="absolute inset-[35.5%] flex flex-col items-center justify-center text-center text-bark">
+                <span className="font-script text-[clamp(0.6rem,1.1vw,0.95rem)] leading-none">
+                  {tier.title.replace(/^The /, '')}
+                </span>
+                <span className="mt-[18%] font-body text-[0.4rem] font-bold uppercase tracking-widest2 opacity-70">
+                  Side A · {number}
+                </span>
+              </div>
+            </motion.div>
+            {/* Static reflections, masked off the label */}
+            <div
+              className="pointer-events-none absolute inset-0 rounded-full"
+              style={{
+                background:
+                  'conic-gradient(from 20deg, transparent 0deg, rgba(255,255,255,0.13) 25deg, transparent 55deg, transparent 180deg, rgba(255,255,255,0.1) 205deg, transparent 235deg)',
+                WebkitMaskImage: 'radial-gradient(circle, transparent 0 27%, #000 27.5% 69%, transparent 69.5%)',
+                maskImage: 'radial-gradient(circle, transparent 0 27%, #000 27.5% 69%, transparent 69.5%)',
+              }}
+            />
+          </motion.div>
           <div className="relative flex h-full w-full flex-col overflow-y-auto bg-[#FFFAEC] p-[7%] text-bark shadow-2xl">
             <div className="flex items-baseline justify-between border-b border-bark/15 pb-3">
               <p className="font-body text-[0.6rem] font-semibold uppercase tracking-widest2 text-bark/60 sm:text-xs">
