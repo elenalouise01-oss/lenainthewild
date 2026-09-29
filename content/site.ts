@@ -171,6 +171,9 @@ export const freedomSeeker = {
     cardLabel: 'MOMENTS FROM',
     places: ['Bali', 'Hanoi', 'Chiang Mai', 'Ho Chi Minh City', 'Ubud'],
     ribbon: 'Featured Moment',
+    // Printed on the front of the envelope
+    frontItalic: 'My Journey:',
+    frontTitle: 'Snapshots From the Road',
   },
 
   modelingCard: {

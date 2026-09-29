@@ -20,12 +20,15 @@ type Scatter = {
 
 // Each letter's starting position before it "assembles" into the word —
 // tuned by eye to feel scattered but still readable, echoing the reference's
-// kinetic-typography intro.
+// kinetic-typography intro. Offsets are in px at the desktop letter size
+// (192px) and applied in em, so the scatter shrinks with the letters and
+// never pushes the L or W off a phone screen.
+const DESIGN_FONT_PX = 192;
 const SCATTER: Scatter[] = [
   { char: 'L', x: -100, y: -30, rotate: -16, echoX: 12, echoY: 8 },
   { char: 'I', x: -17, y: 38, rotate: 18, echoX: -10, echoY: 11 },
   { char: 'T', x: 42, y: -38, rotate: -13, echoX: 10, echoY: -10 },
-  { char: 'W', x: 125, y: 21, rotate: 11, echoX: -11, echoY: -8 },
+  { char: 'W', x: 108, y: 21, rotate: 11, echoX: -11, echoY: -8 },
 ];
 
 function KineticLetter({
@@ -37,8 +40,9 @@ function KineticLetter({
   progress: ReturnType<typeof useScroll>['scrollYProgress'];
   reduced: boolean;
 }) {
-  const x = useTransform(progress, [0, 0.4], [letter.x, 0]);
-  const y = useTransform(progress, [0, 0.4], [letter.y, 0]);
+  const em = (px: number) => `${px / DESIGN_FONT_PX}em`;
+  const x = useTransform(progress, [0, 0.4], [em(letter.x), '0em']);
+  const y = useTransform(progress, [0, 0.4], [em(letter.y), '0em']);
   const rotate = useTransform(progress, [0, 0.4], [letter.rotate, 0]);
   const echoOpacity = useTransform(progress, [0, 0.4], [0.7, 0]);
   const echoX = useTransform(progress, [0, 0.4], [letter.echoX, 0]);

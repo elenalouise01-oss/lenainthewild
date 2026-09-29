@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Envelope from '@/components/Envelope';
 import OffersCarousel from '@/components/OffersCarousel';
 import ScrollReveal from '@/components/ScrollReveal';
 import { freedomSeeker, hero } from '@/content/site';
@@ -98,83 +99,8 @@ export function WhyMe() {
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.2}>
-            <div className="relative mx-auto mt-24 h-80 w-full max-w-2xl sm:h-96">
-              {/* Hand-drawn dashed squiggle connecting the statement above
-                  to the envelope, like the reference's doodle line. */}
-              <svg
-                className="pointer-events-none absolute -top-16 left-0 hidden h-20 w-28 text-bark/30 sm:block"
-                viewBox="0 0 100 90"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeDasharray="4 5"
-                aria-hidden="true"
-              >
-                <path d="M8 4 C 60 4, 95 20, 60 40 C 30 57, 55 60, 55 75" strokeLinecap="round" />
-              </svg>
-
-              {/* Envelope pocket + flap as one silhouette, so it reads as an
-                  actual envelope (not a plain card) even with photos poking
-                  out the top of it. */}
-              <svg
-                viewBox="0 0 400 260"
-                preserveAspectRatio="none"
-                className="absolute inset-x-0 bottom-0 h-full w-full drop-shadow-2xl"
-                aria-hidden="true"
-              >
-                <path
-                  d="M0,100 L200,10 L400,100 L400,260 L0,260 Z"
-                  className="fill-cream"
-                  stroke="rgba(59,45,14,0.14)"
-                  strokeWidth="2"
-                />
-              </svg>
-
-              {/* Tops kept below the flap's apex so the triangular flap
-                  silhouette stays visible above the photos. The sage card
-                  is woven into the fan (like the reference's paperclipped
-                  brand card) instead of floating apart from it, and the
-                  crops use flips/tone shifts since they all share one
-                  source photo. */}
-              <Polaroid
-                className="absolute top-[110px] left-[2%] z-10 h-28 w-24 -rotate-12 sm:h-32 sm:w-28"
-                objectPosition="70% 35%"
-                imgClassName="grayscale-[0.5]"
-              />
-
-              <div className="absolute top-[72px] left-[19%] z-20 flex h-32 w-28 -rotate-6 flex-col justify-center bg-sage p-3 shadow-xl sm:h-36 sm:w-32">
-                <p className="font-body text-[0.55rem] font-semibold uppercase tracking-wide text-cream/80">{freedomSeeker.envelope.cardLabel}</p>
-                <p className="mt-1 font-body text-[0.6rem] leading-snug text-cream">{freedomSeeker.envelope.places.join(', ')}</p>
-                <svg className="absolute -left-4 -top-6 h-9 w-9 -rotate-12 text-cream/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-                  <path d="M8 12V6a4 4 0 1 1 8 0v9a2.5 2.5 0 0 1-5 0V8" strokeLinecap="round" />
-                </svg>
-              </div>
-
-              <Polaroid
-                className="absolute top-[58px] left-[36%] z-10 h-40 w-32 -rotate-2 shadow-2xl sm:h-44 sm:w-40"
-                objectPosition="25% 75%"
-              />
-              <Polaroid
-                className="absolute top-[96px] left-[54%] z-10 h-28 w-24 rotate-3 sm:h-32 sm:w-28"
-                objectPosition="55% 15%"
-                imgClassName="-scale-x-100"
-              />
-              <Polaroid
-                className="absolute top-[70px] left-[68%] z-10 h-32 w-28 -rotate-6 sm:h-36 sm:w-32"
-                objectPosition="40% 55%"
-                imgClassName="sepia-[0.25]"
-              />
-              <Polaroid
-                className="absolute top-[110px] right-[4%] z-10 h-28 w-24 rotate-12 sm:h-32 sm:w-28"
-                objectPosition="85% 10%"
-                imgClassName="-scale-x-100 sepia-[0.3]"
-              />
-
-              <span className="absolute -right-2 top-4 z-20 -rotate-3 rounded-sm bg-sage px-3 py-6 font-body text-[0.6rem] font-semibold uppercase tracking-wide text-cream shadow-md [writing-mode:vertical-rl]">
-                {freedomSeeker.envelope.ribbon}
-              </span>
-            </div>
+          <ScrollReveal delay={0.2} className="mt-24 sm:mt-28">
+            <Envelope />
           </ScrollReveal>
         </div>
       </div>
@@ -238,7 +164,7 @@ export function OnTheRoad() {
             </div>
           </div>
 
-          <div className="mt-8 grid gap-6 sm:grid-cols-4">
+          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
             {freedomSeeker.pillars.map((pillar, i) => (
               <ScrollReveal key={pillar.title} delay={0.08 * i}>
                 <div className="relative aspect-[3/4] w-full overflow-hidden border border-cream/10">
@@ -305,7 +231,7 @@ export function ComeSayHi() {
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.15}>
-            <h3 className="mt-10 font-display text-[14vw] font-bold uppercase leading-none text-bark sm:text-[9vw]">
+            <h3 className="mt-10 whitespace-nowrap font-display text-[11vw] font-bold uppercase leading-none text-bark sm:text-[9vw]">
               {freedomSeeker.bigStatement}
             </h3>
           </ScrollReveal>
