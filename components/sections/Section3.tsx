@@ -37,53 +37,24 @@ function Polaroid({
   );
 }
 
-// Mirrors the Section 3 reference in full, broken into alternating
-// light/dark bands: the offer (dark), the personal note + experience
-// (light), the content/campaign carousel (dark), the journey + envelope
-// (light), the modeling statement (dark), then the pinned-photo contact
-// section (light).
-export default function Section3() {
-  const [submitted, setSubmitted] = useState(false);
+// The page's middle sections, split so the homepage can order them as a
+// journey: why me → offers → a breather → her world → contact.
 
+// Offers: the album-cover carousel.
+export function Offers() {
   return (
     <section id="freedom-seeker">
-      {/* Band 1 — the offers, as an album-cover carousel */}
       <OffersCarousel />
+    </section>
+  );
+}
 
-      {/* Band 2 — light: the binder-clip note + "Creative Work" pitch,
-          then the Marketing Experience statement. */}
-      <div className="bg-sand px-6 py-28 sm:py-36">
+// Why me: the experience statement, then the journey + envelope of photos.
+export function WhyMe() {
+  return (
+    <section id="experience" className="border-t border-bark/10 bg-sand">
+      <div className="px-6 pt-28 sm:pt-36">
         <div className="container-editorial">
-          <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
-            <ScrollReveal className="relative mx-auto max-w-xs">
-              <div className="absolute -inset-4 -rotate-2 rounded-sm bg-zing-green/60" />
-              <div className="relative -rotate-1 bg-cream p-8 pt-10 shadow-xl">
-                <svg className="absolute -top-5 left-1/2 h-10 w-6 -translate-x-1/2 text-bark" viewBox="0 0 24 40" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                  <rect x="3" y="3" width="18" height="10" rx="5" />
-                  <line x1="12" y1="13" x2="12" y2="34" />
-                </svg>
-                <p className="font-display text-xl italic text-bark">{freedomSeeker.noteCard.label}</p>
-                <p className="mt-3 font-hand text-lg leading-relaxed text-umber">{freedomSeeker.noteCard.body}</p>
-              </div>
-            </ScrollReveal>
-
-            <div>
-              <ScrollReveal>
-                <p className="font-display text-3xl italic text-bark sm:text-4xl">{freedomSeeker.creativeWork.leadItalic}</p>
-                <p className="font-display text-3xl font-bold uppercase text-bark sm:text-4xl">
-                  {freedomSeeker.creativeWork.leadBold}
-                </p>
-              </ScrollReveal>
-              <ScrollReveal delay={0.1}>
-                <p className="mt-5 max-w-md font-body text-sm leading-relaxed text-umber">{freedomSeeker.creativeWork.body}</p>
-                <Link href={freedomSeeker.creativeWork.ctaHref} className="relative mt-6 inline-block font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark">
-                  {freedomSeeker.creativeWork.cta}
-                </Link>
-              </ScrollReveal>
-            </div>
-          </div>
-
-          <div className="mt-24 border-t border-bark/10 pt-20">
             <ScrollReveal>
               <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-stone">{freedomSeeker.experienceLabel}</p>
             </ScrollReveal>
@@ -96,78 +67,9 @@ export default function Section3() {
                 {freedomSeeker.experienceTail}
               </p>
             </ScrollReveal>
-          </div>
         </div>
       </div>
-
-      {/* Band 3 — dark: reel-style content carousel + brand-campaigns strip */}
-      <div className="bg-bark px-6 py-28 sm:py-36">
-        <div className="container-editorial">
-          <div className="flex items-end justify-between">
-            <div>
-              <ScrollReveal>
-                <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-cream/50">{freedomSeeker.pillarsLabel}</p>
-              </ScrollReveal>
-              <ScrollReveal delay={0.05}>
-                <p className="mt-2 max-w-sm font-body text-sm text-cream/70">{freedomSeeker.pillarsIntro}</p>
-              </ScrollReveal>
-            </div>
-          </div>
-
-          <div className="mt-8 grid gap-6 sm:grid-cols-4">
-            {freedomSeeker.pillars.map((pillar, i) => (
-              <ScrollReveal key={pillar.title} delay={0.08 * i}>
-                <div className="relative aspect-[3/4] w-full overflow-hidden border border-cream/10">
-                  {hero.imageSrc && (
-                    <Image
-                      src={hero.imageSrc}
-                      alt=""
-                      fill
-                      className="object-cover"
-                      style={{ objectPosition: `${30 + i * 15}% ${5 + i * 8}%` }}
-                      aria-hidden="true"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-bark/85 via-bark/10 to-transparent" />
-                  <span className="absolute right-2 top-2 h-6 w-6 rounded-full border border-cream/50 bg-bark/40" aria-hidden="true" />
-                  <div className="absolute inset-x-0 bottom-0 p-4">
-                    <p className="font-body text-[0.6rem] font-semibold uppercase tracking-widest2 text-zing-yellow">{pillar.category}</p>
-                    <h4 className="mt-1.5 font-display text-lg text-cream">{pillar.title}</h4>
-                    <p className="mt-1 font-body text-[0.65rem] leading-snug text-cream/70">{pillar.excerpt}</p>
-                    <p className="mt-2 border-t border-cream/15 pt-2 font-body text-[0.55rem] font-semibold uppercase tracking-wide text-cream/40">
-                      {pillar.roles}
-                    </p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <div className="mt-24">
-            <ScrollReveal>
-              <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-cream/50">{freedomSeeker.brandCampaigns.label}</p>
-            </ScrollReveal>
-            <ScrollReveal delay={0.05}>
-              <p className="mt-2 max-w-sm font-body text-sm text-cream/70">{freedomSeeker.brandCampaigns.body}</p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.15}>
-              <div className="relative mt-14 flex h-44 items-center justify-center gap-2 sm:h-52">
-                <Polaroid className="h-40 w-32 -rotate-6 sm:h-48 sm:w-36" objectPosition="15% 30%" />
-                <Polaroid className="z-10 h-44 w-36 rotate-3 sm:h-52 sm:w-40" objectPosition="55% 10%" />
-                <Polaroid className="h-40 w-32 rotate-12 sm:h-48 sm:w-36" objectPosition="85% 50%" />
-                <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-2xl" aria-hidden="true">
-                  🌼
-                </span>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </div>
-
-      {/* Band 4 — light: the journey statement + two-column, then the
-          envelope of Polaroids spilling out. */}
-      <div className="bg-sand px-6 py-28 sm:py-36">
+      <div className="px-6 py-28 sm:py-36">
         <div className="container-editorial">
           <ScrollReveal>
             <p className="text-center font-body text-xs font-semibold uppercase tracking-widest2 text-stone">
@@ -276,8 +178,124 @@ export default function Section3() {
           </ScrollReveal>
         </div>
       </div>
+    </section>
+  );
+}
 
-      {/* Band 5 — dark: modeling-style card + giant statement */}
+// A breather after the offers: the note to self + "A life that actually
+// feels free".
+export function NoteToSelf() {
+  return (
+    <section className="bg-sand px-6 py-28 sm:py-36">
+      <div className="container-editorial">
+          <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+            <ScrollReveal className="relative mx-auto max-w-xs">
+              <div className="absolute -inset-4 -rotate-2 rounded-sm bg-zing-green/60" />
+              <div className="relative -rotate-1 bg-cream p-8 pt-10 shadow-xl">
+                <svg className="absolute -top-5 left-1/2 h-10 w-6 -translate-x-1/2 text-bark" viewBox="0 0 24 40" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="10" rx="5" />
+                  <line x1="12" y1="13" x2="12" y2="34" />
+                </svg>
+                <p className="font-display text-xl italic text-bark">{freedomSeeker.noteCard.label}</p>
+                <p className="mt-3 font-hand text-lg leading-relaxed text-umber">{freedomSeeker.noteCard.body}</p>
+              </div>
+            </ScrollReveal>
+
+            <div>
+              <ScrollReveal>
+                <p className="font-display text-3xl italic text-bark sm:text-4xl">{freedomSeeker.creativeWork.leadItalic}</p>
+                <p className="font-display text-3xl font-bold uppercase text-bark sm:text-4xl">
+                  {freedomSeeker.creativeWork.leadBold}
+                </p>
+              </ScrollReveal>
+              <ScrollReveal delay={0.1}>
+                <p className="mt-5 max-w-md font-body text-sm leading-relaxed text-umber">{freedomSeeker.creativeWork.body}</p>
+                <Link href={freedomSeeker.creativeWork.ctaHref} className="relative mt-6 inline-block font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark">
+                  {freedomSeeker.creativeWork.cta}
+                </Link>
+              </ScrollReveal>
+            </div>
+          </div>
+      </div>
+    </section>
+  );
+}
+
+// Her world: On the Road pillars + snapshots (dark).
+export function OnTheRoad() {
+  return (
+    <section id="on-the-road">
+      <div className="bg-bark px-6 py-28 sm:py-36">
+        <div className="container-editorial">
+          <div className="flex items-end justify-between">
+            <div>
+              <ScrollReveal>
+                <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-cream/50">{freedomSeeker.pillarsLabel}</p>
+              </ScrollReveal>
+              <ScrollReveal delay={0.05}>
+                <p className="mt-2 max-w-sm font-body text-sm text-cream/70">{freedomSeeker.pillarsIntro}</p>
+              </ScrollReveal>
+            </div>
+          </div>
+
+          <div className="mt-8 grid gap-6 sm:grid-cols-4">
+            {freedomSeeker.pillars.map((pillar, i) => (
+              <ScrollReveal key={pillar.title} delay={0.08 * i}>
+                <div className="relative aspect-[3/4] w-full overflow-hidden border border-cream/10">
+                  {hero.imageSrc && (
+                    <Image
+                      src={hero.imageSrc}
+                      alt=""
+                      fill
+                      className="object-cover"
+                      style={{ objectPosition: `${30 + i * 15}% ${5 + i * 8}%` }}
+                      aria-hidden="true"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-bark/85 via-bark/10 to-transparent" />
+                  <span className="absolute right-2 top-2 h-6 w-6 rounded-full border border-cream/50 bg-bark/40" aria-hidden="true" />
+                  <div className="absolute inset-x-0 bottom-0 p-4">
+                    <p className="font-body text-[0.6rem] font-semibold uppercase tracking-widest2 text-zing-yellow">{pillar.category}</p>
+                    <h4 className="mt-1.5 font-display text-lg text-cream">{pillar.title}</h4>
+                    <p className="mt-1 font-body text-[0.65rem] leading-snug text-cream/70">{pillar.excerpt}</p>
+                    <p className="mt-2 border-t border-cream/15 pt-2 font-body text-[0.55rem] font-semibold uppercase tracking-wide text-cream/40">
+                      {pillar.roles}
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <div className="mt-24">
+            <ScrollReveal>
+              <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-cream/50">{freedomSeeker.brandCampaigns.label}</p>
+            </ScrollReveal>
+            <ScrollReveal delay={0.05}>
+              <p className="mt-2 max-w-sm font-body text-sm text-cream/70">{freedomSeeker.brandCampaigns.body}</p>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.15}>
+              <div className="relative mt-14 flex h-44 items-center justify-center gap-2 sm:h-52">
+                <Polaroid className="h-40 w-32 -rotate-6 sm:h-48 sm:w-36" objectPosition="15% 30%" />
+                <Polaroid className="z-10 h-44 w-36 rotate-3 sm:h-52 sm:w-40" objectPosition="55% 10%" />
+                <Polaroid className="h-40 w-32 rotate-12 sm:h-48 sm:w-36" objectPosition="85% 50%" />
+                <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-2xl" aria-hidden="true">
+                  🌼
+                </span>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Dark "Behind the scenes / COME SAY HI" band leading into the contact form.
+export function ComeSayHi() {
+  return (
+    <section>
       <div className="bg-bark px-6 py-28 sm:py-36">
         <div className="container-editorial text-center">
           <ScrollReveal>
@@ -293,10 +311,16 @@ export default function Section3() {
           </ScrollReveal>
         </div>
       </div>
+    </section>
+  );
+}
 
-      {/* Band 6 — light: contact, with a safety pin holding a scattered
-          stack of photos, mirroring the reference's "Ready to Start?
-          Let's Talk". */}
+// Contact: Let's Talk form with the pinned photo collage.
+export function LetsTalk() {
+  const [submitted, setSubmitted] = useState(false);
+
+  return (
+    <section id="contact">
       <div className="bg-sand px-6 py-28 sm:py-36">
         <div className="container-editorial grid gap-16 lg:grid-cols-2 lg:items-start">
           <div>

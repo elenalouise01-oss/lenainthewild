@@ -90,12 +90,13 @@ export default function Navigation({ className = '', iconClassName = '', childre
               ))}
             </nav>
 
-            <button
-              type="button"
+            <Link
+              href="#subscribe"
+              onClick={() => setOpen(false)}
               className="mt-10 border border-bark px-8 py-3 font-body text-xs font-semibold uppercase tracking-widest2 text-bark transition-colors hover:bg-bark hover:text-cream"
             >
               {nav.subscribeLabel}
-            </button>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

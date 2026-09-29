@@ -4,17 +4,24 @@ import Hero from '@/components/sections/Hero';
 import Newsletter from '@/components/sections/Newsletter';
 import Section1 from '@/components/sections/Section1';
 import Section2 from '@/components/sections/Section2';
-import Section3 from '@/components/sections/Section3';
+import { ComeSayHi, LetsTalk, NoteToSelf, Offers, OnTheRoad, WhyMe } from '@/components/sections/Section3';
 
+// Know → like → trust → buy: who she is, her story, why her, the offers,
+// a breather, her world, softer ways to stay close, then the contact.
 export default function Home() {
   return (
     <main>
       <Hero />
       <Section1 />
       <Section2 />
-      <Section3 />
+      <WhyMe />
+      <Offers />
+      <NoteToSelf />
+      <OnTheRoad />
       <Blog />
       <Newsletter />
+      <ComeSayHi />
+      <LetsTalk />
       <Footer />
     </main>
   );

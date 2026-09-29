@@ -10,6 +10,7 @@ import { footer, nav, offerLinks, socialLinks } from '@/content/site';
 const REAL_ANCHORS: Record<string, string> = {
   Blog: '#blog',
   About: '#about',
+  Substack: '#subscribe',
   ...offerLinks,
   ...socialLinks,
 };

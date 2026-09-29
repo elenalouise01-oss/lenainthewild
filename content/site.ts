@@ -8,8 +8,7 @@ export const nav = {
     { label: 'About', href: '#about' },
     { label: 'The Freedom Seeker', href: '#freedom-seeker', expandable: true },
     { label: 'Blog', href: '#blog', expandable: true },
-    { label: 'Wellness Studio', href: '#wellness-studio' },
-    { label: 'Shop', href: '#shop' },
+    { label: 'Contact', href: '#contact' },
   ],
   subscribeLabel: 'Subscribe',
   closeLabel: 'Close',
@@ -33,15 +32,15 @@ export const welcome = {
     "You've been feeling that pull, little nudges to go after your dream. You're standing in the life you thought you wanted, feeling stuck, stagnant, unfulfilled, searching for answers.",
   supportRight: "I feel you. That was me. Trust me, you're in the right place.",
   cta: "Here's how it all started",
-  ctaHref: '#story',
+  ctaHref: '#about',
   chapterLabel: 'Lena in the Wild',
   bigWord: 'LIFE',
   chapters: [
     { number: '01', label: 'My Story' },
     { number: '02', label: 'Freedom' },
     { number: '03', label: 'Blog' },
-    { number: '04', label: 'Wellness' },
-    { number: '05', label: 'Shop' },
+    { number: '04', label: 'On the Road' },
+    { number: '05', label: 'Say Hi' },
   ],
   statBlock: {
     text: '36 years old when I walked away from the life everyone said I should want — and I never looked back.',
@@ -53,7 +52,7 @@ export const myStory = {
   quote: "I just had a deep, undeniable knowing that this life wasn't for me anymore.",
   body: "I'm Lena. I was 36 when I uprooted my life from Sydney and leapt into the unknown, leaving behind a successful personal training business in Bondi that once felt like the dream. I couldn't shake the feeling that surely this can't be it. So I broke free, from the hustle, the system, the rat race, and I've been rebuilding on my own terms ever since. Lena in the Wild is where I document that journey: slow living, travel, wellness, healing, and the real, unfiltered version of what it actually takes to rebuild a life on your terms.",
   cta: 'Read My Story',
-  ctaHref: '#about',
+  ctaHref: '#experience',
 };
 
 export const socialLinks: Record<string, string> = {
@@ -121,7 +120,7 @@ export const freedomSeeker = {
     leadBold: 'THAT ACTUALLY FEELS FREE',
     body: "After a decade chasing the version of success everyone else wanted for me, I'm learning what actually feels good — one honest day at a time.",
     cta: "Let's Connect",
-    ctaHref: '#subscribe',
+    ctaHref: '#contact',
   },
 
   pillarsLabel: 'On the Road',
