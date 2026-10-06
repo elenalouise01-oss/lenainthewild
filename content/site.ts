@@ -118,7 +118,7 @@ export const freedomSeeker = {
     ctaHref: '#contact',
   },
 
-  pillarsLabel: 'On the Road',
+  pillarsLabel: 'My Journal',
   pillarsIntro: 'I move easily between the plan and whatever actually happens — that’s usually the better story.',
   pillars: [
     {

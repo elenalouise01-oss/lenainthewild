@@ -57,7 +57,7 @@ function Label({ children, className = '' }: { children: React.ReactNode; classN
   return <p className={`font-body text-xs font-semibold uppercase tracking-widest2 text-stone ${className}`}>{children}</p>;
 }
 
-// On the Road cards: the reference's "video projects" row.
+// My Journal cards: the reference's "video projects" row.
 const ROAD_PHOTOS = [
   { src: '/images/road/road-2.jpg', pos: '50% 35%' },
   { src: '/images/road/road-1.jpg', pos: '40% 60%' },
@@ -179,7 +179,7 @@ export default function Section3() {
             </ScrollReveal>
           </div>
 
-          {/* On the Road: a row of cards with previous / next */}
+          {/* My Journal: a row of cards with previous / next */}
           <div id="on-the-road" className="mt-32 sm:mt-40">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
               <ScrollReveal>
