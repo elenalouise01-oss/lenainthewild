@@ -47,8 +47,9 @@ export default function Envelope() {
   // 0 as the envelope peeks in at the bottom of the screen, 1 when it sits
   // in the middle.
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'center center'] });
-  const photoDrop = useDrop(scrollYProgress, [0.15, 0.7], 3, -14);
-  const ribbonDrop = useDrop(scrollYProgress, [0.3, 0.9], 12, 18);
+  const cardDrop = useDrop(scrollYProgress, [0.05, 0.6], -5, -12);
+  const photoDrop = useDrop(scrollYProgress, [0.18, 0.75], 3, -14);
+  const ribbonDrop = useDrop(scrollYProgress, [0.32, 0.92], 12, 18);
 
   return (
     <div
@@ -56,21 +57,6 @@ export default function Envelope() {
       className="relative mx-auto w-full max-w-3xl"
       style={{ aspectRatio: `${W} / ${H}`, containerType: 'inline-size' }}
     >
-      {/* Dashed doodle trailing off the top */}
-      <svg
-        aria-hidden="true"
-        className="absolute text-bark/40"
-        style={box(150, -40, 50, 70)}
-        viewBox="0 0 50 70"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeDasharray="5 6"
-        strokeLinecap="round"
-      >
-        <path d="M40 2 C 38 25, 20 40, 8 66" />
-      </svg>
-
       {/* Back of the envelope */}
       <svg aria-hidden="true" className="absolute inset-0 h-full w-full" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none">
         <path d="M0,190 Q0,172 18,172 L868,172 Q886,172 886,190 L886,640 L0,640 Z" fill="#ecebe6" />
@@ -89,10 +75,10 @@ export default function Envelope() {
         </motion.div>
       ))}
 
-      {/* Green card with the places */}
-      <div
+      {/* Green card with the places: drops into the envelope first */}
+      <motion.div
         className="absolute flex flex-col bg-zing-green px-[3%] py-[3.5%] text-bark shadow-[0_6px_18px_rgba(59,45,14,0.2)]"
-        style={{ ...box(160, 52, 280, 238), transform: 'rotate(-5deg)', zIndex: 2 }}
+        style={{ ...box(160, 52, 280, 238), rotate: -5, zIndex: 2, ...(reduced ? {} : cardDrop) }}
       >
         <p className="font-body font-semibold uppercase tracking-wide" style={{ fontSize: '1.45cqw' }}>
           {envelope.cardLabel}
@@ -100,7 +86,7 @@ export default function Envelope() {
         <p className="mt-[4%] font-display leading-[1.05]" style={{ fontSize: '3.6cqw' }}>
           {envelope.places.join(', ')}
         </p>
-      </div>
+      </motion.div>
 
       {/* Lilac ribbon: drops into the envelope as you scroll */}
       <motion.div

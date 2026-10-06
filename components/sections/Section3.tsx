@@ -63,17 +63,15 @@ function Polaroid({
   );
 }
 
-// Hand-drawn dashed loop, like the doodles in the reference.
+// Hand-drawn dashed line, like the reference: drops down, ties a small
+// loop, then swings out and trails off towards the envelope.
 function Squiggle({ className = '' }: { className?: string }) {
   return (
-    <svg className={`pointer-events-none text-bark/35 ${className}`} viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 5" strokeLinecap="round" aria-hidden="true">
-      <path d="M10 10 C 30 60, 90 30, 80 70 C 72 100, 40 90, 50 70 C 60 50, 100 80, 110 112" />
+    <svg className={`pointer-events-none text-bark/40 ${className}`} viewBox="0 0 250 270" fill="none" stroke="currentColor" strokeWidth="1.8" strokeDasharray="6 6" strokeLinecap="round" aria-hidden="true">
+      <path d="M42 4 C 16 30, 2 92, 24 124 C 42 150, 96 148, 108 122 C 116 102, 92 88, 84 106 C 76 124, 100 140, 132 142 C 182 146, 246 172, 240 212 C 237 236, 224 254, 212 266" />
     </svg>
   );
 }
-
-// Longer dashed doodle with a loop, ending in an arrow that points down
-// into the next part of the section.
 function SquiggleArrow({ className = '' }: { className?: string }) {
   return (
     <svg className={`pointer-events-none text-bark/45 ${className}`} viewBox="0 0 160 300" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -223,7 +221,7 @@ export default function Section3() {
                 <p className="font-body text-sm leading-relaxed text-umber">{freedomSeeker.contentJourney.colRest}</p>
               </div>
             </ScrollReveal>
-            <Squiggle className="absolute -left-2 top-56 hidden h-28 w-28 lg:block" />
+            <Squiggle className="absolute left-[8%] top-52 hidden h-72 w-64 lg:block" />
             <ScrollReveal delay={0.15} className="mt-20 sm:mt-24">
               <Envelope />
             </ScrollReveal>
