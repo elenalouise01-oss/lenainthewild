@@ -35,13 +35,8 @@ export const welcome = {
   ctaHref: '#about',
   chapterLabel: 'Lena in the Wild',
   bigWord: 'LIFE',
-  chapters: [
-    { number: '01', label: 'My Story' },
-    { number: '02', label: 'Freedom' },
-    { number: '03', label: 'Blog' },
-    { number: '04', label: 'On the Road' },
-    { number: '05', label: 'Say Hi' },
-  ],
+  // Matches the menu links.
+  chapters: nav.links.map((link, i) => ({ number: String(i + 1).padStart(2, '0'), label: link.label, href: link.href })),
   statBlock: {
     text: '36 years old when I walked away from the life everyone said I should want — and I never looked back.',
   },

@@ -65,14 +65,15 @@ export default function Section1() {
             <ScrollReveal>
               <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">
                 {welcome.chapters.map((chapter, i) => (
-                  <span
+                  <a
                     key={chapter.label}
-                    className={`font-body text-sm font-bold uppercase tracking-wide ${
+                    href={chapter.href}
+                    className={`font-body text-sm font-bold uppercase tracking-wide transition-colors hover:text-bark ${
                       i === 0 ? 'text-bark underline decoration-sage decoration-2 underline-offset-4' : 'text-bark/40'
                     }`}
                   >
                     {chapter.number} {chapter.label}
-                  </span>
+                  </a>
                 ))}
               </nav>
             </ScrollReveal>
