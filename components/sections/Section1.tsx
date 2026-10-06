@@ -18,14 +18,9 @@ export default function Section1() {
   const reduced = useReducedMotion();
   const sandRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: sandRef, offset: ['start end', 'end start'] });
-  // A single pass (not 3 repeats overlapping at once) across a generous
-  // vw distance over the full scroll range, so it crawls slowly enough
-  // to actually read as it passes instead of whipping by.
-  const marqueeX = useTransform(scrollYProgress, [0, 1], ['170vw', '-260vw']);
-  // Slides in from off-screen, holds fully in view for a readable beat
-  // (so the first letter is actually visible, not clipped mid-entrance),
-  // then exits left.
-  const wordX = useTransform(scrollYProgress, [0, 0.18, 0.42, 0.6], ['110vw', '0vw', '0vw', '-130vw']);
+  // "YOUR" slides in from the right as the section scrolls into view,
+  // then settles next to REINVENT.
+  const yourX = useTransform(scrollYProgress, [0.05, 0.4], ['60vw', '0vw']);
 
   return (
     <section id="story">
@@ -59,9 +54,6 @@ export default function Section1() {
       <div ref={sandRef} className="relative overflow-hidden bg-cream px-6 py-24 sm:px-10 sm:py-32 lg:px-16">
         <div className="relative z-10 mx-auto w-full max-w-content">
           <div className="sticky top-6 z-20 flex items-center gap-8 bg-cream/90 py-2 backdrop-blur-sm">
-            <span className="hidden shrink-0 -rotate-90 whitespace-nowrap font-body text-xs font-semibold uppercase tracking-widest2 text-stone sm:block">
-              {welcome.chapterLabel}
-            </span>
             <ScrollReveal>
               <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">
                 {welcome.chapters.map((chapter, i) => (
@@ -79,33 +71,26 @@ export default function Section1() {
             </ScrollReveal>
           </div>
 
-          {/* Same beat as the reference: the photo-filled word itself slides
-              across the screen (not just a static letter with something
-              sliding behind it), trailed by a ghost outline of the same
-              phrase drifting at a different rate. */}
-          <div className="relative mt-6 h-[38vw] sm:h-[26vw]">
-            {!reduced && (
-              <motion.div
-                aria-hidden="true"
-                style={{ x: marqueeX, WebkitTextStroke: '1.5px rgba(59,45,14,0.55)' }}
-                className="pointer-events-none absolute inset-y-0 left-0 flex select-none items-center whitespace-nowrap font-body text-[38vw] font-black uppercase leading-none text-transparent sm:text-[26vw]"
-              >
-                Design
-              </motion.div>
-            )}
-            <motion.div
+          {/* Two lines: REINVENT + a sliding YOUR, then the photo-filled LIFE */}
+          <div className="mt-10" aria-label={`${welcome.bigLead} ${welcome.bigMoving} ${welcome.bigWord}`} role="heading" aria-level={2}>
+            <div aria-hidden="true" className="flex select-none items-baseline gap-[2.5vw] overflow-hidden whitespace-nowrap font-body text-[9.5vw] font-black uppercase leading-none text-bark sm:text-[8vw]">
+              <span>{welcome.bigLead}</span>
+              <motion.span style={reduced ? undefined : { x: yourX }} className="inline-block">
+                {welcome.bigMoving}
+              </motion.span>
+            </div>
+            <div
+              aria-hidden="true"
               style={{
                 backgroundImage: "url('/images/hero.jpg')",
                 backgroundSize: '55vw',
                 backgroundRepeat: 'repeat',
                 backgroundPosition: 'center',
-                ...(reduced ? {} : { x: wordX }),
               }}
-              className="absolute inset-y-0 left-0 flex select-none items-center whitespace-nowrap bg-clip-text font-body text-[38vw] font-black uppercase leading-none text-transparent sm:text-[26vw]"
-              aria-hidden="true"
+              className="select-none whitespace-nowrap bg-clip-text font-body text-[38vw] font-black uppercase leading-[0.85] text-transparent sm:text-[26vw]"
             >
               {welcome.bigWord}
-            </motion.div>
+            </div>
           </div>
 
         </div>

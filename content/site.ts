@@ -34,6 +34,8 @@ export const welcome = {
   cta: "Here's how it all started",
   ctaHref: '#about',
   chapterLabel: 'Lena in the Wild',
+  bigLead: 'Reinvent',
+  bigMoving: 'Your',
   bigWord: 'LIFE',
   // Matches the menu links.
   chapters: nav.links.map((link, i) => ({ number: String(i + 1).padStart(2, '0'), label: link.label, href: link.href })),
@@ -78,17 +80,17 @@ export const freedomSeeker = {
   tiers: [
     {
       number: '(01)',
-      price: '$22',
-      title: 'The 5 Day Reconnect',
-      body: 'An audio journey to help you slow down, get out of your head, and hear yourself again.',
-      tags: ['Audio Journey', 'Self-Paced'],
-    },
-    {
-      number: '(02)',
       price: '$555',
       title: 'The Freedom Frequency',
       body: 'An embodied self-paced course for people ready to choose themselves.',
       tags: ['Embodied Practice', 'Self-Paced Course', 'Lifetime Access'],
+    },
+    {
+      number: '(02)',
+      price: '$22',
+      title: 'The 5 Day Reconnect',
+      body: 'An audio journey to help you slow down, get out of your head, and hear yourself again.',
+      tags: ['Audio Journey', 'Self-Paced'],
     },
     {
       number: '(03)',
@@ -183,7 +185,7 @@ export const freedomSeeker = {
     headline: "Let's Talk",
     body: "Have a brand, question, or idea in mind? I'd love to hear about it. Whether you're curious about The Freedom Seeker, or just want to connect, let's talk.",
     listLabel: 'Drop a message below and I’ll get back to you shortly',
-    list: ['The 5 Day Reconnect', 'The Freedom Frequency', 'The Aligned Circle', 'General Inquiries'],
+    list: ['The Freedom Frequency', 'The 5 Day Reconnect', 'The Aligned Circle', 'General Inquiries'],
     fields: { name: 'Name', email: 'Email', message: 'Message' },
     cta: 'Send',
   },
@@ -229,7 +231,7 @@ export const footer = {
     },
     {
       label: 'Explore',
-      links: ['The 5 Day Reconnect', 'The Freedom Frequency', 'Dream Life Workbook', 'Wellness Studio'],
+      links: ['The Freedom Frequency', 'The 5 Day Reconnect', 'Dream Life Workbook', 'Wellness Studio'],
     },
     {
       label: 'Connect',
