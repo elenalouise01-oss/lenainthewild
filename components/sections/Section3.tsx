@@ -115,21 +115,10 @@ export default function Section3() {
                 <p className="font-display text-2xl italic text-bark">{freedomSeeker.noteCard.label}</p>
                 <p className="mt-4 font-hand text-lg leading-relaxed text-umber">{freedomSeeker.noteCard.body}</p>
               </div>
-              {/* Little camera in the brand lilac, with stickers */}
-              <svg className="absolute -right-4 top-2 z-20 h-24 w-28 rotate-12 drop-shadow-lg sm:-right-16 sm:h-28 sm:w-32" viewBox="0 0 120 100" aria-hidden="true">
-                <rect x="8" y="22" width="104" height="68" rx="10" fill="#CBA1D4" />
-                <rect x="8" y="22" width="104" height="14" rx="7" fill="#b98bc4" />
-                <rect x="22" y="14" width="26" height="12" rx="3" fill="#b98bc4" />
-                <rect x="84" y="28" width="16" height="9" rx="2" fill="#f4f1f6" stroke="#3b2d0e" strokeOpacity=".3" />
-                <circle cx="66" cy="58" r="26" fill="#3b2d0e" />
-                <circle cx="66" cy="58" r="20" fill="#52421b" />
-                <circle cx="66" cy="58" r="13" fill="#1d160a" />
-                <circle cx="60" cy="52" r="4" fill="#fff" opacity=".55" />
-                <circle cx="96" cy="76" r="6" fill="#fffba0" />
-                <rect x="14" y="44" width="22" height="16" rx="3" fill="#ff8bb8" transform="rotate(-8 25 52)" />
-                <path d="M19 52 l4 4 l8 -9" fill="none" stroke="#3b2d0e" strokeWidth="2" strokeLinecap="round" />
-                <path d="M20 72 l3 6 l6 1 l-5 4 l1 6 l-5 -3 l-5 3 l1 -6 l-5 -4 l6 -1 z" fill="#fffba0" />
-              </svg>
+              {/* Camera with its floral strap, propped on the note's corner */}
+              <div className="absolute -right-8 top-8 z-20 w-36 rotate-6 sm:-right-36 sm:top-0 sm:w-60">
+                <Image src="/images/camera.png" alt="" width={700} height={374} sizes="(min-width: 640px) 14rem, 10rem" className="h-auto w-full drop-shadow-xl" aria-hidden="true" />
+              </div>
               {/* Butterfly sticker in the brand colours */}
               <svg className="absolute -bottom-8 -left-8 z-20 h-20 w-20 -rotate-12 drop-shadow-md" viewBox="0 0 100 100" aria-hidden="true">
                 <path d="M50 48 C 40 20, 8 8, 8 30 C 8 48, 30 54, 50 52 Z" fill="#CBA1D4" />
