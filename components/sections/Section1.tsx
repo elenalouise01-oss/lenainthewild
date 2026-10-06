@@ -2,7 +2,6 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import { hero, welcome } from '@/content/site';
 import { useReducedMotion } from '@/lib/useReducedMotion';
@@ -108,27 +107,6 @@ export default function Section1() {
             </motion.div>
           </div>
 
-          <ScrollReveal delay={0.1}>
-            <div className="relative mt-24 sm:mt-32">
-              <div className="flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:gap-14">
-                <div className="relative flex-shrink-0">
-                <div className="relative h-48 w-36 overflow-hidden shadow-lg sm:h-64 sm:w-48">
-                  <Image
-                    src="/images/rainbow-beach.jpg"
-                    alt="A rainbow over the beach in Sydney"
-                    fill
-                    sizes="200px"
-                    className="object-cover"
-                    style={{ objectPosition: '60% 50%' }}
-                  />
-                </div>
-                </div>
-                <p className="flex-1 font-display text-2xl italic leading-snug text-bark sm:text-4xl sm:leading-tight">
-                  {welcome.statBlock.text}
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
         </div>
       </div>
     </section>
