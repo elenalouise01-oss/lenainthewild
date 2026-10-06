@@ -115,7 +115,7 @@ export default function Section3() {
                 <p className="mt-4 font-hand text-lg leading-relaxed text-umber">{freedomSeeker.noteCard.body}</p>
               </div>
               {/* Camera with its floral strap, propped on the note's corner */}
-              <div className="absolute -right-6 top-6 z-20 w-28 -rotate-[15deg] sm:-right-28 sm:top-0 sm:w-44">
+              <div className="absolute -right-6 top-1 z-20 w-28 -rotate-[15deg] sm:-right-28 sm:-top-5 sm:w-44">
                 <Image src="/images/camera-strap.png" alt="" width={700} height={404} sizes="(min-width: 640px) 14rem, 10rem" className="h-auto w-full drop-shadow-xl" aria-hidden="true" />
               </div>
               {/* Watercolour butterfly, recoloured to the brand lilac */}
