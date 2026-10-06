@@ -335,7 +335,7 @@ export function ComeSayHi() {
                 width={867}
                 height={518}
                 sizes="220px"
-                className="absolute bottom-[15%] left-0 z-30 h-auto w-[46%] -rotate-12 drop-shadow-[0_6px_10px_rgba(59,45,14,0.18)]"
+                className="absolute bottom-[14%] -left-[10%] z-30 h-auto w-[52%] -rotate-[84deg] drop-shadow-[0_6px_10px_rgba(59,45,14,0.18)]"
                 aria-hidden="true"
               />
               <div className="absolute bottom-[2%] left-[7%] z-40 h-[27%] w-[25%] -rotate-[8deg] bg-cream p-1.5 shadow-xl">
@@ -353,8 +353,8 @@ export function ComeSayHi() {
                 alt=""
                 width={847}
                 height={445}
-                sizes="(min-width: 640px) 360px, 75vw"
-                className="absolute -right-[2%] -top-[4%] z-50 h-auto w-[72%] rotate-[10deg] drop-shadow-[0_6px_8px_rgba(59,45,14,0.3)]"
+                sizes="(min-width: 640px) 280px, 60vw"
+                className="absolute right-0 -top-[2%] z-50 h-auto w-[56%] rotate-[10deg] drop-shadow-[0_6px_8px_rgba(59,45,14,0.3)]"
                 aria-hidden="true"
               />
             </ScrollReveal>
