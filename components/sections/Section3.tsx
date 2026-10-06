@@ -117,7 +117,7 @@ export default function Section3() {
               </div>
               {/* Camera with its floral strap, propped on the note's corner */}
               <div className="absolute -right-8 top-8 z-20 w-36 rotate-6 sm:-right-36 sm:top-0 sm:w-60">
-                <Image src="/images/camera.png" alt="" width={700} height={374} sizes="(min-width: 640px) 14rem, 10rem" className="h-auto w-full drop-shadow-xl" aria-hidden="true" />
+                <Image src="/images/camera-strap.png" alt="" width={700} height={404} sizes="(min-width: 640px) 14rem, 10rem" className="h-auto w-full drop-shadow-xl" aria-hidden="true" />
               </div>
               {/* Watercolour butterfly, recoloured to the brand lilac */}
               <div className="absolute -bottom-12 -left-10 z-20 w-24 -rotate-12 sm:-left-14 sm:w-28">
