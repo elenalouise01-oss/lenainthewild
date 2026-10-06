@@ -8,7 +8,7 @@ import { myStory } from '@/content/site';
 // with a sticker badge, paired with a pull-quote + bio.
 export default function Section2() {
   return (
-    <section id="about" className="overflow-hidden bg-cream px-6 py-32 sm:py-44">
+    <section id="about" className="overflow-hidden bg-cream px-6 pb-48 pt-32 sm:pb-72 sm:pt-44">
       <div className="container-editorial grid items-center gap-16 lg:grid-cols-2">
         <ScrollReveal className="relative mx-auto aspect-square w-full max-w-md">
           <div className="absolute inset-0 -rotate-6 bg-cream p-3 shadow-xl">
