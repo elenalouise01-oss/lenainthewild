@@ -1,366 +1,288 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Envelope from '@/components/Envelope';
 import OffersCarousel from '@/components/OffersCarousel';
 import ScrollReveal from '@/components/ScrollReveal';
-import { freedomSeeker, hero } from '@/content/site';
+import { freedomSeeker } from '@/content/site';
 
 function Polaroid({
   className = '',
   objectPosition,
   imgClassName = '',
   src,
-  children,
+  sizes = '220px',
 }: {
   className?: string;
   objectPosition: string;
   imgClassName?: string;
-  src?: string;
-  children?: React.ReactNode;
+  src: string;
+  sizes?: string;
 }) {
   return (
     <div className={`bg-cream p-1.5 shadow-xl ${className}`}>
       <div className="relative h-full w-full overflow-hidden">
-        {(src ?? hero.imageSrc) && (
-          <Image
-            src={(src ?? hero.imageSrc) as string}
-            alt=""
-            fill
-            className={`object-cover ${imgClassName}`}
-            style={{ objectPosition }}
-            aria-hidden="true"
-          />
-        )}
+        <Image src={src} alt="" fill sizes={sizes} className={`object-cover ${imgClassName}`} style={{ objectPosition }} aria-hidden="true" />
       </div>
-      {children}
     </div>
   );
 }
 
-// The page's middle sections, split so the homepage can order them as a
-// journey: why me → offers → a breather → her world → contact.
+// Hand-drawn dashed loop, like the doodles in the reference.
+function Squiggle({ className = '' }: { className?: string }) {
+  return (
+    <svg className={`pointer-events-none text-bark/35 ${className}`} viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 5" strokeLinecap="round" aria-hidden="true">
+      <path d="M10 10 C 30 60, 90 30, 80 70 C 72 100, 40 90, 50 70 C 60 50, 100 80, 110 112" />
+    </svg>
+  );
+}
 
-// Offers: the album-cover carousel.
-export function Offers() {
+function Label({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+  return <p className={`font-body text-xs font-semibold uppercase tracking-widest2 text-stone ${className}`}>{children}</p>;
+}
+
+// On the Road cards: the reference's "video projects" row.
+const ROAD_PHOTOS = [
+  { src: '/images/road/road-2.jpg', pos: '50% 35%' },
+  { src: '/images/road/road-1.jpg', pos: '40% 60%' },
+  { src: '/images/road/road-6.jpg', pos: '50% 60%' },
+  { src: '/images/road/road-8.jpg', pos: '50% 70%' },
+];
+
+// The Freedom Seeker section, one continuous section in the order of the
+// "Section 3" reference: offers → note + creative work → experience →
+// on the road row → snapshots → journey + envelope → big statement →
+// let's talk. Everything after the offers sits on the one sand background.
+export default function Section3() {
+  const [submitted, setSubmitted] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  const scrollRoad = (dir: 1 | -1) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>('[data-card]');
+    el.scrollBy({ left: ((card?.offsetWidth ?? 300) + 24) * dir, behavior: 'smooth' });
+  };
+
   return (
     <section id="freedom-seeker">
+      {/* Offers: the album-cover carousel */}
       <OffersCarousel />
-    </section>
-  );
-}
 
-// Why me: the experience statement, then the journey + envelope of photos.
-export function WhyMe() {
-  return (
-    <section id="experience" className="border-t border-bark/10 bg-sand">
-      <div className="px-6 pt-32 sm:pt-44">
+      <div className="bg-sand px-6 pb-32 pt-24 sm:pb-44 sm:pt-32">
         <div className="container-editorial">
-            <ScrollReveal>
-              <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-stone">{freedomSeeker.experienceLabel}</p>
-            </ScrollReveal>
-            <ScrollReveal delay={0.1}>
-              <p className="mt-6 max-w-4xl font-display text-3xl italic leading-snug text-bark sm:text-4xl">
-                {freedomSeeker.experienceLead}{' '}
-                <span className="mx-1 inline-block rounded-full bg-zing-yellow px-4 py-1 align-middle font-body text-sm font-semibold not-italic uppercase tracking-wide text-bark">
-                  {freedomSeeker.experienceHighlight}
-                </span>{' '}
-                {freedomSeeker.experienceTail}
-              </p>
-            </ScrollReveal>
-        </div>
-      </div>
-      <div className="px-6 py-32 sm:py-44">
-        <div className="container-editorial">
-          <ScrollReveal>
-            <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-stone">
-              {freedomSeeker.contentJourney.label}
-            </p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.1}>
-            <p className="mt-6 max-w-3xl font-display text-2xl leading-snug text-bark sm:text-3xl">
-              {freedomSeeker.contentJourney.lead}{' '}
-              <span className="italic">{freedomSeeker.contentJourney.tail}</span>
-            </p>
-          </ScrollReveal>
-
-          <div className="mt-12 grid max-w-2xl gap-8 sm:grid-cols-2">
-            <ScrollReveal delay={0.15}>
-              <p className="font-body text-sm font-semibold leading-relaxed text-bark">{freedomSeeker.contentJourney.colBold}</p>
-            </ScrollReveal>
-            <ScrollReveal delay={0.2}>
-              <p className="font-body text-sm leading-relaxed text-umber">{freedomSeeker.contentJourney.colRest}</p>
-            </ScrollReveal>
-          </div>
-
-          <ScrollReveal delay={0.1}>
-            <p className="mx-auto mt-24 max-w-2xl text-center font-display text-2xl italic leading-snug text-bark sm:text-3xl">
-              {freedomSeeker.envelope.leadBold} {freedomSeeker.envelope.leadRest}
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.2} className="mt-24 sm:mt-28">
-            <Envelope />
-          </ScrollReveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// A breather after the offers: the note to self + "A life that actually
-// feels free".
-export function NoteToSelf() {
-  return (
-    <section className="bg-sand px-6 py-32 sm:py-44">
-      <div className="container-editorial">
+          {/* Note to self + A life that actually feels free */}
           <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
-            <ScrollReveal className="relative mx-auto max-w-xs">
-              <div className="absolute -inset-4 -rotate-2 rounded-sm bg-zing-green/60" />
-              <div className="relative -rotate-1 bg-cream p-8 pt-10 shadow-xl">
-                <svg className="absolute -top-5 left-1/2 h-10 w-6 -translate-x-1/2 text-bark" viewBox="0 0 24 40" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+            <ScrollReveal className="relative mx-auto w-full max-w-xs">
+              <div className="absolute -inset-4 -rotate-3 rounded-sm bg-zing-green/70" />
+              <div className="relative -rotate-1 bg-cream px-8 pb-10 pt-12 text-center shadow-xl">
+                <svg className="absolute -top-7 left-1/2 h-12 w-8 -translate-x-1/2 text-bark" viewBox="0 0 24 40" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                   <rect x="3" y="3" width="18" height="10" rx="5" />
                   <line x1="12" y1="13" x2="12" y2="34" />
                 </svg>
-                <p className="font-display text-xl italic text-bark">{freedomSeeker.noteCard.label}</p>
-                <p className="mt-3 font-hand text-lg leading-relaxed text-umber">{freedomSeeker.noteCard.body}</p>
+                <p className="font-display text-2xl italic text-bark">{freedomSeeker.noteCard.label}</p>
+                <p className="mt-4 font-hand text-lg leading-relaxed text-umber">{freedomSeeker.noteCard.body}</p>
               </div>
+              <svg className="absolute -bottom-6 -left-6 h-14 w-14 -rotate-12 text-sage drop-shadow" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6z" />
+              </svg>
             </ScrollReveal>
 
-            <div>
+            <div className="relative">
               <ScrollReveal>
-                <p className="font-display text-3xl italic text-bark sm:text-4xl">{freedomSeeker.creativeWork.leadItalic}</p>
-                <p className="font-display text-3xl font-bold uppercase text-bark sm:text-4xl">
-                  {freedomSeeker.creativeWork.leadBold}
-                </p>
+                <p className="font-display text-4xl italic leading-none text-bark sm:text-6xl">{freedomSeeker.creativeWork.leadItalic}</p>
+                <p className="mt-2 font-display text-4xl uppercase leading-none text-bark sm:text-6xl">{freedomSeeker.creativeWork.leadBold}</p>
               </ScrollReveal>
               <ScrollReveal delay={0.1}>
-                <p className="mt-5 max-w-md font-body text-sm leading-relaxed text-umber">{freedomSeeker.creativeWork.body}</p>
-                <Link href={freedomSeeker.creativeWork.ctaHref} className="relative mt-6 inline-block font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark">
+                <p className="mt-6 max-w-md font-body text-sm leading-relaxed text-umber">{freedomSeeker.creativeWork.body}</p>
+                <Link
+                  href={freedomSeeker.creativeWork.ctaHref}
+                  className="mt-6 inline-block font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark"
+                >
                   {freedomSeeker.creativeWork.cta}
                 </Link>
               </ScrollReveal>
-            </div>
-          </div>
-      </div>
-    </section>
-  );
-}
-
-// Her world: On the Road pillars + snapshots (dark).
-export function OnTheRoad() {
-  return (
-    <section id="on-the-road">
-      <div className="bg-bark px-6 py-32 sm:py-44">
-        <div className="container-editorial">
-          <div className="flex items-end justify-between">
-            <div>
-              <ScrollReveal>
-                <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-cream/50">{freedomSeeker.pillarsLabel}</p>
-              </ScrollReveal>
-              <ScrollReveal delay={0.05}>
-                <p className="mt-2 max-w-sm font-body text-sm text-cream/70">{freedomSeeker.pillarsIntro}</p>
-              </ScrollReveal>
+              <Squiggle className="mt-8 h-24 w-24 sm:ml-16" />
             </div>
           </div>
 
-          <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-8">
-            {freedomSeeker.pillars.map((pillar, i) => (
-              <ScrollReveal key={pillar.title} delay={0.08 * i}>
-                <div className="relative aspect-[3/4] w-full overflow-hidden border border-cream/10">
-                  {hero.imageSrc && (
-                    <Image
-                      src={[hero.imageSrc, '/images/lena-sunrise.jpg', '/images/rainbow-beach.jpg', hero.imageSrc][i % 4]}
-                      alt=""
-                      fill
-                      className="object-cover"
-                      style={{ objectPosition: ['30% 5%', '75% 50%', '45% 55%', '75% 30%'][i % 4] }}
-                      aria-hidden="true"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-bark/85 via-bark/10 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-4">
-                    <p className="font-body text-[0.6rem] font-semibold uppercase tracking-widest2 text-zing-yellow">{pillar.category}</p>
-                    <h4 className="mt-1.5 font-display text-lg text-cream">{pillar.title}</h4>
-                    <p className="mt-1 font-body text-[0.65rem] leading-snug text-cream/70">{pillar.excerpt}</p>
-                    <p className="mt-2 border-t border-cream/15 pt-2 font-body text-[0.55rem] font-semibold uppercase tracking-wide text-cream/40">
-                      {pillar.roles}
-                    </p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <div className="mt-32">
+          {/* My Experience: big statement with a pill sticker */}
+          <div className="mt-32 sm:mt-40">
             <ScrollReveal>
-              <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-cream/50">{freedomSeeker.brandCampaigns.label}</p>
+              <Label>{freedomSeeker.experienceLabel}</Label>
             </ScrollReveal>
-            <ScrollReveal delay={0.05}>
-              <p className="mt-2 max-w-sm font-body text-sm text-cream/70">{freedomSeeker.brandCampaigns.body}</p>
+            <ScrollReveal delay={0.1}>
+              <p className="mt-6 max-w-5xl font-display text-3xl leading-[1.15] text-bark sm:text-5xl">
+                {freedomSeeker.experienceLead}{' '}
+                <span className="relative mx-1 inline-block -rotate-3 rounded-sm bg-zing-pink px-3 py-1 align-middle font-body text-[0.6rem] font-semibold uppercase leading-tight tracking-wide text-bark shadow-sm sm:text-xs">
+                  {freedomSeeker.experienceHighlight}
+                </span>{' '}
+                <span className="italic">{freedomSeeker.experienceTail}</span>
+              </p>
             </ScrollReveal>
+          </div>
 
-            <ScrollReveal delay={0.15}>
-              <div className="relative mt-14 flex h-44 items-center justify-center gap-2 sm:h-52">
-                <Polaroid className="h-40 w-32 -rotate-6 sm:h-48 sm:w-36" objectPosition="40% 60%" src="/images/rainbow-beach.jpg" />
-                <Polaroid className="z-10 h-44 w-36 rotate-3 sm:h-52 sm:w-40" objectPosition="72% 50%" src="/images/lena-sunrise.jpg" />
-                <Polaroid className="h-40 w-32 rotate-12 sm:h-48 sm:w-36" objectPosition="85% 50%" />
+          {/* On the Road: a row of cards with previous / next */}
+          <div id="on-the-road" className="mt-32 sm:mt-40">
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+              <ScrollReveal>
+                <Label>{freedomSeeker.pillarsLabel}</Label>
+                <p className="mt-3 max-w-xs font-body text-sm leading-relaxed text-umber">{freedomSeeker.pillarsIntro}</p>
+              </ScrollReveal>
+              <div className="flex gap-5 font-body text-xs font-semibold uppercase tracking-widest2">
+                <button type="button" onClick={() => scrollRoad(-1)} className="text-bark/50 transition-colors hover:text-bark">
+                  Previous
+                </button>
+                <button type="button" onClick={() => scrollRoad(1)} className="text-bark underline decoration-sage decoration-2 underline-offset-8">
+                  Next
+                </button>
+              </div>
+            </div>
+
+            <div ref={trackRef} className="no-scrollbar -mx-6 mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-6">
+              {freedomSeeker.pillars.map((pillar, i) => {
+                const photo = ROAD_PHOTOS[i % ROAD_PHOTOS.length];
+                return (
+                  <ScrollReveal key={pillar.title} delay={0.06 * i} className="w-[70%] flex-none snap-start sm:w-[calc(25%-18px)]">
+                    <div data-card>
+                      <div className="relative aspect-[3/4] w-full overflow-hidden rounded-sm shadow-md">
+                        <Image src={photo.src} alt="" fill sizes="(min-width: 640px) 25vw, 70vw" className="object-cover" style={{ objectPosition: photo.pos }} aria-hidden="true" />
+                      </div>
+                      <h4 className="mt-5 font-display text-2xl text-bark">{pillar.title}</h4>
+                      <p className="mt-1 font-body text-xs text-umber">{pillar.excerpt}</p>
+                      <p className="mt-3 font-body text-[0.6rem] font-semibold uppercase leading-relaxed tracking-wide text-stone">{pillar.roles}</p>
+                    </div>
+                  </ScrollReveal>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Snapshots: text left, polaroids right */}
+          <div className="mt-32 grid min-w-0 gap-12 sm:mt-40 lg:grid-cols-[1fr_1.4fr] lg:items-center">
+            <ScrollReveal>
+              <Label>{freedomSeeker.brandCampaigns.label}</Label>
+              <p className="mt-3 max-w-xs font-body text-sm leading-relaxed text-umber">{freedomSeeker.brandCampaigns.body}</p>
+            </ScrollReveal>
+            <ScrollReveal delay={0.1}>
+              <div className="relative mx-auto flex h-60 max-w-lg items-center justify-center sm:h-72">
+                <Polaroid className="h-36 w-28 -rotate-6 sm:h-56 sm:w-48" objectPosition="50% 60%" src="/images/road/road-3.jpg" />
+                <Polaroid className="z-10 -ml-4 h-44 w-32 rotate-2 sm:-ml-6 sm:h-64 sm:w-48" objectPosition="50% 40%" src="/images/road/road-5.jpg" />
+                <Polaroid className="-ml-4 h-36 w-28 rotate-6 sm:-ml-6 sm:h-56 sm:w-48" objectPosition="50% 75%" src="/images/road/road-7.jpg" />
+                <svg className="absolute -bottom-2 right-6 z-20 h-12 w-12 text-zing-yellow drop-shadow" viewBox="0 0 24 24" aria-hidden="true">
+                  {[0, 72, 144, 216, 288].map((r) => (
+                    <ellipse key={r} cx="12" cy="6.5" rx="4" ry="5.5" fill="currentColor" transform={`rotate(${r} 12 12)`} />
+                  ))}
+                  <circle cx="12" cy="12" r="3" fill="#e0a43a" />
+                </svg>
               </div>
             </ScrollReveal>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
-// Pale-lilac "Behind the scenes / COME SAY HI" band leading into the contact form.
-export function ComeSayHi() {
-  return (
-    <section>
-      <div className="bg-[#E8DCE2] px-6 py-32 sm:py-44">
-        <div className="container-editorial text-center">
-          <ScrollReveal>
-            <div className="mx-auto inline-block -rotate-1 bg-cream px-10 py-8 shadow-2xl">
-              <p className="font-display text-xl italic text-bark">{freedomSeeker.modelingCard.label}</p>
-              <p className="mt-1 font-display text-3xl font-bold text-bark">{freedomSeeker.modelingCard.headline}</p>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal delay={0.15}>
-            <h3 className="mt-10 whitespace-nowrap font-display text-[11vw] font-bold uppercase leading-none text-bark sm:text-[9vw]">
-              {freedomSeeker.bigStatement}
-            </h3>
-          </ScrollReveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// Contact: Let's Talk form with the pinned photo collage.
-export function LetsTalk() {
-  const [submitted, setSubmitted] = useState(false);
-
-  return (
-    <section id="contact">
-      <div className="bg-sand px-6 py-32 sm:py-44">
-        <div className="container-editorial grid gap-16 lg:grid-cols-2 lg:items-start">
-          <div>
+          {/* My Journey: centred statement, two short columns, then the envelope */}
+          <div id="experience" className="relative mt-32 text-center sm:mt-40">
             <ScrollReveal>
-              <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-stone">{freedomSeeker.contact.kicker}</p>
-              <h3 className="mt-2 font-display text-4xl italic text-bark sm:text-5xl">{freedomSeeker.contact.headline}</h3>
-              <p className="mt-5 max-w-md font-body text-sm leading-relaxed text-umber">{freedomSeeker.contact.body}</p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.1}>
-              <ol className="mt-8 space-y-2">
-                {freedomSeeker.contact.list.map((item, i) => (
-                  <li key={item} className="font-body text-sm text-bark">
-                    {i + 1}) {item}
-                  </li>
-                ))}
-              </ol>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.15}>
-              <p className="mt-14 font-body text-xs font-semibold uppercase tracking-widest2 text-stone">
-                {freedomSeeker.contact.listLabel}
+              <Label>{freedomSeeker.contentJourney.label}</Label>
+              <p className="mx-auto mt-6 max-w-4xl font-display text-3xl leading-[1.15] text-bark sm:text-5xl">
+                {freedomSeeker.contentJourney.lead} <span className="italic">{freedomSeeker.contentJourney.tail}</span>
               </p>
-              {submitted ? (
-                <p className="mt-4 rounded-sm border border-sage/30 bg-sage/10 px-5 py-4 font-body text-sm text-bark" role="status">
-                  Thanks — that&apos;s landed with me. I&apos;ll get back to you shortly.
-                </p>
-              ) : (
-                <form
-                  className="mt-4 flex flex-col gap-6"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setSubmitted(true);
-                  }}
-                >
-                  <label className="block">
-                    <span className="sr-only">{freedomSeeker.contact.fields.name}</span>
-                    <input
-                      type="text"
-                      required
-                      placeholder={freedomSeeker.contact.fields.name}
-                      className="w-full border-0 border-b border-bark/25 bg-transparent py-3 font-body text-bark placeholder:text-bark/40 focus:border-bark focus:outline-none"
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="sr-only">{freedomSeeker.contact.fields.email}</span>
-                    <input
-                      type="email"
-                      required
-                      placeholder={freedomSeeker.contact.fields.email}
-                      className="w-full border-0 border-b border-bark/25 bg-transparent py-3 font-body text-bark placeholder:text-bark/40 focus:border-bark focus:outline-none"
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="sr-only">{freedomSeeker.contact.fields.message}</span>
-                    <textarea
-                      rows={3}
-                      required
-                      placeholder={freedomSeeker.contact.fields.message}
-                      className="w-full resize-none border-0 border-b border-bark/25 bg-transparent py-3 font-body text-bark placeholder:text-bark/40 focus:border-bark focus:outline-none"
-                    />
-                  </label>
-                  <button type="submit" className="self-start font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark">
-                    {freedomSeeker.contact.cta} →
-                  </button>
-                </form>
-              )}
+            </ScrollReveal>
+            <ScrollReveal delay={0.1}>
+              <div className="mx-auto mt-12 grid max-w-2xl gap-8 text-left sm:grid-cols-2">
+                <p className="font-body text-sm font-semibold leading-relaxed text-bark">{freedomSeeker.contentJourney.colBold}</p>
+                <p className="font-body text-sm leading-relaxed text-umber">{freedomSeeker.contentJourney.colRest}</p>
+              </div>
+            </ScrollReveal>
+            <Squiggle className="absolute -left-2 top-56 hidden h-28 w-28 lg:block" />
+            <ScrollReveal delay={0.15} className="mt-20 sm:mt-24">
+              <Envelope />
             </ScrollReveal>
           </div>
 
-          <ScrollReveal delay={0.1} className="relative mx-auto h-96 w-full max-w-sm sm:max-w-md">
-            <div className="absolute -bottom-2 right-2 z-40 flex h-24 w-24 rotate-12 items-center justify-center rounded-full bg-zing-yellow p-3 text-center font-script text-lg leading-[0.95] text-bark shadow-md">
-              say hi!
-            </div>
-            {/* A single safety pin, larger and more diagonal, piercing a
-                looser scattered stack of photos (was just 2, reference
-                shows a denser 5-piece collage) — spring coil at the hinge
-                end, a hooked clasp cupping the point at the other end. */}
-            <svg
-              className="absolute left-2 top-4 z-30 h-24 w-64 text-stone drop-shadow-lg sm:left-4 sm:top-6 sm:h-28 sm:w-72"
-              viewBox="0 0 280 100"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="4"
-              aria-hidden="true"
-            >
-              <path d="M32 84 a13 13 0 1 1 14 -22 a9 9 0 1 1 -10 16" strokeLinecap="round" />
-              <path d="M32 84 L228 24" strokeLinecap="round" />
-              <path d="M228 24 a16 16 0 1 1 0 27" strokeLinecap="round" />
-            </svg>
-
-            <Polaroid
-              className="absolute left-0 top-24 z-10 h-32 w-24 -rotate-12 sm:h-36 sm:w-28"
-              objectPosition="15% 55%"
-              imgClassName="grayscale-[0.6]"
-            />
-            <Polaroid
-              className="absolute left-8 top-4 z-20 h-40 w-32 -rotate-3 shadow-2xl sm:h-44 sm:w-36"
-              objectPosition="55% 5%"
-            />
-            <Polaroid
-              className="absolute right-6 top-16 z-10 h-32 w-24 rotate-6 sm:h-36 sm:w-28"
-              objectPosition="75% 45%"
-              imgClassName="grayscale-[0.6]"
-            />
-            <Polaroid
-              className="absolute right-0 top-40 z-20 h-36 w-28 rotate-12 sm:h-40 sm:w-32"
-              objectPosition="35% 70%"
-              imgClassName="-scale-x-100"
-            />
-            <Polaroid
-              className="absolute left-1/2 top-52 z-10 h-28 w-24 -translate-x-1/2 rotate-2 sm:top-56"
-              objectPosition="60% 20%"
-              imgClassName="-scale-x-100 sepia-[0.25]"
-            />
+          {/* Big statement */}
+          <ScrollReveal className="mt-32 sm:mt-44">
+            <h3 className="whitespace-nowrap font-display text-[13vw] uppercase leading-[0.9] tracking-tight text-bark sm:text-[10vw]">{freedomSeeker.bigStatement}</h3>
           </ScrollReveal>
+
+          {/* Let's Talk */}
+          <div id="contact" className="mt-16 grid gap-16 lg:grid-cols-2 lg:items-start">
+            <div>
+              <ScrollReveal>
+                <p className="font-display text-4xl italic leading-none text-bark sm:text-5xl">{freedomSeeker.contact.kicker}</p>
+                <p className="mt-2 font-display text-4xl uppercase leading-none text-bark sm:text-5xl">{freedomSeeker.contact.headline}</p>
+              </ScrollReveal>
+              <ScrollReveal delay={0.1}>
+                <div className="mt-8 grid gap-6 sm:grid-cols-2">
+                  <p className="font-body text-sm leading-relaxed text-umber">{freedomSeeker.contact.body}</p>
+                  <ol className="space-y-1.5">
+                    {freedomSeeker.contact.list.map((item, i) => (
+                      <li key={item} className="font-body text-sm text-bark">
+                        {i + 1}) {item}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.15}>
+                <Label className="mt-14 max-w-xs">{freedomSeeker.contact.listLabel}</Label>
+                {submitted ? (
+                  <p className="mt-4 rounded-sm border border-sage/30 bg-sage/10 px-5 py-4 font-body text-sm text-bark" role="status">
+                    Thanks — that&apos;s landed with me. I&apos;ll get back to you shortly.
+                  </p>
+                ) : (
+                  <form
+                    className="mt-4 flex max-w-md flex-col gap-6"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      setSubmitted(true);
+                    }}
+                  >
+                    {(['name', 'email'] as const).map((field) => (
+                      <label key={field} className="block">
+                        <span className="sr-only">{freedomSeeker.contact.fields[field]}</span>
+                        <input
+                          type={field === 'email' ? 'email' : 'text'}
+                          required
+                          placeholder={freedomSeeker.contact.fields[field]}
+                          className="w-full border-0 border-b border-bark/25 bg-transparent py-3 font-body text-bark placeholder:text-bark/40 focus:border-bark focus:outline-none"
+                        />
+                      </label>
+                    ))}
+                    <label className="block">
+                      <span className="sr-only">{freedomSeeker.contact.fields.message}</span>
+                      <textarea
+                        rows={3}
+                        required
+                        placeholder={freedomSeeker.contact.fields.message}
+                        className="w-full resize-none border-0 border-b border-bark/25 bg-transparent py-3 font-body text-bark placeholder:text-bark/40 focus:border-bark focus:outline-none"
+                      />
+                    </label>
+                    <button type="submit" className="self-start font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark">
+                      {freedomSeeker.contact.cta} →
+                    </button>
+                  </form>
+                )}
+              </ScrollReveal>
+            </div>
+
+            {/* Pinned photo collage */}
+            <ScrollReveal delay={0.1} className="relative mx-auto h-[26rem] w-full max-w-sm sm:max-w-md">
+              <svg className="absolute right-10 top-0 z-30 h-24 w-56 -rotate-12 text-stone drop-shadow-lg" viewBox="0 0 280 100" fill="none" stroke="currentColor" strokeWidth="4" aria-hidden="true">
+                <path d="M32 84 a13 13 0 1 1 14 -22 a9 9 0 1 1 -10 16" strokeLinecap="round" />
+                <path d="M32 84 L228 24" strokeLinecap="round" />
+                <path d="M228 24 a16 16 0 1 1 0 27" strokeLinecap="round" />
+              </svg>
+              <Polaroid className="absolute left-6 top-10 z-10 h-36 w-28 -rotate-6" objectPosition="40% 60%" src="/images/road/road-1.jpg" />
+              <Polaroid className="absolute right-0 top-12 z-20 h-80 w-60 rotate-3 shadow-2xl" objectPosition="50% 35%" src="/images/road/road-2.jpg" sizes="300px" />
+              <Polaroid className="absolute bottom-0 left-0 z-30 h-36 w-32 -rotate-12" objectPosition="50% 60%" src="/images/road/road-4.jpg" />
+              <div className="absolute bottom-10 left-28 z-40 flex h-20 w-20 rotate-12 items-center justify-center rounded-full bg-zing-yellow p-3 text-center font-script text-lg leading-[0.95] text-bark shadow-md">
+                say hi!
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </div>
     </section>
