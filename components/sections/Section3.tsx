@@ -109,24 +109,32 @@ export default function Section3() {
               <div className="absolute -inset-4 -rotate-3 rounded-sm bg-zing-green/70" />
               <div className="relative -rotate-1 bg-cream px-8 pb-10 pt-14 text-center shadow-xl">
                 {/* Binder clip: silver wire handles over a black clip */}
-                <svg className="absolute -top-14 left-1/2 z-10 h-24 w-24 -translate-x-1/2 drop-shadow-md" viewBox="0 0 100 100" aria-hidden="true">
+                {/* Black binder clip: flat body with folded tabs, tall silver
+                    keyhole-shaped wire handles (the back one peeking behind) */}
+                <svg className="absolute -top-[4.5rem] left-1/2 z-10 h-28 w-24 -translate-x-1/2 drop-shadow-md" viewBox="0 0 100 116" aria-hidden="true">
                   <defs>
                     <linearGradient id="clip-wire" x1="0" x2="1">
-                      <stop offset="0" stopColor="#8a8a8a" />
-                      <stop offset="0.5" stopColor="#e6e6e6" />
-                      <stop offset="1" stopColor="#7a7a7a" />
+                      <stop offset="0" stopColor="#7d7d7d" />
+                      <stop offset="0.45" stopColor="#f2f2f2" />
+                      <stop offset="1" stopColor="#8c8c8c" />
                     </linearGradient>
                     <linearGradient id="clip-body" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0" stopColor="#3a3a3a" />
-                      <stop offset="1" stopColor="#111" />
+                      <stop offset="0" stopColor="#3b3b3b" />
+                      <stop offset="0.12" stopColor="#262626" />
+                      <stop offset="1" stopColor="#0e0e0e" />
                     </linearGradient>
                   </defs>
-                  <path d="M33 62 L30 14 Q30 6 38 6 L62 6 Q70 6 70 14 L67 62" fill="none" stroke="url(#clip-wire)" strokeWidth="4" strokeLinejoin="round" />
-                  <path d="M38 62 L36 20 Q36 13 43 13 L57 13 Q64 13 64 20 L62 62" fill="none" stroke="url(#clip-wire)" strokeWidth="3.5" strokeLinejoin="round" />
-                  <path d="M22 58 L78 58 L84 92 L16 92 Z" fill="url(#clip-body)" />
-                  <path d="M24 61 L76 61" stroke="#555" strokeWidth="1.5" />
-                  <circle cx="22" cy="60" r="3.5" fill="#bbb" />
-                  <circle cx="78" cy="60" r="3.5" fill="#bbb" />
+                  {/* back handle */}
+                  <path d="M38 62 L39 52 C39 45 35 40 35 33 C35 26 42 23 50 23 C58 23 65 26 65 33 C65 40 61 45 61 52 L62 62" fill="none" stroke="#c9c9c9" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" />
+                  {/* body */}
+                  <rect x="9" y="54" width="82" height="48" rx="2.5" fill="url(#clip-body)" />
+                  <path d="M10 58.5 H90" stroke="#4d4d4d" strokeWidth="1" />
+                  {/* folded tabs and centre notch along the bottom */}
+                  <rect x="7" y="99" width="23" height="9" rx="3" fill="#1c1c1c" />
+                  <rect x="70" y="99" width="23" height="9" rx="3" fill="#1c1c1c" />
+                  <path d="M40 102 L44 96 H56 L60 102 Z" fill="#2a2a2a" />
+                  {/* front handle, running down over the body */}
+                  <path d="M32 104 L36 52 C37 43 29 35 29 24 C29 13 38 8 50 8 C62 8 71 13 71 24 C71 35 63 43 64 52 L68 104" fill="none" stroke="url(#clip-wire)" strokeWidth="3.4" strokeLinejoin="round" strokeLinecap="round" />
                 </svg>
                 <p className="font-display text-2xl italic text-bark">{freedomSeeker.noteCard.label}</p>
                 <p className="mt-4 font-hand text-lg leading-relaxed text-umber">{freedomSeeker.noteCard.body}</p>
