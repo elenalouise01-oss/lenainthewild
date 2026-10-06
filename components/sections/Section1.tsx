@@ -26,7 +26,12 @@ const OUTLINE = [
 export default function Section1() {
   const reduced = useReducedMotion();
   const sandRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: sandRef, offset: ['start end', 'end start'] });
+  // Timed against the headline itself: 0 when it peeks in at the bottom of
+  // the screen, 1 when it reaches the top. YOUR glides across and lands
+  // first, then LIFE follows letter by letter.
+  const headRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: headProgress } = useScroll({ target: headRef, offset: ['start end', 'start start'] });
+  const yourX = useTransform(headProgress, [0.1, 0.4], ['100vw', '0vw'], { clamp: true });
 
   return (
     <section id="story">
@@ -78,14 +83,17 @@ export default function Section1() {
           </div>
 
           {/* REINVENT (solid brown) YOUR (brown outline) / LIFE (photo cut-out, sliding in one letter at a time) */}
-          <div className="mt-10" aria-label={`${welcome.bigLead} ${welcome.bigMoving} ${welcome.bigWord}`} role="heading" aria-level={2}>
+          <div ref={headRef} className="mt-10" aria-label={`${welcome.bigLead} ${welcome.bigMoving} ${welcome.bigWord}`} role="heading" aria-level={2}>
             <div aria-hidden="true" className="flex select-none flex-wrap gap-x-[0.25em] whitespace-nowrap font-body text-[10vw] font-black uppercase leading-none text-bark sm:text-[8vw]">
               <span>{welcome.bigLead}</span>
-              <span className="text-cream" style={{ textShadow: OUTLINE }}>
+              <motion.span
+                className="inline-block text-cream"
+                style={{ textShadow: OUTLINE, x: reduced ? 0 : yourX }}
+              >
                 {welcome.bigMoving}
-              </span>
+              </motion.span>
             </div>
-            <LifeLetters progress={scrollYProgress} reduced={reduced} />
+            <LifeLetters progress={headProgress} reduced={reduced} />
           </div>
 
         </div>
@@ -144,8 +152,8 @@ function Letter({
   layout: { width: number; lefts: number[] } | null;
   children: string;
 }) {
-  const start = 0.08 + index * 0.07;
-  const x = useTransform(progress, [start, start + 0.2], ['100vw', '0vw'], { clamp: true });
+  const start = 0.45 + index * 0.07;
+  const x = useTransform(progress, [start, start + 0.15], ['100vw', '0vw'], { clamp: true });
 
   return (
     <motion.span
