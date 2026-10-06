@@ -39,6 +39,20 @@ function Squiggle({ className = '' }: { className?: string }) {
   );
 }
 
+// Longer dashed doodle with a loop, ending in an arrow that points down
+// into the next part of the section.
+function SquiggleArrow({ className = '' }: { className?: string }) {
+  return (
+    <svg className={`pointer-events-none text-bark/45 ${className}`} viewBox="0 0 160 300" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path
+        strokeDasharray="5 6"
+        d="M20 6 C 40 60, 130 40, 120 100 C 112 150, 60 140, 70 110 C 80 80, 140 120, 120 180 C 104 228, 40 220, 60 280"
+      />
+      <path d="M48 266 L60 284 L74 268" />
+    </svg>
+  );
+}
+
 function Label({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return <p className={`font-body text-xs font-semibold uppercase tracking-widest2 text-stone ${className}`}>{children}</p>;
 }
@@ -77,16 +91,57 @@ export default function Section3() {
           <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
             <ScrollReveal className="relative mx-auto w-full max-w-xs">
               <div className="absolute -inset-4 -rotate-3 rounded-sm bg-zing-green/70" />
-              <div className="relative -rotate-1 bg-cream px-8 pb-10 pt-12 text-center shadow-xl">
-                <svg className="absolute -top-7 left-1/2 h-12 w-8 -translate-x-1/2 text-bark" viewBox="0 0 24 40" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                  <rect x="3" y="3" width="18" height="10" rx="5" />
-                  <line x1="12" y1="13" x2="12" y2="34" />
+              <div className="relative -rotate-1 bg-cream px-8 pb-10 pt-14 text-center shadow-xl">
+                {/* Binder clip: silver wire handles over a black clip */}
+                <svg className="absolute -top-14 left-1/2 z-10 h-24 w-24 -translate-x-1/2 drop-shadow-md" viewBox="0 0 100 100" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="clip-wire" x1="0" x2="1">
+                      <stop offset="0" stopColor="#8a8a8a" />
+                      <stop offset="0.5" stopColor="#e6e6e6" />
+                      <stop offset="1" stopColor="#7a7a7a" />
+                    </linearGradient>
+                    <linearGradient id="clip-body" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stopColor="#3a3a3a" />
+                      <stop offset="1" stopColor="#111" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M33 62 L30 14 Q30 6 38 6 L62 6 Q70 6 70 14 L67 62" fill="none" stroke="url(#clip-wire)" strokeWidth="4" strokeLinejoin="round" />
+                  <path d="M38 62 L36 20 Q36 13 43 13 L57 13 Q64 13 64 20 L62 62" fill="none" stroke="url(#clip-wire)" strokeWidth="3.5" strokeLinejoin="round" />
+                  <path d="M22 58 L78 58 L84 92 L16 92 Z" fill="url(#clip-body)" />
+                  <path d="M24 61 L76 61" stroke="#555" strokeWidth="1.5" />
+                  <circle cx="22" cy="60" r="3.5" fill="#bbb" />
+                  <circle cx="78" cy="60" r="3.5" fill="#bbb" />
                 </svg>
                 <p className="font-display text-2xl italic text-bark">{freedomSeeker.noteCard.label}</p>
                 <p className="mt-4 font-hand text-lg leading-relaxed text-umber">{freedomSeeker.noteCard.body}</p>
               </div>
-              <svg className="absolute -bottom-6 -left-6 h-14 w-14 -rotate-12 text-sage drop-shadow" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6z" />
+              {/* Little camera in the brand lilac, with stickers */}
+              <svg className="absolute -right-4 top-2 z-20 h-24 w-28 rotate-12 drop-shadow-lg sm:-right-16 sm:h-28 sm:w-32" viewBox="0 0 120 100" aria-hidden="true">
+                <rect x="8" y="22" width="104" height="68" rx="10" fill="#CBA1D4" />
+                <rect x="8" y="22" width="104" height="14" rx="7" fill="#b98bc4" />
+                <rect x="22" y="14" width="26" height="12" rx="3" fill="#b98bc4" />
+                <rect x="84" y="28" width="16" height="9" rx="2" fill="#f4f1f6" stroke="#3b2d0e" strokeOpacity=".3" />
+                <circle cx="66" cy="58" r="26" fill="#3b2d0e" />
+                <circle cx="66" cy="58" r="20" fill="#52421b" />
+                <circle cx="66" cy="58" r="13" fill="#1d160a" />
+                <circle cx="60" cy="52" r="4" fill="#fff" opacity=".55" />
+                <circle cx="96" cy="76" r="6" fill="#fffba0" />
+                <rect x="14" y="44" width="22" height="16" rx="3" fill="#ff8bb8" transform="rotate(-8 25 52)" />
+                <path d="M19 52 l4 4 l8 -9" fill="none" stroke="#3b2d0e" strokeWidth="2" strokeLinecap="round" />
+                <path d="M20 72 l3 6 l6 1 l-5 4 l1 6 l-5 -3 l-5 3 l1 -6 l-5 -4 l6 -1 z" fill="#fffba0" />
+              </svg>
+              {/* Butterfly sticker in the brand colours */}
+              <svg className="absolute -bottom-8 -left-8 z-20 h-20 w-20 -rotate-12 drop-shadow-md" viewBox="0 0 100 100" aria-hidden="true">
+                <path d="M50 48 C 40 20, 8 8, 8 30 C 8 48, 30 54, 50 52 Z" fill="#CBA1D4" />
+                <path d="M50 48 C 60 20, 92 8, 92 30 C 92 48, 70 54, 50 52 Z" fill="#CBA1D4" />
+                <path d="M50 54 C 34 56, 16 70, 24 84 C 32 96, 46 80, 50 60 Z" fill="#ff8bb8" />
+                <path d="M50 54 C 66 56, 84 70, 76 84 C 68 96, 54 80, 50 60 Z" fill="#ff8bb8" />
+                <circle cx="26" cy="30" r="6" fill="#fffba0" />
+                <circle cx="74" cy="30" r="6" fill="#fffba0" />
+                <circle cx="34" cy="76" r="3.5" fill="#fffba0" />
+                <circle cx="66" cy="76" r="3.5" fill="#fffba0" />
+                <rect x="47" y="34" width="6" height="40" rx="3" fill="#3b2d0e" />
+                <path d="M49 35 C 46 26, 40 20, 36 18 M51 35 C 54 26, 60 20, 64 18" fill="none" stroke="#3b2d0e" strokeWidth="1.8" strokeLinecap="round" />
               </svg>
             </ScrollReveal>
 
@@ -104,12 +159,12 @@ export default function Section3() {
                   {freedomSeeker.creativeWork.cta}
                 </Link>
               </ScrollReveal>
-              <Squiggle className="mt-8 h-24 w-24 sm:ml-16" />
+              <SquiggleArrow className="mt-6 h-56 w-32 sm:ml-20 sm:h-72 sm:w-40" />
             </div>
           </div>
 
           {/* My Experience: big statement with a pill sticker */}
-          <div className="mt-32 sm:mt-40">
+          <div className="mt-16 sm:mt-20">
             <ScrollReveal>
               <Label>{freedomSeeker.experienceLabel}</Label>
             </ScrollReveal>
