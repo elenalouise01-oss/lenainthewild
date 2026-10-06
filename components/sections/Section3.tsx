@@ -119,19 +119,10 @@ export default function Section3() {
               <div className="absolute -right-8 top-8 z-20 w-36 rotate-6 sm:-right-36 sm:top-0 sm:w-60">
                 <Image src="/images/camera.png" alt="" width={700} height={374} sizes="(min-width: 640px) 14rem, 10rem" className="h-auto w-full drop-shadow-xl" aria-hidden="true" />
               </div>
-              {/* Butterfly sticker in the brand colours */}
-              <svg className="absolute -bottom-8 -left-8 z-20 h-20 w-20 -rotate-12 drop-shadow-md" viewBox="0 0 100 100" aria-hidden="true">
-                <path d="M50 48 C 40 20, 8 8, 8 30 C 8 48, 30 54, 50 52 Z" fill="#CBA1D4" />
-                <path d="M50 48 C 60 20, 92 8, 92 30 C 92 48, 70 54, 50 52 Z" fill="#CBA1D4" />
-                <path d="M50 54 C 34 56, 16 70, 24 84 C 32 96, 46 80, 50 60 Z" fill="#ff8bb8" />
-                <path d="M50 54 C 66 56, 84 70, 76 84 C 68 96, 54 80, 50 60 Z" fill="#ff8bb8" />
-                <circle cx="26" cy="30" r="6" fill="#fffba0" />
-                <circle cx="74" cy="30" r="6" fill="#fffba0" />
-                <circle cx="34" cy="76" r="3.5" fill="#fffba0" />
-                <circle cx="66" cy="76" r="3.5" fill="#fffba0" />
-                <rect x="47" y="34" width="6" height="40" rx="3" fill="#3b2d0e" />
-                <path d="M49 35 C 46 26, 40 20, 36 18 M51 35 C 54 26, 60 20, 64 18" fill="none" stroke="#3b2d0e" strokeWidth="1.8" strokeLinecap="round" />
-              </svg>
+              {/* Watercolour butterfly, recoloured to the brand lilac */}
+              <div className="absolute -bottom-12 -left-10 z-20 w-24 -rotate-12 sm:-left-14 sm:w-28">
+                <Image src="/images/butterfly.png" alt="" width={396} height={500} sizes="7rem" className="h-auto w-full drop-shadow-md" aria-hidden="true" />
+              </div>
             </ScrollReveal>
 
             <div className="relative">
