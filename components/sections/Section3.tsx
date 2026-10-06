@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import Envelope from '@/components/Envelope';
+import JournalCarousel from '@/components/JournalCarousel';
 import OffersCarousel from '@/components/OffersCarousel';
 import ScrollReveal from '@/components/ScrollReveal';
 import { freedomSeeker } from '@/content/site';
@@ -39,6 +40,7 @@ function TapeHighlight({ children }: { children: string }) {
   );
 }
 
+// A polaroid: thin white border with the deep white strip along the bottom.
 function Polaroid({
   className = '',
   objectPosition,
@@ -53,7 +55,7 @@ function Polaroid({
   sizes?: string;
 }) {
   return (
-    <div className={`bg-cream p-1.5 shadow-xl ${className}`}>
+    <div className={`bg-cream p-1.5 pb-7 shadow-xl sm:p-2.5 sm:pb-12 ${className}`}>
       <div className="relative h-full w-full overflow-hidden">
         <Image src={src} alt="" fill sizes={sizes} className={`object-cover ${imgClassName}`} style={{ objectPosition }} aria-hidden="true" />
       </div>
@@ -88,28 +90,12 @@ function Label({ children, className = '' }: { children: React.ReactNode; classN
   return <p className={`font-body text-xs font-semibold uppercase tracking-widest2 text-stone ${className}`}>{children}</p>;
 }
 
-// My Journal cards: the reference's "video projects" row.
-const ROAD_PHOTOS = [
-  { src: '/images/road/road-2.jpg', pos: '50% 35%' },
-  { src: '/images/road/road-1.jpg', pos: '40% 60%' },
-  { src: '/images/road/road-6.jpg', pos: '50% 60%' },
-  { src: '/images/road/road-8.jpg', pos: '50% 70%' },
-];
 
 // The Freedom Seeker section, one continuous section in the order of the
 // "Section 3" reference: offers → note + creative work → experience →
 // on the road row → snapshots → journey + envelope → big statement →
 // let's talk. Everything after the offers sits on the one sand background.
 export default function Section3() {
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  const scrollRoad = (dir: 1 | -1) => {
-    const el = trackRef.current;
-    if (!el) return;
-    const card = el.querySelector<HTMLElement>('[data-card]');
-    el.scrollBy({ left: ((card?.offsetWidth ?? 300) + 24) * dir, behavior: 'smooth' });
-  };
-
   return (
     <section id="freedom-seeker">
       {/* Offers: the album-cover carousel */}
@@ -187,40 +173,11 @@ export default function Section3() {
             </ScrollReveal>
           </div>
 
-          {/* My Journal: a row of cards with previous / next */}
+          {/* My Journal: a slow, looping row of cards */}
           <div id="on-the-road" className="mt-32 sm:mt-40">
-            <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-              <ScrollReveal>
-                <Label>{freedomSeeker.pillarsLabel}</Label>
-                <p className="mt-3 max-w-xs font-body text-sm leading-relaxed text-umber">{freedomSeeker.pillarsIntro}</p>
-              </ScrollReveal>
-              <div className="flex gap-5 font-body text-xs font-semibold uppercase tracking-widest2">
-                <button type="button" onClick={() => scrollRoad(-1)} className="text-bark/50 transition-colors hover:text-bark">
-                  Previous
-                </button>
-                <button type="button" onClick={() => scrollRoad(1)} className="text-bark underline decoration-sage decoration-2 underline-offset-8">
-                  Next
-                </button>
-              </div>
-            </div>
-
-            <div ref={trackRef} className="no-scrollbar -mx-6 mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-6">
-              {freedomSeeker.pillars.map((pillar, i) => {
-                const photo = ROAD_PHOTOS[i % ROAD_PHOTOS.length];
-                return (
-                  <ScrollReveal key={pillar.title} delay={0.06 * i} className="w-[70%] flex-none snap-start sm:w-[calc(25%-18px)]">
-                    <div data-card>
-                      <div className="relative aspect-[3/4] w-full overflow-hidden rounded-sm shadow-md">
-                        <Image src={photo.src} alt="" fill sizes="(min-width: 640px) 25vw, 70vw" className="object-cover" style={{ objectPosition: photo.pos }} aria-hidden="true" />
-                      </div>
-                      <h4 className="mt-5 font-display text-2xl text-bark">{pillar.title}</h4>
-                      <p className="mt-1 font-body text-xs text-umber">{pillar.excerpt}</p>
-                      <p className="mt-3 font-body text-[0.6rem] font-semibold uppercase leading-relaxed tracking-wide text-stone">{pillar.roles}</p>
-                    </div>
-                  </ScrollReveal>
-                );
-              })}
-            </div>
+            <ScrollReveal>
+              <JournalCarousel />
+            </ScrollReveal>
           </div>
 
           {/* Snapshots: text left, polaroids right */}
