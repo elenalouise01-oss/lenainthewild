@@ -116,11 +116,11 @@ export default function Section3() {
                 <p className="mt-4 font-hand text-lg leading-relaxed text-umber">{freedomSeeker.noteCard.body}</p>
               </div>
               {/* Camera with its floral strap, propped on the note's corner */}
-              <div className="absolute -right-8 top-8 z-20 w-36 rotate-6 sm:-right-36 sm:top-0 sm:w-60">
+              <div className="absolute -right-6 top-6 z-20 w-28 -rotate-[15deg] sm:-right-28 sm:top-0 sm:w-44">
                 <Image src="/images/camera-strap.png" alt="" width={700} height={404} sizes="(min-width: 640px) 14rem, 10rem" className="h-auto w-full drop-shadow-xl" aria-hidden="true" />
               </div>
               {/* Watercolour butterfly, recoloured to the brand lilac */}
-              <div className="absolute -bottom-12 -left-10 z-20 w-24 -rotate-12 sm:-left-14 sm:w-28">
+              <div className="absolute -bottom-8 -left-7 z-20 w-16 -rotate-12 sm:-left-10 sm:w-20">
                 <Image src="/images/butterfly.png" alt="" width={396} height={500} sizes="7rem" className="h-auto w-full drop-shadow-md" aria-hidden="true" />
               </div>
             </ScrollReveal>
