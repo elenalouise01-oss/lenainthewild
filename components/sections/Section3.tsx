@@ -1,12 +1,43 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import Envelope from '@/components/Envelope';
 import OffersCarousel from '@/components/OffersCarousel';
 import ScrollReveal from '@/components/ScrollReveal';
 import { freedomSeeker } from '@/content/site';
+import { useReducedMotion } from '@/lib/useReducedMotion';
+
+// A strip of pink tape that unrolls left to right as you scroll, the words
+// appearing with it, with the roll itself riding along the leading edge.
+function TapeHighlight({ children }: { children: string }) {
+  const reduced = useReducedMotion();
+  const ref = useRef<HTMLSpanElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.9', 'start 0.5'] });
+  const clipPath = useTransform(scrollYProgress, (v) => `inset(-4px ${(1 - v) * 100}% -4px 0)`);
+  const rollLeft = useTransform(scrollYProgress, (v) => `${v * 100}%`);
+  const rollOpacity = useTransform(scrollYProgress, [0, 0.03, 0.9, 1], [0, 1, 1, 0]);
+
+  return (
+    <span ref={ref} className="relative mx-1 inline-block -rotate-3 align-middle">
+      <motion.span
+        style={reduced ? undefined : { clipPath }}
+        className="block rounded-sm bg-zing-pink px-3 py-1 font-body text-[0.6rem] font-semibold uppercase leading-tight tracking-wide text-bark shadow-sm sm:text-xs"
+      >
+        {children}
+      </motion.span>
+      {!reduced && (
+        <motion.span
+          aria-hidden="true"
+          style={{ left: rollLeft, opacity: rollOpacity }}
+          className="absolute -bottom-1 -top-1 w-2.5 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#e5679a] via-[#ffc2da] to-[#e5679a] shadow-md"
+        />
+      )}
+    </span>
+  );
+}
 
 function Polaroid({
   className = '',
@@ -84,7 +115,7 @@ export default function Section3() {
       {/* Offers: the album-cover carousel */}
       <OffersCarousel />
 
-      <div className="bg-sand px-6 pb-32 pt-24 sm:pb-44 sm:pt-32">
+      <div className="bg-sand px-6 pb-32 pt-40 sm:pb-44 sm:pt-32">
         <div className="container-editorial">
           {/* Note to self + A life that actually feels free */}
           <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
@@ -150,9 +181,7 @@ export default function Section3() {
             <ScrollReveal delay={0.1}>
               <p className="mt-6 max-w-5xl font-display text-3xl leading-[1.15] text-bark sm:text-5xl">
                 {freedomSeeker.experienceLead}{' '}
-                <span className="relative mx-1 inline-block -rotate-3 rounded-sm bg-zing-pink px-3 py-1 align-middle font-body text-[0.6rem] font-semibold uppercase leading-tight tracking-wide text-bark shadow-sm sm:text-xs">
-                  {freedomSeeker.experienceHighlight}
-                </span>{' '}
+                <TapeHighlight>{freedomSeeker.experienceHighlight}</TapeHighlight>{' '}
                 <span className="italic">{freedomSeeker.experienceTail}</span>
               </p>
             </ScrollReveal>

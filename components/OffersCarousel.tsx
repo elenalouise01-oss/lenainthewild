@@ -414,7 +414,8 @@ function useIsNarrow() {
 // "Learn more": the sleeve opens like a gatefold record. The front cover
 // swings open on its hinge to reveal the inside — photo on one side, liner
 // notes (description, tracklist of what's included, price) on the other —
-// and the record slides out. Stacks vertically and opens upwards on phones.
+// and the record slides out. Stacks vertically and opens upwards on phones,
+// where the record slides out of the bottom.
 function OfferDetails({
   tier,
   look,
@@ -470,7 +471,7 @@ function OfferDetails({
       </button>
 
       <div
-        className="relative flex flex-col md:flex-row md:pr-[min(19vw,33dvh)]"
+        className="relative flex flex-col pb-[14dvh] md:flex-row md:pb-0 md:pr-[min(19vw,33dvh)]"
         style={{ perspective: 1800 }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -478,7 +479,7 @@ function OfferDetails({
             over the liner notes showing its front; it swings open to show
             the inside photo. */}
         <motion.div
-          className="relative z-20 aspect-square w-[min(84vw,40dvh)] md:w-[min(36vw,62dvh)]"
+          className="relative z-20 aspect-square w-[min(78vw,34dvh)] md:w-[min(36vw,62dvh)]"
           style={{ transformOrigin: hinge.origin, transformStyle: 'preserve-3d' }}
           initial={reduced ? false : hinge.closed}
           animate={hinge.open}
@@ -494,7 +495,7 @@ function OfferDetails({
                 src={(look.src ?? hero.imageSrc) as string}
                 alt=""
                 fill
-                sizes="(min-width: 768px) 40vw, 84vw"
+                sizes="(min-width: 768px) 40vw, 78vw"
                 className={`object-cover ${look.src ? '' : 'grayscale'}`}
                 style={{ objectPosition: look.photo, transform: look.zoom ? `scale(${look.zoom})` : undefined }}
                 aria-hidden="true"
@@ -515,22 +516,25 @@ function OfferDetails({
           </div>
           {/* Front face (seen while closed) */}
           <div className="absolute inset-0" style={{ backfaceVisibility: 'hidden', transform: hinge.back }}>
-            <SleeveArt tier={tier} look={look} sizes="(min-width: 768px) 40vw, 84vw" />
+            <SleeveArt tier={tier} look={look} sizes="(min-width: 768px) 40vw, 78vw" />
           </div>
         </motion.div>
 
         {/* Inside right (bottom on phones): liner notes, with the record
             sliding out from behind. */}
-        <div className="relative aspect-square w-[min(84vw,40dvh)] md:w-[min(36vw,62dvh)]">
+        <div className="relative aspect-square w-[min(78vw,34dvh)] md:w-[min(36vw,62dvh)]">
           {/* The record: slides out, then spins slowly. Grooves, run-out
               band, rim and printed label turn; the light reflections stay
               put, like a real record under a lamp. */}
+          {/* Kept round and centred on the notes even when they run taller
+              than wide on phones, where the record is a little smaller and
+              slides out of the bottom instead of the side. */}
+          <div aria-hidden="true" className="absolute left-[15%] top-1/2 aspect-square w-[70%] -translate-y-1/2 md:left-[4%] md:w-[92%]">
           <motion.div
-            aria-hidden="true"
-            className="absolute inset-[4%] hidden rounded-full shadow-[0_18px_40px_-12px_rgba(0,0,0,0.6)] md:block"
-            initial={reduced ? false : { x: '0%' }}
-            animate={{ x: '62%' }}
-            exit={reduced ? undefined : { x: '0%', transition: { duration: 0.35 } }}
+            className="absolute inset-0 rounded-full shadow-[0_18px_40px_-12px_rgba(0,0,0,0.6)]"
+            initial={reduced ? false : { x: '0%', y: '0%' }}
+            animate={narrow ? { x: '0%', y: '72%' } : { x: '62%', y: '0%' }}
+            exit={reduced ? undefined : { x: '0%', y: '0%', transition: { duration: 0.35 } }}
             transition={{ duration: 1.1, delay: reduced ? 0 : 1.05, ease: [0.16, 1, 0.3, 1] }}
           >
             <motion.div
@@ -576,6 +580,7 @@ function OfferDetails({
               }}
             />
           </motion.div>
+          </div>
           <div className="relative flex h-full w-full flex-col overflow-y-auto bg-[#FFFAEC] p-[7%] text-bark shadow-2xl">
             <div className="flex items-baseline justify-between border-b border-bark/15 pb-3">
               <p className="font-body text-[0.6rem] font-semibold uppercase tracking-widest2 text-bark/60 sm:text-xs">
