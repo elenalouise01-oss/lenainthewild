@@ -18,9 +18,13 @@ export default function Section1() {
   const reduced = useReducedMotion();
   const sandRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: sandRef, offset: ['start end', 'end start'] });
-  // "YOUR" slides in from the right as the section scrolls into view,
-  // then settles next to REINVENT.
-  const yourX = useTransform(scrollYProgress, [0.05, 0.4], ['60vw', '0vw']);
+  // REINVENT stays put; "YOUR" moves left with the scroll on the same
+  // beat as LIFE — slides in, holds, then slips away behind REINVENT.
+  const yourX = useTransform(scrollYProgress, [0, 0.18, 0.42, 0.6], ['70vw', '0vw', '0vw', '-70vw']);
+  // The outline ghost word drifts slowly across behind LIFE.
+  const marqueeX = useTransform(scrollYProgress, [0, 1], ['170vw', '-260vw']);
+  // LIFE slides in, holds for a readable beat, then exits left.
+  const wordX = useTransform(scrollYProgress, [0, 0.18, 0.42, 0.6], ['110vw', '0vw', '0vw', '-130vw']);
 
   return (
     <section id="story">
@@ -73,23 +77,33 @@ export default function Section1() {
 
           {/* Two lines: REINVENT + a sliding YOUR, then the photo-filled LIFE */}
           <div className="mt-10" aria-label={`${welcome.bigLead} ${welcome.bigMoving} ${welcome.bigWord}`} role="heading" aria-level={2}>
-            <div aria-hidden="true" className="flex select-none items-baseline gap-[2.5vw] overflow-hidden whitespace-nowrap font-body text-[9.5vw] font-black uppercase leading-none text-bark sm:text-[8vw]">
-              <span>{welcome.bigLead}</span>
+            <div aria-hidden="true" className="flex select-none items-baseline overflow-hidden whitespace-nowrap font-body text-[9.5vw] font-black uppercase leading-none text-bark sm:text-[8vw]">
+              <span className="relative z-10 bg-cream pr-[2.5vw]">{welcome.bigLead}</span>
               <motion.span style={reduced ? undefined : { x: yourX }} className="inline-block">
                 {welcome.bigMoving}
               </motion.span>
             </div>
-            <div
-              aria-hidden="true"
-              style={{
-                backgroundImage: "url('/images/hero.jpg')",
-                backgroundSize: '55vw',
-                backgroundRepeat: 'repeat',
-                backgroundPosition: 'center',
-              }}
-              className="select-none whitespace-nowrap bg-clip-text font-body text-[38vw] font-black uppercase leading-[0.85] text-transparent sm:text-[26vw]"
-            >
-              {welcome.bigWord}
+            <div className="relative h-[38vw] overflow-hidden sm:h-[26vw]" aria-hidden="true">
+              {!reduced && (
+                <motion.div
+                  style={{ x: marqueeX, WebkitTextStroke: '1.5px rgba(59,45,14,0.55)' }}
+                  className="pointer-events-none absolute inset-y-0 left-0 flex select-none items-center whitespace-nowrap font-body text-[38vw] font-black uppercase leading-none text-transparent sm:text-[26vw]"
+                >
+                  Design
+                </motion.div>
+              )}
+              <motion.div
+                style={{
+                  backgroundImage: "url('/images/hero.jpg')",
+                  backgroundSize: '55vw',
+                  backgroundRepeat: 'repeat',
+                  backgroundPosition: 'center',
+                  ...(reduced ? {} : { x: wordX }),
+                }}
+                className="absolute inset-y-0 left-0 flex select-none items-center whitespace-nowrap bg-clip-text font-body text-[38vw] font-black uppercase leading-none text-transparent sm:text-[26vw]"
+              >
+                {welcome.bigWord}
+              </motion.div>
             </div>
           </div>
 

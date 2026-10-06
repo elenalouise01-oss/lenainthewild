@@ -7,7 +7,7 @@ export const nav = {
   links: [
     { label: 'About', href: '#about' },
     { label: 'The Freedom Seeker', href: '#freedom-seeker', expandable: true },
-    { label: 'Blog', href: '#blog', expandable: true },
+    { label: 'Journal', href: '#blog', expandable: true },
     { label: 'Contact', href: '#contact' },
   ],
   subscribeLabel: 'Subscribe',
