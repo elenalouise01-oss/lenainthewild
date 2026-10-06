@@ -1,3 +1,4 @@
+import BackToTop from '@/components/BackToTop';
 import Footer from '@/components/Footer';
 import Blog from '@/components/sections/Blog';
 import Hero from '@/components/sections/Hero';
@@ -17,6 +18,7 @@ export default function Home() {
       <Newsletter />
       <ComeSayHi />
       <Footer />
+      <BackToTop />
     </main>
   );
 }

@@ -2,11 +2,13 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import Link from 'next/link';
 import Button from '@/components/Button';
 import Navigation from '@/components/Navigation';
 import PlaceholderImage from '@/components/PlaceholderImage';
 import SpinningBadge from '@/components/SpinningBadge';
 import { hero, nav } from '@/content/site';
+import { goHome } from '@/lib/goHome';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 
 type Scatter = {
@@ -116,9 +118,9 @@ export default function Hero() {
           className="relative z-10 flex h-full flex-col"
         >
           <div className="container-editorial flex items-center justify-between pt-8">
-            <span className="font-body text-sm font-bold uppercase tracking-wider text-cream sm:text-base">
+            <Link href="/" onClick={goHome} className="font-body text-sm font-bold uppercase tracking-wider text-cream sm:text-base">
               {nav.logo}
-            </span>
+            </Link>
             <Navigation iconClassName="cursor-pointer">
               <SpinningBadge text={hero.badgeText} tone="dark" />
             </Navigation>

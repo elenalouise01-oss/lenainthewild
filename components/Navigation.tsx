@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { nav } from '@/content/site';
+import { goHome } from '@/lib/goHome';
 import { EASE } from '@/lib/motion';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 
@@ -73,7 +74,16 @@ export default function Navigation({ className = '', iconClassName = '', childre
               {nav.closeLabel} ×
             </button>
 
-            <p className="font-display text-4xl italic text-umber sm:text-5xl">{nav.logo}</p>
+            <Link
+              href="/"
+              onClick={(e) => {
+                setOpen(false);
+                goHome(e);
+              }}
+              className="font-display text-4xl italic text-umber transition-colors hover:text-bark sm:text-5xl"
+            >
+              {nav.logo}
+            </Link>
             <div className="mt-6 h-px w-16 bg-bark/20" />
 
             <nav className="mt-10 flex flex-col items-center gap-7">

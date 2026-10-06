@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { footer, nav, offerLinks, socialLinks } from '@/content/site';
+import { scrollToTop } from '@/lib/goHome';
 
 // Links that resolve to a real section on this page or a live offer page.
 // Footer links to pages that don't exist yet are hidden until they do.
@@ -54,10 +55,17 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="container-editorial mt-14 border-t border-bark/10 pt-8">
+      <div className="container-editorial mt-14 flex items-center justify-between gap-6 border-t border-bark/10 pt-8">
         <p className="font-body text-xs text-stone">
           © {new Date().getFullYear()} {nav.logo}. All rights reserved.
         </p>
+        <a
+          href="#"
+          onClick={scrollToTop}
+          className="font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark"
+        >
+          Back to top ↑
+        </a>
       </div>
     </footer>
   );
