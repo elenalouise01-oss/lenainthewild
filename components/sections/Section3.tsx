@@ -70,7 +70,6 @@ const ROAD_PHOTOS = [
 // on the road row → snapshots → journey + envelope → big statement →
 // let's talk. Everything after the offers sits on the one sand background.
 export default function Section3() {
-  const [submitted, setSubmitted] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
 
   const scrollRoad = (dir: 1 | -1) => {
@@ -236,8 +235,21 @@ export default function Section3() {
             </ScrollReveal>
           </div>
 
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// COME SAY HI + Let's Talk, its own section under the Journal.
+export function ComeSayHi() {
+  const [submitted, setSubmitted] = useState(false);
+
+  return (
+    <section className="bg-sand px-6 py-32 sm:py-44">
+      <div className="container-editorial">
           {/* Big statement */}
-          <ScrollReveal className="mt-32 sm:mt-44">
+          <ScrollReveal>
             <h3 className="whitespace-nowrap font-display text-[13vw] uppercase leading-[0.9] tracking-tight text-bark sm:text-[10vw]">{freedomSeeker.bigStatement}</h3>
           </ScrollReveal>
 
@@ -318,7 +330,6 @@ export default function Section3() {
               </div>
             </ScrollReveal>
           </div>
-        </div>
       </div>
     </section>
   );
