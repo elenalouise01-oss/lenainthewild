@@ -527,13 +527,13 @@ function OfferDetails({
               band, rim and printed label turn; the light reflections stay
               put, like a real record under a lamp. */}
           {/* Kept round and centred on the notes even when they run taller
-              than wide on phones, where the record is a little smaller and
-              slides out of the bottom instead of the side. */}
-          <div aria-hidden="true" className="absolute left-[15%] top-1/2 aspect-square w-[70%] -translate-y-1/2 md:left-[4%] md:w-[92%]">
+              than wide on phones, where the record slides out of the bottom
+              instead of the side. */}
+          <div aria-hidden="true" className="absolute left-[4%] top-1/2 aspect-square w-[92%] -translate-y-1/2">
           <motion.div
             className="absolute inset-0 rounded-full shadow-[0_18px_40px_-12px_rgba(0,0,0,0.6)]"
             initial={reduced ? false : { x: '0%', y: '0%' }}
-            animate={narrow ? { x: '0%', y: '72%' } : { x: '62%', y: '0%' }}
+            animate={narrow ? { x: '0%', y: '55%' } : { x: '62%', y: '0%' }}
             exit={reduced ? undefined : { x: '0%', y: '0%', transition: { duration: 0.35 } }}
             transition={{ duration: 1.1, delay: reduced ? 0 : 1.05, ease: [0.16, 1, 0.3, 1] }}
           >
