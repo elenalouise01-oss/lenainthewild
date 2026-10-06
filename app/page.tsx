@@ -14,8 +14,8 @@ export default function Home() {
       <Section2 />
       <Section3 />
       <Blog />
-      <ComeSayHi />
       <Newsletter />
+      <ComeSayHi />
       <Footer />
     </main>
   );
