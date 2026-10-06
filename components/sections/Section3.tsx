@@ -309,11 +309,11 @@ export function ComeSayHi() {
 
             {/* Pinned photo collage, after the reference: a big main print,
                 a black-and-white photo-booth strip behind it, a polaroid
-                tipped over the top, a small print on torn paper with a wax
-                seal, and a safety pin through the corner. */}
-            <ScrollReveal delay={0.1} className="relative mx-auto h-[26rem] w-full max-w-sm sm:h-[32rem] sm:max-w-md">
+                tipped over the top, a small print on torn paper with the
+                "say hi!" sticker, and a safety pin through the corner. */}
+            <ScrollReveal delay={0.1} className="relative mx-auto h-[28rem] w-full max-w-sm sm:h-[34rem] sm:max-w-md">
               {/* Photo-booth strip */}
-              <div className="absolute left-[8%] top-[12%] z-10 flex h-[50%] w-[30%] -rotate-3 flex-col gap-1.5 bg-cream p-1.5 shadow-xl">
+              <div className="absolute left-[3%] top-[11%] z-10 flex h-[46%] w-[28%] -rotate-3 flex-col gap-1.5 bg-cream p-1.5 shadow-xl">
                 {['/images/road/road-9.jpg', '/images/road/road-5.jpg'].map((src) => (
                   <div key={src} className="relative flex-1 overflow-hidden">
                     <Image src={src} alt="" fill sizes="140px" className="object-cover grayscale" aria-hidden="true" />
@@ -321,52 +321,42 @@ export function ComeSayHi() {
                 ))}
               </div>
               {/* Polaroid tipped over the top */}
-              <Polaroid className="absolute left-[27%] top-[3%] z-20 h-[44%] w-[34%] rotate-[14deg]" objectPosition="50% 60%" src="/images/road/road-6.jpg" sizes="180px" />
+              <Polaroid className="absolute left-[23%] top-[3%] z-20 h-[40%] w-[32%] rotate-[14deg]" objectPosition="50% 60%" src="/images/road/road-6.jpg" sizes="180px" />
               {/* Main print */}
-              <div className="absolute bottom-[4%] right-0 z-10 h-[76%] w-[60%] -rotate-2 bg-cream p-2 shadow-2xl">
+              <div className="absolute bottom-[12%] right-0 z-10 h-[72%] w-[56%] -rotate-2 bg-cream p-2 shadow-2xl">
                 <div className="relative h-full w-full overflow-hidden">
                   <Image src="/images/road/road-2.jpg" alt="" fill sizes="(min-width: 640px) 300px, 60vw" className="object-cover" style={{ objectPosition: '50% 35%' }} aria-hidden="true" />
                 </div>
               </div>
               {/* Torn paper with a small print */}
-              <div
-                className="absolute bottom-[2%] left-0 z-30 h-[34%] w-[40%] -rotate-6 bg-cream shadow-lg"
-                style={{ clipPath: 'polygon(0 18%, 7% 9%, 14% 14%, 22% 4%, 31% 10%, 40% 2%, 49% 9%, 58% 3%, 67% 11%, 76% 5%, 85% 12%, 93% 6%, 100% 14%, 98% 100%, 3% 100%)' }}
+              <Image
+                src="/images/torn-paper.png"
+                alt=""
+                width={867}
+                height={518}
+                sizes="220px"
+                className="absolute bottom-[15%] left-0 z-30 h-auto w-[46%] -rotate-12 drop-shadow-[0_6px_10px_rgba(59,45,14,0.18)]"
                 aria-hidden="true"
               />
-              <div className="absolute bottom-[4%] left-[11%] z-40 h-[30%] w-[28%] -rotate-[8deg] bg-cream p-1.5 shadow-xl">
+              <div className="absolute bottom-[2%] left-[7%] z-40 h-[27%] w-[25%] -rotate-[8deg] bg-cream p-1.5 shadow-xl">
                 <div className="relative h-full w-full overflow-hidden">
                   <Image src="/images/road/road-4.jpg" alt="" fill sizes="140px" className="object-cover" style={{ objectPosition: '50% 60%' }} aria-hidden="true" />
                 </div>
               </div>
-              {/* Gold wax seal */}
-              <svg className="absolute bottom-[24%] left-[33%] z-50 h-16 w-16 drop-shadow-md sm:h-20 sm:w-20" viewBox="0 0 100 100" aria-hidden="true">
-                <defs>
-                  <radialGradient id="wax" cx="40%" cy="35%" r="70%">
-                    <stop offset="0" stopColor="#f0cf7a" />
-                    <stop offset="0.55" stopColor="#c99a3c" />
-                    <stop offset="1" stopColor="#8f6a22" />
-                  </radialGradient>
-                </defs>
-                <path d="M50 4 C64 3 70 10 80 14 C92 20 97 33 95 46 C99 58 94 72 86 81 C77 92 63 97 50 95 C36 98 22 93 14 83 C5 73 2 60 5 47 C3 33 9 20 20 13 C29 6 39 5 50 4 Z" fill="url(#wax)" />
-                <circle cx="50" cy="50" r="29" fill="none" stroke="#a87f2c" strokeWidth="3" />
-                <circle cx="50" cy="50" r="25" fill="none" stroke="#f5dc96" strokeWidth="1" opacity="0.6" />
-                <text x="50" y="58" textAnchor="middle" className="font-script" fontSize="26" fill="#8f6a22">hi</text>
-              </svg>
+              {/* Yellow "say hi!" sticker */}
+              <div className="absolute bottom-[20%] left-[24%] z-50 flex h-20 w-20 rotate-12 items-center justify-center rounded-full bg-zing-yellow p-3 text-center font-script text-lg leading-[0.95] text-bark shadow-md">
+                say hi!
+              </div>
               {/* Safety pin through the main print's corner */}
-              <svg className="absolute -top-[7%] -right-[3%] z-50 h-[32%] w-[80%] drop-shadow-lg" viewBox="0 0 300 150" fill="none" aria-hidden="true">
-                <defs>
-                  <linearGradient id="pin-steel" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stopColor="#f4f4f4" />
-                    <stop offset="0.5" stopColor="#9a9a9a" />
-                    <stop offset="1" stopColor="#d9d9d9" />
-                  </linearGradient>
-                </defs>
-                <path d="M58 30 L256 120" stroke="url(#pin-steel)" strokeWidth="4.5" strokeLinecap="round" />
-                <path d="M62 44 L246 134" stroke="url(#pin-steel)" strokeWidth="4.5" strokeLinecap="round" />
-                <circle cx="260" cy="128" r="15" stroke="url(#pin-steel)" strokeWidth="5" />
-                <path d="M18 24 Q14 8 32 6 L78 22 Q92 30 84 44 Q78 52 66 50 L30 44 Q16 40 18 24 Z" fill="url(#pin-steel)" stroke="#8a8a8a" strokeWidth="1.5" />
-              </svg>
+              <Image
+                src="/images/safety-pin.png"
+                alt=""
+                width={847}
+                height={445}
+                sizes="(min-width: 640px) 360px, 75vw"
+                className="absolute -right-[2%] -top-[4%] z-50 h-auto w-[72%] rotate-[10deg] drop-shadow-[0_6px_8px_rgba(59,45,14,0.3)]"
+                aria-hidden="true"
+              />
             </ScrollReveal>
           </div>
       </div>
