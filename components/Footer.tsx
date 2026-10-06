@@ -6,9 +6,9 @@ import { footer, nav, offerLinks, socialLinks } from '@/content/site';
 // Links that resolve to a real section on this page or a live offer page.
 // Footer links to pages that don't exist yet are hidden until they do.
 const REAL_ANCHORS: Record<string, string> = {
-  Blog: '#blog',
-  About: '#about',
-  Substack: '#subscribe',
+  Blog: '/#blog',
+  About: '/my-story',
+  Substack: '/#subscribe',
   ...offerLinks,
   ...socialLinks,
 };

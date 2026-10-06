@@ -52,7 +52,7 @@ export const myStory = {
   quote: "I just had a deep, undeniable knowing that this life wasn't for me anymore.",
   body: "I'm Lena. I was 36 when I uprooted my life from Sydney and leapt into the unknown, leaving behind a successful personal training business in Bondi that once felt like the dream. I couldn't shake the feeling that surely this can't be it. So I broke free, from the hustle, the system, the rat race, and I've been rebuilding on my own terms ever since. Lena in the Wild is where I document that journey: slow living, travel, wellness, healing, and the real, unfiltered version of what it actually takes to rebuild a life on your terms.",
   cta: 'Read My Story',
-  ctaHref: '#experience',
+  ctaHref: '/my-story',
 };
 
 export const socialLinks: Record<string, string> = {
@@ -246,3 +246,24 @@ export const footer = {
     body: 'Currently in South East Asia, figuring it out as I go.',
   },
 };
+
+// The My Story page (/my-story).
+export const storyPage = {
+  welcomeTitle: 'Welcome to Lena in the Wild',
+  welcome:
+    "If you've been feeling the pull to want more for your life, feeling stuck, stagnant, searching for answers but not knowing how to get there… feeling like there's more to life… seeking freedom… you've been up and down. I feel you. That was me. You're in the right place.",
+  storyTitle: 'My Story',
+  paragraphs: [
+    "I'm Lena. I was 36 years old when I uprooted my life from Sydney and leapt into the unknown. I was running a successful personal training business in the busiest gym in Bondi for 8 years, a life I had once dreamed of. But there I was, chasing the life I'd been sold to want… and I was miserable. I couldn't shake the feeling that surely this can't be it, there has to be more to life?",
+    "I had extreme burnout after a trip to Europe in 2021. I'd run myself into the ground in the lead-up to it, and when I came back I knew something had to change. I started cutting back sessions, doing less. I wanted rest, and I was seeking freedom.",
+    "It took a couple of years to reach the point of realising I wanted to move to Bali. The first time I visited, I remembered what it felt like to be free, and from the first time I went to Ubud, I knew that was where I was meant to be. But I came back to hustle, to my comforts. I stayed in Sydney a while longer, doing less, doing more healing, inner child work, grounding, regulating, reiki, until I finally committed. I gave myself six months to move. The universe tested that decision the whole way, dangling high-paying opportunities, collabs, gifts, all the reasons to stay. I doubted myself. I ran myself into the ground one more time before I left, selling everything I owned, all on my own, and then I left.",
+    'So I broke free. From the hustle, from being caught in the system, from the rat race, and started reinventing life on my own terms. Lena in the Wild is where I document that journey: slow living, travel, wellness, healing, and the deep, ongoing work of rebuilding at 36, unlearning old beliefs, stepping into a new reality, saying goodbye to who I used to be.',
+    "It hasn't all been easy, there's been rock bottom moments on the other side of the leap, alongside the signs and synchronicities that kept me going. I share all of it, the real version, not the Instagram highlight reel, because that's what actually helps people. Not to deter you, but to show you it's possible, and what it really takes.",
+    "Life has ups and downs no matter which path you choose, so you may as well spend them building the life you actually dream of. I'm figuring it out as I go, and sharing what I find along the way.",
+    "If any of this feels familiar, I've turned what I've learned into practical tools to help you find your own answers, wherever you're at in your journey. Start with The 5 Day Reconnect, or if you're ready to go deeper, explore The Freedom Frequency, all made for the person who knows there's more, and is ready to find it.",
+  ],
+  cta: 'Start with The 5 Day Reconnect',
+  closing:
+    'If something here resonates, a story, a photograph, a feeling, I would love to hear from you. The best way in is the newsletter.',
+};
+
