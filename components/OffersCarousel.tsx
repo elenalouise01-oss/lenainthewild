@@ -15,7 +15,7 @@ import { useReducedMotion } from '@/lib/useReducedMotion';
 // `zoom` enlarges artwork whose subject is drawn smaller than the others.
 const LOOKS: { bg: string; circle: string; sticker: string; photo: string; src?: string; zoom?: number }[] = [
   { bg: '#ff8bb8', circle: '#CBA1D4', sticker: '#fffba0', photo: '50% 50%', src: '/images/cover-freedom-frequency.webp' },
-  { bg: '#CBA1D4', circle: '#fffba0', sticker: '#ff8bb8', photo: '50% 50%', src: '/images/cover-5-day-reconnect.webp' },
+  { bg: '#CBA1D4', circle: '#fffba0', sticker: '#ff8bb8', photo: '50% 50%', src: '/images/cover-reconnect-monkey.webp' },
   { bg: '#fffba0', circle: '#ff8bb8', sticker: '#CBA1D4', photo: '50% 50%', src: '/images/cover-aligned-circle.webp', zoom: 1.35 },
 ];
 
@@ -81,9 +81,17 @@ export default function OffersCarousel() {
         transition={{ duration: reduced ? 0 : 0.6 }}
       />
 
-      {/* The circle: shrinks away on change, grows back out of the centre in
-          the new colour, then keeps breathing, with a ring rippling out. */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 flex items-center justify-center">
+      {/* The circle: grows out of the centre as the section scrolls into
+          view, shrinks away on change and grows back in the new colour, then
+          keeps breathing, with a ring rippling out. */}
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 flex items-center justify-center"
+        initial={reduced ? false : { scale: 0 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ amount: 0.45 }}
+        transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+      >
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={active}
@@ -110,7 +118,7 @@ export default function OffersCarousel() {
             )}
           </motion.div>
         </AnimatePresence>
-      </div>
+      </motion.div>
 
       {/* Soft edges: fade in from My Story's sand and out into the
           sand below, so the colour arrives rather than cuts in. */}
@@ -232,16 +240,21 @@ function NowPlaying({
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3, delay: reduced ? 0 : 0.8 }}
       >
-        <button
+        {/* Play: gently zooms in and out like the sticker, so it reads as clickable */}
+        <motion.button
           type="button"
           onClick={stop(onDetails)}
           aria-label={`Open ${tier.title}`}
-          className="shrink-0 transition-transform hover:scale-110"
+          className="shrink-0"
+          animate={reduced ? undefined : { scale: [1, 1.2, 1] }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+          whileHover={{ scale: 1.25 }}
+          whileTap={{ scale: 0.9 }}
         >
           <svg viewBox="0 0 24 24" className="h-6 w-6 sm:h-7 sm:w-7" fill="currentColor" aria-hidden="true">
             <path d="M5 3l16 9-16 9z" />
           </svg>
-        </button>
+        </motion.button>
         <div className="min-w-0 flex-1 leading-tight">
           <p className="truncate font-body text-[0.7rem] font-bold sm:text-sm">
             {tier.number.replace(/[()]/g, '')}.{tier.title}
