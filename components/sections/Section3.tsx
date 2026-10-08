@@ -204,12 +204,9 @@ export default function Section3() {
           {/* Snapshots: text left, polaroids right */}
           <div className="mt-32 grid min-w-0 gap-12 sm:mt-40 lg:grid-cols-[1fr_1.4fr] lg:items-center">
             <ScrollReveal>
-              <Label>{freedomSeeker.brandCampaigns.label}</Label>
-              {freedomSeeker.brandCampaigns.body.map((para, i) => (
-                <p key={i} className={`${i === 0 ? 'mt-3' : 'mt-4'} max-w-xs font-body text-sm leading-relaxed text-umber`}>
-                  {para}
-                </p>
-              ))}
+              <h3 className="max-w-sm font-display text-2xl leading-snug text-bark sm:text-3xl">{freedomSeeker.brandCampaigns.heading}</h3>
+              <p className="mt-3 font-display text-lg italic text-umber sm:text-xl">{freedomSeeker.brandCampaigns.sub}</p>
+              <p className="mt-6 max-w-xs font-body text-sm leading-relaxed text-umber">{freedomSeeker.brandCampaigns.body}</p>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
               <div className="relative mx-auto flex h-60 max-w-lg items-center justify-center sm:h-72">
