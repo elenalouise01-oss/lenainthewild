@@ -116,6 +116,10 @@ export const freedomSeeker = {
     title: 'My credentials',
     subtitle: 'Feeler & Healer',
     items: [
+      {
+        title: 'Life Experimenter',
+        details: ['(AKA Serial Starter-Over-er)', '6+ career chapters · Lived in multiple countries & cities · Countless fresh starts'],
+      },
       { title: 'Reiki Healer', details: ['Reiki Level I · Reiki Level II · Reiki Master', { text: 'Wildfire Healing', italic: true }] },
       { title: 'Embodiment Coach', details: ['Embodiment Coaching Certification', { text: 'Dharma Coaching Institute', italic: true }] },
       { title: 'Hosted Wellness Workshops & Women’s Circles', details: [{ text: 'Active Instinct Wellness', italic: true }] },
