@@ -26,6 +26,9 @@ export default function Listen() {
             loading="lazy"
           />
         </ScrollReveal>
+        <ScrollReveal delay={0.1}>
+          <p className="mx-auto mt-6 max-w-md font-body text-sm leading-relaxed text-stone">{listen.note}</p>
+        </ScrollReveal>
       </div>
     </section>
   );
