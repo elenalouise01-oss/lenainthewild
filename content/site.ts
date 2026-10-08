@@ -156,8 +156,8 @@ export const freedomSeeker = {
     {
       category: 'Travel',
       title: 'Overcoming My Fear of Riding a Scooter',
-      roles: 'SLOW TRAVEL, SOLO TRIPS, STORYTELLING',
-      excerpt: 'Slow travel through South East Asia.',
+      roles: 'FEAR, CHILDHOOD WOUNDS, SELF COMPASSION',
+      excerpt: 'Little did I know it was going to trigger all kinds of childhood wounds.',
       href: 'https://substack.com/home/post/p-209897527',
     },
     {
