@@ -116,7 +116,7 @@ export const freedomSeeker = {
     items: [
       { title: 'Reiki Master', detail: '' },
       { title: 'Embodiment Coach', detail: '' },
-      { title: 'Ran Wellness Workshops & Women’s Circles', detail: '' },
+      { title: 'Host of Wellness Workshops & Women’s Circles', detail: '' },
       { title: 'Personal Trainer & Wellness Coach', detail: '8+ years · Certificate III & Certificate IV' },
     ],
   },
