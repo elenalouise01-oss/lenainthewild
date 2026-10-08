@@ -84,7 +84,7 @@ export const freedomSeeker = {
       number: '(01)',
       price: '$555',
       title: 'The Freedom Frequency',
-      body: 'An embodied self-paced course for people ready to choose themselves.',
+      body: "An embodied, self-paced course to help you create the freedom you've been craving.",
       tags: ['Embodied Practice', 'Self-Paced Course'],
     },
     {
