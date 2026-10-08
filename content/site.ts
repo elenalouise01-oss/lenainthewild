@@ -128,7 +128,7 @@ export const freedomSeeker = {
   },
   experienceSub: 'I’ve lived it.',
   experienceLead: 'I walked away from a career that looked perfect on paper, moved overseas, and rebuilt my life from the ground up.',
-  experienceHighlight: 'BURNOUT, REBUILDING, SLOW LIVING, TRAVEL',
+  experienceHighlight: 'I’ve started over more times than I can count',
   experienceTail:
     "I've led myself through the exact reconnection, uncertainty and rebuild I now guide others through.",
 
