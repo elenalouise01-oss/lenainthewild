@@ -184,7 +184,7 @@ export const freedomSeeker = {
   ],
 
   brandCampaigns: {
-    heading: 'The little moments I didn’t want to forget.',
+    heading: 'Little moments from life in the wild.',
     sub: 'Oh yeah, I’m also a photographer.',
     body: 'When you finally start choosing yourself, all those creative parts of you that got buried along the way start finding their way back out.',
   },
