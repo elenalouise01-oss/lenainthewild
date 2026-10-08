@@ -70,12 +70,15 @@ type Tier = {
   number: string;
   // Leave out to hide the price pill on that card.
   price?: string;
+  // A banner across the cover (e.g. 'Coming soon') instead of a price.
+  banner?: string;
   title: string;
   body: string;
   tags: string[];
 };
 
 export const freedomSeeker = {
+  heading: 'Your Next Chapter Starts Here',
   label: 'The Freedom Seeker',
   headline: 'Your next chapter starts here:',
   sub: "You built the career, the home, the income. And now you're wondering why you still feel restless. Start here.",
@@ -96,7 +99,7 @@ export const freedomSeeker = {
     },
     {
       number: '(03)',
-      price: 'Coming soon',
+      banner: 'Coming soon',
       title: 'Your Freedom Roadmap',
       body: "A personal deep dive into where you're at and where you want to go. Send me your questions, and I'll create your own personalised roadmap to guide your next steps.",
       tags: ['Personalised Roadmap', 'Your Questions Answered'],
