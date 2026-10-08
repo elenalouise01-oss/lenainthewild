@@ -117,7 +117,7 @@ export const freedomSeeker = {
       { title: 'Feeler & Healer', detail: '' },
       { title: 'Reiki Master', detail: 'Wildfire Healing' },
       { title: 'Embodiment Coach', detail: 'Embodiment Coaching Certification · Dharma Coaching Institute' },
-      { title: 'Host of Wellness Workshops & Women’s Circles', detail: '' },
+      { title: 'Hosted Wellness Workshops & Women’s Circles', detail: '' },
       { title: 'Personal Trainer & Wellness Coach', detail: '8+ years · Certificate III & Certificate IV' },
     ],
   },
