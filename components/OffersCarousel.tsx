@@ -350,9 +350,12 @@ function SleeveArt({
         }}
       />
       {tier.banner && (
-        // A tag on the right edge, just above the now-playing bar: bottom-right
-        // keeps it clear of the cart button (top-left) and the bar.
-        <div className="pointer-events-none absolute bottom-[28%] right-0 sm:bottom-[20%] whitespace-nowrap bg-bark px-[4%] py-[1.8%] font-body text-[clamp(0.5rem,1.5vw,0.8rem)] font-bold uppercase leading-none tracking-widest2 text-cream shadow-md">
+        // A corner ribbon: the band's midpoint sits at (15%, 15%), so its text
+        // is centred on the part of the band that's visible inside the sleeve.
+        <div
+          className="pointer-events-none absolute w-full whitespace-nowrap bg-bark py-[1.6%] text-center font-body text-[clamp(0.5rem,1.5vw,0.8rem)] font-bold uppercase leading-none tracking-widest2 text-cream shadow-md"
+          style={{ left: '15%', top: '15%', transform: 'translate(-50%, -50%) rotate(-45deg)' }}
+        >
           {tier.banner}
         </div>
       )}
