@@ -157,7 +157,7 @@ export const freedomSeeker = {
       category: 'Travel',
       title: 'Overcoming My Fear of Riding a Scooter',
       roles: 'FEAR, CHILDHOOD WOUNDS, SELF COMPASSION',
-      excerpt: 'Little did I know it was going to trigger all kinds of childhood wounds.',
+      excerpt: 'Little did I know it would trigger old childhood wounds.',
       href: 'https://substack.com/home/post/p-209897527',
     },
     {

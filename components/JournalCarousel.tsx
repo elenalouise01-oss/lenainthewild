@@ -162,7 +162,7 @@ export default function JournalCarousel() {
                 )}
               </>
             );
-            const cardClass = 'block w-[70%] flex-none text-left sm:w-[calc(23%-18px)]';
+            const cardClass = 'block w-[70%] flex-none text-left sm:w-[calc(40%-12px)] lg:w-[calc(23%-18px)]';
             return href ? (
               <a
                 key={`${copy}-${pillar.title}`}
