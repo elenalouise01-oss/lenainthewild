@@ -155,6 +155,9 @@ export default function Section3() {
               </ScrollReveal>
               <ScrollReveal delay={0.1}>
                 <p className="mt-6 max-w-md font-body text-sm leading-relaxed text-umber">{freedomSeeker.creativeWork.body}</p>
+                <p className="mt-6 max-w-md font-display text-xl italic leading-snug text-bark sm:text-2xl">
+                  “{freedomSeeker.creativeWork.quote}”
+                </p>
                 <Link
                   href={freedomSeeker.creativeWork.ctaHref}
                   className="mt-6 inline-block font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark"
