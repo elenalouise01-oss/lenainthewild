@@ -138,7 +138,7 @@ export const freedomSeeker = {
     author: 'James R. Sherman',
   },
   creativeWork: {
-    leadItalic: 'Imagine a Life',
+    leadItalic: 'A Life',
     leadBold: 'THAT ACTUALLY FEELS LIKE YOURS',
     body: [
       'After a decade chasing the version of success everyone else wanted for me, I’m finally choosing what feels right for me.',
