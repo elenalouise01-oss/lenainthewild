@@ -164,7 +164,7 @@ export const freedomSeeker = {
       category: 'Wellness',
       title: 'Leaping into the Unknown: Part 1',
       roles: 'DAILY RITUALS, JOURNALING, STILLNESS',
-      excerpt: 'Small rituals that keep me steady.',
+      excerpt: 'At 36, I threw my life up in the air. I left everything I knew behind in Sydney and booked a one-way ticket to Bali.',
       href: 'https://substack.com/home/post/p-190792316',
     },
     {
