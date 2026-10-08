@@ -176,7 +176,7 @@ export const freedomSeeker = {
     },
     {
       category: 'Wild',
-      title: 'Out There',
+      title: 'Breaking Free From the System',
       roles: 'ADVENTURE, RISK, WONDER',
       excerpt: 'Where the comfort zone ends.',
       href: 'https://substack.com/home/post/p-189725048',
