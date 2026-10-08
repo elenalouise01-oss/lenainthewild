@@ -279,6 +279,6 @@ export const storyPage = {
   ],
   cta: 'Explore The Freedom Frequency',
   closing:
-    'If something here resonates, a story, a photograph, a feeling, I would love to hear from you. The best way in is the newsletter.',
+    "If something here resonates, a story, a photograph, a feeling, I'd love to hear from you, so come say hi.",
 };
 

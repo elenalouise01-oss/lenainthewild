@@ -73,14 +73,11 @@ export default function MyStoryPage() {
           <ScrollReveal className="mx-auto max-w-2xl">
             <p className="font-body text-base leading-relaxed text-umber sm:text-lg">{storyPage.closing}</p>
             <div className="mt-10 flex flex-wrap gap-4">
+              <Link href="/#contact" className={outlineButton}>
+                Let&apos;s Connect
+              </Link>
               <Link href="/#subscribe" className={outlineButton}>
                 Join the newsletter
-              </Link>
-              <Link href="/#freedom-seeker" className={outlineButton}>
-                Explore the offers
-              </Link>
-              <Link href="/#contact" className={outlineButton}>
-                Say hi
               </Link>
             </div>
           </ScrollReveal>
