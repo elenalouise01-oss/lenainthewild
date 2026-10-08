@@ -99,6 +99,7 @@ export const freedomSeeker = {
     },
     {
       number: '(03)',
+      price: '$222',
       banner: 'Coming soon',
       title: 'Your Freedom Roadmap',
       body: "A personal deep dive into where you're at and where you want to go. Send me your questions, and I'll create your own personalised roadmap to guide your next steps.",
