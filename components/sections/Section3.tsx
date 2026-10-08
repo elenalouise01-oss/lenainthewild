@@ -137,7 +137,6 @@ export default function Section3() {
                 </svg>
                 <p className="font-display text-2xl italic text-bark">{freedomSeeker.noteCard.label}</p>
                 <p className="mt-4 font-hand text-lg leading-relaxed text-umber">{freedomSeeker.noteCard.body}</p>
-                <p className="mt-3 font-hand text-base text-umber/80">— {freedomSeeker.noteCard.author}</p>
               </div>
               {/* Camera with its floral strap, propped on the note's corner */}
               <div className="absolute -right-6 top-1 z-20 w-28 -rotate-[15deg] sm:-right-28 sm:-top-5 sm:w-44">
