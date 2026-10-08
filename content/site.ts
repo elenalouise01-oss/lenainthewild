@@ -217,8 +217,10 @@ export const blog = {
 
 export const listen = {
   eyebrow: 'Press play',
-  headline: 'Listen in',
-  title: 'Song on Spotify',
+  headline: 'Romanticise Your Life 🎧',
+  body: 'A little soundtrack for starting over, romanticising the everyday, getting lost in nostalgia, and making ordinary moments feel a little more magical.',
+  note: 'And I encourage you to create your own little playlist, too - fill it with the songs that make you feel the most free and happy.',
+  title: 'Romanticise Your Life on Spotify',
   embedSrc: 'https://open.spotify.com/embed/track/3R1Xa7LkesYpNI3v6fslKi?utm_source=generator&theme=0',
 } as const;
 

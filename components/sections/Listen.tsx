@@ -12,7 +12,10 @@ export default function Listen() {
         <ScrollReveal delay={0.1}>
           <h2 className="mt-6 font-display text-display-3 italic text-bark">{listen.headline}</h2>
         </ScrollReveal>
-        <ScrollReveal delay={0.2} className="mx-auto mt-10 w-full max-w-xl">
+        <ScrollReveal delay={0.2}>
+          <p className="mx-auto mt-6 max-w-xl font-body text-base leading-relaxed text-umber">{listen.body}</p>
+        </ScrollReveal>
+        <ScrollReveal delay={0.3} className="mx-auto mt-10 w-full max-w-xl">
           <iframe
             title={listen.title}
             src={listen.embedSrc}
@@ -22,6 +25,9 @@ export default function Listen() {
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy"
           />
+        </ScrollReveal>
+        <ScrollReveal delay={0.1}>
+          <p className="mx-auto mt-6 max-w-md font-body text-sm leading-relaxed text-stone">{listen.note}</p>
         </ScrollReveal>
       </div>
     </section>
