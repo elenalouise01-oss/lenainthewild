@@ -47,7 +47,7 @@ export default function MyStoryPage() {
                 ))}
               </div>
               <a
-                href={offerLinks['The 5 Day Reconnect']}
+                href={offerLinks['The Freedom Frequency']}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${outlineButton} mt-12`}
