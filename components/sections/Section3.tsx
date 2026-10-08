@@ -204,7 +204,7 @@ export default function Section3() {
           {/* Snapshots: text left, polaroids right */}
           <div className="mt-32 grid min-w-0 gap-12 sm:mt-40 lg:grid-cols-[1fr_1.4fr] lg:items-center">
             <ScrollReveal>
-              <h3 className="max-w-sm font-display text-2xl leading-snug text-bark sm:text-3xl">{freedomSeeker.brandCampaigns.heading}</h3>
+              <Label>{freedomSeeker.brandCampaigns.heading}</Label>
               <p className="mt-3 font-display text-lg italic text-umber sm:text-xl">{freedomSeeker.brandCampaigns.sub}</p>
               <p className="mt-6 max-w-xs font-body text-sm leading-relaxed text-umber">{freedomSeeker.brandCampaigns.body}</p>
             </ScrollReveal>
