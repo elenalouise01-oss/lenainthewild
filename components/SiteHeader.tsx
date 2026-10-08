@@ -7,7 +7,7 @@ import { nav, socialLinks } from '@/content/site';
 const LINKS = [
   { label: 'About', href: '/my-story' },
   { label: 'The Freedom Seeker', href: '/#freedom-seeker' },
-  { label: 'Journal', href: '/#blog' },
+  { label: 'Journal', href: '/#on-the-road' },
   { label: 'Contact', href: '/#contact' },
 ];
 

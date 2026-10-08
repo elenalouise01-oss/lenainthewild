@@ -7,7 +7,7 @@ export const nav = {
   links: [
     { label: 'About', href: '#about' },
     { label: 'The Freedom Seeker', href: '#freedom-seeker', expandable: true },
-    { label: 'Journal', href: '#blog', expandable: true },
+    { label: 'Journal', href: '#on-the-road', expandable: true },
     { label: "Let's Connect", href: '#contact' },
   ],
   subscribeLabel: 'Subscribe',
@@ -224,30 +224,6 @@ export const freedomSeeker = {
     fields: { name: 'Name', email: 'Email', message: 'Message' },
     cta: 'Send',
   },
-};
-
-export const blog = {
-  eyebrow: 'Latest Stories',
-  headline: 'From the Blog',
-  posts: [
-    {
-      category: 'Travel',
-      title: 'Solo Travel in Vietnam',
-      excerpt: "On learning to let Bali unfold on its own terms.",
-    },
-    {
-      category: 'Wellness',
-      title: 'My Daily Grounding Practice',
-      excerpt: 'What happens when you stop optimising your mornings and start feeling them instead.',
-    },
-    {
-      category: 'Healing',
-      title: 'Overcoming My Fear of Riding a Scooter',
-      excerpt: "A visual journal from two weeks shooting film along Bali's southern coastline.",
-    },
-  ],
-  cta: 'Read all stories',
-  ctaHref: '#blog',
 };
 
 export const listen = {

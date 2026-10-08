@@ -1,6 +1,5 @@
 import BackToTop from '@/components/BackToTop';
 import Footer from '@/components/Footer';
-import Blog from '@/components/sections/Blog';
 import Hero from '@/components/sections/Hero';
 import Newsletter from '@/components/sections/Newsletter';
 import Section1 from '@/components/sections/Section1';
@@ -14,7 +13,6 @@ export default function Home() {
       <Section1 />
       <Section2 />
       <Section3 />
-      <Blog />
       <Newsletter />
       <ComeSayHi />
       <Footer />
