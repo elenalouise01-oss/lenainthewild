@@ -172,6 +172,7 @@ export const freedomSeeker = {
       title: 'The Hard Parts',
       roles: 'REBUILDING, UNCERTAINTY, HONESTY',
       excerpt: 'What rebuilding actually looks like.',
+      href: 'https://substack.com/home/post/p-189951717',
     },
     {
       category: 'Wild',
