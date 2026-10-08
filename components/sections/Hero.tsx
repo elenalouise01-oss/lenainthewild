@@ -154,6 +154,12 @@ export default function Hero() {
               >
                 {hero.sub}
               </p>
+              <p
+                className="mx-auto mt-2 max-w-md font-body text-sm leading-relaxed text-cream/80"
+                style={{ textShadow: '0 1px 6px rgba(0,0,0,0.3)' }}
+              >
+                {hero.subSmall}
+              </p>
               <div className="mt-8 flex justify-center">
                 <Button href={hero.ctaHref} tone="light">
                   {hero.ctaLabel}
