@@ -140,7 +140,7 @@ export const freedomSeeker = {
   creativeWork: {
     leadItalic: 'A Life',
     leadBold: 'THAT ACTUALLY FEELS FREE',
-    body: "After a decade chasing the version of success everyone else wanted for me, I'm learning what actually feels good — one honest day at a time.",
+    body: "Whatever chapter you're in right now, remember that where you are isn't where you have to stay. You get to rewrite the script, change the plot and decide what comes next, because this is your story and nobody else gets to write it for you.",
     cta: "Let's Connect",
     ctaHref: '#contact',
   },
