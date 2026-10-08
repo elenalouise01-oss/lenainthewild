@@ -155,7 +155,11 @@ export default function Section3() {
                 <p className="mt-2 font-display text-4xl uppercase leading-none text-bark sm:text-6xl">{freedomSeeker.creativeWork.leadBold}</p>
               </ScrollReveal>
               <ScrollReveal delay={0.1}>
-                <p className="mt-6 max-w-md font-body text-sm leading-relaxed text-umber">{freedomSeeker.creativeWork.body}</p>
+                {freedomSeeker.creativeWork.body.map((para, i) => (
+                  <p key={i} className={`${i === 0 ? 'mt-6' : 'mt-4'} max-w-md font-body text-sm leading-relaxed text-umber`}>
+                    {para}
+                  </p>
+                ))}
                 <Link
                   href={freedomSeeker.creativeWork.ctaHref}
                   className="mt-6 inline-block font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark"

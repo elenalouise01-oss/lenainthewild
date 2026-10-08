@@ -140,7 +140,10 @@ export const freedomSeeker = {
   creativeWork: {
     leadItalic: 'A Life',
     leadBold: 'THAT ACTUALLY FEELS FREE',
-    body: "Whatever chapter you're in right now, remember that where you are isn't where you have to stay. You get to rewrite the script, change the plot and decide what comes next, because this is your story and nobody else gets to write it for you.",
+    body: [
+      'After a decade chasing the version of success everyone else wanted for me, I’m finally choosing what feels right for me.',
+      'And whatever chapter you’re in right now, remember: where you are isn’t where you have to stay. You get to rewrite the script, change the plot and decide what comes next. This is your story. Nobody else gets to write it for you.',
+    ],
     cta: "Let's Connect",
     ctaHref: '#contact',
   },
