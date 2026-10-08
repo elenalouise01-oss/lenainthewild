@@ -114,7 +114,7 @@ export const freedomSeeker = {
   experienceLead: 'I walked away from a career that looked perfect on paper, moved overseas, and rebuilt my life from the ground up.',
   experienceHighlight: 'BURNOUT, REBUILDING, SLOW LIVING, TRAVEL',
   experienceTail:
-    "to build a life in South East Asia that actually fits. I've led myself through the exact reconnection, uncertainty and rebuild I now guide others through.",
+    "I've led myself through the exact reconnection, uncertainty and rebuild I now guide others through.",
 
   noteCard: {
     label: 'Note to Self',
