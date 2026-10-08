@@ -9,7 +9,7 @@ import { offerLinks, storyPage } from '@/content/site';
 
 export const metadata: Metadata = {
   title: 'My Story',
-  description: storyPage.welcome,
+  description: storyPage.paragraphs[0],
 };
 
 const outlineButton =
@@ -38,13 +38,8 @@ export default function MyStoryPage() {
         <section className="bg-cream px-6 py-24 sm:py-32">
           <div className="mx-auto max-w-2xl">
             <ScrollReveal>
-              <h1 className="font-display text-4xl leading-tight text-bark sm:text-6xl">{storyPage.welcomeTitle}</h1>
-              <p className="mt-8 font-body text-base leading-relaxed text-umber sm:text-lg">{storyPage.welcome}</p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.1}>
-              <h2 className="mt-20 font-display text-3xl italic text-bark sm:text-4xl">{storyPage.storyTitle}</h2>
-              <div className="mt-6 space-y-6">
+              <h1 className="font-display text-4xl leading-tight text-bark sm:text-6xl">{storyPage.storyTitle}</h1>
+              <div className="mt-8 space-y-6">
                 {storyPage.paragraphs.map((p) => (
                   <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber sm:text-lg">
                     {p}

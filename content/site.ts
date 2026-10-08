@@ -256,9 +256,6 @@ export const footer = {
 
 // The My Story page (/my-story).
 export const storyPage = {
-  welcomeTitle: 'Welcome to Lena in the Wild',
-  welcome:
-    "If you've been feeling the pull to want more for your life, feeling stuck, stagnant, searching for answers but not knowing how to get there… feeling like there's more to life… seeking freedom… you've been up and down. I feel you. That was me. You're in the right place.",
   storyTitle: 'My Story',
   paragraphs: [
     "I'm Lena. I was 36 years old when I uprooted my life from Sydney and leapt into the unknown. I was running a successful personal training business in the busiest gym in Bondi for 8 years, a life I had once dreamed of. But there I was, chasing the life I'd been sold to want… and I was miserable. I couldn't shake the feeling that surely this can't be it, there has to be more to life?",
