@@ -76,6 +76,9 @@ export default function CredentialsPopup() {
                 {freedomSeeker.experienceLabel}
               </p>
               <h3 className="mt-3 font-display text-3xl italic leading-tight text-bark">{credentials.title}</h3>
+              <p className="mt-2 font-body text-xs font-semibold uppercase tracking-widest2 text-bark/60">
+                {credentials.subtitle}
+              </p>
               <ul className="mt-8 space-y-6">
                 {credentials.items.map((item) => (
                   <li key={item.title} className="border-t border-bark/15 pt-4">

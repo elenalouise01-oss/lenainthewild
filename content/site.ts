@@ -113,8 +113,8 @@ export const freedomSeeker = {
   experienceCredentials: 'And for those of you who need a little more certainty…I’ve got the credentials to back it up, too.',
   credentials: {
     title: 'My credentials',
+    subtitle: 'Feeler & Healer',
     items: [
-      { title: 'Feeler & Healer', detail: '' },
       { title: 'Reiki Level I Certification', detail: '' },
       { title: 'Reiki II', detail: '' },
       { title: 'Reiki Master', detail: 'Wildfire Healing' },
