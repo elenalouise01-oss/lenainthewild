@@ -138,8 +138,8 @@ export const freedomSeeker = {
     author: 'James R. Sherman',
   },
   creativeWork: {
-    leadItalic: 'A Life',
-    leadBold: 'THAT ACTUALLY FEELS FREE',
+    leadItalic: 'Imagine a Life',
+    leadBold: 'THAT ACTUALLY FEELS LIKE YOURS',
     body: [
       'After a decade chasing the version of success everyone else wanted for me, I’m finally choosing what feels right for me.',
       'And whatever chapter you’re in right now, remember: where you are isn’t where you have to stay. You get to rewrite the script, change the plot and decide what comes next. This is your story. Nobody else gets to write it for you.',
