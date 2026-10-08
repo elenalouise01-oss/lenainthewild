@@ -183,6 +183,11 @@ export default function Section3() {
                 {freedomSeeker.experienceClosing}
               </p>
             </ScrollReveal>
+            <ScrollReveal delay={0.3}>
+              <p className="mt-6 max-w-xl font-body text-sm leading-relaxed text-umber sm:text-base">
+                {freedomSeeker.experienceCredentials}
+              </p>
+            </ScrollReveal>
           </div>
 
           {/* My Journal: a slow, looping row of cards */}
