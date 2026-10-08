@@ -115,6 +115,8 @@ export const freedomSeeker = {
     title: 'My credentials',
     items: [
       { title: 'Feeler & Healer', detail: '' },
+      { title: 'Reiki Level I Certification', detail: '' },
+      { title: 'Reiki II', detail: '' },
       { title: 'Reiki Master', detail: 'Wildfire Healing' },
       { title: 'Embodiment Coach', detail: 'Embodiment Coaching Certification · Dharma Coaching Institute' },
       { title: 'Hosted Wellness Workshops & Women’s Circles', detail: '' },
