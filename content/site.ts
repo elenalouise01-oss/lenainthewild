@@ -150,7 +150,7 @@ export const freedomSeeker = {
   },
 
   pillarsLabel: 'My Journal',
-  pillarsIntro: 'I move easily between the plan and whatever actually happens — that’s usually the better story.',
+  pillarsIntro: 'I don’t really do plans. I wake up, see how I feel, follow my intuition and let the day unfold.',
   pillars: [
     {
       category: 'Travel',
