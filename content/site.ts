@@ -77,7 +77,7 @@ type Tier = {
 
 export const freedomSeeker = {
   label: 'The Freedom Seeker',
-  headline: 'From stagnation to a life that feels like you.',
+  headline: 'Your next chapter starts here:',
   sub: "You built the career, the home, the income. And now you're wondering why you still feel restless. Start here.",
   tiers: [
     {
