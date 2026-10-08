@@ -171,8 +171,8 @@ export const freedomSeeker = {
       category: 'Healing',
       title: 'What I’m Learning About Slowing Down',
       roles: 'REBUILDING, UNCERTAINTY, HONESTY',
-      excerpt: 'What rebuilding actually looks like.',
-      href: 'https://substack.com/home/post/p-189951717',
+      excerpt: 'For years I didn’t even realise I was living in fight or flight. I just thought I was driven. Productive. Good at getting things done.',
+      href: 'https://lenainthewild.substack.com/p/for-years-i-didnt-even-realise-i',
     },
     {
       category: 'Wild',
