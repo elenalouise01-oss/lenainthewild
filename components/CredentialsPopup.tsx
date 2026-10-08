@@ -118,11 +118,21 @@ export default function CredentialsPopup() {
               {/* Fade + hint so it's clear there's more below; gone at the end. */}
               <div
                 aria-hidden="true"
-                className={`pointer-events-none absolute inset-x-0 bottom-0 flex h-20 items-end justify-center bg-gradient-to-t from-cream via-cream/90 to-transparent pb-3 transition-opacity duration-300 ${more ? 'opacity-100' : 'opacity-0'}`}
+                className={`pointer-events-none absolute inset-x-0 bottom-0 flex h-20 items-end justify-center bg-gradient-to-t from-cream via-cream/90 to-transparent pb-2 transition-opacity duration-300 ${more ? 'opacity-100' : 'opacity-0'}`}
               >
-                <span className="font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark/70">
-                  Scroll for more ↓
-                </span>
+                <motion.svg
+                  viewBox="0 0 24 24"
+                  className="h-6 w-6 text-bark/70"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  animate={reduced ? undefined : { y: [0, 4, 0] }}
+                  transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </motion.svg>
               </div>
             </motion.div>
           </motion.div>
