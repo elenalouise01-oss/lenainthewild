@@ -151,12 +151,14 @@ export const freedomSeeker = {
 
   pillarsLabel: 'My Journal',
   pillarsIntro: 'I don’t really do plans. I wake up, see how I feel, follow my intuition and let the day unfold.',
+  // A pillar with an `href` links to its Substack post; without one it's a plain card.
   pillars: [
     {
       category: 'Travel',
       title: 'On the Move',
       roles: 'SLOW TRAVEL, SOLO TRIPS, STORYTELLING',
       excerpt: 'Slow travel through South East Asia.',
+      href: 'https://substack.com/home/post/p-209897527',
     },
     {
       category: 'Wellness',
