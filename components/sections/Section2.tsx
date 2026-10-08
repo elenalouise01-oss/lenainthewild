@@ -52,7 +52,11 @@ export default function Section2() {
           </ScrollReveal>
           <div className="mt-8 h-px w-16 bg-bark/20" />
           <ScrollReveal delay={0.2}>
-            <p className="mt-8 font-body text-base leading-relaxed text-umber">{myStory.body}</p>
+            <div className="mt-8 space-y-4">
+              {myStory.body.split('\n\n').map((para, i) => (
+                <p key={i} className="font-body text-base leading-relaxed text-umber">{para}</p>
+              ))}
+            </div>
           </ScrollReveal>
           <ScrollReveal delay={0.3}>
             <Link

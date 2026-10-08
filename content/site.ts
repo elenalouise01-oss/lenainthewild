@@ -47,7 +47,8 @@ export const welcome = {
 export const myStory = {
   label: 'My Story',
   quote: "I just had a deep, undeniable knowing that this life wasn't for me anymore.",
-  body: "I'm Lena. I was 36 when I uprooted my life from Sydney and leapt into the unknown, leaving behind a successful personal training business in Bondi that once felt like the dream. I couldn't shake the feeling that surely this can't be it. So I broke free, from the hustle, the system, the rat race, and I've been rebuilding on my own terms ever since. Lena in the Wild is where I document that journey: slow living, travel, wellness, healing, and the real, unfiltered version of what it actually takes to rebuild a life on your terms.",
+  body:
+    "Hi, I'm Lena. I was 36 when I uprooted my life from Sydney and leapt into the unknown, leaving behind the successful personal training business I'd spent 8 years building in the busiest gym in Bondi, which was once my dream. But for the last 2 years of my PT career, I just couldn't shake the feeling that surely this wasn't it?\n\nSo when I finally worked up the courage, I threw my life up in the air and broke free from the hustle, the system and the rat race, and I've been rebuilding life on my own terms ever since. Lena in the Wild was born from my own search for freedom, and it's where I document the whole journey: slow living, solo travel, starting over, wellness, healing, and the real, unfiltered version of what it actually takes to reinvent your life in your late 30s.",
   cta: 'Read My Story',
   ctaHref: '/my-story',
 };
