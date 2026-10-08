@@ -134,7 +134,8 @@ export const freedomSeeker = {
 
   noteCard: {
     label: 'Note to Self',
-    body: "Whatever chapter you're in right now, remember that where you are isn't where you have to stay. You get to rewrite the script, change the plot and decide what comes next, because this is your story and nobody else gets to write it for you.",
+    body: 'You can’t go back and change the beginning, but you can start where you are and change the ending.',
+    author: 'James R. Sherman',
   },
   creativeWork: {
     leadItalic: 'A Life',
