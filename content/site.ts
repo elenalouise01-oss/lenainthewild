@@ -135,6 +135,7 @@ export const freedomSeeker = {
   noteCard: {
     label: 'Note to Self',
     body: 'You can’t go back and change the beginning, but you can start where you are and change the ending.',
+    author: 'James R. Sherman',
   },
   creativeWork: {
     leadItalic: 'A Life',
