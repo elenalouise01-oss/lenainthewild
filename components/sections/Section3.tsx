@@ -177,6 +177,11 @@ export default function Section3() {
                 <span className="italic">{freedomSeeker.experienceTail}</span>
               </p>
             </ScrollReveal>
+            <ScrollReveal delay={0.2}>
+              <p className="mt-8 max-w-2xl font-display text-xl italic leading-snug text-umber sm:text-2xl">
+                {freedomSeeker.experienceClosing}
+              </p>
+            </ScrollReveal>
           </div>
 
           {/* My Journal: a slow, looping row of cards */}
