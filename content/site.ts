@@ -134,13 +134,12 @@ export const freedomSeeker = {
 
   noteCard: {
     label: 'Note to Self',
-    body: "Whatever chapter you're in right now, remember that where you are isn't where you have to stay. You get to rewrite the script, change the plot and decide what comes next, because this is your story and nobody else gets to write it for you.",
+    body: 'You can’t go back and change the beginning, but you can start where you are and change the ending.',
   },
   creativeWork: {
     leadItalic: 'A Life',
     leadBold: 'THAT ACTUALLY FEELS FREE',
     body: "After a decade chasing the version of success everyone else wanted for me, I'm learning what actually feels good — one honest day at a time.",
-    quote: 'You can’t go back and change the beginning, but you can start where you are and change the ending.',
     cta: "Let's Connect",
     ctaHref: '#contact',
   },
