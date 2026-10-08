@@ -179,6 +179,7 @@ export const freedomSeeker = {
       title: 'Out There',
       roles: 'ADVENTURE, RISK, WONDER',
       excerpt: 'Where the comfort zone ends.',
+      href: 'https://substack.com/home/post/p-189725048',
     },
   ],
 
