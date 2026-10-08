@@ -92,7 +92,7 @@ export const freedomSeeker = {
     },
     {
       number: '(02)',
-      price: '$22',
+      price: '$33',
       title: 'The 5 Day Reconnect',
       body: 'An audio journey to help you slow down, get out of your head, and hear yourself again.',
       tags: ['Audio Journey', 'Self-Paced'],
