@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import CredentialsPopup from '@/components/CredentialsPopup';
 import Envelope from '@/components/Envelope';
 import JournalCarousel from '@/components/JournalCarousel';
 import OffersCarousel from '@/components/OffersCarousel';
@@ -184,9 +185,7 @@ export default function Section3() {
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
-              <p className="mt-6 max-w-xl font-body text-sm leading-relaxed text-umber sm:text-base">
-                {freedomSeeker.experienceCredentials}
-              </p>
+              <CredentialsPopup />
             </ScrollReveal>
           </div>
 
