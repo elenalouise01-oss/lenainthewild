@@ -13,10 +13,10 @@ import { useReducedMotion } from '@/lib/useReducedMotion';
 // Brand palette only; `photo` is the crop of the shared photo, `src` an
 // offer's own cover artwork when it has one.
 // `zoom` enlarges artwork whose subject is drawn smaller than the others.
-const LOOKS: { bg: string; circle: string; sticker: string; photo: string; src?: string; zoom?: number; lift?: number }[] = [
+const LOOKS: { bg: string; circle: string; sticker: string; photo: string; src?: string; zoom?: number }[] = [
   { bg: '#ff8bb8', circle: '#CBA1D4', sticker: '#fffba0', photo: '50% 50%', src: '/images/cover-freedom-frequency.webp' },
   { bg: '#CBA1D4', circle: '#fffba0', sticker: '#ff8bb8', photo: '50% 50%', src: '/images/cover-reconnect-monkey.webp' },
-  { bg: '#fffba0', circle: '#ff8bb8', sticker: '#CBA1D4', photo: '50% 50%', src: '/images/cover-aligned-circle.webp', zoom: 1.35, lift: 10 },
+  { bg: '#fffba0', circle: '#ff8bb8', sticker: '#CBA1D4', photo: '50% 50%', src: '/images/cover-aligned-circle.webp', zoom: 1.35 },
 ];
 
 const SWIPE_THRESHOLD = 60;
@@ -310,14 +310,18 @@ function SleeveArt({
   const stickerContent = (
     <>
       <span className="font-script text-[clamp(0.85rem,3.4vw,1.6rem)] leading-[0.95]">
-        {tier.title.replace(/^The /, '')}
+        {tier.title.replace(/^(The|Your) /, '')}
       </span>
       <span className="mt-[6%] font-body text-[clamp(0.4rem,1.1vw,0.55rem)] font-semibold uppercase leading-tight tracking-wide text-bark/80">
         {tier.tags.join(' · ')}
       </span>
-      {tier.price && (
-        <span className="mt-[5%] font-body text-[clamp(0.7rem,2.2vw,1.05rem)] font-bold leading-none">{tier.price}</span>
-      )}
+      {/* Offers without a price keep the line's space so the bubble lines up with the others. */}
+      <span
+        className={`mt-[5%] font-body text-[clamp(0.7rem,2.2vw,1.05rem)] font-bold leading-none${tier.price ? '' : ' invisible'}`}
+        aria-hidden={tier.price ? undefined : true}
+      >
+        {tier.price ?? '$'}
+      </span>
     </>
   );
   const stickerClass =
@@ -332,7 +336,7 @@ function SleeveArt({
           fill
           sizes={sizes}
           className="object-cover"
-          style={{ objectPosition: look.photo, transform: look.zoom ? `translateY(-${look.lift ?? 0}%) scale(${look.zoom})` : undefined }}
+          style={{ objectPosition: look.photo, transform: look.zoom ? `scale(${look.zoom})` : undefined }}
           aria-hidden="true"
           draggable={false}
         />
@@ -346,10 +350,13 @@ function SleeveArt({
         }}
       />
       {tier.banner && (
-        <div className="pointer-events-none absolute left-0 top-0 h-[44%] w-[44%] overflow-hidden">
-          <div className="absolute -left-[26%] top-[24%] w-[100%] -rotate-45 bg-bark py-[3%] text-center font-body text-[clamp(0.5rem,1.5vw,0.8rem)] font-bold uppercase tracking-widest2 text-cream shadow-md">
-            {tier.banner}
-          </div>
+        // A corner ribbon: the band's midpoint sits at (15%, 15%), so its text
+        // is centred on the part of the band that's visible inside the sleeve.
+        <div
+          className="pointer-events-none absolute w-full whitespace-nowrap bg-bark py-[1.6%] text-center font-body text-[clamp(0.5rem,1.5vw,0.8rem)] font-bold uppercase leading-none tracking-widest2 text-cream shadow-md"
+          style={{ left: '15%', top: '15%', transform: 'translate(-50%, -50%) rotate(-45deg)' }}
+        >
+          {tier.banner}
         </div>
       )}
       {onStickerClick ? (
