@@ -103,7 +103,7 @@ export const freedomSeeker = {
       banner: 'Coming soon',
       title: 'Your Freedom Roadmap',
       body: "A personal deep dive into where you're at and where you want to go. Send me your questions, and I'll create your own personalised roadmap to guide your next steps.",
-      tags: ['Personalised Roadmap', 'Your Questions Answered'],
+      tags: ['Personalised', 'Your Questions Answered'],
     },
   ] as Tier[],
   cta: "Yes, I'm ready to reconnect",
