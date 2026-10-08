@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Footer from '@/components/Footer';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteHeader from '@/components/SiteHeader';
+import Listen from '@/components/sections/Listen';
 import Newsletter from '@/components/sections/Newsletter';
 import { offerLinks, storyPage } from '@/content/site';
 
@@ -82,6 +83,8 @@ export default function MyStoryPage() {
             </div>
           </ScrollReveal>
         </section>
+
+        <Listen />
 
         <Newsletter />
       </main>
