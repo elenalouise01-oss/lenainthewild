@@ -83,9 +83,11 @@ export default function CredentialsPopup() {
                 {credentials.items.map((item) => (
                   <li key={item.title} className="border-t border-bark/15 pt-4">
                     <p className="font-display text-xl text-bark">{item.title}</p>
-                    {item.detail && (
-                      <p className="mt-1 font-body text-sm leading-relaxed text-umber">{item.detail}</p>
-                    )}
+                    {item.details.map((line) => (
+                      <p key={line} className="mt-1 font-body text-sm leading-relaxed text-umber">
+                        {line}
+                      </p>
+                    ))}
                   </li>
                 ))}
               </ul>
