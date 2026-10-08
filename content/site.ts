@@ -109,6 +109,7 @@ export const freedomSeeker = {
   cta: "Yes, I'm ready to reconnect",
   ctaHref: '#freedom-seeker',
   experienceLabel: 'My Experience',
+  experienceSub: 'I’ve lived it.',
   experienceLead: "I've walked away from a career that looked perfect on paper",
   experienceHighlight: 'BURNOUT, REBUILDING, SLOW LIVING, TRAVEL',
   experienceTail:

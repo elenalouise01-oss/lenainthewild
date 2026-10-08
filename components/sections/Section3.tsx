@@ -169,6 +169,7 @@ export default function Section3() {
           <div className="mt-16 sm:mt-20">
             <ScrollReveal>
               <Label>{freedomSeeker.experienceLabel}</Label>
+              <p className="mt-3 font-display text-2xl italic text-bark sm:text-3xl">{freedomSeeker.experienceSub}</p>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
               <p className="mt-6 max-w-5xl font-display text-3xl leading-[1.15] text-bark sm:text-5xl">
