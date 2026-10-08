@@ -15,12 +15,12 @@ export default function Listen() {
         <ScrollReveal delay={0.2}>
           <p className="mx-auto mt-6 max-w-xl font-body text-base leading-relaxed text-umber">{listen.body}</p>
         </ScrollReveal>
-        <ScrollReveal delay={0.3} className="mx-auto mt-10 w-full max-w-xl">
+        <ScrollReveal delay={0.3} className="mx-auto mt-10 w-full max-w-md">
           <iframe
             title={listen.title}
             src={listen.embedSrc}
             width="100%"
-            height="352"
+            height="152"
             style={{ borderRadius: 12, border: 0 }}
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy"
