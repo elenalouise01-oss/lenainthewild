@@ -13,10 +13,10 @@ import { useReducedMotion } from '@/lib/useReducedMotion';
 // Brand palette only; `photo` is the crop of the shared photo, `src` an
 // offer's own cover artwork when it has one.
 // `zoom` enlarges artwork whose subject is drawn smaller than the others.
-const LOOKS: { bg: string; circle: string; sticker: string; photo: string; src?: string; zoom?: number }[] = [
+const LOOKS: { bg: string; circle: string; sticker: string; photo: string; src?: string; zoom?: number; lift?: number }[] = [
   { bg: '#ff8bb8', circle: '#CBA1D4', sticker: '#fffba0', photo: '50% 50%', src: '/images/cover-freedom-frequency.webp' },
   { bg: '#CBA1D4', circle: '#fffba0', sticker: '#ff8bb8', photo: '50% 50%', src: '/images/cover-reconnect-monkey.webp' },
-  { bg: '#fffba0', circle: '#ff8bb8', sticker: '#CBA1D4', photo: '50% 50%', src: '/images/cover-aligned-circle.webp', zoom: 1.35 },
+  { bg: '#fffba0', circle: '#ff8bb8', sticker: '#CBA1D4', photo: '50% 50%', src: '/images/cover-aligned-circle.webp', zoom: 1.35, lift: 10 },
 ];
 
 const SWIPE_THRESHOLD = 60;
@@ -125,9 +125,12 @@ export default function OffersCarousel() {
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-cream to-transparent sm:h-32" />
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-sand to-transparent sm:h-32" />
 
-      <p className="relative mb-8 font-body text-xs font-semibold uppercase tracking-widest2 text-bark/70 sm:absolute sm:left-10 sm:top-10 sm:mb-0">
-        {freedomSeeker.label}
-      </p>
+      <div className="relative mb-8 px-6 text-center sm:absolute sm:left-10 sm:top-10 sm:mb-0 sm:px-0 sm:text-left">
+        <h2 className="font-display text-3xl italic leading-tight text-bark sm:text-5xl">{freedomSeeker.heading}</h2>
+        <p className="mt-3 font-body text-xs font-semibold uppercase tracking-widest2 text-bark/70">
+          {freedomSeeker.label}
+        </p>
+      </div>
 
       <motion.div
         className="relative aspect-square w-[min(60dvh,74vw)] cursor-grab touch-pan-y active:cursor-grabbing"
@@ -329,7 +332,7 @@ function SleeveArt({
           fill
           sizes={sizes}
           className="object-cover"
-          style={{ objectPosition: look.photo, transform: look.zoom ? `scale(${look.zoom})` : undefined }}
+          style={{ objectPosition: look.photo, transform: look.zoom ? `translateY(-${look.lift ?? 0}%) scale(${look.zoom})` : undefined }}
           aria-hidden="true"
           draggable={false}
         />
@@ -342,6 +345,13 @@ function SleeveArt({
             'linear-gradient(125deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 62%, rgba(255,255,255,0.16) 78%, rgba(255,255,255,0) 100%)',
         }}
       />
+      {tier.banner && (
+        <div className="pointer-events-none absolute left-0 top-0 h-[44%] w-[44%] overflow-hidden">
+          <div className="absolute -left-[26%] top-[24%] w-[100%] -rotate-45 bg-bark py-[3%] text-center font-body text-[clamp(0.5rem,1.5vw,0.8rem)] font-bold uppercase tracking-widest2 text-cream shadow-md">
+            {tier.banner}
+          </div>
+        </div>
+      )}
       {onStickerClick ? (
         <motion.button
           type="button"
@@ -612,6 +622,11 @@ function OfferDetails({
                   style={{ backgroundColor: look.sticker }}
                 >
                   {tier.price}
+                </span>
+              )}
+              {tier.banner && (
+                <span className="rounded-full bg-bark px-3 py-1 font-body text-xs font-bold uppercase tracking-wide text-cream">
+                  {tier.banner}
                 </span>
               )}
               {href && (
