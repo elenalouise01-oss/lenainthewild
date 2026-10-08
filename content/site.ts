@@ -164,14 +164,14 @@ export const freedomSeeker = {
       category: 'Wellness',
       title: 'Leaping into the Unknown: Part 1',
       roles: 'DAILY RITUALS, JOURNALING, STILLNESS',
-      excerpt: 'At 36, I threw my life up in the air. I left everything I knew behind in Sydney and booked a one-way ticket to Bali.',
+      excerpt: 'At 36, I threw my life up in the air.',
       href: 'https://substack.com/home/post/p-190792316',
     },
     {
       category: 'Healing',
       title: 'What I’m Learning About Slowing Down',
       roles: 'REBUILDING, UNCERTAINTY, HONESTY',
-      excerpt: 'For years I didn’t even realise I was living in fight or flight. I just thought I was driven. Productive. Good at getting things done.',
+      excerpt: 'For years I didn’t even realise I was living in fight or flight.',
       href: 'https://lenainthewild.substack.com/p/for-years-i-didnt-even-realise-i',
     },
     {

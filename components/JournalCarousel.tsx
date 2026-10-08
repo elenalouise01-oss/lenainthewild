@@ -153,7 +153,7 @@ export default function JournalCarousel() {
                   <Image src={photo.src} alt="" fill sizes="(min-width: 640px) 25vw, 70vw" className="object-cover" style={{ objectPosition: photo.pos }} aria-hidden="true" />
                 </div>
                 <h4 className="mt-5 font-display text-2xl text-bark">{pillar.title}</h4>
-                <p className="mt-1 font-body text-xs text-umber">{pillar.excerpt}</p>
+                <p className="mt-1 line-clamp-2 font-body text-xs text-umber">{pillar.excerpt}</p>
                 <p className="mt-3 font-body text-[0.6rem] font-semibold uppercase leading-relaxed tracking-wide text-stone">{pillar.roles}</p>
                 {href && (
                   <p className="mt-3 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8">
