@@ -119,7 +119,7 @@ export const freedomSeeker = {
       { title: 'Reiki Healer', details: ['Reiki Level I · Reiki Level II · Reiki Master', { text: 'Wildfire Healing', italic: true }] },
       { title: 'Embodiment Coach', details: ['Embodiment Coaching Certification', { text: 'Dharma Coaching Institute', italic: true }] },
       { title: 'Hosted Wellness Workshops & Women’s Circles', details: [{ text: 'Active Instinct Wellness', italic: true }] },
-      { title: 'Health & Wellness Coach', details: ['8+ years · Certificate III & Certificate IV', { text: 'Active Instinct Fitness', italic: true }] },
+      { title: 'Personal Trainer & Wellness Coach', details: ['8+ years · Certificate III & Certificate IV', { text: 'Active Instinct Fitness', italic: true }] },
     ],
   },
   experienceSub: 'I’ve lived it.',
