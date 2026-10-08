@@ -185,7 +185,7 @@ export const freedomSeeker = {
 
   brandCampaigns: {
     label: 'Snapshots',
-    body: 'A look at the everyday moments — the ones I actually stopped to capture.',
+    body: 'The little moments I didn’t want to forget.',
   },
 
   contentJourney: {
