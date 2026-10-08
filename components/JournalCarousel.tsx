@@ -190,6 +190,15 @@ export default function JournalCarousel() {
           }),
         )}
       </div>
+
+      <a
+        href={freedomSeeker.pillarsCta.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-10 inline-block font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark"
+      >
+        {freedomSeeker.pillarsCta.label} →
+      </a>
     </>
   );
 }
