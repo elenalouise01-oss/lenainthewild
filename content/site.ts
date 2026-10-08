@@ -8,7 +8,7 @@ export const nav = {
     { label: 'About', href: '#about' },
     { label: 'The Freedom Seeker', href: '#freedom-seeker', expandable: true },
     { label: 'Journal', href: '#blog', expandable: true },
-    { label: 'Contact', href: '#contact' },
+    { label: "Let's Connect", href: '#contact' },
   ],
   subscribeLabel: 'Subscribe',
   closeLabel: 'Close',
