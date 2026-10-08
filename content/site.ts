@@ -155,14 +155,14 @@ export const freedomSeeker = {
   pillars: [
     {
       category: 'Travel',
-      title: 'Leaping into the Unknown: Part 1',
+      title: 'On the Move',
       roles: 'SLOW TRAVEL, SOLO TRIPS, STORYTELLING',
       excerpt: 'Slow travel through South East Asia.',
       href: 'https://substack.com/home/post/p-209897527',
     },
     {
       category: 'Wellness',
-      title: 'Grounded Mornings',
+      title: 'Leaping into the Unknown: Part 1',
       roles: 'DAILY RITUALS, JOURNALING, STILLNESS',
       excerpt: 'Small rituals that keep me steady.',
       href: 'https://substack.com/home/post/p-190792316',
