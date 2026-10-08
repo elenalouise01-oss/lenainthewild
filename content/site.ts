@@ -111,13 +111,14 @@ export const freedomSeeker = {
   experienceLabel: 'My Experience',
   experienceClosing: 'I’m not here to tell you how to live. I’m here to show you what’s possible when you choose you.',
   experienceCredentials: 'And for those of you who need a little more certainty…I’ve got the credentials to back it up, too.',
+  // `details` lines are plain text, or { text, italic } for a school/business name.
   credentials: {
     title: 'My credentials',
     subtitle: 'Feeler & Healer',
     items: [
-      { title: 'Reiki Healer', details: ['Reiki Level I · Reiki Level II · Reiki Master', 'Wildfire Healing'] },
-      { title: 'Embodiment Coach', details: ['Embodiment Coaching Certification', 'Dharma Coaching Institute'] },
-      { title: 'Hosted Wellness Workshops & Women’s Circles', details: [] },
+      { title: 'Reiki Healer', details: ['Reiki Level I · Reiki Level II · Reiki Master', { text: 'Wildfire Healing', italic: true }] },
+      { title: 'Embodiment Coach', details: ['Embodiment Coaching Certification', { text: 'Dharma Coaching Institute', italic: true }] },
+      { title: 'Hosted Wellness Workshops & Women’s Circles', details: [{ text: 'Active Instinct Wellness', italic: true }] },
       { title: 'Personal Trainer & Wellness Coach', details: ['8+ years · Certificate III & Certificate IV'] },
     ],
   },

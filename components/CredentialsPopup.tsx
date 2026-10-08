@@ -83,12 +83,17 @@ export default function CredentialsPopup() {
                 {credentials.items.map((item) => (
                   <li key={item.title} className="border-t border-bark/15 pt-4">
                     <p className="font-display text-xl text-bark">{item.title}</p>
-                    {/* First line = the qualification; later lines (the school or lineage) are italic. */}
-                    {item.details.map((line, i) => (
-                      <p key={line} className={`mt-1 font-body text-sm leading-relaxed text-umber${i > 0 ? ' italic' : ''}`}>
-                        {line}
-                      </p>
-                    ))}
+                    {item.details.map((d) => {
+                      const { text, italic } = typeof d === 'string' ? { text: d, italic: false } : d;
+                      return (
+                        <p
+                          key={text}
+                          className={`mt-1 font-body text-sm leading-relaxed text-umber${italic ? ' italic' : ''}`}
+                        >
+                          {text}
+                        </p>
+                      );
+                    })}
                   </li>
                 ))}
               </ul>
