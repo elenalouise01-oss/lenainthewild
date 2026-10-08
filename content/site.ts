@@ -165,6 +165,7 @@ export const freedomSeeker = {
       title: 'Grounded Mornings',
       roles: 'DAILY RITUALS, JOURNALING, STILLNESS',
       excerpt: 'Small rituals that keep me steady.',
+      href: 'https://substack.com/home/post/p-190792316',
     },
     {
       category: 'Healing',
