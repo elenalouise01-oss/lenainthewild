@@ -178,7 +178,7 @@ export const freedomSeeker = {
       category: 'Wild',
       title: 'Breaking Free From the System',
       roles: 'ADVENTURE, RISK, WONDER',
-      excerpt: 'Where the comfort zone ends.',
+      excerpt: 'At 21, I packed my bags and moved to a remote island.',
       href: 'https://substack.com/home/post/p-189725048',
     },
   ],
