@@ -155,7 +155,7 @@ export const freedomSeeker = {
   pillars: [
     {
       category: 'Travel',
-      title: 'On the Move',
+      title: 'Leaping into the Unknown: Part 1',
       roles: 'SLOW TRAVEL, SOLO TRIPS, STORYTELLING',
       excerpt: 'Slow travel through South East Asia.',
       href: 'https://substack.com/home/post/p-209897527',
