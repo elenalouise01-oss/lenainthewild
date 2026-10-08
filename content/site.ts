@@ -215,6 +215,13 @@ export const blog = {
   ctaHref: '#blog',
 };
 
+export const listen = {
+  eyebrow: 'Press play',
+  headline: 'Listen in',
+  title: 'Song on Spotify',
+  embedSrc: 'https://open.spotify.com/embed/track/3R1Xa7LkesYpNI3v6fslKi?utm_source=generator&theme=0',
+} as const;
+
 export const newsletter = {
   eyebrow: 'Letters From Me to You',
   headline: 'Stories in your inbox',

@@ -2,6 +2,7 @@ import BackToTop from '@/components/BackToTop';
 import Footer from '@/components/Footer';
 import Blog from '@/components/sections/Blog';
 import Hero from '@/components/sections/Hero';
+import Listen from '@/components/sections/Listen';
 import Newsletter from '@/components/sections/Newsletter';
 import Section1 from '@/components/sections/Section1';
 import Section2 from '@/components/sections/Section2';
@@ -15,6 +16,7 @@ export default function Home() {
       <Section2 />
       <Section3 />
       <Blog />
+      <Listen />
       <Newsletter />
       <ComeSayHi />
       <Footer />
