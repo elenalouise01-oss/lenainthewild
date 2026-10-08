@@ -169,7 +169,7 @@ export const freedomSeeker = {
     },
     {
       category: 'Healing',
-      title: 'The Hard Parts',
+      title: 'What I’m Learning About Slowing Down',
       roles: 'REBUILDING, UNCERTAINTY, HONESTY',
       excerpt: 'What rebuilding actually looks like.',
       href: 'https://substack.com/home/post/p-189951717',
