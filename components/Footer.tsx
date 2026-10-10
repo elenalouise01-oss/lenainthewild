@@ -9,7 +9,8 @@ import { scrollToTop } from '@/lib/goHome';
 const REAL_ANCHORS: Record<string, string> = {
   Blog: '/#on-the-road',
   About: '/my-story',
-  Substack: '/#subscribe',
+  Substack: 'https://lenainthewild.substack.com',
+  Contact: '/#contact',
   // No page of its own yet (coming soon), so it points to the offers.
   'Your Freedom Roadmap': '/#freedom-seeker',
   ...offerLinks,
@@ -47,7 +48,6 @@ export default function Footer() {
               {column.label}
             </p>
             {column.label === 'Connect' ? (
-              <>
               <ul className="mt-4 flex items-center gap-5">
                 {column.links.filter((link) => REAL_ANCHORS[link]).map((link) => {
                   const href = REAL_ANCHORS[link];
@@ -68,13 +68,6 @@ export default function Footer() {
                   );
                 })}
               </ul>
-              <Link
-                href="/#contact"
-                className="mt-5 inline-block font-body text-sm text-bark/80 transition-colors hover:text-bark"
-              >
-                Get in Touch →
-              </Link>
-              </>
             ) : (
               <ul className="mt-4 space-y-3">
                 {column.links.filter((link) => REAL_ANCHORS[link]).map((link) => {

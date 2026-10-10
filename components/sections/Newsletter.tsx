@@ -21,6 +21,8 @@ export default function Newsletter() {
         <ScrollReveal delay={0.3}>
           <Link
             href={newsletter.ctaHref}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-10 inline-block rounded-full bg-[#141414] px-10 py-5 font-body text-xs font-semibold uppercase tracking-widest2 text-cream transition-colors hover:bg-sage hover:text-bark"
           >
             {newsletter.cta} →

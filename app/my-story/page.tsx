@@ -77,7 +77,8 @@ export default function MyStoryPage() {
               <Link href="/#contact" className={outlineButton}>
                 Let&apos;s Connect
               </Link>
-              <Link href="/#subscribe" className={outlineButton}>
+              {/* The newsletter sits at the bottom of this page, so stay here */}
+              <Link href="#subscribe" className={outlineButton}>
                 Join the newsletter
               </Link>
             </div>

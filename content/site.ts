@@ -130,7 +130,7 @@ export const freedomSeeker = {
   experienceLead: 'I walked away from a career that looked perfect on paper, moved overseas, and rebuilt my life from the ground up.',
   experienceHighlight: 'I’ve started over more times than I can count',
   experienceTail:
-    "I've led myself through the exact reconnection, uncertainty and rebuild I now guide others through.",
+    'I’ve led myself through the exact reconnection, uncertainty and rebuild I now guide others through.',
 
   noteCard: {
     label: 'Note to Self',
@@ -146,7 +146,7 @@ export const freedomSeeker = {
       'Whatever chapter you’re in right now, where you are isn’t where you have to stay. You get to rewrite the script, change the plot and decide what comes next. This is your story. Nobody else gets to write it for you.',
     ],
     cta: 'Rewrite Your Story',
-    ctaHref: '#contact',
+    ctaHref: '#freedom-seeker',
   },
 
   pillarsLabel: 'Entries From My Journal',
@@ -240,9 +240,9 @@ export const listen = {
 export const newsletter = {
   eyebrow: 'Letters From Me to You',
   headline: 'Stories in your inbox',
-  body: "Unfiltered stories from a life I'm building from scratch in South East Asia. Everything I'm learning, feeling and discovering, straight to your inbox.",
+  body: "Unfiltered stories from a life I'm building from scratch in Southeast Asia. Everything I'm learning, feeling and discovering, straight to your inbox.",
   cta: 'Subscribe on Substack',
-  ctaHref: '#subscribe',
+  ctaHref: 'https://lenainthewild.substack.com/subscribe',
 };
 
 export const footer = {
@@ -252,8 +252,8 @@ export const footer = {
       links: ['The Freedom Frequency', 'The 5 Day Reconnect', 'Your Freedom Roadmap', 'Dream Life Workbook', 'Wellness Studio'],
     },
     {
-      label: 'Read',
-      links: ['About', 'Blog', 'Travel', 'Wellness', 'Healing'],
+      label: 'Get to Know Me',
+      links: ['About', 'Blog', 'Contact', 'Travel', 'Wellness', 'Healing'],
     },
     {
       label: 'Connect',
