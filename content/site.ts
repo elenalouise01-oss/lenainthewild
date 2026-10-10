@@ -262,7 +262,7 @@ export const footer = {
   ],
   currently: {
     label: 'Currently',
-    body: 'Currently in South East Asia, figuring it out as I go.',
+    body: 'Currently in Southeast Asia, romanticising the everyday and seeing where life takes me.',
   },
 };
 
