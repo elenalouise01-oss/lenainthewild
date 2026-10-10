@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
+import JsonLd from '@/components/JsonLd';
+import { SITE_NAME, absoluteUrl, breadcrumbs } from '@/lib/seo';
 import OfferNextStep from '@/components/OfferNextStep';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteHeader from '@/components/SiteHeader';
@@ -9,9 +11,37 @@ import { fiveDayReconnectPage as page, freedomSeeker, offerLinks } from '@/conte
 const tier = freedomSeeker.tiers.find((t) => t.title === page.title)!;
 const buy = offerLinks[page.title];
 
+const title = 'The 5 Day Reconnect: Get Out of Your Head, Back Into Your Body';
+const description =
+  'Five short videos, one a day: simple practices to slow down, tune in and reconnect with yourself when you feel burnt out, overwhelmed or stuck.';
+
 export const metadata: Metadata = {
-  title: page.title,
-  description: page.subtitle,
+  title: { absolute: title },
+  description,
+  alternates: { canonical: '/5-day-reconnect' },
+  openGraph: {
+    url: '/5-day-reconnect',
+    title,
+    description,
+    images: [{ url: '/images/cover-reconnect-monkey.webp', width: 1254, height: 1254, alt: 'The 5 Day Reconnect cover art' }],
+  },
+  twitter: { card: 'summary_large_image', title, description, images: ['/images/cover-reconnect-monkey.webp'] },
+};
+
+const product = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: page.title,
+  description,
+  image: absoluteUrl('/images/cover-reconnect-monkey.webp'),
+  brand: { '@type': 'Brand', name: SITE_NAME },
+  offers: {
+    '@type': 'Offer',
+    url: absoluteUrl('/5-day-reconnect'),
+    price: (tier.price ?? '').replace(/[^0-9.]/g, ''),
+    priceCurrency: 'AUD',
+    availability: 'https://schema.org/InStock',
+  },
 };
 
 // Buying is the one step that leaves the site: The Leap takes payment and
@@ -41,6 +71,7 @@ function BuyButton({ dark = false }: { dark?: boolean }) {
 export default function FiveDayReconnectPage() {
   return (
     <>
+      <JsonLd data={[breadcrumbs(page.title, '/5-day-reconnect'), product]} />
       <SiteHeader active="The Freedom Seeker" />
       <main>
         {/* Cover, title, price and buy */}

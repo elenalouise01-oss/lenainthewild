@@ -86,8 +86,9 @@ function SquiggleArrow({ className = '' }: { className?: string }) {
   );
 }
 
-function Label({ children, className = '' }: { children: React.ReactNode; className?: string }) {
-  return <p className={`font-body text-xs font-semibold uppercase tracking-widest2 text-stone ${className}`}>{children}</p>;
+// `as="h2"` when the label titles a section (same look, real heading).
+function Label({ children, className = '', as: Tag = 'p' }: { children: React.ReactNode; className?: string; as?: 'p' | 'h2' }) {
+  return <Tag className={`font-body text-xs font-semibold uppercase tracking-widest2 text-stone ${className}`}>{children}</Tag>;
 }
 
 
@@ -149,8 +150,10 @@ export default function Section3() {
 
             <div className="relative">
               <ScrollReveal>
-                <p className="font-display text-4xl italic leading-none text-bark sm:text-6xl">{freedomSeeker.creativeWork.leadItalic}</p>
-                <p className="mt-2 font-display text-4xl uppercase leading-none text-bark sm:text-6xl">{freedomSeeker.creativeWork.leadBold}</p>
+                <h2>
+                  <span className="block font-display text-4xl italic leading-none text-bark sm:text-6xl">{freedomSeeker.creativeWork.leadItalic}</span>
+                  <span className="mt-2 block font-display text-4xl uppercase leading-none text-bark sm:text-6xl">{freedomSeeker.creativeWork.leadBold}</span>
+                </h2>
               </ScrollReveal>
               <ScrollReveal delay={0.1}>
                 {freedomSeeker.creativeWork.body.map((para, i) => (
@@ -172,7 +175,7 @@ export default function Section3() {
           {/* My Experience: big statement with a pill sticker */}
           <div className="mt-16 sm:mt-20">
             <ScrollReveal>
-              <Label>{freedomSeeker.experienceLabel}</Label>
+              <Label as="h2">{freedomSeeker.experienceLabel}</Label>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
               <p className="mt-10 max-w-5xl font-display text-3xl leading-[1.15] text-bark sm:text-5xl">
@@ -212,7 +215,7 @@ export default function Section3() {
           {/* Snapshots: text left, polaroids right */}
           <div className="mt-32 grid min-w-0 grid-cols-1 gap-12 sm:mt-40 lg:grid-cols-[1fr_1.4fr] lg:items-center">
             <ScrollReveal>
-              <Label>{freedomSeeker.brandCampaigns.heading}</Label>
+              <Label as="h2">{freedomSeeker.brandCampaigns.heading}</Label>
               <p className="mt-3 font-display text-lg italic text-umber sm:text-xl">{freedomSeeker.brandCampaigns.sub}</p>
               <p className="mt-6 max-w-xs font-body text-sm leading-relaxed text-umber">{freedomSeeker.brandCampaigns.body}</p>
             </ScrollReveal>
@@ -234,7 +237,7 @@ export default function Section3() {
           {/* My Journey: centred statement, two short columns, then the envelope */}
           <div id="experience" className="relative mt-32 text-center sm:mt-40">
             <ScrollReveal>
-              <Label>{freedomSeeker.contentJourney.label}</Label>
+              <Label as="h2">{freedomSeeker.contentJourney.label}</Label>
               <p className="mx-auto mt-6 max-w-4xl font-display text-3xl leading-[1.15] text-bark sm:text-5xl">
                 {freedomSeeker.contentJourney.lead} <span className="italic">{freedomSeeker.contentJourney.tail}</span>
               </p>
@@ -274,7 +277,7 @@ export function ComeSayHi() {
       <div className="container-editorial">
           {/* Big statement */}
           <ScrollReveal>
-            <h3 className="whitespace-nowrap font-display text-[13vw] uppercase leading-[0.9] tracking-tight text-bark sm:text-[10vw]">{freedomSeeker.bigStatement}</h3>
+            <h2 className="whitespace-nowrap font-display text-[13vw] uppercase leading-[0.9] tracking-tight text-bark sm:text-[10vw]">{freedomSeeker.bigStatement}</h2>
           </ScrollReveal>
 
           {/* Let's Connect */}

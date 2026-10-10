@@ -1,28 +1,23 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Montserrat, Gochi_Hand, Bodoni_Moda } from 'next/font/google';
+import { Playfair_Display, Montserrat, Gochi_Hand } from 'next/font/google';
+import Analytics from '@/components/Analytics';
 import BackToTop from '@/components/BackToTop';
+import { SITE_NAME, SITE_URL } from '@/lib/seo';
 import './globals.css';
 
+// Variable fonts: one file per family covers every weight, so the browser
+// downloads less than one file per weight.
 const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair',
   display: 'swap',
   style: ['normal', 'italic'],
-  weight: ['400', '500', '600', '700', '800', '900'],
-});
-
-const bodoni = Bodoni_Moda({
-  subsets: ['latin'],
-  variable: '--font-bodoni',
-  display: 'swap',
-  weight: ['600', '700', '800', '900'],
 });
 
 const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-montserrat',
   display: 'swap',
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
 });
 
 const gochi = Gochi_Hand({
@@ -32,24 +27,46 @@ const gochi = Gochi_Hand({
   weight: '400',
 });
 
-const title = 'Lena in the Wild';
-const description = 'Lena in the Wild — behind-the-scenes, unfiltered, out in it.';
+const description =
+  'At 36, Lena left Sydney for Bali to reinvent her life. Real stories on starting over in your 30s, freedom, slow living and romanticising the everyday.';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: title,
+    default: 'Lena in the Wild — Reinventing Life in Your 30s',
     template: '%s — Lena in the Wild',
   },
   description,
+  applicationName: SITE_NAME,
+  authors: [{ name: 'Lena', url: SITE_URL }],
+  creator: 'Lena',
+  alternates: { canonical: '/' },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large' } },
+  openGraph: {
+    type: 'website',
+    siteName: SITE_NAME,
+    locale: 'en_AU',
+    url: '/',
+    title: 'Lena in the Wild — Reinventing Life in Your 30s',
+    description,
+    images: [{ url: '/images/hero.jpg', width: 1809, height: 930, alt: 'Lena in the Wild' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Lena in the Wild — Reinventing Life in Your 30s',
+    description,
+    images: ['/images/hero.jpg'],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${montserrat.variable} ${gochi.variable} ${bodoni.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${montserrat.variable} ${gochi.variable}`}>
       <body>
         {children}
         {/* On every page: appears once you've scrolled past the first screen */}
         <BackToTop />
+        <Analytics />
       </body>
     </html>
   );

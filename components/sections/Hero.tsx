@@ -127,27 +127,28 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-1 flex-col items-center justify-center px-6 text-center">
-            <h1
-              aria-label={hero.kinetic}
+            {/* The scattered LITW letters are decoration; the H1 is the name below */}
+            <div
+              aria-hidden="true"
               className="flex select-none font-body text-display-1 font-black uppercase leading-[0.9] tracking-tight text-cream"
             >
-              <span aria-hidden="true" className="flex">
+              <span className="flex">
                 {SCATTER.map((letter, i) => (
                   <KineticLetter key={i} letter={letter} progress={scrollYProgress} reduced={reduced} />
                 ))}
               </span>
-            </h1>
+            </div>
 
             <motion.div
               className="mt-3 sm:mt-4"
               style={reduced ? undefined : { opacity: subOpacity, y: subY }}
             >
-              <p
+              <h1
                 className="font-body text-2xl font-bold lowercase tracking-wide text-cream sm:text-3xl"
                 style={{ textShadow: '0 1px 6px rgba(0,0,0,0.35)' }}
               >
                 {hero.headline}
-              </p>
+              </h1>
               <p
                 className="mx-auto mt-3 max-w-md font-body text-base leading-relaxed text-cream/90 sm:text-lg"
                 style={{ textShadow: '0 1px 6px rgba(0,0,0,0.3)' }}

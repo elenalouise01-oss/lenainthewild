@@ -95,7 +95,7 @@ export default function JournalCarousel() {
     <>
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-stone">{freedomSeeker.pillarsLabel}</p>
+          <h2 className="font-body text-xs font-semibold uppercase tracking-widest2 text-stone">{freedomSeeker.pillarsLabel}</h2>
           <p className="mt-3 max-w-xs font-body text-sm leading-relaxed text-umber">{freedomSeeker.pillarsIntro}</p>
         </div>
         <div className="flex items-center gap-5 font-body text-xs font-semibold uppercase tracking-widest2">

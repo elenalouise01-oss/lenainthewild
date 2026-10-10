@@ -1,0 +1,11 @@
+// Structured data (schema.org JSON-LD) so search engines understand who the
+// site is about and how pages relate.
+export default function JsonLd({ data }: { data: object | object[] }) {
+  return (
+    <script
+      type="application/ld+json"
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, '\\u003c') }}
+    />
+  );
+}

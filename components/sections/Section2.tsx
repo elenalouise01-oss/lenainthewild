@@ -43,7 +43,7 @@ export default function Section2() {
 
         <div>
           <ScrollReveal>
-            <SectionLabel>{myStory.label}</SectionLabel>
+            <SectionLabel as="h2">{myStory.label}</SectionLabel>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="mt-6 font-display text-display-4 italic leading-tight text-bark">

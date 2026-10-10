@@ -24,7 +24,7 @@ const config: Config = {
       fontFamily: {
         display: ['var(--font-playfair)', 'Georgia', 'serif'],
         body: ['var(--font-montserrat)', 'system-ui', 'sans-serif'],
-        logo: ['var(--font-giaza)', 'var(--font-bodoni)', 'serif'],
+        logo: ['var(--font-giaza)', 'serif'],
         script: ['var(--font-biro)', 'var(--font-gochi)', 'cursive'],
         hand: ['var(--font-gochi)', 'cursive'],
         fifindrel: ['var(--font-fifindrel)', 'var(--font-gochi)', 'cursive'],

@@ -2,15 +2,30 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
+import JsonLd from '@/components/JsonLd';
+import { breadcrumbs } from '@/lib/seo';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteHeader from '@/components/SiteHeader';
 import Listen from '@/components/sections/Listen';
 import Newsletter from '@/components/sections/Newsletter';
 import { offerPages, storyPage } from '@/content/site';
 
+const title = 'My Story: Starting Over at 36 and Moving to Bali — Lena in the Wild';
+const description =
+  'At 36 I left my PT business in Bondi, sold everything and moved to Bali. The burnout, the leap and what starting over in your 30s really looks like.';
+
 export const metadata: Metadata = {
-  title: 'My Story',
-  description: storyPage.paragraphs[0],
+  title: { absolute: title },
+  description,
+  alternates: { canonical: '/my-story' },
+  openGraph: {
+    type: 'profile',
+    url: '/my-story',
+    title,
+    description,
+    images: [{ url: '/images/lena-sunrise.jpg', width: 640, height: 640, alt: 'Lena at sunrise above the clouds' }],
+  },
+  twitter: { card: 'summary_large_image', title, description, images: ['/images/lena-sunrise.jpg'] },
 };
 
 const outlineButton =
@@ -22,6 +37,7 @@ const outlineButton =
 export default function MyStoryPage() {
   return (
     <>
+      <JsonLd data={breadcrumbs('My Story', '/my-story')} />
       <SiteHeader active="About" />
       <main>
         <div className="relative h-[60vh] min-h-[22rem] w-full bg-sand sm:h-[75vh]">

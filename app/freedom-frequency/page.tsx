@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
+import JsonLd from '@/components/JsonLd';
+import { breadcrumbs } from '@/lib/seo';
 import OfferNextStep from '@/components/OfferNextStep';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteHeader from '@/components/SiteHeader';
@@ -9,9 +11,21 @@ import { freedomFrequencyPage as page, freedomSeeker } from '@/content/site';
 
 const tier = freedomSeeker.tiers.find((t) => t.title === page.title)!;
 
+const title = 'The Freedom Frequency: For When Life Looks Good but Feels Stuck';
+const description =
+  'A self-paced course for the ambitious woman who built the life she wanted but still feels stuck and stagnant. Join the waitlist for The Freedom Frequency.';
+
 export const metadata: Metadata = {
-  title: page.title,
-  description: tier.body,
+  title: { absolute: title },
+  description,
+  alternates: { canonical: '/freedom-frequency' },
+  openGraph: {
+    url: '/freedom-frequency',
+    title,
+    description,
+    images: [{ url: '/images/cover-freedom-frequency.webp', width: 1254, height: 1254, alt: 'The Freedom Frequency cover art' }],
+  },
+  twitter: { card: 'summary_large_image', title, description, images: ['/images/cover-freedom-frequency.webp'] },
 };
 
 // Jumps down to the waitlist sign-up at the bottom of the page.
@@ -31,6 +45,7 @@ function JoinButton() {
 export default function FreedomFrequencyPage() {
   return (
     <>
+      <JsonLd data={breadcrumbs(page.title, '/freedom-frequency')} />
       <SiteHeader active="The Freedom Seeker" />
       <main>
         {/* Cover, title, price and sign-up */}
