@@ -268,7 +268,7 @@ export function ComeSayHi() {
             <h3 className="whitespace-nowrap font-display text-[13vw] uppercase leading-[0.9] tracking-tight text-bark sm:text-[10vw]">{freedomSeeker.bigStatement}</h3>
           </ScrollReveal>
 
-          {/* Let's Talk */}
+          {/* Let's Connect */}
           <div id="contact" className="mt-16 grid gap-16 lg:grid-cols-2 lg:items-start">
             <div>
               <ScrollReveal>
@@ -278,13 +278,16 @@ export function ComeSayHi() {
               <ScrollReveal delay={0.1}>
                 <div className="mt-8 grid gap-6 sm:grid-cols-2">
                   <p className="font-body text-sm leading-relaxed text-umber">{freedomSeeker.contact.body}</p>
-                  <ol className="space-y-1.5">
-                    {freedomSeeker.contact.list.map((item, i) => (
-                      <li key={item} className="font-body text-sm text-bark">
-                        {i + 1}) {item}
-                      </li>
-                    ))}
-                  </ol>
+                  <div>
+                    <p className="font-body text-sm font-semibold text-bark">{freedomSeeker.contact.listIntro}</p>
+                    <ol className="mt-2 space-y-1.5">
+                      {freedomSeeker.contact.list.map((item, i) => (
+                        <li key={item} className="font-body text-sm text-bark">
+                          {i + 1}. {item}
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
                 </div>
               </ScrollReveal>
 

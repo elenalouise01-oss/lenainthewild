@@ -217,9 +217,10 @@ export const freedomSeeker = {
 
   contact: {
     label: 'Get in Touch',
-    kicker: 'Ready to Reconnect?',
-    headline: "Let's Talk",
-    body: "Have a brand, question, or idea in mind? I'd love to hear about it. Whether you're curious about The Freedom Seeker, or just want to connect, let's talk.",
+    kicker: 'Let’s Connect',
+    headline: 'Have Something on Your Mind?',
+    body: 'Whether you’re curious about my work, exploring your own path to freedom, or simply want to say hello, I’d love to hear from you.',
+    listIntro: 'Get in touch about:',
     listLabel: 'Drop a message below and I’ll get back to you shortly',
     list: ['The Freedom Frequency', 'The 5 Day Reconnect', 'Your Freedom Roadmap', 'General Inquiries'],
     fields: { name: 'Name', email: 'Email', message: 'Message' },
