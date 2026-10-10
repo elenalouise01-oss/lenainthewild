@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { journal } from '@/content/journal';
 import { nav, socialLinks } from '@/content/site';
 
 // Sticky top navigation for inner pages, copied from the old site's My
@@ -12,7 +13,7 @@ import { nav, socialLinks } from '@/content/site';
 const LINKS = [
   { label: 'About', href: '/my-story' },
   { label: 'The Freedom Seeker', href: '/#freedom-seeker' },
-  { label: 'Journal', href: '/#on-the-road' },
+  { label: 'Journal', href: journal.length ? '/journal' : '/#on-the-road' },
   { label: 'Contact', href: '/#contact' },
 ];
 

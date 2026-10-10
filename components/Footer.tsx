@@ -2,12 +2,13 @@
 
 import Link from 'next/link';
 import { footer, nav, offerLinks, offerPages, socialLinks } from '@/content/site';
+import { journal } from '@/content/journal';
 import { scrollToTop } from '@/lib/goHome';
 
 // Links that resolve to a real section on this page or a live offer page.
 // Footer links to pages that don't exist yet are hidden until they do.
 const REAL_ANCHORS: Record<string, string> = {
-  Blog: '/#on-the-road',
+  Blog: journal.length ? '/journal' : '/#on-the-road',
   About: '/my-story',
   Substack: 'https://lenainthewild.substack.com',
   Contact: '/#contact',
