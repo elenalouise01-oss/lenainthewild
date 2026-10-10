@@ -151,7 +151,7 @@ export default function Section3() {
             <div className="relative">
               <ScrollReveal>
                 <h2>
-                  <span className="block font-display text-4xl italic leading-none text-bark sm:text-6xl">{freedomSeeker.creativeWork.leadItalic}</span>
+                  <span className="block font-display text-4xl italic leading-none text-bark sm:text-6xl">{freedomSeeker.creativeWork.leadItalic}</span>{' '}
                   <span className="mt-2 block font-display text-4xl uppercase leading-none text-bark sm:text-6xl">{freedomSeeker.creativeWork.leadBold}</span>
                 </h2>
               </ScrollReveal>

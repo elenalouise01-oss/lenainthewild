@@ -28,12 +28,12 @@ const gochi = Gochi_Hand({
 });
 
 const description =
-  'At 36, Lena left Sydney for Bali to reinvent her life. Real stories on starting over in your 30s, freedom, slow living and romanticising the everyday.';
+  'Feeling stuck in a life that looks good on paper? At 36 Lena left Bondi, Sydney for Bali. Honest stories and simple tools for starting over in your 30s.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Lena in the Wild — Reinventing Life in Your 30s',
+    default: 'Lena in the Wild — Feeling Stuck? Start Over in Your 30s',
     template: '%s — Lena in the Wild',
   },
   description,
@@ -55,13 +55,13 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     locale: 'en_AU',
     url: '/',
-    title: 'Lena in the Wild — Reinventing Life in Your 30s',
+    title: 'Lena in the Wild — Feeling Stuck? Start Over in Your 30s',
     description,
     images: [{ url: '/images/hero.jpg', width: 1809, height: 930, alt: 'Lena in the Wild' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Lena in the Wild — Reinventing Life in Your 30s',
+    title: 'Lena in the Wild — Feeling Stuck? Start Over in Your 30s',
     description,
     images: ['/images/hero.jpg'],
   },
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${montserrat.variable} ${gochi.variable}`}>
+    <html lang="en-AU" className={`${playfair.variable} ${montserrat.variable} ${gochi.variable}`}>
       <body>
         {children}
         {/* On every page: appears once you've scrolled past the first screen */}

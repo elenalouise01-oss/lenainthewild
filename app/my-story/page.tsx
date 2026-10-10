@@ -57,11 +57,17 @@ export default function MyStoryPage() {
             <ScrollReveal>
               <h1 className="font-display text-4xl leading-tight text-bark sm:text-6xl">{storyPage.storyTitle}</h1>
               <div className="mt-8 space-y-6">
-                {storyPage.paragraphs.map((p) => (
-                  <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber sm:text-lg">
-                    {p}
-                  </p>
-                ))}
+                {storyPage.paragraphs.map((p) =>
+                  p.startsWith('## ') ? (
+                    <h2 key={p} className="pt-8 font-display text-3xl leading-snug text-bark">
+                      {p.slice(3)}
+                    </h2>
+                  ) : (
+                    <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber sm:text-lg">
+                      {p}
+                    </p>
+                  ),
+                )}
               </div>
               <Link href={offerPages['The Freedom Frequency']} className={`${outlineButton} mt-12`}>
                 {storyPage.cta} →

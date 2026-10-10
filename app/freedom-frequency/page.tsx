@@ -11,9 +11,9 @@ import { freedomFrequencyPage as page, freedomSeeker } from '@/content/site';
 
 const tier = freedomSeeker.tiers.find((t) => t.title === page.title)!;
 
-const title = 'The Freedom Frequency: For When Life Looks Good but Feels Stuck';
+const title = 'The Freedom Frequency: An Online Course for Feeling Stuck in Life';
 const description =
-  'A self-paced course for the ambitious woman who built the life she wanted but still feels stuck and stagnant. Join the waitlist for The Freedom Frequency.';
+  'Feeling stuck in a life that looks good on paper? A self-paced online course to reinvent your life on your own terms, from stuck to free. Join the waitlist.';
 
 export const metadata: Metadata = {
   title: { absolute: title },

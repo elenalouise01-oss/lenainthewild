@@ -8,11 +8,11 @@ import ScrollReveal from '@/components/ScrollReveal';
 import SiteHeader from '@/components/SiteHeader';
 import Newsletter from '@/components/sections/Newsletter';
 import { formatDate, journalPage, sortedJournal } from '@/content/journal';
-import { breadcrumbs } from '@/lib/seo';
+import { SITE_NAME, absoluteUrl, breadcrumbs } from '@/lib/seo';
 
 const title = 'Journal: Honest Stories on Starting Over in Your 30s — Lena in the Wild';
 const description =
-  'Real stories from leaving Sydney for Bali at 36: feeling stuck, burnout, fear, healing, freedom and the everyday moments of building a life on your own terms.';
+  'Honest stories from leaving Sydney at 36 for Bali and Southeast Asia: feeling stuck, burnout, healing, fear, freedom and building a life on your own terms.';
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -30,7 +30,26 @@ export default function JournalPage() {
 
   return (
     <>
-      <JsonLd data={breadcrumbs('Journal', '/journal')} />
+      <JsonLd
+        data={[
+          breadcrumbs('Journal', '/journal'),
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Blog',
+            name: `${SITE_NAME} Journal`,
+            url: absoluteUrl('/journal'),
+            description,
+            inLanguage: 'en-AU',
+            author: { '@id': `${absoluteUrl('/')}#lena` },
+            blogPost: articles.map((a) => ({
+              '@type': 'BlogPosting',
+              headline: a.title,
+              url: absoluteUrl(`/journal/${a.slug}`),
+              datePublished: a.date,
+            })),
+          },
+        ]}
+      />
       <SiteHeader active="Journal" />
       <main>
         <section className="bg-cream px-6 py-20 sm:py-28">

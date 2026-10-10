@@ -157,7 +157,12 @@ export default function JournalCarousel() {
                 <div className="relative aspect-[3/4] w-full overflow-hidden rounded-sm shadow-md">
                   <Image src={photo.src} alt="" fill sizes="(min-width: 640px) 25vw, 70vw" className="object-cover" style={{ objectPosition: photo.pos }} aria-hidden="true" />
                 </div>
-                <h4 className="mt-5 font-display text-2xl text-bark">{pillar.title}</h4>
+                {/* Only the copy people see is a heading, so the outline isn't repeated four times */}
+                {hidden ? (
+                  <p className="mt-5 font-display text-2xl text-bark">{pillar.title}</p>
+                ) : (
+                  <h3 className="mt-5 font-display text-2xl text-bark">{pillar.title}</h3>
+                )}
                 <p className="mt-1 line-clamp-2 font-body text-xs text-umber">{pillar.excerpt}</p>
                 <p className="mt-3 font-body text-[0.6rem] font-semibold uppercase leading-relaxed tracking-wide text-stone">{pillar.roles}</p>
                 {href && (
