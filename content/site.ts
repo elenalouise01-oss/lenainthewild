@@ -194,16 +194,16 @@ export const freedomSeeker = {
     label: 'Follow Along My Journey',
     lead: "I'm forever evolving and still figuring it out as I go,",
     tail: "exploring just how good life can really get and turning the ordinary into something extraordinary.",
-    colBold: "Always looking for where else I can create more freedom, I started asking myself why we have to pick one place and stay there.",
-    colRest: "So after falling in love with Vietnam on a recent trip, I figured, why not spend six months there and six months in Bali? And that's where I'm at right now. Current goal: make every day feel like a holiday.",
+    colBold: "Always looking for where else I can create more freedom, lately I've been questioning why we have to pick one place and stay there.",
+    colRest: "So after falling in love with Vietnam on a recent trip, I figured, why not spend six months there and six months in Bali? And that's where I'm at right now.",
   },
 
   envelope: {
     leadBold: 'Every polaroid in here is a moment I almost let slip by —',
     leadRest: 'the ones that don’t make the feed, but are the whole reason I did this.',
-    cardLabel: 'MOMENTS FROM',
-    places: ['Bali', 'Hanoi', 'Chiang Mai', 'Ho Chi Minh City', 'Ubud'],
-    ribbon: 'Featured Moment',
+    cardLabel: 'Current Goal',
+    cardText: 'Make every day feel like a holiday.',
+    ribbon: 'Chasing Freedom',
     // Printed on the front of the envelope
     frontItalic: 'My Journey:',
     frontTitle: 'Snapshots From the Road',

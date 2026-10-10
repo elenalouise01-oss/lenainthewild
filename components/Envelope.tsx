@@ -75,16 +75,17 @@ export default function Envelope() {
         </motion.div>
       ))}
 
-      {/* Green card with the places: drops into the envelope first */}
+      {/* Green card with the current goal: drops into the envelope first and
+          sits on top of the small prints so the goal reads in full */}
       <motion.div
         className="absolute flex flex-col bg-zing-green px-[3%] py-[3.5%] text-bark shadow-[0_6px_18px_rgba(59,45,14,0.2)]"
-        style={{ ...box(160, 52, 280, 238), rotate: -5, zIndex: 2, ...(reduced ? {} : cardDrop) }}
+        style={{ ...box(160, 52, 280, 238), rotate: -5, zIndex: 5, ...(reduced ? {} : cardDrop) }}
       >
         <p className="font-body font-semibold uppercase tracking-wide" style={{ fontSize: '1.45cqw' }}>
           {envelope.cardLabel}
         </p>
         <p className="mt-[4%] font-display leading-[1.05]" style={{ fontSize: '3.6cqw' }}>
-          {envelope.places.join(', ')}
+          {envelope.cardText}
         </p>
       </motion.div>
 
