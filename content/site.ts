@@ -149,7 +149,7 @@ export const freedomSeeker = {
     ctaHref: '#contact',
   },
 
-  pillarsLabel: 'My Journal',
+  pillarsLabel: 'Entries From My Journal',
   pillarsCta: { label: 'Read more on Substack', href: 'https://lenainthewild.substack.com' },
   pillarsIntro: 'I don’t really do plans. I wake up, see how I feel, follow my intuition and let the day unfold.',
   // A pillar with an `href` links to its Substack post; without one it's a plain card.
