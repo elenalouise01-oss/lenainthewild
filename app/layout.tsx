@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   },
   description,
   applicationName: SITE_NAME,
-  authors: [{ name: 'Elena Louise', url: SITE_URL }],
-  creator: 'Elena Louise',
+  authors: [{ name: 'Lena', url: SITE_URL }],
+  creator: 'Lena',
   alternates: { canonical: '/' },
   // Google Search Console ownership check (the code from its "HTML tag"
   // option). Set NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION in Vercel, or paste

@@ -399,7 +399,7 @@ export const faq = {
     {
       q: 'Who is Lena in the Wild?',
       a: [
-        'I’m Lena (Elena Louise), the person behind Lena in the Wild. After years of working towards the version of success I thought I wanted, I reached a point where I had to question whether the life I was building was actually right for me.',
+        'I’m Lena, the person behind Lena in the Wild. After years of working towards the version of success I thought I wanted, I reached a point where I had to question whether the life I was building was actually right for me.',
         'Burnout became a turning point. I started exploring what I genuinely wanted, questioning the expectations I’d been living by and finding a different direction for my life. That journey eventually led me to leave Sydney and move to Bali at 36.',
         'Today, Lena in the Wild is where I share the lessons, experiences and inner work behind personal reinvention, self-discovery and creating a life that feels like your own.',
       ],
@@ -444,7 +444,7 @@ export const lifeDesignPage = {
   eyebrow: 'Life design & personal reinvention',
   title: 'Not Sure What You Want From Life Anymore?',
   lead: 'You don’t need to know exactly what you want before you start exploring what a different future could look like.',
-  byline: 'By Lena (Elena Louise), the person behind Lena in the Wild',
+  byline: 'By Lena, the person behind Lena in the Wild',
   intro: [
     'If you’re constantly trying to figure out your life, wondering what you should be doing, why you feel stuck or why a good life still doesn’t feel like yours, this page is for you.',
     'Lena in the Wild is my personal brand, all about self-discovery, finding your own direction and creating a life that feels like you. I’m not here to hand you the answers. I’m here to share what I’ve learned, so you can start finding your own.',
@@ -526,7 +526,7 @@ export const lifeDesignPage = {
 
   storyHeading: 'Why this matters to me',
   story: [
-    'I’m Lena (Elena Louise). I spent years working hard to build a life and a business I thought I wanted. Then burnout hit, and it made me question whether the life I had worked so hard to build was actually the life I wanted anymore.',
+    'I’m Lena. I spent years working hard to build a life and a business I thought I wanted. Then burnout hit, and it made me question whether the life I had worked so hard to build was actually the life I wanted anymore.',
     'I was exhausted by work. I started questioning my career, my business and the direction my life was heading. And I felt torn. Part of me knew something needed to change, but another part couldn’t imagine walking away from something I’d put so much into.',
     'My life felt like it was on repeat. I knew I wanted something different, I just didn’t know what that looked like. So I was constantly trying to figure out my life: searching for answers, asking other people for their perspective, questioning what I should do with my career and trying to work out what I genuinely wanted.',
     'I was also searching for my purpose. I wanted to understand what I was meant to do with my life and what would make me feel fulfilled. I wanted a sense of direction, and to understand what I was truly here to do, both personally and professionally.',

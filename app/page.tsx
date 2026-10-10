@@ -22,12 +22,13 @@ const structuredData = [
     '@context': 'https://schema.org',
     '@type': 'Person',
     '@id': `${absoluteUrl('/')}#lena`,
-    name: 'Elena Louise',
-    alternateName: ['Lena', SITE_NAME],
+    name: 'Lena',
+    // Matches the name on Lena's Instagram. Her surname is deliberately left off.
+    alternateName: ['Elena Louise', SITE_NAME],
     url: absoluteUrl('/'),
     image: absoluteUrl('/images/hero.jpg'),
     description:
-      'Elena Louise (Lena) is the person behind Lena in the Wild: a former Bondi personal trainer who left Sydney for Bali at 36, sharing the real story of starting over and building a life on her own terms.',
+      'Lena is the person behind Lena in the Wild: a former Bondi personal trainer who left Sydney for Bali at 36, sharing the real story of starting over and building a life on her own terms.',
     sameAs: SAME_AS,
     knowsAbout: [
       'Feeling stuck in life',
