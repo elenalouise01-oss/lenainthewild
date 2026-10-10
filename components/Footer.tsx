@@ -48,8 +48,9 @@ export default function Footer() {
               {column.label}
             </p>
             {column.label === 'Connect' ? (
+              <>
               <ul className="mt-4 flex items-center gap-5">
-                {column.links.filter((link) => REAL_ANCHORS[link]).map((link) => {
+                {column.links.filter((link) => REAL_ANCHORS[link] && ICONS[link]).map((link) => {
                   const href = REAL_ANCHORS[link];
                   const external = href.startsWith('http');
                   return (
@@ -62,12 +63,22 @@ export default function Footer() {
                         title={link}
                         className="flex text-bark/70 transition-colors hover:text-bark"
                       >
-                        {ICONS[link] ?? link}
+                        {ICONS[link]}
                       </Link>
                     </li>
                   );
                 })}
               </ul>
+              {column.links.filter((link) => REAL_ANCHORS[link] && !ICONS[link]).map((link) => (
+                <Link
+                  key={link}
+                  href={REAL_ANCHORS[link]}
+                  className="mt-5 block font-body text-sm text-bark/80 transition-colors hover:text-bark"
+                >
+                  {link} →
+                </Link>
+              ))}
+              </>
             ) : (
               <ul className="mt-4 space-y-3">
                 {column.links.filter((link) => REAL_ANCHORS[link]).map((link) => {

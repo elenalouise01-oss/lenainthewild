@@ -253,12 +253,12 @@ export const footer = {
     },
     {
       label: 'Get to Know Me',
-      links: ['About', 'Blog', 'Contact', 'Travel', 'Wellness', 'Healing'],
+      links: ['About', 'Blog', 'Travel', 'Wellness', 'Healing'],
     },
     {
       label: 'Connect',
-      // Shown as icons
-      links: ['Instagram', 'TikTok', 'Substack'],
+      // Socials show as icons, Contact as a link underneath
+      links: ['Instagram', 'TikTok', 'Substack', 'Contact'],
     },
   ],
   currently: {
