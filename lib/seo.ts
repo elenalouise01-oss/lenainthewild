@@ -3,7 +3,7 @@ import { socialLinks } from '@/content/site';
 // The site's permanent address. Set NEXT_PUBLIC_SITE_URL in Vercel when a
 // custom domain is connected (e.g. https://www.example.com) and every
 // canonical URL, the sitemap, robots.txt and social previews follow it.
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://lenainthewild.vercel.app').replace(/\/$/, '');
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://lenainthewild.com').replace(/\/$/, '');
 
 export const SITE_NAME = 'Lena in the Wild';
 
