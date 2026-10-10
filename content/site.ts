@@ -66,6 +66,94 @@ export const offerLinks: Record<string, string> = {
     'https://theleap.co/@naluri/email_capture/the-freedom-frequency-your-next-chapter',
 };
 
+// Web3Forms access key: the contact form and waitlist sign-ups are emailed
+// to the address it was created with. Safe to be public.
+export const web3formsKey = '221a0644-2570-46ec-976a-9da12c946f82';
+
+// Offers that have their own page on this site. The page tells the whole
+// story; only the final sign-up step goes out to The Leap.
+export const offerPages: Record<string, string> = {
+  'The Freedom Frequency': '/freedom-frequency',
+  'The 5 Day Reconnect': '/5-day-reconnect',
+};
+
+// Offers that aren't open yet: their sign-up is the waitlist on their page.
+export const waitlistOffers = ['The Freedom Frequency'];
+
+// The 5 Day Reconnect page (/5-day-reconnect). Buying still happens on
+// The Leap, which takes payment and delivers the videos.
+export const fiveDayReconnectPage = {
+  label: 'The Freedom Seeker · 02',
+  title: 'The 5 Day Reconnect',
+  subtitle: 'Five days of simple practices to help you get out of your head and back into your body.',
+  cta: 'I’m Ready',
+  forHeading: 'This is for you if:',
+  forList: [
+    'You’re stuck in a life that looks fine on paper but feels off on the inside',
+    'You’re overwhelmed, burnt out and running on empty',
+    'You’ve been searching for answers everywhere but inside yourself',
+    'You know something needs to change but you don’t know where to start',
+  ],
+  insideHeading: 'What’s inside',
+  inside: 'Five short videos: one per day, each one a simple tool to help you slow down, tune in and reconnect with yourself.',
+  days: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'],
+  notAnother:
+    'This isn’t another self-improvement course. It’s five days of real tools I wish I’d had sooner, collected over years of being stuck, investing in healers, coaches and modalities, and eventually finding my way out.',
+  minutes: 'And it starts with just a few minutes a day.',
+  closing: 'You don’t need to have it all figured out. You just need to start.',
+};
+
+// The Freedom Frequency page (/freedom-frequency).
+export const freedomFrequencyPage = {
+  label: 'The Freedom Seeker · 01',
+  title: 'The Freedom Frequency',
+  subtitle: 'Your next chapter',
+  cta: 'Join the Waitlist',
+  waitlistHeading: 'Be the first to know',
+  waitlistBody: 'Pop your details in and I’ll let you know as soon as The Freedom Frequency opens.',
+  waitlistSent: 'You’re on the list! I’ll be in touch as soon as The Freedom Frequency opens.',
+  forHeading: 'This is for the ambitious woman who feels stuck and stagnant.',
+  forParagraphs: [
+    'You did all the things you were meant to do. The things society told us to do. You built the career, the home, the income… maybe even the relationship. You created the life you once dreamt of.',
+  ],
+  forPullQuote: 'But now you’re standing in it wondering, why am I not fulfilled?',
+  forParagraphs2: [
+    'On the outside, things look good. You “should” be happy. But every week you’re up and down. Restless. Flat. Questioning how the fuck to get out of a life you were meant to want.',
+    'You keep searching for answers from everyone and anyone. Trying to gain clarity on what’s next. Caught between stagnation, comfort, and fear of the unknown. Not even fully sure what kind of help you actually need.',
+  ],
+  questions: ['Another healing session?', 'Another course?', 'A psychic to tell you your future so you finally know what step to take?'],
+  knowing: 'You just know there has to be something more to life. Surely this isn’t it.',
+  storyLead: 'I teach and share a lifetime of tools, lessons, and learnings because I was exactly where you are four years ago.',
+  storyParagraphs: [
+    'I was lost and confused. I didn’t understand why I wasn’t happy when I had what I thought I wanted. I was a successful PT, making great money, living a good life in Sydney… but I couldn’t stop thinking, this can’t be it. There has to be more.',
+    'That thought stayed with me for years.',
+    'I felt stuck. Stagnant. Directionless.',
+    'I had a deep knowing that I wanted freedom… but I had no idea how to actually get it.',
+    'So I tried to control everything. My future. The variables. The outcomes.',
+    'I invested over $100k into coaches, healers, therapy, modalities — trying to “figure myself out.”',
+    'I was caught in the rat race and didn’t even realise how unconscious and burnt out I was. I had worked my ass off for years and felt completely depleted, even though on paper my life looked good.',
+    'Then I went on what was meant to be my dream Europe trip… and it turned into a nightmare.',
+    'I was so burnt out I was sick for most of it. Low energy. Low state. Attracting the worst experiences. And that was the moment it really hit me — something had to change.',
+    'Because the life I was living was no longer sustainable.',
+  ],
+  turningPoint: ['So I pulled back.', 'I cut clients.', 'I prioritised rest, self-care, and space for the first time in years.'],
+  shifting: 'And that’s when things actually started shifting.',
+  courseHeading: 'This course is everything I learned from being stuck… to breaking free.',
+  courseParagraphs: [
+    'From the years of confusion. From the burnout. From the leap. And from now living on the other side — in a life that feels abundant, free, and fully led by my intuition.',
+    'It’s all the tools, teachings, and realisations I wish I had when I was in that phase of feeling up and down, unfulfilled, and searching for answers outside of myself.',
+  ],
+  gives: ['The understanding.', 'The guidance.', 'The clarity.'],
+  seen: 'And the feeling of finally being seen in what you’re going through.',
+  whyParagraphs: [
+    'Because the truth is, no one around me truly got it at the time.',
+    'I was trapped in that cycle for years, mentally going in circles and banging my head against the same questions.',
+    'And if I had known then what I know now, I would have gotten out of that stuck, stagnant phase so much faster.',
+    'That’s exactly why I created this.',
+  ],
+  closing: 'For the woman who knows deep down there has to be more… but doesn’t know how to access it yet.',
+};
+
 type Tier = {
   number: string;
   // Leave out to hide the price pill on that card.
@@ -225,6 +313,8 @@ export const freedomSeeker = {
     list: ['The Freedom Frequency', 'The 5 Day Reconnect', 'Your Freedom Roadmap', 'General Inquiries'],
     fields: { name: 'Name', email: 'Email', message: 'Message' },
     cta: 'Send',
+    sent: 'Thanks, that’s landed with me. I’ll get back to you shortly.',
+    failed: 'Sorry, that didn’t send. Please try again, or message me on Instagram.',
   },
 };
 

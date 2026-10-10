@@ -9,7 +9,8 @@ import Envelope from '@/components/Envelope';
 import JournalCarousel from '@/components/JournalCarousel';
 import OffersCarousel from '@/components/OffersCarousel';
 import ScrollReveal from '@/components/ScrollReveal';
-import { freedomSeeker } from '@/content/site';
+import { freedomSeeker, socialLinks } from '@/content/site';
+import { sendToInbox } from '@/lib/sendToInbox';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 
 // A strip of pink tape that unrolls left to right as you scroll, the words
@@ -258,7 +259,15 @@ export default function Section3() {
 
 // COME SAY HI + Let's Talk, its own section under the Journal.
 export function ComeSayHi() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle');
+
+  const send = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    setStatus('sending');
+    const ok = await sendToInbox(data, `New message from ${data.get('name')} via lenainthewild`);
+    setStatus(ok ? 'sent' : 'failed');
+  };
 
   return (
     <section className="bg-sand px-6 py-32 sm:py-44">
@@ -293,23 +302,21 @@ export function ComeSayHi() {
 
               <ScrollReveal delay={0.15}>
                 <Label className="mt-14 max-w-xs">{freedomSeeker.contact.listLabel}</Label>
-                {submitted ? (
+                {status === 'sent' ? (
                   <p className="mt-4 rounded-sm border border-sage/30 bg-sage/10 px-5 py-4 font-body text-sm text-bark" role="status">
-                    Thanks — that&apos;s landed with me. I&apos;ll get back to you shortly.
+                    {freedomSeeker.contact.sent}
                   </p>
                 ) : (
-                  <form
-                    className="mt-4 flex max-w-md flex-col gap-6"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      setSubmitted(true);
-                    }}
-                  >
+                  <form className="mt-4 flex max-w-md flex-col gap-6" onSubmit={send}>
+                    {/* Spam trap: hidden from people, bots tick it */}
+                    <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
                     {(['name', 'email'] as const).map((field) => (
                       <label key={field} className="block">
                         <span className="sr-only">{freedomSeeker.contact.fields[field]}</span>
                         <input
                           type={field === 'email' ? 'email' : 'text'}
+                          name={field}
+                          autoComplete={field}
                           required
                           placeholder={freedomSeeker.contact.fields[field]}
                           className="w-full border-0 border-b border-bark/25 bg-transparent py-3 font-body text-bark placeholder:text-bark/40 focus:border-bark focus:outline-none"
@@ -319,14 +326,27 @@ export function ComeSayHi() {
                     <label className="block">
                       <span className="sr-only">{freedomSeeker.contact.fields.message}</span>
                       <textarea
+                        name="message"
                         rows={3}
                         required
                         placeholder={freedomSeeker.contact.fields.message}
                         className="w-full resize-none border-0 border-b border-bark/25 bg-transparent py-3 font-body text-bark placeholder:text-bark/40 focus:border-bark focus:outline-none"
                       />
                     </label>
-                    <button type="submit" className="self-start font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark">
-                      {freedomSeeker.contact.cta} →
+                    {status === 'failed' && (
+                      <p className="font-body text-sm text-bark" role="alert">
+                        {freedomSeeker.contact.failed}{' '}
+                        <a href={socialLinks.Instagram} target="_blank" rel="noopener noreferrer" className="underline decoration-sage underline-offset-4">
+                          @lenainthewild
+                        </a>
+                      </p>
+                    )}
+                    <button
+                      type="submit"
+                      disabled={status === 'sending'}
+                      className="self-start font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark disabled:opacity-50"
+                    >
+                      {status === 'sending' ? 'Sending…' : `${freedomSeeker.contact.cta} →`}
                     </button>
                   </form>
                 )}

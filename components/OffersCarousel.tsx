@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useMotionValue, useSpring, type PanInfo } from 'framer-motion';
 import Image from 'next/image';
-import { freedomSeeker, hero, offerLinks } from '@/content/site';
+import { freedomSeeker, hero, offerLinks, offerPages, waitlistOffers } from '@/content/site';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 
 // Mirrors the "Offers reference" video: each offer is a square record sleeve
@@ -145,7 +145,8 @@ export default function OffersCarousel() {
           if (d > count / 2) d -= count;
           const isActive = d === 0;
           const tierLook = LOOKS[i % LOOKS.length];
-          const href = offerLinks[tier.title];
+          // Offers not open yet sign up on their page's waitlist; the rest buy on The Leap
+          const href = waitlistOffers.includes(tier.title) ? `${offerPages[tier.title]}#waitlist` : offerLinks[tier.title];
 
           return (
             <motion.div
@@ -200,7 +201,7 @@ export default function OffersCarousel() {
           <OfferDetails
             tier={tiers[details]}
             look={LOOKS[details % LOOKS.length]}
-            href={offerLinks[tiers[details].title]}
+            href={offerPages[tiers[details].title] ?? offerLinks[tiers[details].title]}
             reduced={reduced}
             onClose={() => setDetails(null)}
           />
@@ -386,12 +387,12 @@ function SleeveArt({
       {cartHref && (
         <a
           href={cartHref}
-          target="_blank"
-          rel="noopener noreferrer"
+          target={cartHref.startsWith('http') ? '_blank' : undefined}
+          rel={cartHref.startsWith('http') ? 'noopener noreferrer' : undefined}
           onClick={(e) => e.stopPropagation()}
           onPointerDownCapture={(e) => e.stopPropagation()}
-          aria-label={`Buy ${tier.title} on The Leap`}
-          title="Buy on The Leap"
+          aria-label={cartHref.startsWith('http') ? `Buy ${tier.title} on The Leap` : `Join the waitlist for ${tier.title}`}
+          title={cartHref.startsWith('http') ? 'Buy on The Leap' : 'Join the waitlist'}
           className="absolute left-[6%] top-[6%] flex aspect-square w-[12%] items-center justify-center rounded-full bg-[#141414] text-cream shadow-lg transition-transform hover:scale-110"
         >
           {/* Line-style shopping bag */}
@@ -636,17 +637,18 @@ function OfferDetails({
                   {tier.banner}
                 </span>
               )}
+              {/* Offers with their own page here open it; the rest go to The Leap */}
               {href && (
                 <a
                   href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={href.startsWith('http') ? '_blank' : undefined}
+                  rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   className="inline-flex items-center gap-2 rounded-full bg-[#141414] px-4 py-2.5 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-cream transition-transform hover:scale-105 sm:text-xs"
                 >
                   <svg viewBox="0 0 24 24" className="h-3 w-3" fill="currentColor" aria-hidden="true">
                     <path d="M5 3l16 9-16 9z" />
                   </svg>
-                  Find out more
+                  {href.startsWith('http') ? 'Find out more' : 'Read more'}
                 </a>
               )}
             </div>

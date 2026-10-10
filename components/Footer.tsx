@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { footer, nav, offerLinks, socialLinks } from '@/content/site';
+import { footer, nav, offerLinks, offerPages, socialLinks } from '@/content/site';
 import { scrollToTop } from '@/lib/goHome';
 
 // Links that resolve to a real section on this page or a live offer page.
@@ -14,6 +14,8 @@ const REAL_ANCHORS: Record<string, string> = {
   // No page of its own yet (coming soon), so it points to the offers.
   'Your Freedom Roadmap': '/#freedom-seeker',
   ...offerLinks,
+  // Offers with their own page here link to it rather than to The Leap
+  ...offerPages,
   ...socialLinks,
 };
 

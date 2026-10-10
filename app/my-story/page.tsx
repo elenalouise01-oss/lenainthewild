@@ -6,7 +6,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import SiteHeader from '@/components/SiteHeader';
 import Listen from '@/components/sections/Listen';
 import Newsletter from '@/components/sections/Newsletter';
-import { offerLinks, storyPage } from '@/content/site';
+import { offerPages, storyPage } from '@/content/site';
 
 export const metadata: Metadata = {
   title: 'My Story',
@@ -47,14 +47,9 @@ export default function MyStoryPage() {
                   </p>
                 ))}
               </div>
-              <a
-                href={offerLinks['The Freedom Frequency']}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${outlineButton} mt-12`}
-              >
+              <Link href={offerPages['The Freedom Frequency']} className={`${outlineButton} mt-12`}>
                 {storyPage.cta} →
-              </a>
+              </Link>
             </ScrollReveal>
           </div>
         </section>
