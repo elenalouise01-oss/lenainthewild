@@ -248,12 +248,12 @@ export const newsletter = {
 export const footer = {
   columns: [
     {
-      label: 'Read',
-      links: ['Blog', 'Travel', 'Wellness', 'Healing'],
-    },
-    {
       label: 'Explore',
       links: ['The Freedom Frequency', 'The 5 Day Reconnect', 'Dream Life Workbook', 'Wellness Studio'],
+    },
+    {
+      label: 'Read',
+      links: ['Blog', 'Travel', 'Wellness', 'Healing'],
     },
     {
       label: 'Connect',
