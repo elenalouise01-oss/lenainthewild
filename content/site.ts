@@ -336,7 +336,7 @@ export const listen = {
 } as const;
 
 // Questions people ask Google and AI assistants in Lena's niche, answered in
-// her own words and facts from the site. Shown on the home page as plain
+// her own words (each answer is a list of paragraphs). Shown on the home page as plain
 // text that search engines and AI assistants can read (no FAQ markup:
 // Google only shows FAQ results for government and health sites).
 export const faq = {
@@ -344,32 +344,64 @@ export const faq = {
   heading: 'Feeling stuck? Start here',
   items: [
     {
-      q: 'Why do I feel stuck in life even when nothing is wrong?',
-      a: 'Because a life can look good on paper and still not feel like yours. You built the career, the home, the income, maybe even the relationship, and you’re standing in it wondering why you’re not fulfilled. That was me. Feeling stuck isn’t a sign something is wrong with you. It’s usually a sign you’ve outgrown the life you were told to want.',
+      q: 'How do I get unstuck and figure out what I want in life?',
+      a: [
+        'When you’re constantly questioning your career, your future and what you actually want, it can feel like you’re going around in circles searching for answers. Maybe life feels like it’s on repeat, you’re exhausted by work, or you know something needs to change but can’t figure out what.',
+        'I’ve been there. The first step isn’t necessarily finding the perfect answer. It’s slowing down, reconnecting with yourself and exploring what genuinely matters to you, rather than what you think you should want. You don’t need to have your entire future figured out to start finding your direction.',
+      ],
     },
     {
-      q: 'Is it too late to reinvent my life in my 30s?',
-      a: 'No. I was 36 when I walked away from the personal training business I’d spent 8 years building in Bondi, sold everything and moved from Sydney to Bali, and I’ve started over more times than I can count. Life has ups and downs no matter which path you choose, so you may as well spend them building the life you actually dream of.',
+      q: 'How do I find my purpose when I don’t know what I want anymore?',
+      a: [
+        'Finding your purpose can feel overwhelming when you’ve spent years following a path that no longer feels right. You might be questioning your career, your priorities or the future you once imagined for yourself.',
+        'Rather than putting pressure on yourself to discover one big purpose, start by getting curious about who you are now, what makes you feel alive and what no longer feels right. You don’t have to figure everything out at once. Understanding yourself is a place to begin.',
+      ],
     },
     {
-      q: 'How do I start over in my 30s when I don’t know what I want?',
-      a: 'Start small, and start with you. Before any big leap, you need to slow down, get out of your head and hear yourself again. That’s exactly what The 5 Day Reconnect is for: five short audio sessions, one a day, with simple practices to slow down and hear yourself again. You don’t need to have it all figured out. You just need to start.',
+      q: 'What if I’ve worked so hard to build a life I don’t want anymore?',
+      a: [
+        'It can be confronting to question a life you’ve spent years building. You’ve invested time, energy and effort into your career, business or lifestyle, so the thought of wanting something different can feel like throwing it all away.',
+        'For me, burnout became a wake-up call. It made me question whether the life I was working so hard to build was actually the life I wanted. I’ve learned that you’re allowed to change your mind, reassess what success means to you and create a different path, even when you’ve already invested years in the old one.',
+      ],
+    },
+    {
+      q: 'How do I start changing my life when I don’t know where to begin?',
+      a: [
+        'You don’t need a perfect plan or a clear vision of your future before you begin. Start by creating space to understand what isn’t working, what matters to you and what you’d like your life to feel like instead.',
+        'The Freedom Frequency is my self-paced course for people who feel stuck and want to explore a different way forward. It draws on what I’ve learned through my own journey from stagnation to creating a life that feels more like me.',
+      ],
     },
     {
       q: 'Who do you help?',
-      a: 'Mostly women in their 30s who did all the things they were meant to do and still feel stuck, stagnant or unfulfilled. If you know deep down there’s more to life and you’re ready to find it, but don’t know how to get there yet, you’re in the right place.',
+      a: [
+        'I created Lena in the Wild for people who know there’s more to life but aren’t quite sure how to find it. Maybe you’ve spent years working towards the life you thought you wanted, only to find yourself feeling stuck, unfulfilled or questioning what comes next.',
+        'If you’re constantly searching for answers about your purpose, career or future, I share the lessons, experiences and practices that have helped me navigate my own journey of personal reinvention. My hope is to help you reconnect with yourself, discover what you genuinely want and find the courage to create a life that feels like your own.',
+      ],
     },
     {
-      q: 'Which offer should I start with?',
-      a: 'The 5 Day Reconnect ($33) is the gentlest first step: five short audio sessions, one a day, to get out of your head and back into your body. The Freedom Frequency ($555, waitlist open) is my self-paced course with everything I learned going from stuck to breaking free. Your Freedom Roadmap ($333, coming soon) is a personalised deep dive: send me your questions and I’ll create your own roadmap for your next steps.',
+      q: 'How can The Freedom Frequency help me?',
+      a: [
+        'The Freedom Frequency is my self-paced course for people who feel stuck in their lives and are ready to explore a different way forward.',
+        'Drawing on what I’ve learned through my own journey from stagnation to creating a life that feels more like me, it brings together the insights and practices that helped me question the path I was on and start creating something different.',
+        'If you’re constantly searching for answers about your purpose, career or future, The Freedom Frequency offers an opportunity to turn that questioning inward, explore what you genuinely want and begin finding your own way forward.',
+        'The Freedom Frequency is $555, with the waitlist currently open.',
+      ],
     },
     {
-      q: 'Do I have to move overseas to change my life?',
-      a: 'Not at all. Moving to Bali was my path, not a prescription. Reinventing your life is about getting clear on what you actually want and building a life that feels like yours, on your own terms, wherever you are.',
+      q: 'Do I have to change everything to create a different life?',
+      a: [
+        'Not at all. Creating a life that feels more like you doesn’t necessarily mean quitting your job, moving overseas or starting from scratch.',
+        'For me, that journey included leaving Sydney and moving to Bali at 36. But your path doesn’t have to look anything like mine. It might mean changing careers, exploring a creative passion, rethinking your priorities or making smaller changes that bring you closer to the life you want.',
+        'This is about discovering what feels right for you, not following someone else’s version of success.',
+      ],
     },
     {
       q: 'Who is Lena in the Wild?',
-      a: 'I’m Lena (Elena Louise), a former Bondi personal trainer who left Sydney for Bali at 36 and now lives out of a suitcase, hopping around Southeast Asia, mostly Bali and Vietnam. Lena in the Wild is where I share the real, unfiltered version of starting over: slow living, travel, wellness, healing and romanticising the everyday, plus the tools that helped me go from stuck to free.',
+      a: [
+        'I’m Elena Louise, the person behind Lena in the Wild. After years of working towards the version of success I thought I wanted, I reached a point where I had to question whether the life I was building was actually right for me.',
+        'Burnout became a turning point. I started exploring what I genuinely wanted, questioning the expectations I’d been living by and finding a different direction for my life. That journey eventually led me to leave Sydney and move to Bali at 36.',
+        'Today, Lena in the Wild is where I share the lessons, experiences and inner work behind personal reinvention, self-discovery and creating a life that feels like your own.',
+      ],
     },
   ],
 };

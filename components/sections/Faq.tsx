@@ -27,7 +27,13 @@ export default function Faq() {
                     +
                   </span>
                 </summary>
-                <p className="max-w-2xl pb-6 font-body text-base leading-relaxed text-umber">{a}</p>
+                <div className="max-w-2xl space-y-4 pb-6">
+                  {a.map((p) => (
+                    <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber">
+                      {p}
+                    </p>
+                  ))}
+                </div>
               </details>
             ))}
           </div>
