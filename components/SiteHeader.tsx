@@ -13,7 +13,7 @@ const LINKS = [
   { label: 'About', href: '/my-story' },
   { label: 'Who I Help', href: '/life-design' },
   { label: 'The Freedom Seeker', href: '/#freedom-seeker' },
-  { label: 'Journal', href: '/journal' },
+  { label: 'Journal Entries', href: '/journal' },
   { label: 'Contact', href: '/#contact' },
 ];
 

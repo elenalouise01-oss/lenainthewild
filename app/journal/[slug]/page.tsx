@@ -77,7 +77,7 @@ export default async function ArticlePage({ params }: Props) {
   return (
     <>
       <JsonLd data={structuredData} />
-      <SiteHeader active="Journal" />
+      <SiteHeader active="Journal Entries" />
       <main>
         <article className="bg-cream px-6 pb-20 pt-16 sm:pb-28 sm:pt-24">
           <header className="mx-auto max-w-2xl">

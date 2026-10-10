@@ -50,7 +50,7 @@ export default function JournalPage() {
           },
         ]}
       />
-      <SiteHeader active="Journal" />
+      <SiteHeader active="Journal Entries" />
       <main>
         <section className="bg-cream px-6 py-20 sm:py-28">
           <div className="container-editorial">
