@@ -9,6 +9,7 @@ import { scrollToTop } from '@/lib/goHome';
 const REAL_ANCHORS: Record<string, string> = {
   Blog: '/journal',
   About: '/my-story',
+  'How I Help': '/life-design',
   Substack: 'https://lenainthewild.substack.com',
   Contact: '/#contact',
   // No page of its own yet (coming soon), so it points to the offers.

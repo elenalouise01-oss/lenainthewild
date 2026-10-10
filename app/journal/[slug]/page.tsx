@@ -60,8 +60,8 @@ export default async function ArticlePage({ params }: Props) {
       image: absoluteUrl(a.image?.src ?? '/images/hero.jpg'),
       mainEntityOfPage: absoluteUrl(path),
       keywords: a.tags.join(', '),
-      author: { '@type': 'Person', '@id': `${absoluteUrl('/')}#lena`, name: 'Lena', url: absoluteUrl('/my-story') },
-      publisher: { '@type': 'Person', '@id': `${absoluteUrl('/')}#lena`, name: 'Lena' },
+      author: { '@type': 'Person', '@id': `${absoluteUrl('/')}#lena`, name: 'Elena Louise', url: absoluteUrl('/my-story') },
+      publisher: { '@type': 'Person', '@id': `${absoluteUrl('/')}#lena`, name: 'Elena Louise' },
     },
     {
       '@context': 'https://schema.org',

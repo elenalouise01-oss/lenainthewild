@@ -13,6 +13,7 @@ export const SAME_AS = [socialLinks.Instagram, socialLinks.TikTok, 'https://lena
 export const PAGES = [
   { path: '/', priority: 1 },
   { path: '/my-story', priority: 0.9 },
+  { path: '/life-design', priority: 0.9 },
   { path: '/freedom-frequency', priority: 0.8 },
   { path: '/5-day-reconnect', priority: 0.8 },
 ];

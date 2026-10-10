@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionLabel from '@/components/SectionLabel';
 import { faq } from '@/content/site';
@@ -30,6 +31,12 @@ export default function Faq() {
               </details>
             ))}
           </div>
+          <Link
+            href="/life-design"
+            className="mt-10 inline-block py-2 font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark"
+          >
+            Not sure what you want from life? Start here →
+          </Link>
         </ScrollReveal>
       </div>
     </section>

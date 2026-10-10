@@ -368,7 +368,7 @@ export const faq = {
     },
     {
       q: 'Who is Lena in the Wild?',
-      a: 'I’m Lena, a former Bondi personal trainer who left Sydney for Bali at 36 and now lives out of a suitcase, hopping around Southeast Asia, mostly Bali and Vietnam. Lena in the Wild is where I share the real, unfiltered version of starting over: slow living, travel, wellness, healing and romanticising the everyday, plus the tools that helped me go from stuck to free.',
+      a: 'I’m Lena (Elena Louise), a former Bondi personal trainer who left Sydney for Bali at 36 and now lives out of a suitcase, hopping around Southeast Asia, mostly Bali and Vietnam. Lena in the Wild is where I share the real, unfiltered version of starting over: slow living, travel, wellness, healing and romanticising the everyday, plus the tools that helped me go from stuck to free.',
     },
   ],
 };
@@ -389,7 +389,7 @@ export const footer = {
     },
     {
       label: 'Get to Know Me',
-      links: ['About', 'Blog', 'Travel', 'Wellness', 'Healing'],
+      links: ['About', 'How I Help', 'Blog', 'Travel', 'Wellness', 'Healing'],
     },
     {
       label: 'Connect',
@@ -401,6 +401,146 @@ export const footer = {
     label: 'Currently',
     body: 'Currently in Southeast Asia, romanticising the everyday and seeing where life takes me.',
   },
+};
+
+// The "not sure what you want from life" page (/life-design): who Lena
+// helps, the problems her work explores, her story and what's actually on
+// offer. Only offers that really exist on this site.
+export const lifeDesignPage = {
+  eyebrow: 'Life design & personal reinvention',
+  title: 'Not Sure What You Want From Life Anymore?',
+  lead: 'You don’t need to know exactly what you want before you start exploring what a different future could look like.',
+  byline: 'By Elena Louise, the person behind Lena in the Wild',
+  intro: [
+    'If you’re constantly trying to figure out your life, wondering what you should be doing, why you feel stuck or why a good life still doesn’t feel like yours, this page is for you.',
+    'Lena in the Wild is my personal brand, all about self-discovery, finding your own direction and creating a life that feels like you. I’m not here to hand you the answers. I’m here to share what I’ve learned, so you can start finding your own.',
+  ],
+
+  recogniseHeading: 'Does any of this sound familiar?',
+  recognise: [
+    {
+      heading: 'You feel stuck, and every day looks the same',
+      body: 'You’re going around in circles. Same routine, same thoughts, same feeling that life is on repeat. You want something to change, but you don’t know what, or where to start.',
+      asks: ['Why do I feel stuck in life?', 'How do I get out of this rut?', 'Why does my life feel like it’s going nowhere?'],
+    },
+    {
+      heading: 'You have a good life, so why aren’t you happy?',
+      body: 'The job, the security, the comfortable life. All things you know you should be grateful for. And you are. But something still feels missing, and you feel guilty for even wanting more.',
+      asks: ['Why am I unhappy when I have a good life?', 'Why do I feel like something is missing?', 'Why am I not happy with the life I’ve built?'],
+    },
+    {
+      heading: 'You’re constantly trying to figure out what you want',
+      body: 'Maybe it’s a career change. Maybe a different lifestyle, a new city or something you can’t name yet. You’re searching for answers, asking everyone for their opinion, and still not sure what you actually want.',
+      asks: ['What should I do with my life?', 'How do I figure out what I really want?', 'How do I find direction, or my purpose?'],
+    },
+    {
+      heading: 'You’re questioning the career you worked so hard to build',
+      body: 'You’ve spent years building a business, climbing the ladder or chasing a version of success. Now, after burnout or a long stretch of feeling flat, you’re not sure you want to keep going. And you feel torn, because you’ve invested so much.',
+      asks: ['How do I know if I’m on the wrong career path?', 'What do I do when I hate my job but don’t know what else to do?', 'What if I don’t want the life I worked so hard for?'],
+    },
+    {
+      heading: 'You want a different life, but don’t know how to create it',
+      body: 'More freedom, flexibility, adventure, meaningful work. Maybe you’ve thought about starting over, moving overseas or building something online. But you don’t know what’s realistic, or what you genuinely want.',
+      asks: ['How do I change my life when I don’t know where to start?', 'How do I start over in my 30s?', 'How do I build a life with more freedom?'],
+    },
+  ],
+
+  hardHeading: 'Why figuring out your life feels so hard',
+  hard: [
+    'Questioning your life is uncomfortable, especially when it looks good from the outside. You might have put years of time, energy and money into your career or business. People might rely on you, or expect you to keep going. And walking away from something you worked so hard to create can feel like giving up.',
+    'On top of that, most of us were never taught how to work out what we want. We were taught to follow a path: school, a good job, climb the ladder, build the life. So when that path stops feeling right, there’s no map for what comes next.',
+    'And it’s hard to hear yourself clearly when you’re exhausted. When you’re burnt out and running on stress, everything feels urgent and nothing feels clear.',
+  ],
+  hardQuote: 'Wanting something different doesn’t mean the life you built was a mistake. It might just mean you’ve outgrown it.',
+
+  exploreHeading: 'What you can explore, before you have it all figured out',
+  exploreIntro: 'You don’t need a five-year plan. You need a little space, some honest questions and the willingness to explore. These are the things I come back to again and again:',
+  explore: [
+    {
+      heading: 'Slowing down enough to hear yourself',
+      body: 'Clarity rarely comes when you’re running on empty. Rest, slowing down and getting out of your head and back into your body are often the first steps, not a reward for later.',
+    },
+    {
+      heading: 'Why your current life no longer feels right',
+      body: 'Notice what drains you and what lights you up. Often the feeling of being stuck is a sign you’ve outgrown an old version of yourself, or an old ambition you never questioned.',
+    },
+    {
+      heading: 'What you want, not what you think you should want',
+      body: 'So many of our goals are borrowed from family, society or social media. Try separating the “shoulds” from what genuinely excites you.',
+    },
+    {
+      heading: 'Your own definition of success',
+      body: 'Who decided success means working Monday to Friday, owning a house by a certain age or always doing more? You get to decide what a good life means to you.',
+    },
+    {
+      heading: 'Different ways of working and living',
+      body: 'Working fewer days, working online, living somewhere new, or staying exactly where you are and changing how you spend your days. There are more options than the one path we were handed.',
+    },
+    {
+      heading: 'Your next step, not your whole life',
+      body: 'You don’t have to reinvent everything. Sometimes you just need clarity on the next step, then the one after that.',
+    },
+  ],
+  promptsHeading: 'A few questions to start with',
+  prompts: [
+    'When do I feel most like myself?',
+    'What would I do if no one else’s opinion mattered?',
+    'What am I tolerating that I’ve quietly outgrown?',
+    'What does freedom actually look like for me, day to day?',
+    'What’s one small thing I could try this month?',
+  ],
+
+  storyHeading: 'Why this matters to me',
+  story: [
+    'I spent years working hard to build a life and a business I thought I wanted. Then burnout hit, and it made me question whether the life I had worked so hard to build was actually the life I wanted anymore.',
+    'I was exhausted by work. I started questioning my career, my business and the direction my life was heading. And I felt torn. Part of me knew something needed to change, but another part couldn’t imagine walking away from something I’d put so much into.',
+    'My life felt like it was on repeat. I knew I wanted something different, I just didn’t know what that looked like. So I was constantly trying to figure out my life: searching for answers, asking other people for their perspective, questioning what I should do with my career and trying to work out what I genuinely wanted.',
+    'I was also searching for my purpose. I wanted to understand what I was meant to do with my life and what would make me feel fulfilled. I wanted a sense of direction, and to understand what I was truly here to do, both personally and professionally.',
+    'I wasn’t just looking for a new job. I was trying to understand what I wanted my life to look like, and how I could create it, including how to build something online and create more freedom.',
+    'That’s why I created Lena in the Wild. Not because I have all the answers, but because I know how lonely and confusing that stage can feel, and I want you to feel understood while you find your own way.',
+  ],
+  storyLink: 'Read my full story',
+
+  helpHeading: 'How Lena in the Wild can help',
+  helpIntro: 'Everything here is self-paced, so you can explore in your own time, wherever you are.',
+  help: [
+    {
+      heading: 'The journal (free)',
+      body: 'Honest stories about feeling stuck, burnout, questioning success, healing and building a life on my own terms. A good place to start if you just want to feel less alone in it.',
+      href: '/journal',
+      cta: 'Read the journal',
+    },
+    {
+      heading: 'The 5 Day Reconnect ($33)',
+      body: 'Five short audio sessions, one a day. Simple practices to help you slow down, get out of your head and hear yourself again. A gentle first step when you don’t know where to start.',
+      href: '/5-day-reconnect',
+      cta: 'Explore The 5 Day Reconnect',
+    },
+    {
+      heading: 'The Freedom Frequency ($555, waitlist open)',
+      body: 'An embodied, self-paced online course with everything I learned going from stuck to breaking free. For when you’re ready to go deeper.',
+      href: '/freedom-frequency',
+      cta: 'Join the waitlist',
+    },
+    {
+      heading: 'Your Freedom Roadmap ($333, coming soon)',
+      body: 'A personal deep dive into where you’re at and where you want to go. Send me your questions, and I’ll create your own personalised roadmap to guide your next steps.',
+      href: '/#freedom-seeker',
+      cta: 'See all offers',
+    },
+  ],
+  articlesHeading: 'Start reading',
+  articles: [
+    'living-in-fight-or-flight',
+    'work-life-balance-mindfulness',
+    'who-decided-monday-to-friday',
+    'perfectionism-feeling-behind-in-life',
+    'leaping-into-the-unknown-part-1',
+  ],
+  note: 'Lena in the Wild shares lived experience, not therapy or medical advice. If you’re struggling with your mental health, please reach out to a qualified professional.',
+
+  nextHeading: 'Where to start',
+  next: 'You don’t need to have it all figured out. You just need to start.',
 };
 
 // The My Story page (/my-story). A paragraph starting with "## " is a
