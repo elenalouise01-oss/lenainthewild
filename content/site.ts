@@ -369,6 +369,7 @@ export const faq = {
       a: [
         'You don’t need a perfect plan or a clear vision of your future before you begin. Start by creating space to understand what isn’t working, what matters to you and what you’d like your life to feel like instead.',
         'The Freedom Frequency is my self-paced course for people who feel stuck and want to explore a different way forward. It draws on what I’ve learned through my own journey from stagnation to creating a life that feels more like me.',
+        'If you’d like a smaller first step, The 5 Day Reconnect ($33) is five short audio sessions to help you slow down and reconnect with yourself.',
       ],
     },
     {
