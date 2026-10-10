@@ -252,13 +252,13 @@ export const footer = {
       links: ['The Freedom Frequency', 'The 5 Day Reconnect', 'Your Freedom Roadmap', 'Dream Life Workbook', 'Wellness Studio'],
     },
     {
+      label: 'Read',
+      links: ['About', 'Blog', 'Travel', 'Wellness', 'Healing'],
+    },
+    {
       label: 'Connect',
       // Shown as icons
       links: ['Instagram', 'TikTok', 'Substack'],
-    },
-    {
-      label: 'Read',
-      links: ['About', 'Blog', 'Travel', 'Wellness', 'Healing'],
     },
   ],
   currently: {
