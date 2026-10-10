@@ -13,7 +13,7 @@ const buy = offerLinks[page.title];
 
 const title = 'The 5 Day Reconnect: Get Out of Your Head, Back Into Your Body';
 const description =
-  'Five short videos, one a day: simple practices to slow down, tune in and reconnect with yourself when you feel burnt out, overwhelmed or stuck.';
+  'Five short audio sessions, one a day: simple practices to slow down, tune in and reconnect with yourself when you feel burnt out, overwhelmed or stuck.';
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -45,7 +45,7 @@ const product = {
 };
 
 // Buying is the one step that leaves the site: The Leap takes payment and
-// delivers the videos, in a new tab.
+// delivers the audio, in a new tab.
 // `dark` is for the brown closing section: a lilac button instead of black.
 function BuyButton({ dark = false }: { dark?: boolean }) {
   return (

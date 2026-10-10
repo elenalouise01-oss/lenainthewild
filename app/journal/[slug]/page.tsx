@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import SiteHeader from '@/components/SiteHeader';
 import Newsletter from '@/components/sections/Newsletter';
-import { findArticle, formatDate, journal, sortedJournal } from '@/content/journal';
+import { findArticle, formatDate, journal, parseArticle, sortedJournal } from '@/content/journal';
 import { offerPages } from '@/content/site';
 import { SITE_NAME, absoluteUrl } from '@/lib/seo';
 
@@ -21,12 +21,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!a) return {};
   const path = `/journal/${a.slug}`;
   const image = a.image?.src ?? '/images/hero.jpg';
+  const title = a.seoTitle ?? a.title;
   return {
-    title: a.title,
+    title,
     description: a.description,
     alternates: { canonical: path },
-    openGraph: { type: 'article', url: path, title: a.title, description: a.description, publishedTime: a.date, images: [{ url: image, alt: a.image?.alt ?? SITE_NAME }] },
-    twitter: { card: 'summary_large_image', title: a.title, description: a.description, images: [image] },
+    openGraph: { type: 'article', url: path, title, description: a.description, publishedTime: a.date, images: [{ url: image, alt: a.image?.alt ?? SITE_NAME }] },
+    twitter: { card: 'summary_large_image', title, description: a.description, images: [image] },
   };
 }
 
@@ -42,6 +43,7 @@ export default async function ArticlePage({ params }: Props) {
   if (!a) notFound();
 
   const path = `/journal/${a.slug}`;
+  const blocks = parseArticle(a.text);
   const list = sortedJournal();
   const next = list[(list.findIndex((x) => x.slug === a.slug) + 1) % list.length];
 
@@ -83,6 +85,7 @@ export default async function ArticlePage({ params }: Props) {
               {a.category} · <time dateTime={a.date}>{formatDate(a.date)}</time>
             </p>
             <h1 className="mt-3 font-display text-4xl leading-tight text-bark sm:text-6xl">{a.title}</h1>
+            {a.subtitle && <p className="mt-5 font-display text-xl italic leading-snug text-bark/75 sm:text-2xl">{a.subtitle}</p>}
           </header>
 
           {a.image && (
@@ -92,7 +95,16 @@ export default async function ArticlePage({ params }: Props) {
           )}
 
           <div className="mx-auto mt-12 max-w-2xl space-y-6">
-            {a.body.map((block, i) => {
+            {blocks.map((block, i) => {
+              if (block.type === 'listen') return <p key={i} className="font-body text-sm italic text-stone">🎧 {block.text}</p>;
+              if (block.type === 'list')
+                return (
+                  <ul key={i} className="list-disc space-y-2 pl-6 font-body text-base leading-relaxed text-umber marker:text-sage sm:text-lg">
+                    {block.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                );
               if (block.type === 'h2') return <h2 key={i} className="pt-6 font-display text-3xl leading-snug text-bark">{block.text}</h2>;
               if (block.type === 'quote')
                 return (
@@ -100,16 +112,11 @@ export default async function ArticlePage({ params }: Props) {
                     {block.text}
                   </blockquote>
                 );
-              if (block.type === 'image')
-                return (
-                  <figure key={i} className="py-4">
-                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm shadow-md">
-                      <Image src={block.src} alt={block.alt} fill sizes="(min-width: 640px) 42rem, 100vw" className="object-cover" />
-                    </div>
-                    {block.caption && <figcaption className="mt-3 font-body text-sm italic text-stone">{block.caption}</figcaption>}
-                  </figure>
-                );
-              return <p key={i} className="font-body text-base leading-relaxed text-umber sm:text-lg">{block.text}</p>;
+              return (
+                <p key={i} className="whitespace-pre-line font-body text-base leading-relaxed text-umber sm:text-lg">
+                  {block.text}
+                </p>
+              );
             })}
 
             {a.substackUrl && (
@@ -129,7 +136,7 @@ export default async function ArticlePage({ params }: Props) {
           <div className="mx-auto max-w-xl">
             {a.offer && offerPages[a.offer] ? (
               <>
-                <p className="font-display text-2xl italic leading-snug text-bark sm:text-3xl">{OFFER_LINE[a.offer]}</p>
+                <p className="font-display text-2xl italic leading-snug text-bark sm:text-3xl">{a.offerLine ?? OFFER_LINE[a.offer]}</p>
                 <Link
                   href={offerPages[a.offer]}
                   className="mt-6 inline-block py-2 font-body text-xs font-semibold uppercase tracking-wider text-bark underline decoration-sage decoration-2 underline-offset-8 hover:decoration-bark sm:tracking-widest2"

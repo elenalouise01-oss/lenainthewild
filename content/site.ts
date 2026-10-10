@@ -7,7 +7,7 @@ export const nav = {
   links: [
     { label: 'About', href: '#about' },
     { label: 'The Freedom Seeker', href: '#freedom-seeker', expandable: true },
-    { label: 'Journal', href: '#on-the-road', expandable: true },
+    { label: 'Journal', href: '/journal' },
     { label: "Let's Connect", href: '#contact' },
   ],
   subscribeLabel: 'Subscribe',
@@ -81,7 +81,7 @@ export const offerPages: Record<string, string> = {
 export const waitlistOffers = ['The Freedom Frequency'];
 
 // The 5 Day Reconnect page (/5-day-reconnect). Buying still happens on
-// The Leap, which takes payment and delivers the videos.
+// The Leap, which takes payment and delivers the audio.
 export const fiveDayReconnectPage = {
   label: 'The Freedom Seeker · 02',
   title: 'The 5 Day Reconnect',
@@ -95,7 +95,7 @@ export const fiveDayReconnectPage = {
     'You know something needs to change but you don’t know where to start',
   ],
   insideHeading: 'What’s inside',
-  inside: 'Five short videos: one per day, each one a simple tool to help you slow down, tune in and reconnect with yourself.',
+  inside: 'Five short audio sessions: one per day, each one a simple tool to help you slow down, tune in and reconnect with yourself.',
   days: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'],
   notAnother:
     'This isn’t another self-improvement course. It’s five days of real tools I wish I’d had sooner, collected over years of being stuck, investing in healers, coaches and modalities, and eventually finding my way out.',
@@ -242,11 +242,13 @@ export const freedomSeeker = {
   pillarsLabel: 'Entries From My Journal',
   pillarsCta: { label: 'Read more on Substack', href: 'https://lenainthewild.substack.com' },
   pillarsIntro: 'I don’t really do plans. I wake up, see how I feel, follow my intuition and let the day unfold.',
-  // A pillar with an `href` links to its Substack post; without one it's a plain card.
+  // A pillar with a `slug` links to that article in the journal on this
+  // site; otherwise one with an `href` links to its Substack post.
   pillars: [
     {
       category: 'Travel',
       title: 'Overcoming My Fear of Riding a Scooter',
+      slug: 'overcoming-fear-of-riding-a-scooter-week-2',
       roles: 'FEAR, CHILDHOOD WOUNDS, SELF COMPASSION',
       excerpt: 'Little did I know it would trigger old childhood wounds.',
       href: 'https://substack.com/home/post/p-209897527',
@@ -254,6 +256,7 @@ export const freedomSeeker = {
     {
       category: 'Wellness',
       title: 'Leaping into the Unknown: Part 1',
+      slug: 'leaping-into-the-unknown-part-1',
       roles: 'LEAVING SYDNEY, TRUSTING YOUR INTUITION, BALI',
       excerpt: 'At 36, I threw my life up in the air.',
       href: 'https://substack.com/home/post/p-190792316',
@@ -261,6 +264,7 @@ export const freedomSeeker = {
     {
       category: 'Healing',
       title: 'What I’m Learning About Slowing Down',
+      slug: 'living-in-fight-or-flight',
       roles: 'FIGHT OR FLIGHT, NERVOUS SYSTEM, SLOWING DOWN',
       excerpt: 'For years I didn’t even realise I was living in fight or flight.',
       href: 'https://lenainthewild.substack.com/p/for-years-i-didnt-even-realise-i',
@@ -268,6 +272,7 @@ export const freedomSeeker = {
     {
       category: 'Wild',
       title: 'Breaking Free From the System',
+      slug: 'breaking-free-from-the-system',
       roles: 'FIRST LEAP, FREEDOM, ISLAND LIFE',
       excerpt: 'At 21, I packed my bags and moved to a remote island.',
       href: 'https://substack.com/home/post/p-189725048',

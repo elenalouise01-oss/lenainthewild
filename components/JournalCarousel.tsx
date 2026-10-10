@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { journal } from '@/content/journal';
 import { freedomSeeker } from '@/content/site';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 
@@ -147,10 +146,10 @@ export default function JournalCarousel() {
         {Array.from({ length: COPIES }, (_, copy) =>
           freedomSeeker.pillars.map((pillar, i) => {
             const photo = ROAD_PHOTOS[i % ROAD_PHOTOS.length];
-            // The article on this site if it's been added to the journal,
-            // otherwise its Substack post.
-            const onSite = journal.find((a) => a.title === pillar.title);
-            const href = onSite ? `/journal/${onSite.slug}` : 'href' in pillar ? pillar.href : undefined;
+            // The article in the journal on this site, otherwise its Substack
+            // post. (The journal itself isn't imported here: it would send
+            // every article's text to the browser.)
+            const href: string | undefined = pillar.slug ? `/journal/${pillar.slug}` : pillar.href;
             const external = !!href && href.startsWith('http');
             const hidden = copy !== 1;
             const body = (
@@ -197,24 +196,12 @@ export default function JournalCarousel() {
         )}
       </div>
 
-      {/* The full journal on this site once it has articles; Substack until then */}
-      {journal.length ? (
-        <Link
-          href="/journal"
-          className="mt-10 inline-block py-2 font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark"
-        >
-          Read the journal →
-        </Link>
-      ) : (
-        <a
-          href={freedomSeeker.pillarsCta.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-10 inline-block py-2 font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark"
-        >
-          {freedomSeeker.pillarsCta.label} →
-        </a>
-      )}
+      <Link
+        href="/journal"
+        className="mt-10 inline-block py-2 font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark"
+      >
+        Read the journal →
+      </Link>
     </>
   );
 }
