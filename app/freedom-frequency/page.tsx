@@ -25,15 +25,15 @@ function JoinButton() {
   );
 }
 
-// The Freedom Frequency's own page: the whole story on Lena's site, in the
-// offer's pink, ending with the waitlist sign-up.
+// The Freedom Frequency's own page: the whole story on Lena's site, with
+// pink accents, ending with the waitlist sign-up on the brand brown.
 export default function FreedomFrequencyPage() {
   return (
     <>
       <SiteHeader active="The Freedom Seeker" />
       <main>
         {/* Cover, title, price and sign-up */}
-        <section className="bg-zing-pink px-6 py-20 sm:py-28">
+        <section className="bg-sand px-6 py-20 sm:py-28">
           <div className="container-editorial grid items-center gap-12 lg:grid-cols-2">
             <ScrollReveal>
               <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-bark/70">{page.label}</p>
@@ -50,7 +50,7 @@ export default function FreedomFrequencyPage() {
               <div className="mt-10 flex flex-wrap items-center gap-5">
                 <JoinButton />
                 {tier.price && (
-                  <span className="rounded-full bg-zing-yellow px-4 py-2 font-body text-sm font-bold text-bark">{tier.price}</span>
+                  <span className="rounded-full bg-zing-pink px-4 py-2 font-body text-sm font-bold text-bark">{tier.price}</span>
                 )}
               </div>
             </ScrollReveal>
@@ -152,13 +152,13 @@ export default function FreedomFrequencyPage() {
         </section>
 
         {/* Closing waitlist sign-up */}
-        <section id="waitlist" className="scroll-mt-16 bg-zing-pink px-6 py-24 text-center sm:py-32">
+        <section id="waitlist" className="scroll-mt-16 bg-bark px-6 py-24 text-center sm:py-32">
           <ScrollReveal className="mx-auto max-w-2xl">
-            <p className="font-display text-3xl italic leading-tight text-bark sm:text-5xl">{page.closing}</p>
-            <p className="mt-14 font-body text-xs font-semibold uppercase tracking-widest2 text-bark/70">{page.waitlistHeading}</p>
-            <p className="mx-auto mt-3 max-w-md font-body text-base leading-relaxed text-bark/85">{page.waitlistBody}</p>
+            <p className="font-display text-3xl italic leading-tight text-cream sm:text-5xl">{page.closing}</p>
+            <p className="mt-14 font-body text-xs font-semibold uppercase tracking-widest2 text-zing-pink">{page.waitlistHeading}</p>
+            <p className="mx-auto mt-3 max-w-md font-body text-base leading-relaxed text-cream/80">{page.waitlistBody}</p>
             <div className="mt-8">
-              <WaitlistForm offer={page.title} cta={page.cta} sent={page.waitlistSent} />
+              <WaitlistForm offer={page.title} cta={page.cta} sent={page.waitlistSent} dark />
             </div>
           </ScrollReveal>
         </section>

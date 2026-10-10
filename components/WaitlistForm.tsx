@@ -6,7 +6,8 @@ import { sendToInbox } from '@/lib/sendToInbox';
 
 // Waitlist sign-up for an offer that isn't open yet: name and email are
 // emailed to Lena, so visitors never have to leave the site.
-export default function WaitlistForm({ offer, cta, sent }: { offer: string; cta: string; sent: string }) {
+// `dark` is for use on the brown background: pink button, cream error text.
+export default function WaitlistForm({ offer, cta, sent, dark = false }: { offer: string; cta: string; sent: string; dark?: boolean }) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle');
 
   const join = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -42,7 +43,7 @@ export default function WaitlistForm({ offer, cta, sent }: { offer: string; cta:
         <input name="email" type="email" autoComplete="email" required placeholder="Your email" className={field} />
       </label>
       {status === 'failed' && (
-        <p className="px-2 font-body text-sm text-bark" role="alert">
+        <p className={`px-2 font-body text-sm ${dark ? 'text-cream' : 'text-bark'}`} role="alert">
           Sorry, that didn’t go through. Please try again, or message me on Instagram{' '}
           <a href={socialLinks.Instagram} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
             @lenainthewild
@@ -53,7 +54,9 @@ export default function WaitlistForm({ offer, cta, sent }: { offer: string; cta:
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="mt-2 rounded-full bg-[#141414] px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest2 text-cream transition-transform hover:scale-[1.02] disabled:opacity-60"
+        className={`mt-2 rounded-full px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest2 transition-transform hover:scale-[1.02] disabled:opacity-60 ${
+          dark ? 'bg-zing-pink text-bark' : 'bg-[#141414] text-cream'
+        }`}
       >
         {status === 'sending' ? 'Joining…' : `${cta} →`}
       </button>
