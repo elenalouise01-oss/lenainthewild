@@ -57,7 +57,7 @@ export default function Footer() {
 
       <div className="container-editorial mt-14 flex items-center justify-between gap-6 border-t border-bark/10 pt-8">
         <p className="font-body text-xs text-stone">
-          © {new Date().getFullYear()} {nav.logo}. All rights reserved.
+          © {new Date().getFullYear()} {nav.logo} by Naluri Collective. All rights reserved.
         </p>
         <a
           href="#"
