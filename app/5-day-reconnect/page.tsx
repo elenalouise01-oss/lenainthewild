@@ -15,30 +15,35 @@ export const metadata: Metadata = {
 
 // Buying is the one step that leaves the site: The Leap takes payment and
 // delivers the videos, in a new tab.
-function BuyButton() {
+// `dark` is for the brown closing section: a lilac button instead of black.
+function BuyButton({ dark = false }: { dark?: boolean }) {
   return (
-    <div className="flex flex-wrap items-center gap-5">
+    <div className={`flex flex-wrap items-center gap-5 ${dark ? 'justify-center' : ''}`}>
       <a
         href={buy}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-3 rounded-full bg-[#141414] px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest2 text-cream transition-transform hover:scale-105"
+        className={`inline-flex items-center gap-3 rounded-full px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest2 transition-transform hover:scale-105 ${
+          dark ? 'bg-sage text-bark' : 'bg-[#141414] text-cream'
+        }`}
       >
         {page.cta} →
       </a>
-      {tier.price && <span className="rounded-full bg-zing-pink px-4 py-2 font-body text-sm font-bold text-bark">{tier.price}</span>}
+      {tier.price && (
+        <span className={`rounded-full px-4 py-2 font-body text-sm font-bold ${dark ? 'bg-cream text-bark' : 'bg-sage text-bark'}`}>{tier.price}</span>
+      )}
     </div>
   );
 }
 
-// The 5 Day Reconnect's own page, in the offer's lilac.
+// The 5 Day Reconnect's own page: sand and brown, with lilac highlights.
 export default function FiveDayReconnectPage() {
   return (
     <>
       <SiteHeader active="The Freedom Seeker" />
       <main>
         {/* Cover, title, price and buy */}
-        <section className="bg-sage px-6 py-20 sm:py-28">
+        <section className="bg-sand px-6 py-20 sm:py-28">
           <div className="container-editorial grid items-center gap-12 lg:grid-cols-2">
             <ScrollReveal>
               <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-bark/70">{page.label}</p>
@@ -95,7 +100,7 @@ export default function FiveDayReconnectPage() {
                   <div
                     key={day}
                     className={`flex aspect-square flex-col items-center justify-center rounded-sm text-bark shadow-sm ${
-                      ['bg-sage/60', 'bg-zing-yellow/80', 'bg-zing-pink/60', 'bg-zing-green/70', 'bg-cream'][i]
+                      i % 2 ? 'bg-sage/40' : 'bg-sage/70'
                     }`}
                   >
                     <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden="true">
@@ -118,11 +123,11 @@ export default function FiveDayReconnectPage() {
         </section>
 
         {/* Closing buy */}
-        <section className="bg-sage px-6 py-24 text-center sm:py-32">
+        <section className="bg-bark px-6 py-24 text-center sm:py-32">
           <ScrollReveal className="mx-auto flex max-w-2xl flex-col items-center">
-            <p className="font-display text-3xl italic leading-tight text-bark sm:text-5xl">{page.closing}</p>
+            <p className="font-display text-3xl italic leading-tight text-cream sm:text-5xl">{page.closing}</p>
             <div className="mt-12">
-              <BuyButton />
+              <BuyButton dark />
             </div>
           </ScrollReveal>
         </section>
