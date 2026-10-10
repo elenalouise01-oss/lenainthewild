@@ -192,10 +192,10 @@ export const freedomSeeker = {
 
   contentJourney: {
     label: 'Follow Along My Journey',
-    lead: "I've walked through burnout, uncertainty, and starting over more than once,",
-    tail: "building a life that's actually mine — one honest step at a time.",
-    colBold: 'Alongside the big moves, I try to stay close to the small stuff —',
-    colRest: "the mornings, the walks, the quiet days that don't make it to a highlight reel but are just as real.",
+    lead: "I'm forever evolving and still figuring it out as I go,",
+    tail: "exploring just how good life can really get and turning the ordinary into something extraordinary.",
+    colBold: "Always looking for where else I can create more freedom, I started asking myself why we have to pick one place and stay there.",
+    colRest: "So after falling in love with Vietnam on a recent trip, I figured, why not spend six months there and six months in Bali? And that's where I'm at right now. Current goal: make every day feel like a holiday.",
   },
 
   envelope: {
