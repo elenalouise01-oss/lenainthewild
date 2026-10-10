@@ -96,10 +96,7 @@ function Label({ children, className = '' }: { children: React.ReactNode; classN
 // let's talk. Everything after the offers sits on the one sand background.
 export default function Section3() {
   return (
-    <section id="freedom-seeker">
-      {/* Offers: the album-cover carousel */}
-      <OffersCarousel />
-
+    <section>
       <div className="bg-sand px-6 pb-32 pt-40 sm:pb-44 sm:pt-32">
         <div className="container-editorial">
           {/* Note to self + A life that actually feels free */}
@@ -193,9 +190,19 @@ export default function Section3() {
               <CredentialsPopup />
             </ScrollReveal>
           </div>
+        </div>
+      </div>
 
+      {/* The Freedom Seeker offers: the album-cover carousel, straight after
+          My Experience */}
+      <div id="freedom-seeker">
+        <OffersCarousel />
+      </div>
+
+      <div className="bg-sand px-6 pb-32 pt-24 sm:pb-44 sm:pt-32">
+        <div className="container-editorial">
           {/* My Journal: a slow, looping row of cards */}
-          <div id="on-the-road" className="mt-32 sm:mt-40">
+          <div id="on-the-road">
             <ScrollReveal>
               <JournalCarousel />
             </ScrollReveal>
