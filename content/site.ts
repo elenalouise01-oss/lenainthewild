@@ -249,15 +249,16 @@ export const footer = {
   columns: [
     {
       label: 'Explore',
-      links: ['The Freedom Frequency', 'The 5 Day Reconnect', 'Dream Life Workbook', 'Wellness Studio'],
+      links: ['The Freedom Frequency', 'The 5 Day Reconnect', 'Your Freedom Roadmap', 'Dream Life Workbook', 'Wellness Studio'],
     },
     {
       label: 'Connect',
-      links: ['About', 'Instagram', 'TikTok', 'Substack'],
+      // Shown as icons
+      links: ['Instagram', 'TikTok', 'Substack'],
     },
     {
       label: 'Read',
-      links: ['Blog', 'Travel', 'Wellness', 'Healing'],
+      links: ['About', 'Blog', 'Travel', 'Wellness', 'Healing'],
     },
   ],
   currently: {
