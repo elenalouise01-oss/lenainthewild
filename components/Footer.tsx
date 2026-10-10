@@ -51,7 +51,7 @@ export default function Footer() {
             </p>
             {column.label === 'Connect' ? (
               <>
-              <ul className="mt-4 flex items-center gap-5">
+              <ul className="mt-2 -ml-2 flex items-center gap-1">
                 {column.links.filter((link) => REAL_ANCHORS[link] && ICONS[link]).map((link) => {
                   const href = REAL_ANCHORS[link];
                   const external = href.startsWith('http');
@@ -63,7 +63,7 @@ export default function Footer() {
                         rel={external ? 'noopener noreferrer' : undefined}
                         aria-label={link}
                         title={link}
-                        className="flex text-bark/70 transition-colors hover:text-bark"
+                        className="flex p-2 text-bark/70 transition-colors hover:text-bark"
                       >
                         {ICONS[link]}
                       </Link>
@@ -75,14 +75,14 @@ export default function Footer() {
                 <Link
                   key={link}
                   href={REAL_ANCHORS[link]}
-                  className="mt-5 block font-body text-sm text-bark/80 transition-colors hover:text-bark"
+                  className="mt-3 inline-block py-1.5 font-body text-sm text-bark/80 transition-colors hover:text-bark"
                 >
                   {link} →
                 </Link>
               ))}
               </>
             ) : (
-              <ul className="mt-4 space-y-3">
+              <ul className="mt-2.5">
                 {column.links.filter((link) => REAL_ANCHORS[link]).map((link) => {
                   const href = REAL_ANCHORS[link];
                   return (
@@ -93,7 +93,7 @@ export default function Footer() {
                         target={href?.startsWith('http') ? '_blank' : undefined}
                         rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
                         aria-disabled={href ? undefined : true}
-                        className={`font-body text-sm transition-colors ${
+                        className={`inline-block py-1.5 font-body text-sm transition-colors ${
                           href ? 'text-bark/80 hover:text-bark' : 'cursor-default text-bark/40'
                         }`}
                       >
@@ -122,7 +122,7 @@ export default function Footer() {
         <a
           href="#"
           onClick={scrollToTop}
-          className="shrink-0 whitespace-nowrap font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark"
+          className="shrink-0 whitespace-nowrap py-2 font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark"
         >
           Back to top ↑
         </a>

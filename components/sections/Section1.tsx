@@ -52,7 +52,7 @@ export default function Section1() {
                 <p className="font-body text-base leading-relaxed text-cream/80">{welcome.supportRight}</p>
                 <a
                   href={welcome.ctaHref}
-                  className="mt-6 inline-block font-body text-xs font-semibold uppercase tracking-widest2 text-zing-yellow underline decoration-zing-yellow/40 underline-offset-8 transition-colors hover:decoration-zing-yellow"
+                  className="mt-4 inline-block py-2 font-body text-xs font-semibold uppercase tracking-widest2 text-zing-yellow underline decoration-zing-yellow/40 underline-offset-8 transition-colors hover:decoration-zing-yellow"
                 >
                   {welcome.cta} →
                 </a>
@@ -71,7 +71,7 @@ export default function Section1() {
                   <a
                     key={chapter.label}
                     href={chapter.href}
-                    className={`font-body text-sm font-bold uppercase tracking-wide transition-colors hover:text-bark ${
+                    className={`inline-block py-1.5 font-body text-sm font-bold uppercase tracking-wide transition-colors hover:text-bark ${
                       i === 0 ? 'text-bark underline decoration-sage decoration-2 underline-offset-4' : 'text-bark/40'
                     }`}
                   >

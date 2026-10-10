@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
+import OfferNextStep from '@/components/OfferNextStep';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteHeader from '@/components/SiteHeader';
 import { fiveDayReconnectPage as page, freedomSeeker, offerLinks } from '@/content/site';
@@ -131,6 +132,7 @@ export default function FiveDayReconnectPage() {
             </div>
           </ScrollReveal>
         </section>
+        <OfferNextStep {...page.next} />
       </main>
       <Footer />
     </>

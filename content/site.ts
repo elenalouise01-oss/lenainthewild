@@ -101,6 +101,7 @@ export const fiveDayReconnectPage = {
     'This isn’t another self-improvement course. It’s five days of real tools I wish I’d had sooner, collected over years of being stuck, investing in healers, coaches and modalities, and eventually finding my way out.',
   minutes: 'And it starts with just a few minutes a day.',
   closing: 'You don’t need to have it all figured out. You just need to start.',
+  next: { lead: 'Ready to go deeper?', label: 'Explore The Freedom Frequency', href: '/freedom-frequency' },
 };
 
 // The Freedom Frequency page (/freedom-frequency).
@@ -152,6 +153,7 @@ export const freedomFrequencyPage = {
     'That’s exactly why I created this.',
   ],
   closing: 'For the woman who knows deep down there has to be more… but doesn’t know how to access it yet.',
+  next: { lead: 'Not ready to go all in?', label: 'Start with The 5 Day Reconnect', href: '/5-day-reconnect' },
 };
 
 type Tier = {

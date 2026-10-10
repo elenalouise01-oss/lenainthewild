@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Montserrat, Gochi_Hand, Bodoni_Moda } from 'next/font/google';
+import BackToTop from '@/components/BackToTop';
 import './globals.css';
 
 const playfair = Playfair_Display({
@@ -45,7 +46,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${playfair.variable} ${montserrat.variable} ${gochi.variable} ${bodoni.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        {/* On every page: appears once you've scrolled past the first screen */}
+        <BackToTop />
+      </body>
     </html>
   );
 }

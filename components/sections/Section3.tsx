@@ -160,7 +160,7 @@ export default function Section3() {
                 ))}
                 <Link
                   href={freedomSeeker.creativeWork.ctaHref}
-                  className="mt-6 inline-block font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark"
+                  className="mt-4 inline-block py-2 font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark"
                 >
                   {freedomSeeker.creativeWork.cta}
                 </Link>
@@ -210,7 +210,7 @@ export default function Section3() {
           </div>
 
           {/* Snapshots: text left, polaroids right */}
-          <div className="mt-32 grid min-w-0 gap-12 sm:mt-40 lg:grid-cols-[1fr_1.4fr] lg:items-center">
+          <div className="mt-32 grid min-w-0 grid-cols-1 gap-12 sm:mt-40 lg:grid-cols-[1fr_1.4fr] lg:items-center">
             <ScrollReveal>
               <Label>{freedomSeeker.brandCampaigns.heading}</Label>
               <p className="mt-3 font-display text-lg italic text-umber sm:text-xl">{freedomSeeker.brandCampaigns.sub}</p>

@@ -266,18 +266,18 @@ function NowPlaying({
           <button
             type="button"
             onClick={stop(onDetails)}
-            className="font-body text-[0.6rem] font-semibold uppercase tracking-widest2 text-zing-yellow underline decoration-zing-yellow/40 underline-offset-4 transition-colors hover:decoration-zing-yellow sm:text-[0.65rem]"
+            className="-my-1 py-1 font-body text-[0.6rem] font-semibold uppercase tracking-widest2 text-zing-yellow underline decoration-zing-yellow/40 underline-offset-4 transition-colors hover:decoration-zing-yellow sm:text-[0.65rem]"
           >
             Learn more +
           </button>
         </div>
         <div className="flex shrink-0 items-center gap-2">
-          <button type="button" onClick={stop(onPrev)} aria-label="Previous offer" className="opacity-90 hover:opacity-100">
+          <button type="button" onClick={stop(onPrev)} aria-label="Previous offer" className="-m-1.5 p-1.5 opacity-90 hover:opacity-100">
             <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">
               <path d="M6 5h2v14H6zM20 5v14L9 12z" />
             </svg>
           </button>
-          <button type="button" onClick={stop(onNext)} aria-label="Next offer" className="opacity-90 hover:opacity-100">
+          <button type="button" onClick={stop(onNext)} aria-label="Next offer" className="-m-1.5 p-1.5 opacity-90 hover:opacity-100">
             <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">
               <path d="M16 5h2v14h-2zM4 5v14l11-7z" />
             </svg>

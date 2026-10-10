@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
+import OfferNextStep from '@/components/OfferNextStep';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteHeader from '@/components/SiteHeader';
 import WaitlistForm from '@/components/WaitlistForm';
@@ -162,6 +163,7 @@ export default function FreedomFrequencyPage() {
             </div>
           </ScrollReveal>
         </section>
+        <OfferNextStep {...page.next} />
       </main>
       <Footer />
     </>
