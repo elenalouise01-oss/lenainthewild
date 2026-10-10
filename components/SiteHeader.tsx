@@ -11,7 +11,7 @@ import { nav, socialLinks } from '@/content/site';
 // list.
 const LINKS = [
   { label: 'About', href: '/my-story' },
-  { label: 'How I Help', href: '/life-design' },
+  { label: 'Who I Help', href: '/life-design' },
   { label: 'The Freedom Seeker', href: '/#freedom-seeker' },
   { label: 'Journal', href: '/journal' },
   { label: 'Contact', href: '/#contact' },

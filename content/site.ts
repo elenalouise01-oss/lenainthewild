@@ -6,7 +6,7 @@ export const nav = {
   menuLogo: 'Lena',
   links: [
     { label: 'About', href: '#about' },
-    { label: 'How I Help', href: '/life-design' },
+    { label: 'Who I Help', href: '/life-design' },
     { label: 'The Freedom Seeker', href: '#freedom-seeker', expandable: true },
     { label: 'Journal', href: '/journal' },
     { label: "Let's Connect", href: '#contact' },
@@ -423,7 +423,7 @@ export const footer = {
     },
     {
       label: 'Get to Know Me',
-      links: ['About', 'How I Help', 'Blog', 'Travel', 'Wellness', 'Healing'],
+      links: ['About', 'Who I Help', 'Blog', 'Travel', 'Wellness', 'Healing'],
     },
     {
       label: 'Connect',

@@ -67,7 +67,7 @@ export default function LifeDesignPage() {
   return (
     <>
       <JsonLd data={structuredData} />
-      <SiteHeader active="How I Help" />
+      <SiteHeader active="Who I Help" />
       <main>
         {/* Headline and intro — shown straight away (no fade-in) so it paints fast */}
         <section className="bg-sand px-6 py-20 sm:py-28">
