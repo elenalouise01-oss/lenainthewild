@@ -41,6 +41,12 @@ export const metadata: Metadata = {
   authors: [{ name: 'Lena', url: SITE_URL }],
   creator: 'Lena',
   alternates: { canonical: '/' },
+  // Google Search Console ownership check (the code from its "HTML tag"
+  // option). Set NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION in Vercel, or paste
+  // the code here.
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large' } },
   openGraph: {
     type: 'website',
