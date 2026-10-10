@@ -206,7 +206,7 @@ export const freedomSeeker = {
     ribbon: 'Chasing Freedom',
     // Printed on the front of the envelope
     frontItalic: 'My Journey:',
-    frontTitle: 'Snapshots From the Road',
+    frontTitle: 'SYD → BALI → VIETNAM → NEXT STOP',
   },
 
   modelingCard: {

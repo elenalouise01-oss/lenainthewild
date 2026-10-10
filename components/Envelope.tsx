@@ -144,7 +144,7 @@ export default function Envelope() {
         <p className="font-display italic leading-none" style={{ fontSize: '6.4cqw' }}>
           {envelope.frontItalic}
         </p>
-        <p className="mt-[1.5%] font-display uppercase leading-none tracking-tight" style={{ fontSize: '5.2cqw' }}>
+        <p className="mt-[1.5%] font-display uppercase leading-none tracking-tight" style={{ fontSize: '4.5cqw' }}>
           {envelope.frontTitle}
         </p>
       </div>
