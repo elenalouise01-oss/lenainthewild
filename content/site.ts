@@ -6,6 +6,7 @@ export const nav = {
   menuLogo: 'Lena',
   links: [
     { label: 'About', href: '#about' },
+    { label: 'How I Help', href: '/life-design' },
     { label: 'The Freedom Seeker', href: '#freedom-seeker', expandable: true },
     { label: 'Journal', href: '/journal' },
     { label: "Let's Connect", href: '#contact' },

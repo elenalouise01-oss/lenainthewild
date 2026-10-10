@@ -11,6 +11,7 @@ import { nav, socialLinks } from '@/content/site';
 // list.
 const LINKS = [
   { label: 'About', href: '/my-story' },
+  { label: 'How I Help', href: '/life-design' },
   { label: 'The Freedom Seeker', href: '/#freedom-seeker' },
   { label: 'Journal', href: '/journal' },
   { label: 'Contact', href: '/#contact' },
@@ -36,12 +37,12 @@ export default function SiteHeader({ active }: { active?: string }) {
         </Link>
 
         <nav className="flex items-center gap-2 sm:gap-5 lg:gap-7">
-          <ul className="hidden items-center gap-7 lg:flex">
+          <ul className="hidden items-center gap-7 xl:flex">
             {LINKS.map((link) => (
               <li key={link.label}>
                 <Link
                   href={link.href}
-                  className={`font-body text-[0.65rem] font-semibold uppercase tracking-widest2 transition-colors hover:text-bark ${
+                  className={`whitespace-nowrap font-body text-[0.65rem] font-semibold uppercase tracking-widest2 transition-colors hover:text-bark ${
                     active === link.label
                       ? 'text-bark underline decoration-bark/40 underline-offset-8'
                       : 'text-bark/60'
@@ -80,7 +81,7 @@ export default function SiteHeader({ active }: { active?: string }) {
             onClick={() => setOpen((o) => !o)}
             aria-expanded={open}
             aria-controls="site-menu"
-            className="flex items-center gap-2 border border-bark px-3 py-2 font-body text-[0.62rem] font-semibold uppercase tracking-widest2 text-bark lg:hidden"
+            className="flex items-center gap-2 border border-bark px-3 py-2 font-body text-[0.62rem] font-semibold uppercase tracking-widest2 text-bark xl:hidden"
           >
             {open ? 'Close' : 'Menu'}
             <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
@@ -91,7 +92,7 @@ export default function SiteHeader({ active }: { active?: string }) {
       </div>
 
       {open && (
-        <div id="site-menu" className="border-t border-bark/10 bg-cream px-6 pb-8 pt-4 lg:hidden">
+        <div id="site-menu" className="border-t border-bark/10 bg-cream px-6 pb-8 pt-4 xl:hidden">
           <ul className="container-editorial flex flex-col">
             {[{ label: 'Home', href: '/' }, ...LINKS, { label: 'Subscribe', href: '/#subscribe' }].map((link) => (
               <li key={link.label}>
