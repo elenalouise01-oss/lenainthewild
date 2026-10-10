@@ -74,10 +74,10 @@ export default function FiveDayReconnectPage() {
       <JsonLd data={[breadcrumbs(page.title, '/5-day-reconnect'), product]} />
       <SiteHeader active="The Freedom Seeker" />
       <main>
-        {/* Cover, title, price and buy */}
+        {/* Cover, title, price and buy — shown straight away (no fade-in) so it paints fast */}
         <section className="bg-sand px-6 py-20 sm:py-28">
           <div className="container-editorial grid items-center gap-12 lg:grid-cols-2">
-            <ScrollReveal>
+            <div>
               <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-bark/70">{page.label}</p>
               <h1 className="mt-5 font-display text-5xl leading-[1] text-bark sm:text-7xl">{page.title}</h1>
               <p className="mt-6 max-w-md font-display text-2xl italic leading-snug text-bark/85 sm:text-3xl">{page.subtitle}</p>
@@ -91,12 +91,12 @@ export default function FiveDayReconnectPage() {
               <div className="mt-10">
                 <BuyButton />
               </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.1} className="mx-auto w-full max-w-md">
+            </div>
+            <div className="mx-auto w-full max-w-md">
               <div className="relative aspect-square -rotate-2 overflow-hidden shadow-2xl">
                 <Image src="/images/cover-reconnect-monkey.webp" alt="The 5 Day Reconnect cover art" fill priority sizes="(min-width: 1024px) 28rem, 90vw" className="object-cover" />
               </div>
-            </ScrollReveal>
+            </div>
           </div>
         </section>
 

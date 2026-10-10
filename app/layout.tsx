@@ -47,7 +47,9 @@ export const metadata: Metadata = {
   verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
     ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
     : undefined,
-  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large' } },
+  // Pages are indexable by default; this only allows large image previews
+  // (e.g. in Google Discover). The 404 page keeps Next's own noindex.
+  robots: { 'max-image-preview': 'large' },
   openGraph: {
     type: 'website',
     siteName: SITE_NAME,

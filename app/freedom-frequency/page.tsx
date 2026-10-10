@@ -48,10 +48,10 @@ export default function FreedomFrequencyPage() {
       <JsonLd data={breadcrumbs(page.title, '/freedom-frequency')} />
       <SiteHeader active="The Freedom Seeker" />
       <main>
-        {/* Cover, title, price and sign-up */}
+        {/* Cover, title, price and sign-up — shown straight away (no fade-in) so it paints fast */}
         <section className="bg-sand px-6 py-20 sm:py-28">
           <div className="container-editorial grid items-center gap-12 lg:grid-cols-2">
-            <ScrollReveal>
+            <div>
               <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-bark/70">{page.label}</p>
               <h1 className="mt-5 font-display text-5xl leading-[1] text-bark sm:text-7xl">{page.title}</h1>
               <p className="mt-3 font-display text-2xl italic text-bark/80 sm:text-3xl">{page.subtitle}</p>
@@ -69,12 +69,12 @@ export default function FreedomFrequencyPage() {
                   <span className="rounded-full bg-zing-pink px-4 py-2 font-body text-sm font-bold text-bark">{tier.price}</span>
                 )}
               </div>
-            </ScrollReveal>
-            <ScrollReveal delay={0.1} className="mx-auto w-full max-w-md">
+            </div>
+            <div className="mx-auto w-full max-w-md">
               <div className="relative aspect-square rotate-2 overflow-hidden shadow-2xl">
                 <Image src="/images/cover-freedom-frequency.webp" alt="The Freedom Frequency cover art" fill priority sizes="(min-width: 1024px) 28rem, 90vw" className="object-cover" />
               </div>
-            </ScrollReveal>
+            </div>
           </div>
         </section>
 
