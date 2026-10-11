@@ -29,6 +29,15 @@ export const metadata: Metadata = {
   twitter: { card: 'summary_large_image', title, description, images: ['/images/cover-reconnect-monkey.webp'] },
 };
 
+// Australia first, then the other places people buy from: North America, the
+// UK and Europe, New Zealand and Indonesia (Bali). Google has no "worldwide"
+// value, so add a country code here to cover it.
+const COUNTRIES = [
+  'AU', 'US', 'CA', 'GB', 'NZ', 'ID', 'SG',
+  'IE', 'FR', 'DE', 'ES', 'IT', 'PT', 'NL', 'BE', 'LU', 'AT', 'CH',
+  'SE', 'NO', 'DK', 'FI', 'IS', 'PL', 'CZ', 'GR', 'HR',
+];
+
 const product = {
   '@context': 'https://schema.org',
   '@type': 'Product',
@@ -47,17 +56,17 @@ const product = {
     shippingDetails: {
       '@type': 'OfferShippingDetails',
       shippingRate: { '@type': 'MonetaryAmount', value: 0, currency: 'AUD' },
-      shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'AU' },
+      shippingDestination: COUNTRIES.map((addressCountry) => ({ '@type': 'DefinedRegion', addressCountry })),
       deliveryTime: {
         '@type': 'ShippingDeliveryTime',
         handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 0, unitCode: 'DAY' },
         transitTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 0, unitCode: 'DAY' },
       },
     },
-    // Digital audio can't be sent back. Change this if you offer refunds.
+    // Digital audio can't be sent back. No refunds.
     hasMerchantReturnPolicy: {
       '@type': 'MerchantReturnPolicy',
-      applicableCountry: 'AU',
+      applicableCountry: COUNTRIES,
       returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
     },
   },
