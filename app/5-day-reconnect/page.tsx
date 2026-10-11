@@ -41,6 +41,24 @@ const product = {
     price: (tier.price ?? '').replace(/[^0-9.]/g, ''),
     priceCurrency: 'AUD',
     availability: 'https://schema.org/InStock',
+    // A digital product: nothing is posted, the audio is delivered online
+    // straight after purchase, so shipping is free and instant.
+    shippingDetails: {
+      '@type': 'OfferShippingDetails',
+      shippingRate: { '@type': 'MonetaryAmount', value: 0, currency: 'AUD' },
+      shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'AU' },
+      deliveryTime: {
+        '@type': 'ShippingDeliveryTime',
+        handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 0, unitCode: 'DAY' },
+        transitTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 0, unitCode: 'DAY' },
+      },
+    },
+    // Digital audio can't be sent back. Change this if you offer refunds.
+    hasMerchantReturnPolicy: {
+      '@type': 'MerchantReturnPolicy',
+      applicableCountry: 'AU',
+      returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
+    },
   },
 };
 
