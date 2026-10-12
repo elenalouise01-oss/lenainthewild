@@ -69,9 +69,17 @@ export default function MyStoryPage() {
                   ),
                 )}
               </div>
-              <Link href={offerPages['The Freedom Frequency']} className={`${outlineButton} mt-12`}>
-                {storyPage.cta} →
-              </Link>
+              <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
+                <Link href={offerPages['The Freedom Frequency']} className={outlineButton}>
+                  {storyPage.cta} →
+                </Link>
+                <Link
+                  href="/life-design"
+                  className="py-2 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark"
+                >
+                  See who I help →
+                </Link>
+              </div>
             </ScrollReveal>
           </div>
         </section>

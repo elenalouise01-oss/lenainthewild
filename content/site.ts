@@ -33,7 +33,7 @@ export const welcome = {
   // The three-part promise, under the headline (approved by Lena).
   pillars: 'Reconnect with yourself. Release the patterns keeping you stuck. Create a life that feels like yours.',
   supportLeft:
-    "You've been feeling that pull, little nudges to go after your dream. You're standing in the life you thought you wanted, feeling stuck, stagnant, unfulfilled, searching for answers.",
+    "You've been feeling that pull, little nudges to go after your dream. You're standing in the life you thought you wanted, feeling stuck, stagnant, unfulfilled, searching for answers. Maybe you keep ending up in the same old patterns, or you've spent so long meeting everyone else's expectations that you're not sure what you want anymore.",
   supportRight: "I feel you. That was me. Trust me, you're in the right place.",
   cta: "Here's how it all started",
   ctaHref: '#about',
@@ -52,7 +52,7 @@ export const myStory = {
   label: 'My Story',
   quote: "I just had a deep, undeniable knowing that this life wasn't for me anymore.",
   body:
-    "Hi, I'm Lena. I was 36 when I uprooted my life from Sydney and leapt into the unknown, leaving behind the successful personal training business I'd spent 8 years building in the busiest gym in Bondi, which was once my dream. But for the last 2 years of my PT career, I just couldn't shake the feeling that surely this wasn't it?\n\nSo when I finally worked up the courage, I threw my life up in the air and broke free from the hustle and the rat race, and I've been rebuilding life on my own terms ever since. Lena in the Wild was born from my own search for freedom, and it's where I document the whole journey of starting over in my late 30s: from unlearning hustle conditioning to slow living and building a life in a new country, making new friends, being single, all things wellness and healing, solo travel and so much more, sharing the real, unfiltered version of what it actually takes to reinvent your life.",
+    "Hi, I'm Lena. I was 36 when I uprooted my life from Sydney and leapt into the unknown, leaving behind the successful personal training business I'd spent 8 years building in the busiest gym in Bondi, which was once my dream. But for the last 2 years of my PT career, I just couldn't shake the feeling that surely this wasn't it?\n\nSo when I finally worked up the courage, I threw my life up in the air and broke free from the hustle and the rat race, and I've been rebuilding life on my own terms ever since. Lena in the Wild was born from my own search for freedom, and it's where I document the whole journey of starting over in my late 30s: from unlearning hustle conditioning and old patterns to slow living and building a life in a new country, making new friends, being single, all things wellness and healing, solo travel and so much more, sharing the real, unfiltered version of what it actually takes to reinvent your life.",
   cta: 'Read the full story',
   ctaHref: '/my-story',
 };
@@ -264,7 +264,7 @@ export const freedomSeeker = {
       number: '(01)',
       price: '$555',
       title: 'The Freedom Frequency',
-      body: "An embodied, self-paced course to help you create the freedom you've been craving.",
+      body: "An embodied, self-paced course to reconnect with yourself, release the patterns keeping you stuck and create the freedom you've been craving.",
       tags: ['Embodied Practice', 'Self-Paced Course'],
     },
     {
@@ -357,12 +357,11 @@ export const freedomSeeker = {
       href: 'https://lenainthewild.substack.com/p/for-years-i-didnt-even-realise-i',
     },
     {
-      category: 'Wild',
-      title: 'Breaking Free From the System',
-      slug: 'breaking-free-from-the-system',
-      roles: 'FIRST LEAP, FREEDOM, ISLAND LIFE',
-      excerpt: 'At 21, I packed my bags and moved to a remote island.',
-      href: 'https://substack.com/home/post/p-189725048',
+      category: 'Healing',
+      title: 'Triggers Are Clues',
+      slug: 'triggers-are-clues-healing-core-wounds',
+      roles: 'TRIGGERS, CORE WOUNDS, INNER CHILD',
+      excerpt: 'What if the things that trigger you are pointing to what’s ready to heal?',
     },
   ],
 
