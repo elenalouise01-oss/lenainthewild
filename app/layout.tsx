@@ -28,7 +28,7 @@ const gochi = Gochi_Hand({
 });
 
 const description =
-  'At 36, Lena left Sydney for Bali to reinvent her life. Real stories on starting over, freedom, slow living, reconnecting with yourself and releasing old patterns.';
+  'At 36, Lena left it all behind in Sydney for her dream life in Bali. Now she guides people living misaligned lives to break free from stagnation and reinvent their lives too.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
