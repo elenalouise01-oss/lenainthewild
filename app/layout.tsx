@@ -33,7 +33,7 @@ const description =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Lena in the Wild — Feeling Stuck? Start Over in Your 30s',
+    default: 'Lena in the Wild — Get Unstuck, Find Yourself & Reinvent Your Life',
     template: '%s — Lena in the Wild',
   },
   description,
@@ -55,13 +55,13 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     locale: 'en_AU',
     url: '/',
-    title: 'Lena in the Wild — Feeling Stuck? Start Over in Your 30s',
+    title: 'Lena in the Wild — Get Unstuck, Find Yourself & Reinvent Your Life',
     description,
     images: [{ url: '/images/hero.jpg', width: 1809, height: 930, alt: 'Lena in the Wild' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Lena in the Wild — Feeling Stuck? Start Over in Your 30s',
+    title: 'Lena in the Wild — Get Unstuck, Find Yourself & Reinvent Your Life',
     description,
     images: ['/images/hero.jpg'],
   },
