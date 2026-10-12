@@ -6,6 +6,9 @@ and `content/journal.ts`.
 
 ## Lena's preferences
 
+- **Always show Lena the exact wording first.** Before changing any visible
+  copy, Google title or description, show her the exact text and wait for her
+  yes. This applies to every page.
 - **Home page and My Story copy:** propose changes and get Lena's approval before
   changing any visible wording. Offer pages, Who I Help (/life-design) and the
   FAQ can be updated, but show substantial new copy first.
