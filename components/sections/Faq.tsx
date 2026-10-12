@@ -23,35 +23,40 @@ export default function Faq({
   className = 'bg-sand',
 }: Props) {
   return (
-    <section id="faq" className={`${className} px-6 py-24 sm:py-32`}>
-      <div className="mx-auto max-w-3xl">
+    <section id="faq" className={`${className} px-6 py-20 sm:py-24`}>
+      <div className="container-editorial grid gap-10 lg:grid-cols-[1fr_1.8fr] lg:gap-16">
         <ScrollReveal>
           <SectionLabel>{label}</SectionLabel>
-          <h2 className="mt-4 font-display text-4xl italic leading-tight text-bark sm:text-5xl">{heading}</h2>
+          <h2 className="mt-4 font-display text-3xl italic leading-tight text-bark sm:text-4xl">{heading}</h2>
+          {more && (
+            <Link
+              href={more.href}
+              className="mt-6 hidden py-2 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark lg:inline-block"
+            >
+              {more.label} →
+            </Link>
+          )}
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <div className="mt-10 border-t border-bark/15">
+          <div className="border-t border-bark/15">
             {items.map(({ q, a, link }) => (
               <details key={q} className="group border-b border-bark/15">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden">
-                  <h3 className="font-display text-xl leading-snug text-bark sm:text-2xl">{q}</h3>
-                  <span
-                    aria-hidden="true"
-                    className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-sage/60 font-body text-lg text-bark transition-transform group-open:rotate-45"
-                  >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-4 [&::-webkit-details-marker]:hidden">
+                  <h3 className="font-display text-lg leading-snug text-bark sm:text-xl">{q}</h3>
+                  <span aria-hidden="true" className="flex-none font-body text-2xl font-light leading-none text-bark/50 transition-transform group-open:rotate-45">
                     +
                   </span>
                 </summary>
-                <div className="max-w-2xl space-y-4 pb-6">
+                <div className="max-w-xl space-y-3 pb-5">
                   {a.map((p) => (
-                    <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber">
+                    <p key={p.slice(0, 24)} className="font-body text-[0.95rem] leading-relaxed text-umber">
                       {p}
                     </p>
                   ))}
                   {link && (
                     <p className="flex flex-wrap gap-x-6">
                       {(Array.isArray(link) ? link : [link]).map((l) => (
-                        <Link key={l.href} href={l.href} className="inline-block py-1.5 font-body text-sm text-bark underline decoration-sage decoration-2 underline-offset-4 hover:decoration-bark">
+                        <Link key={l.href} href={l.href} className="inline-block py-1 font-body text-sm text-bark underline decoration-sage decoration-2 underline-offset-4 hover:decoration-bark">
                           {l.label} →
                         </Link>
                       ))}
@@ -64,7 +69,7 @@ export default function Faq({
           {more && (
             <Link
               href={more.href}
-              className="mt-10 inline-block py-2 font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark"
+              className="mt-8 inline-block py-2 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark lg:hidden"
             >
               {more.label} →
             </Link>
