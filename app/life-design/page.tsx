@@ -153,19 +153,24 @@ export default function LifeDesignPage() {
               <p className={`mt-6 max-w-2xl ${body}`}>{page.exploreIntro}</p>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
-              <ol className="mt-12 space-y-10">
-                {page.explore.map((item, i) => (
-                  <li key={item.heading} className="grid gap-2 sm:grid-cols-[4rem_1fr]">
-                    <span aria-hidden="true" className="font-display text-3xl italic text-bark/40">
-                      0{i + 1}
-                    </span>
-                    <div>
-                      <h3 className="font-display text-2xl leading-snug text-bark">{item.heading}</h3>
-                      <p className="mt-2 font-body text-base leading-relaxed text-umber">{item.body}</p>
-                    </div>
-                  </li>
+              <div className="mt-12 space-y-14">
+                {page.exploreGroups.map((group, g) => (
+                  <div key={group.heading}>
+                    <h3 className="flex items-baseline gap-4 font-display text-2xl italic leading-snug text-bark sm:text-3xl">
+                      <span aria-hidden="true" className="font-display text-xl text-bark/40">0{g + 1}</span>
+                      {group.heading}
+                    </h3>
+                    <ul className="mt-6 space-y-6 border-l border-bark/15 pl-6 sm:ml-9">
+                      {group.items.map((item) => (
+                        <li key={item.heading}>
+                          <h4 className="font-display text-xl leading-snug text-bark">{item.heading}</h4>
+                          <p className="mt-1.5 font-body text-base leading-relaxed text-umber">{item.body}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
-              </ol>
+              </div>
             </ScrollReveal>
             <ScrollReveal>
               <div className="mt-16 bg-sage/40 px-8 py-10 sm:px-12">

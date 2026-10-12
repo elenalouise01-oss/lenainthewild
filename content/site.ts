@@ -529,7 +529,7 @@ export const lifeDesignPage = {
   byline: 'By Lena, the person behind Lena in the Wild',
   intro: [
     'If you’re constantly trying to figure out your life, wondering what you should be doing, why you feel stuck or why a good life still doesn’t feel like yours, this page is for you.',
-    'Lena in the Wild is my personal brand, all about self-discovery, finding your own direction and creating a life that feels like you. I’m not here to hand you the answers. I’m here to share what I’ve learned, so you can start finding your own.',
+    'Lena in the Wild is about reconnecting with yourself, releasing the patterns keeping you stuck and creating a life that feels like yours. I’m not here to hand you the answers. I’m here to share what I’ve learned, so you can start finding your own.',
   ],
 
   recogniseHeading: 'Does any of this sound familiar?',
@@ -540,7 +540,7 @@ export const lifeDesignPage = {
       asks: ['Why do I feel stuck in life?', 'How do I get out of this rut?', 'Why does my life feel like it’s going nowhere?'],
     },
     {
-      heading: 'You have a good life, so why aren’t you happy?',
+      heading: 'You built the life you thought you wanted, so why doesn’t it feel like yours?',
       body: 'The job, the security, the comfortable life. All things you know you should be grateful for. And you are. But something still feels missing, and you feel guilty for even wanting more.',
       asks: ['Why am I unhappy when I have a good life?', 'Why do I feel like something is missing?', 'Why am I not happy with the life I’ve built?'],
     },
@@ -548,6 +548,11 @@ export const lifeDesignPage = {
       heading: 'You’re constantly trying to figure out what you want',
       body: 'Maybe it’s a career change. Maybe a different lifestyle, a new city or something you can’t name yet. You’re searching for answers, asking everyone for their opinion, and still not sure what you actually want.',
       asks: ['What should I do with my life?', 'How do I figure out what I really want?', 'How do I find direction, or my purpose?'],
+    },
+    {
+      heading: 'You keep ending up in the same patterns',
+      body: 'People-pleasing, overgiving, shrinking around certain people, reacting in ways you later regret. You can see the pattern but can’t seem to stop it, and you’re tired of living by everyone else’s expectations.',
+      asks: ['Why do I keep repeating the same patterns?', 'How do I stop people-pleasing?', 'Why do I get so triggered?'],
     },
     {
       heading: 'You’re questioning the career you worked so hard to build',
@@ -571,42 +576,30 @@ export const lifeDesignPage = {
 
   exploreHeading: 'What you can explore, before you have it all figured out',
   exploreIntro: 'You don’t need a five-year plan. You need a little space, some honest questions and the willingness to explore. These are the things I come back to again and again:',
-  explore: [
+  exploreGroups: [
     {
-      heading: 'Slowing down enough to hear yourself',
-      body: 'Clarity rarely comes when you’re running on empty. Rest, slowing down and getting out of your head and back into your body are often the first steps, not a reward for later.',
+      heading: 'Reconnect with yourself',
+      items: [
+        { heading: 'Slowing down enough to hear yourself', body: 'Clarity rarely comes when you’re running on empty. Rest, slowing down and getting out of your head and back into your body are often the first steps, not a reward for later.' },
+        { heading: 'What you want, not what you think you should want', body: 'So many of our goals are borrowed from family, society or social media. Try separating the “shoulds” from what genuinely excites you.' },
+        { heading: 'Trusting yourself again', body: 'When you’ve spent years living by other people’s expectations, it’s hard to trust your own voice. Self-trust grows each time you listen to your intuition and act on it.' },
+      ],
     },
     {
-      heading: 'Why your current life no longer feels right',
-      body: 'Notice what drains you and what lights you up. Often the feeling of being stuck is a sign you’ve outgrown an old version of yourself, or an old ambition you never questioned.',
+      heading: 'Release the patterns keeping you stuck',
+      items: [
+        { heading: 'The patterns that keep repeating', body: 'People-pleasing, perfectionism, shrinking around certain people, rejecting others before they can reject you. Many of the patterns that keep us stuck started as ways to stay safe. Noticing them and getting curious about where they came from is how you start choosing differently.' },
+        { heading: 'What your emotional triggers are telling you', body: 'A strong reaction you can’t quite explain is often a clue, pointing to something underneath that still needs your attention. Learning to pause, get curious and respond rather than react changes more than you’d expect.' },
+        { heading: 'Why your current life no longer feels right', body: 'Notice what drains you and what lights you up. Often the feeling of being stuck is a sign you’ve outgrown an old version of yourself, or an old ambition you never questioned.' },
+      ],
     },
     {
-      heading: 'The patterns that keep repeating',
-      body: 'People-pleasing, perfectionism, shrinking around certain people, rejecting others before they can reject you. Many of the patterns that keep us stuck started as ways to stay safe. Noticing them and getting curious about where they came from is how you start choosing differently.',
-    },
-    {
-      heading: 'What your emotional triggers are telling you',
-      body: 'A strong reaction you can’t quite explain is often a clue, pointing to something underneath that still needs your attention. Learning to pause, get curious and respond rather than react changes more than you’d expect.',
-    },
-    {
-      heading: 'Trusting yourself again',
-      body: 'When you’ve spent years living by other people’s expectations, it’s hard to trust your own voice. Self-trust grows each time you listen to your intuition and act on it.',
-    },
-    {
-      heading: 'What you want, not what you think you should want',
-      body: 'So many of our goals are borrowed from family, society or social media. Try separating the “shoulds” from what genuinely excites you.',
-    },
-    {
-      heading: 'Your own definition of success',
-      body: 'Who decided success means working Monday to Friday, owning a house by a certain age or always doing more? You get to decide what a good life means to you.',
-    },
-    {
-      heading: 'Different ways of working and living',
-      body: 'Working fewer days, working online, living somewhere new, or staying exactly where you are and changing how you spend your days. There are more options than the one path we were handed.',
-    },
-    {
-      heading: 'Your next step, not your whole life',
-      body: 'You don’t have to reinvent everything. Sometimes you just need clarity on the next step, then the one after that.',
+      heading: 'Create a life that feels like yours',
+      items: [
+        { heading: 'Your own definition of success', body: 'Who decided success means working Monday to Friday, owning a house by a certain age or always doing more? You get to decide what a good life means to you.' },
+        { heading: 'Different ways of working and living', body: 'Working fewer days, working online, living somewhere new, or staying exactly where you are and changing how you spend your days. There are more options than the one path we were handed.' },
+        { heading: 'Your next step, not your whole life', body: 'You don’t have to reinvent everything. Sometimes you just need clarity on the next step, then the one after that.' },
+      ],
     },
   ],
   promptsHeading: 'A few questions to start with',
