@@ -28,11 +28,20 @@ and `content/journal.ts`.
 ## Saved for later (only when Lena says she's ready)
 
 - **Offer page headings:** Lena would like her offer pages (/freedom-frequency,
-  /5-day-reconnect) to use section headings like the ones on
-  https://www.beladivine.com/programs. Use them as a structural reference only.
-  Don't copy that brand's wording, offer names or messaging. That site couldn't
-  be opened from the cloud environment, so ask Lena for a screenshot or the
-  heading list.
+  /5-day-reconnect) to use this section structure, which she likes from
+  beladivine.com/programs. Copy the structure only, never that brand's
+  wording. The headings, in order:
+  1. **What it is**
+  2. **How it's delivered**
+  3. **Who it's for**
+  4. **Its length**
+  5. **High-level description**
+  6. **Major outcomes** ("By the end, you will…" bullets)
+
+  Ask Lena for any facts the site doesn't already state: delivery format,
+  length or duration, and outcomes for The Freedom Frequency. Don't invent
+  them. The 5 Day Reconnect is known: five short audio sessions, one a day, a
+  few minutes each, self-paced, $33 via The Leap.
 - **Link style:** Lena isn't keen on the lilac underline on text links. Options
   A–D were mocked up (A: fine brown line, B: arrow only, C: editorial dash,
   D: outline pill). Waiting on her choice.
