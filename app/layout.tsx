@@ -28,7 +28,7 @@ const gochi = Gochi_Hand({
 });
 
 const description =
-  'Feeling stuck in the life you thought you wanted? Reconnect with yourself, release the patterns holding you back and create a life that feels like yours.';
+  'At 36, Lena left Sydney for Bali to reinvent her life. Real stories on starting over, freedom, slow living, reconnecting with yourself and releasing old patterns.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
