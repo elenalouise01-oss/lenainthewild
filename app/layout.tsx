@@ -28,7 +28,7 @@ const gochi = Gochi_Hand({
 });
 
 const description =
-  'Feeling stuck in a life that looks good on paper? Reconnect with yourself, release the patterns holding you back and create a life that feels like yours.';
+  'Feeling stuck in the life you thought you wanted? Reconnect with yourself, release the patterns holding you back and create a life that feels like yours.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

@@ -128,7 +128,7 @@ export const fiveDayReconnectPage = {
     {
       q: 'Who is it for?',
       a: [
-        'If you’re stuck in a life that looks fine on paper but feels off on the inside, overwhelmed or running on empty, or you know something needs to change but don’t know where to start, this is a gentle place to begin.',
+        'If you’re stuck in a life that looks fine from the outside but feels off on the inside, overwhelmed or running on empty, or you know something needs to change but don’t know where to start, this is a gentle place to begin.',
       ],
     },
     {
@@ -424,95 +424,66 @@ export const listen = {
 // her own words (each answer is a list of paragraphs). Shown on the home page as plain
 // text that search engines and AI assistants can read (no FAQ markup:
 // Google only shows FAQ results for government and health sites).
-export type FaqItem = { q: string; a: string[]; link?: { href: string; label: string } };
+type FaqLink = { href: string; label: string };
+export type FaqItem = { q: string; a: string[]; link?: FaqLink | FaqLink[] };
 
 export const faq: { label: string; heading: string; items: FaqItem[] } = {
   label: 'Questions',
   heading: 'Feeling stuck? Start here',
   items: [
     {
-      q: 'How do I get unstuck and figure out what I want in life?',
+      q: 'Who is Lena in the Wild for?',
       a: [
-        'When you’re constantly questioning your career, your future and what you actually want, it can feel like you’re going around in circles searching for answers. Maybe life feels like it’s on repeat, you’re exhausted by work, or you know something needs to change but can’t figure out what.',
-        'I’ve been there. The first step isn’t necessarily finding the perfect answer. It’s slowing down, reconnecting with yourself and exploring what genuinely matters to you, rather than what you think you should want. You don’t need to have your entire future figured out to start finding your direction.',
+        'For people, especially women, who’ve built the life they thought they wanted and still feel like something’s missing. You might feel stuck, unfulfilled or unsure what comes next, and you know there’s more to life but don’t know how to find it.',
+        'I’m Lena. After burnout made me question the life I’d worked so hard to build, I left Sydney for Bali at 36. Lena in the Wild is where I share what helped me reconnect with myself, release the patterns keeping me stuck and create a life that feels like mine.',
+      ],
+      link: { href: '/my-story', label: 'Read my story' },
+    },
+    {
+      q: 'Why do I feel stuck in the life I thought I wanted?',
+      a: [
+        'Because the life you built may never have been fully yours. Often you’ve followed the expected path, put everyone else’s needs first or chased someone else’s version of success, and lost touch with what you actually want along the way.',
+        'Wanting something different doesn’t mean the life you built was a mistake. It usually means you’ve outgrown it.',
       ],
     },
     {
-      q: 'How do I find my purpose when I don’t know what I want anymore?',
+      q: 'How do I figure out what I really want?',
       a: [
-        'Finding your purpose can feel overwhelming when you’ve spent years following a path that no longer feels right. You might be questioning your career, your priorities or the future you once imagined for yourself.',
-        'Rather than putting pressure on yourself to discover one big purpose, start by getting curious about who you are now, what makes you feel alive and what no longer feels right. You don’t have to figure everything out at once. Understanding yourself is a place to begin.',
-      ],
-    },
-    {
-      q: 'What if I’ve worked so hard to build a life I don’t want anymore?',
-      a: [
-        'It can be confronting to question a life you’ve spent years building. You’ve invested time, energy and effort into your career, business or lifestyle, so the thought of wanting something different can feel like throwing it all away.',
-        'For me, burnout became a wake-up call. It made me question whether the life I was working so hard to build was actually the life I wanted. I’ve learned that you’re allowed to change your mind, reassess what success means to you and create a different path, even when you’ve already invested years in the old one.',
+        'Start by slowing down. It’s hard to hear yourself when you’re exhausted and running on autopilot. Get curious about who you are now, what makes you feel alive and what no longer feels right, rather than what you think you should want.',
+        'You don’t need your whole future figured out. Understanding yourself is the place to begin.',
       ],
     },
     {
       q: 'Why do I keep repeating the same patterns?',
       a: [
-        'Usually because those patterns once kept you safe. People-pleasing, perfectionism, shrinking around certain people or rejecting others before they can reject you often start as protection, and they keep running on autopilot long after you need them.',
-        'For me, the shift starts with awareness: catching the pattern as it happens, getting curious about where it came from and meeting that part of me with compassion instead of judgement. Then I get to choose differently, one moment at a time.',
+        'Usually because those patterns once kept you safe. People-pleasing, perfectionism, shrinking around certain people or rejecting others before they can reject you often start as protection, and they keep running long after you need them.',
+        'The shift starts with awareness: catching the pattern as it happens, getting curious about where it came from and meeting yourself with compassion. Then you get to choose differently.',
       ],
       link: { href: '/journal/living-out-an-old-story', label: 'Read: I Was Still Living Out a Story That Was No Longer Mine' },
     },
     {
       q: 'How do I deal with emotional triggers?',
       a: [
-        'I like to think of triggers as clues. That cringe, that comparison, that strong reaction you can’t quite explain is usually pointing to something underneath that’s still waiting to be seen and healed.',
-        'When I’m triggered, I pause, notice what’s happening in my body, get curious about what the feeling is really about and talk to myself with the kindness I’d show a child. That space is what lets you respond instead of react.',
+        'I like to think of triggers as clues. That strong reaction you can’t quite explain is usually pointing to something underneath that’s still waiting to be seen and healed.',
+        'When I’m triggered, I pause, notice what’s happening in my body, get curious about what the feeling is really about and talk to myself with kindness. That space is what lets you respond instead of react.',
       ],
       link: { href: '/journal/triggers-are-clues-healing-core-wounds', label: 'Read: Triggers are clues' },
     },
     {
-      q: 'How do I stop people-pleasing and living for other people’s expectations?',
-      a: [
-        'Start by noticing when you’re performing: saying yes when you mean no, shrinking, or showing up a certain way just to be accepted. As a personal trainer in Bondi I wore that mask every day, and it was exhausting.',
-        'Underneath people-pleasing there’s often a fear that if you’re fully yourself, you won’t be loved. Building self-awareness, boundaries and trust in yourself is what gives you permission to choose what you actually want.',
-      ],
-      link: { href: '/journal/performative-energy-wearing-a-mask', label: 'Read: Performative energy and the masks we wear' },
-    },
-    {
-      q: 'How do I start changing my life when I don’t know where to begin?',
-      a: [
-        'You don’t need a perfect plan or a clear vision of your future before you begin. Start by creating space to understand what isn’t working, what matters to you and what you’d like your life to feel like instead.',
-        'The Freedom Frequency is my self-paced course for people who feel stuck and want to explore a different way forward. It draws on what I’ve learned through my own journey from stagnation to creating a life that feels more like me.',
-        'If you’d like a smaller first step, The 5 Day Reconnect ($33) is five short audio sessions to help you slow down and reconnect with yourself.',
-      ],
-    },
-    {
-      q: 'Who do you help?',
-      a: [
-        'I created Lena in the Wild for people who know there’s more to life but aren’t quite sure how to find it. Maybe you’ve spent years working towards the life you thought you wanted, only to find yourself feeling stuck, unfulfilled or questioning what comes next.',
-        'If you’re constantly searching for answers about your purpose, career or future, I share the lessons, experiences and practices that have helped me navigate my own journey of personal reinvention. My hope is to help you reconnect with yourself, discover what you genuinely want and find the courage to create a life that feels like your own.',
-      ],
-    },
-    {
-      q: 'How can The Freedom Frequency help me?',
-      a: [
-        'The Freedom Frequency is my self-paced course for people who feel stuck in their lives and are ready to explore a different way forward.',
-        'Drawing on what I’ve learned through my own journey from stagnation to creating a life that feels more like me, it brings together the insights and practices that helped me question the path I was on and start creating something different.',
-        'If you’re constantly searching for answers about your purpose, career or future, The Freedom Frequency offers an opportunity to turn that questioning inward, explore what you genuinely want and begin finding your own way forward.',
-        'The Freedom Frequency is $555, with the waitlist currently open.',
-      ],
-    },
-    {
       q: 'Do I have to change everything to create a different life?',
       a: [
-        'Not at all. Creating a life that feels more like you doesn’t necessarily mean quitting your job, moving overseas or starting from scratch.',
-        'For me, that journey included leaving Sydney and moving to Bali at 36. But your path doesn’t have to look anything like mine. It might mean changing careers, exploring a creative passion, rethinking your priorities or making smaller changes that bring you closer to the life you want.',
-        'This is about discovering what feels right for you, not following someone else’s version of success.',
+        'Not at all. For me it meant leaving Sydney for Bali at 36, but your path doesn’t have to look anything like mine. It might be a new career, a creative passion, different priorities or smaller changes that bring you closer to the life you want. This is about what feels right for you, not someone else’s version of success.',
       ],
     },
     {
-      q: 'Who is Lena in the Wild?',
+      q: 'Where do I start?',
       a: [
-        'I’m Lena, the person behind Lena in the Wild. After years of working towards the version of success I thought I wanted, I reached a point where I had to question whether the life I was building was actually right for me.',
-        'Burnout became a turning point. I started exploring what I genuinely wanted, questioning the expectations I’d been living by and finding a different direction for my life. That journey eventually led me to leave Sydney and move to Bali at 36.',
-        'Today, Lena in the Wild is where I share the lessons, experiences and inner work behind personal reinvention, self-discovery and creating a life that feels like your own.',
+        'If you want a gentle first step, The 5 Day Reconnect ($33) is five short audio sessions to help you slow down and hear yourself again.',
+        'If you’re ready to go deeper, The Freedom Frequency ($555, waitlist open) is my self-paced course on reconnecting with yourself, releasing the patterns keeping you stuck and creating a life that feels like yours.',
+      ],
+      link: [
+        { href: '/5-day-reconnect', label: 'Explore The 5 Day Reconnect' },
+        { href: '/freedom-frequency', label: 'Explore The Freedom Frequency' },
       ],
     },
   ],

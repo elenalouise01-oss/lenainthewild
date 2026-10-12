@@ -49,9 +49,13 @@ export default function Faq({
                     </p>
                   ))}
                   {link && (
-                    <Link href={link.href} className="inline-block py-1.5 font-body text-sm text-bark underline decoration-sage decoration-2 underline-offset-4 hover:decoration-bark">
-                      {link.label} →
-                    </Link>
+                    <p className="flex flex-wrap gap-x-6">
+                      {(Array.isArray(link) ? link : [link]).map((l) => (
+                        <Link key={l.href} href={l.href} className="inline-block py-1.5 font-body text-sm text-bark underline decoration-sage decoration-2 underline-offset-4 hover:decoration-bark">
+                          {l.label} →
+                        </Link>
+                      ))}
+                    </p>
                   )}
                 </div>
               </details>
