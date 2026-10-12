@@ -14,6 +14,9 @@ const structuredData = [
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: SITE_NAME,
+    // Other ways people write the brand (matches the @lenainthewild handle),
+    // so it isn't confused with similarly named brands.
+    alternateName: ['LenaInTheWild', 'lenainthewild', '@lenainthewild'],
     url: absoluteUrl('/'),
     inLanguage: 'en-AU',
     publisher: { '@id': `${absoluteUrl('/')}#lena` },
