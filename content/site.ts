@@ -529,7 +529,7 @@ export const lifeDesignPage = {
   byline: 'By Lena, the person behind Lena in the Wild',
   intro: [
     'If you’re constantly trying to figure out your life, wondering what you should be doing, why you feel stuck or why a good life still doesn’t feel like yours, this page is for you.',
-    'Lena in the Wild is about reconnecting with yourself, releasing the patterns keeping you stuck and creating a life that feels like yours. I’m not here to hand you the answers. I’m here to share what I’ve learned, so you can start finding your own.',
+    'Lena in the Wild is about reconnecting with yourself, releasing the patterns keeping you stuck and creating a life that feels like yours. I’ll share the tools, lessons and practices that helped me, and guide you towards the answers that are right for you.',
   ],
 
   recogniseHeading: 'Does any of this sound familiar?',
@@ -618,7 +618,7 @@ export const lifeDesignPage = {
     'My life felt like it was on repeat. I knew I wanted something different, I just didn’t know what that looked like. So I was constantly trying to figure out my life: searching for answers, asking other people for their perspective, questioning what I should do with my career and trying to work out what I genuinely wanted.',
     'I was also searching for my purpose. I wanted to understand what I was meant to do with my life and what would make me feel fulfilled. I wanted a sense of direction, and to understand what I was truly here to do, both personally and professionally.',
     'I wasn’t just looking for a new job. I was trying to understand what I wanted my life to look like, and how I could create it, including how to build something online and create more freedom.',
-    'That’s why I created Lena in the Wild. Not because I have all the answers, but because I know how lonely and confusing that stage can feel, and I want you to feel understood while you find your own way.',
+    'That’s why I created Lena in the Wild: because I know how lonely and confusing that stage can feel, and I want to help you find your way through it.',
   ],
   storyLink: 'Read my full story',
 
