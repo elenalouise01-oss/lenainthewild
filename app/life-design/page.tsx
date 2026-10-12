@@ -10,9 +10,9 @@ import { findArticle } from '@/content/journal';
 import { lifeDesignPage as page } from '@/content/site';
 import { absoluteUrl, breadcrumbs } from '@/lib/seo';
 
-const title = 'Feeling Stuck? How to Figure Out What You Want From Life';
+const title = 'Feeling Stuck? Find Yourself, Break Old Patterns & Find Your Direction';
 const description =
-  'Feeling stuck, unfulfilled or unsure what to do with your life or career? Honest perspective on finding direction, life design and starting over.';
+  'Not sure what you want anymore, or stuck in the same old patterns? Reconnect with yourself, release what’s holding you back and create a life that feels like yours.';
 
 export const metadata: Metadata = {
   title,
