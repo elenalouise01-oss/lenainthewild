@@ -2,6 +2,10 @@
 // page at /journal/<slug> and joins the sitemap; the home page's "Entries From
 // My Journal" card with the same slug links to it.
 //
+// Never change a published article's slug: it's the address Google has
+// indexed. If one must change, add a permanent redirect from the old address
+// in next.config.js so the article keeps its place in search.
+//
 // Article text is written plainly:
 //   - a blank line starts a new paragraph (a single line break is kept)
 //   - "## " starts a heading, "> " a pull quote, "- " a list item

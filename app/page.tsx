@@ -44,6 +44,14 @@ const structuredData = [
       'Nervous system regulation',
       'Slow living',
       'Moving to Bali',
+      'Embodiment',
+      'Reiki',
+    ],
+    // The qualifications listed in "My credentials" on the home page.
+    hasCredential: [
+      { '@type': 'EducationalOccupationalCredential', name: 'Reiki Master (Reiki Level I, II and Master)', recognizedBy: { '@type': 'Organization', name: 'Wildfire Healing' } },
+      { '@type': 'EducationalOccupationalCredential', name: 'Embodiment Coaching Certification', recognizedBy: { '@type': 'Organization', name: 'Dharma Coaching Institute' } },
+      { '@type': 'EducationalOccupationalCredential', name: 'Certificate III and Certificate IV in Fitness' },
     ],
   },
 ];
