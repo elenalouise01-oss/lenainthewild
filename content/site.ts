@@ -30,6 +30,8 @@ export const hero = {
 export const welcome = {
   eyebrow: 'Welcome to Lena in the Wild',
   headline: "For the person who knows there's more to life and is ready to find it.",
+  // The three-part promise, under the headline (approved by Lena).
+  pillars: 'Reconnect with yourself. Release the patterns keeping you stuck. Create a life that feels like yours.',
   supportLeft:
     "You've been feeling that pull, little nudges to go after your dream. You're standing in the life you thought you wanted, feeling stuck, stagnant, unfulfilled, searching for answers.",
   supportRight: "I feel you. That was me. Trust me, you're in the right place.",

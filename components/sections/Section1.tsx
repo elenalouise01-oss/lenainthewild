@@ -41,6 +41,7 @@ export default function Section1() {
             <h2 className="max-w-3xl font-display text-display-2 italic leading-[1.05] text-cream">
               {welcome.headline}
             </h2>
+            <p className="mt-8 max-w-2xl font-body text-sm font-semibold uppercase leading-relaxed tracking-widest2 text-cream/70">{welcome.pillars}</p>
           </ScrollReveal>
 
           <div className="mt-24 flex justify-end sm:mt-36">

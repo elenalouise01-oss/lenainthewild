@@ -28,7 +28,7 @@ const gochi = Gochi_Hand({
 });
 
 const description =
-  'Feeling stuck in a life that looks good on paper? At 36 Lena left Bondi, Sydney for Bali. Honest stories and simple tools for starting over in your 30s.';
+  'Feeling stuck in a life that looks good on paper? Reconnect with yourself, release the patterns holding you back and create a life that feels like yours.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
