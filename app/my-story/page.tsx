@@ -79,7 +79,7 @@ export default function MyStoryPage() {
         <div className="relative h-[45vh] min-h-[18rem] w-full bg-sand">
           <Image
             src="/images/road/road-5.jpg"
-            alt="Sunset over the coast"
+            alt="Feet up on a hillside, looking out over the sea at sunset"
             fill
             sizes="100vw"
             className="object-cover"

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
+import Faq from '@/components/sections/Faq';
 import { breadcrumbs } from '@/lib/seo';
 import OfferNextStep from '@/components/OfferNextStep';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -11,9 +12,9 @@ import { freedomFrequencyPage as page, freedomSeeker } from '@/content/site';
 
 const tier = freedomSeeker.tiers.find((t) => t.title === page.title)!;
 
-const title = 'The Freedom Frequency: An Online Course for Feeling Stuck in Life';
+const title = 'The Freedom Frequency: Release What’s Keeping You Stuck';
 const description =
-  'Feeling stuck in a life that looks good on paper? A self-paced online course to reinvent your life on your own terms, from stuck to free. Join the waitlist.';
+  'An embodied, self-paced course to reconnect with yourself, release the patterns and fears keeping you stuck, and create a life that feels like yours. Waitlist open.';
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -166,6 +167,33 @@ export default function FreedomFrequencyPage() {
             </ScrollReveal>
           </div>
         </section>
+
+        {/* What it explores: the three parts of the journey */}
+        <section className="bg-sand px-6 py-24 sm:py-32">
+          <div className="mx-auto max-w-3xl">
+            <ScrollReveal>
+              <h2 className="font-display text-3xl leading-tight text-bark sm:text-5xl">{page.exploresHeading}</h2>
+            </ScrollReveal>
+            <ScrollReveal delay={0.1}>
+              <ol className="mt-12 space-y-10">
+                {page.explores.map((item, i) => (
+                  <li key={item.title} className="grid gap-2 sm:grid-cols-[4rem_1fr]">
+                    <span aria-hidden="true" className="font-display text-3xl italic text-bark/40">
+                      0{i + 1}
+                    </span>
+                    <div>
+                      <h3 className="font-display text-2xl leading-snug text-bark">{item.title}</h3>
+                      <p className="mt-2 font-body text-base leading-relaxed text-umber sm:text-lg">{item.body}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* Questions, answered from the page's own facts */}
+        <Faq label="Questions" heading={page.faqHeading} items={page.faq} more={null} className="bg-cream" />
 
         {/* Closing waitlist sign-up */}
         <section id="waitlist" className="scroll-mt-16 bg-bark px-6 py-24 text-center sm:py-32">

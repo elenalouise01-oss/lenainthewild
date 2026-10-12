@@ -48,18 +48,21 @@ function Polaroid({
   objectPosition,
   imgClassName = '',
   src,
+  alt = '',
   sizes = '220px',
 }: {
   className?: string;
   objectPosition: string;
   imgClassName?: string;
   src: string;
+  // Leave empty for decorative prints; describe Lena's photography.
+  alt?: string;
   sizes?: string;
 }) {
   return (
     <div className={`bg-cream p-1.5 pb-7 shadow-xl sm:p-2.5 sm:pb-12 ${className}`}>
       <div className="relative h-full w-full overflow-hidden">
-        <Image src={src} alt="" fill sizes={sizes} className={`object-cover ${imgClassName}`} style={{ objectPosition }} aria-hidden="true" />
+        <Image src={src} alt={alt} fill sizes={sizes} className={`object-cover ${imgClassName}`} style={{ objectPosition }} aria-hidden={alt ? undefined : true} />
       </div>
     </div>
   );
@@ -221,9 +224,9 @@ export default function Section3() {
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
               <div className="relative mx-auto flex h-60 max-w-lg items-center justify-center sm:h-72">
-                <Polaroid className="h-36 w-28 -rotate-6 sm:h-56 sm:w-48" objectPosition="50% 60%" src="/images/road/road-3.jpg" />
-                <Polaroid className="z-10 -ml-4 h-44 w-32 rotate-2 sm:-ml-6 sm:h-64 sm:w-48" objectPosition="50% 40%" src="/images/road/road-5.jpg" />
-                <Polaroid className="-ml-4 h-36 w-28 rotate-6 sm:-ml-6 sm:h-56 sm:w-48" objectPosition="50% 75%" src="/images/road/road-7.jpg" />
+                <Polaroid className="h-36 w-28 -rotate-6 sm:h-56 sm:w-48" objectPosition="50% 60%" src="/images/road/road-3.jpg" alt="A long sandy beach curving around a bay beside train tracks" />
+                <Polaroid className="z-10 -ml-4 h-44 w-32 rotate-2 sm:-ml-6 sm:h-64 sm:w-48" objectPosition="50% 40%" src="/images/road/road-5.jpg" alt="Feet up on a hillside, looking out over the sea at sunset" />
+                <Polaroid className="-ml-4 h-36 w-28 rotate-6 sm:-ml-6 sm:h-56 sm:w-48" objectPosition="50% 75%" src="/images/road/road-7.jpg" alt="Water buffalo grazing in a green field below the hills" />
                 <svg className="absolute -bottom-2 right-6 z-20 h-12 w-12 text-zing-yellow drop-shadow" viewBox="0 0 24 24" aria-hidden="true">
                   {[0, 72, 144, 216, 288].map((r) => (
                     <ellipse key={r} cx="12" cy="6.5" rx="4" ry="5.5" fill="currentColor" transform={`rotate(${r} 12 12)`} />

@@ -46,6 +46,14 @@ export default async function ArticlePage({ params }: Props) {
   const blocks = parseArticle(a.text);
   const list = sortedJournal();
   const next = list[(list.findIndex((x) => x.slug === a.slug) + 1) % list.length];
+  // Three related articles: same category first, then shared tags.
+  const related = list
+    .filter((x) => x.slug !== a.slug && x.slug !== next?.slug)
+    .map((x) => ({ x, score: (x.category === a.category ? 2 : 0) + x.tags.filter((t) => a.tags.includes(t)).length }))
+    .filter(({ score }) => score > 0)
+    .sort((m, n) => n.score - m.score)
+    .slice(0, 3)
+    .map(({ x }) => x);
 
   const structuredData = [
     {
@@ -162,6 +170,23 @@ export default async function ArticlePage({ params }: Props) {
             </p>
           </div>
         </section>
+        {related.length > 0 && (
+          <section className="bg-cream px-6 py-16 sm:py-20">
+            <div className="mx-auto max-w-2xl">
+              <h2 className="font-body text-xs font-semibold uppercase tracking-widest2 text-stone">Keep reading</h2>
+              <ul className="mt-6 space-y-5">
+                {related.map((r) => (
+                  <li key={r.slug}>
+                    <Link href={`/journal/${r.slug}`} className="group block">
+                      <p className="font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-stone">{r.category}</p>
+                      <p className="mt-1 font-display text-2xl leading-snug text-bark underline decoration-transparent underline-offset-4 transition-colors group-hover:decoration-sage">{r.title}</p>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
         <Newsletter />
       </main>
       <Footer />

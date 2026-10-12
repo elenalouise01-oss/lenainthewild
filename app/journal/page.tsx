@@ -10,9 +10,9 @@ import Newsletter from '@/components/sections/Newsletter';
 import { formatDate, journalPage, sortedJournal } from '@/content/journal';
 import { SITE_NAME, absoluteUrl, breadcrumbs } from '@/lib/seo';
 
-const title = 'Journal: Honest Stories on Starting Over in Your 30s — Lena in the Wild';
+const title = 'Journal: Honest Stories on Old Patterns, Healing & Starting Over — Lena in the Wild';
 const description =
-  'Honest stories from leaving Sydney at 36 for Bali and Southeast Asia: feeling stuck, burnout, healing, fear, freedom and building a life on your own terms.';
+  'Honest stories on feeling stuck, emotional triggers, people-pleasing and old patterns, and on creating a life that feels like yours after leaving Sydney at 36.';
 
 export const metadata: Metadata = {
   title: { absolute: title },

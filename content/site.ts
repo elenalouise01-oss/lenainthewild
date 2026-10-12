@@ -103,6 +103,40 @@ export const fiveDayReconnectPage = {
   minutes: 'And it starts with just a few minutes a day.',
   closing: 'You don’t need to have it all figured out. You just need to start.',
   next: { lead: 'Ready to go deeper?', label: 'Explore The Freedom Frequency', href: '/freedom-frequency' },
+  faqHeading: 'Questions about The 5 Day Reconnect',
+  faq: [
+    {
+      q: 'What’s included?',
+      a: [
+        'Five short audio sessions, one per day. Each one is a simple tool to help you slow down, tune in and reconnect with yourself.',
+      ],
+    },
+    {
+      q: 'How much time does it take?',
+      a: [
+        'Just a few minutes a day for five days. It’s self-paced, so you can start whenever it suits you.',
+      ],
+    },
+    {
+      q: 'How much is it, and how do I get it?',
+      a: [
+        'It’s $33. When you tap “I’m Ready” you’ll go to The Leap, where you pay and get access to the audio sessions.',
+      ],
+    },
+    {
+      q: 'Who is it for?',
+      a: [
+        'If you’re stuck in a life that looks fine on paper but feels off on the inside, overwhelmed or running on empty, or you know something needs to change but don’t know where to start, this is a gentle place to begin.',
+      ],
+    },
+    {
+      q: 'How is it different from The Freedom Frequency?',
+      a: [
+        'The 5 Day Reconnect is a short, simple starting point to help you slow down and hear yourself again. The Freedom Frequency is my deeper, self-paced course on reconnecting with yourself, releasing the patterns keeping you stuck and creating a life that feels like yours.',
+      ],
+      link: { href: '/freedom-frequency', label: 'Explore The Freedom Frequency' },
+    },
+  ] as FaqItem[],
 };
 
 // The Freedom Frequency page (/freedom-frequency).
@@ -155,6 +189,56 @@ export const freedomFrequencyPage = {
   ],
   closing: 'For the woman who knows deep down there has to be more… but doesn’t know how to access it yet.',
   next: { lead: 'Not ready to go all in?', label: 'Start with The 5 Day Reconnect', href: '/5-day-reconnect' },
+  exploresHeading: 'What The Freedom Frequency explores',
+  explores: [
+    {
+      title: 'Reconnect with yourself',
+      body: 'Get back in touch with what you genuinely want, your values and your intuition, beneath everyone else’s expectations.',
+    },
+    {
+      title: 'Release the patterns keeping you stuck',
+      body: 'Explore the fears, beliefs and old conditioning behind the patterns that keep repeating, so you can understand them and start choosing differently.',
+    },
+    {
+      title: 'Create a life that feels like yours',
+      body: 'Give yourself permission to want more, and start making choices that reflect who you really are.',
+    },
+  ],
+  faqHeading: 'Questions about The Freedom Frequency',
+  faq: [
+    {
+      q: 'Who is The Freedom Frequency for?',
+      a: [
+        'The woman who built the life she wanted and still feels stuck and stagnant. If you know deep down there has to be more but don’t know how to access it yet, this is for you.',
+      ],
+    },
+    {
+      q: 'How does it work?',
+      a: [
+        'It’s an embodied, self-paced online course, so you can move through it in your own time, wherever you are in the world.',
+      ],
+    },
+    {
+      q: 'How much is it, and when does it open?',
+      a: [
+        'The Freedom Frequency is $555. It isn’t open yet, so join the waitlist and I’ll let you know as soon as it opens.',
+      ],
+    },
+    {
+      q: 'How is it different from The 5 Day Reconnect?',
+      a: [
+        'The 5 Day Reconnect ($33) is five short audio sessions to help you slow down and hear yourself again. It’s a gentle first step.',
+        'The Freedom Frequency goes deeper into the inner work: reconnecting with yourself, the patterns and fears keeping you stuck, and creating a life that feels like yours.',
+      ],
+      link: { href: '/5-day-reconnect', label: 'Explore The 5 Day Reconnect' },
+    },
+    {
+      q: 'Is it therapy?',
+      a: [
+        'No. It’s everything I’ve learned through my own journey, not therapy or medical advice. If you’re struggling with your mental health, please reach out to a qualified professional.',
+      ],
+    },
+  ] as FaqItem[],
 };
 
 type Tier = {
@@ -339,7 +423,9 @@ export const listen = {
 // her own words (each answer is a list of paragraphs). Shown on the home page as plain
 // text that search engines and AI assistants can read (no FAQ markup:
 // Google only shows FAQ results for government and health sites).
-export const faq = {
+export type FaqItem = { q: string; a: string[]; link?: { href: string; label: string } };
+
+export const faq: { label: string; heading: string; items: FaqItem[] } = {
   label: 'Questions',
   heading: 'Feeling stuck? Start here',
   items: [
@@ -363,6 +449,30 @@ export const faq = {
         'It can be confronting to question a life you’ve spent years building. You’ve invested time, energy and effort into your career, business or lifestyle, so the thought of wanting something different can feel like throwing it all away.',
         'For me, burnout became a wake-up call. It made me question whether the life I was working so hard to build was actually the life I wanted. I’ve learned that you’re allowed to change your mind, reassess what success means to you and create a different path, even when you’ve already invested years in the old one.',
       ],
+    },
+    {
+      q: 'Why do I keep repeating the same patterns?',
+      a: [
+        'Usually because those patterns once kept you safe. People-pleasing, perfectionism, shrinking around certain people or rejecting others before they can reject you often start as protection, and they keep running on autopilot long after you need them.',
+        'For me, the shift starts with awareness: catching the pattern as it happens, getting curious about where it came from and meeting that part of me with compassion instead of judgement. Then I get to choose differently, one moment at a time.',
+      ],
+      link: { href: '/journal/living-out-an-old-story', label: 'Read: I Was Still Living Out a Story That Was No Longer Mine' },
+    },
+    {
+      q: 'How do I deal with emotional triggers?',
+      a: [
+        'I like to think of triggers as clues. That cringe, that comparison, that strong reaction you can’t quite explain is usually pointing to something underneath that’s still waiting to be seen and healed.',
+        'When I’m triggered, I pause, notice what’s happening in my body, get curious about what the feeling is really about and talk to myself with the kindness I’d show a child. That space is what lets you respond instead of react.',
+      ],
+      link: { href: '/journal/triggers-are-clues-healing-core-wounds', label: 'Read: Triggers are clues' },
+    },
+    {
+      q: 'How do I stop people-pleasing and living for other people’s expectations?',
+      a: [
+        'Start by noticing when you’re performing: saying yes when you mean no, shrinking, or showing up a certain way just to be accepted. As a personal trainer in Bondi I wore that mask every day, and it was exhausting.',
+        'Underneath people-pleasing there’s often a fear that if you’re fully yourself, you won’t be loved. Building self-awareness, boundaries and trust in yourself is what gives you permission to choose what you actually want.',
+      ],
+      link: { href: '/journal/performative-energy-wearing-a-mask', label: 'Read: Performative energy and the masks we wear' },
     },
     {
       q: 'How do I start changing my life when I don’t know where to begin?',
@@ -499,6 +609,18 @@ export const lifeDesignPage = {
       body: 'Notice what drains you and what lights you up. Often the feeling of being stuck is a sign you’ve outgrown an old version of yourself, or an old ambition you never questioned.',
     },
     {
+      heading: 'The patterns that keep repeating',
+      body: 'People-pleasing, perfectionism, shrinking around certain people, rejecting others before they can reject you. Many of the patterns that keep us stuck started as ways to stay safe. Noticing them and getting curious about where they came from is how you start choosing differently.',
+    },
+    {
+      heading: 'What your emotional triggers are telling you',
+      body: 'A strong reaction you can’t quite explain is often a clue, pointing to something underneath that still needs your attention. Learning to pause, get curious and respond rather than react changes more than you’d expect.',
+    },
+    {
+      heading: 'Trusting yourself again',
+      body: 'When you’ve spent years living by other people’s expectations, it’s hard to trust your own voice. Self-trust grows each time you listen to your intuition and act on it.',
+    },
+    {
       heading: 'What you want, not what you think you should want',
       body: 'So many of our goals are borrowed from family, society or social media. Try separating the “shoulds” from what genuinely excites you.',
     },
@@ -552,7 +674,7 @@ export const lifeDesignPage = {
     },
     {
       heading: 'The Freedom Frequency ($555, waitlist open)',
-      body: 'An embodied, self-paced online course with everything I learned going from stuck to breaking free. For when you’re ready to go deeper.',
+      body: 'An embodied, self-paced online course with everything I learned going from stuck to breaking free: reconnecting with yourself, releasing the patterns and fears keeping you stuck, and creating a life that feels like yours. For when you’re ready to go deeper.',
       href: '/freedom-frequency',
       cta: 'Join the waitlist',
     },
@@ -566,7 +688,9 @@ export const lifeDesignPage = {
   articlesHeading: 'Start reading',
   articles: [
     'living-in-fight-or-flight',
-    'work-life-balance-mindfulness',
+    'triggers-are-clues-healing-core-wounds',
+    'living-out-an-old-story',
+    'performative-energy-wearing-a-mask',
     'who-decided-monday-to-friday',
     'perfectionism-feeling-behind-in-life',
     'leaping-into-the-unknown-part-1',

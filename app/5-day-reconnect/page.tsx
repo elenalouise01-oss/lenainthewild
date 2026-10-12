@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
+import Faq from '@/components/sections/Faq';
 import { SITE_NAME, absoluteUrl, breadcrumbs } from '@/lib/seo';
 import OfferNextStep from '@/components/OfferNextStep';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -153,6 +154,9 @@ export default function FiveDayReconnectPage() {
             <p className="mt-10 font-display text-2xl italic text-bark sm:text-3xl">{page.minutes}</p>
           </ScrollReveal>
         </section>
+
+        {/* Questions, answered from the page's own facts */}
+        <Faq label="Questions" heading={page.faqHeading} items={page.faq} more={null} />
 
         {/* Closing buy */}
         <section className="bg-bark px-6 py-24 text-center sm:py-32">
