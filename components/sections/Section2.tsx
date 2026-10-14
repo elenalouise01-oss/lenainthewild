@@ -36,8 +36,8 @@ export default function Section2() {
               />
             </div>
           </div>
-          <div className="absolute -bottom-4 -left-4 flex h-24 w-24 -rotate-12 items-center justify-center rounded-full bg-zing-pink p-3 text-center font-script text-lg leading-[0.95] text-bark shadow-md">
-            the unknown
+          <div className="absolute -bottom-4 -left-4 flex h-28 w-28 -rotate-12 items-center justify-center rounded-full bg-zing-yellow p-3 text-center font-script text-lg leading-[0.95] text-bark shadow-md">
+            leaping into the unknown
           </div>
         </ScrollReveal>
 
