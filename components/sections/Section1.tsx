@@ -41,16 +41,16 @@ export default function Section1() {
             <h2 className="max-w-3xl font-display text-display-2 italic leading-[1.05] text-cream">
               {welcome.headline}
             </h2>
-            <p className="mt-8 max-w-2xl font-body text-sm font-semibold uppercase leading-relaxed tracking-widest2 text-cream/70">{welcome.pillars}</p>
+            <p className="mt-8 max-w-2xl font-body text-sm font-semibold uppercase leading-relaxed tracking-widest2 text-cream">{welcome.pillars}</p>
           </ScrollReveal>
 
           <div className="mt-24 flex justify-end sm:mt-36">
             <div className="grid max-w-2xl gap-10 text-left sm:grid-cols-2">
               <ScrollReveal>
-                <p className="font-body text-base leading-relaxed text-cream/80">{welcome.supportLeft}</p>
+                <p className="font-body text-base leading-relaxed text-cream">{welcome.supportLeft}</p>
               </ScrollReveal>
               <ScrollReveal delay={0.1}>
-                <p className="font-body text-base leading-relaxed text-cream/80">{welcome.supportRight}</p>
+                <p className="font-body text-base leading-relaxed text-cream">{welcome.supportRight}</p>
                 <a
                   href={welcome.ctaHref}
                   className="mt-4 inline-block py-2 font-body text-xs font-semibold uppercase tracking-widest2 text-zing-yellow underline decoration-zing-yellow/40 underline-offset-8 transition-colors hover:decoration-zing-yellow"
