@@ -583,130 +583,181 @@ export const footer = {
 // offer. Only offers that really exist on this site.
 export const lifeDesignPage = {
   eyebrow: 'Life design & personal reinvention',
-  title: 'Not Sure What You Want From Life Anymore?',
-  lead: 'You don’t need to know exactly what you want before you start exploring what a different future could look like.',
+  title: 'Feeling Stuck? Find Yourself & Create a Life That Feels Like Yours.',
+  lead: 'You can build a life that looks good on paper and still feel like something is missing.',
   byline: 'By Lena, the person behind Lena in the Wild',
   intro: [
-    'If you’re constantly trying to figure out your life, wondering what you should be doing, why you feel stuck or why a good life still doesn’t feel like yours, this page is for you.',
-    'Lena in the Wild is about reconnecting with yourself, releasing the patterns keeping you stuck and creating a life that feels like yours. I’ll share the tools, lessons and practices that helped me, and guide you towards the answers that are right for you.',
+    'Maybe you’ve spent years following expectations, putting others first or trying to get everything right, only to find yourself questioning what you actually want.',
+    'Lena in the Wild helps you understand what’s keeping you stuck, reconnect with who you are beneath the conditioning, and find the clarity, self-trust and freedom to create a life that feels genuinely like yours.',
+    'You don’t need to have all the answers. You just need to start discovering them for yourself.',
   ],
 
   recogniseHeading: 'Does any of this sound familiar?',
   recognise: [
     {
       heading: 'You feel stuck, and every day looks the same',
-      body: 'You’re going around in circles. Same routine, same thoughts, same feeling that life is on repeat. You want something to change, but you don’t know what, or where to start.',
-      asks: ['Why do I feel stuck in life?', 'How do I get out of this rut?', 'Why does my life feel like it’s going nowhere?'],
+      body: [
+        'You’re going around in circles. Same routine, same thoughts, same feeling that life is on repeat. You know you want something to change, but you can’t quite figure out what or where to start.',
+      ],
+      asks: ['Why do I feel stuck in life?', 'How do I get out of this rut?'],
     },
     {
-      heading: 'You built the life you thought you wanted, so why doesn’t it feel like yours?',
-      body: 'The job, the security, the comfortable life. All things you know you should be grateful for. And you are. But something still feels missing, and you feel guilty for even wanting more.',
-      asks: ['Why am I unhappy when I have a good life?', 'Why do I feel like something is missing?', 'Why am I not happy with the life I’ve built?'],
+      heading: 'You’ve built a good life, but something still feels missing',
+      body: [
+        'You have the job, security or lifestyle you thought you wanted. You know you should be grateful, and you are. But something doesn’t feel right, and you feel guilty for wanting more when nothing seems particularly wrong.',
+      ],
+      asks: ['Why am I unhappy when I have a good life?', 'Is it okay to want a different life when nothing is technically wrong?'],
     },
     {
-      heading: 'You’re constantly trying to figure out what you want',
-      body: 'Maybe it’s a career change. Maybe a different lifestyle, a new city or something you can’t name yet. You’re searching for answers, asking everyone for their opinion, and still not sure what you actually want.',
-      asks: ['What should I do with my life?', 'How do I figure out what I really want?', 'How do I find direction, or my purpose?'],
+      heading: 'You keep looking for answers, but struggle to trust your own',
+      body: [
+        'You’ve researched your options, asked for advice and thought about every possible direction. Yet you still find yourself second-guessing your decisions and wondering whether you’re making the right choice.',
+        'You want to hear your own voice beneath everyone else’s opinions and expectations.',
+      ],
+      asks: ['How do I figure out what I really want?', 'How do I learn to trust my intuition?'],
     },
     {
-      heading: 'You keep ending up in the same patterns',
-      body: 'People-pleasing, overgiving, shrinking around certain people, reacting in ways you later regret. You can see the pattern but can’t seem to stop it, and you’re tired of living by everyone else’s expectations.',
-      asks: ['Why do I keep repeating the same patterns?', 'How do I stop people-pleasing?', 'Why do I get so triggered?'],
+      heading: 'You keep repeating patterns you thought you’d outgrown',
+      body: [
+        'People-pleasing, overgiving, struggling to say no or reacting in ways you later regret. You might recognise these patterns but still struggle to understand why they keep happening.',
+        'Sometimes, the behaviours that hold us back began as ways to feel safe, accepted or loved. Understanding what’s underneath them can help you begin responding differently.',
+      ],
+      asks: ['Why do I keep repeating the same patterns?', 'Why do I get so triggered by certain people or situations?'],
     },
     {
-      heading: 'You’re questioning the career you worked so hard to build',
-      body: 'You’ve spent years building a business, climbing the ladder or chasing a version of success. Now, after burnout or a long stretch of feeling flat, you’re not sure you want to keep going. And you feel torn, because you’ve invested so much.',
-      asks: ['How do I know if I’m on the wrong career path?', 'What do I do when I hate my job but don’t know what else to do?', 'What if I don’t want the life I worked so hard for?'],
+      heading: 'You keep searching for answers, but somehow end up back where you started',
+      body: [
+        'You find a new course, mentor, book or approach that makes everything click. You feel hopeful, inspired and convinced you’ve finally found what you’ve been looking for. You build momentum, start making changes and believe you’re moving forward.',
+        'But a few months later, you’re back at square one, questioning everything and searching for the next thing that might finally help you figure it all out.',
+      ],
+      asks: ['Why do I keep ending up back where I started?', 'Why do I feel motivated to change but struggle to make lasting progress?', 'What am I missing?'],
     },
     {
-      heading: 'You want a different life, but don’t know how to create it',
-      body: 'More freedom, flexibility, adventure, meaningful work. Maybe you’ve thought about starting over, moving overseas or building something online. But you don’t know what’s realistic, or what you genuinely want.',
-      asks: ['How do I change my life when I don’t know where to start?', 'How do I start over in my 30s?', 'How do I build a life with more freedom?'],
+      heading: 'You’re questioning the version of success you’ve been chasing',
+      body: [
+        'You’ve spent years working towards something you thought you wanted. Maybe you’ve built a career, started a business or followed a path that made sense at the time. But now you’re questioning whether it actually reflects who you are or what you want anymore.',
+      ],
+      asks: ['What if I don’t want the life I’ve worked so hard for?', 'What does success actually mean to me?'],
+    },
+    {
+      heading: 'You want more freedom, but something keeps holding you back',
+      body: [
+        'You dream about a different lifestyle, more meaningful work or the courage to pursue something you’ve always wanted. But when you imagine making a change, the doubts creep in.',
+        'What if you fail? What will people think? What if you lose what you’ve already built?',
+        'Sometimes, the hardest part isn’t figuring out what you want. It’s understanding what’s stopping you from pursuing it.',
+      ],
+      asks: ['How do I stop letting fear hold me back?', 'How do I start creating a life that feels like mine?'],
     },
   ],
 
   hardHeading: 'Why figuring out your life feels so hard',
   hard: [
-    'Questioning your life is uncomfortable, especially when it looks good from the outside. You might have put years of time, energy and money into your career or business. People might rely on you, or expect you to keep going. And walking away from something you worked so hard to create can feel like giving up.',
-    'On top of that, most of us were never taught how to work out what we want. We were taught to follow a path: school, a good job, climb the ladder, build the life. So when that path stops feeling right, there’s no map for what comes next.',
-    'And it’s hard to hear yourself clearly when you’re exhausted. When you’re burnt out and running on stress, everything feels urgent and nothing feels clear.',
+    'Sometimes, the difficulty isn’t that you don’t know what you want. It’s that you’ve spent so long focusing on what you should want that you’ve lost touch with what you actually do.',
+    'We’re taught to follow certain paths, meet expectations, be sensible and keep everyone happy. Over time, those expectations can become so familiar that we stop questioning whether they reflect who we really are.',
+    'You might know you want something different but struggle to understand why you keep holding yourself back. Perhaps you’re repeating familiar patterns, second-guessing your decisions or searching outside yourself for answers.',
+    'When you begin exploring the fears, beliefs and conditioning influencing your choices, you can start to understand yourself more deeply, reconnect with what matters to you and see possibilities you may not have considered before.',
   ],
-  hardQuote: 'Wanting something different doesn’t mean the life you built was a mistake. It might just mean you’ve outgrown it.',
+  hardQuote: 'Wanting something different doesn’t mean the life you’ve built was a mistake. It might simply mean you’re ready to create something that fits who you’re becoming.',
 
-  exploreHeading: 'What you can explore, before you have it all figured out',
-  exploreIntro: 'You don’t need a five-year plan. You need a little space, some honest questions and the willingness to explore. These are the things I come back to again and again:',
-  exploreGroups: [
-    {
-      heading: 'Reconnect with yourself',
-      items: [
-        { heading: 'Slowing down enough to hear yourself', body: 'Clarity rarely comes when you’re running on empty. Rest, slowing down and getting out of your head and back into your body are often the first steps, not a reward for later.' },
-        { heading: 'What you want, not what you think you should want', body: 'So many of our goals are borrowed from family, society or social media. Try separating the “shoulds” from what genuinely excites you.' },
-        { heading: 'Trusting yourself again', body: 'When you’ve spent years living by other people’s expectations, it’s hard to trust your own voice. Self-trust grows each time you listen to your intuition and act on it.' },
-      ],
-    },
-    {
-      heading: 'Release the patterns keeping you stuck',
-      items: [
-        { heading: 'The patterns that keep repeating', body: 'People-pleasing, perfectionism, shrinking around certain people, rejecting others before they can reject you. Many of the patterns that keep us stuck started as ways to stay safe. Noticing them and getting curious about where they came from is how you start choosing differently.' },
-        { heading: 'What your emotional triggers are telling you', body: 'A strong reaction you can’t quite explain is often a clue, pointing to something underneath that still needs your attention. Learning to pause, get curious and respond rather than react changes more than you’d expect.' },
-        { heading: 'Why your current life no longer feels right', body: 'Notice what drains you and what lights you up. Often the feeling of being stuck is a sign you’ve outgrown an old version of yourself, or an old ambition you never questioned.' },
-      ],
-    },
-    {
-      heading: 'Create a life that feels like yours',
-      items: [
-        { heading: 'Your own definition of success', body: 'Who decided success means working Monday to Friday, owning a house by a certain age or always doing more? You get to decide what a good life means to you.' },
-        { heading: 'Different ways of working and living', body: 'Working fewer days, working online, living somewhere new, or staying exactly where you are and changing how you spend your days. There are more options than the one path we were handed.' },
-        { heading: 'Your next step, not your whole life', body: 'You don’t have to reinvent everything. Sometimes you just need clarity on the next step, then the one after that.' },
-      ],
-    },
+  loopHeading: 'The stagnation loop: why you keep ending up back at square one',
+  loop: [
+    'You’ve tried to figure it out. You’ve read the books, listened to the podcasts, bought the courses, worked with mentors and searched for the thing that will finally help everything click into place.',
+    'And for a while, it does.',
+    'You find something that resonates. You feel inspired, hopeful and full of possibility. You start making changes, building momentum and believing you’re finally onto something.',
+    'But then, a few months later, you’re back where you started.',
+    'The motivation fades. The same doubts creep in. You find yourself questioning your direction, wondering why you still feel stuck and searching for the next thing that might finally give you the answers.',
+    'It’s exhausting to keep starting over when all you want is to move forward.',
+    'I know this cycle because I lived it myself.',
+    'For years, I kept looking outside myself for the answers. I’d find a new course, a new mentor or a new approach that made me feel like I’d finally figured it out. I’d get excited about the possibilities and throw myself into making a change, convinced this was the missing piece.',
+    'But eventually, I’d find myself back at square one, feeling defeated and questioning everything all over again.',
+    'What I didn’t understand back then was that I wasn’t just missing the right strategy, the right guidance or the right next step. There were deeper patterns, fears and beliefs influencing the way I thought, the choices I made and what I believed was possible for me.',
+    'I was so focused on finding the answers that I hadn’t stopped to understand what was keeping me stuck in the first place.',
+    'Sometimes, the way forward isn’t about finding another answer outside yourself. It’s about turning inward, understanding the patterns you’ve been repeating, reconnecting with what you genuinely want, and learning to trust yourself enough to move forward differently.',
   ],
-  promptsHeading: 'A few questions to start with',
-  prompts: [
-    'When do I feel most like myself?',
-    'What would I do if no one else’s opinion mattered?',
-    'What am I tolerating that I’ve quietly outgrown?',
-    'What does freedom actually look like for me, day to day?',
-    'What’s one small thing I could try this month?',
+  loopQuote: 'Because lasting change isn’t just about finding something new that inspires you. It’s about understanding yourself well enough to stop returning to the same place.',
+
+  pillarsLabel: 'How I can help',
+  pillarsHeading: 'Three Pillars of Self-Discovery & Life Design',
+  pillarsIntro: 'Creating a life that feels like yours starts with understanding yourself. Through self-discovery, inner exploration and practical life design, you can begin understanding what you want, what’s been holding you back and how to move towards a life that feels more authentic to you.',
+  pillars: [
+    {
+      heading: 'Reconnect With Yourself',
+      tagline: 'Get back in touch with who you are, what you want and what feels right for you.',
+      body: [
+        'When you’ve spent years meeting expectations, putting others first or looking outside yourself for answers, it can be difficult to know what you genuinely want.',
+        'Reconnecting means creating space to hear your own voice again, explore your desires and values, and develop a deeper sense of self-trust.',
+        'Through self-discovery, intuition and embodiment, you can begin reconnecting with the parts of yourself that may have been overlooked while trying to meet everyone else’s expectations.',
+      ],
+      explore: 'Intuition, self-discovery and embodiment.',
+    },
+    {
+      heading: 'Understand & Release the Patterns Keeping You Stuck',
+      tagline: 'Explore what’s underneath your fears, triggers and recurring patterns so you can begin choosing differently.',
+      body: [
+        'The patterns that hold us back can show up in many ways: people-pleasing, self-doubt, fear of judgement, emotional reactions or feeling like we’re not allowed to want more.',
+        'Through inner exploration and shadow work, you can begin recognising the beliefs, experiences and conditioning influencing your choices.',
+        'The goal isn’t to judge yourself or force yourself to change overnight. It’s to understand yourself more deeply, question what no longer serves you and create more space to respond differently.',
+      ],
+      explore: 'Emotional triggers, shadow work, limiting beliefs and conditioning.',
+    },
+    {
+      heading: 'Create a Life That Feels Like Yours',
+      tagline: 'Turn what you discover about yourself into a clearer vision and meaningful steps towards the life you want.',
+      body: [
+        'Creating a life that feels like yours means moving beyond someone else’s definition of success and exploring what freedom, abundance and fulfilment mean to you.',
+        'Maybe that means changing careers, building something of your own, creating more flexibility, pursuing a dream you’ve been putting off or simply making your everyday life feel more aligned with who you are.',
+        'Whatever your vision looks like, you can begin expanding what’s possible, gaining clarity on your direction and taking meaningful steps towards a future that reflects what matters to you.',
+      ],
+      explore: 'Life design, abundance and personal reinvention.',
+    },
   ],
 
-  storyHeading: 'Why this matters to me',
+  storyHeading: 'My story: from questioning my life to creating one that feels like mine',
   story: [
-    'I’m Lena. I spent years working hard to build a life and a business I thought I wanted. Then burnout hit, and it made me question whether the life I had worked so hard to build was actually the life I wanted anymore.',
-    'I was exhausted by work. I started questioning my career, my business and the direction my life was heading. And I felt torn. Part of me knew something needed to change, but another part couldn’t imagine walking away from something I’d put so much into.',
-    'My life felt like it was on repeat. I knew I wanted something different, I just didn’t know what that looked like. So I was constantly trying to figure out my life: searching for answers, asking other people for their perspective, questioning what I should do with my career and trying to work out what I genuinely wanted.',
-    'I was also searching for my purpose. I wanted to understand what I was meant to do with my life and what would make me feel fulfilled. I wanted a sense of direction, and to understand what I was truly here to do, both personally and professionally.',
-    'I wasn’t just looking for a new job. I was trying to understand what I wanted my life to look like, and how I could create it, including how to build something online and create more freedom.',
-    'That’s why I created Lena in the Wild: because I know how lonely and confusing that stage can feel, and I want to help you find your way through it.',
+    'For years, I followed a path that made sense on paper. I built a career, worked hard and did what I thought I was supposed to do. But I began to question whether the life I was working towards was actually the life I wanted.',
+    'I experienced burnout, felt disconnected from myself and struggled to imagine returning to the way I’d been living. I knew something needed to change, but figuring out what that change looked like wasn’t straightforward.',
+    'I spent a lot of time questioning my direction, searching for answers and trying to understand why the life I’d worked so hard to build no longer felt right.',
+    'I kept searching for the missing piece without fully understanding the patterns, fears and beliefs that were influencing my choices and keeping me stuck.',
+    'What I gradually began to realise was that figuring out my life wasn’t just about finding the right career, location or next step. It was also about understanding myself — the beliefs I’d built decisions around, the expectations I’d been living by, the fears that made it difficult to trust myself and the patterns that kept pulling me back into familiar ways of being.',
+    'I needed to reconnect with what I genuinely wanted, question assumptions and become more comfortable making choices that didn’t necessarily make sense to everyone else.',
+    'The more I explored that relationship with myself, the more I began to understand that creating a different life wasn’t just about changing circumstances. It was about changing how I related to myself, what I believed was possible and how I wanted to move through the world.',
+    'My own journey continues to shape the way I approach self-discovery, inner healing and personal reinvention.',
+    'I believe we can spend years trying to figure out what to do with our lives without realising that understanding ourselves is an important part of finding the answer.',
+    'We don’t need to follow someone else’s blueprint for a fulfilling life. We can question what we’ve been taught, reconnect with what genuinely matters to us, and start making choices that reflect who we are and who we want to become.',
+    'That’s the heart of Lena in the Wild: helping you understand yourself, trust your own answers and create a life that feels like yours.',
   ],
   storyLink: 'Read my full story',
 
-  helpHeading: 'How Lena in the Wild can help',
-  helpIntro: 'Everything here is self-paced, so you can explore in your own time, wherever you are.',
+  helpHeading: 'Explore the next step in your journey',
+  helpIntro: [
+    'You don’t need to have your entire future figured out to begin making a change.',
+    'Whether you’re just starting to question your direction or you’re ready to explore the patterns that have been holding you back, there are different ways to begin.',
+  ],
   help: [
     {
-      heading: 'The journal (free)',
-      body: 'Honest stories about feeling stuck, burnout, questioning success, healing and building a life on my own terms. A good place to start if you just want to feel less alone in it.',
-      href: '/journal',
-      cta: 'Read the journal',
+      heading: 'The Freedom Frequency',
+      tagline: 'Reconnect with yourself. Release what holds you back. Create a life that feels like yours.',
+      body: [
+        'The Freedom Frequency is a guided, self-paced journey to help you understand the patterns keeping you stuck, reconnect with your intuition and desires, and build the clarity and self-trust to begin creating a life that reflects who you truly are.',
+        'Through inner exploration, shadow work, guided embodiment practices and practical exercises, you’ll learn to question old conditioning, explore what’s possible and take meaningful steps towards the future you want.',
+      ],
+      href: '/freedom-frequency',
+      cta: 'Explore The Freedom Frequency',
     },
     {
-      heading: 'The 5 Day Reconnect ($33)',
-      body: 'Five short audio sessions, one a day. Simple practices to help you slow down, get out of your head and hear yourself again. A gentle first step when you don’t know where to start.',
+      heading: 'The 5 Day Reconnect',
+      tagline: 'A gentle starting point for slowing down, reconnecting with yourself and creating space to hear your own voice again.',
+      body: ['Through guided audio experiences, begin tuning in to what you need, what you want and what feels right for you.'],
       href: '/5-day-reconnect',
       cta: 'Explore The 5 Day Reconnect',
     },
     {
-      heading: 'The Freedom Frequency ($555, waitlist open)',
-      body: 'An embodied, self-paced online course with everything I learned going from stuck to breaking free: reconnecting with yourself, releasing the patterns and fears keeping you stuck, and creating a life that feels like yours. For when you’re ready to go deeper.',
-      href: '/freedom-frequency',
-      cta: 'Join the waitlist',
-    },
-    {
-      heading: 'Your Freedom Roadmap ($333, coming soon)',
-      body: 'A personal deep dive into where you’re at and where you want to go. Send me your questions, and I’ll create your own personalised roadmap to guide your next steps.',
+      heading: 'Your Freedom Roadmap',
+      badge: 'Coming soon',
+      tagline: '',
+      body: ['A personalised opportunity to explore where you are now, what you want to move towards, and practical steps to create a life more aligned with who you are and what matters to you.'],
       href: '/#freedom-seeker',
-      cta: 'See all offers',
+      cta: 'Explore Your Freedom Roadmap',
     },
   ],
   articlesHeading: 'Start reading',
@@ -720,9 +771,6 @@ export const lifeDesignPage = {
     'leaping-into-the-unknown-part-1',
   ],
   note: 'Lena in the Wild shares lived experience, not therapy or medical advice. If you’re struggling with your mental health, please reach out to a qualified professional.',
-
-  nextHeading: 'Where to start',
-  next: 'You don’t need to have it all figured out. You just need to start.',
 };
 
 // The My Story page (/my-story). A paragraph starting with "## " is a

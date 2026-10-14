@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import ScrollReveal from '@/components/ScrollReveal';
+import SectionLabel from '@/components/SectionLabel';
 import SiteHeader from '@/components/SiteHeader';
 import Newsletter from '@/components/sections/Newsletter';
 import { findArticle } from '@/content/journal';
@@ -109,11 +110,21 @@ export default function LifeDesignPage() {
               <h2 className={`${sectionHeading} italic`}>{page.recogniseHeading}</h2>
             </ScrollReveal>
             <div className="mt-12 space-y-14">
-              {page.recognise.map((item) => (
+              {page.recognise.map((item, n) => (
                 <ScrollReveal key={item.heading}>
-                  <h3 className="font-display text-2xl leading-snug text-bark sm:text-3xl">{item.heading}</h3>
-                  <p className={`mt-4 ${body}`}>{item.body}</p>
-                  <ul className="mt-4 space-y-1 border-l-2 border-sage pl-5">
+                  <h3 className="flex items-baseline gap-4 font-display text-2xl leading-snug text-bark sm:text-3xl">
+                    <span aria-hidden="true" className="flex-none font-display text-xl text-bark/40">0{n + 1}</span>
+                    {item.heading}
+                  </h3>
+                  <div className="mt-4 space-y-4">
+                    {item.body.map((p) => (
+                      <p key={p.slice(0, 24)} className={body}>
+                        {p}
+                      </p>
+                    ))}
+                  </div>
+                  <p className="mt-5 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-stone">You might be wondering:</p>
+                  <ul className="mt-3 space-y-1 border-l-2 border-sage pl-5">
                     {item.asks.map((q) => (
                       <li key={q} className="font-display text-lg italic text-bark/80">
                         “{q}”
@@ -145,50 +156,69 @@ export default function LifeDesignPage() {
           </div>
         </section>
 
-        {/* What you can explore */}
+        {/* The stagnation loop */}
         <section className="bg-cream px-6 py-24 sm:py-32">
-          <div className="mx-auto max-w-3xl">
+          <div className="mx-auto max-w-2xl">
             <ScrollReveal>
-              <h2 className={`${sectionHeading} italic`}>{page.exploreHeading}</h2>
-              <p className={`mt-6 max-w-2xl ${body}`}>{page.exploreIntro}</p>
+              <h2 className={`${sectionHeading} italic`}>{page.loopHeading}</h2>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
-              <div className="mt-12 space-y-14">
-                {page.exploreGroups.map((group, g) => (
-                  <div key={group.heading}>
-                    <h3 className="flex items-baseline gap-4 font-display text-2xl italic leading-snug text-bark sm:text-3xl">
-                      <span aria-hidden="true" className="font-display text-xl text-bark/40">0{g + 1}</span>
-                      {group.heading}
-                    </h3>
-                    <ul className="mt-6 space-y-6 border-l border-bark/15 pl-6 sm:ml-9">
-                      {group.items.map((item) => (
-                        <li key={item.heading}>
-                          <h4 className="font-display text-xl leading-snug text-bark">{item.heading}</h4>
-                          <p className="mt-1.5 font-body text-base leading-relaxed text-umber">{item.body}</p>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
+              <div className="mt-10 space-y-6">
+                {page.loop.map((p) =>
+                  // The short lines carry the rhythm of the loop, so they stand out.
+                  p.length < 80 ? (
+                    <p key={p.slice(0, 24)} className="font-display text-2xl italic leading-snug text-bark">
+                      {p}
+                    </p>
+                  ) : (
+                    <p key={p.slice(0, 24)} className={body}>
+                      {p}
+                    </p>
+                  ),
+                )}
               </div>
-            </ScrollReveal>
-            <ScrollReveal>
-              <div className="mt-16 bg-sage/40 px-8 py-10 sm:px-12">
-                <h3 className="font-body text-xs font-semibold uppercase tracking-widest2 text-bark">{page.promptsHeading}</h3>
-                <ul className="mt-6 space-y-3">
-                  {page.prompts.map((q) => (
-                    <li key={q} className="font-display text-xl italic leading-snug text-bark sm:text-2xl">
-                      {q}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <p className="mt-12 border-l-4 border-zing-pink pl-6 font-display text-2xl leading-snug text-bark sm:text-3xl">{page.loopQuote}</p>
             </ScrollReveal>
           </div>
         </section>
 
-        {/* Lena's own story */}
+        {/* The three pillars */}
         <section className="bg-sand px-6 py-24 sm:py-32">
+          <div className="mx-auto max-w-3xl">
+            <ScrollReveal>
+              <SectionLabel>{page.pillarsLabel}</SectionLabel>
+              <h2 className={`mt-4 ${sectionHeading} italic`}>{page.pillarsHeading}</h2>
+              <p className={`mt-6 max-w-2xl ${body}`}>{page.pillarsIntro}</p>
+            </ScrollReveal>
+            <div className="mt-14 space-y-16">
+              {page.pillars.map((pillar, g) => (
+                <ScrollReveal key={pillar.heading}>
+                  <h3 className="flex items-baseline gap-4 font-display text-2xl italic leading-snug text-bark sm:text-3xl">
+                    <span aria-hidden="true" className="flex-none font-display text-xl text-bark/40">0{g + 1}</span>
+                    {pillar.heading}
+                  </h3>
+                  <div className="mt-5 border-l border-bark/15 pl-6 sm:ml-9">
+                    <p className="font-display text-xl leading-snug text-bark">{pillar.tagline}</p>
+                    <div className="mt-4 space-y-4">
+                      {pillar.body.map((p) => (
+                        <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber">
+                          {p}
+                        </p>
+                      ))}
+                    </div>
+                    <p className="mt-5 font-body text-sm text-bark">
+                      <span className="text-[0.65rem] font-semibold uppercase tracking-widest2 text-stone">Explore: </span>
+                      {pillar.explore}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Lena's own story */}
+        <section className="bg-cream px-6 py-24 sm:py-32">
           <div className="mx-auto max-w-2xl">
             <ScrollReveal>
               <div className="relative mx-auto mb-14 aspect-[4/3] w-full rotate-1 overflow-hidden bg-cream p-2 shadow-xl">
@@ -213,20 +243,38 @@ export default function LifeDesignPage() {
           </div>
         </section>
 
-        {/* What's actually available */}
-        <section className="bg-cream px-6 py-24 sm:py-32">
+        {/* The next step: Lena's offers */}
+        <section className="bg-sand px-6 py-24 sm:py-32">
           <div className="mx-auto max-w-3xl">
             <ScrollReveal>
               <h2 className={`${sectionHeading} italic`}>{page.helpHeading}</h2>
-              <p className={`mt-6 ${body}`}>{page.helpIntro}</p>
+              <div className="mt-6 space-y-4">
+                {page.helpIntro.map((p) => (
+                  <p key={p.slice(0, 24)} className={body}>
+                    {p}
+                  </p>
+                ))}
+              </div>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
               <div className="mt-10 border-t border-bark/15">
                 {page.help.map((item) => (
-                  <div key={item.heading} className="border-b border-bark/15 py-8">
-                    <h3 className="font-display text-2xl leading-snug text-bark sm:text-3xl">{item.heading}</h3>
-                    <p className="mt-3 font-body text-base leading-relaxed text-umber">{item.body}</p>
-                    <Link href={item.href} className={`mt-3 ${textLink}`}>
+                  <div key={item.heading} className="border-b border-bark/15 py-10">
+                    <h3 className="flex flex-wrap items-center gap-x-4 gap-y-2 font-display text-2xl leading-snug text-bark sm:text-3xl">
+                      {item.heading}
+                      {'badge' in item && item.badge && (
+                        <span className="rounded-full bg-zing-pink/30 px-3 py-1 font-body text-[0.6rem] font-semibold uppercase tracking-widest2 text-bark">{item.badge}</span>
+                      )}
+                    </h3>
+                    {item.tagline && <p className="mt-3 font-display text-xl italic leading-snug text-bark/85">{item.tagline}</p>}
+                    <div className="mt-3 space-y-3">
+                      {item.body.map((p) => (
+                        <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber">
+                          {p}
+                        </p>
+                      ))}
+                    </div>
+                    <Link href={item.href} className={`mt-4 ${textLink}`}>
                       {item.cta} →
                     </Link>
                   </div>
@@ -247,25 +295,6 @@ export default function LifeDesignPage() {
               <p className="mt-12 font-body text-sm italic text-stone">{page.note}</p>
             </ScrollReveal>
           </div>
-        </section>
-
-        {/* A natural next step */}
-        <section className="bg-bark px-6 py-24 text-center sm:py-32">
-          <ScrollReveal className="mx-auto max-w-2xl">
-            <h2 className="font-body text-xs font-semibold uppercase tracking-widest2 text-zing-pink">{page.nextHeading}</h2>
-            <p className="mt-6 font-display text-3xl italic leading-tight text-cream sm:text-5xl">{page.next}</p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
-              <Link
-                href="/5-day-reconnect"
-                className="inline-flex items-center gap-3 rounded-full bg-cream px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest2 text-bark transition-transform hover:scale-105"
-              >
-                Start with The 5 Day Reconnect →
-              </Link>
-              <Link href="/journal" className="py-2 font-body text-xs font-semibold uppercase tracking-widest2 text-cream underline decoration-cream/40 decoration-2 underline-offset-8 hover:decoration-cream">
-                Or read the journal
-              </Link>
-            </div>
-          </ScrollReveal>
         </section>
         <Newsletter />
       </main>
