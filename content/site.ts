@@ -200,7 +200,7 @@ export const freedomFrequencyPage = {
   overview: {
     whatItIs: {
       heading: 'What it is',
-      body: 'An embodied, self-paced online course to help you reconnect with yourself, release the patterns keeping you stuck and create a life that feels like yours. It’s everything I learned going from stuck to breaking free.',
+      body: 'The course I wish I’d had when I was stuck in a misaligned life. Everything I learned breaking free and creating my dream life, all in one place.',
     },
     delivered: {
       heading: 'How it’s delivered',
