@@ -107,13 +107,13 @@ export const fiveDayReconnectPage = {
     {
       title: 'The Non-Negotiable That Shifts Your Whole Day',
       body: 'How to begin your day grounded instead of reactive — and build a meditation habit that actually lasts.',
-      image: '/images/reconnect/day-1.jpg',
+      image: '/images/reconnect/day-1-photo.jpg',
       alt: 'Feet up on a clifftop overlooking the ocean and headlands',
     },
     {
       title: 'The Practice That Attracts Abundance',
       body: 'How to use gratitude as a tool for abundance — without it feeling like another thing on your to-do list.',
-      image: '/images/reconnect/day-2.jpg',
+      image: '/images/reconnect/day-2-photo.jpg',
       alt: 'A double rainbow over a quiet suburban street after rain',
     },
     {
@@ -125,7 +125,7 @@ export const fiveDayReconnectPage = {
     {
       title: 'The Self-Care That Actually Refills You',
       body: 'How to identify what truly recharges you, and make it non-negotiable.',
-      image: '/images/reconnect/day-4.jpg',
+      image: '/images/reconnect/day-4-photo.jpg',
       alt: 'A beach towel, journal and book on the rocks above a sunny beach',
     },
     {
