@@ -102,7 +102,13 @@ export default function FreedomFrequencyPage() {
         <section className="bg-cream px-6 py-24 sm:py-32">
           <div className="mx-auto max-w-4xl divide-y divide-bark/15 border-y border-bark/15">
             <OverviewRow heading={ov.whatItIs.heading}>
-              <p className={rowText}>{ov.whatItIs.body}</p>
+              <div className="space-y-5">
+                {ov.whatItIs.body.map((p) => (
+                  <p key={p.slice(0, 24)} className={rowText}>
+                    {p}
+                  </p>
+                ))}
+              </div>
             </OverviewRow>
             <OverviewRow heading={ov.delivered.heading}>
               <p className={rowText}>{ov.delivered.intro}</p>

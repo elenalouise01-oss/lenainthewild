@@ -200,7 +200,11 @@ export const freedomFrequencyPage = {
   overview: {
     whatItIs: {
       heading: 'What it is',
-      body: 'The course I wish I’d had when I was stuck in a misaligned life. Everything I learned breaking free and creating my dream life, all in one place.',
+      body: [
+        'The Freedom Frequency is an embodied, self-paced journey to help you understand what’s keeping you stuck, reconnect with who you are beneath the conditioning, and create a life that feels genuinely like yours.',
+        'Through shadow work, embodied practices and a deeper exploration of your relationship with freedom and abundance, you’ll begin uncovering the fears, beliefs and patterns influencing your choices, reconnecting with what you genuinely want, and expanding what’s possible for your life.',
+        'This is about more than figuring out your next step. It’s about understanding yourself well enough to stop repeating the same patterns, trust your own answers and begin creating a life that reflects who you truly are.',
+      ],
     },
     delivered: {
       heading: 'How it’s delivered',
