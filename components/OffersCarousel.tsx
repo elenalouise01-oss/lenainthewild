@@ -14,8 +14,8 @@ import { useReducedMotion } from '@/lib/useReducedMotion';
 // offer's own cover artwork when it has one.
 // `zoom` enlarges artwork whose subject is drawn smaller than the others.
 const LOOKS: { bg: string; circle: string; sticker: string; photo: string; src?: string; zoom?: number }[] = [
-  { bg: '#ff8bb8', circle: '#CBA1D4', sticker: '#fffba0', photo: '50% 50%', src: '/images/cover-freedom-frequency.webp' },
-  { bg: '#CBA1D4', circle: '#fffba0', sticker: '#ff8bb8', photo: '50% 50%', src: '/images/cover-reconnect-monkey.webp' },
+  { bg: '#CBA1D4', circle: '#fffba0', sticker: '#fffba0', photo: '50% 50%', src: '/images/cover-freedom-frequency.webp' },
+  { bg: '#ff8bb8', circle: '#CBA1D4', sticker: '#ff8bb8', photo: '50% 50%', src: '/images/cover-reconnect-monkey.webp' },
   { bg: '#fffba0', circle: '#ff8bb8', sticker: '#CBA1D4', photo: '50% 50%', src: '/images/cover-aligned-circle.webp', zoom: 1.35 },
 ];
 
