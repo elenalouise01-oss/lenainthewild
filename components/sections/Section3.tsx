@@ -377,7 +377,7 @@ export function ComeSayHi() {
               {/* Main print */}
               <div className="absolute bottom-[12%] right-0 z-10 h-[72%] w-[56%] -rotate-2 bg-cream p-2 shadow-2xl">
                 <div className="relative h-full w-full overflow-hidden">
-                  <Image src="/images/road/road-2.jpg" alt="" fill sizes="(min-width: 640px) 300px, 60vw" className="object-cover" style={{ objectPosition: '50% 35%' }} aria-hidden="true" />
+                  <Image src="/images/road/yellow-jeep.jpg" alt="" fill sizes="(min-width: 640px) 300px, 60vw" className="object-cover" style={{ objectPosition: '50% 62%' }} aria-hidden="true" />
                 </div>
               </div>
               {/* Torn paper with a small print */}
