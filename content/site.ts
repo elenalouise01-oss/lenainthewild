@@ -471,9 +471,11 @@ export const faq: { label: string; heading: string; items: FaqItem[] } = {
       link: { href: '/journal/triggers-are-clues-healing-core-wounds', label: 'Read: Triggers are clues' },
     },
     {
-      q: 'Do I have to change everything to create a different life?',
+      q: 'Why does going after my dream feel so selfish?',
       a: [
-        'Not at all. For me it meant leaving Sydney for Bali at 36, but your path doesn’t have to look anything like mine. It might be a new career, a creative passion, different priorities or smaller changes that bring you closer to the life you want. This is about what feels right for you, not someone else’s version of success.',
+        'Because most of us were taught that putting ourselves first is wrong. When you’ve spent years meeting everyone else’s expectations, choosing yourself can feel like letting people down, even when it’s exactly what you need.',
+        'But going after your dream isn’t selfish. You can love the people around you and still choose a life that feels like yours. The more fulfilled you are, the more you have to give.',
+        'When I decided to leave Sydney, I backpedalled more than once and kept finding reasons to stay. Giving myself permission to go was the first step to creating the life I wanted.',
       ],
     },
     {
