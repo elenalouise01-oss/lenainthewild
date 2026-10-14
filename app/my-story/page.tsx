@@ -152,16 +152,16 @@ export default function MyStoryPage() {
                         caption={p.caption}
                         className="mx-auto w-56 sm:float-right sm:-mr-24 sm:mb-2 sm:ml-8 sm:mt-2 sm:w-60"
                       />
+                    ) : p.small ? (
+                      // A small, narrow print tucked into the text
+                      <figure key={p.image} className="relative float-right mb-2 ml-4 mt-1.5 w-24 rotate-3 bg-white p-1 pb-4 shadow-lg sm:-mr-12 sm:ml-6 sm:w-32 sm:p-1.5 sm:pb-6">
+                        <div className="relative aspect-[3/4] overflow-hidden">
+                          <Image src={p.image} alt={p.alt} fill sizes="8rem" className="object-cover" style={{ objectPosition: '46% 50%' }} />
+                        </div>
+                      </figure>
                     ) : (
                       // A photo in the story: a tilted print, taped on, with a handwritten caption
-                      <figure
-                        key={p.image}
-                        className={`relative bg-white shadow-lg ${
-                          p.small
-                            ? 'float-right mb-3 ml-4 mt-1.5 w-36 rotate-3 p-1.5 pb-4 sm:-mr-16 sm:ml-6 sm:w-52 sm:p-2 sm:pb-6'
-                            : 'mx-auto w-60 -rotate-2 p-2.5 pb-5 sm:float-left sm:-ml-24 sm:mb-4 sm:mr-8 sm:mt-2 sm:w-64'
-                        }`}
-                      >
+                      <figure key={p.image} className="relative mx-auto w-60 -rotate-2 bg-white p-2.5 pb-5 shadow-lg sm:float-left sm:-ml-24 sm:mb-4 sm:mr-8 sm:mt-2 sm:w-64">
                         <span aria-hidden="true" className="absolute -top-3 left-1/2 h-6 w-24 -translate-x-1/2 rotate-2 bg-zing-pink/60" />
                         <Image src={p.image} alt={p.alt} width={p.width} height={p.height} sizes="16rem" className="h-auto w-full" />
                         {p.caption && <figcaption className="mt-3 text-center font-script text-2xl text-bark">{p.caption}</figcaption>}

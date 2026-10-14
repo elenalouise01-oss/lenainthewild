@@ -10,7 +10,7 @@ type Shot = { image: string; alt: string; pos?: string };
 const TILTS = [-6, 3, -3, 5];
 
 // A little row of polaroids that pop up onto the page one after another
-// when they scroll into view, each with a strip of tape. Shown in place for
+// when they scroll into view, the first one taped on. Shown in place for
 // anyone who prefers less motion.
 export default function PolaroidPop({ shots }: { shots: Shot[] }) {
   const reduced = useReducedMotion();
@@ -46,7 +46,7 @@ export default function PolaroidPop({ shots }: { shots: Shot[] }) {
           className={`relative w-[38%] max-w-[13rem] bg-white p-2 pb-8 shadow-xl sm:p-2.5 sm:pb-10 ${i > 0 ? '-ml-[6%] sm:-ml-6' : ''}`}
           style={{ zIndex: i === 1 ? 3 : 1 }}
         >
-          <span aria-hidden="true" className="absolute -top-2.5 left-1/2 z-10 h-5 w-16 -translate-x-1/2 -rotate-3 bg-zing-yellow/80 shadow-sm" />
+          {i === 0 && <span aria-hidden="true" className="absolute -top-2.5 left-1/2 z-10 h-5 w-16 -translate-x-1/2 -rotate-3 bg-zing-yellow/80 shadow-sm" />}
           <div className="relative aspect-square overflow-hidden">
             <Image src={shot.image} alt={shot.alt} fill sizes="13rem" className="object-cover" style={{ objectPosition: shot.pos ?? '50% 50%' }} />
           </div>
