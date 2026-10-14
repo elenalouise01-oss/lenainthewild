@@ -440,7 +440,7 @@ export const faq: { label: string; heading: string; items: FaqItem[] } = {
       link: { href: '/my-story', label: 'Read my story' },
     },
     {
-      q: 'Why do I feel stuck in the life I thought I wanted?',
+      q: 'Why do I constantly feel stuck in life?',
       a: [
         'Because the life you built may never have been fully yours. Often you’ve followed the expected path, put everyone else’s needs first or chased someone else’s version of success, and lost touch with what you actually want along the way.',
         'Wanting something different doesn’t mean the life you built was a mistake. It usually means you’ve outgrown it.',
