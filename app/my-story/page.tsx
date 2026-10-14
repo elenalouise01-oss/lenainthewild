@@ -150,9 +150,10 @@ export default function MyStoryPage() {
                         width={p.width}
                         height={p.height}
                         caption={p.caption}
+                        polaroid={p.polaroid}
                         className={
                           p.side === 'left'
-                            ? 'float-left mb-3 mr-5 mt-1 w-32 sm:-ml-16 sm:mr-8 sm:w-44'
+                            ? 'float-left mb-3 mr-5 mt-1 w-32 sm:-ml-16 sm:mr-8 sm:w-48'
                             : 'mx-auto w-56 sm:float-right sm:-mr-24 sm:mb-2 sm:ml-8 sm:mt-2 sm:w-60'
                         }
                       />

@@ -19,6 +19,7 @@ export default function CutoutSticker({
   height,
   caption,
   className = '',
+  polaroid = false,
 }: {
   src: string;
   alt: string;
@@ -26,6 +27,8 @@ export default function CutoutSticker({
   height: number;
   caption?: string;
   className?: string;
+  // show the photo in a white polaroid frame instead of as a cut-out
+  polaroid?: boolean;
 }) {
   const reduced = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
@@ -56,7 +59,8 @@ export default function CutoutSticker({
         initial={false}
         animate={show ? (reduced ? { opacity: 1, rotate: -2 } : scrapbookFrames(-2, 1)) : hidden}
         transition={reduced ? { duration: 0 } : { duration: 0.6, ease: choppy(1) }}
-        style={{ filter: CUT_EDGE }}
+        style={polaroid ? undefined : { filter: CUT_EDGE }}
+        className={polaroid ? 'bg-white p-2 pb-8 shadow-xl sm:p-2.5 sm:pb-10' : undefined}
       >
         <Image src={src} alt={alt} width={width} height={height} sizes="16rem" className="h-auto w-full" />
       </motion.div>

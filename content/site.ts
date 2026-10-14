@@ -854,7 +854,7 @@ export const lifeDesignPage = {
 // A photo placed between paragraphs of the story.
 // `cutout` photos have no background and sit beside the text with a sticker.
 // `small` photos sit tucked into the right-hand side of the paragraph that follows.
-type StoryPhoto = { image: string; width: number; height: number; alt: string; caption?: string; cutout?: boolean; small?: boolean; side?: 'left' | 'right' };
+type StoryPhoto = { image: string; width: number; height: number; alt: string; caption?: string; cutout?: boolean; small?: boolean; side?: 'left' | 'right'; polaroid?: boolean };
 // A row of polaroids that pop up onto the page
 type StoryPolaroids = { polaroids: { image: string; alt: string; pos?: string }[] };
 
@@ -895,11 +895,12 @@ export const storyPage: {
     '## Rock bottom, and a new start as a personal trainer',
     "I won't bore you with my whole resume, but when I returned to Sydney I went from barista work, hospitality and bartending to retail and then graphic design. Five years into my graphic design career, I hit rock bottom. I was in a toxic relationship with a drug dealer and alcoholic, and I was anxious af, waking up every day dizzy and in a constant brain fog without knowing why, with never-ending thoughts and stress. I literally hated my life. I was partying and drinking every day and racking coke most days, using drugs and alcohol to numb the pain and escape my reality, which only made everything 50 times worse when I was sober. Given my environment and the company I was keeping, that was just the life I had, and I felt dead on the inside. It was a very dark time for me, with severe depression and suicidal thoughts. Living in that state every day, I just couldn't handle it. Everything was shit, the relationship, my health and my job, which was in the most depressing office, where everyone was older and no one smiled or even wanted to talk to you when you came in, and I was such a depressing person in that environment. I'd started seeing a psychologist, but very quickly became dependent on her. Meditation wasn't even optional, because without it my mind would spiral, but the gym was the one thing that made me feel better. It was something I could control, and in the middle of all that darkness it became my lifeline.",
     {
-      image: '/images/story-pt-flipped.webp',
-      width: 900,
-      height: 1126,
+      image: '/images/story/pt-polaroid.jpg',
+      width: 800,
+      height: 800,
       alt: 'Lena smiling with her hands on her hips in her personal trainer uniform',
       cutout: true,
+      polaroid: true,
       side: 'left',
     },
     "I knew something had to change, and I wanted change, so I started with my career. I asked myself what other job I could do and what I actually enjoyed, and I kept coming back to the gym, so I thought, what if I became a trainer? The gym was the only thing lighting me up, and maybe it was telling me something, so I followed it. I started studying to become a PT while juggling my full-time graphic design job, going to class at night after work and secretly studying at my desk. The owners always seemed to have their attention elsewhere, so I could get away with doing the bare minimum at a job that was completely unfulfilling, and after I finally quit, the business went under and I found out why. The owners were corrupt, busy stealing money, and my boss ended up in jail (lol). Looking back, it was all meant to work out that way.",
