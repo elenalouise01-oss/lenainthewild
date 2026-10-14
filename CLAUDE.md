@@ -27,6 +27,10 @@ and `content/journal.ts`.
   permanent redirect.
 - **Batch changes:** save and commit changes locally, and only push when Lena
   says "push". Every push deploys the live site.
+- **Waitlist:** The Freedom Frequency waitlist form emails each sign-up to
+  nalurisocials@gmail.com (Web3Forms) and adds a row to Lena's "Freedom
+  Frequency Waitlist" Google Sheet (Apps Script URL in `waitlistSheetUrl`).
+  Substack links go to https://substack.com/@lenainthewild.
 - **Pushing:** push to `main` only. Pushing the same commit to two branches at
   once made Vercel fail with "Git information retrieval failed".
 
