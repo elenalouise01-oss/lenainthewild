@@ -23,9 +23,9 @@ export const metadata: Metadata = {
     url: '/my-story',
     title,
     description,
-    images: [{ url: '/images/lena-sunrise.jpg', width: 640, height: 640, alt: 'Lena at sunrise above the clouds' }],
+    images: [{ url: '/images/lena-sunrise-hero.jpg', width: 2400, height: 1800, alt: 'Lena at sunrise above the clouds' }],
   },
-  twitter: { card: 'summary_large_image', title, description, images: ['/images/lena-sunrise.jpg'] },
+  twitter: { card: 'summary_large_image', title, description, images: ['/images/lena-sunrise-hero.jpg'] },
 };
 
 const outlineButton =
@@ -77,13 +77,13 @@ export default function MyStoryPage() {
       <main>
         <div className="relative h-[60vh] min-h-[22rem] w-full bg-sand sm:h-[75vh]">
           <Image
-            src="/images/lena-sunrise.jpg"
+            src="/images/lena-sunrise-hero.jpg"
             alt="Lena at sunrise above the clouds"
             fill
             priority
             sizes="100vw"
             className="object-cover"
-            style={{ objectPosition: '65% 45%' }}
+            style={{ objectPosition: '62% 55%' }}
           />
         </div>
 
