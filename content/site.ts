@@ -200,7 +200,7 @@ export const freedomFrequencyPage = {
   courseHighlight: 'Sometimes, the starting point is understanding yourself.',
   courseEnd: 'That’s why I created The Freedom Frequency: to help you understand yourself, release what holds you back and create a life that feels like yours.',
   closing: 'For the woman who knows deep down there has to be more… but doesn’t know how to access it yet.',
-  next: { lead: 'Not ready to go all in?', label: 'Start with The 5 Day Reconnect', href: '/5-day-reconnect' },
+  next: { lead: 'Want to start with something smaller?', label: 'Start with The 5 Day Reconnect', href: '/5-day-reconnect' },
   // The six-part overview near the top of the page (structure Lena chose).
   overview: {
     whatItIs: {
