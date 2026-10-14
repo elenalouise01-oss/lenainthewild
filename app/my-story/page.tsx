@@ -35,13 +35,15 @@ const outlineButton =
 // Scrapbook chapter titles: some on a strip of torn tape (tilted a little),
 // some with a brush stroke underneath, and the rest plain, so the page
 // breathes. Titles not listed here stay plain.
-type Look = { kind: 'tape'; colour: string; tilt: string } | { kind: 'brush'; colour: string };
+type Look = { kind: 'tape'; colour: string; tilt: string } | { kind: 'brush'; colour: string } | { kind: 'hand' };
 const CHAPTER_LOOKS: Record<string, Look> = {
   'Burning out in Bondi': { kind: 'tape', colour: 'bg-sage/80', tilt: '-rotate-2' },
   'My first solo trip to Bali': { kind: 'brush', colour: 'text-zing-green' },
   'Moving to Bali at 36 with no plan': { kind: 'tape', colour: 'bg-zing-yellow', tilt: 'rotate-1' },
   'Down to my last $500 in Ubud': { kind: 'brush', colour: 'text-sage' },
   'The turning point': { kind: 'tape', colour: 'bg-zing-green', tilt: '-rotate-1' },
+  'Deciding to leave Sydney': { kind: 'hand' },
+  'Reinventing life on my own terms': { kind: 'hand' },
 };
 // Torn ends, like a strip of washi tape
 const TAPE_EDGE =
@@ -50,6 +52,8 @@ const TAPE_EDGE =
 function ChapterTitle({ children }: { children: string }) {
   const look = CHAPTER_LOOKS[children];
   if (!look) return <>{children}</>;
+  // Written by hand, like a note in the margin
+  if (look.kind === 'hand') return <span className="inline-block -rotate-1 font-script text-4xl sm:text-[2.6rem]">{children}</span>;
   if (look.kind === 'tape') {
     return (
       <span className={`inline-block ${look.tilt} ${look.colour} px-4 py-1 shadow-sm`} style={{ clipPath: TAPE_EDGE }}>
@@ -112,6 +116,9 @@ export default function MyStoryPage() {
 
         {/* Tape across the bottom of the photo */}
         <TapeBanner text="leaping into the unknown" className="relative z-10 -mt-12 -mb-12" />
+
+        {/* A song to read along to */}
+        <Listen className="pb-4 pt-24 sm:pt-28" />
 
         <section className="bg-cream px-6 py-24 sm:py-32">
           <div className="mx-auto max-w-2xl">
@@ -190,8 +197,6 @@ export default function MyStoryPage() {
             </div>
           </ScrollReveal>
         </section>
-
-        <Listen />
 
         <Newsletter />
       </main>

@@ -2,9 +2,10 @@ import ScrollReveal from '@/components/ScrollReveal';
 import SectionLabel from '@/components/SectionLabel';
 import { listen } from '@/content/site';
 
-export default function Listen() {
+// `className` overrides the outer spacing and border (My Story uses it near the top).
+export default function Listen({ className = 'border-t border-bark/10 py-24 sm:py-32' }: { className?: string }) {
   return (
-    <section className="relative overflow-hidden border-t border-bark/10 bg-cream px-6 py-24 sm:py-32">
+    <section className={`relative overflow-hidden bg-cream px-6 ${className}`}>
       <div className="container-editorial relative text-center">
         <ScrollReveal>
           <SectionLabel>{listen.eyebrow}</SectionLabel>
@@ -27,7 +28,7 @@ export default function Listen() {
           />
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <p className="mx-auto mt-6 max-w-md font-body text-sm leading-relaxed text-stone">{listen.note}</p>
+          <p className="mx-auto mt-6 max-w-md -rotate-1 font-script text-xl leading-snug text-bark">{listen.note}</p>
         </ScrollReveal>
       </div>
     </section>
