@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { socialLinks } from '@/content/site';
+import { socialLinks, waitlistSheetUrl } from '@/content/site';
 import { sendToInbox } from '@/lib/sendToInbox';
 
 // Waitlist sign-up for an offer that isn't open yet: name and email are
@@ -29,6 +29,17 @@ export default function WaitlistForm({
     data.append('waitlist', offer);
     setFirstName(String(data.get('name') ?? '').trim().split(/\s+/)[0]);
     setStatus('sending');
+    // Also add them to the waitlist Google Sheet. Google doesn't let the page
+    // read its reply, so this is sent without waiting on it; the email to
+    // Lena is what decides whether the sign-up went through.
+    if (waitlistSheetUrl && !data.get('botcheck')) {
+      const row = new URLSearchParams({
+        name: String(data.get('name') ?? ''),
+        email: String(data.get('email') ?? ''),
+        offer,
+      });
+      fetch(waitlistSheetUrl, { method: 'POST', mode: 'no-cors', body: row }).catch(() => {});
+    }
     const ok = await sendToInbox(data, `Waitlist sign-up for ${offer}: ${data.get('name')}`);
     setStatus(ok ? 'sent' : 'failed');
   };
