@@ -75,7 +75,7 @@ export const web3formsKey = '221a0644-2570-46ec-976a-9da12c946f82';
 
 // Lena's waitlist Google Sheet: the web app URL of its Apps Script (ends in
 // /exec). Each waitlist sign-up is also added as a row. Empty = off.
-export const waitlistSheetUrl = '';
+export const waitlistSheetUrl = 'https://script.google.com/macros/s/AKfycbw7mZO4CaMWJNjlV-Vlu1dBhECbvm41bFI7zP3LOsWAOwKM8qEWDJ1sFdGN8NeXjNwW4A/exec';
 
 // Offers that have their own page on this site. The page tells the whole
 // story; only the final sign-up step goes out to The Leap.
