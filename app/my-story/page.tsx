@@ -59,14 +59,30 @@ export default function MyStoryPage() {
               <div className="mt-8 space-y-6">
                 {storyPage.paragraphs.map((p) =>
                   typeof p !== 'string' ? (
-                    // A photo in the story, as a slightly tilted print with a handwritten caption
-                    <figure key={p.image} className="mx-auto max-w-md -rotate-1 bg-white p-3 pb-4 shadow-lg sm:my-10">
-                      <Image src={p.image} alt={p.alt} width={p.width} height={p.height} sizes="(min-width: 640px) 28rem, 90vw" className="h-auto w-full" />
-                      {p.caption && <figcaption className="mt-3 text-center font-script text-2xl text-bark">{p.caption}</figcaption>}
-                    </figure>
+                    p.cutout ? (
+                      // A cut-out of Lena beside the text, with a round sticker
+                      <figure key={p.image} className="relative mx-auto w-56 sm:float-right sm:-mr-24 sm:mb-2 sm:ml-8 sm:mt-2 sm:w-60">
+                        <Image src={p.image} alt={p.alt} width={p.width} height={p.height} sizes="16rem" className="h-auto w-full drop-shadow-[0_10px_14px_rgba(59,45,14,0.25)]" />
+                        {p.caption && (
+                          <figcaption className="absolute -left-8 top-[4%] flex h-24 w-24 -rotate-12 items-center justify-center rounded-full bg-zing-yellow p-3 text-center font-script text-base leading-[0.95] text-bark shadow-md">
+                            {p.caption}
+                          </figcaption>
+                        )}
+                      </figure>
+                    ) : (
+                      // A photo in the story: a tilted print, taped on, with a handwritten caption
+                      <figure key={p.image} className="relative mx-auto max-w-md -rotate-1 bg-white p-3 pb-4 shadow-lg sm:my-10">
+                        <span aria-hidden="true" className="absolute -top-3 left-1/2 h-6 w-24 -translate-x-1/2 rotate-2 bg-zing-pink/60" />
+                        <Image src={p.image} alt={p.alt} width={p.width} height={p.height} sizes="(min-width: 640px) 28rem, 90vw" className="h-auto w-full" />
+                        {p.caption && <figcaption className="mt-3 text-center font-script text-2xl text-bark">{p.caption}</figcaption>}
+                      </figure>
+                    )
                   ) : p.startsWith('## ') ? (
-                    <h2 key={p} className="pt-8 font-display text-3xl leading-snug text-bark">
-                      {p.slice(3)}
+                    <h2 key={p} className="clear-both pt-8 font-display text-3xl leading-snug text-bark">
+                      {/* A highlighter stroke behind each chapter title */}
+                      <span className="bg-[linear-gradient(transparent_58%,rgba(203,161,212,0.55)_58%,rgba(203,161,212,0.55)_92%,transparent_92%)] box-decoration-clone px-1">
+                        {p.slice(3)}
+                      </span>
                     </h2>
                   ) : (
                     <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber sm:text-lg">

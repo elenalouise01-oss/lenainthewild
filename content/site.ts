@@ -852,7 +852,8 @@ export const lifeDesignPage = {
 // The My Story page (/my-story). A paragraph starting with "## " is a
 // subheading.
 // A photo placed between paragraphs of the story.
-type StoryPhoto = { image: string; width: number; height: number; alt: string; caption?: string };
+// `cutout` photos have no background and sit beside the text with a sticker.
+type StoryPhoto = { image: string; width: number; height: number; alt: string; caption?: string; cutout?: boolean };
 
 export const storyPage: { storyTitle: string; paragraphs: (string | StoryPhoto)[]; cta: string; closing: string } = {
   storyTitle: 'My Story',
@@ -884,6 +885,14 @@ export const storyPage: { storyTitle: string; paragraphs: (string | StoryPhoto)[
       height: 1070,
       alt: 'Lena’s hand resting on her grandma’s memorial plaque beside an oracle card reading “Yes, just say yes”',
       caption: 'Grandma’s seal of approval',
+    },
+    {
+      image: '/images/story-packing-up.webp',
+      width: 856,
+      height: 1200,
+      alt: 'Lena smiling with her suitcase in her empty apartment, ready to leave for Bali',
+      caption: 'packing up my whole life',
+      cutout: true,
     },
     "And of course, once I'd finally resigned, the universe decided to throw all kinds of tests my way, dangling high-paying opportunities, collabs, gifts, all the reasons to stay. I backpedalled on my decision a few times and even convinced myself to take a job in Sydney for a week. The uncertainty of the leap and not having a proper plan, especially for my income, had me changing my mind every two seconds, and I was letting other people's opinions pull me back towards safety way too easily. It was a difficult period because I kept doubting myself, and I guess that's what happens when you no longer have that \"safety\", your mind is just trying to keep you safe. But I stuck to my decision.",
     "I ran myself into the ground one more time before I went, selling everything I owned and packing up my whole apartment and life all on my own while juggling work, and then before I knew it, the day was finally here. I boarded that one-way flight to Bali and I never looked back.",
