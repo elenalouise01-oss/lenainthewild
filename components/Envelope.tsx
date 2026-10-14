@@ -28,7 +28,7 @@ const PHOTOS: { src: string; pos: string; x: number; y: number; w: number; h: nu
   { src: '/images/road/road-8.jpg', pos: '50% 75%', x: 402, y: 88, w: 132, h: 180, rotate: -6, z: 5 },
   // Lena on the scooter, the hero print at the front
   { src: '/images/road/road-2.jpg', pos: '50% 35%', x: 526, y: 70, w: 190, h: 230, rotate: 3, z: 6, drop: true },
-  { src: '/images/road/bali-cow-closeup.jpg', pos: '50% 40%', x: 700, y: 88, w: 158, h: 140, rotate: -3, z: 4 },
+  { src: '/images/road/bali-cows-field.jpg', pos: '50% 50%', x: 712, y: 40, w: 150, h: 200, rotate: -3, z: 4 },
 ];
 
 // Something sliding down into the envelope: starts high above it, tipped
