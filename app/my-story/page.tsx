@@ -150,7 +150,9 @@ export default function MyStoryPage() {
                         width={p.width}
                         height={p.height}
                         caption={p.caption}
-                        className="mx-auto w-56 sm:float-right sm:-mr-24 sm:mb-2 sm:ml-8 sm:mt-2 sm:w-60"
+                        className={`mx-auto w-56 sm:mb-2 sm:mt-2 sm:w-60 ${
+                          p.side === 'left' ? 'sm:float-left sm:-ml-24 sm:mr-8' : 'sm:float-right sm:-mr-24 sm:ml-8'
+                        }`}
                       />
                     ) : p.small ? (
                       // A small, narrow print tucked into the text

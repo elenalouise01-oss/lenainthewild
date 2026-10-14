@@ -6,9 +6,8 @@ import { useEffect, useRef, useState } from 'react';
 import { choppy, hidden, scrapbookFrames } from '@/lib/scrapbook';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 
-// A white "cut out" border hugging the photo's edges, plus a soft shadow.
-const CUT_EDGE =
-  'drop-shadow(2.5px 0 0 #fff) drop-shadow(-2.5px 0 0 #fff) drop-shadow(0 2.5px 0 #fff) drop-shadow(0 -2.5px 0 #fff) drop-shadow(0 12px 14px rgba(59,45,14,0.22))';
+// A soft shadow under the cut-out so it sits on the page.
+const CUT_EDGE = 'drop-shadow(0 12px 14px rgba(59,45,14,0.22))';
 
 // A cut-out photo that gets stuck onto the page when it scrolls into view,
 // stop-motion "scrapbook" style, then its round label is stuck on too.
