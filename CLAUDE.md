@@ -56,13 +56,17 @@ and `content/journal.ts`.
     integration exercise per module, and built-in accountability (progress
     trackers, commitments, reflection prompts).
   - **Not included:** no live calls or community. Never imply either.
-  - **Length:** a suggested six weeks, with no deadline:
+  - **Length:** a six-week guided journey (five core modules plus an
+    integration week), self-paced with a suggested weekly rhythm and no
+    deadline. Each module has 3–5 video lessons of about 5–10 minutes, plus
+    audio, journalling prompts and exercises; around 1–2 hours a week:
     1. Reconnect
     2. Understand
     3. Release
     4. Rediscover
     5. Recreate
-    6. Integrate (a personal 30-day action plan)
+    6. Integrate (reflect on progress, create a personal freedom plan with
+       practical next steps)
 - **Link style:** Lena isn't keen on the lilac underline on text links. Options
   A–D were mocked up (A: fine brown line, B: arrow only, C: editorial dash,
   D: outline pill). Waiting on her choice.

@@ -217,15 +217,19 @@ export const freedomFrequencyPage = {
     },
     length: {
       heading: 'Its length',
-      intro: 'Six weeks, at your own pace. There’s no deadline, so take longer whenever you need it.',
+      intro: [
+        'A six-week guided journey: five core modules and a final integration week. It’s self-paced, with a suggested weekly rhythm to keep you moving without rushing the inner work.',
+        'Each module has 3–5 short video lessons (about 5–10 minutes each), guided audio practices, journalling prompts and practical exercises. Allow around 1–2 hours a week, depending on how deeply you go.',
+      ],
       weeks: [
         { focus: 'Reconnect', body: 'Your current reality, emotions and desires' },
         { focus: 'Understand', body: 'The patterns, triggers and beliefs that keep repeating' },
         { focus: 'Release', body: 'The conditioning, fears and expectations shaping your choices' },
         { focus: 'Rediscover', body: 'Your values, desires and what freedom means to you' },
         { focus: 'Recreate', body: 'Turning what you’ve learned into intentional choices and action' },
-        { focus: 'Integrate', body: 'Bringing it all together into your own 30-day action plan' },
+        { focus: 'Integrate', body: 'Reflecting on your progress and creating your personal freedom plan, with practical next steps' },
       ],
+      closing: 'Six weeks gives you structure and momentum, but growth doesn’t run on a deadline. Take longer whenever you need to.',
     },
     description: {
       heading: 'The journey',

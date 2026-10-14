@@ -121,7 +121,13 @@ export default function FreedomFrequencyPage() {
               </div>
             </OverviewRow>
             <OverviewRow heading={ov.length.heading}>
-              <p className={rowText}>{ov.length.intro}</p>
+              <div className="space-y-5">
+                {ov.length.intro.map((p) => (
+                  <p key={p.slice(0, 24)} className={rowText}>
+                    {p}
+                  </p>
+                ))}
+              </div>
               <ol className="mt-5 divide-y divide-bark/10 border-y border-bark/10">
                 {ov.length.weeks.map((w, i) => (
                   <li key={w.focus} className="grid grid-cols-[4.5rem_1fr] gap-3 py-3 sm:grid-cols-[5rem_8rem_1fr]">
@@ -131,6 +137,7 @@ export default function FreedomFrequencyPage() {
                   </li>
                 ))}
               </ol>
+              <p className={`mt-5 ${rowText}`}>{ov.length.closing}</p>
             </OverviewRow>
             <OverviewRow heading={ov.description.heading}>
               <div className="space-y-5">
