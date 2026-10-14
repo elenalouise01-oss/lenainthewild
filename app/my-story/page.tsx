@@ -115,7 +115,7 @@ export default function MyStoryPage() {
         </div>
 
         {/* Tape across the bottom of the photo */}
-        <TapeBanner text="leaping into the unknown" mark="butterfly" className="relative z-10 -mt-12 -mb-12" />
+        <TapeBanner text="leaping into the unknown" mark="heart" className="relative z-10 -mt-12 -mb-12" />
 
         <section className="bg-cream px-6 py-24 sm:py-32">
           <div className="mx-auto max-w-2xl">
