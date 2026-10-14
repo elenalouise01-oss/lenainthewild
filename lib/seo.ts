@@ -7,7 +7,7 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.lenain
 
 export const SITE_NAME = 'Lena in the Wild';
 
-export const SAME_AS = [socialLinks.Instagram, socialLinks.TikTok, 'https://lenainthewild.substack.com'];
+export const SAME_AS = [socialLinks.Instagram, socialLinks.TikTok, 'https://substack.com/@lenainthewild'];
 
 // Indexable pages, for the sitemap.
 export const PAGES = [

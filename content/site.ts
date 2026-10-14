@@ -406,7 +406,7 @@ export const freedomSeeker = {
   },
 
   pillarsLabel: 'Entries From My Journal',
-  pillarsCta: { label: 'Read more on Substack', href: 'https://lenainthewild.substack.com' },
+  pillarsCta: { label: 'Read more on Substack', href: 'https://substack.com/@lenainthewild' },
   pillarsIntro: 'I don’t really do plans. I wake up, see how I feel, follow my intuition and let the day unfold.',
   // A pillar with a `slug` links to that article in the journal on this
   // site; otherwise one with an `href` links to its Substack post.
@@ -577,7 +577,7 @@ export const newsletter = {
   headline: 'Stories in your inbox',
   body: "Unfiltered stories from a life I'm building from scratch in Southeast Asia. Everything I'm learning, feeling and discovering, straight to your inbox.",
   cta: 'Subscribe on Substack',
-  ctaHref: 'https://lenainthewild.substack.com/subscribe',
+  ctaHref: 'https://substack.com/@lenainthewild',
 };
 
 export const footer = {

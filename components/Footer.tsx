@@ -10,7 +10,7 @@ const REAL_ANCHORS: Record<string, string> = {
   Blog: '/journal',
   About: '/my-story',
   'Who I Help': '/life-design',
-  Substack: 'https://lenainthewild.substack.com',
+  Substack: 'https://substack.com/@lenainthewild',
   Contact: '/#contact',
   // No page of its own yet (coming soon), so it points to the offers.
   'Your Freedom Roadmap': '/#freedom-seeker',
