@@ -168,7 +168,13 @@ export default function FreedomFrequencyPage() {
               </div>
             </OverviewRow>
             <OverviewRow heading={ov.outcomes.heading}>
-              <p className={rowText}>{ov.outcomes.intro}</p>
+              <div className="space-y-5">
+                {ov.outcomes.intro.map((p) => (
+                  <p key={p.slice(0, 24)} className={rowText}>
+                    {p}
+                  </p>
+                ))}
+              </div>
               <p className="mt-6 font-display text-xl italic text-bark">{ov.outcomes.lead}</p>
               <ul className="mt-4 space-y-3">
                 {ov.outcomes.items.map((item) => (
@@ -180,6 +186,7 @@ export default function FreedomFrequencyPage() {
                   </li>
                 ))}
               </ul>
+              <p className={`mt-8 ${rowText}`}>{ov.outcomes.outro}</p>
               <p className="mt-8 border-l-4 border-zing-pink pl-6 font-display text-xl italic leading-snug text-bark sm:text-2xl">{ov.outcomes.closing}</p>
             </OverviewRow>
           </div>

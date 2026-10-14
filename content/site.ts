@@ -259,24 +259,28 @@ export const freedomFrequencyPage = {
     },
     outcomes: {
       heading: 'What you’ll walk away with',
-      intro:
-        'By the end of this journey, you’ll have a deeper understanding of yourself, a clearer vision for the life you want, and practical tools to help you move towards it.',
-      lead: 'You’ll learn to:',
-      // Each point: a bold opening phrase, then the rest of the sentence.
-      items: [
-        { lead: 'Understand what’s been keeping you stuck:', rest: 'the fears, limiting beliefs, emotional triggers and conditioning that have been shaping your choices.' },
-        { lead: 'Break free from patterns that no longer serve you', rest: 'by recognising them, questioning the beliefs behind them and learning new ways of responding.' },
-        { lead: 'Reconnect with who you truly are', rest: 'beneath the expectations and roles you’ve lived by, and rediscover the parts of yourself you pushed aside to fit in.' },
-        { lead: 'Get clear on what you genuinely want,', rest: 'beyond other people’s expectations and the life you thought you were supposed to want.' },
-        { lead: 'Reconnect with your intuition', rest: 'so you can hear your own voice, recognise what feels right and make choices that align with your values.' },
-        { lead: 'Find your own answers', rest: 'instead of looking outside yourself for validation, reassurance or permission.' },
-        { lead: 'Give yourself permission to want more,', rest: 'moving beyond the guilt, fear of judgement and need for approval that keep you playing small.' },
-        { lead: 'Choose yourself', rest: 'by honouring your needs and values, setting boundaries and making decisions that reflect who you want to become.' },
-        { lead: 'Create a clear vision for your dream life,', rest: 'rooted in your own definition of freedom, success and fulfilment.' },
-        { lead: 'Turn clarity into action', rest: 'with practical tools and achievable next steps.' },
+      intro: [
+        'By the end of this journey, you’ll have a deeper understanding of yourself, greater awareness of the patterns influencing your life, and a clearer vision for what you want to create moving forward.',
+        'Through inner exploration, shadow work, embodied practices and practical exercises, you’ll begin developing the awareness and self-trust to make choices that feel more aligned with who you are.',
       ],
+      lead: 'You’ll learn to:',
+      // Each point: a bold opening phrase, then the rest.
+      items: [
+        { lead: 'Understand what’s been keeping you stuck.', rest: 'Explore the fears, limiting beliefs, emotional triggers and conditioning that have been influencing your thoughts, behaviours and choices.' },
+        { lead: 'Recognise recurring patterns.', rest: 'Begin understanding why certain situations trigger you, why you might repeat familiar behaviours and how you can create more space to respond differently.' },
+        { lead: 'Reconnect with yourself.', rest: 'Rediscover the parts of yourself you may have pushed aside to fit in, meet expectations or gain approval, and reconnect with what genuinely matters to you.' },
+        { lead: 'Develop a deeper connection with your body and emotions.', rest: 'Use embodied practices to become more aware of your internal experience and move beyond intellectual understanding alone.' },
+        { lead: 'Question the beliefs that limit you.', rest: 'Explore the assumptions you’ve made about who you need to be, what you can have and what’s possible for your life.' },
+        { lead: 'Explore your relationship with abundance.', rest: 'Begin questioning scarcity-based beliefs and consider what a more expansive life could look like, on your own terms.' },
+        { lead: 'Reconnect with your intuition and desires.', rest: 'Get clearer on what you genuinely want, beyond other people’s expectations and the life you thought you were supposed to want.' },
+        { lead: 'Build self-trust.', rest: 'Learn to find your own answers, honour your needs and values, and make decisions without constantly seeking external validation or permission.' },
+        { lead: 'Give yourself permission to want more.', rest: 'Explore the guilt, fear of judgement and need for approval that may be keeping you from pursuing what matters to you.' },
+        { lead: 'Create a vision for your life.', rest: 'Define what freedom, success and fulfilment mean to you, and begin imagining a future that reflects those values.' },
+        { lead: 'Turn insight into action.', rest: 'Develop practical next steps to help you move beyond familiar patterns and begin creating meaningful change in your everyday life.' },
+      ],
+      outro: 'The goal isn’t to have your entire life figured out or to resolve every pattern in six weeks. It’s to understand yourself more deeply, reconnect with what you want and develop the self-trust to begin creating a life that feels like yours.',
       closing:
-        'Because when you understand yourself, know what you want and learn to trust your own decisions, you can stop living by default and start creating a life by design.',
+        'Because when you understand yourself, release what holds you back and learn to trust your own decisions, you can stop living by default and start creating a life by design.',
     },
   },
   faqHeading: 'Questions about The Freedom Frequency',
