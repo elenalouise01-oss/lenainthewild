@@ -259,24 +259,8 @@ export default function FreedomFrequencyPage() {
                   <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber sm:text-lg">{p}</p>
                 ))}
               </div>
-              <div className="my-14 grid gap-4 sm:grid-cols-3">
-                {page.gives.map((g, i) => (
-                  <p
-                    key={g}
-                    className={`rounded-sm px-5 py-6 text-center font-display text-xl italic text-bark shadow-sm ${
-                      ['bg-zing-pink/60', 'bg-sage/50', 'bg-zing-yellow/80'][i % 3]
-                    }`}
-                  >
-                    {g}
-                  </p>
-                ))}
-              </div>
-              <p className="font-display text-2xl leading-snug text-bark sm:text-3xl">{page.seen}</p>
-              <div className="mt-10 space-y-6">
-                {page.whyParagraphs.map((p) => (
-                  <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber sm:text-lg">{p}</p>
-                ))}
-              </div>
+              <p className="my-12 border-l-4 border-zing-pink pl-6 font-display text-2xl italic leading-snug text-bark sm:text-3xl">{page.courseHighlight}</p>
+              <p className="font-body text-base leading-relaxed text-umber sm:text-lg">{page.courseEnd}</p>
             </ScrollReveal>
           </div>
         </section>
