@@ -6,6 +6,7 @@ import JsonLd from '@/components/JsonLd';
 import { breadcrumbs } from '@/lib/seo';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteHeader from '@/components/SiteHeader';
+import TapeBanner from '@/components/TapeBanner';
 import Listen from '@/components/sections/Listen';
 import Newsletter from '@/components/sections/Newsletter';
 import { offerPages, storyPage } from '@/content/site';
@@ -109,6 +110,9 @@ export default function MyStoryPage() {
           />
         </div>
 
+        {/* Tape across the bottom of the photo */}
+        <TapeBanner text="leaping into the unknown" className="relative z-10 -mt-12 -mb-12" />
+
         <section className="bg-cream px-6 py-24 sm:py-32">
           <div className="mx-auto max-w-2xl">
             <ScrollReveal>
@@ -160,6 +164,7 @@ export default function MyStoryPage() {
           </div>
         </section>
 
+        <TapeBanner text="SYD → BALI → VIETNAM → NEXT STOP" strip="bg-sage text-bark" tilt="rotate-1" className="relative z-10 -mb-12" />
         <div className="relative h-[45vh] min-h-[18rem] w-full bg-sand">
           <Image
             src="/images/road/road-5.jpg"

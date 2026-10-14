@@ -53,9 +53,14 @@ const config: Config = {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' },
         },
+        'tape-scroll': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
       },
       animation: {
         'spin-slow': 'spin 16s linear infinite',
+        'tape-scroll': 'tape-scroll 45s linear infinite',
       },
     },
   },
