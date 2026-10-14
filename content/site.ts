@@ -481,12 +481,13 @@ export const faq: { label: string; heading: string; items: FaqItem[] } = {
     {
       q: 'Where do I start?',
       a: [
-        'If you want a gentle first step, The 5 Day Reconnect ($33) is five short audio sessions to help you slow down and hear yourself again.',
-        'If you’re ready to go deeper, The Freedom Frequency ($555, waitlist open) is my self-paced course on reconnecting with yourself, releasing the patterns keeping you stuck and creating a life that feels like yours.',
+        'If you’re in the middle of burnout or just coming out of it, feeling stagnant and searching for answers and a way out, you’re in the right place.',
+        'If you’ve been going around in circles for too long and you’re ready to break free, start with The Freedom Frequency ($555, waitlist open). It’s my self-paced course on reconnecting with yourself, releasing the patterns keeping you stuck and creating a life that feels like yours. It’s everything I learned going from stuck to free.',
+        'If you’d like to dip your toe in first, The 5 Day Reconnect ($33) is five short audio sessions to help you slow down and hear yourself again.',
       ],
       link: [
+        { href: '/freedom-frequency#waitlist', label: 'Join The Freedom Frequency waitlist' },
         { href: '/5-day-reconnect', label: 'Explore The 5 Day Reconnect' },
-        { href: '/freedom-frequency', label: 'Explore The Freedom Frequency' },
       ],
     },
   ],
