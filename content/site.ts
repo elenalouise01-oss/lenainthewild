@@ -246,9 +246,15 @@ export const freedomFrequencyPage = {
     description: {
       heading: 'The journey',
       body: [
-        'Built from my own journey through years of confusion, burnout, self-discovery and ultimately creating a life that feels genuinely like mine, The Freedom Frequency brings together the tools, teachings and realisations I wish I’d had when I spent years feeling stuck, knowing deep down I wanted more from life but not knowing how to break free from the fears, beliefs and patterns keeping me where I was.',
-        'It’s a guided journey into understanding yourself more deeply, uncovering the conditioning that has been shaping your choices, reconnecting with who you are beneath it all, and discovering what you truly want.',
-        'Through inner exploration, practical exercises and intentional action, you’ll learn to break free from the expectations holding you back, build self-trust, reconnect with your desires, and give yourself permission to pursue the life you’ve always dreamed of — so you can step into your dream life on your own terms.',
+        'The Freedom Frequency was born from my own journey through years of confusion, burnout, self-discovery and ultimately creating a life that feels genuinely like mine.',
+        'For years, I found myself caught in a cycle of searching for answers outside myself. I’d discover a new course, work with a new mentor or find an approach that made me feel like I’d finally figured it out.',
+        'I’d feel inspired, hopeful and full of possibility. I’d build momentum, start making changes and convince myself I was finally onto something.',
+        'But a few months later, I’d find myself back at square one, questioning everything and searching for the next thing that might finally give me the answers.',
+        'I kept looking for the missing piece without fully understanding what was keeping me stuck in the first place.',
+        'Over time, I began to realise that creating a different life wasn’t just about finding the right strategy, career or next step. It was also about understanding the fears, beliefs and conditioning influencing my choices, reconnecting with the parts of myself I’d pushed aside, and learning to trust my own answers.',
+        'That deeper exploration changed the way I understood myself, what I believed was possible and how I wanted to live.',
+        'The Freedom Frequency brings together the tools, teachings and realisations that have shaped my journey, combining shadow work, embodied practices, self-discovery and an exploration of abundance to help you begin creating meaningful change from within.',
+        'It’s an opportunity to stop endlessly searching for the next answer, understand the patterns you’ve been repeating, reconnect with what you genuinely want and begin moving towards a life that feels like yours.',
       ],
     },
     outcomes: {
