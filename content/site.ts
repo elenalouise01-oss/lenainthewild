@@ -864,7 +864,7 @@ export const storyPage: {
   closing: string;
 } = {
   storyTitle: 'My Story',
-  song: '🎧 “Riptide” - Vance Joy',
+  song: '🎧 Riptide - Vance Joy',
   // Lines inside the story marked with a highlighter (wording unchanged)
   highlights: [
     "it wasn't my first leap",
