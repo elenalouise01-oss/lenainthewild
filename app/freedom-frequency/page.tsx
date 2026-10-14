@@ -69,7 +69,13 @@ export default function FreedomFrequencyPage() {
               <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-bark/70">{page.label}</p>
               <h1 className="mt-5 font-display text-5xl leading-[1] text-bark sm:text-7xl">{page.title}</h1>
               <p className="mt-3 font-display text-2xl italic text-bark/80 sm:text-3xl">{page.subtitle}</p>
-              <p className="mt-8 max-w-md font-body text-base leading-relaxed text-bark/85">{tier.body}</p>
+              <div className="mt-8 max-w-md space-y-4">
+                {page.heroBody.map((p) => (
+                  <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-bark/85">
+                    {p}
+                  </p>
+                ))}
+              </div>
               <div className="mt-6 flex flex-wrap gap-2">
                 {tier.tags.map((tag) => (
                   <span key={tag} className="rounded-full border border-bark/25 px-3 py-1 font-body text-[0.65rem] font-semibold uppercase tracking-wide text-bark">

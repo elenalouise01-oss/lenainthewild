@@ -145,7 +145,12 @@ export const fiveDayReconnectPage = {
 export const freedomFrequencyPage = {
   label: 'The Freedom Seeker · 01',
   title: 'The Freedom Frequency',
-  subtitle: 'Your next chapter',
+  subtitle: 'Your next chapter starts within.',
+  // The intro under the title on this page only (the home page card keeps its own short text).
+  heroBody: [
+    'An embodied, self-paced journey to understand what’s keeping you stuck, reconnect with who you are beneath the conditioning, and create a life that feels genuinely like yours.',
+    'Through shadow work, embodied practices and a deeper exploration of your relationship with freedom and abundance, you’ll begin uncovering the patterns holding you back and reconnecting with what’s possible for you.',
+  ],
   cta: 'Join the Waitlist',
   waitlistHeading: 'Be the first to know',
   waitlistBody: 'Pop your details in and I’ll let you know as soon as The Freedom Frequency opens.',
