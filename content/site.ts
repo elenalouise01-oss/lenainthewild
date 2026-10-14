@@ -150,7 +150,7 @@ export const freedomFrequencyPage = {
   waitlistHeading: 'Be the first to know',
   waitlistBody: 'Pop your details in and I’ll let you know as soon as The Freedom Frequency opens.',
   waitlistSent: 'You’re on the list! I’ll be in touch as soon as The Freedom Frequency opens.',
-  forHeading: 'This is for the ambitious woman who feels stuck and stagnant.',
+  forHeading: 'Does this sound like you?',
   forParagraphs: [
     'You did all the things you were meant to do. The things society told us to do. You built the career, the home, the income… maybe even the relationship. You created the life you once dreamt of.',
   ],
@@ -228,11 +228,15 @@ export const freedomFrequencyPage = {
       ],
     },
     description: {
-      heading: 'High-level description',
-      body: 'Built from years of confusion, burnout, the leap and finally living on the other side, The Freedom Frequency brings together the tools, teachings and realisations I wish I’d had when I was stuck: reconnecting with yourself, understanding the fears and old patterns underneath, and creating a life that feels like yours.',
+      heading: 'The journey',
+      body: [
+        'Built from my own journey through years of confusion, burnout, self-discovery and ultimately creating a life that feels genuinely like mine, The Freedom Frequency brings together the tools, teachings and realisations I wish I’d had when I spent years feeling stuck, knowing deep down I wanted more from life but not knowing how to break free from the fears, beliefs and patterns keeping me where I was.',
+        'It’s a guided journey into understanding yourself more deeply, uncovering the conditioning that has been shaping your choices, reconnecting with who you are beneath it all, and discovering what you truly want.',
+        'Through inner exploration, practical exercises and intentional action, you’ll learn to break free from the expectations holding you back, build self-trust, reconnect with your desires, and give yourself permission to pursue the life you’ve always dreamed of — so you can step into your dream life on your own terms.',
+      ],
     },
     outcomes: {
-      heading: 'Major outcomes',
+      heading: 'What you’ll walk away with',
       intro:
         'By the end of this journey, you’ll have a deeper understanding of yourself, a clearer vision for the life you want, and practical tools to help you move towards it.',
       lead: 'You’ll learn to:',

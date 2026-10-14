@@ -133,7 +133,13 @@ export default function FreedomFrequencyPage() {
               </ol>
             </OverviewRow>
             <OverviewRow heading={ov.description.heading}>
-              <p className={rowText}>{ov.description.body}</p>
+              <div className="space-y-5">
+                {ov.description.body.map((p) => (
+                  <p key={p.slice(0, 24)} className={rowText}>
+                    {p}
+                  </p>
+                ))}
+              </div>
             </OverviewRow>
             <OverviewRow heading={ov.outcomes.heading}>
               <p className={rowText}>{ov.outcomes.intro}</p>
