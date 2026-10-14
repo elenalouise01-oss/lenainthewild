@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import CutoutSticker from '@/components/CutoutSticker';
 import Footer from '@/components/Footer';
+import TapeMark from '@/components/TapeMark';
 import JsonLd from '@/components/JsonLd';
 import { breadcrumbs } from '@/lib/seo';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -74,12 +75,23 @@ function ChapterTitle({ children }: { children: string }) {
 
 // Highlighter pen over a few lines of the story, taking turns in lilac,
 // yellow and green
+const TAPED = ["it wasn't my first leap"];
 const MARKERS = ['rgba(203,161,212,0.7)', 'rgba(255,251,160,1)', 'rgba(190,229,176,0.9)'];
 function Highlighted({ text }: { text: string }) {
   const hit = storyPage.highlights.find((h) => text.includes(h));
   if (!hit) return <>{text}</>;
   const [before, after] = [text.slice(0, text.indexOf(hit)), text.slice(text.indexOf(hit) + hit.length)];
   const colour = MARKERS[storyPage.highlights.indexOf(hit) % MARKERS.length];
+  // The opening line gets a strip of tape that unrolls as you scroll to it
+  if (TAPED.includes(hit)) {
+    return (
+      <>
+        {before}
+        <TapeMark>{hit}</TapeMark>
+        {after}
+      </>
+    );
+  }
   return (
     <>
       {before}
