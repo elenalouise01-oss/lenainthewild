@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
+import Price from '@/components/Price';
 import Faq from '@/components/sections/Faq';
 import { breadcrumbs } from '@/lib/seo';
 import OfferNextStep from '@/components/OfferNextStep';
@@ -86,7 +87,9 @@ export default function FreedomFrequencyPage() {
               <div className="mt-10 flex flex-wrap items-center gap-5">
                 <JoinButton />
                 {tier.price && (
-                  <span className="rounded-full bg-zing-pink px-4 py-2 font-body text-sm font-bold text-bark">{tier.price}</span>
+                  <span className="rounded-full bg-zing-pink px-4 py-2 font-body text-sm font-bold text-bark">
+                    <Price price={tier.price} />
+                  </span>
                 )}
               </div>
             </div>

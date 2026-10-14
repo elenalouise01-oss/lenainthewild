@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useMotionValue, useSpring, type PanInfo } from 'framer-motion';
 import Image from 'next/image';
+import Price from '@/components/Price';
 import { freedomSeeker, hero, offerLinks, offerPages, waitlistOffers } from '@/content/site';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 
@@ -659,13 +660,3 @@ function OfferDetails({
   );
 }
 
-// A price like "$777 AUD": the currency is shown smaller so it fits the sticker.
-function Price({ price }: { price: string }) {
-  const [amount, currency] = price.split(' ');
-  return (
-    <>
-      {amount}
-      {currency && <span className="ml-[0.2em] text-[0.6em]">{currency}</span>}
-    </>
-  );
-}
