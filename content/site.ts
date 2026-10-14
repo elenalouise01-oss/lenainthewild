@@ -157,7 +157,7 @@ export const fiveDayReconnectPage = {
     {
       q: 'How much is it, and how do I get it?',
       a: [
-        'It’s $33. When you tap “I’m Ready” you’ll go to The Leap, where you pay and get access to the audio sessions.',
+        'It’s $33 AUD. When you tap “I’m Ready” you’ll go to The Leap, where you pay and get access to the audio sessions.',
       ],
     },
     {
@@ -346,7 +346,7 @@ export const freedomFrequencyPage = {
     {
       q: 'How is it different from The 5 Day Reconnect?',
       a: [
-        'The 5 Day Reconnect ($33) is five short audio sessions to help you slow down and hear yourself again. It’s a gentle first step.',
+        'The 5 Day Reconnect ($33 AUD) is five short audio sessions to help you slow down and hear yourself again. It’s a gentle first step.',
         'The Freedom Frequency goes deeper into the inner work: reconnecting with yourself, the patterns and fears keeping you stuck, and creating a life that feels like yours.',
       ],
       link: { href: '/5-day-reconnect', label: 'Explore The 5 Day Reconnect' },
@@ -386,14 +386,14 @@ export const freedomSeeker = {
     },
     {
       number: '(02)',
-      price: '$33',
+      price: '$33 AUD',
       title: 'The 5 Day Reconnect',
       body: 'An audio journey to help you slow down, get out of your head, and hear yourself again.',
       tags: ['Audio Journey', 'Self-Paced'],
     },
     {
       number: '(03)',
-      price: '$333',
+      price: '$333 AUD',
       banner: 'Coming soon',
       title: 'Your Freedom Roadmap',
       body: "A personal deep dive into where you're at and where you want to go. Send me your questions, and I'll create your own personalised roadmap to guide your next steps.",
@@ -600,7 +600,7 @@ export const faq: { label: string; heading: string; items: FaqItem[] } = {
       a: [
         'If you’re in the middle of burnout or just coming out of it, feeling stagnant and searching for answers and a way out, you’re in the right place.',
         'If you’ve been going around in circles for too long and you’re ready to break free, start with The Freedom Frequency ($777 AUD, waitlist open). It’s my self-paced course on reconnecting with yourself, releasing the patterns keeping you stuck and creating a life that feels like yours. It’s everything I learned going from stuck to free.',
-        'If you’d like to dip your toe in first, The 5 Day Reconnect ($33) is five short audio sessions to help you slow down and hear yourself again.',
+        'If you’d like to dip your toe in first, The 5 Day Reconnect ($33 AUD) is five short audio sessions to help you slow down and hear yourself again.',
       ],
       link: [
         { href: '/freedom-frequency#waitlist', label: 'Join The Freedom Frequency waitlist' },

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
+import Price from '@/components/Price';
 import Faq from '@/components/sections/Faq';
 import { SITE_NAME, absoluteUrl, breadcrumbs } from '@/lib/seo';
 import OfferNextStep from '@/components/OfferNextStep';
@@ -14,7 +15,7 @@ const buy = offerLinks[page.title];
 
 const title = 'The 5 Day Reconnect: A 5-Day Audio Reset for When You Feel Stuck';
 const description =
-  'Feeling stuck, burnt out or overwhelmed? Five short audio sessions, one a day, to slow down, get out of your head and reconnect with yourself. $33.';
+  'Feeling stuck, burnt out or overwhelmed? Five short audio sessions, one a day, to slow down, get out of your head and reconnect with yourself. $33 AUD.';
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -89,7 +90,9 @@ function BuyButton({ dark = false }: { dark?: boolean }) {
         {page.cta} →
       </a>
       {tier.price && (
-        <span className={`rounded-full px-4 py-2 font-body text-sm font-bold ${dark ? 'bg-cream text-bark' : 'bg-sage text-bark'}`}>{tier.price}</span>
+        <span className={`rounded-full px-4 py-2 font-body text-sm font-bold ${dark ? 'bg-cream text-bark' : 'bg-sage text-bark'}`}>
+          <Price price={tier.price} />
+        </span>
       )}
     </div>
   );

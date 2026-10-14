@@ -21,7 +21,7 @@ and `content/journal.ts`.
   - "sold to want"
   - "coach" as her positioning
 - **Don't invent anything:** no features, prices, testimonials, credentials or
-  personal experiences. The 5 Day Reconnect is $33 audio; The Freedom Frequency
+  personal experiences. The 5 Day Reconnect is $33 AUD audio; The Freedom Frequency
   is $777 AUD with the waitlist open.
 - **Journal URLs:** never change a published article's slug without adding a
   permanent redirect.
@@ -50,7 +50,7 @@ and `content/journal.ts`.
   Ask Lena for any facts the site doesn't already state: delivery format,
   length or duration, and outcomes for The Freedom Frequency. Don't invent
   them. The 5 Day Reconnect is known: five short audio sessions, one a day, a
-  few minutes each, self-paced, $33 via The Leap.
+  few minutes each, self-paced, $33 AUD via The Leap.
 - **The Freedom Frequency details (from Lena, for the offer page):**
   - **Format:** a self-paced online experience in a private course portal,
     accessed on computer or phone. The platform isn't confirmed (possibly The
