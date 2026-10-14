@@ -155,21 +155,25 @@ export default function FiveDayReconnectPage() {
               <p className="mt-6 max-w-2xl font-body text-base leading-relaxed text-umber sm:text-lg">{page.inside}</p>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
-              <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-5">
+              <ol className="mt-14 space-y-14 sm:space-y-20">
                 {page.days.map((day, i) => (
-                  <div
-                    key={day}
-                    className={`flex aspect-square flex-col items-center justify-center rounded-sm text-bark shadow-sm ${
-                      i % 2 ? 'bg-sage/40' : 'bg-sage/70'
-                    }`}
-                  >
-                    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden="true">
-                      <path d="M7 4l13 8-13 8z" />
-                    </svg>
-                    <p className="mt-3 font-display text-lg italic">{day}</p>
-                  </div>
+                  <li key={day.title} className="grid items-center gap-6 sm:grid-cols-2 sm:gap-10">
+                    {/* The photo as a print, alternating sides on wider screens */}
+                    <div className={`bg-cream p-2 pb-8 shadow-lg ${i % 2 ? 'rotate-2 sm:order-2' : '-rotate-2'}`}>
+                      <div className="relative aspect-[4/3] overflow-hidden">
+                        <Image src={day.image} alt={day.alt} fill sizes="(min-width: 640px) 22rem, 90vw" className="object-cover" />
+                      </div>
+                    </div>
+                    <div>
+                      <span className="inline-block rounded-full bg-sage px-4 py-1.5 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark">
+                        Day {i + 1}
+                      </span>
+                      <h3 className="mt-4 font-display text-2xl leading-snug text-bark sm:text-3xl">{day.title}</h3>
+                      <p className="mt-3 font-body text-base leading-relaxed text-umber">{day.body}</p>
+                    </div>
+                  </li>
                 ))}
-              </div>
+              </ol>
             </ScrollReveal>
           </div>
         </section>

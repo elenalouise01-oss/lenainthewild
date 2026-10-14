@@ -103,7 +103,38 @@ export const fiveDayReconnectPage = {
   ],
   insideHeading: 'What’s inside',
   inside: 'Five short audio sessions: one per day, each one a simple tool to help you slow down, tune in and reconnect with yourself.',
-  days: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'],
+  days: [
+    {
+      title: 'The Non-Negotiable That Shifts Your Whole Day',
+      body: 'How to begin your day grounded instead of reactive — and build a meditation habit that actually lasts.',
+      image: '/images/reconnect/day-1.jpg',
+      alt: 'Feet up on a clifftop overlooking the ocean and headlands',
+    },
+    {
+      title: 'The Practice That Attracts Abundance',
+      body: 'How to use gratitude as a tool for abundance — without it feeling like another thing on your to-do list.',
+      image: '/images/reconnect/day-2.jpg',
+      alt: 'A double rainbow over a quiet suburban street after rain',
+    },
+    {
+      title: 'Move Like Nobody’s Watching',
+      body: 'How to use playful movement to quiet your mind, lift your energy and reconnect with yourself.',
+      image: '/images/reconnect/day-3.jpg',
+      alt: 'Lena laughing on a rope swing on a white sand beach',
+    },
+    {
+      title: 'The Self-Care That Actually Refills You',
+      body: 'How to identify what truly recharges you, and make it non-negotiable.',
+      image: '/images/reconnect/day-4.jpg',
+      alt: 'A beach towel, journal and book on the rocks above a sunny beach',
+    },
+    {
+      title: 'Coming Home to Yourself',
+      body: 'How to reconnect with your intuition and start trusting the quiet voice that’s been guiding you all along.',
+      image: '/images/reconnect/day-5.jpg',
+      alt: 'A pink-lit cloud above treetops at sunset',
+    },
+  ],
   notAnother:
     'This isn’t another self-improvement course. It’s five days of real tools I wish I’d had sooner, collected over years of being stuck, investing in healers, coaches and modalities, and eventually finding my way out.',
   minutes: 'And it starts with just a few minutes a day.',
