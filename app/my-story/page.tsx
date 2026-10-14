@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import CutoutSticker from '@/components/CutoutSticker';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import { breadcrumbs } from '@/lib/seo';
@@ -126,15 +127,16 @@ export default function MyStoryPage() {
                 {storyPage.paragraphs.map((p) =>
                   typeof p !== 'string' ? (
                     p.cutout ? (
-                      // A cut-out of Lena beside the text, with a round sticker
-                      <figure key={p.image} className="relative mx-auto w-56 sm:float-right sm:-mr-24 sm:mb-2 sm:ml-8 sm:mt-2 sm:w-60">
-                        <Image src={p.image} alt={p.alt} width={p.width} height={p.height} sizes="16rem" className="h-auto w-full drop-shadow-[0_10px_14px_rgba(59,45,14,0.25)]" />
-                        {p.caption && (
-                          <figcaption className="absolute -left-8 top-[4%] flex h-24 w-24 -rotate-12 items-center justify-center rounded-full bg-zing-yellow p-3 text-center font-script text-base leading-[0.95] text-bark shadow-md">
-                            {p.caption}
-                          </figcaption>
-                        )}
-                      </figure>
+                      // A cut-out of Lena beside the text, stuck on like a sticker
+                      <CutoutSticker
+                        key={p.image}
+                        src={p.image}
+                        alt={p.alt}
+                        width={p.width}
+                        height={p.height}
+                        caption={p.caption}
+                        className="mx-auto w-56 sm:float-right sm:-mr-24 sm:mb-2 sm:ml-8 sm:mt-2 sm:w-60"
+                      />
                     ) : (
                       // A photo in the story: a tilted print, taped on, with a handwritten caption
                       <figure key={p.image} className="relative mx-auto w-60 -rotate-2 bg-white p-2.5 pb-5 shadow-lg sm:float-left sm:-ml-24 sm:mb-4 sm:mr-8 sm:mt-2 sm:w-64">
