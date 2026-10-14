@@ -373,7 +373,7 @@ export function ComeSayHi() {
                 ))}
               </div>
               {/* Polaroid tipped over the top */}
-              <Polaroid className="absolute left-[23%] top-[3%] z-20 h-[40%] w-[32%] rotate-[14deg]" objectPosition="50% 60%" src="/images/road/road-6.jpg" sizes="180px" />
+              <Polaroid className="absolute left-[23%] top-[3%] z-20 h-[40%] w-[32%] rotate-[14deg]" objectPosition="50% 60%" src="/images/road/road-4.jpg" sizes="180px" />
               {/* Main print */}
               <div className="absolute bottom-[12%] right-0 z-10 h-[72%] w-[56%] -rotate-2 bg-cream p-2 shadow-2xl">
                 <div className="relative h-full w-full overflow-hidden">
@@ -392,7 +392,7 @@ export function ComeSayHi() {
               />
               <div className="absolute bottom-[2%] left-[7%] z-40 h-[27%] w-[25%] -rotate-[8deg] bg-cream p-1.5 shadow-xl">
                 <div className="relative h-full w-full overflow-hidden">
-                  <Image src="/images/road/road-4.jpg" alt="" fill sizes="140px" className="object-cover" style={{ objectPosition: '50% 60%' }} aria-hidden="true" />
+                  <Image src="/images/road/banh-mi-scooter.jpg" alt="" fill sizes="140px" className="object-cover" style={{ objectPosition: '50% 45%' }} aria-hidden="true" />
                 </div>
               </div>
               {/* Yellow "say hi!" sticker */}
