@@ -125,7 +125,7 @@ export default function OffersCarousel() {
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-sand to-transparent sm:h-32" />
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-sand to-transparent sm:h-32" />
 
-      <div className="relative mb-8 px-6 text-center sm:absolute sm:left-10 sm:top-10 sm:mb-0 sm:px-0 sm:text-left">
+      <div className="relative mb-8 mt-12 px-6 text-center sm:absolute sm:left-10 sm:top-24 sm:mt-0 sm:mb-0 sm:px-0 sm:text-left">
         <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-bark/70">
           {freedomSeeker.label}
         </p>

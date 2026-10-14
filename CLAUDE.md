@@ -25,6 +25,8 @@ and `content/journal.ts`.
   is $555 with the waitlist open.
 - **Journal URLs:** never change a published article's slug without adding a
   permanent redirect.
+- **Batch changes:** save and commit changes locally, and only push when Lena
+  says "push". Every push deploys the live site.
 - **Pushing:** push to `main` only. Pushing the same commit to two branches at
   once made Vercel fail with "Git information retrieval failed".
 
