@@ -154,9 +154,9 @@ export default function MyStoryPage() {
                       />
                     ) : p.small ? (
                       // A small, narrow print tucked into the text
-                      <figure key={p.image} className="relative float-right mb-2 ml-4 mt-1.5 w-24 rotate-3 bg-white p-1 pb-4 shadow-lg sm:-mr-12 sm:ml-6 sm:w-32 sm:p-1.5 sm:pb-6">
+                      <figure key={p.image} className="relative float-right mb-2 ml-4 mt-1.5 w-20 rotate-3 bg-white p-1 pb-3.5 shadow-lg sm:-mr-10 sm:ml-6 sm:w-24 sm:pb-5">
                         <div className="relative aspect-[3/4] overflow-hidden">
-                          <Image src={p.image} alt={p.alt} fill sizes="8rem" className="object-cover" style={{ objectPosition: '46% 50%' }} />
+                          <Image src={p.image} alt={p.alt} fill sizes="8rem" className="object-cover" style={{ objectPosition: '30% 50%' }} />
                         </div>
                       </figure>
                     ) : (
