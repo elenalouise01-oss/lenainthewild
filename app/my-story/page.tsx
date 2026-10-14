@@ -31,17 +31,34 @@ export const metadata: Metadata = {
 const outlineButton =
   'inline-flex items-center gap-2 border border-bark px-6 py-3 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark transition-colors hover:bg-bark hover:text-cream';
 
-// A few chapter titles get a scrapbook highlight, taking turns between a
-// brush stroke underneath and a strip of colour behind the words.
-const STRIPS = ['bg-zing-yellow', 'bg-sage/80', 'bg-zing-green'];
-const STROKES = ['text-sage', 'text-zing-green'];
-function ChapterTitle({ index, children }: { index: number; children: string }) {
-  if (index % 2 === 1) {
-    return <span className={`box-decoration-clone px-3 py-0.5 leading-[1.5] ${STRIPS[((index - 1) / 2) % STRIPS.length]}`}>{children}</span>;
+// Scrapbook chapter titles: some on a strip of torn tape (tilted a little),
+// some with a brush stroke underneath, and the rest plain, so the page
+// breathes. Titles not listed here stay plain.
+type Look = { kind: 'tape'; colour: string; tilt: string } | { kind: 'brush'; colour: string };
+const CHAPTER_LOOKS: Record<string, Look> = {
+  'Burning out in Bondi': { kind: 'tape', colour: 'bg-sage/80', tilt: '-rotate-2' },
+  'My first solo trip to Bali': { kind: 'brush', colour: 'text-zing-green' },
+  'Moving to Bali at 36 with no plan': { kind: 'tape', colour: 'bg-zing-yellow', tilt: 'rotate-1' },
+  'Down to my last $500 in Ubud': { kind: 'brush', colour: 'text-sage' },
+  'The turning point': { kind: 'tape', colour: 'bg-zing-green', tilt: '-rotate-1' },
+};
+// Torn ends, like a strip of washi tape
+const TAPE_EDGE =
+  'polygon(0 6%, 2% 0, 98% 4%, 100% 0, 99% 30%, 100% 55%, 98% 80%, 100% 100%, 3% 96%, 0 100%, 1% 70%, 0 45%, 2% 22%)';
+
+function ChapterTitle({ children }: { children: string }) {
+  const look = CHAPTER_LOOKS[children];
+  if (!look) return <>{children}</>;
+  if (look.kind === 'tape') {
+    return (
+      <span className={`inline-block ${look.tilt} ${look.colour} px-4 py-1 shadow-sm`} style={{ clipPath: TAPE_EDGE }}>
+        {children}
+      </span>
+    );
   }
   return (
     <span className="relative inline-block">
-      <svg aria-hidden="true" viewBox="0 0 300 20" preserveAspectRatio="none" className={`absolute -bottom-1.5 left-0 h-5 w-full ${STROKES[(index / 2) % STROKES.length]}`}>
+      <svg aria-hidden="true" viewBox="0 0 300 20" preserveAspectRatio="none" className={`absolute -bottom-1.5 left-0 h-5 w-full ${look.colour}`}>
         <path d="M4 10 C 80 8, 160 12, 220 10 S 280 9, 296 10" stroke="currentColor" strokeWidth="12" fill="none" strokeLinecap="round" />
       </svg>
       <span className="relative">{children}</span>
@@ -97,11 +114,7 @@ export default function MyStoryPage() {
                     )
                   ) : p.startsWith('## ') ? (
                     <h2 key={p} className="clear-both pt-8 font-display text-3xl leading-snug text-bark">
-                      {storyPage.highlighted.includes(p.slice(3)) ? (
-                        <ChapterTitle index={storyPage.highlighted.indexOf(p.slice(3))}>{p.slice(3)}</ChapterTitle>
-                      ) : (
-                        p.slice(3)
-                      )}
+                      <ChapterTitle>{p.slice(3)}</ChapterTitle>
                     </h2>
                   ) : (
                     <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber sm:text-lg">
