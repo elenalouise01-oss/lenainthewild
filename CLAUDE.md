@@ -47,6 +47,22 @@ and `content/journal.ts`.
   length or duration, and outcomes for The Freedom Frequency. Don't invent
   them. The 5 Day Reconnect is known: five short audio sessions, one a day, a
   few minutes each, self-paced, $33 via The Leap.
+- **The Freedom Frequency details (from Lena, for the offer page):**
+  - **Format:** a self-paced online experience in a private course portal,
+    accessed on computer or phone. The platform isn't confirmed (possibly The
+    Leap), so don't name it on the site.
+  - **Inside:** video lessons, guided audio practices (reflection,
+    visualisation, gentle somatic awareness), a digital workbook, an
+    integration exercise per module, and built-in accountability (progress
+    trackers, commitments, reflection prompts).
+  - **Not included:** no live calls or community. Never imply either.
+  - **Length:** a suggested six weeks, with no deadline:
+    1. Reconnect
+    2. Understand
+    3. Release
+    4. Rediscover
+    5. Recreate
+    6. Integrate (a personal 30-day action plan)
 - **Link style:** Lena isn't keen on the lilac underline on text links. Options
   A–D were mocked up (A: fine brown line, B: arrow only, C: editorial dash,
   D: outline pill). Waiting on her choice.
