@@ -152,28 +152,30 @@ export default function FiveDayReconnectPage() {
 
         {/* What's inside */}
         <section className="bg-sand px-6 py-24 sm:py-32">
-          <div className="mx-auto max-w-3xl">
+          <div className="mx-auto max-w-6xl">
             <ScrollReveal>
               <h2 className="font-display text-3xl leading-tight text-bark sm:text-5xl">{page.insideHeading}</h2>
               <p className="mt-6 max-w-2xl font-body text-base leading-relaxed text-umber sm:text-lg">{page.inside}</p>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
-              <ol className="mt-14 space-y-14 sm:space-y-20">
+              <ol className="mt-12 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
                 {page.days.map((day, i) => (
-                  <li key={day.title} className="grid items-center gap-6 sm:grid-cols-2 sm:gap-10">
-                    {/* The photo as a print, alternating sides on wider screens */}
-                    <div className={`bg-cream p-2 pb-8 shadow-lg ${i % 2 ? 'rotate-2 sm:order-2' : '-rotate-2'}`}>
-                      <div className="relative aspect-[4/3] overflow-hidden">
-                        <Image src={day.image} alt={day.alt} fill sizes="(min-width: 640px) 22rem, 90vw" className="object-cover" />
+                  <li key={day.title}>
+                    {/* A little square for each day: the photo, with the play button and day on top */}
+                    <div className="relative aspect-square overflow-hidden rounded-sm shadow-sm">
+                      <Image src={day.image} alt={day.alt} fill sizes="(min-width: 1024px) 13rem, (min-width: 640px) 30vw, 45vw" className="object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-bark/70 via-transparent to-transparent" />
+                      <div className="absolute inset-x-0 bottom-3 flex items-center justify-center gap-2.5 text-cream">
+                        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sage text-bark shadow-md">
+                          <svg viewBox="0 0 24 24" className="ml-0.5 h-4 w-4" fill="currentColor" aria-hidden="true">
+                            <path d="M7 4l13 8-13 8z" />
+                          </svg>
+                        </span>
+                        <span className="font-display text-xl italic">Day {i + 1}</span>
                       </div>
                     </div>
-                    <div>
-                      <span className="inline-block rounded-full bg-sage px-4 py-1.5 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark">
-                        Day {i + 1}
-                      </span>
-                      <h3 className="mt-4 font-display text-2xl leading-snug text-bark sm:text-3xl">{day.title}</h3>
-                      <p className="mt-3 font-body text-base leading-relaxed text-umber">{day.body}</p>
-                    </div>
+                    <h3 className="mt-4 font-display text-lg leading-snug text-bark">{day.title}</h3>
+                    <p className="mt-1.5 font-body text-sm leading-relaxed text-umber">{day.body}</p>
                   </li>
                 ))}
               </ol>
