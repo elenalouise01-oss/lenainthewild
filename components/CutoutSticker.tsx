@@ -19,7 +19,6 @@ export default function CutoutSticker({
   height,
   caption,
   className = '',
-  hug = false,
 }: {
   src: string;
   alt: string;
@@ -27,11 +26,7 @@ export default function CutoutSticker({
   height: number;
   caption?: string;
   className?: string;
-  // let the text follow the outline of the cut-out (for a floated cut-out)
-  hug?: boolean;
 }) {
-  // When floated, let the text follow the outline of the cut-out itself
-  const wrap = { shapeOutside: `url(${src})`, shapeImageThreshold: 0.3, shapeMargin: '14px' } as const;
   const reduced = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
   const [stuck, setStuck] = useState(false);
@@ -56,7 +51,7 @@ export default function CutoutSticker({
   const show = reduced || stuck;
 
   return (
-    <figure ref={ref} className={`relative ${className}`} style={hug ? wrap : undefined}>
+    <figure ref={ref} className={`relative ${className}`}>
       <motion.div
         initial={false}
         animate={show ? (reduced ? { opacity: 1, rotate: -2 } : scrapbookFrames(-2, 1)) : hidden}

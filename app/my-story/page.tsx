@@ -150,10 +150,9 @@ export default function MyStoryPage() {
                         width={p.width}
                         height={p.height}
                         caption={p.caption}
-                        hug={p.side === 'left'}
                         className={
                           p.side === 'left'
-                            ? 'float-left -ml-2 mb-1 mr-1 mt-1 w-32 sm:-ml-20 sm:w-44'
+                            ? 'w-40 sm:-ml-16 sm:w-48'
                             : 'mx-auto w-56 sm:float-right sm:-mr-24 sm:mb-2 sm:ml-8 sm:mt-2 sm:w-60'
                         }
                       />
