@@ -457,7 +457,7 @@ export const faq: { label: string; heading: string; items: FaqItem[] } = {
     {
       q: 'Why do I keep repeating the same patterns?',
       a: [
-        'Usually because those patterns once kept you safe. People-pleasing, perfectionism, shrinking around certain people or rejecting others before they can reject you often start as protection, and they keep running long after you need them.',
+        'Usually because those patterns once kept you safe. Some of the most common are people-pleasing, perfectionism, shrinking around certain people and rejecting others before they can reject you. They often start as protection, and keep running long after you need them.',
         'The shift starts with awareness: catching the pattern as it happens, getting curious about where it came from and meeting yourself with compassion. Then you get to choose differently.',
       ],
       link: { href: '/journal/living-out-an-old-story', label: 'Read: I Was Still Living Out a Story That Was No Longer Mine' },
