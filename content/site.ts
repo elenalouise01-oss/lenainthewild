@@ -851,7 +851,10 @@ export const lifeDesignPage = {
 
 // The My Story page (/my-story). A paragraph starting with "## " is a
 // subheading.
-export const storyPage = {
+// A photo placed between paragraphs of the story.
+type StoryPhoto = { image: string; width: number; height: number; alt: string; caption?: string };
+
+export const storyPage: { storyTitle: string; paragraphs: (string | StoryPhoto)[]; cta: string; closing: string } = {
   storyTitle: 'My Story',
   paragraphs: [
     "Hi, I'm Lena. I was 36 years old when I uprooted my life from Sydney to Bali and leapt into the unknown, but it wasn't my first leap. I first threw my life up in the air at 21, when I'd just been dumped by my high school boyfriend of 8 years. I'd spent years managing a restaurant for his parents while working my way through a graphic design degree, and with my degree finished and the relationship over, I decided to leave it all behind and move to a remote island in the Whitsundays, then another, spending two years living the island life before moving to Canada on a whim after meeting a Canadian girlie who told me I should come over (23 year old me: yeah ok, why not!).",
@@ -875,6 +878,13 @@ export const storyPage = {
     "Nine months later I needed a break again, so I ran back to Bali. I already knew I wanted to move, I just didn't have the \"right plan\". This trip was even better than the first. Bali has an energy like nowhere else. Some say it's the ley lines, but all I know is that something about this island fast-forwards your healing and opens you up to what's possible. On this trip I learnt how to surf and made so many new friends, and this time I was like, no, this is it, I'm committing to the move. I gave myself six months once I got home to save some money, and then I was out of there no matter what.",
     "It ended up taking me eight months, including the three months' notice I had to give. There was no huge moment that pushed me over the edge, but I remember the day clearly. I was at the gym with a client when an entitled idiot got in our faces, trying to staunch us for taking too long on the equipment, and I remember laughing to myself thinking, ok universe, I get it, we're done here, I'm not putting up with this shit anymore. (Honestly, I'd thank him now.) That afternoon I asked the universe and my grandma, who passed a long time ago, for a sign. I asked to see a rainbow in the next 24 hours, and if I saw one, it meant yes to quitting my job and moving to Bali.",
     "That very afternoon after work, I was meant to go to the gym, but instead I felt called to go down to the beach. It was raining and I was like, are you sure, intuition? But I just felt I needed to go. And as I sat there in the rain on the edge of the cliff overlooking Balmoral beach, there it was, my sign, a beautiful big rainbow. The next day I resigned.",
+    {
+      image: '/images/story-grandma-yes.jpg',
+      width: 1125,
+      height: 1070,
+      alt: 'Lena’s hand resting on her grandma’s memorial plaque beside an oracle card reading “Yes, just say yes”',
+      caption: 'Grandma’s seal of approval',
+    },
     "And of course, once I'd finally resigned, the universe decided to throw all kinds of tests my way, dangling high-paying opportunities, collabs, gifts, all the reasons to stay. I backpedalled on my decision a few times and even convinced myself to take a job in Sydney for a week. The uncertainty of the leap and not having a proper plan, especially for my income, had me changing my mind every two seconds, and I was letting other people's opinions pull me back towards safety way too easily. It was a difficult period because I kept doubting myself, and I guess that's what happens when you no longer have that \"safety\", your mind is just trying to keep you safe. But I stuck to my decision.",
     "I ran myself into the ground one more time before I went, selling everything I owned and packing up my whole apartment and life all on my own while juggling work, and then before I knew it, the day was finally here. I boarded that one-way flight to Bali and I never looked back.",
     '## Moving to Bali at 36 with no plan',

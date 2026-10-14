@@ -58,7 +58,13 @@ export default function MyStoryPage() {
               <h1 className="font-display text-4xl leading-tight text-bark sm:text-6xl">{storyPage.storyTitle}</h1>
               <div className="mt-8 space-y-6">
                 {storyPage.paragraphs.map((p) =>
-                  p.startsWith('## ') ? (
+                  typeof p !== 'string' ? (
+                    // A photo in the story, as a slightly tilted print with a handwritten caption
+                    <figure key={p.image} className="mx-auto max-w-md -rotate-1 bg-white p-3 pb-4 shadow-lg sm:my-10">
+                      <Image src={p.image} alt={p.alt} width={p.width} height={p.height} sizes="(min-width: 640px) 28rem, 90vw" className="h-auto w-full" />
+                      {p.caption && <figcaption className="mt-3 text-center font-script text-2xl text-bark">{p.caption}</figcaption>}
+                    </figure>
+                  ) : p.startsWith('## ') ? (
                     <h2 key={p} className="pt-8 font-display text-3xl leading-snug text-bark">
                       {p.slice(3)}
                     </h2>
