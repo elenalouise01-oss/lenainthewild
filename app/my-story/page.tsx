@@ -31,17 +31,17 @@ export const metadata: Metadata = {
 const outlineButton =
   'inline-flex items-center gap-2 border border-bark px-6 py-3 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark transition-colors hover:bg-bark hover:text-cream';
 
-// Chapter titles take turns, like a scrapbook: a strip of colour behind the
-// words, then a brush stroke underneath, in lilac, yellow and green.
-const STRIPS = ['bg-sage/80', 'bg-zing-yellow', 'bg-zing-green'];
-const STROKES = ['text-zing-green', 'text-sage'];
+// A few chapter titles get a scrapbook highlight, taking turns between a
+// brush stroke underneath and a strip of colour behind the words.
+const STRIPS = ['bg-zing-yellow', 'bg-sage/80', 'bg-zing-green'];
+const STROKES = ['text-sage', 'text-zing-green'];
 function ChapterTitle({ index, children }: { index: number; children: string }) {
-  if (index % 2 === 0) {
-    return <span className={`box-decoration-clone px-3 py-0.5 leading-[1.5] ${STRIPS[(index / 2) % STRIPS.length]}`}>{children}</span>;
+  if (index % 2 === 1) {
+    return <span className={`box-decoration-clone px-3 py-0.5 leading-[1.5] ${STRIPS[((index - 1) / 2) % STRIPS.length]}`}>{children}</span>;
   }
   return (
     <span className="relative inline-block">
-      <svg aria-hidden="true" viewBox="0 0 300 20" preserveAspectRatio="none" className={`absolute -bottom-1.5 left-0 h-5 w-full ${STROKES[((index - 1) / 2) % STROKES.length]}`}>
+      <svg aria-hidden="true" viewBox="0 0 300 20" preserveAspectRatio="none" className={`absolute -bottom-1.5 left-0 h-5 w-full ${STROKES[(index / 2) % STROKES.length]}`}>
         <path d="M4 10 C 80 8, 160 12, 220 10 S 280 9, 296 10" stroke="currentColor" strokeWidth="12" fill="none" strokeLinecap="round" />
       </svg>
       <span className="relative">{children}</span>
@@ -97,9 +97,11 @@ export default function MyStoryPage() {
                     )
                   ) : p.startsWith('## ') ? (
                     <h2 key={p} className="clear-both pt-8 font-display text-3xl leading-snug text-bark">
-                      <ChapterTitle index={storyPage.paragraphs.filter((x) => typeof x === 'string' && x.startsWith('## ')).indexOf(p)}>
-                        {p.slice(3)}
-                      </ChapterTitle>
+                      {storyPage.highlighted.includes(p.slice(3)) ? (
+                        <ChapterTitle index={storyPage.highlighted.indexOf(p.slice(3))}>{p.slice(3)}</ChapterTitle>
+                      ) : (
+                        p.slice(3)
+                      )}
                     </h2>
                   ) : (
                     <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber sm:text-lg">

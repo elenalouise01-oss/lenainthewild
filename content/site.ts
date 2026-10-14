@@ -855,8 +855,16 @@ export const lifeDesignPage = {
 // `cutout` photos have no background and sit beside the text with a sticker.
 type StoryPhoto = { image: string; width: number; height: number; alt: string; caption?: string; cutout?: boolean };
 
-export const storyPage: { storyTitle: string; paragraphs: (string | StoryPhoto)[]; cta: string; closing: string } = {
+export const storyPage: {
+  storyTitle: string;
+  highlighted: string[];
+  paragraphs: (string | StoryPhoto)[];
+  cta: string;
+  closing: string;
+} = {
   storyTitle: 'My Story',
+  // Only these chapter titles get the scrapbook highlight; the rest stay plain.
+  highlighted: ['Deciding to leave Sydney', 'Moving to Bali at 36 with no plan', 'The turning point'],
   paragraphs: [
     "Hi, I'm Lena. I was 36 years old when I uprooted my life from Sydney to Bali and leapt into the unknown, but it wasn't my first leap. I first threw my life up in the air at 21, when I'd just been dumped by my high school boyfriend of 8 years. I'd spent years managing a restaurant for his parents while working my way through a graphic design degree, and with my degree finished and the relationship over, I decided to leave it all behind and move to a remote island in the Whitsundays, then another, spending two years living the island life before moving to Canada on a whim after meeting a Canadian girlie who told me I should come over (23 year old me: yeah ok, why not!).",
     '## Rock bottom, and a new start as a personal trainer',
