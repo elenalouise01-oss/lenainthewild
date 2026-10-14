@@ -115,15 +115,13 @@ export default function MyStoryPage() {
         </div>
 
         {/* Tape across the bottom of the photo */}
-        <TapeBanner text="leaping into the unknown" className="relative z-10 -mt-12 -mb-12" />
-
-        {/* A song to read along to */}
-        <Listen className="pb-4 pt-24 sm:pt-28" />
+        <TapeBanner text="leaping into the unknown" mark="butterfly" className="relative z-10 -mt-12 -mb-12" />
 
         <section className="bg-cream px-6 py-24 sm:py-32">
           <div className="mx-auto max-w-2xl">
             <ScrollReveal>
               <h1 className="font-display text-4xl leading-tight text-bark sm:text-6xl">{storyPage.storyTitle}</h1>
+              <p className="mt-3 font-script text-xl text-bark/80">{storyPage.song}</p>
               <div className="mt-8 space-y-6">
                 {storyPage.paragraphs.map((p) =>
                   typeof p !== 'string' ? (
@@ -197,6 +195,8 @@ export default function MyStoryPage() {
             </div>
           </ScrollReveal>
         </section>
+
+        <Listen />
 
         <Newsletter />
       </main>

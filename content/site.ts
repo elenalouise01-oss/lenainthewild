@@ -857,12 +857,14 @@ type StoryPhoto = { image: string; width: number; height: number; alt: string; c
 
 export const storyPage: {
   storyTitle: string;
+  song: string;
   highlights: string[];
   paragraphs: (string | StoryPhoto)[];
   cta: string;
   closing: string;
 } = {
   storyTitle: 'My Story',
+  song: '🎧 “Riptide” - Vance Joy',
   // Lines inside the story marked with a highlighter (wording unchanged)
   highlights: [
     "it wasn't my first leap",
