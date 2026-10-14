@@ -293,7 +293,10 @@ export const freedomFrequencyPage = {
     {
       q: 'How does it work?',
       a: [
-        'It’s an embodied, self-paced online course, so you can move through it in your own time, wherever you are in the world.',
+        'The Freedom Frequency is an embodied, self-paced online course you can move through in your own time, wherever you are in the world.',
+        'The journey combines short video lessons, guided audio practices, journalling prompts and practical exercises. Through shadow work, self-inquiry and embodied practices, you’ll explore the patterns, fears and beliefs influencing your life, reconnect with what you genuinely want, and begin turning those insights into meaningful action.',
+        'You’ll also explore your relationship with freedom and abundance, helping you question old assumptions and develop a vision for a life that feels more aligned with who you are.',
+        'The course follows a suggested six-week structure, but you can take longer whenever you need to.',
       ],
     },
     {
