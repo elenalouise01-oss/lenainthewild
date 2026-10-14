@@ -321,7 +321,7 @@ function SleeveArt({
         className={`mt-[5%] font-body text-[clamp(0.7rem,2.2vw,1.05rem)] font-bold leading-none${tier.price ? '' : ' invisible'}`}
         aria-hidden={tier.price ? undefined : true}
       >
-        {tier.price ?? '$'}
+        {tier.price ? <Price price={tier.price} /> : '$'}
       </span>
     </>
   );
@@ -629,7 +629,7 @@ function OfferDetails({
                   className="rounded-full px-3 py-1 font-body text-xs font-bold text-bark"
                   style={{ backgroundColor: look.sticker }}
                 >
-                  {tier.price}
+                  <Price price={tier.price} />
                 </span>
               )}
               {tier.banner && (
@@ -656,5 +656,16 @@ function OfferDetails({
         </div>
       </div>
     </motion.div>
+  );
+}
+
+// A price like "$777 AUD": the currency is shown smaller so it fits the sticker.
+function Price({ price }: { price: string }) {
+  const [amount, currency] = price.split(' ');
+  return (
+    <>
+      {amount}
+      {currency && <span className="ml-[0.2em] text-[0.6em]">{currency}</span>}
+    </>
   );
 }

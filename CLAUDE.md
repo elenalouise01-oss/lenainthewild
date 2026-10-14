@@ -22,7 +22,7 @@ and `content/journal.ts`.
   - "coach" as her positioning
 - **Don't invent anything:** no features, prices, testimonials, credentials or
   personal experiences. The 5 Day Reconnect is $33 audio; The Freedom Frequency
-  is $555 with the waitlist open.
+  is $777 AUD with the waitlist open.
 - **Journal URLs:** never change a published article's slug without adding a
   permanent redirect.
 - **Batch changes:** save and commit changes locally, and only push when Lena

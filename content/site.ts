@@ -340,7 +340,7 @@ export const freedomFrequencyPage = {
     {
       q: 'How much is it, and when does it open?',
       a: [
-        'The Freedom Frequency is $555. It isn’t open yet, so join the waitlist and I’ll let you know as soon as it opens.',
+        'The Freedom Frequency is $777 AUD. It isn’t open yet, so join the waitlist and I’ll let you know as soon as it opens.',
       ],
     },
     {
@@ -379,7 +379,7 @@ export const freedomSeeker = {
   tiers: [
     {
       number: '(01)',
-      price: '$555',
+      price: '$777 AUD',
       title: 'The Freedom Frequency',
       body: "An embodied, self-paced course to reconnect with yourself, release the patterns keeping you stuck and create the freedom you've been craving.",
       tags: ['Embodied Practice', 'Self-Paced Course'],
@@ -599,7 +599,7 @@ export const faq: { label: string; heading: string; items: FaqItem[] } = {
       q: 'Where do I start?',
       a: [
         'If you’re in the middle of burnout or just coming out of it, feeling stagnant and searching for answers and a way out, you’re in the right place.',
-        'If you’ve been going around in circles for too long and you’re ready to break free, start with The Freedom Frequency ($555, waitlist open). It’s my self-paced course on reconnecting with yourself, releasing the patterns keeping you stuck and creating a life that feels like yours. It’s everything I learned going from stuck to free.',
+        'If you’ve been going around in circles for too long and you’re ready to break free, start with The Freedom Frequency ($777 AUD, waitlist open). It’s my self-paced course on reconnecting with yourself, releasing the patterns keeping you stuck and creating a life that feels like yours. It’s everything I learned going from stuck to free.',
         'If you’d like to dip your toe in first, The 5 Day Reconnect ($33) is five short audio sessions to help you slow down and hear yourself again.',
       ],
       link: [
