@@ -854,12 +854,14 @@ export const lifeDesignPage = {
 // A photo placed between paragraphs of the story.
 // `cutout` photos have no background and sit beside the text with a sticker.
 type StoryPhoto = { image: string; width: number; height: number; alt: string; caption?: string; cutout?: boolean };
+// A row of polaroids that pop up onto the page
+type StoryPolaroids = { polaroids: { image: string; alt: string; pos?: string }[] };
 
 export const storyPage: {
   storyTitle: string;
   song: string;
   highlights: string[];
-  paragraphs: (string | StoryPhoto)[];
+  paragraphs: (string | StoryPhoto | StoryPolaroids)[];
   cta: string;
   closing: string;
 } = {
@@ -876,6 +878,12 @@ export const storyPage: {
   ],
   paragraphs: [
     "Hi, I'm Lena. I was 36 years old when I uprooted my life from Sydney to Bali and leapt into the unknown, but it wasn't my first leap. I first threw my life up in the air at 21, when I was going through a break up with my high school boyfriend of 8 years. I'd spent years managing a restaurant for his parents while working my way through a graphic design degree, and with my degree finished and the relationship over, I decided to leave it all behind and move to a remote island in the Whitsundays, then another, spending two years living the island life before moving to Canada on a whim after meeting a Canadian girlie who told me I should come over (23 year old me: yeah ok, why not!).",
+    {
+      polaroids: [
+        { image: '/images/story/canada-snowboard.jpg', alt: 'Lena sitting in the snow with her snowboard, mountains behind her in Canada', pos: '68% 50%' },
+        { image: '/images/story/canada-elk.jpg', alt: 'An elk resting in the snow among the pine trees in Canada' },
+      ],
+    },
     '## Rock bottom, and a new start as a personal trainer',
     "I won't bore you with my whole resume, but when I returned to Sydney I went from barista work, hospitality and bartending to retail and then graphic design. Five years into my graphic design career, I hit rock bottom. I was in a toxic relationship with a drug dealer and alcoholic, and I was anxious af, waking up every day dizzy and in a constant brain fog without knowing why, with never-ending thoughts and stress. I literally hated my life. I was partying and drinking every day and racking coke most days, using drugs and alcohol to numb the pain and escape my reality, which only made everything 50 times worse when I was sober. Given my environment and the company I was keeping, that was just the life I had, and I felt dead on the inside. It was a very dark time for me, with severe depression and suicidal thoughts. Living in that state every day, I just couldn't handle it. Everything was shit, the relationship, my health and my job, which was in the most depressing office, where everyone was older and no one smiled or even wanted to talk to you when you came in, and I was such a depressing person in that environment. I'd started seeing a psychologist, but very quickly became dependent on her. Meditation wasn't even optional, because without it my mind would spiral, but the gym was the one thing that made me feel better. It was something I could control, and in the middle of all that darkness it became my lifeline.",
     "I knew something had to change, and I wanted change, so I started with my career. I asked myself what other job I could do and what I actually enjoyed, and I kept coming back to the gym, so I thought, what if I became a trainer? The gym was the only thing lighting me up, and maybe it was telling me something, so I followed it. I started studying to become a PT while juggling my full-time graphic design job, going to class at night after work and secretly studying at my desk. The owners always seemed to have their attention elsewhere, so I could get away with doing the bare minimum at a job that was completely unfulfilling, and after I finally quit, the business went under and I found out why. The owners were corrupt, busy stealing money, and my boss ended up in jail (lol). Looking back, it was all meant to work out that way.",

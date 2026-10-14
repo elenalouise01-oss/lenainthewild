@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import CutoutSticker from '@/components/CutoutSticker';
 import Footer from '@/components/Footer';
+import PolaroidPop from '@/components/PolaroidPop';
 import TapeMark from '@/components/TapeMark';
 import JsonLd from '@/components/JsonLd';
 import { breadcrumbs } from '@/lib/seo';
@@ -137,7 +138,9 @@ export default function MyStoryPage() {
               <p className="mt-8 font-body text-base text-umber sm:text-lg">{storyPage.song}</p>
               <div className="mt-8 space-y-6">
                 {storyPage.paragraphs.map((p) =>
-                  typeof p !== 'string' ? (
+                  typeof p !== 'string' && 'polaroids' in p ? (
+                    <PolaroidPop key={p.polaroids[0].image} shots={p.polaroids} />
+                  ) : typeof p !== 'string' ? (
                     p.cutout ? (
                       // A cut-out of Lena beside the text, stuck on like a sticker
                       <CutoutSticker
