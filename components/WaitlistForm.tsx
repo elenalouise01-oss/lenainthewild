@@ -36,7 +36,7 @@ export default function WaitlistForm({
   if (status === 'sent') {
     return (
       <div className="mx-auto max-w-md rounded-sm bg-cream px-8 py-10 text-center text-bark shadow-xl" role="status">
-        <span aria-hidden="true" className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-zing-pink font-display text-3xl text-bark">
+        <span aria-hidden="true" className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-sage font-display text-3xl text-bark">
           ✓
         </span>
         <p className="mt-5 font-display text-3xl italic leading-tight sm:text-4xl">{sent.heading}</p>
