@@ -450,6 +450,7 @@ export const faq: { label: string; heading: string; items: FaqItem[] } = {
       q: 'How do I figure out what I really want?',
       a: [
         'Start by slowing down. It’s hard to hear yourself when you’re exhausted and running on autopilot. Get curious about who you are now, what makes you feel alive and what no longer feels right, rather than what you think you should want.',
+        'The thing is, you already have the answers. They’re in your intuition, which has usually been quietly nudging you all along. It’s just hard to hear under all the noise and everyone else’s opinions. The more you slow down, the louder it gets, and the more you learn to trust it.',
         'You don’t need your whole future figured out. Understanding yourself is the place to begin.',
       ],
     },
