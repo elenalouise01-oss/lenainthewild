@@ -434,8 +434,8 @@ export const faq: { label: string; heading: string; items: FaqItem[] } = {
     {
       q: 'Who is Lena in the Wild for?',
       a: [
-        'For people, especially women, who’ve built the life they thought they wanted and still feel like something’s missing. You might feel stuck, unfulfilled or unsure what comes next, and you know there’s more to life but don’t know how to find it.',
-        'I’m Lena. After burnout made me question the life I’d worked so hard to build, I left Sydney for Bali at 36. Lena in the Wild is where I share what helped me reconnect with myself, release the patterns keeping me stuck and create a life that feels like mine.',
+        'For people who’ve built the life they thought they wanted and still feel like something’s missing. You might feel stuck, unfulfilled or unsure what comes next, and you know there’s more to life but don’t know how to find it.',
+        'I’m Lena. After severe burnout made me question the life I’d worked so hard to build, I left Sydney for Bali at 36. Lena in the Wild is where I share what helped me reconnect with myself, release the patterns keeping me stuck and create a life that feels like mine.',
       ],
       link: { href: '/my-story', label: 'Read my story' },
     },
