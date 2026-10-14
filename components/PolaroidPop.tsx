@@ -9,8 +9,8 @@ type Shot = { image: string; alt: string; pos?: string };
 
 const TILTS = [-6, 3, -3, 5];
 
-// A little row of polaroids that pop up onto the page one after another
-// when they scroll into view, the first one taped on. Shown in place for
+// A little row of polaroids placed into the page by hand, one after another,
+// when they scroll well into view; then the tape presses on. Shown in place for
 // anyone who prefers less motion.
 export default function PolaroidPop({ shots }: { shots: Shot[] }) {
   const reduced = useReducedMotion();
@@ -27,7 +27,8 @@ export default function PolaroidPop({ shots }: { shots: Shot[] }) {
           io.disconnect();
         }
       },
-      { threshold: 0.3 },
+      // wait until they're well into view, so the moment isn't missed
+      { threshold: 0.6, rootMargin: '0px 0px -15% 0px' },
     );
     io.observe(el);
     return () => io.disconnect();
@@ -41,12 +42,26 @@ export default function PolaroidPop({ shots }: { shots: Shot[] }) {
         <motion.figure
           key={shot.image}
           initial={false}
-          animate={show ? { opacity: 1, y: 0, scale: 1, rotate: TILTS[i % TILTS.length] } : { opacity: 0, y: 70, scale: 0.7, rotate: 0 }}
-          transition={reduced ? { duration: 0 } : { type: 'spring', stiffness: 280, damping: 16, delay: i * 0.18 }}
+          // placed by hand: slides in from its side, tilted, then settles into place
+          animate={
+            show
+              ? { opacity: 1, x: 0, y: 0, scale: 1, rotate: TILTS[i % TILTS.length] }
+              : { opacity: 0, x: i % 2 ? 160 : -160, y: -50, scale: 1.12, rotate: i % 2 ? 24 : -24 }
+          }
+          transition={reduced ? { duration: 0 } : { type: 'spring', stiffness: 170, damping: 15, delay: 0.15 + i * 0.35 }}
           className={`relative w-[38%] max-w-[13rem] bg-white p-2 pb-8 shadow-xl sm:p-2.5 sm:pb-10 ${i > 0 ? '-ml-[6%] sm:-ml-6' : ''}`}
           style={{ zIndex: i === 1 ? 3 : 1 }}
         >
-          {i === 0 && <span aria-hidden="true" className="absolute -top-2.5 left-1/2 z-10 h-5 w-16 -translate-x-1/2 -rotate-3 bg-zing-yellow/80 shadow-sm" />}
+          {i === 0 && (
+            // the tape presses on once the photo has landed
+            <motion.span
+              aria-hidden="true"
+              initial={false}
+              animate={show ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.6 }}
+              transition={reduced ? { duration: 0 } : { duration: 0.25, delay: 0.15 + (shots.length - 1) * 0.35 + 0.6 }}
+              className="absolute -top-2.5 left-1/2 z-10 h-5 w-16 -translate-x-1/2 -rotate-3 bg-zing-yellow/80 shadow-sm"
+            />
+          )}
           <div className="relative aspect-square overflow-hidden">
             <Image src={shot.image} alt={shot.alt} fill sizes="13rem" className="object-cover" style={{ objectPosition: shot.pos ?? '50% 50%' }} />
           </div>
