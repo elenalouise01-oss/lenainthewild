@@ -233,13 +233,24 @@ export const freedomFrequencyPage = {
     },
     outcomes: {
       heading: 'Major outcomes',
-      lead: 'By the end, you’ll:',
+      intro:
+        'By the end of this journey, you’ll have a deeper understanding of yourself, a clearer vision for the life you want, and practical tools to help you move towards it.',
+      lead: 'You’ll learn to:',
+      // Each point: a bold opening phrase, then the rest of the sentence.
       items: [
-        'Understand the patterns, triggers and beliefs that have been keeping you stuck',
-        'Have started releasing the fears and expectations driving your choices',
-        'Know your values, what you truly want and what freedom means to you',
-        'Leave with your own 30-day action plan for creating a life that feels like yours',
+        { lead: 'Understand what’s been keeping you stuck:', rest: 'the fears, limiting beliefs, emotional triggers and conditioning that have been shaping your choices.' },
+        { lead: 'Break free from patterns that no longer serve you', rest: 'by recognising them, questioning the beliefs behind them and learning new ways of responding.' },
+        { lead: 'Reconnect with who you truly are', rest: 'beneath the expectations and roles you’ve lived by, and rediscover the parts of yourself you pushed aside to fit in.' },
+        { lead: 'Get clear on what you genuinely want,', rest: 'beyond other people’s expectations and the life you thought you were supposed to want.' },
+        { lead: 'Reconnect with your intuition', rest: 'so you can hear your own voice, recognise what feels right and make choices that align with your values.' },
+        { lead: 'Find your own answers', rest: 'instead of looking outside yourself for validation, reassurance or permission.' },
+        { lead: 'Give yourself permission to want more,', rest: 'moving beyond the guilt, fear of judgement and need for approval that keep you playing small.' },
+        { lead: 'Choose yourself', rest: 'by honouring your needs and values, setting boundaries and making decisions that reflect who you want to become.' },
+        { lead: 'Create a clear vision for your dream life,', rest: 'rooted in your own definition of freedom, success and fulfilment.' },
+        { lead: 'Turn clarity into action', rest: 'with practical tools and achievable next steps.' },
       ],
+      closing:
+        'Because when you understand yourself, know what you want and learn to trust your own decisions, you can stop living by default and start creating a life by design.',
     },
   },
   faqHeading: 'Questions about The Freedom Frequency',
