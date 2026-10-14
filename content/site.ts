@@ -853,7 +853,8 @@ export const lifeDesignPage = {
 // subheading.
 // A photo placed between paragraphs of the story.
 // `cutout` photos have no background and sit beside the text with a sticker.
-type StoryPhoto = { image: string; width: number; height: number; alt: string; caption?: string; cutout?: boolean };
+// `small` photos sit tucked into the right-hand side of the paragraph that follows.
+type StoryPhoto = { image: string; width: number; height: number; alt: string; caption?: string; cutout?: boolean; small?: boolean };
 // A row of polaroids that pop up onto the page
 type StoryPolaroids = { polaroids: { image: string; alt: string; pos?: string }[] };
 
@@ -877,6 +878,13 @@ export const storyPage: {
     'building the life you actually dream of',
   ],
   paragraphs: [
+    {
+      image: '/images/story/island-bestie.jpg',
+      width: 604,
+      height: 453,
+      alt: 'Lena and her friend in their resort uniforms on a balcony above the beach on an island in the Whitsundays',
+      small: true,
+    },
     "Hi, I'm Lena. I was 36 years old when I uprooted my life from Sydney to Bali and leapt into the unknown, but it wasn't my first leap. I first threw my life up in the air at 21, when I was going through a break up with my high school boyfriend of 8 years. I'd spent years managing a restaurant for his parents while working my way through a graphic design degree, and with my degree finished and the relationship over, I decided to leave it all behind and move to a remote island in the Whitsundays, then another, spending two years living the island life before moving to Canada on a whim after meeting a Canadian girlie who told me I should come over (23 year old me: yeah ok, why not!).",
     {
       polaroids: [

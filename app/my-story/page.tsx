@@ -154,7 +154,14 @@ export default function MyStoryPage() {
                       />
                     ) : (
                       // A photo in the story: a tilted print, taped on, with a handwritten caption
-                      <figure key={p.image} className="relative mx-auto w-60 -rotate-2 bg-white p-2.5 pb-5 shadow-lg sm:float-left sm:-ml-24 sm:mb-4 sm:mr-8 sm:mt-2 sm:w-64">
+                      <figure
+                        key={p.image}
+                        className={`relative bg-white shadow-lg ${
+                          p.small
+                            ? 'float-right mb-3 ml-4 mt-1.5 w-36 rotate-3 p-1.5 pb-4 sm:-mr-16 sm:ml-6 sm:w-52 sm:p-2 sm:pb-6'
+                            : 'mx-auto w-60 -rotate-2 p-2.5 pb-5 sm:float-left sm:-ml-24 sm:mb-4 sm:mr-8 sm:mt-2 sm:w-64'
+                        }`}
+                      >
                         <span aria-hidden="true" className="absolute -top-3 left-1/2 h-6 w-24 -translate-x-1/2 rotate-2 bg-zing-pink/60" />
                         <Image src={p.image} alt={p.alt} width={p.width} height={p.height} sizes="16rem" className="h-auto w-full" />
                         {p.caption && <figcaption className="mt-3 text-center font-script text-2xl text-bark">{p.caption}</figcaption>}
