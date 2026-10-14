@@ -111,8 +111,15 @@ export default function FreedomFrequencyPage() {
               </div>
             </OverviewRow>
             <OverviewRow heading={ov.delivered.heading}>
-              <p className={rowText}>{ov.delivered.intro}</p>
-              <ul className="mt-5 space-y-3">
+              <div className="space-y-5">
+                {ov.delivered.intro.map((p) => (
+                  <p key={p.slice(0, 24)} className={rowText}>
+                    {p}
+                  </p>
+                ))}
+              </div>
+              <p className={`mt-5 ${rowText}`}>{ov.delivered.lead}</p>
+              <ul className="mt-3 space-y-3">
                 {ov.delivered.items.map((item) => (
                   <li key={item.title} className="flex gap-3 font-body text-base leading-relaxed text-umber">
                     <span aria-hidden="true" className="mt-2 h-2 w-2 flex-none rounded-full bg-zing-pink" />

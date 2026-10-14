@@ -207,10 +207,14 @@ export const freedomFrequencyPage = {
     },
     delivered: {
       heading: 'How it’s delivered',
-      intro: 'A self-paced online experience you can move through in your own time, and come back to whenever you need. Everything lives in your own private course portal, so you can access it anytime, from your computer or phone. Inside:',
+      intro: [
+        'A self-paced online experience you can move through in your own time and return to whenever you need. Everything lives in your private course portal, so you can access the lessons and practices from your computer or phone.',
+        'The journey combines inner exploration with embodied practices and practical exercises, helping you move beyond simply understanding your patterns intellectually and begin integrating what you learn into your everyday life.',
+      ],
+      lead: 'Inside:',
       items: [
         { title: 'Video lessons', body: 'short lessons where I teach each stage and share what I went through' },
-        { title: 'Guided audio practices', body: 'reflection, visualisation and gentle somatic awareness, so it goes deeper than just understanding' },
+        { title: 'Guided audio practices', body: 'reflection, visualisation and gentle somatic practices to help you connect with your body, explore your inner world and integrate what you’re learning beyond the intellectual level' },
         { title: 'A digital workbook', body: 'journalling prompts, reflective exercises and practical tools' },
         { title: 'Integration exercises', body: 'one at the end of each module, to turn what you learn into real change' },
         { title: 'Built-in accountability', body: 'progress trackers, personal commitments and reflection prompts to help you follow through' },
