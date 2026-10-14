@@ -152,7 +152,7 @@ export default function MyStoryPage() {
                         caption={p.caption}
                         className={
                           p.side === 'left'
-                            ? 'w-40 sm:-ml-16 sm:w-48'
+                            ? 'float-left mb-3 mr-5 mt-1 w-32 sm:-ml-16 sm:mr-8 sm:w-44'
                             : 'mx-auto w-56 sm:float-right sm:-mr-24 sm:mb-2 sm:ml-8 sm:mt-2 sm:w-60'
                         }
                       />
