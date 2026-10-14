@@ -79,10 +79,7 @@ export default function MyStoryPage() {
                     )
                   ) : p.startsWith('## ') ? (
                     <h2 key={p} className="clear-both pt-8 font-display text-3xl leading-snug text-bark">
-                      {/* A highlighter stroke behind each chapter title */}
-                      <span className="bg-[linear-gradient(transparent_58%,rgba(203,161,212,0.55)_58%,rgba(203,161,212,0.55)_92%,transparent_92%)] box-decoration-clone px-1">
-                        {p.slice(3)}
-                      </span>
+                      {p.slice(3)}
                     </h2>
                   ) : (
                     <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber sm:text-lg">
