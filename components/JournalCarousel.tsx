@@ -9,7 +9,7 @@ import { useReducedMotion } from '@/lib/useReducedMotion';
 // My Journal cards: the reference's "video projects" row.
 const ROAD_PHOTOS = [
   { src: '/images/road/road-2.jpg', pos: '50% 35%' },
-  { src: '/images/road/road-1.jpg', pos: '40% 60%' },
+  { src: '/images/road/leap-card.jpg', pos: '50% 62%' },
   { src: '/images/road/road-6.jpg', pos: '50% 60%' },
   { src: '/images/road/road-8.jpg', pos: '50% 70%' },
 ];
