@@ -121,7 +121,7 @@ export default function MyStoryPage() {
           <div className="mx-auto max-w-2xl">
             <ScrollReveal>
               <h1 className="font-display text-4xl leading-tight text-bark sm:text-6xl">{storyPage.storyTitle}</h1>
-              <p className="mt-3 font-script text-xl text-bark/80">{storyPage.song}</p>
+              <p className="mt-8 font-body text-base text-umber sm:text-lg">{storyPage.song}</p>
               <div className="mt-8 space-y-6">
                 {storyPage.paragraphs.map((p) =>
                   typeof p !== 'string' ? (
