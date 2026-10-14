@@ -153,7 +153,10 @@ export const freedomFrequencyPage = {
   cta: 'Join the Waitlist',
   waitlistHeading: 'Be the first to know',
   waitlistBody: 'Pop your details in and I’ll let you know as soon as The Freedom Frequency opens.',
-  waitlistSent: 'You’re on the list! I’ll be in touch as soon as The Freedom Frequency opens.',
+  waitlistSent: {
+    heading: 'You’re on the list!',
+    body: 'Thank you for joining, {name}. I’ll email you as soon as The Freedom Frequency opens.',
+  },
   forHeading: 'Does this sound like you?',
   forParagraphs: [
     'You did all the things you were meant to do. The things society told us to do. You built the career, the home, the income… maybe even the relationship. You created the life you once dreamt of.',

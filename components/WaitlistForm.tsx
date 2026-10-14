@@ -7,13 +7,27 @@ import { sendToInbox } from '@/lib/sendToInbox';
 // Waitlist sign-up for an offer that isn't open yet: name and email are
 // emailed to Lena, so visitors never have to leave the site.
 // `dark` is for use on the brown background: pink button, cream error text.
-export default function WaitlistForm({ offer, cta, sent, dark = false }: { offer: string; cta: string; sent: string; dark?: boolean }) {
+// `sent` is the thank-you shown once they've joined; `{name}` in its body
+// becomes their first name.
+export default function WaitlistForm({
+  offer,
+  cta,
+  sent,
+  dark = false,
+}: {
+  offer: string;
+  cta: string;
+  sent: { heading: string; body: string };
+  dark?: boolean;
+}) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle');
+  const [firstName, setFirstName] = useState('');
 
   const join = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     data.append('waitlist', offer);
+    setFirstName(String(data.get('name') ?? '').trim().split(/\s+/)[0]);
     setStatus('sending');
     const ok = await sendToInbox(data, `Waitlist sign-up for ${offer}: ${data.get('name')}`);
     setStatus(ok ? 'sent' : 'failed');
@@ -21,9 +35,15 @@ export default function WaitlistForm({ offer, cta, sent, dark = false }: { offer
 
   if (status === 'sent') {
     return (
-      <p className="mx-auto max-w-md rounded-sm bg-cream/80 px-6 py-5 font-body text-base text-bark shadow-sm" role="status">
-        {sent}
-      </p>
+      <div className="mx-auto max-w-md rounded-sm bg-cream px-8 py-10 text-center text-bark shadow-xl" role="status">
+        <span aria-hidden="true" className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-zing-pink font-display text-3xl text-bark">
+          ✓
+        </span>
+        <p className="mt-5 font-display text-3xl italic leading-tight sm:text-4xl">{sent.heading}</p>
+        <p className="mt-4 font-body text-base leading-relaxed text-umber">
+          {firstName ? sent.body.replace('{name}', firstName) : sent.body.replace(', {name}', '')}
+        </p>
+      </div>
     );
   }
 
