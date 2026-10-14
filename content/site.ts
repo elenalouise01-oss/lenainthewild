@@ -191,21 +191,57 @@ export const freedomFrequencyPage = {
   ],
   closing: 'For the woman who knows deep down there has to be more… but doesn’t know how to access it yet.',
   next: { lead: 'Not ready to go all in?', label: 'Start with The 5 Day Reconnect', href: '/5-day-reconnect' },
-  exploresHeading: 'What The Freedom Frequency explores',
-  explores: [
-    {
-      title: 'Reconnect with yourself',
-      body: 'Get back in touch with what you genuinely want, your values and your intuition, beneath everyone else’s expectations.',
+  // The six-part overview near the top of the page (structure Lena chose).
+  overview: {
+    whatItIs: {
+      heading: 'What it is',
+      body: 'An embodied, self-paced online course to help you reconnect with yourself, release the patterns keeping you stuck and create a life that feels like yours. It’s everything I learned going from stuck to breaking free.',
     },
-    {
-      title: 'Release the patterns keeping you stuck',
-      body: 'Explore the fears, beliefs and old conditioning behind the patterns that keep repeating, so you can understand them and start choosing differently.',
+    delivered: {
+      heading: 'How it’s delivered',
+      intro: 'A self-paced online experience you can move through in your own time, and come back to whenever you need. Everything lives in your own private course portal, so you can access it anytime, from your computer or phone. Inside:',
+      items: [
+        { title: 'Video lessons', body: 'short lessons where I teach each stage and share what I went through' },
+        { title: 'Guided audio practices', body: 'reflection, visualisation and gentle somatic awareness, so it goes deeper than just understanding' },
+        { title: 'A digital workbook', body: 'journalling prompts, reflective exercises and practical tools' },
+        { title: 'Integration exercises', body: 'one at the end of each module, to turn what you learn into real change' },
+        { title: 'Built-in accountability', body: 'progress trackers, personal commitments and reflection prompts to help you follow through' },
+      ],
     },
-    {
-      title: 'Create a life that feels like yours',
-      body: 'Give yourself permission to want more, and start making choices that reflect who you really are.',
+    whoFor: {
+      heading: 'Who it’s for',
+      body: [
+        'The Freedom Frequency is for you if you feel like something is missing in your life, but aren’t entirely sure why or how to change it. You might feel unfulfilled, disconnected from yourself or uncertain about what you really want, even when everything seems fine on the surface.',
+        'You’ve spent years following expectations, putting others first, trying to get everything right or chasing a version of success that no longer feels right. Somewhere along the way, you may have become so accustomed to being who you’re expected to be that you’ve lost touch with who you are and what you genuinely want.',
+      ],
     },
-  ],
+    length: {
+      heading: 'Its length',
+      intro: 'Six weeks, at your own pace. There’s no deadline, so take longer whenever you need it.',
+      weeks: [
+        { focus: 'Reconnect', body: 'Your current reality, emotions and desires' },
+        { focus: 'Understand', body: 'The patterns, triggers and beliefs that keep repeating' },
+        { focus: 'Release', body: 'The conditioning, fears and expectations shaping your choices' },
+        { focus: 'Rediscover', body: 'Your values, desires and what freedom means to you' },
+        { focus: 'Recreate', body: 'Turning what you’ve learned into intentional choices and action' },
+        { focus: 'Integrate', body: 'Bringing it all together into your own 30-day action plan' },
+      ],
+    },
+    description: {
+      heading: 'High-level description',
+      body: 'Built from years of confusion, burnout, the leap and finally living on the other side, The Freedom Frequency brings together the tools, teachings and realisations I wish I’d had when I was stuck: reconnecting with yourself, understanding the fears and old patterns underneath, and creating a life that feels like yours.',
+    },
+    outcomes: {
+      heading: 'Major outcomes',
+      lead: 'By the end, you’ll:',
+      items: [
+        'Understand the patterns, triggers and beliefs that have been keeping you stuck',
+        'Have started releasing the fears and expectations driving your choices',
+        'Know your values, what you truly want and what freedom means to you',
+        'Leave with your own 30-day action plan for creating a life that feels like yours',
+      ],
+    },
+  },
   faqHeading: 'Questions about The Freedom Frequency',
   faq: [
     {

@@ -29,6 +29,19 @@ export const metadata: Metadata = {
   twitter: { card: 'summary_large_image', title, description, images: ['/images/cover-freedom-frequency.webp'] },
 };
 
+const ov = page.overview;
+const rowText = 'font-body text-base leading-relaxed text-umber sm:text-lg';
+
+// One row of the overview: the heading on the left, the details on the right.
+function OverviewRow({ heading, children }: { heading: string; children: React.ReactNode }) {
+  return (
+    <ScrollReveal className="grid gap-4 py-10 sm:grid-cols-[13rem_1fr] sm:gap-10">
+      <h2 className="font-body text-xs font-semibold uppercase tracking-widest2 text-bark">{heading}</h2>
+      <div>{children}</div>
+    </ScrollReveal>
+  );
+}
+
 // Jumps down to the waitlist sign-up at the bottom of the page.
 function JoinButton() {
   return (
@@ -79,8 +92,65 @@ export default function FreedomFrequencyPage() {
           </div>
         </section>
 
-        {/* Who it's for */}
+        {/* The overview: what it is, how it's delivered, who it's for, length, description, outcomes */}
         <section className="bg-cream px-6 py-24 sm:py-32">
+          <div className="mx-auto max-w-4xl divide-y divide-bark/15 border-y border-bark/15">
+            <OverviewRow heading={ov.whatItIs.heading}>
+              <p className={rowText}>{ov.whatItIs.body}</p>
+            </OverviewRow>
+            <OverviewRow heading={ov.delivered.heading}>
+              <p className={rowText}>{ov.delivered.intro}</p>
+              <ul className="mt-5 space-y-3">
+                {ov.delivered.items.map((item) => (
+                  <li key={item.title} className="flex gap-3 font-body text-base leading-relaxed text-umber">
+                    <span aria-hidden="true" className="mt-2 h-2 w-2 flex-none rounded-full bg-zing-pink" />
+                    <span>
+                      <strong className="font-semibold text-bark">{item.title}:</strong> {item.body}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </OverviewRow>
+            <OverviewRow heading={ov.whoFor.heading}>
+              <div className="space-y-4">
+                {ov.whoFor.body.map((p) => (
+                  <p key={p.slice(0, 24)} className={rowText}>
+                    {p}
+                  </p>
+                ))}
+              </div>
+            </OverviewRow>
+            <OverviewRow heading={ov.length.heading}>
+              <p className={rowText}>{ov.length.intro}</p>
+              <ol className="mt-5 divide-y divide-bark/10 border-y border-bark/10">
+                {ov.length.weeks.map((w, i) => (
+                  <li key={w.focus} className="grid grid-cols-[4.5rem_1fr] gap-3 py-3 sm:grid-cols-[5rem_8rem_1fr]">
+                    <span className="font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-stone">Week {i + 1}</span>
+                    <span className="font-display text-lg italic text-bark">{w.focus}</span>
+                    <span className="col-start-2 font-body text-sm leading-relaxed text-umber sm:col-start-auto">{w.body}</span>
+                  </li>
+                ))}
+              </ol>
+            </OverviewRow>
+            <OverviewRow heading={ov.description.heading}>
+              <p className={rowText}>{ov.description.body}</p>
+            </OverviewRow>
+            <OverviewRow heading={ov.outcomes.heading}>
+              <p className="font-display text-xl italic text-bark">{ov.outcomes.lead}</p>
+              <ul className="mt-4 space-y-3">
+                {ov.outcomes.items.map((item) => (
+                  <li key={item} className="flex gap-3 font-body text-base leading-relaxed text-umber">
+                    <span aria-hidden="true" className="mt-0.5 flex-none font-display text-lg text-bark">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </OverviewRow>
+          </div>
+        </section>
+
+        {/* Who it's for */}
+        <section className="bg-sand px-6 py-24 sm:py-32">
           <div className="mx-auto max-w-2xl">
             <ScrollReveal>
               <h2 className="font-display text-3xl italic leading-tight text-bark sm:text-5xl">{page.forHeading}</h2>
@@ -108,7 +178,7 @@ export default function FreedomFrequencyPage() {
         </section>
 
         {/* Lena's story */}
-        <section className="bg-sand px-6 py-24 sm:py-32">
+        <section className="bg-cream px-6 py-24 sm:py-32">
           <div className="mx-auto max-w-2xl">
             <ScrollReveal>
               <div className="relative mx-auto mb-14 aspect-[4/3] w-full -rotate-1 overflow-hidden bg-cream p-2 shadow-xl">
@@ -135,7 +205,7 @@ export default function FreedomFrequencyPage() {
         </section>
 
         {/* What the course is */}
-        <section className="bg-cream px-6 py-24 sm:py-32">
+        <section className="bg-sand px-6 py-24 sm:py-32">
           <div className="mx-auto max-w-2xl">
             <ScrollReveal>
               <h2 className="font-display text-3xl leading-tight text-bark sm:text-5xl">{page.courseHeading}</h2>
@@ -164,30 +234,6 @@ export default function FreedomFrequencyPage() {
                   <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber sm:text-lg">{p}</p>
                 ))}
               </div>
-            </ScrollReveal>
-          </div>
-        </section>
-
-        {/* What it explores: the three parts of the journey */}
-        <section className="bg-sand px-6 py-24 sm:py-32">
-          <div className="mx-auto max-w-3xl">
-            <ScrollReveal>
-              <h2 className="font-display text-3xl leading-tight text-bark sm:text-5xl">{page.exploresHeading}</h2>
-            </ScrollReveal>
-            <ScrollReveal delay={0.1}>
-              <ol className="mt-12 space-y-10">
-                {page.explores.map((item, i) => (
-                  <li key={item.title} className="grid gap-2 sm:grid-cols-[4rem_1fr]">
-                    <span aria-hidden="true" className="font-display text-3xl italic text-bark/40">
-                      0{i + 1}
-                    </span>
-                    <div>
-                      <h3 className="font-display text-2xl leading-snug text-bark">{item.title}</h3>
-                      <p className="mt-2 font-body text-base leading-relaxed text-umber sm:text-lg">{item.body}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
             </ScrollReveal>
           </div>
         </section>
