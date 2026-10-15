@@ -612,13 +612,15 @@ export const faq: { label: string; heading: string; items: FaqItem[] } = {
     {
       q: 'Where do I start?',
       a: [
-        'If you’re in the middle of burnout or just coming out of it, feeling stagnant and searching for answers and a way out, you’re in the right place.',
-        'If you’ve been going around in circles for too long and you’re ready to break free, start with The Freedom Frequency ($777 AUD, waitlist open). It’s my self-paced course on reconnecting with yourself, releasing the patterns keeping you stuck and creating a life that feels like yours. It’s everything I learned going from stuck to free.',
-        'If you’d like to dip your toe in first, The 5 Day Reconnect ($33 AUD) is five short audio sessions to help you slow down and hear yourself again.',
+        'If you want to slow down, reconnect with yourself and create space to hear your own needs and desires, start with The 5 Day Reconnect.',
+        'If you’re ready to understand what’s been keeping you stuck, explore the deeper patterns influencing your life and begin creating meaningful change, The Freedom Frequency is for you.',
+        'If you’re looking for personalised clarity around your direction and practical next steps, explore Your Freedom Roadmap.',
+        'There’s no required order. Choose the experience that best reflects where you are right now.',
       ],
       link: [
-        { href: '/freedom-frequency#waitlist', label: 'Join The Freedom Frequency waitlist' },
         { href: '/5-day-reconnect', label: 'Explore The 5 Day Reconnect' },
+        { href: '/freedom-frequency', label: 'Explore The Freedom Frequency' },
+        { href: '/#freedom-seeker', label: 'Explore Your Freedom Roadmap' },
       ],
     },
   ],
