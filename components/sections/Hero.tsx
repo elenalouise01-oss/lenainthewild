@@ -93,7 +93,9 @@ export default function Hero() {
   // Reaches full opacity right as the pinned section ends, instead of
   // holding a solid color for a long stretch of scroll before Section1's
   // text can appear — that hold read as "the page is stuck/blank".
-  const washOpacity = useTransform(scrollYProgress, [0.78, 0.98], [0, 1]);
+  const washOpacity = useTransform(scrollYProgress, [0.74, 0.86], [0, 1]);
+  // the wash fades in as a soft lilac first, then deepens into the brown
+  const washColor = useTransform(scrollYProgress, [0.74, 0.86, 0.98], ['#dcc3e2', '#dcc3e2', '#3b2d0e']);
 
   return (
     <section ref={sectionRef} id="top" className={`relative ${reduced ? 'h-dvh' : 'h-[250dvh]'}`}>
@@ -186,7 +188,7 @@ export default function Hero() {
             (centered) duplicated against Section1's real heading (left-
             aligned) as the two scrolled past each other. */}
         {!reduced && (
-          <motion.div style={{ opacity: washOpacity }} className="pointer-events-none absolute inset-0 z-20 bg-bark" />
+          <motion.div style={{ opacity: washOpacity, backgroundColor: washColor }} className="pointer-events-none absolute inset-0 z-20" />
         )}
       </div>
     </section>
