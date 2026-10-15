@@ -693,7 +693,7 @@ export const lifeDesignPage = {
       asks: ['How do I figure out what I really want?', 'How do I learn to trust my intuition?'],
     },
     {
-      heading: 'You keep repeating patterns you thought you’d outgrown',
+      heading: 'You keep repeating patterns that drain your energy',
       body: [
         'People-pleasing, overgiving, struggling to say no or reacting in ways you later regret. You might recognise these patterns but still struggle to understand why they keep happening.',
         'Sometimes, the behaviours that hold us back began as ways to feel safe, accepted or loved. Understanding what’s underneath them can help you begin responding differently.',
