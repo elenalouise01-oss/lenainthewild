@@ -599,7 +599,7 @@ export const faq: { label: string; heading: string; items: FaqItem[] } = {
       q: 'What’s the difference between The 5 Day Reconnect, The Freedom Frequency and Your Freedom Roadmap?',
       a: [
         'Each offer supports a different stage of your journey, depending on where you are and what you’re looking for.',
-        'The 5 Day Reconnect is a gentle starting point to help you slow down, get out of your head and reconnect with yourself. Through five days of guided practices, you’ll create space to tune into your body, explore what you need and begin reconnecting with your intuition.',
+        'The 5 Day Reconnect is a gentle starting point for when you’re ready to slow down, step out of autopilot and feel more connected to yourself. Over five days, you’ll create space to quiet the noise, feel more present in your body, reconnect with what brings you joy, recognise what you need and begin trusting your own inner guidance.',
         'The Freedom Frequency takes this work deeper. It’s a guided, self-paced journey designed to help you understand the patterns, fears and beliefs keeping you stuck, explore the conditioning influencing your choices, and reconnect with what you genuinely want. Through shadow work, embodied practices and an exploration of abundance, you’ll begin developing the self-trust and clarity to create a life that feels genuinely like yours.',
         'Your Freedom Roadmap (coming soon) is a personalised experience for when you’re ready to explore your own direction and work out what comes next. It’s an opportunity to get clear on where you are now, where you want to go and the practical steps you can take to create a life that feels more aligned with who you are and what matters to you.',
       ],
