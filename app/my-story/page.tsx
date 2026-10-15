@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import CutoutSticker from '@/components/CutoutSticker';
-import DottedDoodle from '@/components/DottedDoodle';
+import FlightPath from '@/components/FlightPath';
 import Footer from '@/components/Footer';
 import PolaroidPop from '@/components/PolaroidPop';
 import TapeMark from '@/components/TapeMark';
@@ -10,6 +10,7 @@ import JsonLd from '@/components/JsonLd';
 import { breadcrumbs } from '@/lib/seo';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteHeader from '@/components/SiteHeader';
+import StoryConnector from '@/components/StoryConnector';
 import TapeBanner from '@/components/TapeBanner';
 import Listen from '@/components/sections/Listen';
 import Newsletter from '@/components/sections/Newsletter';
@@ -75,14 +76,6 @@ function ChapterTitle({ children }: { children: string }) {
   );
 }
 
-// Small dashed doodles that lead into some chapters (shown on every screen)
-const DOODLE_BEFORE: Record<string, { shape: 'loop' | 'wave' | 'arrow'; className: string }> = {
-  'Burning out in Bondi': { shape: 'wave', className: 'ml-auto text-[#a97bb5]' },
-  'Deciding to leave Sydney': { shape: 'arrow', className: 'text-bark/70' },
-  'Down to my last $500 in Ubud': { shape: 'loop', className: 'ml-auto -rotate-12 text-bark/70' },
-  'Reinventing life on my own terms': { shape: 'wave', className: 'text-[#a97bb5]' },
-};
-
 // Highlighter pen over a few lines of the story, taking turns in lilac,
 // yellow and green
 const TAPED = ["it wasn't my first leap"];
@@ -142,17 +135,14 @@ export default function MyStoryPage() {
 
         <section className="overflow-x-clip bg-cream px-6 py-24 sm:py-32">
           <div className="relative mx-auto max-w-2xl">
-            {/* Dashed doodles in the margins, like a scrapbook (wider screens) */}
-            <DottedDoodle shape="loop" className="-left-40 top-16 hidden h-40 w-40 -rotate-6 text-bark/70 lg:block xl:-left-56 xl:h-56 xl:w-56" />
-            <DottedDoodle shape="wave" className="-right-40 top-[30%] hidden h-36 w-40 text-[#a97bb5] lg:block xl:-right-60 xl:h-48 xl:w-56" />
-            <DottedDoodle shape="arrow" className="-left-40 top-[48%] hidden h-40 w-40 rotate-6 text-bark/70 lg:block xl:-left-60 xl:h-56 xl:w-56" />
-            <DottedDoodle shape="loop" className="-right-40 top-[72%] hidden h-40 w-40 rotate-12 scale-x-[-1] text-bark/70 lg:block xl:-right-56 xl:h-56 xl:w-56" />
             <ScrollReveal>
               <h1 className="font-display text-4xl leading-tight text-bark sm:text-6xl">{storyPage.storyTitle}</h1>
               <p className="mt-8 font-body text-base text-umber sm:text-lg">{storyPage.song}</p>
               <div className="mt-8 space-y-6">
-                {storyPage.paragraphs.map((p) =>
-                  typeof p !== 'string' && 'polaroids' in p ? (
+                {storyPage.paragraphs.map((p, i) =>
+                  typeof p !== 'string' && 'connector' in p ? (
+                    <StoryConnector key={`connector-${i}`} shape={p.connector} />
+                  ) : typeof p !== 'string' && 'polaroids' in p ? (
                     <PolaroidPop key={p.polaroids[0].image} shots={p.polaroids} />
                   ) : typeof p !== 'string' ? (
                     p.cutout ? (
@@ -204,13 +194,7 @@ export default function MyStoryPage() {
                     )
                   ) : p.startsWith('## ') ? (
                     <div key={p} className="clear-both pt-8">
-                      {DOODLE_BEFORE[p.slice(3)] && (
-                        <DottedDoodle
-                          inline
-                          shape={DOODLE_BEFORE[p.slice(3)].shape}
-                          className={`-mb-6 h-28 w-44 sm:h-32 sm:w-52 ${DOODLE_BEFORE[p.slice(3)].className}`}
-                        />
-                      )}
+                      {p.slice(3).startsWith('Moving to Bali') && <FlightPath />}
                     <h2 className="font-display text-3xl leading-snug text-bark">
                       <ChapterTitle>{p.slice(3)}</ChapterTitle>
                     </h2>

@@ -857,6 +857,8 @@ export const lifeDesignPage = {
 // `cutout` photos have no background and sit beside the text with a sticker.
 // `small` photos sit tucked into the right-hand side of the paragraph that follows.
 type StoryPhoto = { image: string; width: number; height: number; alt: string; caption?: string; cutout?: boolean; small?: boolean; side?: 'left' | 'right'; polaroid?: boolean };
+// A dashed line leading from the text to the photo below it
+type StoryConnector = { connector: 'long-loop' | 'short-curl' };
 // A row of polaroids that pop up onto the page
 type StoryPolaroids = { polaroids: { image: string; alt: string; pos?: string }[] };
 
@@ -864,7 +866,7 @@ export const storyPage: {
   storyTitle: string;
   song: string;
   highlights: string[];
-  paragraphs: (string | StoryPhoto | StoryPolaroids)[];
+  paragraphs: (string | StoryPhoto | StoryPolaroids | StoryConnector)[];
   cta: string;
   closing: string;
 } = {
@@ -888,6 +890,7 @@ export const storyPage: {
       small: true,
     },
     "Hi, I'm Lena. I was 36 years old when I uprooted my life from Sydney to Bali and leapt into the unknown, but it wasn't my first leap. I first threw my life up in the air at 21, when I was going through a break up with my high school boyfriend of 8 years. I'd spent years managing a restaurant for his parents while working my way through a graphic design degree, and with my degree finished and the relationship over, I decided to leave it all behind and move to a remote island in the Whitsundays, then another, spending two years living the island life before moving to Canada on a whim after meeting a Canadian girlie who told me I should come over (23 year old me: yeah ok, why not!).",
+    { connector: 'long-loop' },
     {
       polaroids: [
         { image: '/images/story/canada-snowboard.jpg', alt: 'Lena sitting in the snow with her snowboard, mountains behind her in Canada', pos: '68% 50%' },
@@ -946,6 +949,7 @@ export const storyPage: {
     "Nine months later I needed a break again, so I ran back to Bali. I already knew I wanted to move, I just didn't have the \"right plan\". This trip was even better than the first. Bali has an energy like nowhere else. Some say it's the ley lines, but all I know is that something about this island fast-forwards your healing and opens you up to what's possible. On this trip I learnt how to surf and made so many new friends, and this time I was like, no, this is it, I'm committing to the move. I gave myself six months once I got home to save some money, and then I was out of there no matter what.",
     "It ended up taking me eight months, including the three months' notice I had to give. There was no huge moment that pushed me over the edge, but I remember the day clearly. I was at the gym with a client when an entitled idiot got in our faces, trying to staunch us for taking too long on the equipment, and I remember laughing to myself thinking, ok universe, I get it, we're done here, I'm not putting up with this shit anymore. (Honestly, I'd thank him now.) That afternoon I asked the universe and my grandma, who passed a long time ago, for a sign. I asked to see a rainbow in the next 24 hours, and if I saw one, it meant yes to quitting my job and moving to Bali.",
     "That very afternoon after work, I was meant to go to the gym, but instead I felt called to go down to the beach. It was raining and I was like, are you sure, intuition? But I just felt I needed to go. And as I sat there in the rain on the edge of the cliff overlooking Balmoral beach, there it was, my sign, a beautiful big rainbow. The next day I resigned.",
+    { connector: 'short-curl' },
     {
       image: '/images/story-grandma-plaque.jpg',
       width: 1125,
