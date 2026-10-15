@@ -858,7 +858,7 @@ export const lifeDesignPage = {
 // `small` photos sit tucked into the right-hand side of the paragraph that follows.
 type StoryPhoto = { image: string; width: number; height: number; alt: string; caption?: string; cutout?: boolean; small?: boolean; side?: 'left' | 'right'; polaroid?: boolean };
 // A dashed line leading from the text to the photo below it
-type StoryConnector = { connector: 'short-curl' };
+type StoryConnector = { connector: 'short-curl' | 'swoop-left' | 'long-drop' };
 // A row of polaroids that pop up onto the page
 type StoryPolaroids = { polaroids: { image: string; alt: string; pos?: string }[] };
 
@@ -898,6 +898,7 @@ export const storyPage: {
     },
     '## Rock bottom, and a new start as a personal trainer',
     "I won't bore you with my whole resume, but when I returned to Sydney I went from barista work, hospitality and bartending to retail and then graphic design. Five years into my graphic design career, I hit rock bottom. I was in a toxic relationship with a drug dealer and alcoholic, and I was anxious af, waking up every day dizzy and in a constant brain fog without knowing why, with never-ending thoughts and stress. I literally hated my life. I was partying and drinking every day and racking coke most days, using drugs and alcohol to numb the pain and escape my reality, which only made everything 50 times worse when I was sober. Given my environment and the company I was keeping, that was just the life I had, and I felt dead on the inside. It was a very dark time for me, with severe depression and suicidal thoughts. Living in that state every day, I just couldn't handle it. Everything was shit, the relationship, my health and my job, which was in the most depressing office, where everyone was older and no one smiled or even wanted to talk to you when you came in, and I was such a depressing person in that environment. I'd started seeing a psychologist, but very quickly became dependent on her. Meditation wasn't even optional, because without it my mind would spiral, but the gym was the one thing that made me feel better. It was something I could control, and in the middle of all that darkness it became my lifeline.",
+    { connector: 'swoop-left' },
     {
       image: '/images/story/pt-polaroid.jpg',
       width: 800,
@@ -918,6 +919,7 @@ export const storyPage: {
       side: 'right',
     },
     "And don't get me wrong, it was an incredibly rewarding job. It taught me everything I know about business, I got to meet so many amazing people and work with the most incredible clients, many of whom became close friends, and I got to help, inspire and change the lives of everyone from teens to adults. It was such an era of growth for me, personally, mentally, physically and spiritually. But in those last few years I'd reached the peak of my career. I was the busiest trainer in the gym, fully booked with 50+ sessions a week and making great money, so I should have been happy, right? This was what I was meant to want, what I'd been reaching for for so long, but there I was again, miserable and depressed, standing in the life I thought I wanted. I couldn't shake the feeling that surely this can't be it, there has to be more to life?",
+    { connector: 'long-drop' },
     '## Burning out in Bondi',
     "In the lead up to my \"dream\" trip to Europe in 2021, I'd run myself into the ground with back to back sessions and an overbooked schedule, telling myself I just had to get through these few months and before I knew it I'd be sitting on a beach in Italy sipping a marg. That whole time I was a mental wreck, crying out of nowhere, up one second and down the next. I'd also been dealing with a breakup with my best friend of 7 years, and I'd just come out of another relationship with the wrong guy (again). My intuition had told me he wasn't right, but I'd chosen to date him almost as a punishment. He was the complete opposite of my drug dealer ex, a total straighty 180, and I figured doing the extreme opposite would be good for me (hello ADHD brain, lol). He was a bodybuilder who counted the calories in every meal, to the point where he'd bring his own meal prep to a restaurant, and let's just say the personality wasn't there. I'd honestly had better conversations with a goddamn tree, and while he was good looking, I'll give him that, that was about it for me.",
     {
