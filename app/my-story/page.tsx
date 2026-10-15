@@ -195,10 +195,9 @@ export default function MyStoryPage() {
                                 // tall photos are narrower, so they're not too big
                                 p.height > p.width ? 'w-28 sm:w-40' : 'w-40 sm:w-56'
                               }`
-                            : 'mx-auto w-60 -rotate-2 p-2.5 pb-5 sm:float-left sm:-ml-24 sm:mb-4 sm:mr-8 sm:mt-2 sm:w-64'
+                            : 'mx-auto !mt-10 w-60 -rotate-2 p-2.5 pb-5 sm:float-left sm:-ml-24 sm:mb-4 sm:mr-8 sm:!mt-12 sm:w-64'
                         }`}
                       >
-                        {p.side !== 'right' && <span aria-hidden="true" className="absolute -top-3 left-1/2 h-6 w-24 -translate-x-1/2 rotate-2 bg-zing-pink/60" />}
                         <Image src={p.image} alt={p.alt} width={p.width} height={p.height} sizes="16rem" className="h-auto w-full" />
                         {p.caption && <figcaption className="mt-3 text-center font-script text-2xl text-bark">{p.caption}</figcaption>}
                       </figure>
