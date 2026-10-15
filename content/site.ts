@@ -682,7 +682,7 @@ export const lifeDesignPage = {
       body: [
         'You have the job, security or lifestyle you thought you wanted. You know you should be grateful, and you are. But something doesn’t feel right, and you feel guilty for wanting more when nothing seems particularly wrong.',
       ],
-      asks: ['Why am I unhappy when I have a good life?', 'Is it okay to want a different life when nothing is technically wrong?'],
+      asks: ['Why am I unhappy when I have a good life?', 'Surely there’s got to be more to life than this?'],
     },
     {
       heading: 'You keep looking for answers, but struggle to trust your own',
