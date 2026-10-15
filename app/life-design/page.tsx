@@ -77,7 +77,6 @@ export default function LifeDesignPage() {
               <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-bark/70">{page.eyebrow}</p>
               <h1 className="mt-5 font-display text-5xl leading-[1.05] text-bark sm:text-7xl">{page.title}</h1>
               <p className="mt-6 max-w-xl font-display text-2xl italic leading-snug text-bark/85 sm:text-3xl">{page.lead}</p>
-              <p className="mt-6 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-stone">{page.byline}</p>
             </div>
             <div className="mx-auto w-full max-w-md">
               <div className="relative aspect-[4/5] -rotate-2 overflow-hidden shadow-2xl">
