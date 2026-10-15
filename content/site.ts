@@ -662,9 +662,9 @@ export const footer = {
 export const lifeDesignPage = {
   eyebrow: 'Life design & personal reinvention',
   title: 'Feeling Stuck? Find Yourself & Create a Life That Feels Like Yours.',
-  lead: 'You can build a life that looks good on paper, do everything you’re supposed to do, and still feel like something is missing.',
+  lead: 'You can build a life that looks good on paper, do everything you’re supposed to do, and still feel like something is missing. Maybe you’ve outgrown the life you’ve built, lost touch with what you really want, or started questioning whether the path you’re on is truly yours.',
   intro: [
-    'Maybe you’ve outgrown the life you’ve built, lost touch with what you really want, or started questioning whether the path you’re on is truly yours.',
+    'Maybe you’ve spent years following expectations, putting others first or trying to get everything right, only to find yourself questioning what you actually want.',
     'Lena in the Wild helps you understand what’s keeping you stuck, reconnect with who you are beneath the conditioning, and find the clarity, self-trust and freedom to create a life that feels genuinely like yours.',
     'You don’t need to have all the answers. You just need to start discovering them for yourself.',
   ],
