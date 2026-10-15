@@ -23,9 +23,9 @@ export const metadata: Metadata = {
     url: '/life-design',
     title,
     description,
-    images: [{ url: '/images/road/road-6.jpg', alt: 'A lone tree by a still lake with hills behind' }],
+    images: [{ url: '/images/who-i-help.jpg', alt: 'Lena holding an oracle card reading Amethyst above the harbour on a sunny day' }],
   },
-  twitter: { card: 'summary_large_image', title, description, images: ['/images/road/road-6.jpg'] },
+  twitter: { card: 'summary_large_image', title, description, images: ['/images/who-i-help.jpg'] },
 };
 
 const lena = { '@id': `${absoluteUrl('/')}#lena` };
@@ -81,8 +81,8 @@ export default function LifeDesignPage() {
             <div className="mx-auto w-full max-w-md">
               <div className="relative aspect-[4/5] -rotate-2 overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/road/road-6.jpg"
-                  alt="A lone tree by a still lake with hills behind"
+                  src="/images/who-i-help.jpg"
+                  alt="Lena holding an oracle card reading Amethyst above the harbour on a sunny day"
                   fill
                   priority
                   sizes="(min-width: 1024px) 28rem, 90vw"
@@ -222,7 +222,7 @@ export default function LifeDesignPage() {
             <ScrollReveal>
               <div className="relative mx-auto mb-14 aspect-[4/3] w-full rotate-1 overflow-hidden bg-cream p-2 shadow-xl">
                 <div className="relative h-full w-full overflow-hidden">
-                  <Image src="/images/lena-sunrise.jpg" alt="Lena at sunrise above the clouds" fill sizes="(min-width: 640px) 42rem, 90vw" className="object-cover" style={{ objectPosition: '65% 45%' }} />
+                  <Image src="/images/lena-sunrise-hero.jpg" alt="Lena at sunrise above the clouds" fill sizes="(min-width: 640px) 42rem, 90vw" className="object-cover" style={{ objectPosition: '62% 55%' }} />
                 </div>
               </div>
               <h2 className={sectionHeading}>{page.storyHeading}</h2>
