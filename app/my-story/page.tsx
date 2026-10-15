@@ -165,9 +165,16 @@ export default function MyStoryPage() {
                       />
                     ) : p.small ? (
                       // A small, narrow print tucked into the text
-                      <figure key={p.image} className="relative float-right mb-2 ml-4 mt-1.5 w-20 rotate-3 bg-white p-1 pb-3.5 shadow-lg sm:-mr-10 sm:ml-6 sm:w-24 sm:pb-5">
+                      <figure
+                        key={p.image}
+                        className={`relative bg-white shadow-lg ${
+                          p.side === 'left'
+                            ? 'float-left mb-2 mr-4 mt-1.5 w-28 -rotate-3 p-1.5 pb-5 sm:-ml-16 sm:mr-7 sm:w-40 sm:p-2 sm:pb-7'
+                            : 'float-right mb-2 ml-4 mt-1.5 w-20 rotate-3 p-1 pb-3.5 sm:-mr-10 sm:ml-6 sm:w-24 sm:pb-5'
+                        }`}
+                      >
                         <div className="relative aspect-[3/4] overflow-hidden">
-                          <Image src={p.image} alt={p.alt} fill sizes="8rem" className="object-cover" style={{ objectPosition: '30% 50%' }} />
+                          <Image src={p.image} alt={p.alt} fill sizes="8rem" className="object-cover" style={{ objectPosition: p.side === 'left' ? '50% 70%' : '30% 50%' }} />
                         </div>
                       </figure>
                     ) : (
@@ -176,7 +183,10 @@ export default function MyStoryPage() {
                         key={p.image}
                         className={`relative bg-white shadow-lg ${
                           p.side === 'right'
-                            ? 'float-right mb-3 ml-5 mt-1 w-40 rotate-2 p-1.5 pb-6 sm:-mr-16 sm:ml-8 sm:w-56 sm:p-2 sm:pb-8'
+                            ? `float-right mb-3 ml-5 mt-1 rotate-2 p-1.5 pb-6 sm:-mr-16 sm:ml-8 sm:p-2 sm:pb-8 ${
+                                // tall photos are narrower, so they're not too big
+                                p.height > p.width ? 'w-28 sm:w-40' : 'w-40 sm:w-56'
+                              }`
                             : 'mx-auto w-60 -rotate-2 p-2.5 pb-5 sm:float-left sm:-ml-24 sm:mb-4 sm:mr-8 sm:mt-2 sm:w-64'
                         }`}
                       >
