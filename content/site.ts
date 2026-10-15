@@ -123,7 +123,7 @@ export const fiveDayReconnectPage = {
       alt: 'Lena laughing on a rope swing on a white sand beach',
     },
     {
-      title: 'The Self-Care That Actually Refills You',
+      title: 'Self-Care That Recharges You',
       body: 'Discover what genuinely helps you feel relaxed and recharged, and learn to prioritise time for yourself in your busy life.',
       image: '/images/reconnect/day-4-photo.jpg',
       alt: 'A beach towel, journal and book on the rocks above a sunny beach',
