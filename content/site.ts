@@ -685,7 +685,7 @@ export const lifeDesignPage = {
       asks: ['Why am I unhappy when I have a good life?', 'Surely there’s got to be more to life than this?'],
     },
     {
-      heading: 'You keep looking for answers, but struggle to find them',
+      heading: 'You keep looking for answers, but struggle to trust your own',
       body: [
         'You’ve researched your options, asked for advice and thought about every possible direction. Yet you still find yourself second-guessing your decisions and wondering whether you’re making the right choice.',
         'You want to find the perfect plan, the right path.',
