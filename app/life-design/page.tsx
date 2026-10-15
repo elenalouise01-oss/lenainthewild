@@ -222,7 +222,7 @@ export default function LifeDesignPage() {
             <ScrollReveal>
               <div className="relative mx-auto mb-14 aspect-[4/3] w-full rotate-1 overflow-hidden bg-cream p-2 shadow-xl">
                 <div className="relative h-full w-full overflow-hidden">
-                  <Image src="/images/lena-sunrise-hero.jpg" alt="Lena at sunrise above the clouds" fill sizes="(min-width: 640px) 42rem, 90vw" className="object-cover" style={{ objectPosition: '62% 55%' }} />
+                  <Image src="/images/lena-sunrise-smile.jpg" alt="Lena smiling over her shoulder at sunrise above the clouds" fill sizes="(min-width: 640px) 42rem, 90vw" className="object-cover" style={{ objectPosition: '62% 55%' }} />
                 </div>
               </div>
               <h2 className={sectionHeading}>{page.storyHeading}</h2>
