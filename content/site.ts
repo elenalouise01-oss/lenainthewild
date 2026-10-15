@@ -106,31 +106,31 @@ export const fiveDayReconnectPage = {
   days: [
     {
       title: 'The Non-Negotiable That Shifts Your Whole Day',
-      body: 'How to begin your day grounded instead of reactive — and build a meditation habit that actually lasts.',
+      body: 'Start your day feeling more grounded, calm and present, creating space for yourself before the noise of everyday life takes over.',
       image: '/images/reconnect/day-1-photo.jpg',
       alt: 'Feet up on a clifftop overlooking the ocean and headlands',
     },
     {
       title: 'The Practice That Attracts Abundance',
-      body: 'Discover how a simple gratitude practice can help you appreciate what’s already in your life and cultivate a greater sense of abundance.',
+      body: 'Shift your focus towards what’s already good in your life and begin cultivating a deeper sense of gratitude, appreciation and abundance.',
       image: '/images/reconnect/day-2-photo.jpg',
       alt: 'A double rainbow over a quiet suburban street after rain',
     },
     {
       title: 'Move Like Nobody’s Watching',
-      body: 'How to use playful movement to quiet your mind, lift your energy and reconnect with yourself.',
+      body: 'Get out of your head, reconnect with your body and rediscover the joy and freedom of moving simply because it feels good.',
       image: '/images/reconnect/day-3.jpg',
       alt: 'Lena laughing on a rope swing on a white sand beach',
     },
     {
       title: 'Self-Care That Recharges You',
-      body: 'Discover what genuinely helps you feel relaxed and recharged, and learn to prioritise time for yourself in your busy life.',
+      body: 'Reconnect with what you genuinely need to feel refreshed and recharged, and give yourself permission to make time for it.',
       image: '/images/reconnect/day-4-photo.jpg',
       alt: 'A beach towel, journal and book on the rocks above a sunny beach',
     },
     {
       title: 'Coming Home to Yourself',
-      body: 'Learn to tune into your body, explore your intuition and begin trusting yourself to navigate everyday decisions.',
+      body: 'Quiet the outside noise, tune into your inner voice and begin building trust in yourself and your own guidance.',
       image: '/images/reconnect/day-5.jpg',
       alt: 'A pink-lit cloud above treetops at sunset',
     },
