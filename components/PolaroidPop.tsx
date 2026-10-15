@@ -40,6 +40,25 @@ export default function PolaroidPop({ shots }: { shots: Shot[] }) {
 
   return (
     <div ref={ref} className="clear-both flex justify-center py-6 sm:py-10">
+      <div className="relative flex w-full justify-center">
+      {/* a dashed line that comes down beside the photos, loops, and leads into them */}
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 160 200"
+        fill="none"
+        className="pointer-events-none absolute -top-16 left-[2%] h-40 w-24 sm:-top-20 sm:left-[4%] sm:h-52 sm:w-36"
+      >
+        <path
+          d="M28 4 C 2 52, 8 102, 58 112 C 92 118, 98 86, 76 80 C 52 74, 50 106, 84 122 C 108 134, 128 140, 150 148"
+          stroke="#3b2d0e"
+          strokeOpacity="0.55"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeDasharray="7 8"
+          vectorEffect="non-scaling-stroke"
+        />
+        <path d="M140 138 L151 148 L138 156" stroke="#3b2d0e" strokeOpacity="0.55" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+      </svg>
       {shots.map((shot, i) => (
         <motion.figure
           key={shot.image}
@@ -55,6 +74,7 @@ export default function PolaroidPop({ shots }: { shots: Shot[] }) {
           </div>
         </motion.figure>
       ))}
+      </div>
     </div>
   );
 }

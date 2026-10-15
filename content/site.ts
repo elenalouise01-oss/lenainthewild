@@ -858,7 +858,7 @@ export const lifeDesignPage = {
 // `small` photos sit tucked into the right-hand side of the paragraph that follows.
 type StoryPhoto = { image: string; width: number; height: number; alt: string; caption?: string; cutout?: boolean; small?: boolean; side?: 'left' | 'right'; polaroid?: boolean };
 // A dashed line leading from the text to the photo below it
-type StoryConnector = { connector: 'long-loop' | 'short-curl' };
+type StoryConnector = { connector: 'short-curl' };
 // A row of polaroids that pop up onto the page
 type StoryPolaroids = { polaroids: { image: string; alt: string; pos?: string }[] };
 
@@ -890,7 +890,6 @@ export const storyPage: {
       small: true,
     },
     "Hi, I'm Lena. I was 36 years old when I uprooted my life from Sydney to Bali and leapt into the unknown, but it wasn't my first leap. I first threw my life up in the air at 21, when I was going through a break up with my high school boyfriend of 8 years. I'd spent years managing a restaurant for his parents while working my way through a graphic design degree, and with my degree finished and the relationship over, I decided to leave it all behind and move to a remote island in the Whitsundays, then another, spending two years living the island life before moving to Canada on a whim after meeting a Canadian girlie who told me I should come over (23 year old me: yeah ok, why not!).",
-    { connector: 'long-loop' },
     {
       polaroids: [
         { image: '/images/story/canada-snowboard.jpg', alt: 'Lena sitting in the snow with her snowboard, mountains behind her in Canada', pos: '68% 50%' },
