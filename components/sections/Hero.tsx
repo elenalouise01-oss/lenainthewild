@@ -93,9 +93,11 @@ export default function Hero() {
   // Reaches full opacity right as the pinned section ends, instead of
   // holding a solid color for a long stretch of scroll before Section1's
   // text can appear — that hold read as "the page is stuck/blank".
-  const washOpacity = useTransform(scrollYProgress, [0.74, 0.86], [0, 1]);
-  // the wash fades in as a soft lilac first, then deepens into the brown
-  const washColor = useTransform(scrollYProgress, [0.74, 0.86, 0.98], ['#dcc3e2', '#dcc3e2', '#3b2d0e']);
+  const washOpacity = useTransform(scrollYProgress, [0.7, 0.84], [0, 1]);
+  // The wash is a tall lilac-to-brown gradient that slides up as you scroll:
+  // a soft lilac fades in over the photo, then the brown rises from the
+  // bottom and blends up through it until the whole screen is brown.
+  const washPos = useTransform(scrollYProgress, [0.76, 0.99], ['0% 0%', '0% 100%']);
 
   return (
     <section ref={sectionRef} id="top" className={`relative ${reduced ? 'h-dvh' : 'h-[250dvh]'}`}>
@@ -188,7 +190,15 @@ export default function Hero() {
             (centered) duplicated against Section1's real heading (left-
             aligned) as the two scrolled past each other. */}
         {!reduced && (
-          <motion.div style={{ opacity: washOpacity, backgroundColor: washColor }} className="pointer-events-none absolute inset-0 z-20" />
+          <motion.div
+            style={{
+              opacity: washOpacity,
+              backgroundImage: 'linear-gradient(to bottom, #dcc3e2 0%, #dcc3e2 30%, #c3a6c6 42%, #8f7685 54%, #5c4838 64%, #3b2d0e 74%, #3b2d0e 100%)',
+              backgroundSize: '100% 340%',
+              backgroundPosition: washPos,
+            }}
+            className="pointer-events-none absolute inset-0 z-20"
+          />
         )}
       </div>
     </section>
