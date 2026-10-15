@@ -9,10 +9,19 @@ const PATHS = {
   arrow: 'M100 6 C 60 20, 30 60, 46 100 C 58 130, 92 128, 86 104 C 80 84, 50 96, 58 126 C 64 150, 80 166, 96 176',
 };
 
-export default function DottedDoodle({ shape = 'loop', className = '' }: { shape?: keyof typeof PATHS; className?: string }) {
+export default function DottedDoodle({
+  shape = 'loop',
+  className = '',
+  inline = false,
+}: {
+  shape?: keyof typeof PATHS;
+  className?: string;
+  // sits in the flow of the page (between chapters) instead of floating in the margin
+  inline?: boolean;
+}) {
   return (
-    <svg aria-hidden="true" viewBox="0 0 200 200" fill="none" className={`pointer-events-none absolute ${className}`}>
-      <path d={PATHS[shape]} stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeDasharray="6 7" />
+    <svg aria-hidden="true" viewBox="0 0 200 200" fill="none" className={`pointer-events-none ${inline ? 'block' : 'absolute'} ${className}`}>
+      <path d={PATHS[shape]} stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="7 7" vectorEffect="non-scaling-stroke" />
     </svg>
   );
 }

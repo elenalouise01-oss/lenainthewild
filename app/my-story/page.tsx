@@ -75,6 +75,14 @@ function ChapterTitle({ children }: { children: string }) {
   );
 }
 
+// Small dashed doodles that lead into some chapters (shown on every screen)
+const DOODLE_BEFORE: Record<string, { shape: 'loop' | 'wave' | 'arrow'; className: string }> = {
+  'Burning out in Bondi': { shape: 'wave', className: 'ml-auto text-[#a97bb5]' },
+  'Deciding to leave Sydney': { shape: 'arrow', className: 'text-bark/70' },
+  'Down to my last $500 in Ubud': { shape: 'loop', className: 'ml-auto -rotate-12 text-bark/70' },
+  'Reinventing life on my own terms': { shape: 'wave', className: 'text-[#a97bb5]' },
+};
+
 // Highlighter pen over a few lines of the story, taking turns in lilac,
 // yellow and green
 const TAPED = ["it wasn't my first leap"];
@@ -134,11 +142,11 @@ export default function MyStoryPage() {
 
         <section className="overflow-x-clip bg-cream px-6 py-24 sm:py-32">
           <div className="relative mx-auto max-w-2xl">
-            {/* Dashed doodles in the margins, like a scrapbook (wide screens only) */}
-            <DottedDoodle shape="loop" className="-left-56 top-20 hidden h-56 w-56 -rotate-6 text-bark/50 xl:block" />
-            <DottedDoodle shape="wave" className="-right-60 top-[30%] hidden h-48 w-56 text-[#b88cc4] xl:block" />
-            <DottedDoodle shape="arrow" className="-left-60 top-[48%] hidden h-56 w-56 rotate-6 text-bark/45 xl:block" />
-            <DottedDoodle shape="loop" className="-right-56 top-[72%] hidden h-56 w-56 rotate-12 scale-x-[-1] text-bark/50 xl:block" />
+            {/* Dashed doodles in the margins, like a scrapbook (wider screens) */}
+            <DottedDoodle shape="loop" className="-left-40 top-16 hidden h-40 w-40 -rotate-6 text-bark/70 lg:block xl:-left-56 xl:h-56 xl:w-56" />
+            <DottedDoodle shape="wave" className="-right-40 top-[30%] hidden h-36 w-40 text-[#a97bb5] lg:block xl:-right-60 xl:h-48 xl:w-56" />
+            <DottedDoodle shape="arrow" className="-left-40 top-[48%] hidden h-40 w-40 rotate-6 text-bark/70 lg:block xl:-left-60 xl:h-56 xl:w-56" />
+            <DottedDoodle shape="loop" className="-right-40 top-[72%] hidden h-40 w-40 rotate-12 scale-x-[-1] text-bark/70 lg:block xl:-right-56 xl:h-56 xl:w-56" />
             <ScrollReveal>
               <h1 className="font-display text-4xl leading-tight text-bark sm:text-6xl">{storyPage.storyTitle}</h1>
               <p className="mt-8 font-body text-base text-umber sm:text-lg">{storyPage.song}</p>
@@ -196,9 +204,18 @@ export default function MyStoryPage() {
                       </figure>
                     )
                   ) : p.startsWith('## ') ? (
-                    <h2 key={p} className="clear-both pt-8 font-display text-3xl leading-snug text-bark">
+                    <div key={p} className="clear-both pt-8">
+                      {DOODLE_BEFORE[p.slice(3)] && (
+                        <DottedDoodle
+                          inline
+                          shape={DOODLE_BEFORE[p.slice(3)].shape}
+                          className={`-mb-6 h-28 w-44 sm:h-32 sm:w-52 ${DOODLE_BEFORE[p.slice(3)].className}`}
+                        />
+                      )}
+                    <h2 className="font-display text-3xl leading-snug text-bark">
                       <ChapterTitle>{p.slice(3)}</ChapterTitle>
                     </h2>
+                    </div>
                   ) : (
                     <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber sm:text-lg">
                       <Highlighted text={p} />
