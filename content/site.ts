@@ -858,7 +858,7 @@ export const lifeDesignPage = {
 // `small` photos sit tucked into the right-hand side of the paragraph that follows.
 type StoryPhoto = { image: string; width: number; height: number; alt: string; caption?: string; cutout?: boolean; small?: boolean; side?: 'left' | 'right'; polaroid?: boolean };
 // A dashed line leading from the text to the photo below it
-type StoryConnector = { connector: 'short-curl' | 'swoop-left' | 'long-drop' };
+type StoryConnector = { connector: 'short-curl' | 'swoop-left' | 'long-drop' | 'swoop-right' | 'long-wander' };
 // A row of polaroids that pop up onto the page
 type StoryPolaroids = { polaroids: { image: string; alt: string; pos?: string }[] };
 
@@ -952,9 +952,9 @@ export const storyPage: {
     "That very afternoon after work, I was meant to go to the gym, but instead I felt called to go down to the beach. It was raining and I was like, are you sure, intuition? But I just felt I needed to go. And as I sat there in the rain on the edge of the cliff overlooking Balmoral beach, there it was, my sign, a beautiful big rainbow. The next day I resigned.",
     { connector: 'short-curl' },
     {
-      image: '/images/story-grandma-plaque.jpg',
+      image: '/images/story-grandma-full.jpg',
       width: 1125,
-      height: 1105,
+      height: 1500,
       alt: 'Lena’s hand resting on her grandma’s memorial plaque beside an oracle card reading “Yes, just say yes”',
     },
     "And of course, once I'd finally resigned, the universe decided to throw all kinds of tests my way, dangling high-paying opportunities, collabs, gifts, all the reasons to stay. I backpedalled on my decision a few times and even convinced myself to take a job in Sydney for a week. The uncertainty of the leap and not having a proper plan, especially for my income, had me changing my mind every two seconds, and I was letting other people's opinions pull me back towards safety way too easily. It was a difficult period because I kept doubting myself, and I guess that's what happens when you no longer have that \"safety\", your mind is just trying to keep you safe. But I stuck to my decision.",
@@ -975,6 +975,7 @@ export const storyPage: {
     "I was doing all the things, with my days structured down to the hour. I was up at 5am for my morning walk to get my steps in, then oracle cards, meditation and coffee before working on my new UGC business, applying for freelance roles and reaching out to businesses and brands to collab, then the gym, hitting my protein goal, catching the sunset and in bed by 10 to start all over again.",
     "I was doing everything that had worked for me in my old life, still caught up in the hustle without even realising it. I was stuck in this limbo between trying to be responsible, building my career so I could keep on top of my finances, and trying to slow down and actually enjoy the present moment and my life in Bali. The one thing I kept doing was running off to Ubud, and any time I had a meltdown or felt anxious I'd escape back there for the week or the weekend.",
     "Around the same time, my dad got really sick and I flew back to Sydney so I could be with him after his surgery. I'd already maxed out my credit card by then, so while I was home I was applying for UGC roles, and I actually landed a great gig with exactly what I needed, consistent, good pay. But when I returned to Bali, the job fell through, again.",
+    { connector: 'swoop-right' },
     '## Down to my last $500 in Ubud',
     "Four months in, things were not looking good. I was down to my last $500 and had sold the last of my Bitcoin, and I literally couldn't afford my rent anymore, so I made the super tough decision to tell my villa I was moving out. I had no choice but to leave, so I went to Ubud.",
     "That first day in Ubud, I'd paid for a couple of nights at a homestay while I decided whether to stay or go back home, and I'd lined up two inspections for monthly places within my very minimal budget (5.5 million IDR was all I had). One fell through, and on the way to the other, something already felt off. The Grab couldn't find the location and took me to the wrong place twice, so I got off and walked until I eventually found it.",
@@ -984,6 +985,7 @@ export const storyPage: {
     "There I ended up meeting a girl who invited me over for coffee, and it turned out she lived right where I'd been the night before, aimlessly walking the streets. I remember standing on that very corner and it was like time stopped. Everyone around me almost disappeared, and all I could see was this golden sign glistening in the light, and I had this feeling that I'd been here before, like something was really familiar and felt right.",
     "She told me there were a bunch of places behind hers with rooms available and that I should go check them out, so that's what I did. And the wildest part is that I walked into one of them to see a room, and my name was already written up on their wall with a room allocated to me (but that's a story for another time). That place ended up being my new home, and I've stayed there ever since.",
     "Sometimes, when an old way of living and an old identity no longer fit the person you're becoming, the universe strips everything away so you can rebuild your foundations and step into your new identity and your new life. Looking back, this was my dark night of the soul.",
+    { connector: 'long-wander' },
     '## The turning point',
     "That day became my turning point, and within 24 hours things started to shift, beginning with a \"random\" $777 refund from my health insurance. The next day a client reached out about a photoshoot that paid for my next month's rent, and from there came new clients, new jobs, new energy and money landing in my bank account.",
     "Bit by bit things started to flow in, and the strangest part was that I wasn't even trying. I wasn't applying for work, pushing my business or trying to be productive, I was just finally giving my body the rest it so desperately needed, living in the moment and taking small steps of aligned action.",
