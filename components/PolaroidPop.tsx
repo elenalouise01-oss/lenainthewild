@@ -39,14 +39,14 @@ export default function PolaroidPop({ shots }: { shots: Shot[] }) {
   const show = reduced || shown;
 
   return (
-    <div ref={ref} className="clear-both flex justify-center py-6 sm:py-10">
+    <div ref={ref} className="clear-both flex justify-center pb-6 pt-10 sm:pb-10 sm:pt-14">
       <div className="relative flex w-full justify-center">
       {/* a dashed line that comes down beside the photos, loops, and leads into them */}
       <svg
         aria-hidden="true"
         viewBox="0 0 160 200"
         fill="none"
-        className="pointer-events-none absolute -top-16 left-[2%] h-40 w-24 sm:-top-20 sm:left-[4%] sm:h-52 sm:w-36"
+        className="pointer-events-none absolute -top-6 left-[2%] h-40 w-24 sm:-top-6 sm:left-[4%] sm:h-52 sm:w-36"
       >
         <path
           d="M28 4 C 2 52, 8 102, 58 112 C 92 118, 98 86, 76 80 C 52 74, 50 106, 84 122 C 108 134, 128 140, 150 148"
@@ -58,6 +58,24 @@ export default function PolaroidPop({ shots }: { shots: Shot[] }) {
           vectorEffect="non-scaling-stroke"
         />
         <path d="M140 138 L151 148 L138 156" stroke="#3b2d0e" strokeOpacity="0.55" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+      </svg>
+      {/* and one that leaves the last photo and heads on down the page */}
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 160 220"
+        fill="none"
+        className="pointer-events-none absolute -bottom-24 right-[2%] h-40 w-24 sm:-bottom-32 sm:right-[6%] sm:h-56 sm:w-36"
+      >
+        <path
+          d="M6 40 C 60 28, 116 44, 120 82 C 124 112, 92 120, 86 100 C 80 80, 120 76, 132 112 C 142 142, 124 178, 112 206"
+          stroke="#3b2d0e"
+          strokeOpacity="0.55"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeDasharray="7 8"
+          vectorEffect="non-scaling-stroke"
+        />
+        <path d="M102 196 L112 208 L122 196" stroke="#3b2d0e" strokeOpacity="0.55" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
       </svg>
       {shots.map((shot, i) => (
         <motion.figure
