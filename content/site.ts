@@ -112,7 +112,7 @@ export const fiveDayReconnectPage = {
     },
     {
       title: 'The Practice That Attracts Abundance',
-      body: 'How to use gratitude as a tool for abundance — without it feeling like another thing on your to-do list.',
+      body: 'Discover how a simple gratitude practice can help you appreciate what’s already in your life and cultivate a greater sense of abundance.',
       image: '/images/reconnect/day-2-photo.jpg',
       alt: 'A double rainbow over a quiet suburban street after rain',
     },
@@ -124,13 +124,13 @@ export const fiveDayReconnectPage = {
     },
     {
       title: 'The Self-Care That Actually Refills You',
-      body: 'How to identify what truly recharges you, and make it non-negotiable.',
+      body: 'Discover what genuinely helps you feel relaxed and recharged, and learn to prioritise time for yourself in your busy life.',
       image: '/images/reconnect/day-4-photo.jpg',
       alt: 'A beach towel, journal and book on the rocks above a sunny beach',
     },
     {
       title: 'Coming Home to Yourself',
-      body: 'How to reconnect with your intuition and start trusting the quiet voice that’s been guiding you all along.',
+      body: 'Learn to tune into your body, explore your intuition and begin trusting yourself to navigate everyday decisions.',
       image: '/images/reconnect/day-5.jpg',
       alt: 'A pink-lit cloud above treetops at sunset',
     },
