@@ -685,10 +685,10 @@ export const lifeDesignPage = {
       asks: ['Why am I unhappy when I have a good life?', 'Surely there’s got to be more to life than this?'],
     },
     {
-      heading: 'You keep looking for answers, but struggle to trust your own',
+      heading: 'You keep looking for answers, but struggle to find them',
       body: [
         'You’ve researched your options, asked for advice and thought about every possible direction. Yet you still find yourself second-guessing your decisions and wondering whether you’re making the right choice.',
-        'You want to hear your own voice beneath everyone else’s opinions and expectations.',
+        'You want to find the perfect plan, the right path.',
       ],
       asks: ['How do I figure out what I really want?', 'How do I learn to trust my intuition?'],
     },
