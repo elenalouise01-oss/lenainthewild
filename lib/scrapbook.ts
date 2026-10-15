@@ -5,16 +5,20 @@
 // is how many tiny steps each jump takes: 1 is a pure snap.
 export const choppy = (frames: number) => (t: number) => (t >= 1 ? 1 : Math.floor(t * frames) / frames);
 
-// The frames a cut-out goes through as it's placed: big and tipped, then
-// wobbling down onto the page. `tilt` is where it ends up.
+// The frames a piece goes through as it's stuck down, like Canva's
+// "Scrapbook" animation: it appears slightly off, then jitters a few times
+// (small turns and nudges) before settling at `tilt`. No big zoom or pop.
 export function scrapbookFrames(tilt: number, from: 1 | -1 = 1) {
   return {
-    opacity: [0, 1, 1, 1, 1],
-    scale: [1.3, 1.12, 0.96, 1.02, 1],
-    rotate: [tilt + 14 * from, tilt - 6 * from, tilt + 3 * from, tilt - 1 * from, tilt],
-    x: [24 * from, -8 * from, 4 * from, 0, 0],
-    y: [-18, 6, -2, 0, 0],
+    opacity: [0, 1, 1, 1, 1, 1, 1, 1],
+    scale: [1.04, 1.04, 1.02, 1.03, 1.01, 1.01, 1, 1],
+    rotate: [tilt + 7 * from, tilt + 7 * from, tilt - 4 * from, tilt + 3 * from, tilt - 2 * from, tilt + 1 * from, tilt - 0.5 * from, tilt],
+    x: [10 * from, 10 * from, -5 * from, 4 * from, -2 * from, 1 * from, 0, 0],
+    y: [-8, -8, 3, -3, 2, -1, 0, 0],
   };
 }
+
+// How long a piece takes to settle (slow enough to see each frame).
+export const SCRAPBOOK_SECONDS = 1.6;
 
 export const hidden = { opacity: 0 };

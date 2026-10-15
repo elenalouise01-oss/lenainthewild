@@ -5,8 +5,8 @@ import { useRef } from 'react';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 
 // A strip of tape that unrolls behind a few words as you scroll down to
-// them, with the roll riding along the leading edge. The words stay
-// readable the whole time; with reduced motion the tape is simply there.
+// them, the words appearing with it and the roll riding along the leading
+// edge. With reduced motion the tape and words are simply there.
 export default function TapeMark({ children, colour = 'bg-sage/80' }: { children: string; colour?: string }) {
   const reduced = useReducedMotion();
   const ref = useRef<HTMLSpanElement>(null);
@@ -25,7 +25,10 @@ export default function TapeMark({ children, colour = 'bg-sage/80' }: { children
           className="absolute -bottom-1.5 -top-1.5 w-2.5 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#a97bb5] via-[#ead6ef] to-[#a97bb5] shadow-md"
         />
       )}
-      <span className="relative">{children}</span>
+      {/* the words unroll with the tape */}
+      <motion.span style={reduced ? undefined : { clipPath }} className="relative inline-block">
+        {children}
+      </motion.span>
     </span>
   );
 }

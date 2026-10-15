@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import { choppy, hidden, scrapbookFrames } from '@/lib/scrapbook';
+import { choppy, hidden, SCRAPBOOK_SECONDS, scrapbookFrames } from '@/lib/scrapbook';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 
 type Shot = { image: string; alt: string; pos?: string };
@@ -46,7 +46,7 @@ export default function PolaroidPop({ shots }: { shots: Shot[] }) {
           initial={false}
           // stop-motion "scrapbook" placement: choppy frames with a little wobble
           animate={show ? (reduced ? { opacity: 1, rotate: TILTS[i % TILTS.length] } : scrapbookFrames(TILTS[i % TILTS.length], i % 2 ? 1 : -1)) : hidden}
-          transition={reduced ? { duration: 0 } : { duration: 0.55, ease: choppy(1), delay: 0.1 + i * 0.45 }}
+          transition={reduced ? { duration: 0 } : { duration: SCRAPBOOK_SECONDS, ease: choppy(1), delay: 0.2 + i * 1.1 }}
           className={`relative w-[38%] max-w-[13rem] bg-white p-2 pb-8 shadow-xl sm:p-2.5 sm:pb-10 ${i > 0 ? '-ml-[6%] sm:-ml-6' : ''}`}
           style={{ zIndex: i === 1 ? 3 : 1 }}
         >

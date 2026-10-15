@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import CutoutSticker from '@/components/CutoutSticker';
+import DottedDoodle from '@/components/DottedDoodle';
 import Footer from '@/components/Footer';
 import PolaroidPop from '@/components/PolaroidPop';
 import TapeMark from '@/components/TapeMark';
@@ -131,8 +132,13 @@ export default function MyStoryPage() {
         {/* Tape across the bottom of the photo */}
         <TapeBanner text="leaping into the unknown" mark="heart" className="relative z-10 -mt-12 -mb-12" />
 
-        <section className="bg-cream px-6 py-24 sm:py-32">
-          <div className="mx-auto max-w-2xl">
+        <section className="overflow-x-clip bg-cream px-6 py-24 sm:py-32">
+          <div className="relative mx-auto max-w-2xl">
+            {/* Dashed doodles in the margins, like a scrapbook (wide screens only) */}
+            <DottedDoodle shape="loop" className="-left-56 top-20 hidden h-56 w-56 -rotate-6 text-bark/50 xl:block" />
+            <DottedDoodle shape="wave" className="-right-60 top-[22%] hidden h-48 w-56 text-[#b88cc4] xl:block" />
+            <DottedDoodle shape="arrow" className="-left-60 top-[48%] hidden h-56 w-56 rotate-6 text-bark/45 xl:block" />
+            <DottedDoodle shape="loop" className="-right-56 top-[72%] hidden h-56 w-56 rotate-12 scale-x-[-1] text-bark/50 xl:block" />
             <ScrollReveal>
               <h1 className="font-display text-4xl leading-tight text-bark sm:text-6xl">{storyPage.storyTitle}</h1>
               <p className="mt-8 font-body text-base text-umber sm:text-lg">{storyPage.song}</p>

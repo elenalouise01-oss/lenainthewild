@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import { choppy, hidden, scrapbookFrames } from '@/lib/scrapbook';
+import { choppy, hidden, SCRAPBOOK_SECONDS, scrapbookFrames } from '@/lib/scrapbook';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 
 // A soft shadow under the cut-out so it sits on the page.
@@ -58,7 +58,7 @@ export default function CutoutSticker({
       <motion.div
         initial={false}
         animate={show ? (reduced ? { opacity: 1, rotate: -2 } : scrapbookFrames(-2, 1)) : hidden}
-        transition={reduced ? { duration: 0 } : { duration: 0.6, ease: choppy(1) }}
+        transition={reduced ? { duration: 0 } : { duration: SCRAPBOOK_SECONDS, ease: choppy(1) }}
         style={polaroid ? undefined : { filter: CUT_EDGE }}
         className={polaroid ? 'bg-white p-2 pb-8 shadow-xl sm:p-2.5 sm:pb-10' : undefined}
       >
@@ -68,7 +68,7 @@ export default function CutoutSticker({
         <motion.figcaption
           initial={false}
           animate={show ? (reduced ? { opacity: 1, rotate: -12 } : scrapbookFrames(-12, -1)) : hidden}
-          transition={reduced ? { duration: 0 } : { duration: 0.45, ease: choppy(1), delay: 0.65 }}
+          transition={reduced ? { duration: 0 } : { duration: SCRAPBOOK_SECONDS * 0.8, ease: choppy(1), delay: SCRAPBOOK_SECONDS + 0.2 }}
           className="absolute -left-8 top-[4%] flex h-24 w-24 items-center justify-center rounded-full bg-zing-yellow p-3 text-center font-script text-base leading-[0.95] text-bark shadow-md"
         >
           {caption}
