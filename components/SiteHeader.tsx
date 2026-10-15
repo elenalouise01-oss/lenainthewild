@@ -30,7 +30,7 @@ export default function SiteHeader({ active }: { active?: string }) {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-bark/10 bg-cream/95 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-bark/10 bg-white">
       <div className="container-editorial flex h-16 items-center justify-between gap-4 px-6 sm:h-[4.5rem]">
         <Link href="/" className="whitespace-nowrap font-display text-lg italic text-bark sm:text-2xl">
           {nav.logo}
@@ -92,7 +92,7 @@ export default function SiteHeader({ active }: { active?: string }) {
       </div>
 
       {open && (
-        <div id="site-menu" className="border-t border-bark/10 bg-cream px-6 pb-8 pt-4 xl:hidden">
+        <div id="site-menu" className="border-t border-bark/10 bg-white px-6 pb-8 pt-4 xl:hidden">
           <ul className="container-editorial flex flex-col">
             {[{ label: 'Home', href: '/' }, ...LINKS, { label: 'Subscribe', href: '/#subscribe' }].map((link) => (
               <li key={link.label}>
