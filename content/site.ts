@@ -22,7 +22,7 @@ export const hero = {
   subSmall: 'It’s time to rewrite your story...',
   scrollLabel: 'Scroll to Begin',
   badgeText: 'EXPLORE HERE • EXPLORE HERE • ',
-  ctaLabel: 'Come along',
+  ctaLabel: 'Start your next chapter',
   ctaHref: '#story',
   imageSrc: '/images/hero.jpg' as string | null,
 };
