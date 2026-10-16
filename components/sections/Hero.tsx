@@ -178,7 +178,7 @@ export default function Hero() {
 
           <motion.div
             style={reduced ? undefined : { opacity: scrollHintOpacity }}
-            className="container-editorial flex flex-col items-center gap-2 pb-8"
+            className="container-editorial flex flex-col items-center gap-5 pb-8"
           >
             {/* bold double chevron, gently bobbing, pointing down to "scroll to begin" */}
             <motion.svg
