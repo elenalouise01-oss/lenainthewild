@@ -178,24 +178,25 @@ export default function Hero() {
 
           <motion.div
             style={reduced ? undefined : { opacity: scrollHintOpacity }}
-            className="container-editorial flex flex-col items-center gap-2 pb-6"
+            className="container-editorial flex flex-col items-center gap-1.5 pb-8"
           >
+            {/* a simple down arrow, gently bobbing, pointing to "scroll to begin" */}
+            <motion.span
+              aria-hidden="true"
+              className="text-cream"
+              style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.45))' }}
+              animate={reduced ? undefined : { y: [0, 5, 0] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 4v15M6 13l6 6 6-6" />
+              </svg>
+            </motion.span>
             <span
               className="rounded-full bg-zing-yellow px-4 py-1.5 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark"
             >
               {hero.scrollLabel}
             </span>
-            {/* a simple down arrow, gently bobbing, inviting people to scroll */}
-            <motion.span
-              aria-hidden="true"
-              className="flex h-7 w-7 items-center justify-center rounded-full bg-zing-yellow text-bark shadow-sm"
-              animate={reduced ? undefined : { y: [0, 5, 0] }}
-              transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 5v14M6 13l6 6 6-6" />
-              </svg>
-            </motion.span>
           </motion.div>
         </motion.div>
 
