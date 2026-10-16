@@ -178,8 +178,23 @@ export default function Hero() {
 
           <motion.div
             style={reduced ? undefined : { opacity: scrollHintOpacity }}
-            className="container-editorial flex justify-center pb-8"
+            className="container-editorial flex flex-col items-center gap-2 pb-8"
           >
+            {/* bold double chevron, gently bobbing, pointing down to "scroll to begin" */}
+            <motion.svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              className="h-8 w-8 text-zing-yellow"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.6"
+              strokeLinecap="butt"
+              strokeLinejoin="miter"
+              animate={reduced ? undefined : { y: [0, 5, 0] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <path d="M4.5 5.5l7.5 7.5 7.5-7.5M4.5 11.5l7.5 7.5 7.5-7.5" />
+            </motion.svg>
             <span
               className="rounded-full bg-zing-yellow px-4 py-1.5 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark"
             >
