@@ -181,7 +181,7 @@ export default function Hero() {
             className="container-editorial flex justify-center pb-8"
           >
             <span
-              className="rounded-full bg-cream/70 px-4 py-1.5 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark"
+              className="rounded-full bg-zing-yellow px-4 py-1.5 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark"
             >
               {hero.scrollLabel}
             </span>
