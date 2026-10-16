@@ -21,7 +21,7 @@ export const hero = {
   sub: 'Just a girl who left it all behind at 36 to go after her dream life.',
   subSmall: 'If I can reinvent my life, so can you',
   scrollLabel: 'Scroll to Begin',
-  badgeText: 'LENA IN THE WILD • LENA IN THE WILD • ',
+  badgeText: 'EXPLORE HERE • EXPLORE HERE • EXPLORE HERE • ',
   ctaLabel: 'Come along',
   ctaHref: '#story',
   imageSrc: '/images/hero.jpg' as string | null,
