@@ -7,6 +7,7 @@ import Button from '@/components/Button';
 import Navigation from '@/components/Navigation';
 import PlaceholderImage from '@/components/PlaceholderImage';
 import SpinningBadge from '@/components/SpinningBadge';
+import WavingMonkey from '@/components/WavingMonkey';
 import { hero, nav } from '@/content/site';
 import { goHome } from '@/lib/goHome';
 import { useReducedMotion } from '@/lib/useReducedMotion';
@@ -125,7 +126,9 @@ export default function Hero() {
             <Link href="/" onClick={goHome} className="font-body text-sm font-bold uppercase tracking-wider text-cream sm:text-base">
               {nav.logo}
             </Link>
-            <Navigation iconClassName="cursor-pointer">
+            <Navigation iconClassName="flex cursor-pointer items-center gap-1 sm:gap-2">
+              {/* the monkey waves people over to the menu */}
+              <WavingMonkey className="w-14 sm:w-20" />
               <SpinningBadge text={hero.badgeText} tone="dark" />
             </Navigation>
           </div>
