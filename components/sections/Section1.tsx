@@ -45,12 +45,18 @@ export default function Section1() {
           </ScrollReveal>
 
           <div className="mt-24 flex justify-end sm:mt-36">
-            <div className="grid max-w-2xl gap-10 text-left sm:grid-cols-2">
+            <div className="max-w-2xl text-left">
               <ScrollReveal>
-                <p className="font-body text-base leading-relaxed text-cream">{welcome.supportLeft}</p>
+                <div className="space-y-5">
+                  {welcome.supportLeft.map((p) => (
+                    <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-cream">
+                      {p}
+                    </p>
+                  ))}
+                </div>
               </ScrollReveal>
               <ScrollReveal delay={0.1}>
-                <p className="font-body text-base leading-relaxed text-cream">{welcome.supportRight}</p>
+                <p className="mt-8 font-display text-2xl italic leading-snug text-cream sm:text-3xl">{welcome.supportRight}</p>
                 <a
                   href={welcome.ctaHref}
                   className="mt-4 inline-block py-2 font-body text-xs font-semibold uppercase tracking-widest2 text-zing-yellow underline decoration-zing-yellow/40 underline-offset-8 transition-colors hover:decoration-zing-yellow"

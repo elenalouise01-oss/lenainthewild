@@ -32,9 +32,14 @@ export const welcome = {
   headline: "For the person who knows there's more to life and is ready to find it.",
   // The three-part promise, under the headline (approved by Lena).
   pillars: 'Reconnect with yourself. Release the patterns keeping you stuck. Create a life that feels like yours.',
-  supportLeft:
-    "You've been feeling that pull, little nudges to go after your dream. You're standing in the life you thought you wanted, feeling stuck, stagnant, unfulfilled, searching for answers. Maybe you keep ending up in the same old patterns, or you've spent so long meeting everyone else's expectations that you're not sure what you want anymore.",
-  supportRight: "I feel you. That was me. Trust me, you're in the right place.",
+  supportLeft: [
+    'Have you been feeling that pull? Those little nudges telling you it’s time to make a big change in your life?',
+    'Maybe you’re standing in the life you once dreamed of, wondering, why am I not happy? You feel stuck, confused or unfulfilled, questioning whether the life you’ve created is even what you want anymore.',
+    'Maybe you’ve come out of a period of burnout, or you’re still in the thick of it, realising you can’t keep living on autopilot. Something needs to change because the way you’ve been living just isn’t sustainable anymore.',
+    'Or maybe you’ve already started making changes. You’re questioning the way you’ve always done things, craving a slower, more intentional life, creating distance from people and situations that drain you, and learning to enjoy your own company. You know you want something different, but you’re still piecing together what your dream life looks like and how to actually create it.',
+    'Wherever you are in that process, you’re ready for a life that feels more like you.',
+  ],
+  supportRight: 'I feel you. That was me. Trust me, you’re in the right place.',
   cta: "Here's how it all started",
   ctaHref: '#about',
   chapterLabel: 'Lena in the Wild',
