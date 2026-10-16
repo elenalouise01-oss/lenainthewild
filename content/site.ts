@@ -18,7 +18,7 @@ export const nav = {
 export const hero = {
   kinetic: 'LITW',
   headline: 'Lena in the Wild',
-  sub: 'Just a girl who left it all behind at 36 to go after her dream life.',
+  sub: 'Break free from the life you’ve been living by default and build a life beyond your wildest dreams.',
   subSmall: 'If I can reinvent my life, so can you',
   scrollLabel: 'Scroll to Begin',
   badgeText: 'EXPLORE HERE • EXPLORE HERE • EXPLORE HERE • ',
