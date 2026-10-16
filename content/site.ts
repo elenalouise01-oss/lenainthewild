@@ -19,7 +19,7 @@ export const hero = {
   kinetic: 'LITW',
   headline: 'Lena in the Wild',
   sub: 'Break free from the life you’ve been living by default and build a life beyond your wildest dreams.',
-  subSmall: 'It’s time to rewrite the script',
+  subSmall: 'It’s time to rewrite the script...',
   scrollLabel: 'Scroll to Begin',
   badgeText: 'EXPLORE HERE • EXPLORE HERE • EXPLORE HERE • ',
   ctaLabel: 'Come along',
