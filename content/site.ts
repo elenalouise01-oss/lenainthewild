@@ -21,7 +21,7 @@ export const hero = {
   sub: 'Break free from the life you’ve been living by default and build a life beyond your wildest dreams.',
   subSmall: 'It’s time to rewrite your story...',
   scrollLabel: 'Scroll to Begin',
-  badgeText: 'EXPLORE HERE • EXPLORE HERE • EXPLORE HERE • ',
+  badgeText: 'EXPLORE HERE • EXPLORE HERE • ',
   ctaLabel: 'Come along',
   ctaHref: '#story',
   imageSrc: '/images/hero.jpg' as string | null,

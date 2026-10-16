@@ -196,9 +196,23 @@ export default function Hero() {
               <path d="M4.5 5.5l7.5 7.5 7.5-7.5M4.5 11.5l7.5 7.5 7.5-7.5" />
             </motion.svg>
             <span
-              className="rounded-full bg-zing-yellow px-4 py-1.5 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark"
+              className="rounded-full bg-cream/70 px-4 py-1.5 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark"
             >
-              {hero.scrollLabel}
+              {/* each letter drops in from above, one after another */}
+              <span className="sr-only">{hero.scrollLabel}</span>
+              <span aria-hidden="true" className="inline-flex">
+                {Array.from(hero.scrollLabel).map((ch, i) => (
+                  <motion.span
+                    key={i}
+                    className="inline-block whitespace-pre"
+                    initial={reduced ? false : { y: -36, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ type: 'spring', stiffness: 420, damping: 16, delay: 0.6 + i * 0.06 }}
+                  >
+                    {ch}
+                  </motion.span>
+                ))}
+              </span>
             </span>
           </motion.div>
         </motion.div>
