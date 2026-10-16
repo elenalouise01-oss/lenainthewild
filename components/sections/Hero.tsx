@@ -128,7 +128,7 @@ export default function Hero() {
             </Link>
             <Navigation iconClassName="flex cursor-pointer items-center gap-1 sm:gap-2">
               {/* the monkey waves people over to the menu */}
-              <WavingMonkey className="w-14 sm:w-20" />
+              <WavingMonkey className="w-12 sm:w-16" />
               <SpinningBadge text={hero.badgeText} tone="dark" />
             </Navigation>
           </div>
