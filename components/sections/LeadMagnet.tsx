@@ -150,53 +150,45 @@ export default function LeadMagnet() {
 
               {/* Doodle line beside the photo on a phone (on a laptop it
                   runs out from under the polaroid instead) */}
-              <DrawnLine
-                progress={draw}
-                bold
-                viewBox="0 0 80 120"
-                className="absolute right-4 top-28 z-10 h-[120px] w-20 sm:hidden"
-                d="M10 8 C 52 4, 74 34, 56 54 C 44 66, 28 52, 40 42 C 56 30, 66 76, 38 100"
-                arrow="M32 116 L42.4 104.7 L27.6 98.3 Z"
-              />
+              {sent === null && (
+                <DrawnLine
+                  progress={draw}
+                  bold
+                  viewBox="0 0 80 120"
+                  className="absolute right-6 top-32 z-10 h-24 w-16 sm:hidden"
+                  d="M10 8 C 52 4, 74 34, 56 54 C 44 66, 28 52, 40 42 C 56 30, 66 76, 38 100"
+                  arrow="M32 116 L42.4 104.7 L27.6 98.3 Z"
+                />
+              )}
               <div className={`grid items-center gap-8 px-7 pb-10 sm:grid-cols-[2fr_3fr] sm:gap-10 sm:px-10 ${sent === null ? 'sm:pb-20' : 'sm:pb-12'}`}>
                 {/* Taped polaroid of Lena tapping, with a butterfly. Once
-                    they've joined, the photo becomes a play button. */}
-                <div className="relative mx-auto w-32 sm:w-full sm:max-w-[13rem]">
+                    they've joined, the video plays in it. */}
+                <div className={`relative mx-auto sm:w-full sm:max-w-[13rem] ${sent === null ? 'w-32' : 'w-52'}`}>
                   {/* On a laptop, a doodle line runs out from under the
                       polaroid to the sign-up button */}
                   {sent === null && (
                     <DrawnLine
                       progress={draw}
                       bold
-                      viewBox="0 0 290 100"
-                      className="absolute -left-3 top-full z-10 -mt-1 hidden h-[100px] w-[290px] sm:block"
-                      d="M30 4 C 20 50, 60 80, 100 70 C 130 62, 128 34, 108 34 C 86 34, 92 74, 140 80 C 180 86, 230 66, 264 44"
-                      arrow="M282 35 L269.9 51 L261.9 35 Z"
+                      viewBox="0 0 150 60"
+                      className="absolute left-[104px] top-full z-10 mt-1 hidden h-[60px] w-[150px] sm:block"
+                      d="M8 4 C 4 26, 22 40, 42 36 C 56 33, 56 18, 46 18 C 34 18, 38 40, 66 42 C 92 44, 112 36, 128 26"
+                      arrow="M141 18.5 L133 30.6 L126.5 19.4 Z"
                     />
                   )}
                   <div className="relative -rotate-3 bg-cream p-2 pb-9 shadow-2xl sm:p-2.5 sm:pb-10">
                     <span aria-hidden="true" className="absolute -top-3 left-1/2 z-10 h-6 w-20 -translate-x-1/2 rotate-2 bg-zing-yellow/85 shadow-sm" />
-                    <div className="relative aspect-square overflow-hidden sm:aspect-[346/615]">
-                      <Image src={leadMagnet.photo} alt={leadMagnet.photoAlt} fill sizes="13rem" className="object-cover object-[50%_30%]" />
-                      {sent !== null && (
-                        <a
-                          href={leadMagnet.videoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={leadMagnet.watch}
-                          className="absolute inset-0 flex items-center justify-center bg-bark/25 transition-colors hover:bg-bark/10"
-                        >
-                          <motion.span
-                            initial={{ scale: reduced ? 1 : 0 }}
-                            animate={{ scale: 1 }}
-                            transition={{ type: 'spring', stiffness: 260, damping: 14, delay: reduced ? 0 : 0.3 }}
-                            className="flex h-14 w-14 items-center justify-center rounded-full bg-sage text-bark shadow-lg"
-                          >
-                            <svg viewBox="0 0 24 24" className="ml-1 h-6 w-6" fill="currentColor" aria-hidden="true">
-                              <path d="M7 4l13 8-13 8z" />
-                            </svg>
-                          </motion.span>
-                        </a>
+                    <div className={`relative overflow-hidden ${sent === null ? 'aspect-square sm:aspect-[346/615]' : 'aspect-[9/16] bg-bark'}`}>
+                      {sent === null ? (
+                        <Image src={leadMagnet.photo} alt={leadMagnet.photoAlt} fill sizes="13rem" className="object-cover object-[50%_30%]" />
+                      ) : (
+                        <iframe
+                          src={`https://www.youtube-nocookie.com/embed/${leadMagnet.videoId}?rel=0&playsinline=1`}
+                          title={leadMagnet.title}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowFullScreen
+                          className="absolute inset-0 h-full w-full"
+                        />
                       )}
                     </div>
                     <p aria-hidden="true" className="absolute inset-x-0 bottom-2 text-center font-hand text-base text-bark sm:text-lg">

@@ -98,8 +98,8 @@ export const waitlistOffers = ['The Freedom Frequency'];
 // The 5 Day Reconnect page (/5-day-reconnect). Buying still happens on
 // The Leap, which takes payment and delivers the audio.
 // The free EFT tapping video (lead magnet), offered on the home page. The
-// button opens a pop-up sign-up; once they've joined, the success message
-// links to the video in Lena's Google Drive. Sign-ups go to her inbox and the
+// button opens a pop-up sign-up; once they've joined, the video plays right
+// in the pop-up (from Lena's YouTube). Sign-ups go to her inbox and the
 // waitlist Google Sheet.
 export const leadMagnet = {
   label: 'Free EFT tapping tutorial',
@@ -114,7 +114,9 @@ export const leadMagnet = {
     body: 'A free, step-by-step EFT tapping tutorial you can come back to any time. The simple daily practice that helped me reconnect with my intuition and finally start hearing what I truly wanted.',
   },
   title: 'Tap into your Intuition',
-  videoUrl: 'https://drive.google.com/file/d/147mdpKVqnkNF1gBX2uaU5G749LdqYX4v/view',
+  // Lena's YouTube Short: played in the pop-up, and linked from the button
+  videoId: 'ftCp6dJRSZo',
+  videoUrl: 'https://youtube.com/shorts/ftCp6dJRSZo',
   sent: {
     heading: 'It’s yours!',
     body: 'Thank you, {name}. Your free tapping tutorial is ready whenever you are.',
