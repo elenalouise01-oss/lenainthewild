@@ -10,6 +10,7 @@ import { sendToInbox } from '@/lib/sendToInbox';
 // `sent` is the thank-you shown once they've joined; `{name}` in its body
 // becomes their first name. `subject` labels the email to Lena. Pass
 // `onSent` to show your own thank-you instead (it gets their first name).
+// `buttonClass` replaces the button's colours.
 export default function WaitlistForm({
   offer,
   cta,
@@ -18,6 +19,7 @@ export default function WaitlistForm({
   subject = 'Waitlist sign-up for',
   sendingLabel = 'Joining…',
   onSent,
+  buttonClass,
 }: {
   offer: string;
   cta: string;
@@ -26,6 +28,7 @@ export default function WaitlistForm({
   subject?: string;
   sendingLabel?: string;
   onSent?: (firstName: string) => void;
+  buttonClass?: string;
 }) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle');
   const [firstName, setFirstName] = useState('');
@@ -96,7 +99,7 @@ export default function WaitlistForm({
         type="submit"
         disabled={status === 'sending'}
         className={`mt-2 rounded-full px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest2 transition-transform hover:scale-[1.02] disabled:opacity-60 ${
-          dark ? 'bg-zing-pink text-bark' : 'bg-[#141414] text-cream'
+          buttonClass ?? (dark ? 'bg-zing-pink text-bark' : 'bg-[#141414] text-cream')
         }`}
       >
         {status === 'sending' ? sendingLabel : `${cta} →`}
