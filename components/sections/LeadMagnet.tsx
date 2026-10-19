@@ -199,8 +199,13 @@ export default function LeadMagnet() {
                 Close ×
               </button>
 
-              {/* Lilac tape running across the top */}
-              <TapeBanner text={sent === null ? 'FREE TUTORIAL' : 'IT’S YOURS'} mark="heart" strip="bg-sage text-bark" tilt="-rotate-1" className="-mt-2 pb-8 pt-12 sm:pb-10" />
+              {/* Lilac tape across the top of the sign-up (not on the thank-you,
+                  which just leaves room for the close button) */}
+              {sent === null ? (
+                <TapeBanner text="FREE TUTORIAL" mark="heart" strip="bg-sage text-bark" tilt="-rotate-1" className="-mt-2 pb-8 pt-12 sm:pb-10" />
+              ) : (
+                <div className="h-14" />
+              )}
 
               {/* Doodle line beside the photo on a phone (on a laptop it
                   runs out from under the polaroid instead) */}
