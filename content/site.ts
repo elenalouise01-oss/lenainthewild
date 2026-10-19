@@ -469,8 +469,7 @@ export const freedomSeeker = {
     leadItalic: 'A Life',
     leadBold: 'THAT ACTUALLY FEELS LIKE YOU',
     body: [
-      'After a decade chasing the version of success everyone else wanted for me, I’m finally choosing what feels right for me.',
-      'I was stuck for years, desperately wishing someone had the answers I was missing. I needed those experiences to become who I am today. And now I get to be the person I wish I’d had back then: to hold the light and help you find your way without spending years figuring it out alone.',
+      'I was stuck for years, wishing someone had the answers I was missing. Now I get to be the person I wish I’d had back then.',
       'Whatever chapter you’re in right now, where you are isn’t where you have to stay. You get to rewrite the script, change the plot and decide what comes next. This is your story. Nobody else gets to write it for you.',
     ],
     cta: 'Rewrite Your Story',
