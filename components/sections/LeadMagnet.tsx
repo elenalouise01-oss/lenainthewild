@@ -241,7 +241,9 @@ export default function LeadMagnet() {
                     />
                   )}
                   <div className={`relative bg-cream p-2 shadow-2xl transition-transform duration-500 sm:p-2.5 ${playing ? 'rotate-0' : '-rotate-3 pb-9 sm:pb-10'}`}>
-                    <span aria-hidden="true" className="absolute -top-3 left-1/2 z-10 h-6 w-20 transition-opacity -translate-x-1/2 rotate-2 bg-zing-yellow/85 shadow-sm" />
+                    {sent === null && (
+                      <span aria-hidden="true" className="absolute -top-3 left-1/2 z-10 h-6 w-20 -translate-x-1/2 rotate-2 bg-zing-yellow/85 shadow-sm" />
+                    )}
                     <div className={`relative overflow-hidden ${sent === null ? 'aspect-square sm:aspect-[346/615]' : 'aspect-[9/16] bg-bark'}`}>
                       {sent === null ? (
                         <Image src={leadMagnet.photo} alt={leadMagnet.photoAlt} fill sizes="13rem" className="object-cover object-[50%_30%]" />
