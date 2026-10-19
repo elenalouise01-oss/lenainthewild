@@ -121,7 +121,7 @@ export const leadMagnet = {
     heading: 'It’s yours!',
     body: 'Thank you, {name}. Your free tapping tutorial is ready whenever you are.',
   },
-  watch: 'Watch Your Free Tutorial',
+  watch: 'Watch on YouTube',
 };
 
 export const fiveDayReconnectPage = {

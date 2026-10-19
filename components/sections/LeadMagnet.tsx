@@ -129,7 +129,7 @@ export default function LeadMagnet() {
             aria-label={leadMagnet.popup.hook}
           >
             <motion.div
-              className="relative max-h-[92dvh] w-full max-w-3xl overflow-y-auto overflow-x-hidden bg-cream text-bark shadow-2xl"
+              className={`relative max-h-[92dvh] w-full overflow-y-auto ${sent === null ? 'max-w-3xl' : 'max-w-md'} overflow-x-hidden bg-cream text-bark shadow-2xl`}
               initial={{ opacity: 0, y: reduced ? 0 : 24, rotate: reduced ? 0 : -1.5 }}
               animate={{ opacity: 1, y: 0, rotate: 0 }}
               exit={{ opacity: 0, y: reduced ? 0 : 24 }}
@@ -146,7 +146,7 @@ export default function LeadMagnet() {
               </button>
 
               {/* Lilac tape running across the top */}
-              <TapeBanner text={sent === null ? 'FREE TUTORIAL' : 'IT’S YOURS'} mark="heart" strip="bg-sage text-bark" tilt="-rotate-1" className="-mt-2 pb-8 pt-12 sm:pb-10" />
+              <TapeBanner text={sent === null ? 'FREE TUTORIAL' : 'IT’S YOURS'} mark="heart" strip="bg-sage text-bark" tilt="-rotate-1" className={`-mt-2 pt-12 ${sent === null ? 'pb-8 sm:pb-10' : 'pb-4'}`} />
 
               {/* Doodle line beside the photo on a phone (on a laptop it
                   runs out from under the polaroid instead) */}
@@ -160,13 +160,13 @@ export default function LeadMagnet() {
                   arrow="M32 116 L42.4 104.7 L27.6 98.3 Z"
                 />
               )}
-              <div className={`grid items-center gap-8 px-7 pb-10 sm:grid-cols-[2fr_3fr] sm:gap-10 sm:px-10 ${sent === null ? 'sm:pb-20' : 'sm:pb-12'}`}>
-                {/* Taped polaroid of Lena tapping, with a butterfly. Once
-                    they've joined, the video plays in it. */}
-                <div className={`relative mx-auto sm:w-full sm:max-w-[13rem] ${sent === null ? 'w-32' : 'w-52'}`}>
-                  {/* On a laptop, a doodle line runs out from under the
-                      polaroid to the sign-up button */}
-                  {sent === null && (
+              {sent === null ? (
+                <>
+                <div className={`grid items-center gap-8 px-7 pb-10 sm:grid-cols-[2fr_3fr] sm:gap-10 sm:px-10 sm:pb-20`}>
+                  {/* Taped polaroid of Lena tapping, with a butterfly */}
+                  <div className="relative mx-auto w-32 sm:w-full sm:max-w-[13rem]">
+                    {/* On a laptop, a doodle line runs out from under the
+                        polaroid to the sign-up button */}
                     <DrawnLine
                       progress={draw}
                       bold
@@ -175,98 +175,99 @@ export default function LeadMagnet() {
                       d="M8 4 C 4 26, 22 40, 42 36 C 56 33, 56 18, 46 18 C 34 18, 38 40, 66 42 C 92 44, 112 36, 128 26"
                       arrow="M141 18.5 L133 30.6 L126.5 19.4 Z"
                     />
-                  )}
-                  <div className="relative -rotate-3 bg-cream p-2 pb-9 shadow-2xl sm:p-2.5 sm:pb-10">
-                    <span aria-hidden="true" className="absolute -top-3 left-1/2 z-10 h-6 w-20 -translate-x-1/2 rotate-2 bg-zing-yellow/85 shadow-sm" />
-                    <div className={`relative overflow-hidden ${sent === null ? 'aspect-square sm:aspect-[346/615]' : 'aspect-[9/16] bg-bark'}`}>
-                      {sent === null ? (
+                    <div className="relative -rotate-3 bg-cream p-2 pb-9 shadow-2xl sm:p-2.5 sm:pb-10">
+                      <span aria-hidden="true" className="absolute -top-3 left-1/2 z-10 h-6 w-20 -translate-x-1/2 rotate-2 bg-zing-yellow/85 shadow-sm" />
+                      <div className="relative aspect-square overflow-hidden sm:aspect-[346/615]">
                         <Image src={leadMagnet.photo} alt={leadMagnet.photoAlt} fill sizes="13rem" className="object-cover object-[50%_30%]" />
-                      ) : (
-                        <iframe
-                          src={`https://www.youtube-nocookie.com/embed/${leadMagnet.videoId}?rel=0&playsinline=1`}
-                          title={leadMagnet.title}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                          allowFullScreen
-                          className="absolute inset-0 h-full w-full"
-                        />
-                      )}
-                    </div>
-                    <p aria-hidden="true" className="absolute inset-x-0 bottom-2 text-center font-hand text-base text-bark sm:text-lg">
-                      {sent === null ? 'free tutorial ♡' : 'press play ♡'}
-                    </p>
-                  </div>
-                  <Image
-                    src="/images/butterfly.png"
-                    alt=""
-                    width={396}
-                    height={500}
-                    sizes="4rem"
-                    aria-hidden="true"
-                    className="absolute -bottom-4 -right-8 h-auto w-12 rotate-12 drop-shadow-md sm:-right-6 sm:w-16"
-                  />
-                </div>
-
-                <div className="relative text-center sm:text-left">
-                  {sent === null ? (
-                    <>
-                      <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-stone">{leadMagnet.label}</p>
-                      <p className="mt-4 font-display text-4xl italic leading-[1.05] text-bark sm:text-5xl">{leadMagnet.popup.hook}</p>
-                      <p className="mt-5 font-body text-base leading-relaxed text-umber">{leadMagnet.popup.body}</p>
-                      <div className="mt-8">
-                        <WaitlistForm
-                          offer={leadMagnet.title}
-                          cta={leadMagnet.cta}
-                          sent={leadMagnet.sent}
-                          subject="Free tutorial sign-up:"
-                          sendingLabel="Sending…"
-                          onSent={setSent}
-                          sheetUrl={tutorialSheetUrl}
-                          buttonClass="bg-sage text-bark"
-                          fieldClass="border-bark bg-bark text-cream placeholder:text-cream/60 focus:border-sage"
-                        />
                       </div>
-                    </>
-                  ) : (
-                    <div role="status" className="relative py-4">
-                      {/* A little burst of hearts */}
-                      {!reduced &&
-                        HEARTS.map((h, i) => (
-                          <motion.span
-                            key={i}
-                            aria-hidden="true"
-                            className={`pointer-events-none absolute left-1/2 top-16 text-3xl sm:left-24 ${h.colour}`}
-                            initial={{ x: 0, y: 0, scale: 0, opacity: 1 }}
-                            animate={{ x: h.x, y: h.y, scale: 1, opacity: 0 }}
-                            transition={{ duration: 1.6, delay: 0.1 + i * 0.05, ease: 'easeOut' }}
-                          >
-                            ♡
-                          </motion.span>
-                        ))}
-                      <p className="font-hand text-2xl text-bark/70">yay, {sent || 'you'}!</p>
-                      <motion.p
-                        className="mt-3 inline-block -rotate-2 bg-zing-yellow px-4 py-1 font-display text-5xl italic leading-tight text-bark shadow-lg sm:text-6xl"
-                        initial={{ scale: reduced ? 1 : 0.6, opacity: reduced ? 1 : 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ type: 'spring', stiffness: 220, damping: 12 }}
-                      >
-                        {leadMagnet.sent.heading}
-                      </motion.p>
-                      <p className="mt-7 font-body text-base leading-relaxed text-umber">{leadMagnet.sent.body.replace(', {name}', '')}</p>
-                      <a
-                        href={leadMagnet.videoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-9 inline-flex items-center gap-3 rounded-full bg-sage px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest2 text-bark transition-transform hover:scale-105"
-                      >
-                        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
-                          <path d="M7 4l13 8-13 8z" />
-                        </svg>
-                        {leadMagnet.watch}
-                      </a>
+                      <p aria-hidden="true" className="absolute inset-x-0 bottom-2 text-center font-hand text-base text-bark sm:text-lg">
+                        free tutorial ♡
+                      </p>
                     </div>
-                  )}
+                    <Image
+                      src="/images/butterfly.png"
+                      alt=""
+                      width={396}
+                      height={500}
+                      sizes="4rem"
+                      aria-hidden="true"
+                      className="absolute -bottom-4 -right-8 h-auto w-12 rotate-12 drop-shadow-md sm:-right-6 sm:w-16"
+                    />
+                  </div>
+
+                  <div className="relative text-center sm:text-left">
+                    <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-stone">{leadMagnet.label}</p>
+                    <p className="mt-4 font-display text-4xl italic leading-[1.05] text-bark sm:text-5xl">{leadMagnet.popup.hook}</p>
+                    <p className="mt-5 font-body text-base leading-relaxed text-umber">{leadMagnet.popup.body}</p>
+                    <div className="mt-8">
+                      <WaitlistForm
+                        offer={leadMagnet.title}
+                        cta={leadMagnet.cta}
+                        sent={leadMagnet.sent}
+                        subject="Free tutorial sign-up:"
+                        sendingLabel="Sending…"
+                        onSent={setSent}
+                        sheetUrl={tutorialSheetUrl}
+                        buttonClass="bg-sage text-bark"
+                        fieldClass="border-bark bg-bark text-cream placeholder:text-cream/60 focus:border-sage"
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
+                </>
+              ) : (
+                <>
+                {/* Once they've joined: the video on its own, upright and as big
+                    as fits, so it's easy to watch */}
+                <div role="status" className="relative px-6 pb-8 text-center sm:px-10">
+                  {!reduced &&
+                    HEARTS.map((h, i) => (
+                      <motion.span
+                        key={i}
+                        aria-hidden="true"
+                        className={`pointer-events-none absolute left-1/2 top-8 text-3xl ${h.colour}`}
+                        initial={{ x: 0, y: 0, scale: 0, opacity: 1 }}
+                        animate={{ x: h.x, y: h.y, scale: 1, opacity: 0 }}
+                        transition={{ duration: 1.6, delay: 0.1 + i * 0.05, ease: 'easeOut' }}
+                      >
+                        ♡
+                      </motion.span>
+                    ))}
+                  <p className="font-hand text-2xl text-bark/70">yay, {sent || 'you'}!</p>
+                  <motion.p
+                    className="mt-2 inline-block -rotate-2 bg-zing-yellow px-4 py-1 font-display text-4xl italic leading-tight text-bark shadow-lg"
+                    initial={{ scale: reduced ? 1 : 0.6, opacity: reduced ? 1 : 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ type: 'spring', stiffness: 220, damping: 12 }}
+                  >
+                    {leadMagnet.sent.heading}
+                  </motion.p>
+                  <motion.div
+                    className="mx-auto mt-6 aspect-[9/16] w-[min(20rem,calc((92dvh-22rem)*0.5625))] overflow-hidden rounded-sm bg-bark shadow-2xl"
+                    initial={{ opacity: 0, y: reduced ? 0 : 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: reduced ? 0 : 0.4, delay: reduced ? 0 : 0.25 }}
+                  >
+                    <iframe
+                      src={`https://www.youtube-nocookie.com/embed/${leadMagnet.videoId}?rel=0&playsinline=1&autoplay=1&controls=1&fs=1`}
+                      title={leadMagnet.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      className="h-full w-full"
+                    />
+                  </motion.div>
+                  <p className="mx-auto mt-5 max-w-xs font-body text-sm leading-relaxed text-umber">{leadMagnet.sent.body.replace(', {name}', '')}</p>
+                  <a
+                    href={leadMagnet.videoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-block font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-4"
+                  >
+                    {leadMagnet.watch} ↗
+                  </a>
+                </div>
+                </>
+              )}
             </motion.div>
           </motion.div>
         )}
