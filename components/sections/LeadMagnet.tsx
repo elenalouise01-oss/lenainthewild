@@ -11,9 +11,6 @@ import WaitlistForm from '@/components/WaitlistForm';
 import { leadMagnet, tutorialSheetUrl } from '@/content/site';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 
-// The words in the headline the home page doodle line starts from.
-const LINE_FROM = 'all the';
-
 // Where each heart in the thank-you burst flies to, and its colour.
 const HEARTS = [
   { x: -90, y: -70, colour: 'text-zing-pink' },
@@ -42,43 +39,6 @@ export default function LeadMagnet() {
   const ctaRef = useRef<HTMLDivElement>(null);
   const ctaInView = useInView(ctaRef, { once: true, margin: '0px 0px -15% 0px' });
   const homeDraw = useMotionValue(0);
-  // Laid out from where the words actually sit, so it fits any screen size:
-  // out from "all the" in the headline, down the right clear of the text,
-  // and round to the button.
-  const colRef = useRef<HTMLDivElement>(null);
-  const anchorRef = useRef<HTMLSpanElement>(null);
-  const bodyRef = useRef<HTMLParagraphElement>(null);
-  const [line, setLine] = useState<{ w: number; h: number; d: string; arrow: string } | null>(null);
-  const anchorAt = leadMagnet.headline.indexOf(LINE_FROM);
-
-  useEffect(() => {
-    const measure = () => {
-      const col = colRef.current?.getBoundingClientRect();
-      const from = anchorRef.current?.getClientRects();
-      const body = bodyRef.current?.getBoundingClientRect();
-      const cta = ctaRef.current?.getBoundingClientRect();
-      if (!col || !from?.length || !body || !cta) return setLine(null);
-      // the end of the last line "all the" sits on
-      const end = from[from.length - 1];
-      const sx = end.right - col.left + 14;
-      const sy = end.top - col.top + end.height * 0.55;
-      const ex = cta.right - col.left + 16;
-      const ey = cta.top - col.top + cta.height / 2;
-      // far enough right to clear the headline end and the paragraph
-      const ox = Math.max(sx + 40, body.right - col.left + 36);
-      const h = ey - sy;
-      setLine({
-        w: Math.ceil(ox + 20),
-        h: Math.ceil(ey + 12),
-        d: `M${sx} ${sy} C ${ox} ${sy}, ${ox + 6} ${sy + h * 0.3}, ${ox} ${sy + h * 0.62} C ${ox - 6} ${sy + h * 0.92}, ${ex + 70} ${ey}, ${ex} ${ey}`,
-        arrow: `M${ex + 13} ${ey - 8} L${ex} ${ey} L${ex + 13} ${ey + 8}`,
-      });
-    };
-    measure();
-    document.fonts?.ready.then(measure);
-    window.addEventListener('resize', measure);
-    return () => window.removeEventListener('resize', measure);
-  }, []);
 
   useEffect(() => {
     if (!ctaInView) return;
@@ -112,42 +72,35 @@ export default function LeadMagnet() {
 
   return (
     <section id="free-video" className="bg-bark px-6 py-28 sm:py-36">
-      <div className="container-editorial grid items-center gap-14 lg:grid-cols-[2fr_3fr]">
-        <ScrollReveal className="mx-auto w-full max-w-[16rem] sm:max-w-xs">
-          <div className="relative aspect-[346/615] -rotate-3 bg-cream p-3 shadow-2xl">
+      {/* Photo on the right on a laptop, opposite My Story's photo, so the
+          page zig-zags; on a phone it stays above the text. */}
+      <div className="container-editorial grid items-center gap-14 lg:grid-cols-[3fr_2fr] lg:gap-20">
+        <ScrollReveal className="mx-auto w-full max-w-[16rem] sm:max-w-xs lg:order-last">
+          <div className="relative aspect-[346/615] -rotate-3 bg-cream p-3 shadow-2xl lg:rotate-3">
             <div className="relative h-full w-full overflow-hidden">
               <Image src={leadMagnet.photo} alt={leadMagnet.photoAlt} fill sizes="20rem" className="object-cover" />
             </div>
           </div>
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <div ref={colRef} className="relative">
-            {line && (
-              <DrawnLine
-                progress={homeDraw}
-                viewBox={`0 0 ${line.w} ${line.h}`}
-                colour="#ffffff"
-                className="absolute left-0 top-0 hidden overflow-visible lg:block"
-                style={{ width: line.w, height: line.h }}
-                d={line.d}
-                arrow={line.arrow}
-              />
-            )}
+          <div>
             <SectionLabel className="!text-sage">{leadMagnet.label}</SectionLabel>
             <h2 className="mt-6 font-display text-display-3 italic leading-[1.1] text-cream">
-              {anchorAt >= 0 ? (
-                <>
-                  {leadMagnet.headline.slice(0, anchorAt)}
-                  <span ref={anchorRef}>{LINE_FROM}</span>
-                  {leadMagnet.headline.slice(anchorAt + LINE_FROM.length)}
-                </>
-              ) : (
-                leadMagnet.headline
-              )}
+              {leadMagnet.headline}
             </h2>
-            <p ref={bodyRef} className="mt-6 max-w-xl font-body text-base leading-relaxed text-cream/85 sm:text-lg">{leadMagnet.body}</p>
+            <p className="mt-6 max-w-xl font-body text-base leading-relaxed text-cream/85 sm:text-lg">{leadMagnet.body}</p>
             <p className="mt-6 font-display text-2xl italic text-cream sm:text-3xl">{leadMagnet.closing}</p>
-            <div ref={ctaRef} className="mt-10 inline-block">
+            <div ref={ctaRef} className="relative mt-10 inline-block">
+              {/* A doodle line looping in from the photo side to the button
+                  (laptop only, where the photo sits to the right) */}
+              <DrawnLine
+                progress={homeDraw}
+                viewBox="0 0 300 100"
+                colour="#ffffff"
+                className="absolute left-full top-1/2 ml-4 hidden h-[100px] w-[300px] -translate-y-[78%] lg:block"
+                d="M292 14 C 240 8, 196 22, 190 48 C 186 70, 216 76, 222 58 C 228 38, 186 34, 150 58 C 116 80, 60 86, 12 80"
+                arrow="M24 72 L11 80 L23 88"
+              />
               <button
                 ref={triggerRef}
                 type="button"
