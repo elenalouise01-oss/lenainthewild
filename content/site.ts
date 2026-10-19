@@ -84,7 +84,7 @@ export const waitlistSheetUrl = 'https://script.google.com/macros/s/AKfycbw7mZO4
 export const homeCtas = {
   // Thin strip under the hero: opens the free practice pop-up
   freeTop: {
-    line: 'Free guided tapping practice: quiet the noise and hear what you truly want.',
+    line: 'Quiet the noise and reconnect with what you truly want.',
     button: 'Send me the free practice',
   },
   // After My Experience
