@@ -529,8 +529,8 @@ export const freedomSeeker = {
     label: 'Follow Along My Journey',
     lead: "I'm forever evolving and still figuring it out as I go,",
     tail: "exploring just how good life can really get and turning the ordinary into something extraordinary.",
-    colBold: 'Lately, I’ve been falling in love with the idea of not having to choose just one place to call home.',
-    colRest: 'After falling hard for Vietnam on my last trip, I’m thinking six months in Bali, six months in Vietnam. Why not? And who knows where I’ll end up next. ✈️',
+    colBold: "Always looking for where else I can create more freedom, lately I've been questioning why we have to pick one place and stay there.",
+    colRest: "So after falling in love with Vietnam on a recent trip, I figured, why not spend six months there and six months in Bali? And that's where I'm at right now.",
   },
 
   envelope: {
