@@ -458,7 +458,7 @@ export const freedomSeeker = {
   },
   experienceSub: 'I’ve lived it.',
   experienceContrast: 'I’ve been the PT in Bondi who had it all, the girl in a foreign country who lost it all, and now the woman living her dream life, on her own terms, with more freedom than she’s ever had.',
-  experienceHighlight: 'I rebuilt my life from the ground up.',
+  experienceHighlight: 'I rebuilt my life from the ground up, from rock bottom.',
   experienceTail:
     'I’ve let old versions of myself go, unlearnt conditioning and worked through the patterns and blocks that kept me stuck. I’ve questioned everything and navigated the uncertainty of starting over.',
   experienceTail2: 'I know the kind of resilience it takes to build a life on your own terms, and now I guide others through that same reconnection and rebuild.',
