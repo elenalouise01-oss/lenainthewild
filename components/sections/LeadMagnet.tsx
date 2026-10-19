@@ -220,7 +220,7 @@ export default function LeadMagnet() {
                 />
               )}
               <div className={`grid items-center gap-8 px-7 pb-10 sm:gap-10 sm:px-10 ${playing ? '' : 'sm:grid-cols-[2fr_3fr]'} ${sent === null ? 'sm:pb-20' : 'sm:pb-12'}`}>
-                {/* Taped polaroid of Lena tapping, with a butterfly. Once
+                {/* Taped polaroid of Lena tapping, with a bow sticker. Once
                     they've joined, the video is in it; when they press play
                     it straightens up and grows to fill the pop-up. */}
                 <div
@@ -265,10 +265,10 @@ export default function LeadMagnet() {
                     )}
                   </div>
                   <Image
-                    src="/images/butterfly.png"
+                    src="/images/bow.png"
                     alt=""
-                    width={396}
-                    height={500}
+                    width={202}
+                    height={226}
                     sizes="4rem"
                     aria-hidden="true"
                     className={`absolute -bottom-4 -right-8 h-auto w-12 rotate-12 drop-shadow-md transition-opacity sm:-right-6 sm:w-16 ${playing ? 'opacity-0' : ''}`}
