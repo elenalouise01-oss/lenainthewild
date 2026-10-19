@@ -42,6 +42,11 @@ and `content/journal.ts`.
 
 ## Saved for later (only when Lena says she's ready)
 
+- **Tapping tutorial pop-up:** take off the lilac "IT'S YOURS" tape banner on
+  the after-sign-up screen (`TapeBanner` in
+  `components/sections/LeadMagnet.tsx`). Keep everything else. Lena asked for
+  this to be done later, not now.
+
 - **Offer page headings:** Lena would like her offer pages (/freedom-frequency,
   /5-day-reconnect) to use this section structure, which she likes from
   beladivine.com/programs. Copy the structure only, never that brand's
