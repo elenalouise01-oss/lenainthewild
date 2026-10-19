@@ -40,7 +40,7 @@ export default function Section1() {
       {/* The free practice strip glides down through the brown welcome as you
           scroll, the text passing under it, and rests at the bottom of the
           brown. */}
-      <div ref={brownRef} className="relative">
+      <div ref={brownRef} className="relative bg-bark">
         <FreePracticeStrip track={brownRef} />
         <div className="bg-bark px-6 py-28 sm:px-10 sm:py-40 lg:px-16">
           <div className="mx-auto max-w-content">
