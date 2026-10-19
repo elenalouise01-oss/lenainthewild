@@ -482,7 +482,7 @@ export const freedomSeeker = {
 
   pillarsLabel: 'Entries From My Journal',
   pillarsCta: { label: 'Read more on Substack', href: 'https://substack.com/@lenainthewild' },
-  pillarsIntro: 'I don’t really do plans. I wake up, see how I feel, follow my intuition and let the day unfold.',
+  pillarsIntro: 'A little life, a lot of inner work, and everything I’m learning along the way.',
   // A pillar with a `slug` links to that article in the journal on this
   // site; otherwise one with an `href` links to its Substack post.
   pillars: [
