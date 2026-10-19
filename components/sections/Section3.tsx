@@ -189,7 +189,6 @@ export default function Section3() {
               <p className="mt-6 max-w-2xl font-body text-base leading-relaxed text-umber sm:text-lg">
                 <TapeHighlight>{freedomSeeker.experienceHighlight}</TapeHighlight> {freedomSeeker.experienceTail}
               </p>
-              <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-umber sm:text-lg">{freedomSeeker.experienceTail2}</p>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
               <p className="mt-8 max-w-2xl font-display text-xl italic leading-snug text-umber sm:text-2xl">
