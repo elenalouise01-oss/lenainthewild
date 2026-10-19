@@ -8,8 +8,8 @@ import { sendToInbox } from '@/lib/sendToInbox';
 // emailed to Lena, so visitors never have to leave the site.
 // `dark` is for use on the brown background: pink button, cream error text.
 // `sent` is the thank-you shown once they've joined; `{name}` in its body
-// becomes their first name. `subject` labels the email to Lena, and
-// `children` (e.g. a free video) is shown under the thank-you.
+// becomes their first name. `subject` labels the email to Lena. Pass
+// `onSent` to show your own thank-you instead (it gets their first name).
 export default function WaitlistForm({
   offer,
   cta,
@@ -17,7 +17,7 @@ export default function WaitlistForm({
   dark = false,
   subject = 'Waitlist sign-up for',
   sendingLabel = 'Joining…',
-  children,
+  onSent,
 }: {
   offer: string;
   cta: string;
@@ -25,7 +25,7 @@ export default function WaitlistForm({
   dark?: boolean;
   subject?: string;
   sendingLabel?: string;
-  children?: React.ReactNode;
+  onSent?: (firstName: string) => void;
 }) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle');
   const [firstName, setFirstName] = useState('');
@@ -34,7 +34,8 @@ export default function WaitlistForm({
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     data.append('waitlist', offer);
-    setFirstName(String(data.get('name') ?? '').trim().split(/\s+/)[0]);
+    const first = String(data.get('name') ?? '').trim().split(/\s+/)[0];
+    setFirstName(first);
     setStatus('sending');
     // Also add them to the waitlist Google Sheet. Google doesn't let the page
     // read its reply, so this is sent without waiting on it; the email to
@@ -49,11 +50,12 @@ export default function WaitlistForm({
     }
     const ok = await sendToInbox(data, `${subject} ${offer}: ${data.get('name')}`);
     setStatus(ok ? 'sent' : 'failed');
+    if (ok) onSent?.(first);
   };
 
   if (status === 'sent') {
+    if (onSent) return null;
     return (
-      <>
       <div className="mx-auto max-w-md rounded-sm bg-cream px-8 py-10 text-center text-bark shadow-xl" role="status">
         <span aria-hidden="true" className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-sage font-display text-3xl text-bark">
           ✓
@@ -63,8 +65,6 @@ export default function WaitlistForm({
           {firstName ? sent.body.replace('{name}', firstName) : sent.body.replace(', {name}', '')}
         </p>
       </div>
-      {children}
-      </>
     );
   }
 
