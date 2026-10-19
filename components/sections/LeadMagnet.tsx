@@ -86,14 +86,16 @@ export default function LeadMagnet() {
           <p className="mt-6 max-w-xl font-body text-base leading-relaxed text-cream/85 sm:text-lg">{leadMagnet.body}</p>
           <p className="mt-6 font-display text-2xl italic text-cream sm:text-3xl">{leadMagnet.closing}</p>
           <div ref={ctaRef} className="relative mt-10 inline-block">
-            {/* From the end of "Take the first step." down to the button */}
+            {/* From the end of "...your current reality?" down the right,
+                clear of "Take the first step.", and round to the button.
+                Laptop-width only, where the text sits beside the photo. */}
             <DrawnLine
               progress={homeDraw}
-              viewBox="0 0 120 70"
+              viewBox="0 0 220 150"
               colour="#ffffff"
-              className="absolute -right-32 -top-10 hidden h-20 w-32 sm:block"
-              d="M100 4 C 112 30, 96 54, 60 58 C 40 60, 26 58, 12 55"
-              arrow="M24 47 L11 55 L23 63"
+              className="absolute left-full top-[-118px] ml-3 hidden h-[150px] w-[220px] lg:block"
+              d="M206 16 C 220 50, 212 88, 176 110 C 136 132, 70 138, 12 136"
+              arrow="M25 128 L11 136 L25 144"
             />
           <button
             ref={triggerRef}
