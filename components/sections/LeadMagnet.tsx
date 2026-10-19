@@ -138,7 +138,7 @@ export default function LeadMagnet() {
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
           <div>
-            <SectionLabel className="!text-sage">{leadMagnet.label}</SectionLabel>
+            <SectionLabel className="!text-sage">{leadMagnet.sectionLabel}</SectionLabel>
             <h2 className="mt-6 font-display text-display-3 italic leading-[1.1] text-cream">
               {leadMagnet.headline}
             </h2>
