@@ -90,17 +90,11 @@ export const homeCtas = {
   // After My Experience
   reconnect: {
     button: 'Take the first step towards your dream life',
-    price: '$33 AUD',
   },
   // Before the FAQ
   waitlist: {
     question: 'Ready to break free from what’s been holding you back and start creating the life you’ve always wanted?',
     button: 'Discover your next chapter',
-  },
-  // After the FAQ: the free practice again, for anyone not ready to buy
-  freeBottom: {
-    line: 'Not ready to dive in? Start with my free guided tapping practice.',
-    button: 'Send me the free practice',
   },
 };
 

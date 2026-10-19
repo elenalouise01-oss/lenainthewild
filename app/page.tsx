@@ -1,5 +1,5 @@
 import Footer from '@/components/Footer';
-import { FreePracticeBand, FreePracticeStrip, WaitlistCta } from '@/components/HomeCtas';
+import { FreePracticeStrip, WaitlistCta } from '@/components/HomeCtas';
 import JsonLd from '@/components/JsonLd';
 import { SAME_AS, SITE_NAME, absoluteUrl } from '@/lib/seo';
 import Faq from '@/components/sections/Faq';
@@ -73,7 +73,6 @@ export default function Home() {
       <Section3 />
       <WaitlistCta />
       <Faq />
-      <FreePracticeBand />
       <Newsletter />
       <ComeSayHi />
       <Footer />

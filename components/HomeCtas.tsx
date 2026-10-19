@@ -50,17 +50,3 @@ export function WaitlistCta() {
     </section>
   );
 }
-
-// The free practice again after the FAQ, for anyone not ready to buy.
-export function FreePracticeBand() {
-  return (
-    <section className="bg-cream px-6 py-20 text-center sm:py-24">
-      <ScrollReveal className="mx-auto flex max-w-2xl flex-col items-center">
-        <p className="font-display text-2xl italic leading-snug text-bark sm:text-3xl">{homeCtas.freeBottom.line}</p>
-        <button type="button" onClick={openFreePractice} aria-haspopup="dialog" className={`${button} mt-8 bg-sage text-bark`}>
-          {homeCtas.freeBottom.button} →
-        </button>
-      </ScrollReveal>
-    </section>
-  );
-}
