@@ -31,6 +31,12 @@ and `content/journal.ts`.
   nalurisocials@gmail.com (Web3Forms) and adds a row to Lena's "Freedom
   Frequency Waitlist" Google Sheet (Apps Script URL in `waitlistSheetUrl`).
   Substack links go to https://substack.com/@lenainthewild.
+- **Free tapping tutorial (lead magnet):** home page section + pop-up
+  (`components/sections/LeadMagnet.tsx`, copy in `leadMagnet`). The video is
+  Lena's YouTube Short (ftCp6dJRSZo) and plays in the pop-up after sign-up.
+  Sign-ups email nalurisocials@gmail.com (Web3Forms) and go to Lena's "Free
+  Tutorial Sign-ups" Google Sheet (`tutorialSheetUrl`), whose Apps Script also
+  emails each person the video link from Lena's Gmail.
 - **Pushing:** push to `main` only. Pushing the same commit to two branches at
   once made Vercel fail with "Git information retrieval failed".
 
