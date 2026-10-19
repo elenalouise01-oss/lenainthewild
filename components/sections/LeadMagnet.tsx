@@ -260,7 +260,7 @@ export default function LeadMagnet() {
                     </div>
                     {!playing && (
                       <p aria-hidden="true" className="absolute inset-x-0 bottom-2 text-center font-hand text-base text-bark sm:text-lg">
-                        {sent === null ? 'free tutorial ♡' : 'press play ♡'}
+                        {sent === null ? 'free tutorial' : 'press play'}
                       </p>
                     )}
                   </div>
