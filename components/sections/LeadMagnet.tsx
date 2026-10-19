@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { AnimatePresence, animate, motion, useMotionValue } from 'framer-motion';
+import { AnimatePresence, animate, motion, useInView, useMotionValue } from 'framer-motion';
 import DrawnLine from '@/components/DrawnLine';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionLabel from '@/components/SectionLabel';
 import TapeBanner from '@/components/TapeBanner';
 import WaitlistForm from '@/components/WaitlistForm';
-import { leadMagnet } from '@/content/site';
+import { leadMagnet, tutorialSheetUrl } from '@/content/site';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 
 // Where each heart in the thank-you burst flies to, and its colour.
@@ -34,6 +34,17 @@ export default function LeadMagnet() {
   const [sent, setSent] = useState<string | null>(null);
   // Draws the doodle line in the pop-up each time it opens or changes.
   const draw = useMotionValue(0);
+  // The home page line draws once, all the way to its arrow, when the
+  // button comes into view.
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const ctaInView = useInView(ctaRef, { once: true, margin: '0px 0px -15% 0px' });
+  const homeDraw = useMotionValue(0);
+
+  useEffect(() => {
+    if (!ctaInView) return;
+    const controls = animate(homeDraw, 1, { duration: 1.1, delay: 0.4, ease: 'easeInOut' });
+    return () => controls.stop();
+  }, [ctaInView, homeDraw]);
 
   useEffect(() => {
     if (!open) return;
@@ -74,13 +85,15 @@ export default function LeadMagnet() {
           <h2 className="mt-6 font-display text-display-3 italic leading-[1.1] text-cream">{leadMagnet.headline}</h2>
           <p className="mt-6 max-w-xl font-body text-base leading-relaxed text-cream/85 sm:text-lg">{leadMagnet.body}</p>
           <p className="mt-6 font-display text-2xl italic text-cream sm:text-3xl">{leadMagnet.closing}</p>
-          <div className="relative mt-10 inline-block">
+          <div ref={ctaRef} className="relative mt-10 inline-block">
+            {/* From the end of "Take the first step." down to the button */}
             <DrawnLine
+              progress={homeDraw}
               viewBox="0 0 120 70"
               colour="#ffffff"
-              className="absolute -right-36 -top-5 hidden h-16 w-32 sm:block"
-              d="M112 6 C 116 34, 92 44, 80 34 C 70 26, 84 14, 92 26 C 100 40, 70 60, 14 62"
-              arrow="M24 54 L12 62 L24 68"
+              className="absolute -right-32 -top-10 hidden h-20 w-32 sm:block"
+              d="M100 4 C 112 30, 96 54, 60 58 C 40 60, 26 58, 12 55"
+              arrow="M24 47 L11 55 L23 63"
             />
           <button
             ref={triggerRef}
@@ -128,15 +141,8 @@ export default function LeadMagnet() {
               {/* Lilac tape running across the top */}
               <TapeBanner text={sent === null ? 'FREE TUTORIAL' : 'IT’S YOURS'} mark="heart" strip="bg-sage text-bark" tilt="-rotate-1" className="-mt-2 pb-8 pt-12 sm:pb-10" />
 
-              {/* Doodle line from the photo to the button: across on a
-                  laptop, down beside the photo on a phone */}
-              <DrawnLine
-                progress={draw}
-                viewBox="0 0 160 80"
-                className="absolute bottom-14 left-[29%] z-10 hidden h-16 w-28 sm:block"
-                d="M8 6 C 4 40, 30 62, 56 52 C 76 44, 70 22, 54 30 C 38 40, 60 70, 150 62"
-                arrow="M140 54 L151 62 L140 70"
-              />
+              {/* Doodle line beside the photo on a phone (on a laptop it
+                  runs out from under the polaroid instead) */}
               <DrawnLine
                 progress={draw}
                 viewBox="0 0 70 110"
@@ -144,10 +150,21 @@ export default function LeadMagnet() {
                 d="M8 6 C 50 10, 62 40, 44 52 C 30 60, 22 44, 36 40 C 54 36, 56 80, 30 104"
                 arrow="M24 94 L30 105 L40 97"
               />
-              <div className="grid items-center gap-8 px-7 pb-10 sm:grid-cols-[2fr_3fr] sm:gap-10 sm:px-10 sm:pb-12">
+              <div className={`grid items-center gap-8 px-7 pb-10 sm:grid-cols-[2fr_3fr] sm:gap-10 sm:px-10 ${sent === null ? 'sm:pb-20' : 'sm:pb-12'}`}>
                 {/* Taped polaroid of Lena tapping, with a butterfly. Once
                     they've joined, the photo becomes a play button. */}
                 <div className="relative mx-auto w-32 sm:w-full sm:max-w-[13rem]">
+                  {/* On a laptop, a doodle line runs out from under the
+                      polaroid to the sign-up button */}
+                  {sent === null && (
+                    <DrawnLine
+                      progress={draw}
+                      viewBox="0 0 160 80"
+                      className="absolute left-[70%] top-full z-10 -mt-2 hidden h-16 w-36 sm:block"
+                      d="M8 6 C 4 40, 30 62, 56 52 C 76 44, 70 22, 54 30 C 38 40, 60 70, 150 62"
+                      arrow="M140 54 L151 62 L140 70"
+                    />
+                  )}
                   <div className="relative -rotate-3 bg-cream p-2 pb-9 shadow-2xl sm:p-2.5 sm:pb-10">
                     <span aria-hidden="true" className="absolute -top-3 left-1/2 z-10 h-6 w-20 -translate-x-1/2 rotate-2 bg-zing-yellow/85 shadow-sm" />
                     <div className="relative aspect-square overflow-hidden sm:aspect-[346/615]">
@@ -202,6 +219,7 @@ export default function LeadMagnet() {
                           subject="Free tutorial sign-up:"
                           sendingLabel="Sending…"
                           onSent={setSent}
+                          sheetUrl={tutorialSheetUrl}
                           buttonClass="bg-sage text-bark"
                           fieldClass="border-bark bg-bark text-cream placeholder:text-cream/60 focus:border-sage"
                         />

@@ -11,6 +11,7 @@ import { sendToInbox } from '@/lib/sendToInbox';
 // becomes their first name. `subject` labels the email to Lena. Pass
 // `onSent` to show your own thank-you instead (it gets their first name).
 // `buttonClass` and `fieldClass` replace the button's and fields' colours.
+// `sheetUrl` is the Google Sheet the sign-up is added to.
 export default function WaitlistForm({
   offer,
   cta,
@@ -20,6 +21,7 @@ export default function WaitlistForm({
   sendingLabel = 'Joining…',
   onSent,
   buttonClass,
+  sheetUrl = waitlistSheetUrl,
   fieldClass = 'border-bark/20 bg-cream text-bark placeholder:text-bark/45 focus:border-bark',
 }: {
   offer: string;
@@ -30,6 +32,7 @@ export default function WaitlistForm({
   sendingLabel?: string;
   onSent?: (firstName: string) => void;
   buttonClass?: string;
+  sheetUrl?: string;
   fieldClass?: string;
 }) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle');
@@ -42,16 +45,16 @@ export default function WaitlistForm({
     const first = String(data.get('name') ?? '').trim().split(/\s+/)[0];
     setFirstName(first);
     setStatus('sending');
-    // Also add them to the waitlist Google Sheet. Google doesn't let the page
+    // Also add them to the Google Sheet. Google doesn't let the page
     // read its reply, so this is sent without waiting on it; the email to
     // Lena is what decides whether the sign-up went through.
-    if (waitlistSheetUrl && !data.get('botcheck')) {
+    if (sheetUrl && !data.get('botcheck')) {
       const row = new URLSearchParams({
         name: String(data.get('name') ?? ''),
         email: String(data.get('email') ?? ''),
         offer,
       });
-      fetch(waitlistSheetUrl, { method: 'POST', mode: 'no-cors', body: row }).catch(() => {});
+      fetch(sheetUrl, { method: 'POST', mode: 'no-cors', body: row }).catch(() => {});
     }
     const ok = await sendToInbox(data, `${subject} ${offer}: ${data.get('name')}`);
     setStatus(ok ? 'sent' : 'failed');
