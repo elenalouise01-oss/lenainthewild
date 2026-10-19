@@ -19,6 +19,7 @@ export default function DrawnLine({
   stretch = false,
   progress,
   colour,
+  bold = false,
 }: {
   d: string;
   arrow?: string;
@@ -31,6 +32,9 @@ export default function DrawnLine({
   progress?: MotionValue<number>;
   // ink colour (brown by default; e.g. cream on a dark background)
   colour?: string;
+  // thicker, longer dashes and a filled triangle arrowhead (pass `arrow` as
+  // a closed triangle path)
+  bold?: boolean;
 }) {
   const reduced = useReducedMotion();
   const ref = useRef<SVGSVGElement>(null);
@@ -38,7 +42,7 @@ export default function DrawnLine({
   const { scrollYProgress } = useScroll({ target: ref as unknown as React.RefObject<HTMLElement>, offset: ['start 0.9', 'end 0.55'] });
   const p = progress ?? scrollYProgress;
   const length = useTransform(p, (v) => (reduced ? 1 : Math.min(1, Math.max(0, v))));
-  const ink = colour ? { ...INK, stroke: colour, strokeOpacity: 0.8 } : INK;
+  const ink = { ...INK, ...(colour && { stroke: colour, strokeOpacity: 0.8 }), ...(bold && { strokeWidth: 3, strokeOpacity: 0.9 }) };
   const arrowOpacity = useTransform(p, (v) => (reduced || v > 0.97 ? 1 : 0));
 
   return (
@@ -57,8 +61,8 @@ export default function DrawnLine({
           <motion.path d={d} stroke="white" strokeWidth={30} strokeLinecap="round" fill="none" style={{ pathLength: length }} />
         </mask>
       </defs>
-      <path d={d} {...ink} strokeDasharray="7 8" mask={`url(#draw-${id})`} />
-      {arrow && <motion.path d={arrow} {...ink} strokeLinejoin="round" style={{ opacity: arrowOpacity }} />}
+      <path d={d} {...ink} strokeDasharray={bold ? '9 7' : '7 8'} mask={`url(#draw-${id})`} />
+      {arrow && <motion.path d={arrow} {...ink} fill={bold ? ink.stroke : 'none'} fillOpacity={ink.strokeOpacity} strokeLinejoin="round" style={{ opacity: arrowOpacity }} />}
     </svg>
   );
 }

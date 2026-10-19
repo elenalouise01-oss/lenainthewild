@@ -152,10 +152,11 @@ export default function LeadMagnet() {
                   runs out from under the polaroid instead) */}
               <DrawnLine
                 progress={draw}
-                viewBox="0 0 70 110"
-                className="absolute right-5 top-28 z-10 h-24 w-16 sm:hidden"
-                d="M8 6 C 50 10, 62 40, 44 52 C 30 60, 22 44, 36 40 C 54 36, 56 80, 30 104"
-                arrow="M24 94 L30 105 L40 97"
+                bold
+                viewBox="0 0 80 120"
+                className="absolute right-4 top-28 z-10 h-[120px] w-20 sm:hidden"
+                d="M10 8 C 52 4, 74 34, 56 54 C 44 66, 28 52, 40 42 C 56 30, 66 76, 38 100"
+                arrow="M32 116 L42.4 104.7 L27.6 98.3 Z"
               />
               <div className={`grid items-center gap-8 px-7 pb-10 sm:grid-cols-[2fr_3fr] sm:gap-10 sm:px-10 ${sent === null ? 'sm:pb-20' : 'sm:pb-12'}`}>
                 {/* Taped polaroid of Lena tapping, with a butterfly. Once
@@ -166,10 +167,11 @@ export default function LeadMagnet() {
                   {sent === null && (
                     <DrawnLine
                       progress={draw}
-                      viewBox="0 0 160 80"
-                      className="absolute left-[70%] top-full z-10 -mt-2 hidden h-16 w-36 sm:block"
-                      d="M8 6 C 4 40, 30 62, 56 52 C 76 44, 70 22, 54 30 C 38 40, 60 70, 150 62"
-                      arrow="M140 54 L151 62 L140 70"
+                      bold
+                      viewBox="0 0 290 100"
+                      className="absolute -left-3 top-full z-10 -mt-1 hidden h-[100px] w-[290px] sm:block"
+                      d="M30 4 C 20 50, 60 80, 100 70 C 130 62, 128 34, 108 34 C 86 34, 92 74, 140 80 C 180 86, 230 66, 264 44"
+                      arrow="M282 35 L269.9 51 L261.9 35 Z"
                     />
                   )}
                   <div className="relative -rotate-3 bg-cream p-2 pb-9 shadow-2xl sm:p-2.5 sm:pb-10">
