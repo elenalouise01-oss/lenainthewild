@@ -101,18 +101,18 @@ export const waitlistOffers = ['The Freedom Frequency'];
 // in the pop-up (from Lena's YouTube). Sign-ups go to her inbox and the
 // waitlist Google Sheet.
 export const leadMagnet = {
-  label: 'Free EFT tapping tutorial',
+  label: 'Free guided tapping practice',
   // The small label above the home page section's headline
   sectionLabel: 'Free guided tapping practice',
   headline: 'Feeling overwhelmed, stuck in your head and unsure what you really want?',
   body: 'Quiet the noise, reconnect with yourself and create space to hear what you truly want from life.',
   closing: 'Take the first step.',
-  cta: 'Send me the free tutorial',
+  cta: 'Send me the free practice',
   photo: '/images/tapping-harbour.webp',
   photoAlt: 'Lena sitting cross-legged on a rock by Sydney Harbour, eyes closed, tapping on her chest',
   popup: {
     hook: 'Tap into your Intuition',
-    body: 'A free, step-by-step EFT tapping tutorial you can come back to any time. The simple daily practice that helped me reconnect with my intuition and finally start hearing what I truly wanted.',
+    body: 'A free, step-by-step EFT tapping practice you can come back to any time. The same simple daily practice that helped me reconnect with my intuition and finally start hearing what I truly wanted.',
   },
   title: 'Tap into your Intuition',
   // Lena's YouTube Short: played in the pop-up, and linked from the button
@@ -120,9 +120,9 @@ export const leadMagnet = {
   videoUrl: 'https://youtube.com/shorts/ftCp6dJRSZo',
   sent: {
     heading: 'It’s yours!',
-    body: 'Thank you, {name}. Your free tapping tutorial is ready whenever you are.',
+    body: 'Thank you, {name}. Your free tapping practice is ready whenever you are.',
   },
-  watch: 'Watch Your Free Tutorial',
+  watch: 'Start Your Free Practice',
 };
 
 export const fiveDayReconnectPage = {

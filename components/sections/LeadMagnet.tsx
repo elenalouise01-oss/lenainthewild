@@ -202,7 +202,7 @@ export default function LeadMagnet() {
               {/* Lilac tape across the top of the sign-up (not on the thank-you,
                   which just leaves room for the close button) */}
               {sent === null ? (
-                <TapeBanner text="FREE TUTORIAL" mark="heart" strip="bg-sage text-bark" tilt="-rotate-1" className="-mt-2 pb-8 pt-12 sm:pb-10" />
+                <TapeBanner text="FREE PRACTICE" mark="heart" strip="bg-sage text-bark" tilt="-rotate-1" className="-mt-2 pb-8 pt-12 sm:pb-10" />
               ) : (
                 <div className="h-14" />
               )}
@@ -260,7 +260,7 @@ export default function LeadMagnet() {
                     </div>
                     {!playing && (
                       <p aria-hidden="true" className="absolute inset-x-0 bottom-2 text-center font-hand text-base text-bark sm:text-lg">
-                        {sent === null ? 'free tutorial' : 'press play'}
+                        {sent === null ? 'free practice' : 'press play'}
                       </p>
                     )}
                   </div>
@@ -287,7 +287,7 @@ export default function LeadMagnet() {
                             offer={leadMagnet.title}
                             cta={leadMagnet.cta}
                             sent={leadMagnet.sent}
-                            subject="Free tutorial sign-up:"
+                            subject="Free practice sign-up:"
                             sendingLabel="Sending…"
                             onSent={setSent}
                             sheetUrl={tutorialSheetUrl}
