@@ -183,10 +183,12 @@ export default function Section3() {
             <ScrollReveal delay={0.1}>
               <p className="mt-10 max-w-5xl font-display text-3xl leading-[1.15] text-bark sm:text-5xl">
                 <span className="mb-4 block italic">{freedomSeeker.experienceSub}</span>
-                <span className="mb-4 block">{freedomSeeker.experienceContrast}</span>
-                <TapeHighlight>{freedomSeeker.experienceHighlight}</TapeHighlight>
+                <span className="block">{freedomSeeker.experienceContrast}</span>
               </p>
-              <p className="mt-8 max-w-2xl font-body text-base leading-relaxed text-umber sm:text-lg">{freedomSeeker.experienceTail}</p>
+              {/* The tape line leads straight into the paragraph */}
+              <p className="mt-6 max-w-2xl font-body text-base leading-relaxed text-umber sm:text-lg">
+                <TapeHighlight>{freedomSeeker.experienceHighlight}</TapeHighlight> {freedomSeeker.experienceTail}
+              </p>
               <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-umber sm:text-lg">{freedomSeeker.experienceTail2}</p>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
