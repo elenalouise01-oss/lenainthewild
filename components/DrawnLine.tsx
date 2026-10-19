@@ -15,6 +15,7 @@ export default function DrawnLine({
   arrow,
   viewBox,
   className = '',
+  style,
   stretch = false,
   progress,
   colour,
@@ -23,6 +24,7 @@ export default function DrawnLine({
   arrow?: string;
   viewBox: string;
   className?: string;
+  style?: React.CSSProperties;
   // stretch the drawing to fill its box (for full-width lines)
   stretch?: boolean;
   // drive the drawing from outside (otherwise it follows its own scroll position)
@@ -47,6 +49,7 @@ export default function DrawnLine({
       fill="none"
       preserveAspectRatio={stretch ? 'none' : undefined}
       className={`pointer-events-none ${className}`}
+      style={style}
     >
       <defs>
         {/* a solid line that grows along the path; only the dashes under it show */}

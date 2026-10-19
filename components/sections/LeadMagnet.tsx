@@ -11,6 +11,9 @@ import WaitlistForm from '@/components/WaitlistForm';
 import { leadMagnet, tutorialSheetUrl } from '@/content/site';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 
+// The words in the headline the home page doodle line starts from.
+const LINE_FROM = 'all the';
+
 // Where each heart in the thank-you burst flies to, and its colour.
 const HEARTS = [
   { x: -90, y: -70, colour: 'text-zing-pink' },
@@ -39,6 +42,43 @@ export default function LeadMagnet() {
   const ctaRef = useRef<HTMLDivElement>(null);
   const ctaInView = useInView(ctaRef, { once: true, margin: '0px 0px -15% 0px' });
   const homeDraw = useMotionValue(0);
+  // Laid out from where the words actually sit, so it fits any screen size:
+  // out from "all the" in the headline, down the right clear of the text,
+  // and round to the button.
+  const colRef = useRef<HTMLDivElement>(null);
+  const anchorRef = useRef<HTMLSpanElement>(null);
+  const bodyRef = useRef<HTMLParagraphElement>(null);
+  const [line, setLine] = useState<{ w: number; h: number; d: string; arrow: string } | null>(null);
+  const anchorAt = leadMagnet.headline.indexOf(LINE_FROM);
+
+  useEffect(() => {
+    const measure = () => {
+      const col = colRef.current?.getBoundingClientRect();
+      const from = anchorRef.current?.getClientRects();
+      const body = bodyRef.current?.getBoundingClientRect();
+      const cta = ctaRef.current?.getBoundingClientRect();
+      if (!col || !from?.length || !body || !cta) return setLine(null);
+      // the end of the last line "all the" sits on
+      const end = from[from.length - 1];
+      const sx = end.right - col.left + 14;
+      const sy = end.top - col.top + end.height * 0.55;
+      const ex = cta.right - col.left + 16;
+      const ey = cta.top - col.top + cta.height / 2;
+      // far enough right to clear the headline end and the paragraph
+      const ox = Math.max(sx + 40, body.right - col.left + 36);
+      const h = ey - sy;
+      setLine({
+        w: Math.ceil(ox + 20),
+        h: Math.ceil(ey + 12),
+        d: `M${sx} ${sy} C ${ox} ${sy}, ${ox + 6} ${sy + h * 0.3}, ${ox} ${sy + h * 0.62} C ${ox - 6} ${sy + h * 0.92}, ${ex + 70} ${ey}, ${ex} ${ey}`,
+        arrow: `M${ex + 13} ${ey - 8} L${ex} ${ey} L${ex + 13} ${ey + 8}`,
+      });
+    };
+    measure();
+    document.fonts?.ready.then(measure);
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, []);
 
   useEffect(() => {
     if (!ctaInView) return;
@@ -81,31 +121,43 @@ export default function LeadMagnet() {
           </div>
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <SectionLabel className="!text-sage">{leadMagnet.label}</SectionLabel>
-          <h2 className="mt-6 font-display text-display-3 italic leading-[1.1] text-cream">{leadMagnet.headline}</h2>
-          <p className="mt-6 max-w-xl font-body text-base leading-relaxed text-cream/85 sm:text-lg">{leadMagnet.body}</p>
-          <p className="mt-6 font-display text-2xl italic text-cream sm:text-3xl">{leadMagnet.closing}</p>
-          <div ref={ctaRef} className="relative mt-10 inline-block">
-            {/* From the end of "...your current reality?" down the right,
-                clear of "Take the first step.", and round to the button.
-                Laptop-width only, where the text sits beside the photo. */}
-            <DrawnLine
-              progress={homeDraw}
-              viewBox="0 0 220 150"
-              colour="#ffffff"
-              className="absolute left-full top-[-118px] ml-3 hidden h-[150px] w-[220px] lg:block"
-              d="M206 16 C 220 50, 212 88, 176 110 C 136 132, 70 138, 12 136"
-              arrow="M25 128 L11 136 L25 144"
-            />
-          <button
-            ref={triggerRef}
-            type="button"
-            onClick={() => setOpen(true)}
-            aria-haspopup="dialog"
-            className="rounded-full bg-sage px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest2 text-bark transition-transform hover:scale-105"
-          >
-            {leadMagnet.cta} →
-          </button>
+          <div ref={colRef} className="relative">
+            {line && (
+              <DrawnLine
+                progress={homeDraw}
+                viewBox={`0 0 ${line.w} ${line.h}`}
+                colour="#ffffff"
+                className="absolute left-0 top-0 hidden overflow-visible lg:block"
+                style={{ width: line.w, height: line.h }}
+                d={line.d}
+                arrow={line.arrow}
+              />
+            )}
+            <SectionLabel className="!text-sage">{leadMagnet.label}</SectionLabel>
+            <h2 className="mt-6 font-display text-display-3 italic leading-[1.1] text-cream">
+              {anchorAt >= 0 ? (
+                <>
+                  {leadMagnet.headline.slice(0, anchorAt)}
+                  <span ref={anchorRef}>{LINE_FROM}</span>
+                  {leadMagnet.headline.slice(anchorAt + LINE_FROM.length)}
+                </>
+              ) : (
+                leadMagnet.headline
+              )}
+            </h2>
+            <p ref={bodyRef} className="mt-6 max-w-xl font-body text-base leading-relaxed text-cream/85 sm:text-lg">{leadMagnet.body}</p>
+            <p className="mt-6 font-display text-2xl italic text-cream sm:text-3xl">{leadMagnet.closing}</p>
+            <div ref={ctaRef} className="mt-10 inline-block">
+              <button
+                ref={triggerRef}
+                type="button"
+                onClick={() => setOpen(true)}
+                aria-haspopup="dialog"
+                className="rounded-full bg-sage px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest2 text-bark transition-transform hover:scale-105"
+              >
+                {leadMagnet.cta} →
+              </button>
+            </div>
           </div>
         </ScrollReveal>
       </div>
