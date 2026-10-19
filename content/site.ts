@@ -101,7 +101,7 @@ export const leadMagnet = {
   label: 'Free EFT tapping video',
   headline: 'Can’t figure out what you truly want over all the noise?',
   body: 'Craving more from life, but caught up in the busyness of everyday life, unsure how to break out of your current reality?',
-  closing: 'Let’s change that.',
+  closing: 'Let’s change that. Take the first step.',
   cta: 'Send me the free tutorial',
   photo: '/images/tapping-harbour.webp',
   photoAlt: 'Lena sitting cross-legged on a rock by Sydney Harbour, eyes closed, tapping on her chest',
