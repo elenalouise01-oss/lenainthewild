@@ -98,7 +98,7 @@ export default function LeadMagnet() {
                   offer={leadMagnet.title}
                   cta={leadMagnet.cta}
                   sent={leadMagnet.sent}
-                  subject="Free video sign-up:"
+                  subject="Free tutorial sign-up:"
                   sendingLabel="Sending…"
                 >
                   <a

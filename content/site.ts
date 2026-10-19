@@ -98,7 +98,7 @@ export const waitlistOffers = ['The Freedom Frequency'];
 // links to the video in Lena's Google Drive. Sign-ups go to her inbox and the
 // waitlist Google Sheet.
 export const leadMagnet = {
-  label: 'Free EFT tapping video',
+  label: 'Free EFT tapping tutorial',
   headline: 'Can’t figure out what you truly want over all the noise?',
   body: 'Craving more from life, but caught up in the busyness of everyday life, unsure how to break out of your current reality?',
   closing: 'Let’s change that. Take the first step.',
@@ -107,15 +107,15 @@ export const leadMagnet = {
   photoAlt: 'Lena sitting cross-legged on a rock by Sydney Harbour, eyes closed, tapping on her chest',
   popup: {
     hook: 'Tap into your Intuition',
-    body: 'Get my free EFT tapping video straight away and learn the daily practice that helped me quiet the noise and hear what I truly wanted.',
+    body: 'A free, step-by-step EFT tapping tutorial you can come back to any time. The simple daily practice that helped me reconnect with my intuition and finally start hearing what I truly wanted.',
   },
   title: 'Tap into your Intuition',
   videoUrl: 'https://drive.google.com/file/d/147mdpKVqnkNF1gBX2uaU5G749LdqYX4v/view',
   sent: {
     heading: 'It’s yours!',
-    body: 'Thank you, {name}. Your free tapping video is ready whenever you are.',
+    body: 'Thank you, {name}. Your free tapping tutorial is ready whenever you are.',
   },
-  watch: 'Watch Your Free Video',
+  watch: 'Watch Your Free Tutorial',
 };
 
 export const fiveDayReconnectPage = {
