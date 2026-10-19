@@ -24,7 +24,7 @@ function TapeHighlight({ children }: { children: string }) {
   const rollOpacity = useTransform(scrollYProgress, [0, 0.03, 0.9, 1], [0, 1, 1, 0]);
 
   return (
-    <span ref={ref} className="relative mx-1 inline-block -rotate-3 align-middle">
+    <span ref={ref} className="relative mx-1 inline-block align-middle">
       <motion.span
         style={reduced ? undefined : { clipPath }}
         className="block rounded-sm bg-zing-pink px-3 py-1 font-body text-[0.6rem] font-semibold uppercase leading-tight tracking-wide text-bark shadow-sm sm:text-xs"
@@ -184,6 +184,7 @@ export default function Section3() {
               <p className="mt-10 max-w-5xl font-display text-3xl leading-[1.15] text-bark sm:text-5xl">
                 <span className="mb-4 block italic">{freedomSeeker.experienceSub}</span>
                 <span className="block">{freedomSeeker.experienceContrast}</span>
+                <span className="mt-3 block text-2xl sm:text-3xl">{freedomSeeker.experienceContrastEnd}</span>
               </p>
               {/* The tape line leads straight into the paragraph */}
               <p className="mt-6 max-w-2xl font-body text-base leading-relaxed text-umber sm:text-lg">

@@ -457,7 +457,9 @@ export const freedomSeeker = {
     ],
   },
   experienceSub: 'I’ve lived it.',
-  experienceContrast: 'I’ve been the PT in Bondi who had it all, the girl in a foreign country who lost it all, and now the woman living her dream life, on her own terms, with more freedom than she’s ever had.',
+  experienceContrast: 'I’ve been the PT in Bondi who had it all, the girl in a foreign country who lost it all, and now the woman living her dream life,',
+  // Follows the line above in the heading font, a size smaller
+  experienceContrastEnd: 'on her own terms, with more freedom than she’s ever had.',
   experienceHighlight: 'I rebuilt my life from the ground up, from rock bottom.',
   experienceTail:
     'I know what it takes to reinvent yourself and create a life beyond what you once thought possible. Now, I help others break free from the limits they’ve placed on themselves and step into a life that truly lights them up.',
