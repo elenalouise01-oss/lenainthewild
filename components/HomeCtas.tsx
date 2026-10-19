@@ -33,7 +33,6 @@ export function ReconnectCta() {
       <Link href={offerPages['The 5 Day Reconnect']} className={`${button} bg-sage text-bark`}>
         {homeCtas.reconnect.button} →
       </Link>
-      <span className="font-body text-sm font-semibold text-umber">{homeCtas.reconnect.price}</span>
     </div>
   );
 }
