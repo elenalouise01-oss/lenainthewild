@@ -8,6 +8,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import SectionLabel from '@/components/SectionLabel';
 import TapeBanner from '@/components/TapeBanner';
 import WaitlistForm from '@/components/WaitlistForm';
+import { OPEN_FREE_PRACTICE } from '@/components/HomeCtas';
 import { leadMagnet, tutorialSheetUrl } from '@/content/site';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 
@@ -106,6 +107,13 @@ export default function LeadMagnet() {
     const controls = animate(draw, 1, { duration: 1.2, delay: 0.5, ease: 'easeInOut' });
     return () => controls.stop();
   }, [open, sent, draw]);
+
+  // Other buttons on the page (under the hero, after the FAQ) open this pop-up too.
+  useEffect(() => {
+    const show = () => setOpen(true);
+    window.addEventListener(OPEN_FREE_PRACTICE, show);
+    return () => window.removeEventListener(OPEN_FREE_PRACTICE, show);
+  }, []);
 
   useEffect(() => {
     if (!open) return;

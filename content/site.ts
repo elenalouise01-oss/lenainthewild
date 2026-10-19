@@ -80,6 +80,30 @@ export const web3formsKey = '221a0644-2570-46ec-976a-9da12c946f82';
 // /exec). Each waitlist sign-up is also added as a row. Empty = off.
 export const waitlistSheetUrl = 'https://script.google.com/macros/s/AKfycbw7mZO4CaMWJNjlV-Vlu1dBhECbvm41bFI7zP3LOsWAOwKM8qEWDJ1sFdGN8NeXjNwW4A/exec';
 
+// The calls to action through the home page, from least to most commitment.
+export const homeCtas = {
+  // Thin strip under the hero: opens the free practice pop-up
+  freeTop: {
+    line: 'Free guided tapping practice: quiet the noise and hear what you truly want.',
+    button: 'Send me the free practice',
+  },
+  // After My Experience
+  reconnect: {
+    button: 'Take the first step towards your dream life',
+    price: '$33 AUD',
+  },
+  // Before the FAQ
+  waitlist: {
+    question: 'Ready to break free from what’s been holding you back and start creating the life you’ve always wanted?',
+    button: 'Discover your next chapter',
+  },
+  // After the FAQ: the free practice again, for anyone not ready to buy
+  freeBottom: {
+    line: 'Not ready to dive in? Start with my free guided tapping practice.',
+    button: 'Send me the free practice',
+  },
+};
+
 // Free tapping tutorial sign-ups: the Apps Script of Lena's "Free Tutorial
 // Sign-ups" Google Sheet, which adds a row and emails them the video link.
 export const tutorialSheetUrl = 'https://script.google.com/macros/s/AKfycbwOpzuNhXz_KSGX3631LmkxhpqkSBvTVjSuaeVX3UqG-3FBWpLdThpjTwj_kN-vXhNxEA/exec';

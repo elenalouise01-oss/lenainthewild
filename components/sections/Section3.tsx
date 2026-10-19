@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import CredentialsPopup from '@/components/CredentialsPopup';
+import { ReconnectCta } from '@/components/HomeCtas';
 import Envelope from '@/components/Envelope';
 import JournalCarousel from '@/components/JournalCarousel';
 import OffersCarousel from '@/components/OffersCarousel';
@@ -198,6 +199,9 @@ export default function Section3() {
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
               <CredentialsPopup />
+            </ScrollReveal>
+            <ScrollReveal delay={0.35}>
+              <ReconnectCta />
             </ScrollReveal>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import Footer from '@/components/Footer';
+import { FreePracticeBand, FreePracticeStrip, WaitlistCta } from '@/components/HomeCtas';
 import JsonLd from '@/components/JsonLd';
 import { SAME_AS, SITE_NAME, absoluteUrl } from '@/lib/seo';
 import Faq from '@/components/sections/Faq';
@@ -65,11 +66,14 @@ export default function Home() {
     <main>
       <JsonLd data={structuredData} />
       <Hero />
+      <FreePracticeStrip />
       <Section1 />
       <Section2 />
       <LeadMagnet />
       <Section3 />
+      <WaitlistCta />
       <Faq />
+      <FreePracticeBand />
       <Newsletter />
       <ComeSayHi />
       <Footer />
