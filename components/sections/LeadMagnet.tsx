@@ -241,7 +241,7 @@ export default function LeadMagnet() {
                     />
                   )}
                   <div className={`relative bg-cream p-2 shadow-2xl transition-transform duration-500 sm:p-2.5 ${playing ? 'rotate-0' : '-rotate-3 pb-9 sm:pb-10'}`}>
-                    {sent === null && (
+                    {!playing && (
                       <span aria-hidden="true" className="absolute -top-3 left-1/2 z-10 h-6 w-20 -translate-x-1/2 rotate-2 bg-zing-yellow/85 shadow-sm" />
                     )}
                     <div className={`relative overflow-hidden ${sent === null ? 'aspect-square sm:aspect-[346/615]' : 'aspect-[9/16] bg-bark'}`}>
