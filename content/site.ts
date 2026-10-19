@@ -33,7 +33,7 @@ export const welcome = {
   // The line under the headline (from Lena).
   pillars: 'Have you been feeling that pull? Those little nudges telling you it’s time to make a big change in your life?',
   supportLeft: [
-    'Maybe you’re standing in the life you once dreamed of, wondering, why am I not happy? You feel stuck, confused or unfulfilled, questioning whether the life you’ve created is even what you want anymore.',
+    'Maybe you’re standing in the life you once dreamed of, wondering, why am I not happy? Feeling stuck, confused or unfulfilled, questioning whether the life you’ve created is even what you want anymore.',
     'Maybe you’ve come out of a period of burnout, or you’re still in the thick of it, realising you can’t keep living on autopilot. Something needs to change because the way you’ve been living just isn’t sustainable anymore.',
     'Or maybe you’ve already started making changes. You’re questioning the way you’ve always done things, craving a slower, more intentional life, creating distance from people and situations that drain you, and learning to enjoy your own company. You know you want something different, but you’re still piecing together what your dream life looks like and how to actually create it.',
     'Wherever you are in that process, you’re ready for a life that feels more like you.',
