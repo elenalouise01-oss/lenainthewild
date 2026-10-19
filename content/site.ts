@@ -460,7 +460,7 @@ export const freedomSeeker = {
   experienceContrast: 'I’ve been the PT in Bondi who had it all, and the girl in a foreign country who lost it all.',
   experienceHighlight: 'I rebuilt my life from the ground up, from rock bottom.',
   experienceTail:
-    'I’ve lived the uncertainty, questioned everything and discovered the kind of resilience it takes to build a life that feels like your own. Now I guide others through that same reconnection and rebuild.',
+    'I’ve lived the uncertainty, questioned everything and discovered the kind of resilience it takes to build a life on your own terms. Now I guide others through that same reconnection and rebuild.',
 
   noteCard: {
     label: 'Note to Self',
