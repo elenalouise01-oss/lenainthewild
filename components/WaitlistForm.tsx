@@ -8,17 +8,24 @@ import { sendToInbox } from '@/lib/sendToInbox';
 // emailed to Lena, so visitors never have to leave the site.
 // `dark` is for use on the brown background: pink button, cream error text.
 // `sent` is the thank-you shown once they've joined; `{name}` in its body
-// becomes their first name.
+// becomes their first name. `subject` labels the email to Lena, and
+// `children` (e.g. a free video) is shown under the thank-you.
 export default function WaitlistForm({
   offer,
   cta,
   sent,
   dark = false,
+  subject = 'Waitlist sign-up for',
+  sendingLabel = 'Joining…',
+  children,
 }: {
   offer: string;
   cta: string;
   sent: { heading: string; body: string };
   dark?: boolean;
+  subject?: string;
+  sendingLabel?: string;
+  children?: React.ReactNode;
 }) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle');
   const [firstName, setFirstName] = useState('');
@@ -40,12 +47,13 @@ export default function WaitlistForm({
       });
       fetch(waitlistSheetUrl, { method: 'POST', mode: 'no-cors', body: row }).catch(() => {});
     }
-    const ok = await sendToInbox(data, `Waitlist sign-up for ${offer}: ${data.get('name')}`);
+    const ok = await sendToInbox(data, `${subject} ${offer}: ${data.get('name')}`);
     setStatus(ok ? 'sent' : 'failed');
   };
 
   if (status === 'sent') {
     return (
+      <>
       <div className="mx-auto max-w-md rounded-sm bg-cream px-8 py-10 text-center text-bark shadow-xl" role="status">
         <span aria-hidden="true" className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-sage font-display text-3xl text-bark">
           ✓
@@ -55,6 +63,8 @@ export default function WaitlistForm({
           {firstName ? sent.body.replace('{name}', firstName) : sent.body.replace(', {name}', '')}
         </p>
       </div>
+      {children}
+      </>
     );
   }
 
@@ -89,7 +99,7 @@ export default function WaitlistForm({
           dark ? 'bg-zing-pink text-bark' : 'bg-[#141414] text-cream'
         }`}
       >
-        {status === 'sending' ? 'Joining…' : `${cta} →`}
+        {status === 'sending' ? sendingLabel : `${cta} →`}
       </button>
     </form>
   );

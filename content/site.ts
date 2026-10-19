@@ -93,6 +93,30 @@ export const waitlistOffers = ['The Freedom Frequency'];
 
 // The 5 Day Reconnect page (/5-day-reconnect). Buying still happens on
 // The Leap, which takes payment and delivers the audio.
+// The free EFT tapping video (lead magnet), offered on the home page. The
+// button opens a pop-up sign-up; once they've joined, the success message
+// links to the video in Lena's Google Drive. Sign-ups go to her inbox and the
+// waitlist Google Sheet.
+export const leadMagnet = {
+  label: 'Free EFT tapping video',
+  headline: 'Can’t hear what you truly want over all the noise?',
+  body: 'Tap into your Intuition is my free EFT tapping video, the practice that helped me quiet the noise and tune back into my intuition.',
+  cta: 'Send Me the Free Video',
+  photo: '/images/tapping-harbour.webp',
+  photoAlt: 'Lena sitting cross-legged on a rock by Sydney Harbour, eyes closed, tapping on her chest',
+  popup: {
+    hook: 'Tap into your Intuition',
+    body: 'Get my free EFT tapping video straight away and learn the daily practice that helped me quiet the noise and hear what I truly wanted.',
+  },
+  title: 'Tap into your Intuition',
+  videoUrl: 'https://drive.google.com/file/d/147mdpKVqnkNF1gBX2uaU5G749LdqYX4v/view',
+  sent: {
+    heading: 'It’s yours!',
+    body: 'Thank you, {name}. Your free tapping video is ready whenever you are.',
+  },
+  watch: 'Watch Your Free Video',
+};
+
 export const fiveDayReconnectPage = {
   label: 'The Freedom Seeker · 02',
   title: 'The 5 Day Reconnect',

@@ -6,6 +6,7 @@ import Hero from '@/components/sections/Hero';
 import Newsletter from '@/components/sections/Newsletter';
 import Section1 from '@/components/sections/Section1';
 import Section2 from '@/components/sections/Section2';
+import LeadMagnet from '@/components/sections/LeadMagnet';
 import Section3, { ComeSayHi } from '@/components/sections/Section3';
 
 // Who the site is about, for search engines. Only facts stated on the site.
@@ -66,6 +67,7 @@ export default function Home() {
       <Hero />
       <Section1 />
       <Section2 />
+      <LeadMagnet />
       <Section3 />
       <Faq />
       <Newsletter />
