@@ -11,14 +11,23 @@ import { useReducedMotion } from '@/lib/useReducedMotion';
 // in front of a big soft circle that grows out of the centre and keeps
 // breathing, neighbours tilted at the edges, a round sticker and a
 // "now playing" bar. Sleeves tilt in 3D as you grab or move over them.
-// Brand palette only; `photo` is the crop of the shared photo, `src` an
-// offer's own cover artwork when it has one.
-// `zoom` enlarges artwork whose subject is drawn smaller than the others.
+// Brand palette only, by position (the first offer is always lilac and
+// yellow); `photo` is the crop of the shared photo.
 const LOOKS: { bg: string; circle: string; sticker: string; photo: string; src?: string; zoom?: number }[] = [
-  { bg: '#CBA1D4', circle: '#fffba0', sticker: '#fffba0', photo: '50% 50%', src: '/images/cover-freedom-frequency.webp' },
-  { bg: '#ff8bb8', circle: '#CBA1D4', sticker: '#ff8bb8', photo: '50% 50%', src: '/images/cover-reconnect-monkey.webp' },
-  { bg: '#fffba0', circle: '#ff8bb8', sticker: '#CBA1D4', photo: '50% 50%', src: '/images/cover-aligned-circle.webp', zoom: 1.35 },
+  { bg: '#CBA1D4', circle: '#fffba0', sticker: '#fffba0', photo: '50% 50%' },
+  { bg: '#ff8bb8', circle: '#CBA1D4', sticker: '#ff8bb8', photo: '50% 50%' },
+  { bg: '#fffba0', circle: '#ff8bb8', sticker: '#CBA1D4', photo: '50% 50%' },
 ];
+
+// Each offer's own cover artwork, which goes wherever the offer sits.
+// `zoom` enlarges artwork whose subject is drawn smaller than the others.
+const COVERS: Record<string, { src: string; zoom?: number }> = {
+  'The Freedom Frequency': { src: '/images/cover-freedom-frequency.webp' },
+  'The 5 Day Reconnect': { src: '/images/cover-reconnect-monkey.webp' },
+  'Your Freedom Roadmap': { src: '/images/cover-aligned-circle.webp', zoom: 1.35 },
+};
+
+const lookFor = (i: number) => ({ ...LOOKS[i % LOOKS.length], ...COVERS[freedomSeeker.tiers[i].title] });
 
 const SWIPE_THRESHOLD = 60;
 const MAX_TILT = 14;
@@ -69,7 +78,7 @@ export default function OffersCarousel() {
   };
 
   const spring = reduced ? { duration: 0 } : { type: 'spring' as const, stiffness: 140, damping: 20 };
-  const look = LOOKS[active % LOOKS.length];
+  const look = lookFor(active);
 
   return (
     <div className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden py-20">
@@ -145,7 +154,7 @@ export default function OffersCarousel() {
           let d = (i - active + count) % count;
           if (d > count / 2) d -= count;
           const isActive = d === 0;
-          const tierLook = LOOKS[i % LOOKS.length];
+          const tierLook = lookFor(i);
           // Offers not open yet sign up on their page's waitlist; the rest buy on The Leap
           const href = waitlistOffers.includes(tier.title) ? `${offerPages[tier.title]}#waitlist` : offerLinks[tier.title];
 
@@ -201,7 +210,7 @@ export default function OffersCarousel() {
         {details !== null && (
           <OfferDetails
             tier={tiers[details]}
-            look={LOOKS[details % LOOKS.length]}
+            look={lookFor(details)}
             href={offerPages[tiers[details].title] ?? offerLinks[tiers[details].title]}
             reduced={reduced}
             onClose={() => setDetails(null)}
@@ -262,7 +271,7 @@ function NowPlaying({
         </motion.button>
         <div className="min-w-0 flex-1 leading-tight">
           <p className="truncate font-body text-[0.7rem] font-bold sm:text-sm">
-            {tier.number.replace(/[()]/g, '')}.{tier.title}
+            {tier.number.replace(/[()]/g, '')}. {tier.title}
           </p>
           <button
             type="button"

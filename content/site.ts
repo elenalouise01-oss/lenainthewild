@@ -125,7 +125,7 @@ export const leadMagnet = {
 };
 
 export const fiveDayReconnectPage = {
-  label: 'The Freedom Seeker · 02',
+  label: 'The Freedom Seeker · 01',
   title: 'The 5 Day Reconnect',
   subtitle: 'Five days of simple practices to help you get out of your head and back into your body.',
   cta: 'I’m Ready',
@@ -213,7 +213,7 @@ export const fiveDayReconnectPage = {
 
 // The Freedom Frequency page (/freedom-frequency).
 export const freedomFrequencyPage = {
-  label: 'The Freedom Seeker · 01',
+  label: 'The Freedom Seeker · 02',
   title: 'The Freedom Frequency',
   subtitle: 'Your next chapter starts within.',
   // The intro under the title on this page only (the home page card keeps its own short text).
@@ -414,17 +414,17 @@ export const freedomSeeker = {
   tiers: [
     {
       number: '(01)',
-      price: '$777 AUD',
-      title: 'The Freedom Frequency',
-      body: "An embodied, self-paced course to reconnect with yourself, release the patterns keeping you stuck and create the freedom you've been craving.",
-      tags: ['Embodied Practice', 'Self-Paced Course'],
-    },
-    {
-      number: '(02)',
       price: '$33 AUD',
       title: 'The 5 Day Reconnect',
       body: 'An audio journey to help you slow down, get out of your head, and hear yourself again.',
       tags: ['Audio Journey', 'Self-Paced'],
+    },
+    {
+      number: '(02)',
+      price: '$777 AUD',
+      title: 'The Freedom Frequency',
+      body: "An embodied, self-paced course to reconnect with yourself, release the patterns keeping you stuck and create the freedom you've been craving.",
+      tags: ['Embodied Practice', 'Self-Paced Course'],
     },
     {
       number: '(03)',
@@ -555,7 +555,7 @@ export const freedomSeeker = {
     body: 'Whether you’re curious about my work, exploring your own path to freedom, or simply want to say hello, I’d love to hear from you.',
     listIntro: 'Get in touch about:',
     listLabel: 'Drop a message below and I’ll get back to you shortly',
-    list: ['The Freedom Frequency', 'The 5 Day Reconnect', 'Your Freedom Roadmap', 'General Inquiries'],
+    list: ['The 5 Day Reconnect', 'The Freedom Frequency', 'Your Freedom Roadmap', 'General Inquiries'],
     fields: { name: 'Name', email: 'Email', message: 'Message' },
     cta: 'Send',
     sent: 'Thanks, that’s landed with me. I’ll get back to you shortly.',
@@ -673,7 +673,7 @@ export const footer = {
   columns: [
     {
       label: 'Explore',
-      links: ['The Freedom Frequency', 'The 5 Day Reconnect', 'Your Freedom Roadmap', 'Dream Life Workbook', 'Wellness Studio'],
+      links: ['The 5 Day Reconnect', 'The Freedom Frequency', 'Your Freedom Roadmap', 'Dream Life Workbook', 'Wellness Studio'],
     },
     {
       label: 'Get to Know Me',
