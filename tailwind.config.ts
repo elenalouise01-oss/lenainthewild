@@ -18,6 +18,8 @@ const config: Config = {
         zing: {
           yellow: '#fffba0',
           pink: '#ff8bb8',
+          // Softer baby pink, used on the home page
+          babypink: '#f8c8dc',
           green: '#bee5b0',
         },
       },

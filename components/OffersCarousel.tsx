@@ -15,8 +15,8 @@ import { useReducedMotion } from '@/lib/useReducedMotion';
 // yellow); `photo` is the crop of the shared photo.
 const LOOKS: { bg: string; circle: string; sticker: string; photo: string; src?: string; zoom?: number }[] = [
   { bg: '#CBA1D4', circle: '#fffba0', sticker: '#fffba0', photo: '50% 50%' },
-  { bg: '#ff8bb8', circle: '#CBA1D4', sticker: '#ff8bb8', photo: '50% 50%' },
-  { bg: '#fffba0', circle: '#ff8bb8', sticker: '#CBA1D4', photo: '50% 50%' },
+  { bg: '#f8c8dc', circle: '#CBA1D4', sticker: '#f8c8dc', photo: '50% 50%' },
+  { bg: '#fffba0', circle: '#f8c8dc', sticker: '#CBA1D4', photo: '50% 50%' },
 ];
 
 // Each offer's own cover artwork, which goes wherever the offer sits.

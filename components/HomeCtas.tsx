@@ -45,7 +45,7 @@ export function WaitlistCta() {
     <section className="bg-bark px-6 py-24 text-center sm:py-32">
       <ScrollReveal className="mx-auto flex max-w-3xl flex-col items-center">
         <p className="font-display text-3xl italic leading-tight text-cream sm:text-5xl">{homeCtas.waitlist.question}</p>
-        <Link href={offerPages['The Freedom Frequency']} className={`${button} mt-10 bg-zing-pink text-bark`}>
+        <Link href={offerPages['The Freedom Frequency']} className={`${button} mt-10 bg-zing-babypink text-bark`}>
           {homeCtas.waitlist.button} →
         </Link>
       </ScrollReveal>

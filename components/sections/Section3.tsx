@@ -28,7 +28,7 @@ function TapeHighlight({ children }: { children: string }) {
     <span ref={ref} className="relative mx-1 inline-block align-middle">
       <motion.span
         style={reduced ? undefined : { clipPath }}
-        className="block rounded-sm bg-zing-pink px-3 py-1 font-body text-[0.6rem] font-semibold uppercase leading-tight tracking-wide text-bark shadow-sm sm:text-xs"
+        className="block rounded-sm bg-zing-babypink px-3 py-1 font-body text-[0.6rem] font-semibold uppercase leading-tight tracking-wide text-bark shadow-sm sm:text-xs"
       >
         {children}
       </motion.span>
@@ -36,7 +36,7 @@ function TapeHighlight({ children }: { children: string }) {
         <motion.span
           aria-hidden="true"
           style={{ left: rollLeft, opacity: rollOpacity }}
-          className="absolute -bottom-1 -top-1 w-2.5 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#e5679a] via-[#ffc2da] to-[#e5679a] shadow-md"
+          className="absolute -bottom-1 -top-1 w-2.5 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#eaa9c4] via-[#fde4ee] to-[#eaa9c4] shadow-md"
         />
       )}
     </span>

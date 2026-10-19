@@ -40,13 +40,13 @@ function loadYouTubeApi() {
 
 // Where each heart in the thank-you burst flies to, and its colour.
 const HEARTS = [
-  { x: -90, y: -70, colour: 'text-zing-pink' },
+  { x: -90, y: -70, colour: 'text-zing-babypink' },
   { x: -50, y: -110, colour: 'text-sage' },
-  { x: 0, y: -125, colour: 'text-zing-pink' },
+  { x: 0, y: -125, colour: 'text-zing-babypink' },
   { x: 55, y: -105, colour: 'text-sage' },
-  { x: 95, y: -60, colour: 'text-zing-pink' },
+  { x: 95, y: -60, colour: 'text-zing-babypink' },
   { x: -120, y: -20, colour: 'text-sage' },
-  { x: 125, y: -15, colour: 'text-zing-pink' },
+  { x: 125, y: -15, colour: 'text-zing-babypink' },
 ];
 
 // The free tapping video offer on the home page. The button opens a pop-up
