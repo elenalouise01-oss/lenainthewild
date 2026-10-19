@@ -29,8 +29,9 @@ export function FreePracticeStrip() {
 // The 5 Day Reconnect, straight after My Experience.
 export function ReconnectCta() {
   return (
-    <div className="mt-12 flex flex-wrap items-center gap-4">
-      <Link href={offerPages['The 5 Day Reconnect']} className={`${button} bg-sage text-bark`}>
+    <div className="mt-12">
+      <p className="font-display text-2xl italic leading-snug text-bark sm:text-3xl">{homeCtas.reconnect.line}</p>
+      <Link href={offerPages['The 5 Day Reconnect']} className={`${button} mt-6 bg-sage text-bark`}>
         {homeCtas.reconnect.button} →
       </Link>
     </div>

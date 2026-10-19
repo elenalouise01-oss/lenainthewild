@@ -84,17 +84,18 @@ export const waitlistSheetUrl = 'https://script.google.com/macros/s/AKfycbw7mZO4
 export const homeCtas = {
   // Thin strip under the hero: opens the free practice pop-up
   freeTop: {
-    line: 'Quiet the noise and reconnect with what you truly want.',
+    line: 'Tap into your intuition with my free guided tapping practice.',
     button: 'Send me the free practice',
   },
   // After My Experience
   reconnect: {
+    line: 'Quiet the noise and reconnect with what you truly want.',
     button: 'Take the first step towards your dream life',
   },
   // Before the FAQ
   waitlist: {
     question: 'Ready to break free from what’s been holding you back and start creating the life you’ve always wanted?',
-    button: 'Discover your next chapter',
+    button: 'Join the Freedom Frequency waitlist',
   },
 };
 
