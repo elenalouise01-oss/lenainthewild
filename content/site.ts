@@ -55,7 +55,7 @@ export const myStory = {
   label: 'My Story',
   quote: "I just had a deep, undeniable knowing that this life wasn't for me anymore.",
   body:
-    "Hi, I'm Lena. I was 36 when I uprooted my life from Sydney and leapt into the unknown, leaving behind the successful personal training business I'd spent 8 years building in the busiest gym in Bondi, which was once my dream. But for the last 2 years of my PT career, I just couldn't shake the feeling that surely this wasn't it?",
+    "Hi, I'm Lena. I was 36 when I uprooted my life from Sydney and leapt into the unknown, leaving behind the successful personal training business I'd spent 8 years building in the busiest gym in Bondi, which was once my dream. But for the last 2 years of my PT career, I just couldn't shake the feeling that surely this wasn't it?\n\nI threw my life up in the air. Left it all behind in Sydney and booked a one-way ticket to Bali…",
   cta: 'Read the full story',
   ctaHref: '/my-story',
 };
