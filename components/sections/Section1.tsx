@@ -27,6 +27,7 @@ const OUTLINE = [
 export default function Section1() {
   const reduced = useReducedMotion();
   const sandRef = useRef<HTMLDivElement>(null);
+  const brownRef = useRef<HTMLDivElement>(null);
   // Timed against the headline itself: 0 when it peeks in at the bottom of
   // the screen, 1 when it reaches the top. YOUR glides across and lands
   // first, then LIFE follows letter by letter.
@@ -36,11 +37,11 @@ export default function Section1() {
 
   return (
     <section id="story">
-      {/* The free practice strip stays pinned to the top of the screen while
-          the brown welcome scrolls up under it, and lets go where the brown
-          ends. */}
-      <div className="relative">
-        <FreePracticeStrip />
+      {/* The free practice strip glides down through the brown welcome as you
+          scroll, the text passing under it, and rests at the bottom of the
+          brown. */}
+      <div ref={brownRef} className="relative">
+        <FreePracticeStrip track={brownRef} />
         <div className="bg-bark px-6 py-28 sm:px-10 sm:py-40 lg:px-16">
           <div className="mx-auto max-w-content">
             <ScrollReveal>
