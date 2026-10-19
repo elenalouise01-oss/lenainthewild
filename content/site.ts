@@ -439,7 +439,7 @@ export const freedomSeeker = {
   cta: "Yes, I'm ready to reconnect",
   ctaHref: '#freedom-seeker',
   experienceLabel: 'My Experience',
-  experienceClosing: 'I’m not here to tell you how to live. I’m here to show you what’s possible when you choose you.',
+  experienceClosing: 'I’m not here to tell you how to live. I’m here to help you explore what’s possible when you start choosing yourself.',
   experienceCredentials: 'And for those of you who need a little more certainty…I’ve got the credentials to back it up, too.',
   // `details` lines are plain text, or { text, italic } for a school/business name.
   credentials: {
@@ -457,10 +457,9 @@ export const freedomSeeker = {
     ],
   },
   experienceSub: 'I’ve lived it.',
-  experienceLead: 'I walked away from a career that looked perfect on paper, moved overseas, and rebuilt my life from the ground up.',
-  experienceHighlight: 'I’ve started over more times than I can count',
+  experienceHighlight: 'I’ve started over more times than I can count.',
   experienceTail:
-    'I’ve led myself through the exact reconnection, uncertainty and rebuild I now guide others through.',
+    'I’ve done the inner work, navigated the uncertainty and experienced what it takes to create a life that feels like your own.',
 
   noteCard: {
     label: 'Note to Self',

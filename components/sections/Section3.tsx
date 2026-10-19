@@ -183,7 +183,6 @@ export default function Section3() {
             <ScrollReveal delay={0.1}>
               <p className="mt-10 max-w-5xl font-display text-3xl leading-[1.15] text-bark sm:text-5xl">
                 <span className="mb-4 block italic">{freedomSeeker.experienceSub}</span>
-                {freedomSeeker.experienceLead}{' '}
                 <TapeHighlight>{freedomSeeker.experienceHighlight}</TapeHighlight>{' '}
                 <span className="italic">{freedomSeeker.experienceTail}</span>
               </p>
