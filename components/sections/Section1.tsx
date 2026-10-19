@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion';
+import { FreePracticeStrip } from '@/components/HomeCtas';
 import ScrollReveal from '@/components/ScrollReveal';
 import { hero, welcome } from '@/content/site';
 import { useReducedMotion } from '@/lib/useReducedMotion';
@@ -35,35 +36,41 @@ export default function Section1() {
 
   return (
     <section id="story">
-      <div className="bg-bark px-6 py-28 sm:px-10 sm:py-40 lg:px-16">
-        <div className="mx-auto max-w-content">
-          <ScrollReveal>
-            <h2 className="max-w-3xl font-display text-display-2 italic leading-[1.05] text-cream">
-              {welcome.headline}
-            </h2>
-            <p className="mt-8 max-w-2xl font-body text-sm font-semibold uppercase leading-relaxed tracking-widest2 text-cream">{welcome.pillars}</p>
-          </ScrollReveal>
+      {/* The free practice strip stays pinned to the top of the screen while
+          the brown welcome scrolls up under it, and lets go where the brown
+          ends. */}
+      <div className="relative">
+        <FreePracticeStrip />
+        <div className="bg-bark px-6 py-28 sm:px-10 sm:py-40 lg:px-16">
+          <div className="mx-auto max-w-content">
+            <ScrollReveal>
+              <h2 className="max-w-3xl font-display text-display-2 italic leading-[1.05] text-cream">
+                {welcome.headline}
+              </h2>
+              <p className="mt-8 max-w-2xl font-body text-sm font-semibold uppercase leading-relaxed tracking-widest2 text-cream">{welcome.pillars}</p>
+            </ScrollReveal>
 
-          <div className="mt-24 flex justify-end sm:mt-36">
-            <div className="max-w-2xl text-left">
-              <ScrollReveal>
-                <div className="space-y-5">
-                  {welcome.supportLeft.map((p) => (
-                    <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-cream">
-                      {p}
-                    </p>
-                  ))}
-                </div>
-              </ScrollReveal>
-              <ScrollReveal delay={0.1}>
-                <p className="mt-8 font-display text-2xl italic leading-snug text-cream sm:text-3xl">{welcome.supportRight}</p>
-                <a
-                  href={welcome.ctaHref}
-                  className="mt-4 inline-block py-2 font-body text-xs font-semibold uppercase tracking-widest2 text-zing-yellow underline decoration-zing-yellow/40 underline-offset-8 transition-colors hover:decoration-zing-yellow"
-                >
-                  {welcome.cta} →
-                </a>
-              </ScrollReveal>
+            <div className="mt-24 flex justify-end sm:mt-36">
+              <div className="max-w-2xl text-left">
+                <ScrollReveal>
+                  <div className="space-y-5">
+                    {welcome.supportLeft.map((p) => (
+                      <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-cream">
+                        {p}
+                      </p>
+                    ))}
+                  </div>
+                </ScrollReveal>
+                <ScrollReveal delay={0.1}>
+                  <p className="mt-8 font-display text-2xl italic leading-snug text-cream sm:text-3xl">{welcome.supportRight}</p>
+                  <a
+                    href={welcome.ctaHref}
+                    className="mt-4 inline-block py-2 font-body text-xs font-semibold uppercase tracking-widest2 text-zing-yellow underline decoration-zing-yellow/40 underline-offset-8 transition-colors hover:decoration-zing-yellow"
+                  >
+                    {welcome.cta} →
+                  </a>
+                </ScrollReveal>
+              </div>
             </div>
           </div>
         </div>

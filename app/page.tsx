@@ -1,5 +1,5 @@
 import Footer from '@/components/Footer';
-import { FreePracticeStrip, WaitlistCta } from '@/components/HomeCtas';
+import { WaitlistCta } from '@/components/HomeCtas';
 import JsonLd from '@/components/JsonLd';
 import { SAME_AS, SITE_NAME, absoluteUrl } from '@/lib/seo';
 import Faq from '@/components/sections/Faq';
@@ -66,7 +66,6 @@ export default function Home() {
     <main>
       <JsonLd data={structuredData} />
       <Hero />
-      <FreePracticeStrip />
       <Section1 />
       <Section2 />
       <LeadMagnet />

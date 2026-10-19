@@ -12,10 +12,11 @@ const button =
   'inline-flex items-center gap-3 rounded-full px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest2 transition-transform hover:scale-105';
 
 // Thin lilac strip straight under the hero: the free practice, for
-// visitors who are only just meeting Lena.
+// visitors who are only just meeting Lena. Sticky, so it stays at the top
+// while the section it sits in scrolls under it.
 export function FreePracticeStrip() {
   return (
-    <section className="bg-sage px-6 py-6">
+    <section className="sticky top-0 z-30 bg-sage px-6 py-4 shadow-md sm:py-5">
       <div className="container-editorial flex flex-col items-center justify-center gap-4 text-center sm:flex-row sm:gap-8">
         <p className="font-display text-lg italic leading-snug text-bark sm:text-xl">{homeCtas.freeTop.line}</p>
         <button type="button" onClick={openFreePractice} aria-haspopup="dialog" className={`${button} flex-none bg-bark text-cream`}>
