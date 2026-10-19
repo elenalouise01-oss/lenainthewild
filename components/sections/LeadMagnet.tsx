@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, animate, motion, useMotionValue } from 'framer-motion';
+import DrawnLine from '@/components/DrawnLine';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionLabel from '@/components/SectionLabel';
 import TapeBanner from '@/components/TapeBanner';
@@ -31,6 +32,15 @@ export default function LeadMagnet() {
   const triggerRef = useRef<HTMLButtonElement>(null);
   // Their first name once they've joined ('' if none given); null before.
   const [sent, setSent] = useState<string | null>(null);
+  // Draws the doodle line in the pop-up each time it opens or changes.
+  const draw = useMotionValue(0);
+
+  useEffect(() => {
+    if (!open) return;
+    draw.set(0);
+    const controls = animate(draw, 1, { duration: 1.2, delay: 0.5, ease: 'easeInOut' });
+    return () => controls.stop();
+  }, [open, sent, draw]);
 
   useEffect(() => {
     if (!open) return;
@@ -64,15 +74,24 @@ export default function LeadMagnet() {
           <h2 className="mt-6 font-display text-display-3 italic leading-[1.1] text-cream">{leadMagnet.headline}</h2>
           <p className="mt-6 max-w-xl font-body text-base leading-relaxed text-cream/85 sm:text-lg">{leadMagnet.body}</p>
           <p className="mt-6 font-display text-2xl italic text-cream sm:text-3xl">{leadMagnet.closing}</p>
+          <div className="relative mt-10 inline-block">
+            <DrawnLine
+              viewBox="0 0 120 70"
+              colour="#ffffff"
+              className="absolute -right-36 -top-5 hidden h-16 w-32 sm:block"
+              d="M112 6 C 116 34, 92 44, 80 34 C 70 26, 84 14, 92 26 C 100 40, 70 60, 14 62"
+              arrow="M24 54 L12 62 L24 68"
+            />
           <button
             ref={triggerRef}
             type="button"
             onClick={() => setOpen(true)}
             aria-haspopup="dialog"
-            className="mt-10 rounded-full bg-sage px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest2 text-bark transition-transform hover:scale-105"
+            className="rounded-full bg-sage px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest2 text-bark transition-transform hover:scale-105"
           >
             {leadMagnet.cta} →
           </button>
+          </div>
         </ScrollReveal>
       </div>
 
@@ -90,7 +109,7 @@ export default function LeadMagnet() {
             aria-label={leadMagnet.popup.hook}
           >
             <motion.div
-              className="relative max-h-[92dvh] w-full max-w-3xl overflow-y-auto overflow-x-hidden bg-bark text-cream shadow-2xl ring-1 ring-cream/10"
+              className="relative max-h-[92dvh] w-full max-w-3xl overflow-y-auto overflow-x-hidden bg-cream text-bark shadow-2xl"
               initial={{ opacity: 0, y: reduced ? 0 : 24, rotate: reduced ? 0 : -1.5 }}
               animate={{ opacity: 1, y: 0, rotate: 0 }}
               exit={{ opacity: 0, y: reduced ? 0 : 24 }}
@@ -101,7 +120,7 @@ export default function LeadMagnet() {
                 ref={closeRef}
                 type="button"
                 onClick={() => setOpen(false)}
-                className="absolute right-3 top-2 z-20 rounded-full bg-bark px-3 py-1 font-body text-xs font-semibold uppercase tracking-widest2 text-cream/80 transition-colors hover:text-cream"
+                className="absolute right-3 top-2 z-20 rounded-full bg-cream px-3 py-1 font-body text-xs font-semibold uppercase tracking-widest2 text-bark/70 transition-colors hover:text-bark"
               >
                 Close ×
               </button>
@@ -109,6 +128,22 @@ export default function LeadMagnet() {
               {/* Lilac tape running across the top */}
               <TapeBanner text={sent === null ? 'FREE TUTORIAL' : 'IT’S YOURS'} mark="heart" strip="bg-sage text-bark" tilt="-rotate-1" className="-mt-2 pb-2 pt-12" />
 
+              {/* Doodle line from the photo to the button: across on a
+                  laptop, down beside the photo on a phone */}
+              <DrawnLine
+                progress={draw}
+                viewBox="0 0 160 80"
+                className="absolute bottom-14 left-[29%] z-10 hidden h-16 w-28 sm:block"
+                d="M8 6 C 4 40, 30 62, 56 52 C 76 44, 70 22, 54 30 C 38 40, 60 70, 150 62"
+                arrow="M140 54 L151 62 L140 70"
+              />
+              <DrawnLine
+                progress={draw}
+                viewBox="0 0 70 110"
+                className="absolute right-5 top-28 z-10 h-24 w-16 sm:hidden"
+                d="M8 6 C 50 10, 62 40, 44 52 C 30 60, 22 44, 36 40 C 54 36, 56 80, 30 104"
+                arrow="M24 94 L30 105 L40 97"
+              />
               <div className="grid items-center gap-8 px-7 pb-10 sm:grid-cols-[2fr_3fr] sm:gap-10 sm:px-10 sm:pb-12">
                 {/* Taped polaroid of Lena tapping, with a butterfly. Once
                     they've joined, the photo becomes a play button. */}
@@ -156,9 +191,9 @@ export default function LeadMagnet() {
                 <div className="relative text-center sm:text-left">
                   {sent === null ? (
                     <>
-                      <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-sage">{leadMagnet.label}</p>
-                      <p className="mt-4 font-display text-4xl italic leading-[1.05] text-cream sm:text-5xl">{leadMagnet.popup.hook}</p>
-                      <p className="mt-5 font-body text-base leading-relaxed text-cream/85">{leadMagnet.popup.body}</p>
+                      <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-stone">{leadMagnet.label}</p>
+                      <p className="mt-4 font-display text-4xl italic leading-[1.05] text-bark sm:text-5xl">{leadMagnet.popup.hook}</p>
+                      <p className="mt-5 font-body text-base leading-relaxed text-umber">{leadMagnet.popup.body}</p>
                       <div className="mt-8">
                         <WaitlistForm
                           offer={leadMagnet.title}
@@ -168,7 +203,7 @@ export default function LeadMagnet() {
                           sendingLabel="Sending…"
                           onSent={setSent}
                           buttonClass="bg-sage text-bark"
-                          dark
+                          fieldClass="border-bark bg-bark text-cream placeholder:text-cream/60 focus:border-sage"
                         />
                       </div>
                     </>
@@ -188,7 +223,7 @@ export default function LeadMagnet() {
                             ♡
                           </motion.span>
                         ))}
-                      <p className="font-hand text-2xl text-sage">yay, {sent || 'you'}!</p>
+                      <p className="font-hand text-2xl text-bark/70">yay, {sent || 'you'}!</p>
                       <motion.p
                         className="mt-3 inline-block -rotate-2 bg-zing-yellow px-4 py-1 font-display text-5xl italic leading-tight text-bark shadow-lg sm:text-6xl"
                         initial={{ scale: reduced ? 1 : 0.6, opacity: reduced ? 1 : 0 }}
@@ -197,7 +232,7 @@ export default function LeadMagnet() {
                       >
                         {leadMagnet.sent.heading}
                       </motion.p>
-                      <p className="mt-7 font-body text-base leading-relaxed text-cream/85">{leadMagnet.sent.body.replace(', {name}', '')}</p>
+                      <p className="mt-7 font-body text-base leading-relaxed text-umber">{leadMagnet.sent.body.replace(', {name}', '')}</p>
                       <a
                         href={leadMagnet.videoUrl}
                         target="_blank"
