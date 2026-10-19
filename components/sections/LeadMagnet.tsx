@@ -126,7 +126,7 @@ export default function LeadMagnet() {
               </button>
 
               {/* Lilac tape running across the top */}
-              <TapeBanner text={sent === null ? 'FREE TUTORIAL' : 'IT’S YOURS'} mark="heart" strip="bg-sage text-bark" tilt="-rotate-1" className="-mt-2 pb-2 pt-12" />
+              <TapeBanner text={sent === null ? 'FREE TUTORIAL' : 'IT’S YOURS'} mark="heart" strip="bg-sage text-bark" tilt="-rotate-1" className="-mt-2 pb-8 pt-12 sm:pb-10" />
 
               {/* Doodle line from the photo to the button: across on a
                   laptop, down beside the photo on a phone */}
