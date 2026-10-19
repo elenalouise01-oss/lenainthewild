@@ -103,7 +103,7 @@ export const waitlistOffers = ['The Freedom Frequency'];
 export const leadMagnet = {
   label: 'Free EFT tapping tutorial',
   // The small label above the home page section's headline
-  sectionLabel: 'Free guided practice',
+  sectionLabel: 'Tap into your Intuition',
   headline: 'Feeling overwhelmed, stuck in your head and unsure what you really want?',
   body: 'Quiet the noise, reconnect with yourself and create space to hear what you truly want from life.',
   closing: 'Take the first step.',
