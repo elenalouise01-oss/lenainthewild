@@ -35,7 +35,7 @@ export const welcome = {
   supportLeft: [
     'Maybe you’re standing in the life you once dreamed of, wondering why you’re not happy when everything looks good from the outside, and starting to question if this is even what you want anymore.',
     'Maybe you’re burnt out or just coming out of it, realising the busy life you’ve been living is no longer sustainable.',
-    'Or maybe you’ve been searching for answers for a while now. You find something that feels like it might be the missing piece, you’re motivated for a few months, and then it doesn’t work out and you end up back at square one, still piecing together what your dream life looks like and how to actually create it.',
+    'Or maybe you’ve been searching for answers for a while now. You find something that feels like it might be the missing piece, you’re motivated for a few months, and then it doesn’t work out and you end up back at square one, stuck and confused. Still trying to piece together what your dream life looks like and how to actually create it.',
   ],
   supportRight: 'Wherever you are in that process, I’ve been there too, and you’re in the right place.',
   cta: "Here's how it all started",
