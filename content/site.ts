@@ -99,9 +99,10 @@ export const waitlistOffers = ['The Freedom Frequency'];
 // waitlist Google Sheet.
 export const leadMagnet = {
   label: 'Free EFT tapping video',
-  headline: 'Can’t hear what you truly want over all the noise?',
-  body: 'Tap into your Intuition is my free EFT tapping video, the practice that helped me quiet the noise and tune back into my intuition.',
-  cta: 'Send Me the Free Video',
+  headline: 'Can’t figure out what you truly want over all the noise?',
+  body: 'Craving more from life, but caught up in the busyness of everyday life, unsure how to break out of your current reality?',
+  closing: 'Let’s change that.',
+  cta: 'Send me the free tutorial',
   photo: '/images/tapping-harbour.webp',
   photoAlt: 'Lena sitting cross-legged on a rock by Sydney Harbour, eyes closed, tapping on her chest',
   popup: {

@@ -49,6 +49,7 @@ export default function LeadMagnet() {
           <SectionLabel className="!text-sage">{leadMagnet.label}</SectionLabel>
           <h2 className="mt-6 font-display text-display-3 italic leading-[1.1] text-cream">{leadMagnet.headline}</h2>
           <p className="mt-6 max-w-xl font-body text-base leading-relaxed text-cream/85 sm:text-lg">{leadMagnet.body}</p>
+          <p className="mt-6 font-display text-2xl italic text-cream sm:text-3xl">{leadMagnet.closing}</p>
           <button
             ref={triggerRef}
             type="button"
