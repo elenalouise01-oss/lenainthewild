@@ -103,7 +103,7 @@ export default function WaitlistForm({
         type="submit"
         disabled={status === 'sending'}
         className={`mt-2 rounded-full px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest2 transition-transform hover:scale-[1.02] disabled:opacity-60 ${
-          buttonClass ?? (dark ? 'bg-zing-pink text-bark' : 'bg-[#141414] text-cream')
+          buttonClass ?? (dark ? 'bg-zing-babypink text-bark' : 'bg-[#141414] text-cream')
         }`}
       >
         {status === 'sending' ? sendingLabel : `${cta} →`}

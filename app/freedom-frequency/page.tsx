@@ -87,7 +87,7 @@ export default function FreedomFrequencyPage() {
               <div className="mt-10 flex flex-wrap items-center gap-5">
                 <JoinButton />
                 {tier.price && (
-                  <span className="rounded-full bg-zing-pink px-4 py-2 font-body text-sm font-bold text-bark">
+                  <span className="rounded-full bg-zing-babypink px-4 py-2 font-body text-sm font-bold text-bark">
                     <Price price={tier.price} />
                   </span>
                 )}
@@ -125,7 +125,7 @@ export default function FreedomFrequencyPage() {
               <ul className="mt-3 space-y-3">
                 {ov.delivered.items.map((item) => (
                   <li key={item.title} className="flex gap-3 font-body text-base leading-relaxed text-umber">
-                    <span aria-hidden="true" className="mt-2 h-2 w-2 flex-none rounded-full bg-zing-pink" />
+                    <span aria-hidden="true" className="mt-2 h-2 w-2 flex-none rounded-full bg-zing-babypink" />
                     <span>
                       <strong className="font-semibold text-bark">{item.title}:</strong> {item.body}
                     </span>
@@ -190,7 +190,7 @@ export default function FreedomFrequencyPage() {
                 ))}
               </ul>
               <p className={`mt-8 ${rowText}`}>{ov.outcomes.outro}</p>
-              <p className="mt-8 border-l-4 border-zing-pink pl-6 font-display text-xl italic leading-snug text-bark sm:text-2xl">{ov.outcomes.closing}</p>
+              <p className="mt-8 border-l-4 border-zing-babypink pl-6 font-display text-xl italic leading-snug text-bark sm:text-2xl">{ov.outcomes.closing}</p>
             </OverviewRow>
           </div>
         </section>
@@ -207,7 +207,7 @@ export default function FreedomFrequencyPage() {
                   <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber sm:text-lg">{p}</p>
                 ))}
               </div>
-              <p className="my-12 border-l-4 border-zing-pink pl-6 font-display text-2xl leading-snug text-bark sm:text-3xl">{page.forPullQuote}</p>
+              <p className="my-12 border-l-4 border-zing-babypink pl-6 font-display text-2xl leading-snug text-bark sm:text-3xl">{page.forPullQuote}</p>
               <div className="space-y-6">
                 {page.forParagraphs2.map((p) => (
                   <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber sm:text-lg">{p}</p>
@@ -262,7 +262,7 @@ export default function FreedomFrequencyPage() {
                   <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber sm:text-lg">{p}</p>
                 ))}
               </div>
-              <p className="my-12 border-l-4 border-zing-pink pl-6 font-display text-2xl italic leading-snug text-bark sm:text-3xl">{page.courseHighlight}</p>
+              <p className="my-12 border-l-4 border-zing-babypink pl-6 font-display text-2xl italic leading-snug text-bark sm:text-3xl">{page.courseHighlight}</p>
               <p className="font-body text-base leading-relaxed text-umber sm:text-lg">{page.courseEnd}</p>
             </ScrollReveal>
           </div>
@@ -275,7 +275,7 @@ export default function FreedomFrequencyPage() {
         <section id="waitlist" className="scroll-mt-16 bg-bark px-6 py-24 text-center sm:py-32">
           <ScrollReveal className="mx-auto max-w-2xl">
             <p className="font-display text-3xl italic leading-tight text-cream sm:text-5xl">{page.closing}</p>
-            <p className="mt-14 font-body text-xs font-semibold uppercase tracking-widest2 text-zing-pink">{page.waitlistHeading}</p>
+            <p className="mt-14 font-body text-xs font-semibold uppercase tracking-widest2 text-zing-babypink">{page.waitlistHeading}</p>
             <p className="mx-auto mt-3 max-w-md font-body text-base leading-relaxed text-cream/80">{page.waitlistBody}</p>
             <div className="mt-8">
               <WaitlistForm offer={page.title} cta={page.cta} sent={page.waitlistSent} dark />

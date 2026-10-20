@@ -150,7 +150,7 @@ export default function LifeDesignPage() {
                   </p>
                 ))}
               </div>
-              <p className="mt-12 border-l-4 border-zing-pink pl-6 font-display text-2xl leading-snug text-bark sm:text-3xl">{page.hardQuote}</p>
+              <p className="mt-12 border-l-4 border-zing-babypink pl-6 font-display text-2xl leading-snug text-bark sm:text-3xl">{page.hardQuote}</p>
             </ScrollReveal>
           </div>
         </section>
@@ -176,7 +176,7 @@ export default function LifeDesignPage() {
                   ),
                 )}
               </div>
-              <p className="mt-12 border-l-4 border-zing-pink pl-6 font-display text-2xl leading-snug text-bark sm:text-3xl">{page.loopQuote}</p>
+              <p className="mt-12 border-l-4 border-zing-babypink pl-6 font-display text-2xl leading-snug text-bark sm:text-3xl">{page.loopQuote}</p>
             </ScrollReveal>
           </div>
         </section>
@@ -262,7 +262,7 @@ export default function LifeDesignPage() {
                     <h3 className="flex flex-wrap items-center gap-x-4 gap-y-2 font-display text-2xl leading-snug text-bark sm:text-3xl">
                       {item.heading}
                       {'badge' in item && item.badge && (
-                        <span className="rounded-full bg-zing-pink/30 px-3 py-1 font-body text-[0.6rem] font-semibold uppercase tracking-widest2 text-bark">{item.badge}</span>
+                        <span className="rounded-full bg-zing-babypink/30 px-3 py-1 font-body text-[0.6rem] font-semibold uppercase tracking-widest2 text-bark">{item.badge}</span>
                       )}
                     </h3>
                     {item.tagline && <p className="mt-3 font-display text-xl italic leading-snug text-bark/85">{item.tagline}</p>}
