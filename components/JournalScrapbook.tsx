@@ -84,7 +84,7 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
   const number = (slug: string) => num(articles.findIndex((a) => a.slug === slug) + 1);
 
   return (
-    <div className="relative ml-5 max-w-6xl rounded-sm bg-white sm:mx-auto bg-[linear-gradient(transparent_31px,#e4e4e4_31px)] bg-[size:100%_32px] pb-16 pl-[5.25rem] pr-5 pt-12 shadow-[0_20px_50px_rgba(59,45,14,0.18)] sm:pl-24 sm:pr-12 sm:pt-16">
+    <div className="relative ml-5 max-w-6xl rounded-sm bg-white sm:mx-auto bg-[linear-gradient(transparent_31px,#e4e4e4_31px)] bg-[size:100%_32px] pb-16 pl-[5.25rem] pr-8 pt-12 shadow-[0_20px_50px_rgba(59,45,14,0.18)] sm:pl-24 sm:pr-12 sm:pt-16">
       {/* The back page peeking out on the left, with the kraft cover edge
           showing where it folds */}
       <div aria-hidden="true" className="absolute -left-5 bottom-0 top-0 w-5 rounded-l-sm bg-[#f5f1e9] shadow-[-4px_8px_16px_rgba(59,45,14,0.12)]" />
