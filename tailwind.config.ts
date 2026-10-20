@@ -29,6 +29,7 @@ const config: Config = {
         logo: ['var(--font-giaza)', 'serif'],
         script: ['var(--font-biro)', 'var(--font-gochi)', 'cursive'],
         hand: ['var(--font-gochi)', 'cursive'],
+        type: ['var(--font-typewriter)', 'ui-monospace', 'monospace'],
         fifindrel: ['var(--font-fifindrel)', 'var(--font-gochi)', 'cursive'],
       },
       fontSize: {

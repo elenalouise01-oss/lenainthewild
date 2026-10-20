@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Montserrat, Gochi_Hand } from 'next/font/google';
+import { Playfair_Display, Montserrat, Gochi_Hand, Special_Elite } from 'next/font/google';
 import Analytics from '@/components/Analytics';
 import BackToTop from '@/components/BackToTop';
 import { SITE_NAME, SITE_URL } from '@/lib/seo';
@@ -23,6 +23,14 @@ const montserrat = Montserrat({
 const gochi = Gochi_Hand({
   subsets: ['latin'],
   variable: '--font-gochi',
+  display: 'swap',
+  weight: '400',
+});
+
+// Typewriter face for the scrapbook notes on the journal page
+const typewriter = Special_Elite({
+  subsets: ['latin'],
+  variable: '--font-typewriter',
   display: 'swap',
   weight: '400',
 });
@@ -69,7 +77,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-AU" className={`${playfair.variable} ${montserrat.variable} ${gochi.variable}`}>
+    <html lang="en-AU" className={`${playfair.variable} ${montserrat.variable} ${gochi.variable} ${typewriter.variable}`}>
       <body>
         {children}
         {/* On every page: appears once you've scrolled past the first screen */}

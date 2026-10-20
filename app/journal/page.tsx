@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Footer from '@/components/Footer';
-import JournalGrid from '@/components/JournalGrid';
+import JournalScrapbook from '@/components/JournalScrapbook';
 import JsonLd from '@/components/JsonLd';
-import ScrollReveal from '@/components/ScrollReveal';
 import SiteHeader from '@/components/SiteHeader';
 import Newsletter from '@/components/sections/Newsletter';
 import { journalPage, sortedJournal } from '@/content/journal';
@@ -21,7 +20,7 @@ export const metadata: Metadata = {
   twitter: { card: 'summary_large_image', title, description, images: ['/images/hero.jpg'] },
 };
 
-// All journal articles, newest first, in a magazine-style grid with a
+// All journal articles, newest first, as a spiral-bound scrapbook with a
 // category filter. Hidden until the first article is added.
 export default function JournalPage() {
   const articles = sortedJournal();
@@ -51,18 +50,13 @@ export default function JournalPage() {
       />
       <SiteHeader active="Journal Entries" />
       <main>
-        {/* Magazine-style: centred title, big photo grid */}
-        <section className="bg-cream px-5 py-20 sm:px-8 sm:py-28">
-          <div className="mx-auto max-w-[78rem]">
-            <ScrollReveal className="mx-auto max-w-3xl text-center">
-              <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-stone">{journalPage.label}</p>
-              <h1 className="mt-4 font-display text-5xl leading-tight text-bark sm:text-7xl">{journalPage.heading}</h1>
-              <p className="mx-auto mt-6 max-w-2xl font-body text-base leading-relaxed text-umber sm:text-lg">{journalPage.intro}</p>
-            </ScrollReveal>
-            <JournalGrid
-              articles={articles.map(({ slug, title, description, date, category, image }) => ({ slug, title, description, date, category, image }))}
-            />
-          </div>
+        {/* Scrapbook-style notebook */}
+        <section className="overflow-hidden bg-sand px-4 py-16 sm:px-8 sm:py-24">
+          <JournalScrapbook
+            heading={journalPage.heading}
+            intro={journalPage.intro}
+            articles={articles.map(({ slug, title, description, date, category, image }) => ({ slug, title, description, date, category, image }))}
+          />
         </section>
         <Newsletter />
       </main>
