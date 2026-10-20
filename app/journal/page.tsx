@@ -1,13 +1,12 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Footer from '@/components/Footer';
+import JournalGrid from '@/components/JournalGrid';
 import JsonLd from '@/components/JsonLd';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteHeader from '@/components/SiteHeader';
 import Newsletter from '@/components/sections/Newsletter';
-import { formatDate, journalPage, sortedJournal } from '@/content/journal';
+import { journalPage, sortedJournal } from '@/content/journal';
 import { SITE_NAME, absoluteUrl, breadcrumbs } from '@/lib/seo';
 
 const title = 'Journal: Honest Stories on Old Patterns, Healing & Starting Over — Lena in the Wild';
@@ -22,8 +21,8 @@ export const metadata: Metadata = {
   twitter: { card: 'summary_large_image', title, description, images: ['/images/hero.jpg'] },
 };
 
-// All journal articles, newest first, as cards in the same style as the home
-// page's journal row. Hidden until the first article is added.
+// All journal articles, newest first, in a magazine-style grid with a
+// category filter. Hidden until the first article is added.
 export default function JournalPage() {
   const articles = sortedJournal();
   if (articles.length === 0) notFound();
@@ -52,41 +51,17 @@ export default function JournalPage() {
       />
       <SiteHeader active="Journal Entries" />
       <main>
-        <section className="bg-cream px-6 py-20 sm:py-28">
-          <div className="container-editorial">
-            <ScrollReveal>
-              <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-stone">{journalPage.label}</p>
-              <h1 className="mt-4 font-display text-5xl leading-tight text-bark sm:text-7xl">{journalPage.heading}</h1>
-              <p className="mt-6 max-w-xl font-body text-base leading-relaxed text-umber sm:text-lg">{journalPage.intro}</p>
+        {/* Magazine-style: brown, centred title, big photo grid */}
+        <section className="bg-bark px-5 py-20 sm:px-8 sm:py-28">
+          <div className="mx-auto max-w-[78rem]">
+            <ScrollReveal className="mx-auto max-w-3xl text-center">
+              <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-sage">{journalPage.label}</p>
+              <h1 className="mt-4 font-display text-5xl leading-tight text-cream sm:text-7xl">{journalPage.heading}</h1>
+              <p className="mx-auto mt-6 max-w-2xl font-body text-base leading-relaxed text-cream/80 sm:text-lg">{journalPage.intro}</p>
             </ScrollReveal>
-
-            <div className="mt-16 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-              {articles.map((a) => (
-                <article key={a.slug}>
-                  <Link href={`/journal/${a.slug}`} className="group block">
-                    {a.image && (
-                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm shadow-md">
-                        <Image
-                          src={a.image.src}
-                          alt={a.image.alt}
-                          fill
-                          sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          style={{ objectPosition: a.image.pos }}
-                        />
-                      </div>
-                    )}
-                    <p className="mt-5 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-stone">
-                      {a.category} · {formatDate(a.date)}
-                    </p>
-                    <h2 className="mt-2 font-display text-2xl leading-snug text-bark group-hover:underline group-hover:decoration-sage group-hover:underline-offset-4">
-                      {a.title}
-                    </h2>
-                    <p className="mt-2 font-body text-sm leading-relaxed text-umber">{a.description}</p>
-                  </Link>
-                </article>
-              ))}
-            </div>
+            <JournalGrid
+              articles={articles.map(({ slug, title, description, date, category, image }) => ({ slug, title, description, date, category, image }))}
+            />
           </div>
         </section>
         <Newsletter />
