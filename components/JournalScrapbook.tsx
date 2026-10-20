@@ -1,8 +1,8 @@
 'use client';
 
-import { useId, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { playPageTurn } from '@/lib/pageTurnSound';
+import { loadPageTurn, playPageTurn } from '@/lib/pageTurnSound';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -97,6 +97,11 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
   const list = category === 'All' ? articles : articles.filter((a) => a.category === category);
   const [featured, ...rest] = list;
   const pageCount = Math.max(1, Math.ceil(rest.length / PAGE));
+
+  // Get the page-turn sound ready once there's more than one page.
+  useEffect(() => {
+    if (pageCount > 1) void loadPageTurn();
+  }, [pageCount]);
 
   const itemsOn = (n: number) => rest.slice(n * PAGE, (n + 1) * PAGE);
 

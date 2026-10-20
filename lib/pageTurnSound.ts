@@ -1,46 +1,51 @@
-// A soft paper page-turn sound, made in the browser (no audio file to load):
-// filtered noise that swells as the sheet moves through the air, with a few
-// crinkles and a light flap as it lands. Call it from the click itself so
-// browsers allow the sound; `delay` (seconds) starts it later.
+// Lena's page-turn sound (public/sounds/page-turn.mp3), played through Web
+// Audio so it can be started from the click and timed to the turn. Call
+// `loadPageTurn` when the page loads; `playPageTurn(delay)` from the click
+// itself so browsers allow the sound (`delay` in seconds).
 let ctx: AudioContext | null = null;
+let buffer: AudioBuffer | null = null;
+let loading: Promise<void> | null = null;
+
+function context() {
+  const Ctx = window.AudioContext ?? (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+  if (!Ctx) return null;
+  ctx ??= new Ctx();
+  return ctx;
+}
+
+export function loadPageTurn() {
+  if (loading) return loading;
+  loading = fetch('/sounds/page-turn.mp3')
+    .then((r) => r.arrayBuffer())
+    .then((data) => {
+      const c = context();
+      return c ? c.decodeAudioData(data) : null;
+    })
+    .then((b) => {
+      buffer = b;
+    })
+    .catch(() => {
+      loading = null;
+    });
+  return loading;
+}
 
 export function playPageTurn(delay = 0) {
   try {
-    const Ctx = window.AudioContext ?? (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
-    if (!Ctx) return;
-    ctx ??= new Ctx();
-    if (ctx.state === 'suspended') void ctx.resume();
-
-    const rate = ctx.sampleRate;
-    const length = 0.8;
-    const buffer = ctx.createBuffer(1, Math.floor(rate * length), rate);
-    const data = buffer.getChannelData(0);
-    for (let i = 0; i < data.length; i++) {
-      const t = i / rate;
-      // the whoosh: rises quickly, then eases off
-      const swell = Math.pow(Math.sin(Math.PI * Math.min(1, t / 0.7)), 2) * Math.min(1, t / 0.12);
-      // little crinkles of the paper
-      const crinkle = Math.random() < 0.006 ? (Math.random() * 2 - 1) * 2.5 : 0;
-      // the flap as the page settles
-      const flap = t > 0.62 && t < 0.7 ? (Math.random() * 2 - 1) * 1.6 * (1 - (t - 0.62) / 0.08) : 0;
-      data[i] = ((Math.random() * 2 - 1) + crinkle) * swell + flap;
-    }
-
-    const at = ctx.currentTime + delay;
-    const source = ctx.createBufferSource();
-    source.buffer = buffer;
-    const highpass = ctx.createBiquadFilter();
-    highpass.type = 'highpass';
-    highpass.frequency.value = 600;
-    const band = ctx.createBiquadFilter();
-    band.type = 'bandpass';
-    band.Q.value = 0.8;
-    band.frequency.setValueAtTime(4200, at);
-    band.frequency.exponentialRampToValueAtTime(1400, at + length);
-    const gain = ctx.createGain();
-    gain.gain.value = 0.16;
-    source.connect(highpass).connect(band).connect(gain).connect(ctx.destination);
-    source.start(at);
+    const c = context();
+    if (!c) return;
+    if (c.state === 'suspended') void c.resume();
+    const start = () => {
+      if (!buffer) return;
+      const source = c.createBufferSource();
+      source.buffer = buffer;
+      const gain = c.createGain();
+      gain.gain.value = 0.8;
+      source.connect(gain).connect(c.destination);
+      source.start(c.currentTime + delay);
+    };
+    if (buffer) start();
+    else void loadPageTurn().then(start);
   } catch {
     // Sound is a nice extra; never let it break turning the page.
   }
