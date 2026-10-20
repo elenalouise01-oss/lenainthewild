@@ -64,7 +64,7 @@ export const journal: JournalArticle[] = [
     date: '2026-03-03',
     category: 'Wild',
     tags: ['first leap', 'freedom', 'island life', 'breaking free from the system', 'starting over', 'reinventing your life', 'living on your own terms'],
-    image: { src: '/images/road/road-8.jpg', alt: 'A palm tree above a deep blue bay and green hills', pos: '50% 70%' },
+    image: { src: '/images/journal/breaking-free-from-the-system.webp', alt: 'A white sand beach and turquoise water below green hills', pos: '50% 50%' },
     substackUrl: 'https://substack.com/home/post/p-189725048',
     offer: 'The Freedom Frequency',
     offerLine: 'If you’ve always felt the pull to do life differently, this is everything I learned going from stuck to breaking free.',
@@ -181,7 +181,7 @@ Next up: Find out what happened on the other side of my leap.
     date: '2026-03-05',
     category: 'Healing',
     tags: ['fight or flight', 'nervous system', 'slowing down', 'hustle culture', 'burnout', 'old patterns', 'reconnecting with yourself'],
-    image: { src: '/images/road/road-5.jpg', alt: 'Feet up on a hillside, looking out over the sea at sunset', pos: '50% 40%' },
+    image: { src: '/images/journal/living-in-fight-or-flight.webp', alt: 'Feet up on a bed looking out through open doors at sunset', pos: '50% 60%' },
     substackUrl: 'https://lenainthewild.substack.com/p/for-years-i-didnt-even-realise-i',
     offer: 'The 5 Day Reconnect',
     offerLine: 'If you’re in that in-between stage of unlearning hustle culture, this is where I’d start: five days of simple practices to slow down and come back to yourself.',
@@ -237,7 +237,7 @@ From a slower, more grounded, happy place.
     date: '2026-03-13',
     category: 'Wellness',
     tags: ['leaving Sydney', 'moving to Bali', 'trusting your intuition', 'starting over at 36', 'quitting my job', 'reinventing your life', 'fear of change'],
-    image: { src: '/images/road/road-2.jpg', alt: 'Lena on a scooter on a jungle road, arm raised to the sky', pos: '50% 35%' },
+    image: { src: '/images/journal/leaping-into-the-unknown-part-1.webp', alt: 'Lena smiling with her suitcase in her empty apartment', pos: '50% 40%' },
     substackUrl: 'https://substack.com/home/post/p-190792316',
     offer: 'The 5 Day Reconnect',
     offerLine: 'If you’re standing in the life you worked so hard to build and thinking… this isn’t it, I made something for you. Start here.',
@@ -293,7 +293,7 @@ Part 2: What happens when you arrive in paradise… and bring all your old patte
     date: '2026-03-16',
     category: 'Travel',
     tags: ['slow living', 'living in Bali', 'freedom', 'intentional living', 'hustle culture', 'reconnecting with yourself', 'living on your own terms'],
-    image: { src: '/images/road/road-6.jpg', alt: 'A lone tree by a still lake with hills behind', pos: '50% 60%' },
+    image: { src: '/images/journal/slowing-down-in-bali-what-real-freedom-feels-like.webp', alt: 'A journal, coffee and an oracle card on a stone table', pos: '50% 50%' },
     offer: 'The 5 Day Reconnect',
     offerLine: 'If you feel like there’s got to be more to life than this, but can’t quite hear yourself clearly yet, start here.',
     text: `
@@ -350,7 +350,7 @@ You have a choice. You get to choose yourself.
     date: '2026-03-24',
     category: 'Healing',
     tags: ['moving to Bali', 'old patterns', 'scarcity mindset', 'intuition', 'Canggu vs Ubud', 'repeating patterns', 'starting over'],
-    image: { src: '/images/road/road-4.jpg', alt: 'A white scooter parked under palm trees on a quiet path', pos: '50% 60%' },
+    image: { src: '/images/journal/leaping-into-the-unknown-part-2.webp', alt: 'Lena on the beach at sunset under a pink and orange sky', pos: '50% 50%' },
     offer: 'The 5 Day Reconnect',
     offerLine: 'If you’ve been ignoring a quiet pull and going back to what’s familiar, it’s time to start listening, before the universe makes you.',
     text: `
@@ -437,7 +437,7 @@ Part 3 coming soon: What the forced stillness cracked open — and how the unive
     date: '2026-04-01',
     category: 'Healing',
     tags: ['limiting beliefs', 'autopilot', 'old stories', 'mindset', 'self-awareness', 'repeating patterns', 'conditioning'],
-    image: { src: '/images/road/road-3.jpg', alt: 'A long sandy beach curving around a bay beside train tracks', pos: '50% 100%' },
+    image: { src: '/images/journal/living-out-an-old-story.webp', alt: 'Coffee, a flower and an oracle card on a woven tablecloth', pos: '50% 50%' },
     offer: 'The 5 Day Reconnect',
     offerLine: 'If you’ve caught yourself living out a story that no longer matches who you are, these are the tools that help me slow down, ground myself and hear my own voice again.',
     text: `
@@ -502,7 +502,7 @@ And it makes me wonder, what other outdated programmes am I still running withou
     date: '2026-04-02',
     category: 'Healing',
     tags: ['codependency', 'overgiving', 'losing yourself in relationships', 'people pleasing', 'inner child', 'self-abandonment', 'repeating patterns'],
-    image: { src: '/images/road/road-1.jpg', alt: 'Lena crouching and hugging a black dog outside', pos: '40% 60%' },
+    image: { src: '/images/journal/losing-myself-in-relationships-codependency.webp', alt: 'A close-up selfie of Lena with her hand on her forehead', pos: '50% 30%' },
     offer: 'The 5 Day Reconnect',
     offerLine: 'If you’ve spent so long tuned into everyone else’s emotions that you’ve lost the sound of your own voice, this was made for you.',
     text: `
@@ -594,7 +594,7 @@ Part 2 coming soon: The push/pull, why I started disappearing from the people I 
     date: '2026-04-03',
     category: 'Wellness',
     tags: ['work-life balance', 'mindfulness', 'burnout', 'presence', 'Vipassana', 'living on autopilot', 'reconnecting with yourself'],
-    image: { src: '/images/road/road-5.jpg', alt: 'Feet up on a hillside, looking out over the sea at sunset', pos: '50% 40%' },
+    image: { src: '/images/journal/work-life-balance-mindfulness.webp', alt: 'A laptop, coffee and a book on a table surrounded by plants', pos: '50% 50%' },
     offer: 'The 5 Day Reconnect',
     offerLine: 'If you’re chasing balance but still running on stress, these are the tools that help me slow down, ground myself and come back to the present moment.',
     text: `
@@ -642,7 +642,7 @@ The thing I was looking for on the outside was always something I needed to cult
     date: '2026-04-09',
     category: 'Wild',
     tags: ['five day work week', 'Monday to Friday', 'breaking free from the system', 'living on your own terms', 'rest', 'other people’s expectations'],
-    image: { src: '/images/road/road-6.jpg', alt: 'A lone tree by a still lake with hills behind', pos: '50% 60%' },
+    image: { src: '/images/journal/who-decided-monday-to-friday.webp', alt: 'An infinity pool looking out over jungle and blue sky', pos: '50% 60%' },
     offer: 'The Freedom Frequency',
     offerLine: 'If you’re starting to question the rules you’ve been living by, this is everything I learned going from stuck to building a life on my own terms.',
     text: `
@@ -684,7 +684,7 @@ That’s what I’m experimenting with. And I’ll report back on how it goes.
     date: '2026-04-11',
     category: 'Healing',
     tags: ['performative energy', 'authenticity', 'social media', 'people pleasing', 'Bondi', 'stop people pleasing', 'external validation'],
-    image: { src: '/images/road/road-8.jpg', alt: 'A palm tree above a deep blue bay and green hills', pos: '50% 70%' },
+    image: { src: '/images/journal/performative-energy-wearing-a-mask.webp', alt: 'A smiling selfie of Lena with sunglasses on her head', pos: '50% 30%' },
     offer: 'The 5 Day Reconnect',
     offerLine: 'If you’ve been performing for so long you’ve forgotten what it feels like to just be you, start here.',
     text: `
@@ -750,7 +750,7 @@ Just know — it’s safe to be yourself. Not everyone will like you, and that�
     date: '2026-04-17',
     category: 'Healing',
     tags: ['perfectionism', 'feeling behind in life', 'comparison', 'inner child', 'Ho’oponopono', 'limiting beliefs', 'repeating patterns'],
-    image: { src: '/images/road/road-3.jpg', alt: 'A long sandy beach curving around a bay beside train tracks', pos: '50% 100%' },
+    image: { src: '/images/journal/perfectionism-feeling-behind-in-life.webp', alt: 'A pink cloud at sunset above the treetops', pos: '50% 40%' },
     offer: 'The 5 Day Reconnect',
     offerLine: 'If that quiet pressure is running in the background of your life too, these are the simple practices I use to slow down and come back to myself.',
     text: `
@@ -850,7 +850,7 @@ I used to just avoid these discomforts. Push through, perform, hide the low days
     date: '2026-04-24',
     category: 'Healing',
     tags: ['judgement', 'ego', 'compassion', 'inner child', 'perfectionism', 'emotional triggers', 'self-awareness'],
-    image: { src: '/images/road/road-9.jpg', alt: 'Lena and a friend taking a selfie on a scooter', pos: '50% 50%' },
+    image: { src: '/images/journal/why-we-judge-others-ego-compassion.webp', alt: 'Lena on a Pilates reformer in a bright studio', pos: '50% 60%' },
     offer: 'The 5 Day Reconnect',
     offerLine: 'If you’re ready to catch the old patterns and meet yourself with more compassion, this is where I’d start.',
     text: `
@@ -1086,7 +1086,7 @@ Not because anything changed out there. Because I caught the story, rewrote the 
     date: '2026-05-27',
     category: 'Healing',
     tags: ['dating', 'self-worth', 'fear of rejection', 'inner child', 'nervous system', 'self-abandonment', 'repeating patterns'],
-    image: { src: '/images/road/road-1.jpg', alt: 'Lena crouching and hugging a black dog outside', pos: '40% 60%' },
+    image: { src: '/images/journal/avoiding-men-im-attracted-to.webp', alt: 'Lena smiling at the gym with headphones round her neck', pos: '50% 30%' },
     offer: 'The 5 Day Reconnect',
     offerLine: 'If you’ve been abandoning yourself to stay safe, start by coming home to your body. These are the practices that help me do it.',
     text: `
@@ -1164,7 +1164,7 @@ Come at me, hot man. 😏
     date: '2026-05-28',
     category: 'Healing',
     tags: ['intuition', 'self-worth', 'validation', 'dating', 'self-abandonment', 'self-trust', 'external validation'],
-    image: { src: '/images/road/road-2.jpg', alt: 'Lena on a scooter on a jungle road, arm raised to the sky', pos: '50% 35%' },
+    image: { src: '/images/journal/trust-your-intuition-stop-abandoning-yourself.webp', alt: 'Lena reading a book in a cosy café booth', pos: '50% 50%' },
     offer: 'The 5 Day Reconnect',
     offerLine: 'If you want to hear your intuition more clearly, slowing down is where it starts. These five days are how I do it.',
     text: `
@@ -1248,7 +1248,7 @@ That’s where the real healing lives.
     date: '2026-06-05',
     category: 'Healing',
     tags: ['triggers', 'core wounds', 'inner child', 'trust', 'single life', 'relationships', 'emotional triggers', 'respond instead of react'],
-    image: { src: '/images/road/road-5.jpg', alt: 'Feet up on a hillside, looking out over the sea at sunset', pos: '50% 40%' },
+    image: { src: '/images/journal/triggers-are-clues-healing-core-wounds.webp', alt: 'The Mastery of Love book beside a cup of tea and milk', pos: '50% 50%' },
     offer: 'The 5 Day Reconnect',
     offerLine: 'If you’re ready to stop running from your triggers and start listening to them, these are the tools I come back to.',
     text: `
@@ -1348,7 +1348,7 @@ Collect them, put the pieces together and unlock the next level.
     date: '2026-06-08',
     category: 'Healing',
     tags: ['empath', 'clairsentience', 'energetic boundaries', 'people pleasing', 'protecting your energy', 'boundaries', 'self-abandonment'],
-    image: { src: '/images/road/road-6.jpg', alt: 'A lone tree by a still lake with hills behind', pos: '50% 60%' },
+    image: { src: '/images/journal/empath-protecting-your-energy.webp', alt: 'An open book about empaths resting on the grass', pos: '50% 50%' },
     offer: 'The 5 Day Reconnect',
     offerLine: 'If you’re a feeler who keeps running on empty, start by grounding yourself first. These five days of practices are where I’d begin.',
     text: `
@@ -1428,7 +1428,7 @@ But there is another way. You don’t have to disappear to feel safe. You just h
     date: '2026-08-05',
     category: 'Wild',
     tags: ['fear of riding a scooter', 'learning a new skill', 'Vietnam', 'perfectionism', 'nervous system', 'courage', 'fear of change', 'self-compassion'],
-    image: { src: '/images/road/road-4.jpg', alt: 'A white scooter parked under palm trees on a quiet path', pos: '50% 60%' },
+    image: { src: '/images/journal/overcoming-fear-of-riding-a-scooter-week-2.webp', alt: 'Lena in a scooter helmet taking a mirror selfie in a lift', pos: '50% 40%' },
     offer: 'The 5 Day Reconnect',
     offerLine: 'If something new has your nervous system on high alert, these are the tools I use to ground myself and keep showing up anyway.',
     text: `
@@ -1498,7 +1498,7 @@ I’m still on week 2. Still nervous most days. But I keep choosing to show up f
     date: '2026-08-12',
     category: 'Wild',
     tags: ['faith', 'the universe has your back', 'fear of riding a scooter', 'Da Nang', 'Hoi An', 'Vietnam', 'fear of change', 'self-trust'],
-    image: { src: '/images/road/road-7.jpg', alt: 'A water buffalo grazing in a green field', pos: '50% 50%' },
+    image: { src: '/images/journal/be-a-little-delulu-the-universe-has-your-back.webp', alt: 'Lena smiling in a scooter helmet with two local kids', pos: '50% 75%' },
     offer: 'The Freedom Frequency',
     offerLine: 'If you’re standing on the edge of the thing that scares you, this is everything I learned about leaping into the unknown and landing on my feet.',
     text: `
