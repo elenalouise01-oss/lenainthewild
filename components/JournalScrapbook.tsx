@@ -41,29 +41,46 @@ function Fastener({ kind }: { kind: (typeof FASTENERS)[number] }) {
   );
 }
 
-// One planner ring in gold: it joins a punched hole in the back page strip
-// to a punched hole in the journal page, like a ring binder.
+// One planner ring in gold, drawn to look real: a round metal tube with a
+// shine along it, bowing slightly as it crosses the spine, casting a soft
+// shadow on the paper and disappearing into a punched hole at each end.
 function GoldRing({ className = '' }: { className?: string }) {
   const id = useId().replace(/:/g, '');
   return (
-    <svg viewBox="0 0 92 30" className={`h-[30px] w-[92px] ${className}`}>
+    <svg viewBox="0 0 100 36" className={`h-9 w-[100px] overflow-visible ${className}`}>
       <defs>
-        <linearGradient id={`gold-${id}`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#8a6a2c" />
-          <stop offset="0.3" stopColor="#f6e3a6" />
-          <stop offset="0.55" stopColor="#c9a24f" />
-          <stop offset="1" stopColor="#6e5222" />
+        <linearGradient id={`tube-${id}`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#6b4e1a" />
+          <stop offset="0.22" stopColor="#c9a04a" />
+          <stop offset="0.42" stopColor="#fff2c4" />
+          <stop offset="0.6" stopColor="#d9b25c" />
+          <stop offset="0.85" stopColor="#8a6624" />
+          <stop offset="1" stopColor="#5a4114" />
         </linearGradient>
+        <radialGradient id={`hole-${id}`} cx="0.45" cy="0.4" r="0.6">
+          <stop offset="0" stopColor="#2f2a23" />
+          <stop offset="0.7" stopColor="#6f665a" />
+          <stop offset="1" stopColor="#d6cfc2" />
+        </radialGradient>
+        <filter id={`soft-${id}`} x="-20%" y="-50%" width="140%" height="200%">
+          <feGaussianBlur stdDeviation="1.8" />
+        </filter>
       </defs>
-      {/* punched holes: one in the back strip, one in the page */}
-      <circle cx="12" cy="15" r="7" fill="#9b9182" />
-      <circle cx="13" cy="16" r="5.5" fill="#d8d0c2" />
-      <circle cx="80" cy="15" r="7" fill="#9b9182" />
-      <circle cx="81" cy="16" r="5.5" fill="#d8d0c2" />
-      {/* the ring, running from hole to hole */}
-      <rect x="9" y="9.5" width="74" height="11" rx="5.5" fill="none" stroke={`url(#gold-${id})`} strokeWidth="4" />
-      {/* the little join in the middle of the ring */}
-      <rect x="44" y="7.5" width="4" height="15" rx="1.5" fill={`url(#gold-${id})`} />
+      {/* punched holes, with a little shading inside */}
+      <ellipse cx="13" cy="19" rx="7" ry="7.5" fill={`url(#hole-${id})`} />
+      <ellipse cx="87" cy="19" rx="7" ry="7.5" fill={`url(#hole-${id})`} />
+      {/* soft shadow the ring casts on the paper */}
+      <path d="M14 22 C 34 17, 66 17, 86 22" fill="none" stroke="#3b2d0e" strokeOpacity="0.28" strokeWidth="6" filter={`url(#soft-${id})`} />
+      {/* the ring: a round tube from hole to hole */}
+      <path d="M13 18 C 33 11, 67 11, 87 18" fill="none" stroke={`url(#tube-${id})`} strokeWidth="6.5" strokeLinecap="round" />
+      {/* the fine line of shine along the top */}
+      <path d="M20 14.8 C 38 10.6, 62 10.6, 80 14.8" fill="none" stroke="#fffaf0" strokeOpacity="0.85" strokeWidth="1" strokeLinecap="round" />
+      {/* where the two halves of the ring meet */}
+      <path d="M50 10.2 V 16.6" stroke="#5a4114" strokeOpacity="0.6" strokeWidth="1" />
+      {/* the ends dipping into the holes: the far edge of each hole drawn
+          back over the ring */}
+      <path d="M7.6 21 A 7 7.5 0 0 0 18.4 21" fill="none" stroke="#e9e3d8" strokeWidth="2.2" />
+      <path d="M81.6 21 A 7 7.5 0 0 0 92.4 21" fill="none" stroke="#e9e3d8" strokeWidth="2.2" />
     </svg>
   );
 }
@@ -71,7 +88,7 @@ function GoldRing({ className = '' }: { className?: string }) {
 // Rings come in little sets of three, like a planner.
 function RingSet() {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-3">
       {[0, 1, 2].map((k) => (
         <GoldRing key={k} />
       ))}
@@ -92,18 +109,20 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
   return (
     <div className="relative mx-auto max-w-6xl rounded-sm bg-white bg-[linear-gradient(transparent_31px,#e4e4e4_31px)] bg-[size:100%_32px] px-5 pb-16 pt-16 shadow-[0_20px_50px_rgba(59,45,14,0.18)] sm:pl-20 sm:pr-12 sm:pt-20">
       {/* Gold planner rings: along the top on a phone, down the left on wider screens */}
-      <div aria-hidden="true" className="absolute -top-11 inset-x-0 h-11 rounded-t-sm border-b-[3px] border-[#d9cfbd] bg-[#f6f3ec] sm:hidden" />
-      <div aria-hidden="true" className="absolute -top-2 inset-x-6 flex justify-between sm:hidden">
+      <div aria-hidden="true" className="absolute -top-11 inset-x-0 h-11 rounded-t-sm bg-white bg-[linear-gradient(transparent_70%,rgba(59,45,14,0.10))] sm:hidden" />
+      <div aria-hidden="true" className="absolute -top-3 inset-x-6 flex justify-between sm:hidden">
         {[0, 1, 2, 3, 4, 5].map((k) => (
-          <span key={k} className={`relative block h-[30px] w-8 ${k === 2 ? 'mr-auto' : ''}`}>
+          <span key={k} className={`relative block h-9 w-8 ${k === 2 ? 'mr-auto' : ''}`}>
             <GoldRing className="absolute left-1/2 top-0 -translate-x-1/2 rotate-90" />
           </span>
         ))}
       </div>
       {/* The back page of the planner peeking out on the left, with the
           gold rings joining it to this page */}
-      <div aria-hidden="true" className="absolute -left-12 bottom-0 top-0 hidden w-12 rounded-l-sm border-r-[3px] border-[#d9cfbd] bg-[#f6f3ec] shadow-[-6px_10px_20px_rgba(59,45,14,0.12)] sm:block" />
-      <div aria-hidden="true" className="absolute -left-[3.6rem] bottom-16 top-16 hidden flex-col justify-between sm:flex">
+      <div aria-hidden="true" className="absolute -left-12 bottom-0 top-0 hidden w-12 rounded-l-sm bg-white bg-[linear-gradient(90deg,transparent_70%,rgba(59,45,14,0.10)),linear-gradient(transparent_31px,#e4e4e4_31px)] bg-[size:100%_100%,100%_32px] shadow-[-6px_10px_20px_rgba(59,45,14,0.12)] sm:block" />
+      {/* gutter shadow where the two pages meet */}
+      <div aria-hidden="true" className="pointer-events-none absolute bottom-0 left-0 top-0 hidden w-6 bg-gradient-to-r from-[rgba(59,45,14,0.10)] to-transparent sm:block" />
+      <div aria-hidden="true" className="absolute -left-[3.85rem] bottom-16 top-16 hidden flex-col justify-between sm:flex">
         {[0, 1, 2, 3, 4, 5].map((g) => (
           <RingSet key={g} />
         ))}
