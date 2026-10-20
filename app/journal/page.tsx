@@ -51,13 +51,13 @@ export default function JournalPage() {
       />
       <SiteHeader active="Journal Entries" />
       <main>
-        {/* Magazine-style: brown, centred title, big photo grid */}
-        <section className="bg-bark px-5 py-20 sm:px-8 sm:py-28">
+        {/* Magazine-style: centred title, big photo grid */}
+        <section className="bg-cream px-5 py-20 sm:px-8 sm:py-28">
           <div className="mx-auto max-w-[78rem]">
             <ScrollReveal className="mx-auto max-w-3xl text-center">
-              <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-sage">{journalPage.label}</p>
-              <h1 className="mt-4 font-display text-5xl leading-tight text-cream sm:text-7xl">{journalPage.heading}</h1>
-              <p className="mx-auto mt-6 max-w-2xl font-body text-base leading-relaxed text-cream/80 sm:text-lg">{journalPage.intro}</p>
+              <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-stone">{journalPage.label}</p>
+              <h1 className="mt-4 font-display text-5xl leading-tight text-bark sm:text-7xl">{journalPage.heading}</h1>
+              <p className="mx-auto mt-6 max-w-2xl font-body text-base leading-relaxed text-umber sm:text-lg">{journalPage.intro}</p>
             </ScrollReveal>
             <JournalGrid
               articles={articles.map(({ slug, title, description, date, category, image }) => ({ slug, title, description, date, category, image }))}

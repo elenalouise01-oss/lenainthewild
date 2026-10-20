@@ -9,7 +9,7 @@ const PAGE = 9;
 
 type Card = Pick<JournalArticle, 'slug' | 'title' | 'description' | 'date' | 'category' | 'image'>;
 
-// The journal as a magazine-style grid on brown, after the Get Lost stories
+// The journal as a magazine-style grid, after the Get Lost stories
 // page: big photos, large titles, small pill tags, a category filter and
 // "Load more" instead of one long list.
 export default function JournalGrid({ articles }: { articles: Card[] }) {
@@ -31,7 +31,7 @@ export default function JournalGrid({ articles }: { articles: Card[] }) {
             }}
             aria-pressed={category === c}
             className={`rounded-full border px-4 py-1.5 font-body text-xs font-semibold transition-colors ${
-              category === c ? 'border-cream bg-cream text-bark' : 'border-cream/50 text-cream hover:border-cream'
+              category === c ? 'border-bark bg-bark text-cream' : 'border-bark/30 text-bark hover:border-bark'
             }`}
           >
             {c}
@@ -55,12 +55,12 @@ export default function JournalGrid({ articles }: { articles: Card[] }) {
                   />
                 </div>
               )}
-              <h2 className="mt-6 font-display text-2xl leading-snug text-cream decoration-sage decoration-2 underline-offset-4 group-hover:underline sm:text-[1.7rem]">
+              <h2 className="mt-6 font-display text-2xl leading-snug text-bark decoration-sage decoration-2 underline-offset-4 group-hover:underline sm:text-[1.7rem]">
                 {a.title}
               </h2>
-              <p className="mt-3 font-body text-sm leading-relaxed text-cream/75 sm:text-base">{a.description}</p>
+              <p className="mt-3 font-body text-sm leading-relaxed text-umber sm:text-base">{a.description}</p>
               <div className="mt-5 flex flex-wrap gap-2">
-                <span className="rounded-full border border-cream/70 px-3 py-1 font-body text-[0.65rem] font-semibold text-cream">{a.category}</span>
+                <span className="rounded-full border border-bark/40 px-3 py-1 font-body text-[0.65rem] font-semibold text-bark">{a.category}</span>
                 <span className="rounded-full bg-sage px-3 py-1 font-body text-[0.65rem] font-semibold text-bark">{formatDate(a.date)}</span>
               </div>
             </Link>
@@ -73,7 +73,7 @@ export default function JournalGrid({ articles }: { articles: Card[] }) {
           <button
             type="button"
             onClick={() => setShown((n) => n + PAGE)}
-            className="rounded-full border-2 border-cream px-8 py-3 font-body text-sm font-semibold text-cream transition-colors hover:bg-cream hover:text-bark"
+            className="rounded-full border-2 border-bark px-8 py-3 font-body text-sm font-semibold text-bark transition-colors hover:bg-bark hover:text-cream"
           >
             Load more
           </button>
