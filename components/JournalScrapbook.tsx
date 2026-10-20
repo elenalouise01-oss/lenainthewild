@@ -13,7 +13,7 @@ type Card = Pick<JournalArticle, 'slug' | 'title' | 'description' | 'date' | 'ca
 const TILTS = ['-rotate-2', 'rotate-1', '-rotate-1', 'rotate-2', 'rotate-0', '-rotate-[1.5deg]'];
 const FASTENERS = ['tape', 'pin', 'clip', 'tape', 'clip', 'pin'] as const;
 const STICKERS: Record<number, { src: string; w: number; h: number; className: string }> = {
-  1: { src: '/images/bow.png', w: 202, h: 226, className: '-right-5 -top-6 w-14 rotate-12' },
+  1: { src: '/images/bow.png', w: 202, h: 226, className: '-right-1 -top-6 w-14 rotate-12' },
   4: { src: '/images/sticker-star.png', w: 169, h: 161, className: '-left-5 -top-5 w-12 -rotate-12' },
   7: { src: '/images/sticker-flower.png', w: 241, h: 231, className: '-left-6 -top-6 w-16 -rotate-6' },
   10: { src: '/images/sticker-star-scribble.png', w: 186, h: 167, className: '-right-5 -top-5 w-12 rotate-12' },
