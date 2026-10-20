@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { formatDate, type JournalArticle } from '@/content/journal';
@@ -41,7 +41,45 @@ function Fastener({ kind }: { kind: (typeof FASTENERS)[number] }) {
   );
 }
 
-// The journal as a spiral-bound scrapbook: grid paper, taped and pinned
+// One planner ring in gold: it joins a punched hole in the back page strip
+// to a punched hole in the journal page, like a ring binder.
+function GoldRing({ className = '' }: { className?: string }) {
+  const id = useId().replace(/:/g, '');
+  return (
+    <svg viewBox="0 0 92 30" className={`h-[30px] w-[92px] ${className}`}>
+      <defs>
+        <linearGradient id={`gold-${id}`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#8a6a2c" />
+          <stop offset="0.3" stopColor="#f6e3a6" />
+          <stop offset="0.55" stopColor="#c9a24f" />
+          <stop offset="1" stopColor="#6e5222" />
+        </linearGradient>
+      </defs>
+      {/* punched holes: one in the back strip, one in the page */}
+      <circle cx="12" cy="15" r="7" fill="#9b9182" />
+      <circle cx="13" cy="16" r="5.5" fill="#d8d0c2" />
+      <circle cx="80" cy="15" r="7" fill="#9b9182" />
+      <circle cx="81" cy="16" r="5.5" fill="#d8d0c2" />
+      {/* the ring, running from hole to hole */}
+      <rect x="9" y="9.5" width="74" height="11" rx="5.5" fill="none" stroke={`url(#gold-${id})`} strokeWidth="4" />
+      {/* the little join in the middle of the ring */}
+      <rect x="44" y="7.5" width="4" height="15" rx="1.5" fill={`url(#gold-${id})`} />
+    </svg>
+  );
+}
+
+// Rings come in little sets of three, like a planner.
+function RingSet() {
+  return (
+    <div className="flex flex-col gap-4">
+      {[0, 1, 2].map((k) => (
+        <GoldRing key={k} />
+      ))}
+    </div>
+  );
+}
+
+// The journal as a ring-bound scrapbook: lined paper, taped and pinned
 // polaroids, a typewriter note, handwritten headings and stickers.
 export default function JournalScrapbook({ articles, heading, intro }: { articles: Card[]; heading: string; intro: string }) {
   const categories = ['All', ...Array.from(new Set(articles.map((a) => a.category)))];
@@ -52,19 +90,22 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
   const number = (slug: string) => num(articles.findIndex((a) => a.slug === slug) + 1);
 
   return (
-    <div className="relative mx-auto max-w-6xl rounded-sm bg-[#fdfbf6] bg-[linear-gradient(#e7e2d6_1px,transparent_1px),linear-gradient(90deg,#e7e2d6_1px,transparent_1px)] bg-[size:26px_26px] px-5 pb-16 pt-16 shadow-[0_20px_50px_rgba(59,45,14,0.18)] sm:pl-20 sm:pr-12 sm:pt-20">
-      {/* Spiral binding: along the top on a phone, down the left on wider screens */}
-      <div aria-hidden="true" className="absolute inset-x-6 -top-4 flex justify-between sm:hidden">
-        {Array.from({ length: 12 }).map((_, i) => (
-          <span key={i} className="h-9 w-2.5 rounded-full border-2 border-[#8f8f8f] bg-gradient-to-r from-[#d9d9d9] via-white to-[#a7a7a7]" />
+    <div className="relative mx-auto max-w-6xl rounded-sm bg-white bg-[linear-gradient(transparent_31px,#e4e4e4_31px)] bg-[size:100%_32px] px-5 pb-16 pt-16 shadow-[0_20px_50px_rgba(59,45,14,0.18)] sm:pl-20 sm:pr-12 sm:pt-20">
+      {/* Gold planner rings: along the top on a phone, down the left on wider screens */}
+      <div aria-hidden="true" className="absolute -top-11 inset-x-0 h-11 rounded-t-sm border-b-[3px] border-[#d9cfbd] bg-[#f6f3ec] sm:hidden" />
+      <div aria-hidden="true" className="absolute -top-2 inset-x-6 flex justify-between sm:hidden">
+        {[0, 1, 2, 3, 4, 5].map((k) => (
+          <span key={k} className={`relative block h-[30px] w-8 ${k === 2 ? 'mr-auto' : ''}`}>
+            <GoldRing className="absolute left-1/2 top-0 -translate-x-1/2 rotate-90" />
+          </span>
         ))}
       </div>
-      <div aria-hidden="true" className="absolute -left-4 bottom-10 top-10 hidden flex-col justify-between sm:flex">
-        {Array.from({ length: 22 }).map((_, i) => (
-          <span key={i} className="flex items-center">
-            <span className="h-2.5 w-10 rounded-full border-2 border-[#8f8f8f] bg-gradient-to-b from-[#e0e0e0] via-white to-[#a7a7a7]" />
-            <span className="-ml-1 h-3 w-3 rounded-full bg-[#3b2d0e]/80" />
-          </span>
+      {/* The back page of the planner peeking out on the left, with the
+          gold rings joining it to this page */}
+      <div aria-hidden="true" className="absolute -left-12 bottom-0 top-0 hidden w-12 rounded-l-sm border-r-[3px] border-[#d9cfbd] bg-[#f6f3ec] shadow-[-6px_10px_20px_rgba(59,45,14,0.12)] sm:block" />
+      <div aria-hidden="true" className="absolute -left-[3.6rem] bottom-16 top-16 hidden flex-col justify-between sm:flex">
+        {[0, 1, 2, 3, 4, 5].map((g) => (
+          <RingSet key={g} />
         ))}
       </div>
 
