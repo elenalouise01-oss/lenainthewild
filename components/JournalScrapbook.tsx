@@ -1,7 +1,8 @@
 'use client';
 
 import { useId, useRef, useState } from 'react';
-import { AnimatePresence, motion, type Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { playPageTurn } from '@/lib/pageTurnSound';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -75,19 +76,14 @@ function GoldWire() {
   );
 }
 
-// Turning a page: going forward, the current page lifts from the binding on
-// the left and swings over like a page in a book, revealing the next one
-// underneath; going back, the previous page swings back over the top.
-const EASE = [0.645, 0.045, 0.355, 1] as const;
-const pageTurn: Variants = {
-  enter: (dir: number) => (dir > 0 ? { rotateY: 0, opacity: 1, zIndex: 0 } : { rotateY: -120, opacity: 0, zIndex: 2 }),
-  center: { rotateY: 0, opacity: 1, zIndex: 1, transition: { duration: 1.1, ease: EASE } },
-  exit: (dir: number) =>
-    dir > 0
-      ? { rotateY: -120, opacity: 0, zIndex: 2, transition: { duration: 1.1, ease: EASE, opacity: { duration: 0.4, delay: 0.7 } } }
-      : { opacity: 0, zIndex: 0, transition: { duration: 0.2, delay: 0.9 } },
-};
-const noTurn: Variants = { enter: { opacity: 0 }, center: { opacity: 1 }, exit: { opacity: 0, transition: { duration: 0 } } };
+// Turning a page: the page lifts from the binding on the left and swings
+// over like a sheet in a book. Going forward, the current page turns away
+// to reveal the next one already underneath; going back, the previous page
+// swings back over the top. The page's own paper shows on its back as it
+// turns, it shades as it lifts, and it casts a shadow on the page below.
+const TURN = { duration: 1.25, ease: [0.42, 0, 0.2, 1] as const };
+const SHEET_PAD =
+  'bg-white bg-[linear-gradient(transparent_31px,#e4e4e4_31px)] bg-[size:100%_32px] pb-4 pl-[5.25rem] pr-8 pt-6 sm:pl-24 sm:pr-12';
 
 // The journal as a wire-bound scrapbook: lined paper, taped and pinned
 // polaroids, a typewriter note, handwritten headings and stickers.
@@ -95,29 +91,140 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
   const categories = ['All', ...Array.from(new Set(articles.map((a) => a.category)))];
   const [category, setCategory] = useState('All');
   const [page, setPage] = useState(0);
-  const [dir, setDir] = useState(1);
+  const [leaf, setLeaf] = useState<{ page: number; dir: number } | null>(null);
   const reduced = useReducedMotion();
   const pagesRef = useRef<HTMLDivElement>(null);
   const list = category === 'All' ? articles : articles.filter((a) => a.category === category);
   const [featured, ...rest] = list;
   const pageCount = Math.max(1, Math.ceil(rest.length / PAGE));
-  const onPage = rest.slice(page * PAGE, (page + 1) * PAGE);
+
+  const itemsOn = (n: number) => rest.slice(n * PAGE, (n + 1) * PAGE);
 
   // Scroll back up to the top of the page first, then turn it, so the turn
   // is in view.
   const turn = (step: number) => {
+    if (leaf) return;
+    const to = page + step;
     const top = pagesRef.current?.getBoundingClientRect().top ?? 0;
-    const needsScroll = Math.abs(top - 120) > 40;
+    const needsScroll = !reduced && Math.abs(top - 120) > 40;
+    const wait = needsScroll ? 650 : 0;
     window.scrollTo({ top: window.scrollY + top - 120, behavior: reduced ? 'auto' : 'smooth' });
-    window.setTimeout(
-      () => {
-        setDir(step);
-        setPage((p) => p + step);
-      },
-      reduced || !needsScroll ? 0 : 650,
-    );
+    if (reduced) {
+      setPage(to);
+      return;
+    }
+    playPageTurn(wait / 1000);
+    window.setTimeout(() => {
+      if (step > 0) {
+        // the current page turns away; the next is already underneath
+        setLeaf({ page, dir: 1 });
+        setPage(to);
+      } else {
+        // the previous page swings back over the current one
+        setLeaf({ page: to, dir: -1 });
+      }
+    }, wait);
+  };
+  const finishTurn = () => {
+    if (leaf && leaf.dir < 0) setPage(leaf.page);
+    setLeaf(null);
   };
   const number = (slug: string) => num(articles.findIndex((a) => a.slug === slug) + 1);
+
+  // Everything on one page of the journal: page 1 opens with the latest
+  // entry, then each page has up to nine more and the page-turning row.
+  const renderPage = (n: number) => (
+    <>
+      {/* Latest entry: a big pinned polaroid with its note beside it */}
+      {n === 0 && featured && (
+        <Link href={`/journal/${featured.slug}`} className="group relative mb-20 grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
+          <div className="relative -rotate-2 bg-white p-3 pb-14 shadow-xl">
+            <Fastener kind="clip" />
+            {featured.image && (
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image src={featured.image.src} alt={featured.image.alt} fill sizes="(min-width: 1024px) 34rem, 90vw" className="object-cover" style={{ objectPosition: featured.image.pos }} />
+              </div>
+            )}
+            <p className="absolute inset-x-0 bottom-3 text-center font-hand text-2xl text-bark">latest entry ♡</p>
+            <Image src="/images/sticker-flower.png" alt="" width={241} height={231} aria-hidden="true" className="absolute -bottom-8 -right-6 h-auto w-20 rotate-12" />
+          </div>
+          <div>
+            <p className="font-type text-sm text-umber">
+              {number(featured.slug)} · {featured.category.toLowerCase()} · {formatDate(featured.date)}
+            </p>
+            <h2 className="mt-3 font-display text-3xl leading-tight text-bark sm:text-4xl">{featured.title}</h2>
+            <p className="mt-4 font-body text-base leading-relaxed text-umber">{featured.description}</p>
+            <p className="mt-6 inline-flex items-center gap-2 font-hand text-2xl text-bark">
+              read this entry
+              <svg viewBox="0 0 60 24" className="h-6 w-14 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                <path d="M2 14 C 18 4, 34 22, 54 11" />
+                <path d="M46 6 L55 11 L47 17" />
+              </svg>
+            </p>
+          </div>
+        </Link>
+      )}
+
+      {/* The rest: polaroids pinned at slightly different angles */}
+      <div className="grid gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+        {itemsOn(n).map((a, i) => {
+          const sticker = STICKERS[i];
+          return (
+            <article key={a.slug} className={`${TILTS[i % TILTS.length]} transition-transform duration-300 hover:rotate-0`}>
+              <Link href={`/journal/${a.slug}`} className="group block">
+                <div className="relative bg-white p-2.5 pb-10 shadow-lg">
+                  <Fastener kind={FASTENERS[i % FASTENERS.length]} />
+                  {a.image && (
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <Image src={a.image.src} alt={a.image.alt} fill sizes="(min-width: 1024px) 22rem, (min-width: 640px) 45vw, 90vw" className="object-cover" style={{ objectPosition: a.image.pos }} />
+                    </div>
+                  )}
+                  <p className="absolute bottom-2.5 left-3 font-type text-xs text-umber">{number(a.slug)}</p>
+                  <p className="absolute bottom-2 right-3 font-hand text-base text-bark">{a.category.toLowerCase()}</p>
+                  {sticker && (
+                    <Image src={sticker.src} alt="" width={sticker.w} height={sticker.h} aria-hidden="true" className={`absolute z-10 h-auto drop-shadow-md ${sticker.className}`} />
+                  )}
+                </div>
+                <h2 className="mt-5 font-display text-xl leading-snug text-bark decoration-sage decoration-2 underline-offset-4 group-hover:underline">{a.title}</h2>
+                <p className="mt-2 font-type text-xs text-umber">{formatDate(a.date)}</p>
+              </Link>
+            </article>
+          );
+        })}
+      </div>
+
+      {/* Page turning */}
+      {pageCount > 1 && (
+        <div className="mt-16 flex items-center justify-between gap-4">
+          {n > 0 ? (
+            <button type="button" onClick={() => turn(-1)} className="group inline-flex items-center gap-2 font-hand text-2xl text-bark sm:text-3xl">
+              <svg viewBox="0 0 60 24" className="h-6 w-14 -scale-x-100 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                <path d="M2 14 C 18 4, 34 22, 54 11" />
+                <path d="M46 6 L55 11 L47 17" />
+              </svg>
+              back a page
+            </button>
+          ) : (
+            <span />
+          )}
+          <p className="font-type text-sm text-umber">
+            page {n + 1} of {pageCount}
+          </p>
+          {n < pageCount - 1 ? (
+            <button type="button" onClick={() => turn(1)} className="group inline-flex items-center gap-2 font-hand text-2xl text-bark sm:text-3xl">
+              turn the page
+              <svg viewBox="0 0 60 24" className="h-6 w-14 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                <path d="M2 14 C 18 4, 34 22, 54 11" />
+                <path d="M46 6 L55 11 L47 17" />
+              </svg>
+            </button>
+          ) : (
+            <span />
+          )}
+        </div>
+      )}
+    </>
+  );
 
   return (
     <div className="relative ml-5 max-w-6xl rounded-sm bg-white sm:mx-auto bg-[linear-gradient(transparent_31px,#e4e4e4_31px)] bg-[size:100%_32px] pb-16 pl-[5.25rem] pr-8 pt-12 shadow-[0_20px_50px_rgba(59,45,14,0.18)] sm:pl-24 sm:pr-12 sm:pt-16">
@@ -127,7 +234,7 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
       <div aria-hidden="true" className="absolute -left-1.5 bottom-0 top-0 w-1.5 bg-[#b88b5c]" />
 
       {/* Gold twin-wire binding down the left edge, evenly spaced */}
-      <div aria-hidden="true" className="absolute -left-6 bottom-5 top-5 flex flex-col gap-6 overflow-hidden">
+      <div aria-hidden="true" className="absolute -left-6 bottom-5 top-5 z-30 flex flex-col gap-6 overflow-hidden">
         {Array.from({ length: 160 }).map((_, i) => (
           <GoldWire key={i} />
         ))}
@@ -154,7 +261,7 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
             type="button"
             onClick={() => {
               setCategory(c);
-              setDir(1);
+              setLeaf(null);
               setPage(0);
             }}
             aria-pressed={category === c}
@@ -167,110 +274,47 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
         ))}
       </div>
 
-      {/* The pages: each is its own sheet of lined paper (reaching back to
-          the binding) so it can turn like a page in a book */}
-      <div ref={pagesRef} className="relative mt-14 [perspective:2600px]">
-        <AnimatePresence mode="popLayout" initial={false} custom={dir}>
+      {/* The pages: each is a sheet of lined paper reaching back to the
+          binding, so it can turn like a page in a book */}
+      <div ref={pagesRef} className="relative mt-14 [perspective:2200px]">
+        <div className={`relative -ml-[5.25rem] -mr-8 sm:-ml-24 sm:-mr-12 ${SHEET_PAD}`}>
+          {renderPage(page)}
+          {/* shadow the turning page casts on this one */}
+          {leaf && (
+            <motion.div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[rgba(59,45,14,0.22)] via-[rgba(59,45,14,0.06)] to-transparent"
+              initial={{ opacity: leaf.dir > 0 ? 0.9 : 0 }}
+              animate={{ opacity: leaf.dir > 0 ? 0 : 0.9 }}
+              transition={TURN}
+            />
+          )}
+        </div>
+
+        {leaf && (
           <motion.div
-            key={`${category}-${page}`}
-            custom={dir}
-            variants={reduced ? noTurn : pageTurn}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            style={{ transformOrigin: 'left center', backfaceVisibility: 'hidden' }}
-            className="-ml-[5.25rem] -mr-8 bg-white bg-[linear-gradient(transparent_31px,#e4e4e4_31px)] bg-[size:100%_32px] pb-4 pl-[5.25rem] pr-8 pt-6 shadow-[0_0_30px_rgba(59,45,14,0.08)] sm:-ml-24 sm:-mr-12 sm:pl-24 sm:pr-12"
+            aria-hidden="true"
+            className="pointer-events-none absolute -left-[5.25rem] -right-8 top-0 z-20 [transform-style:preserve-3d] sm:-left-24 sm:-right-12"
+            style={{ transformOrigin: 'left center' }}
+            initial={{ rotateY: leaf.dir > 0 ? 0 : -180, opacity: leaf.dir > 0 ? 1 : 0 }}
+            animate={{ rotateY: leaf.dir > 0 ? -180 : 0, opacity: leaf.dir > 0 ? [1, 1, 0] : [0, 1, 1] }}
+            transition={{ ...TURN, opacity: { duration: TURN.duration, times: leaf.dir > 0 ? [0, 0.72, 1] : [0, 0.28, 1] } }}
+            onAnimationComplete={finishTurn}
           >
-            {/* Latest entry: a big pinned polaroid with its note beside it */}
-            {page === 0 && featured && (
-              <Link href={`/journal/${featured.slug}`} className="group relative mb-20 grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
-                <div className="relative -rotate-2 bg-white p-3 pb-14 shadow-xl">
-                  <Fastener kind="clip" />
-                  {featured.image && (
-                    <div className="relative aspect-[4/3] overflow-hidden">
-                      <Image src={featured.image.src} alt={featured.image.alt} fill sizes="(min-width: 1024px) 34rem, 90vw" className="object-cover" style={{ objectPosition: featured.image.pos }} />
-                    </div>
-                  )}
-                  <p className="absolute inset-x-0 bottom-3 text-center font-hand text-2xl text-bark">latest entry ♡</p>
-                  <Image src="/images/sticker-flower.png" alt="" width={241} height={231} aria-hidden="true" className="absolute -bottom-8 -right-6 h-auto w-20 rotate-12" />
-                </div>
-                <div>
-                  <p className="font-type text-sm text-umber">
-                    {number(featured.slug)} · {featured.category.toLowerCase()} · {formatDate(featured.date)}
-                  </p>
-                  <h2 className="mt-3 font-display text-3xl leading-tight text-bark sm:text-4xl">{featured.title}</h2>
-                  <p className="mt-4 font-body text-base leading-relaxed text-umber">{featured.description}</p>
-                  <p className="mt-6 inline-flex items-center gap-2 font-hand text-2xl text-bark">
-                    read this entry
-                    <svg viewBox="0 0 60 24" className="h-6 w-14 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-                      <path d="M2 14 C 18 4, 34 22, 54 11" />
-                      <path d="M46 6 L55 11 L47 17" />
-                    </svg>
-                  </p>
-                </div>
-              </Link>
-            )}
-
-            {/* The rest: polaroids pinned at slightly different angles */}
-            <div className="grid gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
-              {onPage.map((a, i) => {
-                const sticker = STICKERS[i];
-                return (
-                  <article key={a.slug} className={`${TILTS[i % TILTS.length]} transition-transform duration-300 hover:rotate-0`}>
-                    <Link href={`/journal/${a.slug}`} className="group block">
-                      <div className="relative bg-white p-2.5 pb-10 shadow-lg">
-                        <Fastener kind={FASTENERS[i % FASTENERS.length]} />
-                        {a.image && (
-                          <div className="relative aspect-[4/3] overflow-hidden">
-                            <Image src={a.image.src} alt={a.image.alt} fill sizes="(min-width: 1024px) 22rem, (min-width: 640px) 45vw, 90vw" className="object-cover" style={{ objectPosition: a.image.pos }} />
-                          </div>
-                        )}
-                        <p className="absolute bottom-2.5 left-3 font-type text-xs text-umber">{number(a.slug)}</p>
-                        <p className="absolute bottom-2 right-3 font-hand text-base text-bark">{a.category.toLowerCase()}</p>
-                        {sticker && (
-                          <Image src={sticker.src} alt="" width={sticker.w} height={sticker.h} aria-hidden="true" className={`absolute z-10 h-auto drop-shadow-md ${sticker.className}`} />
-                        )}
-                      </div>
-                      <h2 className="mt-5 font-display text-xl leading-snug text-bark decoration-sage decoration-2 underline-offset-4 group-hover:underline">{a.title}</h2>
-                      <p className="mt-2 font-type text-xs text-umber">{formatDate(a.date)}</p>
-                    </Link>
-                  </article>
-                );
-              })}
+            {/* front of the page */}
+            <div className={`relative [backface-visibility:hidden] ${SHEET_PAD} shadow-[0_10px_30px_rgba(59,45,14,0.18)]`}>
+              {renderPage(leaf.page)}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-l from-[rgba(59,45,14,0.18)] to-transparent"
+                initial={{ opacity: leaf.dir > 0 ? 0 : 1 }}
+                animate={{ opacity: leaf.dir > 0 ? 1 : 0 }}
+                transition={TURN}
+              />
             </div>
-
-            {/* Page turning */}
-            {pageCount > 1 && (
-              <div className="mt-16 flex items-center justify-between gap-4">
-                {page > 0 ? (
-                  <button type="button" onClick={() => turn(-1)} className="group inline-flex items-center gap-2 font-hand text-2xl text-bark sm:text-3xl">
-                    <svg viewBox="0 0 60 24" className="h-6 w-14 -scale-x-100 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-                      <path d="M2 14 C 18 4, 34 22, 54 11" />
-                      <path d="M46 6 L55 11 L47 17" />
-                    </svg>
-                    back a page
-                  </button>
-                ) : (
-                  <span />
-                )}
-                <p className="font-type text-sm text-umber">
-                  page {page + 1} of {pageCount}
-                </p>
-                {page < pageCount - 1 ? (
-                  <button type="button" onClick={() => turn(1)} className="group inline-flex items-center gap-2 font-hand text-2xl text-bark sm:text-3xl">
-                    turn the page
-                    <svg viewBox="0 0 60 24" className="h-6 w-14 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-                      <path d="M2 14 C 18 4, 34 22, 54 11" />
-                      <path d="M46 6 L55 11 L47 17" />
-                    </svg>
-                  </button>
-                ) : (
-                  <span />
-                )}
-              </div>
-            )}
+            {/* back of the page: plain lined paper */}
+            <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-[#fbfaf7] bg-[linear-gradient(90deg,rgba(59,45,14,0.10),transparent_40%),linear-gradient(transparent_31px,#e6e3dc_31px)] bg-[size:100%_100%,100%_32px]" />
           </motion.div>
-        </AnimatePresence>
+        )}
       </div>
     </div>
   );
