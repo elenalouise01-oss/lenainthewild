@@ -214,10 +214,9 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
           and a note, so it still feels like a full page */}
       {n === pageCount - 1 && itemsOn(n).length < PAGE && (
         <div aria-hidden="true" className="flex flex-col items-center py-20 text-bark sm:py-28">
-          {/* Lena's walking monkey, with a bow and a couple of music notes
-              (she's wearing headphones) */}
+          {/* Lena's walking monkey, with a couple of music notes (she's
+              wearing headphones) */}
           <div className="relative">
-            <Image src="/images/bow.png" alt="" width={202} height={226} className="absolute -left-6 top-2 h-auto w-10 -rotate-12" />
             <Image src="/images/monkey-walk.webp" alt="" width={304} height={256} className="h-auto w-40 sm:w-48" />
             <span className="absolute right-1 top-0 font-hand text-3xl text-bark/70">♪</span>
             <span className="absolute -right-4 top-9 font-hand text-2xl text-bark/60">♫</span>
