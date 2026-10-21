@@ -30,6 +30,8 @@ const COVERS: Record<string, { src: string; zoom?: number }> = {
 const lookFor = (i: number) => ({ ...LOOKS[i % LOOKS.length], ...COVERS[freedomSeeker.tiers[i].title] });
 
 const SWIPE_THRESHOLD = 60;
+// The swiping hand is small, so a shorter drag on it is enough
+const HAND_SWIPE = 25;
 
 const MAX_TILT = 14;
 
@@ -160,27 +162,49 @@ export default function OffersCarousel() {
         transition={{ duration: 1.4, delay: 1.6, ease: 'easeInOut' }}
         className="relative"
       >
-      {/* A small swiping hand just off the sleeve's right edge, to
-          show it can be swiped with a finger. Tapping it moves to the next offer. */}
+      {/* A small swiping hand just off the sleeve's right edge, to show it
+          can be swiped with a finger. Tapping it moves to the next offer, and
+          it can itself be dragged: left for the next offer, right for the
+          previous one. The outer layer drags; the inner one sways. */}
       <AnimatePresence>
         {!reduced && !moved && (
-          <motion.button
-            type="button"
-            onClick={() => go(1)}
-            aria-hidden="true"
-            tabIndex={-1}
-            className="absolute left-full top-[44%] z-30 -ml-5 flex h-12 w-12 items-center justify-center rounded-full sm:ml-0"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1, x: [4, -6, 4], rotate: [8, -10, 8] }}
-            viewport={{ once: true, amount: 0.6 }}
+          <motion.div
+            className="absolute left-full top-[44%] z-30 -ml-5 cursor-grab touch-none active:cursor-grabbing sm:ml-0"
+            drag="x"
+            dragSnapToOrigin
+            dragElastic={0.6}
+            dragConstraints={{ left: -80, right: 80 }}
+            onDragStart={() => {
+              dragged.current = true;
+            }}
+            onDragEnd={(_, info) => {
+              setTimeout(() => {
+                dragged.current = false;
+              }, 0);
+              if (info.offset.x < -HAND_SWIPE) go(1);
+              else if (info.offset.x > HAND_SWIPE) go(-1);
+            }}
             exit={{ opacity: 0, transition: { duration: 0.25 } }}
-            transition={{ opacity: { duration: 0.4, delay: 1.2 }, default: { duration: 1.3, delay: 1.6, repeat: Infinity, ease: 'easeInOut' } }}
-            // Lights up on hover: grows a little with a soft baby-pink glow
-            whileHover={{ x: 0, rotate: 0, scale: 1.25, backgroundColor: 'rgba(248,200,220,1)', boxShadow: '0 0 20px 8px rgba(248,200,220,0.9)', transition: { duration: 0.2 } }}
-            whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
           >
-            <Image src="/images/swipe-hand.png" alt="" width={32} height={32} className="h-8 w-8 max-w-none" />
-          </motion.button>
+            <motion.button
+              type="button"
+              onClick={() => {
+                if (!dragged.current) go(1);
+              }}
+              aria-hidden="true"
+              tabIndex={-1}
+              className="flex h-12 w-12 items-center justify-center rounded-full"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1, x: [4, -6, 4], rotate: [8, -10, 8] }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ opacity: { duration: 0.4, delay: 1.2 }, default: { duration: 1.3, delay: 1.6, repeat: Infinity, ease: 'easeInOut' } }}
+              // Lights up on hover: grows a little with a soft baby-pink glow
+              whileHover={{ x: 0, rotate: 0, scale: 1.25, backgroundColor: 'rgba(248,200,220,1)', boxShadow: '0 0 20px 8px rgba(248,200,220,0.9)', transition: { duration: 0.2 } }}
+              whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
+            >
+              <Image src="/images/swipe-hand.png" alt="" width={32} height={32} draggable={false} className="pointer-events-none h-8 w-8 max-w-none" />
+            </motion.button>
+          </motion.div>
         )}
       </AnimatePresence>
       <motion.div
