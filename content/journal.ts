@@ -638,7 +638,7 @@ The thing I was looking for on the outside was always something I needed to cult
       'I\'ve been thinking a lot lately about who actually made these rules we\'re all living by. Here\'s what ChatGPT has to say...',
     seoTitle: 'Who Invented the Monday to Friday Work Week? Why I’m Questioning It',
     description:
-      'Who decided we work Monday to Friday and spend weekends recovering? The surprising history of the five-day week, and why I’m living by my own rhythm.',
+      'Who invented the Monday to Friday work week, and who created the weekend? The surprising history of the five-day week, and why I’m living by my own rhythm.',
     date: '2026-04-09',
     category: 'Wellness',
     tags: ['five day work week', 'Monday to Friday', 'breaking free from the system', 'living on your own terms', 'rest', 'other people’s expectations'],
@@ -655,6 +655,8 @@ And it made me wonder, who even came up with this whole Monday to Friday, work d
 So naturally I asked ChatGPT. And honestly the answer is wild…
 
 “It’s completely made up. The Monday to Friday workweek isn’t some natural or universal way of living. It’s a structure shaped by religion, the Industrial Revolution and economic systems that prioritised productivity.”
+
+## Who invented the Monday to Friday work week?
 
 Sunday became a rest day because of Christian tradition. Factory workers during the Industrial Revolution were grinding six to seven day weeks in brutal conditions. Labour movements fought back and introduced the eight hour workday. Then in 1926 Henry Ford made the five day forty hour week mainstream, not for the workers’ wellbeing, but because it boosted productivity and gave people time to spend money.
 
