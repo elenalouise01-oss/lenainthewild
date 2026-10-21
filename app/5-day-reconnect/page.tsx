@@ -129,9 +129,9 @@ export default function FiveDayReconnectPage() {
               <div className="relative aspect-square -rotate-2 overflow-hidden shadow-2xl">
                 <Image src="/images/cover-reconnect-monkey.webp" alt="The 5 Day Reconnect cover art" fill priority sizes="(min-width: 1024px) 28rem, 90vw" className="object-cover" />
               </div>
-              {/* The litw logo as a round lavender sticker on the top left of the cover,
+              {/* The litw logo as a round lavender sticker on the cover's corner,
                   like the stickers on the offer sleeves */}
-              <div className="absolute left-[4%] top-[8%] flex h-24 w-24 -rotate-[24deg] items-center justify-center rounded-full bg-sage shadow-lg sm:h-28 sm:w-28">
+              <div className="absolute -bottom-6 -right-4 flex h-24 w-24 rotate-12 items-center justify-center rounded-full bg-sage shadow-lg sm:h-28 sm:w-28">
                 <Image src="/images/litw-logo-yellow.png" alt="Lena in the Wild" width={248} height={115} className="h-auto w-16 sm:w-20" />
               </div>
             </div>
