@@ -210,16 +210,12 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
       </div>
 
       {/* Page turning */}
-      {/* The last page is a short one: fill the blank paper with the monkey
+      {/* The last page is a short one: fill the blank paper with a butterfly
           and a note, so it still feels like a full page */}
       {n === pageCount - 1 && itemsOn(n).length < PAGE && (
         <div aria-hidden="true" className="flex flex-col items-center py-20 text-bark sm:py-28">
-          {/* Lena's walking monkey, with a couple of her stickers */}
-          <div className="relative">
-            <Image src="/images/sticker-star-scribble.png" alt="" width={186} height={167} className="absolute -left-14 -top-4 h-auto w-12 -rotate-12" />
-            <Image src="/images/monkey-walk.webp" alt="" width={304} height={256} className="h-auto w-40 sm:w-48" />
-            <Image src="/images/sticker-flower.png" alt="" width={241} height={231} className="absolute -right-10 bottom-0 h-auto w-12 rotate-12" />
-          </div>
+          {/* Just the butterfly, nothing else */}
+          <Image src="/images/butterfly.png" alt="" width={396} height={500} className="h-auto w-20 -rotate-6 sm:w-24" />
           <p className="mt-6 font-hand text-3xl sm:text-4xl">more entries coming soon…</p>
         </div>
       )}
