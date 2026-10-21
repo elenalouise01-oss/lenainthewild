@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
+import JsonLd from '@/components/JsonLd';
 import SectionLabel from '@/components/SectionLabel';
 import { faq as homeFaq, type FaqItem } from '@/content/site';
 
@@ -24,6 +25,19 @@ export default function Faq({
 }: Props) {
   return (
     <section id="faq" className={`${className} px-6 py-20 sm:py-24`}>
+      {/* The same questions as FAQPage data, so Google and AI answer tools
+          can quote them directly */}
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: items.map(({ q, a }) => ({
+            '@type': 'Question',
+            name: q,
+            acceptedAnswer: { '@type': 'Answer', text: a.join(' ') },
+          })),
+        }}
+      />
       <div className="container-editorial grid gap-10 lg:grid-cols-[1fr_1.8fr] lg:gap-16">
         <ScrollReveal>
           <SectionLabel>{label}</SectionLabel>

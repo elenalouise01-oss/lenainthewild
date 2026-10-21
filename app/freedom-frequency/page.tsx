@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import Price from '@/components/Price';
 import Faq from '@/components/sections/Faq';
-import { breadcrumbs } from '@/lib/seo';
+import { SITE_NAME, absoluteUrl, breadcrumbs } from '@/lib/seo';
 import OfferNextStep from '@/components/OfferNextStep';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteHeader from '@/components/SiteHeader';
@@ -60,7 +60,26 @@ function JoinButton() {
 export default function FreedomFrequencyPage() {
   return (
     <>
-      <JsonLd data={breadcrumbs(page.title, '/freedom-frequency')} />
+      <JsonLd
+        data={[
+          breadcrumbs(page.title, '/freedom-frequency'),
+          // The course itself, so search and AI tools know what it is, who
+          // runs it and that it's taking waitlist sign-ups
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Course',
+            name: page.title,
+            description,
+            url: absoluteUrl('/freedom-frequency'),
+            image: absoluteUrl('/images/cover-freedom-frequency.webp'),
+            inLanguage: 'en',
+            provider: { '@type': 'Person', '@id': `${absoluteUrl('/')}#lena`, name: 'Lena', url: absoluteUrl('/my-story') },
+            brand: { '@type': 'Brand', name: SITE_NAME },
+            hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: 'P6W' },
+            offers: { '@type': 'Offer', price: 777, priceCurrency: 'AUD', availability: 'https://schema.org/PreOrder', category: 'Paid', url: absoluteUrl('/freedom-frequency#waitlist') },
+          },
+        ]}
+      />
       <SiteHeader active="The Freedom Seeker" />
       <main>
         {/* Cover, title, price and sign-up — shown straight away (no fade-in) so it paints fast */}

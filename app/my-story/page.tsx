@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 import PolaroidPop from '@/components/PolaroidPop';
 import TapeMark from '@/components/TapeMark';
 import JsonLd from '@/components/JsonLd';
-import { breadcrumbs } from '@/lib/seo';
+import { absoluteUrl, breadcrumbs } from '@/lib/seo';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteHeader from '@/components/SiteHeader';
 import StoryConnector from '@/components/StoryConnector';
@@ -115,7 +115,21 @@ function Highlighted({ text }: { text: string }) {
 export default function MyStoryPage() {
   return (
     <>
-      <JsonLd data={breadcrumbs('My Story', '/my-story')} />
+      <JsonLd
+        data={[
+          breadcrumbs('My Story', '/my-story'),
+          // Marks this as Lena's own story page, about the same person as the
+          // home page's Person data
+          {
+            '@context': 'https://schema.org',
+            '@type': 'ProfilePage',
+            name: title,
+            description,
+            url: absoluteUrl('/my-story'),
+            mainEntity: { '@id': `${absoluteUrl('/')}#lena` },
+          },
+        ]}
+      />
       <SiteHeader active="About" />
       <main>
         <div className="relative h-[60vh] min-h-[22rem] w-full bg-sand sm:h-[75vh]">
