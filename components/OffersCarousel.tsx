@@ -164,14 +164,14 @@ export default function OffersCarousel() {
             onClick={() => go(1)}
             aria-hidden="true"
             tabIndex={-1}
-            className="absolute left-full top-[44%] z-30 ml-1 flex h-10 w-10 items-center justify-center rounded-full"
+            className="absolute left-full top-[44%] z-30 -ml-5 flex sm:ml-1 h-10 w-10 items-center justify-center rounded-full"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1, x: [4, -6, 4], rotate: [8, -10, 8] }}
             viewport={{ once: true, amount: 0.6 }}
             exit={{ opacity: 0, transition: { duration: 0.25 } }}
             transition={{ opacity: { duration: 0.4, delay: 1.2 }, default: { duration: 1.3, delay: 1.6, repeat: Infinity, ease: 'easeInOut' } }}
-            // Lights up on hover: grows a little with a soft white glow
-            whileHover={{ scale: 1.25, backgroundColor: 'rgba(255,255,255,0.95)', boxShadow: '0 0 20px 8px rgba(255,255,255,0.8)', transition: { duration: 0.2 } }}
+            // Lights up on hover: grows a little with a soft green glow
+            whileHover={{ scale: 1.25, backgroundColor: 'rgba(190,229,176,1)', boxShadow: '0 0 20px 8px rgba(190,229,176,0.85)', transition: { duration: 0.2 } }}
             whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
           >
             <Image src="/images/swipe-hand.png" alt="" width={32} height={32} className="h-8 w-8 max-w-none" />

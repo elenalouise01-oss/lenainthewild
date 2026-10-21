@@ -7,7 +7,7 @@ import { scrollToTop } from '@/lib/goHome';
 // Links that resolve to a real section on this page or a live offer page.
 // Footer links to pages that don't exist yet are hidden until they do.
 const REAL_ANCHORS: Record<string, string> = {
-  Blog: '/journal',
+  'Journal Entries': '/journal',
   About: '/my-story',
   'Who I Help': '/life-design',
   Substack: 'https://substack.com/@lenainthewild',

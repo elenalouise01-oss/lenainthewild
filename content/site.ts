@@ -681,7 +681,7 @@ export const footer = {
     },
     {
       label: 'Get to Know Me',
-      links: ['About', 'Who I Help', 'Blog', 'Travel', 'Wellness', 'Healing'],
+      links: ['About', 'Who I Help', 'Journal Entries', 'Travel', 'Wellness', 'Healing'],
     },
     {
       label: 'Connect',
