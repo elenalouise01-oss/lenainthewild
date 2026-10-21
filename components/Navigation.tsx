@@ -45,8 +45,14 @@ export default function Navigation({ className = '', iconClassName = '', childre
         aria-haspopup="true"
         aria-expanded={open}
         aria-label="Open menu"
-        onMouseEnter={() => setOpen(true)}
-        onFocus={() => setOpen(true)}
+        // Hover opens it for a mouse only. On phones a tap is just a click:
+        // iPhones turn a tap into a fake hover first, which can swallow the tap.
+        onPointerEnter={(e) => {
+          if (e.pointerType === 'mouse') setOpen(true);
+        }}
+        onFocus={(e) => {
+          if (e.currentTarget.matches(':focus-visible')) setOpen(true);
+        }}
         onClick={() => setOpen(true)}
         className={iconClassName}
       >
