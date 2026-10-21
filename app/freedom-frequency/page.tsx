@@ -68,6 +68,7 @@ export default function FreedomFrequencyPage() {
           <div className="container-editorial grid items-center gap-12 lg:grid-cols-2">
             <div>
               <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-bark/70">{page.label}</p>
+              <p className="mt-4 inline-block rounded-full bg-zing-yellow px-3 py-1 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark">{page.status}</p>
               <h1 className="mt-5 font-display text-5xl leading-[1] text-bark sm:text-7xl">{page.title}</h1>
               <p className="mt-3 font-display text-2xl italic text-bark/80 sm:text-3xl">{page.subtitle}</p>
               <div className="mt-8 max-w-md space-y-4">
@@ -88,10 +89,11 @@ export default function FreedomFrequencyPage() {
                 <JoinButton />
                 {tier.price && (
                   <span className="rounded-full bg-zing-babypink px-4 py-2 font-body text-sm font-bold text-bark">
-                    <Price price={tier.price} />
+                    <Price price={tier.price} /> {page.priceNote}
                   </span>
                 )}
               </div>
+              <p className="mt-4 max-w-md font-body text-sm italic text-bark/70">{page.waitlistNote}</p>
             </div>
             <div className="mx-auto w-full max-w-md">
               <div className="relative aspect-square rotate-2 overflow-hidden shadow-2xl">

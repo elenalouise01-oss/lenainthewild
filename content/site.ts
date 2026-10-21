@@ -241,8 +241,12 @@ export const freedomFrequencyPage = {
     'An embodied, self-paced journey to understand what’s keeping you stuck and create a life that feels genuinely like yours.',
   ],
   cta: 'Join the Waitlist',
+  // Shown above the title and under the button while it's waitlist only
+  status: 'Coming soon · Waitlist open',
+  waitlistNote: 'The waitlist is free to join. You’ll be the first to know when doors open.',
+  priceNote: 'at launch',
   waitlistHeading: 'Be the first to know',
-  waitlistBody: 'Pop your details in and I’ll let you know as soon as The Freedom Frequency opens.',
+  waitlistBody: 'Pop your details in and I’ll let you know as soon as The Freedom Frequency opens. Joining the waitlist is free, there’s nothing to pay now.',
   waitlistSent: {
     heading: 'You’re on the list!',
     body: 'Thank you for joining, {name}. I’ll email you as soon as The Freedom Frequency opens.',
@@ -377,6 +381,12 @@ export const freedomFrequencyPage = {
   },
   faqHeading: 'Questions about The Freedom Frequency',
   faq: [
+    {
+      q: 'How does the waitlist work?',
+      a: [
+        'The Freedom Frequency isn’t open just yet. Join the waitlist for free and I’ll email you as soon as doors open, so you can be one of the first inside. The course will be $777 AUD when it launches.',
+      ],
+    },
     {
       q: 'Who is The Freedom Frequency for?',
       a: [
