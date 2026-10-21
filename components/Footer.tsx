@@ -42,12 +42,12 @@ const ICONS: Record<string, React.ReactNode> = {
   ),
 };
 
-// `playful` is for the digital product pages: lavender background with
-// the butter-yellow logo.
+// `playful` is for the digital product pages: the bottom strip (logo and
+// copyright) turns lavender, with the butter-yellow logo.
 export default function Footer({ playful = false }: { playful?: boolean }) {
-  const muted = playful ? 'text-bark/70' : 'text-stone';
+  const muted = 'text-stone';
   return (
-    <footer className={`border-t border-bark/10 px-6 py-20 ${playful ? 'bg-sage' : 'bg-sand'}`}>
+    <footer className={`border-t border-bark/10 bg-sand px-6 pt-20 ${playful ? '' : 'pb-20'}`}>
       <div className="container-editorial grid gap-10 sm:grid-cols-4">
         {footer.columns.map((column) => (
           <div key={column.label}>
@@ -120,11 +120,12 @@ export default function Footer({ playful = false }: { playful?: boolean }) {
         </div>
       </div>
 
-      <div className="container-editorial mt-14 flex items-end justify-between gap-6 border-t border-bark/10 pt-8">
+      <div className={playful ? '-mx-6 mt-14 bg-sage px-6 py-10' : ''}>
+      <div className={`container-editorial flex items-end justify-between gap-6 ${playful ? '' : 'mt-14 border-t border-bark/10 pt-8'}`}>
         <div>
           {/* The litw logo above the copyright line: deep brown, or butter yellow on lavender */}
           <Image src={playful ? '/images/litw-logo-yellow.png' : '/images/litw-logo-brown.png'} alt={nav.logo} width={248} height={115} className="h-auto w-20" />
-          <p className={`mt-4 font-body text-xs ${muted}`}>
+          <p className={`mt-4 font-body text-xs ${playful ? 'text-bark/70' : 'text-stone'}`}>
             © {new Date().getFullYear()} {nav.logo} by Naluri Collective. All rights reserved.
           </p>
         </div>
@@ -135,6 +136,7 @@ export default function Footer({ playful = false }: { playful?: boolean }) {
         >
           Back to top ↑
         </a>
+      </div>
       </div>
     </footer>
   );
