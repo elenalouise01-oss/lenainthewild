@@ -67,9 +67,8 @@ export const socialLinks: Record<string, string> = {
 
 // Where each offer lives on The Leap. Used by the offer cards and the footer.
 export const offerLinks: Record<string, string> = {
-  'The 5 Day Reconnect': 'https://theleap.co/@naluri/course/the-5-day-reconnect',
-  'The Freedom Frequency':
-    'https://theleap.co/@naluri/email_capture/the-freedom-frequency-your-next-chapter',
+  // The Freedom Frequency has no Leap link: its waitlist is on this site.
+  'The 5 Day Reconnect': 'https://theleap.co/@Lenainthewild/course/the-5-day-reconnect',
 };
 
 // Web3Forms access key: the contact form and waitlist sign-ups are emailed
