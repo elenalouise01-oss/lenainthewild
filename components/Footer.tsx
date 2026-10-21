@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { footer, nav, offerLinks, offerPages, socialLinks } from '@/content/site';
 import { scrollToTop } from '@/lib/goHome';
@@ -116,10 +117,14 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="container-editorial mt-14 flex items-center justify-between gap-6 border-t border-bark/10 pt-8">
-        <p className="font-body text-xs text-stone">
-          © {new Date().getFullYear()} {nav.logo} by Naluri Collective. All rights reserved.
-        </p>
+      <div className="container-editorial mt-14 flex items-end justify-between gap-6 border-t border-bark/10 pt-8">
+        <div>
+          {/* The litw logo in deep brown, above the copyright line */}
+          <Image src="/images/litw-logo-brown.png" alt={nav.logo} width={248} height={115} className="h-auto w-20" />
+          <p className="mt-4 font-body text-xs text-stone">
+            © {new Date().getFullYear()} {nav.logo} by Naluri Collective. All rights reserved.
+          </p>
+        </div>
         <a
           href="#"
           onClick={scrollToTop}
