@@ -148,6 +148,7 @@ export const fiveDayReconnectPage = {
   label: 'The Freedom Seeker',
   title: 'The 5 Day Reconnect',
   subtitle: 'Five days of simple grounding practices to help you get out of your head and back into your body.',
+  collective: 'A Lena in the Wild offering, part of Naluri Collective',
   cta: 'I’m Ready',
   forHeading: 'This is for you if:',
   forList: [

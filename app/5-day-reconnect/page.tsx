@@ -122,6 +122,8 @@ export default function FiveDayReconnectPage() {
               <div className="mt-10">
                 <BuyButton />
               </div>
+              {/* The course itself carries Naluri Collective branding, so say so up front */}
+              <p className="mt-6 font-body text-xs italic text-bark/70">{page.collective}</p>
             </div>
             <div className="mx-auto w-full max-w-md">
               <div className="relative aspect-square -rotate-2 overflow-hidden shadow-2xl">
