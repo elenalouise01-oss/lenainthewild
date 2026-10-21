@@ -123,7 +123,12 @@ export default function FiveDayReconnectPage() {
                 <BuyButton />
               </div>
               {/* The course itself carries Naluri Collective branding, so say so up front */}
-              <p className="mt-6 font-body text-xs italic text-bark/70">{page.collective}</p>
+              <div className="mt-12 flex items-center gap-3">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sage shadow-sm">
+                  <Image src="/images/litw-logo-yellow.png" alt="Lena in the Wild" width={248} height={115} className="h-auto w-9" />
+                </span>
+                <p className="font-body text-xs italic text-bark/70">{page.collective}</p>
+              </div>
             </div>
             <div className="relative mx-auto w-full max-w-md">
               <div className="relative aspect-square -rotate-2 overflow-hidden shadow-2xl">
@@ -131,9 +136,6 @@ export default function FiveDayReconnectPage() {
               </div>
               {/* The litw logo as a round lavender sticker on the cover's corner,
                   like the stickers on the offer sleeves */}
-              <div className="absolute -bottom-6 -right-4 flex h-24 w-24 rotate-12 items-center justify-center rounded-full bg-sage shadow-lg sm:h-28 sm:w-28">
-                <Image src="/images/litw-logo-yellow.png" alt="Lena in the Wild" width={248} height={115} className="h-auto w-16 sm:w-20" />
-              </div>
             </div>
           </div>
         </section>
