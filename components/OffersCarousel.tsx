@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useMotionValue, useSpring, type PanInfo } from 'framer-motion';
 import Image from 'next/image';
 import Price from '@/components/Price';
@@ -44,6 +44,8 @@ export default function OffersCarousel() {
   const [details, setDetails] = useState<number | null>(null);
   // The swiping-hand hint goes away once they've moved the offers themselves
   const [moved, setMoved] = useState(false);
+  // Set while a swipe is under way, so letting go doesn't also count as a click
+  const dragged = useRef(false);
 
   // 3D tilt of the centre sleeve, following the pointer / drag.
   const tiltX = useMotionValue(0);
@@ -76,6 +78,9 @@ export default function OffersCarousel() {
   };
 
   const onDragEnd = (_: unknown, info: PanInfo) => {
+    setTimeout(() => {
+      dragged.current = false;
+    }, 0);
     if (info.offset.x < -SWIPE_THRESHOLD) go(1);
     else if (info.offset.x > SWIPE_THRESHOLD) go(-1);
     else resetTilt();
@@ -164,14 +169,14 @@ export default function OffersCarousel() {
             onClick={() => go(1)}
             aria-hidden="true"
             tabIndex={-1}
-            className="absolute left-full top-[44%] z-30 -ml-5 flex sm:ml-1 h-10 w-10 items-center justify-center rounded-full"
+            className="absolute left-full top-[44%] z-30 -ml-5 flex h-12 w-12 items-center justify-center rounded-full sm:ml-0"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1, x: [4, -6, 4], rotate: [8, -10, 8] }}
             viewport={{ once: true, amount: 0.6 }}
             exit={{ opacity: 0, transition: { duration: 0.25 } }}
             transition={{ opacity: { duration: 0.4, delay: 1.2 }, default: { duration: 1.3, delay: 1.6, repeat: Infinity, ease: 'easeInOut' } }}
             // Lights up on hover: grows a little with a soft baby-pink glow
-            whileHover={{ scale: 1.25, backgroundColor: 'rgba(248,200,220,1)', boxShadow: '0 0 20px 8px rgba(248,200,220,0.9)', transition: { duration: 0.2 } }}
+            whileHover={{ x: 0, rotate: 0, scale: 1.25, backgroundColor: 'rgba(248,200,220,1)', boxShadow: '0 0 20px 8px rgba(248,200,220,0.9)', transition: { duration: 0.2 } }}
             whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
           >
             <Image src="/images/swipe-hand.png" alt="" width={32} height={32} className="h-8 w-8 max-w-none" />
@@ -183,6 +188,9 @@ export default function OffersCarousel() {
         drag={reduced ? false : 'x'}
         dragConstraints={{ left: 0, right: 0 }}
         dragElastic={0.18}
+        onDragStart={() => {
+          dragged.current = true;
+        }}
         onDrag={onDrag}
         onDragEnd={onDragEnd}
       >
@@ -207,7 +215,13 @@ export default function OffersCarousel() {
               }}
               transition={spring}
               style={{ zIndex: isActive ? 20 : 10 }}
-              onClick={isActive ? undefined : () => go(d)}
+              // A click on a side sleeve brings it to the centre; a click on the
+              // centre sleeve (not on its buttons) moves on to the next one
+              onClick={(e) => {
+                if (dragged.current) return;
+                if (!isActive) go(d);
+                else if (!(e.target as HTMLElement).closest('a, button')) go(1);
+              }}
               onPointerMove={isActive ? onPointerMove : undefined}
               onPointerLeave={isActive ? resetTilt : undefined}
               aria-hidden={isActive ? undefined : true}
