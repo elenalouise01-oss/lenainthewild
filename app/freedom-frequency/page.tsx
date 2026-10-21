@@ -103,7 +103,7 @@ export default function FreedomFrequencyPage() {
           </div>
         </section>
 
-        {/* The overview: what it is, how it's delivered, who it's for, length, description, outcomes */}
+        {/* The overview: what it is, how it's delivered, who it's for, length, outcomes */}
         <section className="bg-cream px-6 py-24 sm:py-32">
           <div className="mx-auto max-w-4xl divide-y divide-bark/15 border-y border-bark/15">
             <OverviewRow heading={ov.whatItIs.heading}>
@@ -142,6 +142,12 @@ export default function FreedomFrequencyPage() {
                     {p}
                   </p>
                 ))}
+                <p className="border-l-4 border-zing-babypink pl-5 font-display text-xl italic leading-snug text-bark sm:text-2xl">{ov.whoFor.quote}</p>
+                {ov.whoFor.body2.map((p) => (
+                  <p key={p.slice(0, 24)} className={rowText}>
+                    {p}
+                  </p>
+                ))}
               </div>
             </OverviewRow>
             <OverviewRow heading={ov.length.heading}>
@@ -162,15 +168,6 @@ export default function FreedomFrequencyPage() {
                 ))}
               </ol>
               <p className={`mt-5 ${rowText}`}>{ov.length.closing}</p>
-            </OverviewRow>
-            <OverviewRow heading={ov.description.heading}>
-              <div className="space-y-5">
-                {ov.description.body.map((p) => (
-                  <p key={p.slice(0, 24)} className={rowText}>
-                    {p}
-                  </p>
-                ))}
-              </div>
             </OverviewRow>
             <OverviewRow heading={ov.outcomes.heading}>
               <div className="space-y-5">
@@ -195,33 +192,9 @@ export default function FreedomFrequencyPage() {
               <p className="mt-8 border-l-4 border-zing-babypink pl-6 font-display text-xl italic leading-snug text-bark sm:text-2xl">{ov.outcomes.closing}</p>
             </OverviewRow>
           </div>
-        </section>
-
-        {/* Who it's for */}
-        <section className="bg-sand px-6 py-24 sm:py-32">
-          <div className="mx-auto max-w-2xl">
-            <ScrollReveal>
-              <h2 className="font-display text-3xl italic leading-tight text-bark sm:text-5xl">{page.forHeading}</h2>
-            </ScrollReveal>
-            <ScrollReveal delay={0.1}>
-              <div className="mt-10 space-y-6">
-                {page.forParagraphs.map((p) => (
-                  <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber sm:text-lg">{p}</p>
-                ))}
-              </div>
-              <p className="my-12 border-l-4 border-zing-babypink pl-6 font-display text-2xl leading-snug text-bark sm:text-3xl">{page.forPullQuote}</p>
-              <div className="space-y-6">
-                {page.forParagraphs2.map((p) => (
-                  <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber sm:text-lg">{p}</p>
-                ))}
-              </div>
-              <ul className="mt-10 space-y-3">
-                {page.questions.map((q) => (
-                  <li key={q} className="font-display text-xl italic text-bark sm:text-2xl">{q}</li>
-                ))}
-              </ul>
-              <p className="mt-12 font-display text-3xl leading-tight text-bark sm:text-4xl">{page.knowing}</p>
-            </ScrollReveal>
+          {/* A way to join part-way down the page */}
+          <div className="mt-14 flex justify-center">
+            <JoinButton />
           </div>
         </section>
 
@@ -264,8 +237,7 @@ export default function FreedomFrequencyPage() {
                   <p key={p.slice(0, 24)} className="font-body text-base leading-relaxed text-umber sm:text-lg">{p}</p>
                 ))}
               </div>
-              <p className="my-12 border-l-4 border-zing-babypink pl-6 font-display text-2xl italic leading-snug text-bark sm:text-3xl">{page.courseHighlight}</p>
-              <p className="font-body text-base leading-relaxed text-umber sm:text-lg">{page.courseEnd}</p>
+              <p className="mt-12 border-l-4 border-zing-babypink pl-6 font-display text-2xl italic leading-snug text-bark sm:text-3xl">{page.courseHighlight}</p>
             </ScrollReveal>
           </div>
         </section>

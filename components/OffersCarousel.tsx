@@ -394,7 +394,8 @@ function SleeveArt({
         </div>
       )}
 
-      {cartHref && (
+      {/* No cart over a corner banner (e.g. "Waitlist open"); the banner says it */}
+      {cartHref && !tier.banner && (
         <a
           href={cartHref}
           target={cartHref.startsWith('http') ? '_blank' : undefined}

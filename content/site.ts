@@ -145,9 +145,9 @@ export const leadMagnet = {
 };
 
 export const fiveDayReconnectPage = {
-  label: 'The Freedom Seeker · 01',
+  label: 'The Freedom Seeker',
   title: 'The 5 Day Reconnect',
-  subtitle: 'Five days of simple practices to help you get out of your head and back into your body.',
+  subtitle: 'Five days of simple grounding practices to help you get out of your head and back into your body.',
   cta: 'I’m Ready',
   forHeading: 'This is for you if:',
   forList: [
@@ -191,8 +191,8 @@ export const fiveDayReconnectPage = {
     },
   ],
   notAnother:
-    'This isn’t another self-improvement course. It’s five days of real tools I wish I’d had sooner, collected over years of being stuck, investing in healers, coaches and modalities, and eventually finding my way out.',
-  minutes: 'And it starts with just a few minutes a day.',
+    'Five days of sharing what I’ve learnt through years of feeling stuck, searching for answers, investing in healers and coaches, and figuring out what actually helped me find my way back to myself.',
+  minutes: 'Just a few minutes a day to start reconnecting with yourself.',
   closing: 'You don’t need to have it all figured out. You just need to start.',
   next: { lead: 'Ready to go deeper?', label: 'Explore The Freedom Frequency', href: '/freedom-frequency' },
   faqHeading: 'Questions about The 5 Day Reconnect',
@@ -233,7 +233,7 @@ export const fiveDayReconnectPage = {
 
 // The Freedom Frequency page (/freedom-frequency).
 export const freedomFrequencyPage = {
-  label: 'The Freedom Seeker · 02',
+  label: 'The Freedom Seeker',
   title: 'The Freedom Frequency',
   subtitle: 'Your next chapter starts within.',
   // The intro under the title on this page only (the home page card keeps its own short text).
@@ -251,17 +251,6 @@ export const freedomFrequencyPage = {
     heading: 'You’re on the list!',
     body: 'Thank you for joining, {name}. I’ll email you as soon as The Freedom Frequency opens.',
   },
-  forHeading: 'Does this sound like you?',
-  forParagraphs: [
-    'You did all the things you were meant to do. The things society told us to do. You built the career, the home, the income… maybe even the relationship. You created the life you once dreamt of.',
-  ],
-  forPullQuote: 'But now you’re standing in it wondering, why am I not fulfilled?',
-  forParagraphs2: [
-    'On the outside, things look good. You “should” be happy. But every week you’re up and down. Restless. Flat. Questioning how the fuck to get out of a life you were meant to want.',
-    'You keep searching for answers from everyone and anyone. Trying to gain clarity on what’s next. Caught between stagnation, comfort, and fear of the unknown. Not even fully sure what kind of help you actually need.',
-  ],
-  questions: ['Another healing session?', 'Another course?', 'A psychic to tell you your future so you finally know what step to take?'],
-  knowing: 'You just know there has to be something more to life. Surely this isn’t it.',
   storyLead: 'I teach and share a lifetime of tools, lessons, and learnings because I was exactly where you are four years ago.',
   storyParagraphs: [
     'I was lost and confused. I didn’t understand why I wasn’t happy when I had what I thought I wanted. I was a successful PT, making great money, living a good life in Sydney… but I couldn’t stop thinking, this can’t be it. There has to be more.',
@@ -282,14 +271,11 @@ export const freedomFrequencyPage = {
   shifting: 'And that’s when things actually started shifting.',
   courseHeading: 'This course brings together what I’ve learned about moving from stagnation to a life that feels like mine.',
   courseParagraphs: [
-    'From years of confusion and burnout to questioning the beliefs I’d built my life around, reconnecting with myself and creating a life that feels more abundant, free and aligned with my values.',
-    'The Freedom Frequency brings together the tools, teachings and realisations that have shaped my journey. It explores the inner work that helped me better understand myself, alongside the practical choices that allowed me to begin creating a different life.',
-    'Through shadow work, embodied practices, self-discovery and an exploration of abundance, I want to help you understand what’s been keeping you stuck, reconnect with what you genuinely want and begin trusting yourself enough to move forward differently.',
+    'Over time, I began to realise that creating a different life wasn’t just about finding the right strategy, career or next step. It was about understanding the fears, beliefs and conditioning influencing my choices, reconnecting with the parts of myself I’d pushed aside, and learning to trust my own answers. That deeper exploration changed the way I understood myself, what I believed was possible and how I wanted to live.',
     'Because sometimes, the answer isn’t another strategy, another person telling you what to do or another attempt to figure everything out.',
   ],
   courseHighlight: 'Sometimes, the starting point is understanding yourself.',
-  courseEnd: 'That’s why I created The Freedom Frequency: to help you understand yourself, release what holds you back and create a life that feels like yours.',
-  closing: 'For the woman who knows deep down there has to be more… but doesn’t know how to access it yet.',
+  closing: 'For the person who knows deep down there has to be more… but doesn’t know how to access it yet.',
   next: { lead: 'Want to start with something smaller?', label: 'Start with The 5 Day Reconnect', href: '/5-day-reconnect' },
   // The six-part overview near the top of the page (structure Lena chose).
   overview: {
@@ -319,8 +305,13 @@ export const freedomFrequencyPage = {
     whoFor: {
       heading: 'Who it’s for',
       body: [
-        'The Freedom Frequency is for you if you feel like something is missing in your life, but aren’t entirely sure why or how to change it. You might feel unfulfilled, disconnected from yourself or uncertain about what you really want, even when everything seems fine on the surface.',
-        'You’ve spent years following expectations, putting others first, trying to get everything right or chasing a version of success that no longer feels right. Somewhere along the way, you may have become so accustomed to being who you’re expected to be that you’ve lost touch with who you are and what you genuinely want.',
+        'The Freedom Frequency is for you if you built the career, the home, the income… maybe even the relationship. You created the life you once dreamt of.',
+      ],
+      quote: 'But now you’re standing in it wondering, why am I not fulfilled?',
+      body2: [
+        'On the outside, things look good. You “should” be happy. But you’re up and down. Restless. Flat. Something feels missing, even if you’re not sure why or how to change it.',
+        'You’ve spent years following expectations, putting others first, trying to do the right thing or chasing a version of success that no longer feels right. Somewhere along the way, you lost touch with who you are and what you genuinely want.',
+        'Maybe you keep searching for answers. Another healing session? Another course? A psychic to tell you your future? You just know there has to be something more to life. Surely this isn’t it.',
       ],
     },
     length: {
@@ -338,20 +329,6 @@ export const freedomFrequencyPage = {
         { focus: 'Integrate', body: 'Reflect on what you’ve discovered, recognise the shifts you’ve begun making and create your personal freedom plan, with practical next steps to continue building a life that feels like yours.' },
       ],
       closing: 'Six weeks gives you structure and momentum, but personal growth doesn’t run on a deadline. Move through the journey at your own pace and take longer whenever you need to.',
-    },
-    description: {
-      heading: 'The journey',
-      body: [
-        'The Freedom Frequency was born from my own journey through years of confusion, burnout, self-discovery and ultimately creating a life that feels genuinely like mine.',
-        'For years, I found myself caught in a cycle of searching for answers outside myself. I’d discover a new course, work with a new mentor or find an approach that made me feel like I’d finally figured it out.',
-        'I’d feel inspired, hopeful and full of possibility. I’d build momentum, start making changes and convince myself I was finally onto something.',
-        'But a few months later, I’d find myself back at square one, questioning everything and searching for the next thing that might finally give me the answers.',
-        'I kept looking for the missing piece without fully understanding what was keeping me stuck in the first place.',
-        'Over time, I began to realise that creating a different life wasn’t just about finding the right strategy, career or next step. It was also about understanding the fears, beliefs and conditioning influencing my choices, reconnecting with the parts of myself I’d pushed aside, and learning to trust my own answers.',
-        'That deeper exploration changed the way I understood myself, what I believed was possible and how I wanted to live.',
-        'The Freedom Frequency brings together the tools, teachings and realisations that have shaped my journey, combining shadow work, embodied practices, self-discovery and an exploration of abundance to help you begin creating meaningful change from within.',
-        'It’s an opportunity to stop endlessly searching for the next answer, understand the patterns you’ve been repeating, reconnect with what you genuinely want and begin moving towards a life that feels like yours.',
-      ],
     },
     outcomes: {
       heading: 'What you’ll walk away with',
@@ -396,16 +373,7 @@ export const freedomFrequencyPage = {
     {
       q: 'How does it work?',
       a: [
-        'The Freedom Frequency is an embodied, self-paced online course you can move through in your own time, wherever you are in the world.',
-        'The journey combines short video lessons, guided audio practices, journalling prompts and practical exercises. Through shadow work, self-inquiry and embodied practices, you’ll explore the patterns, fears and beliefs influencing your life, reconnect with what you genuinely want, and begin turning those insights into meaningful action.',
-        'You’ll also explore your relationship with freedom and abundance, helping you question old assumptions and develop a vision for a life that feels more aligned with who you are.',
-        'The course follows a suggested six-week structure, but you can take longer whenever you need to.',
-      ],
-    },
-    {
-      q: 'How much is it, and when does it open?',
-      a: [
-        'The Freedom Frequency is $777 AUD. It isn’t open yet, so join the waitlist and I’ll let you know as soon as it opens.',
+        'It’s an embodied, self-paced online course you can move through in your own time, wherever you are in the world. It follows a suggested six-week structure, but you can take longer whenever you need to.',
       ],
     },
     {
@@ -452,6 +420,7 @@ export const freedomSeeker = {
     {
       number: '(02)',
       price: '$777 AUD',
+      banner: 'Waitlist open',
       title: 'The Freedom Frequency',
       body: "An embodied, self-paced course to reconnect with yourself, release the patterns keeping you stuck and create the freedom you've been craving.",
       tags: ['Embodied Practice', 'Self-Paced Course'],
@@ -880,6 +849,7 @@ export const lifeDesignPage = {
   help: [
     {
       heading: 'The Freedom Frequency',
+      badge: 'Waitlist open',
       tagline: 'Reconnect with yourself. Release what holds you back. Create a life that feels like yours.',
       body: [
         'The Freedom Frequency is a guided, self-paced journey to help you understand the patterns keeping you stuck, reconnect with your intuition and desires, and build the clarity and self-trust to begin creating a life that reflects who you truly are.',
