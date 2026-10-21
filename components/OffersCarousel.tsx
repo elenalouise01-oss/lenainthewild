@@ -31,19 +31,6 @@ const lookFor = (i: number) => ({ ...LOOKS[i % LOOKS.length], ...COVERS[freedomS
 
 const SWIPE_THRESHOLD = 60;
 
-// The swipe hint: a trail stretching out behind a fingertip as it slides left
-const SWIPE_LOOP = [
-  {
-    key: 'trail',
-    className: 'absolute -top-[0.4rem] left-0 h-3.5 w-24 origin-left rounded-full bg-gradient-to-r from-white/80 to-white/0',
-    animate: { opacity: [0, 0.9, 0.9, 0], x: [48, 48, -48, -48], scaleX: [0, 0, 1, 1] },
-  },
-  {
-    key: 'dot',
-    className: 'absolute -left-6 -top-6 h-12 w-12 rounded-full border-4 border-white/60 bg-white/85 shadow-[0_6px_18px_rgba(59,45,14,0.35)]',
-    animate: { opacity: [0, 1, 1, 0], x: [48, 48, -48, -48], scale: [1.15, 0.9, 0.9, 1.1] },
-  },
-];
 const MAX_TILT = 14;
 
 type Tier = (typeof freedomSeeker.tiers)[number];
@@ -168,28 +155,27 @@ export default function OffersCarousel() {
         transition={{ duration: 1.4, delay: 1.6, ease: 'easeInOut' }}
         className="relative"
       >
-      {/* A fingertip touch sliding across the sleeve, leaving a soft
-          trail, to show it can be swiped */}
+      {/* A swiping hand on the sleeve, to show it can be swiped with a finger */}
       <AnimatePresence>
         {!reduced && !moved && (
           <motion.div
             aria-hidden="true"
-            className="pointer-events-none absolute left-1/2 top-[44%] z-30"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            className="pointer-events-none absolute left-1/2 top-[38%] z-30 -ml-9 flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full bg-cream shadow-[0_8px_22px_rgba(59,45,14,0.35)]"
+            initial={{ opacity: 0, scale: 0.6 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.6 }}
-            exit={{ opacity: 0, transition: { duration: 0.2 } }}
+            exit={{ opacity: 0, scale: 0.6, transition: { duration: 0.25 } }}
+            transition={{ duration: 0.4, delay: 1.2 }}
           >
-            {SWIPE_LOOP.map((part) => (
-              <motion.span
-                key={part.key}
-                className={part.className}
-                initial={{ opacity: 0, x: 48, ...(part.key === 'trail' ? { scaleX: 0 } : {}) }}
-                whileInView={part.animate}
-                viewport={{ once: true, amount: 0.6 }}
-                transition={{ duration: 1.6, delay: 1.4, times: [0, 0.15, 0.65, 1], ease: 'easeInOut', repeat: 2, repeatDelay: 0.5 }}
-              />
-            ))}
+            <motion.img
+              src="/images/swipe-hand.png"
+              alt=""
+              className="h-12 w-12"
+              initial={{ x: 0, rotate: 0 }}
+              whileInView={{ x: [6, -8, 6], rotate: [8, -10, 8] }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: 1.3, delay: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+            />
           </motion.div>
         )}
       </AnimatePresence>
