@@ -76,7 +76,7 @@ const product = {
 // Buying is the one step that leaves the site: The Leap takes payment and
 // delivers the audio, in a new tab.
 // `dark` is for the brown closing section: a lilac button instead of black.
-function BuyButton({ dark = false }: { dark?: boolean }) {
+function BuyButton({ dark = false, label = page.cta }: { dark?: boolean; label?: string }) {
   return (
     <div className={`flex flex-wrap items-center gap-5 ${dark ? 'justify-center' : ''}`}>
       <a
@@ -87,7 +87,7 @@ function BuyButton({ dark = false }: { dark?: boolean }) {
           dark ? 'bg-sage text-bark' : 'bg-[#141414] text-cream'
         }`}
       >
-        {page.cta} →
+        {label} →
       </a>
       {tier.price && (
         <span className={`rounded-full px-4 py-2 font-body text-sm font-bold ${dark ? 'bg-cream text-bark' : 'bg-sage text-bark'}`}>
@@ -199,7 +199,7 @@ export default function FiveDayReconnectPage() {
           <ScrollReveal className="mx-auto flex max-w-2xl flex-col items-center">
             <p className="font-display text-3xl italic leading-tight text-cream sm:text-5xl">{page.closing}</p>
             <div className="mt-12">
-              <BuyButton dark />
+              <BuyButton dark label={page.closingCta} />
             </div>
           </ScrollReveal>
         </section>

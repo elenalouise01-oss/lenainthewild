@@ -193,7 +193,8 @@ export const fiveDayReconnectPage = {
   notAnother:
     'Five days of sharing what I’ve learnt through years of feeling stuck, searching for answers, investing in healers and coaches, and figuring out what actually helped me find my way back to myself.',
   minutes: 'Just a few minutes a day to start reconnecting with yourself.',
-  closing: 'You don’t need to have it all figured out. You just need to start.',
+  closing: 'Slow down, quiet the noise and start hearing yourself again.',
+  closingCta: 'I’m ready to reconnect',
   next: { lead: 'Ready to go deeper?', label: 'Explore The Freedom Frequency', href: '/freedom-frequency' },
   faqHeading: 'Questions about The 5 Day Reconnect',
   faq: [
