@@ -278,7 +278,7 @@ export const freedomFrequencyPage = {
   ],
   courseHighlight: 'Sometimes, the starting point is understanding yourself.',
   closing: 'For the person who knows deep down there has to be more… but doesn’t know how to access it yet.',
-  next: { lead: 'While you wait…', label: 'Start with The 5 Day Reconnect', href: '/5-day-reconnect' },
+  next: { lead: 'Want to start reconnecting now?', label: 'Start with The 5 Day Reconnect', href: '/5-day-reconnect' },
   // The six-part overview near the top of the page (structure Lena chose).
   overview: {
     whatItIs: {
