@@ -23,9 +23,9 @@ export const metadata: Metadata = {
     url: '/life-design',
     title,
     description,
-    images: [{ url: '/images/who-i-help.jpg', alt: 'Lena holding an oracle card reading Amethyst above the harbour on a sunny day' }],
+    images: [{ url: '/images/road/road-5.jpg', alt: 'Lena’s legs and sneakers up in front of a sunset over the sea and green hills' }],
   },
-  twitter: { card: 'summary_large_image', title, description, images: ['/images/who-i-help.jpg'] },
+  twitter: { card: 'summary_large_image', title, description, images: ['/images/road/road-5.jpg'] },
 };
 
 const lena = { '@id': `${absoluteUrl('/')}#lena` };
@@ -81,8 +81,8 @@ export default function LifeDesignPage() {
             <div className="mx-auto w-full max-w-md">
               <div className="relative aspect-[4/5] -rotate-2 overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/who-i-help.jpg"
-                  alt="Lena holding an oracle card reading Amethyst above the harbour on a sunny day"
+                  src="/images/road/road-5.jpg"
+                  alt="Lena’s legs and sneakers up in front of a sunset over the sea and green hills"
                   fill
                   priority
                   sizes="(min-width: 1024px) 28rem, 90vw"
