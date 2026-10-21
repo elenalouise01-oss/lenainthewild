@@ -406,7 +406,7 @@ type Tier = {
 };
 
 export const freedomSeeker = {
-  heading: 'Your Next Chapter Starts Here',
+  heading: 'Explore Your Next Chapter',
   label: 'The Freedom Seeker',
   swipeHint: 'Swipe to see all 3 offerings',
   swipeHintDesktop: 'Use the arrows to see all 3 offerings',

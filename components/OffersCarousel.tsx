@@ -143,7 +143,7 @@ export default function OffersCarousel() {
         <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-bark/70">
           {freedomSeeker.label}
         </p>
-        <h2 className="mt-2 font-display text-xl italic leading-tight text-bark sm:text-3xl">{freedomSeeker.heading}</h2>
+        <h2 className="mt-2 font-display text-lg italic leading-tight text-bark sm:text-2xl">{freedomSeeker.heading}</h2>
       </div>
 
       {/* A little nudge the first time the sleeves come into view, so it's
@@ -155,21 +155,27 @@ export default function OffersCarousel() {
         transition={{ duration: 1.4, delay: 1.6, ease: 'easeInOut' }}
         className="relative"
       >
-      {/* A small swiping hand just off the sleeve's bottom-right corner, to
-          show it can be swiped with a finger */}
+      {/* A small swiping hand just off the sleeve's right edge, to
+          show it can be swiped with a finger. Tapping it moves to the next offer. */}
       <AnimatePresence>
         {!reduced && !moved && (
-          <motion.img
-            src="/images/swipe-hand.png"
-            alt=""
+          <motion.button
+            type="button"
+            onClick={() => go(1)}
             aria-hidden="true"
-            className="pointer-events-none absolute -right-2 top-full z-30 mt-3 h-8 w-8"
+            tabIndex={-1}
+            className="absolute left-full top-[44%] z-30 ml-1 flex h-10 w-10 items-center justify-center rounded-full"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1, x: [4, -6, 4], rotate: [8, -10, 8] }}
             viewport={{ once: true, amount: 0.6 }}
             exit={{ opacity: 0, transition: { duration: 0.25 } }}
             transition={{ opacity: { duration: 0.4, delay: 1.2 }, default: { duration: 1.3, delay: 1.6, repeat: Infinity, ease: 'easeInOut' } }}
-          />
+            // Lights up on hover: grows a little with a soft white glow
+            whileHover={{ scale: 1.25, backgroundColor: 'rgba(255,255,255,0.95)', boxShadow: '0 0 20px 8px rgba(255,255,255,0.8)', transition: { duration: 0.2 } }}
+            whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
+          >
+            <Image src="/images/swipe-hand.png" alt="" width={32} height={32} className="h-8 w-8 max-w-none" />
+          </motion.button>
         )}
       </AnimatePresence>
       <motion.div
