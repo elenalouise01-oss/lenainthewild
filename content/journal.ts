@@ -718,7 +718,7 @@ Here’s the thing though, and this gave me so much compassion for myself when I
 
 The highlight reel we scroll through every day has completely warped our baseline. We see someone’s ‘perfect’ version of themselves and suddenly we feel like we’re falling short — not doing enough, not looking enough, not being enough. And the cycle continues...
 
-Coming to Bali, moving into a slower culture where presence is actually the norm, it’s made the performance even more visible when I do see it. Like a contrast I can’t unsee. I notice the fakeness in others more clearly now. The inconsistency in moods and needs. The way people’s energy shifts depending on who’s watching.
+Coming to Bali, being in a slower culture where presence is actually the norm, it’s made the performance even more visible when I do see it. Like a contrast I can’t unsee. I notice the fakeness in others more clearly now. The inconsistency in moods and needs. The way people’s energy shifts depending on who’s watching.
 
 But here’s the thing, that noticing could easily become judgment. And sometimes it does. But then I remember compassion. Because I know how heavy that mask is. I wore it for years. And everyone is just out here doing their best.
 
