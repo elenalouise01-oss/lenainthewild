@@ -198,18 +198,18 @@ export default function Hero() {
             <span
               className="rounded-full bg-cream/70 px-4 py-1.5 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark"
             >
-              {/* each letter drops in from above, one after another */}
+              {/* each word drops in from above, one after another */}
               <span className="sr-only">{hero.scrollLabel}</span>
               <span aria-hidden="true" className="inline-flex">
-                {Array.from(hero.scrollLabel).map((ch, i) => (
+                {hero.scrollLabel.split(' ').map((word, i, words) => (
                   <motion.span
                     key={i}
                     className="inline-block whitespace-pre"
                     initial={reduced ? false : { y: -36, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ type: 'spring', stiffness: 420, damping: 16, delay: 0.6 + i * 0.06 }}
+                    transition={{ type: 'spring', stiffness: 420, damping: 16, delay: 0.6 + i * 0.3 }}
                   >
-                    {ch}
+                    {i < words.length - 1 ? `${word} ` : word}
                   </motion.span>
                 ))}
               </span>

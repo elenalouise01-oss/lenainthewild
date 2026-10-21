@@ -41,6 +41,8 @@ export default function OffersCarousel() {
   const count = tiers.length;
   const [active, setActive] = useState(0);
   const [details, setDetails] = useState<number | null>(null);
+  // The swiping-hand hint goes away once they've moved the offers themselves
+  const [moved, setMoved] = useState(false);
 
   // 3D tilt of the centre sleeve, following the pointer / drag.
   const tiltX = useMotionValue(0);
@@ -55,6 +57,7 @@ export default function OffersCarousel() {
 
   const go = (step: number) => {
     resetTilt();
+    setMoved(true);
     setActive((a) => (a + step + count) % count);
   };
 
@@ -149,7 +152,28 @@ export default function OffersCarousel() {
         whileInView={reduced ? undefined : { x: [0, -36, 0, -16, 0] }}
         viewport={{ once: true, amount: 0.6 }}
         transition={{ duration: 1.4, delay: 1.6, ease: 'easeInOut' }}
+        className="relative"
       >
+      {/* A hand swiping across the sleeve, to show it can be swiped */}
+      <AnimatePresence>
+        {!reduced && !moved && (
+          <motion.div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-[42%] z-30 -ml-7 text-bark drop-shadow-[0_4px_10px_rgba(0,0,0,0.35)]"
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: [0, 1, 1, 1, 0], x: [40, 40, -50, -50, -50], rotate: [0, 0, -12, -12, -12] }}
+            viewport={{ once: true, amount: 0.6 }}
+            exit={{ opacity: 0, transition: { duration: 0.2 } }}
+            transition={{ duration: 1.8, delay: 1.4, times: [0, 0.2, 0.6, 0.8, 1], ease: 'easeInOut', repeat: 2, repeatDelay: 0.6 }}
+          >
+            <svg viewBox="0 0 24 24" className="h-14 w-14" fill="#ffffff" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 11V10a2 2 0 0 0-4 0M14 10V9a2 2 0 0 0-4 0v1M10 9.5V4a2 2 0 0 0-4 0v10" fill="none" />
+              <path d="M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L6 14V4a2 2 0 0 1 4 0v5.5V9a2 2 0 0 1 4 0v1a2 2 0 0 1 4 0z" />
+              <path d="M10 9.5V14M14 10v4M18 11v3" fill="none" />
+            </svg>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <motion.div
         className="relative aspect-square w-[min(60dvh,74vw)] cursor-grab touch-pan-y active:cursor-grabbing"
         drag={reduced ? false : 'x'}
