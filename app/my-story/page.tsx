@@ -16,7 +16,7 @@ import Listen from '@/components/sections/Listen';
 import Newsletter from '@/components/sections/Newsletter';
 import { offerPages, storyPage } from '@/content/site';
 
-const title = 'My Story: Starting Over at 36 and Uprooting My Life to Bali — Lena in the Wild';
+const title = 'My Story: Uprooting My Life to Bali at 36 | Lena in the Wild';
 const description =
   'At 36 I left my PT business in Bondi, sold everything and uprooted my life to Bali. The burnout, the leap and what starting over in your 30s really looks like.';
 
