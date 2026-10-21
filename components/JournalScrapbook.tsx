@@ -232,7 +232,7 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
   );
 
   return (
-    <div className="relative ml-5 max-w-6xl rounded-sm bg-white sm:mx-auto bg-[linear-gradient(transparent_31px,#e4e4e4_31px)] bg-[size:100%_32px] pb-16 pl-[5.25rem] pr-8 pt-12 shadow-[0_20px_50px_rgba(59,45,14,0.18)] sm:pl-24 sm:pr-12 sm:pt-16">
+    <div className="relative ml-5 max-w-6xl rounded-sm bg-white sm:mx-auto bg-[linear-gradient(transparent_31px,#e4e4e4_31px)] bg-[size:100%_32px] pb-16 pl-[5.25rem] pr-8 pt-12 shadow-[0_20px_50px_rgba(59,45,14,0.18)] sm:pl-24 sm:pr-12 sm:pt-10">
       {/* The back page peeking out on the left, with the kraft cover edge
           showing where it folds */}
       <div aria-hidden="true" className="absolute -left-5 bottom-0 top-0 w-5 rounded-l-sm bg-[#f5f1e9] shadow-[-4px_8px_16px_rgba(59,45,14,0.12)]" />
@@ -249,7 +249,7 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
       <header className="relative grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-end">
         <div>
           <p className="font-type text-sm text-umber">no. 01 — {new Date().getFullYear()}</p>
-          <h1 className="mt-2 font-hand text-6xl leading-[0.95] text-bark sm:text-8xl">{heading}</h1>
+          <h1 className="mt-2 font-hand text-6xl leading-[0.95] text-bark [text-wrap:balance] sm:text-7xl">{heading}</h1>
         </div>
         <div className="relative rotate-1 bg-cream px-6 py-6 shadow-md lg:mb-3">
           <span aria-hidden="true" className="absolute -top-3 left-8 h-6 w-20 -rotate-6 bg-zing-babypink/80 shadow-sm" />
@@ -259,7 +259,7 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
       </header>
 
       {/* Category tabs, like sticky notes */}
-      <div className="mt-12 flex flex-wrap gap-3" role="group" aria-label="Filter by category">
+      <div className="mt-10 flex flex-wrap gap-3 sm:mt-8" role="group" aria-label="Filter by category">
         {categories.map((c, i) => (
           <button
             key={c}
@@ -281,7 +281,7 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
 
       {/* The pages: each is a sheet of lined paper reaching back to the
           binding, so it can turn like a page in a book */}
-      <div ref={pagesRef} className="relative mt-14 [perspective:2200px]">
+      <div ref={pagesRef} className="relative mt-14 [perspective:2200px] sm:mt-8">
         <div className={`relative -ml-[5.25rem] -mr-8 sm:-ml-24 sm:-mr-12 ${SHEET_PAD}`}>
           {renderPage(page)}
           {/* shadow the turning page casts on this one */}

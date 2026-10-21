@@ -51,7 +51,7 @@ export default function JournalPage() {
       <SiteHeader active="Journal Entries" />
       <main>
         {/* Scrapbook-style notebook */}
-        <section className="overflow-hidden bg-sand py-16 pl-1 pr-4 sm:px-8 sm:py-24">
+        <section className="overflow-hidden bg-sand py-16 pl-1 pr-4 sm:px-8 sm:pb-24 sm:pt-12">
           <JournalScrapbook
             heading={journalPage.heading}
             intro={journalPage.intro}
