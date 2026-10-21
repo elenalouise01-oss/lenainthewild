@@ -22,8 +22,10 @@ const STICKERS: Record<number, { src: string; w: number; h: number; className: s
   10: { src: '/images/sticker-star-scribble.png', w: 186, h: 167, className: '-right-5 -top-5 w-12 rotate-12' },
   14: { src: '/images/bow.png', w: 202, h: 226, className: '-left-5 -top-6 w-14 -rotate-12' },
 };
+const CATEGORY_ORDER = ['The Leap', 'Inner Work', 'Slowing Down', 'Self-Trust'];
+
 // Sticky-note colours for the category tabs
-const TABS = ['bg-zing-yellow', 'bg-sage/70', 'bg-zing-babypink', 'bg-zing-green', 'bg-cream'];
+const TABS = ['bg-zing-yellow', 'bg-sage/70', 'bg-zing-babypink', 'bg-zing-green', 'bg-[#fbd9bf]'];
 
 const num = (n: number) => `(${String(n).padStart(2, '0')})`;
 
@@ -88,7 +90,9 @@ const SHEET_PAD =
 // The journal as a wire-bound scrapbook: lined paper, taped and pinned
 // polaroids, a typewriter note, handwritten headings and stickers.
 export default function JournalScrapbook({ articles, heading, intro }: { articles: Card[]; heading: string; intro: string }) {
-  const categories = ['All', ...Array.from(new Set(articles.map((a) => a.category)))];
+  // Tabs in Lena's order; any new category goes on the end
+  const used = new Set(articles.map((a) => a.category));
+  const categories = ['All', ...CATEGORY_ORDER.filter((c) => used.has(c)), ...Array.from(used).filter((c) => !CATEGORY_ORDER.includes(c))];
   const [category, setCategory] = useState('All');
   const [page, setPage] = useState(0);
   const [leaf, setLeaf] = useState<{ page: number; dir: number } | null>(null);
@@ -111,9 +115,13 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
     if (leaf) return;
     const to = page + step;
     const top = pagesRef.current?.getBoundingClientRect().top ?? 0;
-    const needsScroll = !reduced && Math.abs(top - 120) > 40;
-    const wait = needsScroll ? 650 : 0;
-    window.scrollTo({ top: window.scrollY + top - 120, behavior: reduced ? 'auto' : 'smooth' });
+    // From far down the page (the turn buttons sit at the bottom), jump
+    // straight up: a long smooth scroll gets cut short when the page
+    // changes height, leaving the view at the bottom of the new page
+    const far = Math.abs(top - 120) > window.innerHeight;
+    const needsScroll = !reduced && !far && Math.abs(top - 120) > 40;
+    const wait = needsScroll ? 650 : far ? 60 : 0;
+    window.scrollTo({ top: window.scrollY + top - 120, behavior: reduced || far ? 'auto' : 'smooth' });
     if (reduced) {
       setPage(to);
       return;
@@ -133,6 +141,9 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
   const finishTurn = () => {
     if (leaf && leaf.dir < 0) setPage(leaf.page);
     setLeaf(null);
+    // Make sure the new page is shown from its top
+    const top = pagesRef.current?.getBoundingClientRect().top ?? 0;
+    if (Math.abs(top - 120) > 40) window.scrollTo({ top: window.scrollY + top - 120, behavior: 'auto' });
   };
   const number = (slug: string) => num(articles.findIndex((a) => a.slug === slug) + 1);
 
@@ -142,11 +153,11 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
     <>
       {/* Latest entry: a big pinned polaroid with its note beside it */}
       {n === 0 && featured && (
-        <Link href={`/journal/${featured.slug}`} className="group relative mb-20 grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
+        <Link href={`/journal/${featured.slug}`} className="group relative mb-20 grid items-center gap-10 lg:grid-cols-[0.7fr_1fr]">
           <div className="relative -rotate-2 bg-white p-3 pb-14 shadow-xl">
             <Fastener kind="clip" />
             {featured.image && (
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative aspect-[4/3] overflow-hidden lg:aspect-[3/2]">
                 <Image src={featured.image.src} alt={featured.image.alt} fill sizes="(min-width: 1024px) 34rem, 90vw" className="object-cover" style={{ objectPosition: featured.image.pos }} />
               </div>
             )}
@@ -246,38 +257,38 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
       </div>
 
       {/* Heading: handwritten, with a typewriter note taped on */}
-      <header className="relative grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-end">
-        <div>
+      <header className="relative grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-x-8 lg:gap-y-6">
+        <div className="lg:row-span-2 lg:self-center">
           <p className="font-type text-sm text-umber">no. 01 — {new Date().getFullYear()}</p>
-          <h1 className="mt-2 font-hand text-6xl leading-[0.95] text-bark [text-wrap:balance] sm:text-7xl">{heading}</h1>
+          <h1 className="mt-2 font-hand text-6xl leading-[0.95] text-bark sm:text-8xl">{heading}</h1>
         </div>
-        <div className="relative rotate-1 bg-cream px-6 py-6 shadow-md lg:mb-3">
+        <div className="relative rotate-1 self-end bg-cream px-6 py-6 shadow-md">
           <span aria-hidden="true" className="absolute -top-3 left-8 h-6 w-20 -rotate-6 bg-zing-babypink/80 shadow-sm" />
           <p className="font-type text-sm leading-relaxed text-bark sm:text-base">{intro}</p>
         </div>
         <Image src="/images/sticker-star.png" alt="" width={169} height={161} aria-hidden="true" className="absolute -right-2 -top-10 hidden h-auto w-14 rotate-12 sm:block" />
+        {/* Category tabs, like sticky notes: under the heading on phones,
+            under the note on wide screens so the latest entry fits on screen */}
+        <div className="mt-2 flex flex-wrap gap-3 self-start lg:mt-0 lg:gap-2" role="group" aria-label="Filter by category">
+          {categories.map((c, i) => (
+            <button
+              key={c}
+              type="button"
+              onClick={() => {
+                setCategory(c);
+                setLeaf(null);
+                setPage(0);
+              }}
+              aria-pressed={category === c}
+              className={`${TABS[i % TABS.length]} ${i % 2 ? 'rotate-1' : '-rotate-1'} px-4 py-2 font-type text-sm text-bark shadow-sm transition-transform lg:px-3 hover:-translate-y-0.5 ${
+                category === c ? 'outline outline-2 outline-offset-2 outline-bark' : ''
+              }`}
+            >
+              {c.toLowerCase()}
+            </button>
+          ))}
+        </div>
       </header>
-
-      {/* Category tabs, like sticky notes */}
-      <div className="mt-10 flex flex-wrap gap-3 sm:mt-8" role="group" aria-label="Filter by category">
-        {categories.map((c, i) => (
-          <button
-            key={c}
-            type="button"
-            onClick={() => {
-              setCategory(c);
-              setLeaf(null);
-              setPage(0);
-            }}
-            aria-pressed={category === c}
-            className={`${TABS[i % TABS.length]} ${i % 2 ? 'rotate-1' : '-rotate-1'} px-4 py-2 font-type text-sm text-bark shadow-sm transition-transform hover:-translate-y-0.5 ${
-              category === c ? 'outline outline-2 outline-offset-2 outline-bark' : ''
-            }`}
-          >
-            {c.toLowerCase()}
-          </button>
-        ))}
-      </div>
 
       {/* The pages: each is a sheet of lined paper reaching back to the
           binding, so it can turn like a page in a book */}

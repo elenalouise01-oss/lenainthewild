@@ -67,7 +67,7 @@ export const journal: JournalArticle[] = [
     description:
       'At 21, heartbroken with a degree I didn’t want to use, I left Sydney for a tiny Whitsundays island. My first leap toward freedom, before I had the words.',
     date: '2026-03-03',
-    category: 'Travel',
+    category: 'The Leap',
     tags: ['first leap', 'freedom', 'island life', 'breaking free from the system', 'starting over', 'reinventing your life', 'living on your own terms'],
     image: { src: '/images/journal/breaking-free-from-the-system.webp', alt: 'A white sand beach and turquoise water below green hills', pos: '50% 50%' },
     substackUrl: 'https://substack.com/home/post/p-189725048',
@@ -184,7 +184,7 @@ Next up: Find out what happened on the other side of my leap.
     description:
       'I thought I was just driven and productive. I was living in fight or flight. The signs I notice now, and how I slow down when hustle creeps back in.',
     date: '2026-03-05',
-    category: 'Healing',
+    category: 'Inner Work',
     tags: ['fight or flight', 'nervous system', 'slowing down', 'hustle culture', 'burnout', 'old patterns', 'reconnecting with yourself'],
     image: { src: '/images/journal/living-in-fight-or-flight.webp', alt: 'Feet up on a bed looking out through open doors at sunset', pos: '50% 60%' },
     substackUrl: 'https://lenainthewild.substack.com/p/for-years-i-didnt-even-realise-i',
@@ -240,7 +240,7 @@ From a slower, more grounded, happy place.
     description:
       'At 36 I quit my 8-year PT career, left Sydney and booked a one-way ticket to Bali to reinvent my life. The fear, the knowing and how the leap began.',
     date: '2026-03-13',
-    category: 'Wellness',
+    category: 'The Leap',
     tags: ['leaving Sydney', 'uprooting my life to Bali', 'trusting your intuition', 'starting over at 36', 'quitting my job', 'reinventing your life', 'fear of change'],
     image: { src: '/images/journal/leaping-into-the-unknown-part-1.webp', alt: 'Lena smiling with her suitcase in her empty apartment', pos: '50% 40%' },
     substackUrl: 'https://substack.com/home/post/p-190792316',
@@ -296,7 +296,7 @@ Part 2: What happens when you arrive in paradise… and bring all your old patte
     description:
       'Living with a Balinese family taught me what freedom really is. Why I couldn’t slow down in Sydney, and how I now create my days with intention.',
     date: '2026-03-16',
-    category: 'Travel',
+    category: 'The Leap',
     tags: ['slow living', 'living in Bali', 'freedom', 'intentional living', 'hustle culture', 'reconnecting with yourself', 'living on your own terms'],
     image: { src: '/images/journal/slowing-down-in-bali-what-real-freedom-feels-like.webp', alt: 'A journal, coffee and an oracle card on a stone table', pos: '50% 50%' },
     offer: 'The 5 Day Reconnect',
@@ -353,7 +353,7 @@ You have a choice. You get to choose yourself.
     description:
       'I uprooted my life to Bali and brought my old patterns with me: the hustle, the scarcity, the 5am alarms. Why patterns follow you, and what falling apart taught me.',
     date: '2026-03-24',
-    category: 'Healing',
+    category: 'The Leap',
     tags: ['uprooting my life to Bali', 'old patterns', 'scarcity mindset', 'intuition', 'Canggu vs Ubud', 'repeating patterns', 'starting over'],
     image: { src: '/images/journal/leaping-into-the-unknown-part-2.webp', alt: 'Lena on the beach at sunset under a pink and orange sky', pos: '50% 50%' },
     offer: 'The 5 Day Reconnect',
@@ -440,7 +440,7 @@ Part 3 coming soon: What the forced stillness cracked open — and how the unive
     description:
       'A sleepless night and a chat with a waitress showed me I was still running a limiting belief on autopilot, long after my life had changed. How I caught it.',
     date: '2026-04-01',
-    category: 'Healing',
+    category: 'Inner Work',
     tags: ['limiting beliefs', 'autopilot', 'old stories', 'mindset', 'self-awareness', 'repeating patterns', 'conditioning'],
     image: { src: '/images/journal/living-out-an-old-story.webp', alt: 'Coffee, a flower and an oracle card on a woven tablecloth', pos: '50% 50%' },
     offer: 'The 5 Day Reconnect',
@@ -505,7 +505,7 @@ And it makes me wonder, what other outdated programmes am I still running withou
     description:
       'Feeling drained, overgiving and losing yourself in the people you love? What I learnt about codependency, where it comes from, and what actually helps.',
     date: '2026-04-02',
-    category: 'Healing',
+    category: 'Inner Work',
     tags: ['codependency', 'overgiving', 'losing yourself in relationships', 'people pleasing', 'inner child', 'self-abandonment', 'repeating patterns'],
     image: { src: '/images/journal/losing-myself-in-relationships-codependency.webp', alt: 'A close-up selfie of Lena with her hand on her forehead', pos: '50% 30%' },
     offer: 'The 5 Day Reconnect',
@@ -597,7 +597,7 @@ Part 2 coming soon: The push/pull, why I started disappearing from the people I 
     description:
       'I spent years chasing the perfect work-life balance. My Vipassana teacher showed me I was asking the wrong question: it was never about the schedule.',
     date: '2026-04-03',
-    category: 'Wellness',
+    category: 'Slowing Down',
     tags: ['work-life balance', 'mindfulness', 'burnout', 'presence', 'Vipassana', 'living on autopilot', 'reconnecting with yourself'],
     image: { src: '/images/journal/work-life-balance-mindfulness.webp', alt: 'A laptop, coffee and a book on a table surrounded by plants', pos: '50% 50%' },
     offer: 'The 5 Day Reconnect',
@@ -645,7 +645,7 @@ The thing I was looking for on the outside was always something I needed to cult
     description:
       'Who invented the Monday to Friday work week, and who created the weekend? The surprising history of the five-day week, and why I’m living by my own rhythm.',
     date: '2026-04-09',
-    category: 'Wellness',
+    category: 'Slowing Down',
     faq: [
       {
         q: 'Who created the 5 day work week?',
@@ -701,7 +701,7 @@ That’s what I’m experimenting with. And I’ll report back on how it goes.
     description:
       'As a PT in Bondi I wore the mask every day: happy, high energy, perfect. On people-pleasing, performing for validation and the freedom of being yourself.',
     date: '2026-04-11',
-    category: 'Healing',
+    category: 'Self-Trust',
     tags: ['performative energy', 'authenticity', 'social media', 'people pleasing', 'Bondi', 'stop people pleasing', 'external validation'],
     image: { src: '/images/journal/performative-energy-wearing-a-mask.webp', alt: 'A smiling selfie of Lena with sunglasses on her head', pos: '50% 30%' },
     offer: 'The 5 Day Reconnect',
@@ -767,7 +767,7 @@ Just know — it’s safe to be yourself. Not everyone will like you, and that�
     description:
       'Feeling behind at 38 while friends buy houses and have babies? How I found the perfectionism underneath, and the Ho’oponopono practice I use to let it go.',
     date: '2026-04-17',
-    category: 'Healing',
+    category: 'Inner Work',
     tags: ['perfectionism', 'feeling behind in life', 'comparison', 'inner child', 'Ho’oponopono', 'limiting beliefs', 'repeating patterns'],
     image: { src: '/images/journal/perfectionism-feeling-behind-in-life.webp', alt: 'A pink cloud at sunset above the treetops', pos: '50% 40%' },
     offer: 'The 5 Day Reconnect',
@@ -867,7 +867,7 @@ I used to just avoid these discomforts. Push through, perform, hide the low days
     description:
       'Mid Pilates class I caught myself judging the trainer. What that trigger was really about, the neuroscience of ego, and how compassion sets you free.',
     date: '2026-04-24',
-    category: 'Healing',
+    category: 'Inner Work',
     tags: ['judgement', 'ego', 'compassion', 'inner child', 'perfectionism', 'emotional triggers', 'self-awareness'],
     image: { src: '/images/journal/why-we-judge-others-ego-compassion.webp', alt: 'Lena on a Pilates reformer in a bright studio', pos: '50% 60%' },
     offer: 'The 5 Day Reconnect',
@@ -943,7 +943,7 @@ And that’s where the real freedom is.
     description:
       'Alarms, time-blocked meditation, scheduled healing. How hustle culture snuck back in dressed as wellness, the signs of spiritual burnout, and my way back.',
     date: '2026-05-09',
-    category: 'Wellness',
+    category: 'Slowing Down',
     tags: ['spiritual burnout', 'productivity', 'hustle culture', 'flow', 'nervous system', 'Bali', 'old patterns', 'reconnecting with yourself'],
     image: { src: '/images/lena-sunrise.jpg', alt: 'Lena at sunrise above the clouds', pos: '65% 45%' },
     offer: 'The 5 Day Reconnect',
@@ -1017,7 +1017,7 @@ That’s the whole thing, really.
     description:
       'Why one bad thing can hijack your whole day (negativity bias and your brain’s filter) and the 4-step process I used in a Bali café to turn it around.',
     date: '2026-05-14',
-    category: 'Healing',
+    category: 'Inner Work',
     tags: ['negativity bias', 'mindset', 'ADHD', 'gratitude', 'self-compassion', 'Bali', 'emotional triggers', 'respond instead of react', 'old patterns'],
     image: { src: '/images/road/road-2.jpg', alt: 'Lena on a scooter on a jungle road, arm raised to the sky', pos: '50% 35%' },
     offer: 'The 5 Day Reconnect',
@@ -1103,7 +1103,7 @@ Not because anything changed out there. Because I caught the story, rewrote the 
     description:
       'I thought ignoring the hot guy was “not feeding his ego”. It was self-protection: rejecting him before he could reject me. On self-worth and fear of love.',
     date: '2026-05-27',
-    category: 'Healing',
+    category: 'Inner Work',
     tags: ['dating', 'self-worth', 'fear of rejection', 'inner child', 'nervous system', 'self-abandonment', 'repeating patterns'],
     image: { src: '/images/journal/avoiding-men-im-attracted-to.webp', alt: 'Lena smiling at the gym with headphones round her neck', pos: '50% 30%' },
     offer: 'The 5 Day Reconnect',
@@ -1181,7 +1181,7 @@ Come at me, hot man. 😏
     description:
       'The universe kept sending the same lesson in different cafés: trust what you already know, stop seeking validation and stop abandoning yourself.',
     date: '2026-05-28',
-    category: 'Healing',
+    category: 'Self-Trust',
     tags: ['intuition', 'self-worth', 'validation', 'dating', 'self-abandonment', 'self-trust', 'external validation'],
     image: { src: '/images/journal/trust-your-intuition-stop-abandoning-yourself.webp', alt: 'Lena reading a book in a cosy café booth', pos: '50% 50%' },
     offer: 'The 5 Day Reconnect',
@@ -1265,7 +1265,7 @@ That’s where the real healing lives.
     description:
       'Why did a loved-up couple make me cringe? How I treat emotional triggers as clues, collect them, and face the childhood wound underneath.',
     date: '2026-06-05',
-    category: 'Healing',
+    category: 'Inner Work',
     tags: ['triggers', 'core wounds', 'inner child', 'trust', 'single life', 'relationships', 'emotional triggers', 'respond instead of react'],
     image: { src: '/images/journal/triggers-are-clues-healing-core-wounds.webp', alt: 'The Mastery of Love book beside a cup of tea and milk', pos: '50% 50%' },
     offer: 'The 5 Day Reconnect',
@@ -1365,7 +1365,7 @@ Collect them, put the pieces together and unlock the next level.
     description:
       'Everyone felt better after seeing me; I needed days to recover. What I’ve learnt as an empath about clairsentience, boundaries and protecting my energy.',
     date: '2026-06-08',
-    category: 'Healing',
+    category: 'Self-Trust',
     tags: ['empath', 'clairsentience', 'energetic boundaries', 'people pleasing', 'protecting your energy', 'boundaries', 'self-abandonment'],
     image: { src: '/images/journal/empath-protecting-your-energy.webp', alt: 'An open book about empaths resting on the grass', pos: '50% 50%' },
     offer: 'The 5 Day Reconnect',
@@ -1445,7 +1445,7 @@ But there is another way. You don’t have to disappear to feel safe. You just h
     description:
       'Week 2 of learning to ride a scooter in Vietnam at 38: consistency, feeling the fear, speaking up, and the old wounds being a beginner brought up.',
     date: '2026-08-05',
-    category: 'Travel',
+    category: 'The Leap',
     tags: ['fear of riding a scooter', 'learning a new skill', 'Vietnam', 'perfectionism', 'nervous system', 'courage', 'fear of change', 'self-compassion'],
     image: { src: '/images/journal/overcoming-fear-of-riding-a-scooter-week-2.webp', alt: 'Lena in a scooter helmet taking a mirror selfie in a lift', pos: '50% 40%' },
     offer: 'The 5 Day Reconnect',
@@ -1515,7 +1515,7 @@ I’m still on week 2. Still nervous most days. But I keep choosing to show up f
     description:
       'Week 3 of conquering my fear of riding a scooter in Vietnam, and the little gifts (a puppy, a water buffalo, the right bike) that proved the universe has my back.',
     date: '2026-08-12',
-    category: 'Healing',
+    category: 'The Leap',
     tags: ['faith', 'the universe has your back', 'fear of riding a scooter', 'Da Nang', 'Hoi An', 'Vietnam', 'fear of change', 'self-trust'],
     image: { src: '/images/journal/be-a-little-delulu-the-universe-has-your-back.webp', alt: 'Lena smiling in a scooter helmet with two local kids', pos: '50% 75%' },
     offer: 'The Freedom Frequency',
@@ -1561,7 +1561,7 @@ If you’re still doubting, collect the data. Write down all the times the unive
 export const journalPage = {
   label: 'Journal',
   heading: 'Entries From My Journal',
-  intro: 'Honest stories from starting over: the leaps, the fear, the healing and the everyday moments in between.',
+  intro: 'Stories from starting over: the leaps, the fear, the healing and the everyday moments in between.',
 };
 
 export const formatDate = (iso: string) =>

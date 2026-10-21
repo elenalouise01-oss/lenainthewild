@@ -488,7 +488,7 @@ export const freedomSeeker = {
   // site; otherwise one with an `href` links to its Substack post.
   pillars: [
     {
-      category: 'Travel',
+      category: 'The Leap',
       title: 'Overcoming My Fear of Riding a Scooter',
       slug: 'overcoming-fear-of-riding-a-scooter-week-2',
       roles: 'FEAR, CHILDHOOD WOUNDS, SELF COMPASSION',
@@ -496,7 +496,7 @@ export const freedomSeeker = {
       href: 'https://substack.com/home/post/p-209897527',
     },
     {
-      category: 'Wellness',
+      category: 'The Leap',
       title: 'Leaping into the Unknown: Part 1',
       slug: 'leaping-into-the-unknown-part-1',
       roles: 'LEAVING SYDNEY, TRUSTING YOUR INTUITION, BALI',
@@ -504,7 +504,7 @@ export const freedomSeeker = {
       href: 'https://substack.com/home/post/p-190792316',
     },
     {
-      category: 'Healing',
+      category: 'Inner Work',
       title: 'What I’m Learning About Slowing Down',
       slug: 'living-in-fight-or-flight',
       roles: 'FIGHT OR FLIGHT, NERVOUS SYSTEM, SLOWING DOWN',
@@ -512,7 +512,7 @@ export const freedomSeeker = {
       href: 'https://lenainthewild.substack.com/p/for-years-i-didnt-even-realise-i',
     },
     {
-      category: 'Healing',
+      category: 'Inner Work',
       title: 'Triggers Are Clues',
       slug: 'triggers-are-clues-healing-core-wounds',
       roles: 'TRIGGERS, CORE WOUNDS, INNER CHILD',
@@ -680,7 +680,7 @@ export const footer = {
     },
     {
       label: 'Get to Know Me',
-      links: ['About', 'Who I Help', 'Journal Entries', 'Travel', 'Wellness', 'Healing'],
+      links: ['About', 'Who I Help', 'Journal Entries'],
     },
     {
       label: 'Connect',

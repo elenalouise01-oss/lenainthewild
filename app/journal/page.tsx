@@ -8,9 +8,9 @@ import Newsletter from '@/components/sections/Newsletter';
 import { journalPage, sortedJournal } from '@/content/journal';
 import { SITE_NAME, absoluteUrl, breadcrumbs } from '@/lib/seo';
 
-const title = 'Journal: Honest Stories on Old Patterns, Healing & Starting Over — Lena in the Wild';
+const title = 'Journal: Stories on Old Patterns, Inner Work & Starting Over — Lena in the Wild';
 const description =
-  'Honest stories on feeling stuck, emotional triggers, people-pleasing and old patterns, and on creating a life that feels like yours after leaving Sydney at 36.';
+  'Stories on feeling stuck, emotional triggers, people-pleasing and old patterns, and on creating a life that feels like yours after leaving Sydney at 36.';
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -51,7 +51,7 @@ export default function JournalPage() {
       <SiteHeader active="Journal Entries" />
       <main>
         {/* Scrapbook-style notebook */}
-        <section className="overflow-hidden bg-sand py-16 pl-1 pr-4 sm:px-8 sm:pb-24 sm:pt-12">
+        <section className="overflow-hidden bg-sand py-16 pl-1 pr-4 sm:px-8 sm:pb-24 sm:pt-8">
           <JournalScrapbook
             heading={journalPage.heading}
             intro={journalPage.intro}
