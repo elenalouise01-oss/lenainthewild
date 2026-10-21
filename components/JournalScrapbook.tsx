@@ -210,19 +210,16 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
       </div>
 
       {/* Page turning */}
-      {/* The last page is a short one: fill the blank paper with a little
-          hand-drawn doodle and a note, so it still feels like a full page */}
+      {/* The last page is a short one: fill the blank paper with the monkey
+          and a note, so it still feels like a full page */}
       {n === pageCount - 1 && itemsOn(n).length < PAGE && (
         <div aria-hidden="true" className="flex flex-col items-center py-20 text-bark sm:py-28">
-          <svg viewBox="0 0 320 120" className="h-auto w-64 sm:w-80" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            {/* a looping squiggle that ends in a little heart */}
-            <path d="M10 80 C 40 20, 70 110, 100 60 S 150 20, 160 70 S 200 110, 220 60 C 230 35, 250 35, 255 55" />
-            <path d="M262 52 C 256 40, 240 44, 246 58 L 262 76 L 278 58 C 284 44, 268 40, 262 52 Z" fill="#f8c8dc" />
-            {/* stars */}
-            <path d="M40 22 l3 7 7 1 -5 5 1 7 -6 -4 -6 4 1 -7 -5 -5 7 -1 z" fill="#fffba0" />
-            <path d="M200 14 l2 5 5 1 -4 3 1 5 -4 -3 -4 3 1 -5 -4 -3 5 -1 z" fill="#CBA1D4" />
-            <path d="M300 96 l2 4 4 0 -3 3 1 4 -4 -2 -4 2 1 -4 -3 -3 4 0 z" />
-          </svg>
+          {/* Lena's walking monkey, with a couple of her stickers */}
+          <div className="relative">
+            <Image src="/images/sticker-star-scribble.png" alt="" width={186} height={167} className="absolute -left-14 -top-4 h-auto w-12 -rotate-12" />
+            <Image src="/images/monkey-walk.webp" alt="" width={304} height={256} className="h-auto w-40 sm:w-48" />
+            <Image src="/images/sticker-flower.png" alt="" width={241} height={231} className="absolute -right-10 bottom-0 h-auto w-12 rotate-12" />
+          </div>
           <p className="mt-6 font-hand text-3xl sm:text-4xl">more entries coming soon…</p>
         </div>
       )}
