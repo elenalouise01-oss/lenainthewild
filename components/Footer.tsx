@@ -42,13 +42,16 @@ const ICONS: Record<string, React.ReactNode> = {
   ),
 };
 
-export default function Footer() {
+// `playful` is for the digital product pages: lavender background with
+// the butter-yellow logo.
+export default function Footer({ playful = false }: { playful?: boolean }) {
+  const muted = playful ? 'text-bark/70' : 'text-stone';
   return (
-    <footer className="border-t border-bark/10 bg-sand px-6 py-20">
+    <footer className={`border-t border-bark/10 px-6 py-20 ${playful ? 'bg-sage' : 'bg-sand'}`}>
       <div className="container-editorial grid gap-10 sm:grid-cols-4">
         {footer.columns.map((column) => (
           <div key={column.label}>
-            <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-stone">
+            <p className={`font-body text-xs font-semibold uppercase tracking-widest2 ${muted}`}>
               {column.label}
             </p>
             {column.label === 'Connect' ? (
@@ -110,7 +113,7 @@ export default function Footer() {
         ))}
 
         <div>
-          <p className="font-body text-xs font-semibold uppercase tracking-widest2 text-stone">
+          <p className={`font-body text-xs font-semibold uppercase tracking-widest2 ${muted}`}>
             {footer.currently.label}
           </p>
           <p className="mt-4 font-display italic text-bark/80">{footer.currently.body}</p>
@@ -119,16 +122,16 @@ export default function Footer() {
 
       <div className="container-editorial mt-14 flex items-end justify-between gap-6 border-t border-bark/10 pt-8">
         <div>
-          {/* The litw logo in deep brown, above the copyright line */}
-          <Image src="/images/litw-logo-brown.png" alt={nav.logo} width={248} height={115} className="h-auto w-20" />
-          <p className="mt-4 font-body text-xs text-stone">
+          {/* The litw logo above the copyright line: deep brown, or butter yellow on lavender */}
+          <Image src={playful ? '/images/litw-logo-yellow.png' : '/images/litw-logo-brown.png'} alt={nav.logo} width={248} height={115} className="h-auto w-20" />
+          <p className={`mt-4 font-body text-xs ${muted}`}>
             © {new Date().getFullYear()} {nav.logo} by Naluri Collective. All rights reserved.
           </p>
         </div>
         <a
           href="#"
           onClick={scrollToTop}
-          className="shrink-0 whitespace-nowrap py-2 font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline decoration-sage decoration-2 underline-offset-8 transition-colors hover:decoration-bark"
+          className={`shrink-0 whitespace-nowrap py-2 font-body text-xs font-semibold uppercase tracking-widest2 text-bark underline ${playful ? 'decoration-zing-yellow' : 'decoration-sage'} decoration-2 underline-offset-8 transition-colors hover:decoration-bark`}
         >
           Back to top ↑
         </a>

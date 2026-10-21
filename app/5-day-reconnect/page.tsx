@@ -210,7 +210,7 @@ export default function FiveDayReconnectPage() {
         </section>
         <OfferNextStep {...page.next} />
       </main>
-      <Footer />
+      <Footer playful />
     </>
   );
 }
