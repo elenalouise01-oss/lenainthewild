@@ -65,13 +65,13 @@ export const metadata: Metadata = {
     url: '/',
     title: 'Lena in the Wild — Get Unstuck, Find Yourself & Reinvent Your Life',
     description,
-    images: [{ url: '/images/hero.jpg', width: 1809, height: 930, alt: 'Lena in the Wild' }],
+    images: [{ url: '/images/share-litw.png', width: 1200, height: 630, alt: 'Lena in the Wild' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Lena in the Wild — Get Unstuck, Find Yourself & Reinvent Your Life',
     description,
-    images: ['/images/hero.jpg'],
+    images: ['/images/share-litw.png'],
   },
 };
 

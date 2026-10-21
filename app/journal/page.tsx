@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   title: { absolute: title },
   description,
   alternates: { canonical: '/journal' },
-  openGraph: { url: '/journal', title, description, images: [{ url: '/images/hero.jpg', width: 1809, height: 930, alt: 'Lena in the Wild' }] },
-  twitter: { card: 'summary_large_image', title, description, images: ['/images/hero.jpg'] },
+  openGraph: { url: '/journal', title, description, images: [{ url: '/images/share-litw.png', width: 1200, height: 630, alt: 'Lena in the Wild' }] },
+  twitter: { card: 'summary_large_image', title, description, images: ['/images/share-litw.png'] },
 };
 
 // All journal articles, newest first, as a spiral-bound scrapbook with a
