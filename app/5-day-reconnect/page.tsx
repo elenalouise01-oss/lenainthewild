@@ -124,9 +124,7 @@ export default function FiveDayReconnectPage() {
               </div>
               {/* The course itself carries Naluri Collective branding, so say so up front */}
               <div className="mt-12 flex items-center gap-3">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sage shadow-sm">
-                  <Image src="/images/litw-logo-yellow.png" alt="Lena in the Wild" width={248} height={115} className="h-auto w-9" />
-                </span>
+                <Image src="/images/litw-logo-lavender.png" alt="Lena in the Wild logo" width={48} height={48} className="h-12 w-12 shrink-0 rounded-md shadow-sm" />
                 <p className="font-body text-xs italic text-bark/70">{page.collective}</p>
               </div>
             </div>
