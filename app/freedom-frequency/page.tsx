@@ -258,7 +258,7 @@ export default function FreedomFrequencyPage() {
         </section>
         <OfferNextStep {...page.next} />
       </main>
-      <Footer />
+      <Footer playful />
     </>
   );
 }
