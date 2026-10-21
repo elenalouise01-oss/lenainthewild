@@ -123,7 +123,10 @@ export default function FiveDayReconnectPage() {
                 <BuyButton />
               </div>
               {/* The course itself carries Naluri Collective branding, so say so up front */}
-              <p className="mt-6 font-body text-xs italic text-bark/70">{page.collective}</p>
+              <div className="mt-6 flex items-center gap-3">
+                <Image src="/images/litw-logo-lavender.png" alt="Lena in the Wild logo" width={48} height={48} className="h-12 w-12 rounded-md shadow-sm" />
+                <p className="font-body text-xs italic text-bark/70">{page.collective}</p>
+              </div>
             </div>
             <div className="mx-auto w-full max-w-md">
               <div className="relative aspect-square -rotate-2 overflow-hidden shadow-2xl">
