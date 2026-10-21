@@ -153,11 +153,11 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
     <>
       {/* Latest entry: a big pinned polaroid with its note beside it */}
       {n === 0 && featured && (
-        <Link href={`/journal/${featured.slug}`} className="group relative mb-20 grid items-center gap-10 lg:grid-cols-[0.7fr_1fr]">
+        <Link href={`/journal/${featured.slug}`} className="group relative mb-20 grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
           <div className="relative -rotate-2 bg-white p-3 pb-14 shadow-xl">
             <Fastener kind="clip" />
             {featured.image && (
-              <div className="relative aspect-[4/3] overflow-hidden lg:aspect-[3/2]">
+              <div className="relative aspect-[4/3] overflow-hidden">
                 <Image src={featured.image.src} alt={featured.image.alt} fill sizes="(min-width: 1024px) 34rem, 90vw" className="object-cover" style={{ objectPosition: featured.image.pos }} />
               </div>
             )}
@@ -210,6 +210,23 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
       </div>
 
       {/* Page turning */}
+      {/* The last page is a short one: fill the blank paper with a little
+          hand-drawn doodle and a note, so it still feels like a full page */}
+      {n === pageCount - 1 && itemsOn(n).length < PAGE && (
+        <div aria-hidden="true" className="flex flex-col items-center py-20 text-bark sm:py-28">
+          <svg viewBox="0 0 320 120" className="h-auto w-64 sm:w-80" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            {/* a looping squiggle that ends in a little heart */}
+            <path d="M10 80 C 40 20, 70 110, 100 60 S 150 20, 160 70 S 200 110, 220 60 C 230 35, 250 35, 255 55" />
+            <path d="M262 52 C 256 40, 240 44, 246 58 L 262 76 L 278 58 C 284 44, 268 40, 262 52 Z" fill="#f8c8dc" />
+            {/* stars */}
+            <path d="M40 22 l3 7 7 1 -5 5 1 7 -6 -4 -6 4 1 -7 -5 -5 7 -1 z" fill="#fffba0" />
+            <path d="M200 14 l2 5 5 1 -4 3 1 5 -4 -3 -4 3 1 -5 -4 -3 5 -1 z" fill="#CBA1D4" />
+            <path d="M300 96 l2 4 4 0 -3 3 1 4 -4 -2 -4 2 1 -4 -3 -3 4 0 z" />
+          </svg>
+          <p className="mt-6 font-hand text-3xl sm:text-4xl">more entries coming soon…</p>
+        </div>
+      )}
+
       {pageCount > 1 && (
         <div className="mt-16 flex items-center justify-between gap-4">
           {n > 0 ? (
@@ -243,7 +260,7 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
   );
 
   return (
-    <div className="relative ml-5 max-w-6xl rounded-sm bg-white sm:mx-auto bg-[linear-gradient(transparent_31px,#e4e4e4_31px)] bg-[size:100%_32px] pb-16 pl-[5.25rem] pr-8 pt-12 shadow-[0_20px_50px_rgba(59,45,14,0.18)] sm:pl-24 sm:pr-12 sm:pt-10">
+    <div className="relative ml-5 max-w-6xl rounded-sm bg-white sm:mx-auto bg-[linear-gradient(transparent_31px,#e4e4e4_31px)] bg-[size:100%_32px] pb-16 pl-[5.25rem] pr-8 pt-12 shadow-[0_20px_50px_rgba(59,45,14,0.18)] sm:pl-24 sm:pr-12 sm:pt-16">
       {/* The back page peeking out on the left, with the kraft cover edge
           showing where it folds */}
       <div aria-hidden="true" className="absolute -left-5 bottom-0 top-0 w-5 rounded-l-sm bg-[#f5f1e9] shadow-[-4px_8px_16px_rgba(59,45,14,0.12)]" />
@@ -257,42 +274,42 @@ export default function JournalScrapbook({ articles, heading, intro }: { article
       </div>
 
       {/* Heading: handwritten, with a typewriter note taped on */}
-      <header className="relative grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-x-8 lg:gap-y-6">
-        <div className="lg:row-span-2 lg:self-center">
+      <header className="relative grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-end">
+        <div>
           <p className="font-type text-sm text-umber">no. 01 — {new Date().getFullYear()}</p>
           <h1 className="mt-2 font-hand text-6xl leading-[0.95] text-bark sm:text-8xl">{heading}</h1>
         </div>
-        <div className="relative rotate-1 self-end bg-cream px-6 py-6 shadow-md">
+        <div className="relative rotate-1 bg-cream px-6 py-6 shadow-md lg:mb-3">
           <span aria-hidden="true" className="absolute -top-3 left-8 h-6 w-20 -rotate-6 bg-zing-babypink/80 shadow-sm" />
           <p className="font-type text-sm leading-relaxed text-bark sm:text-base">{intro}</p>
         </div>
         <Image src="/images/sticker-star.png" alt="" width={169} height={161} aria-hidden="true" className="absolute -right-2 -top-10 hidden h-auto w-14 rotate-12 sm:block" />
-        {/* Category tabs, like sticky notes: under the heading on phones,
-            under the note on wide screens so the latest entry fits on screen */}
-        <div className="mt-2 flex flex-wrap gap-3 self-start lg:mt-0 lg:gap-2" role="group" aria-label="Filter by category">
-          {categories.map((c, i) => (
-            <button
-              key={c}
-              type="button"
-              onClick={() => {
-                setCategory(c);
-                setLeaf(null);
-                setPage(0);
-              }}
-              aria-pressed={category === c}
-              className={`${TABS[i % TABS.length]} ${i % 2 ? 'rotate-1' : '-rotate-1'} px-4 py-2 font-type text-sm text-bark shadow-sm transition-transform lg:px-3 hover:-translate-y-0.5 ${
-                category === c ? 'outline outline-2 outline-offset-2 outline-bark' : ''
-              }`}
-            >
-              {c.toLowerCase()}
-            </button>
-          ))}
-        </div>
       </header>
+
+      {/* Category tabs, like sticky notes */}
+      <div className="mt-12 flex flex-wrap gap-3" role="group" aria-label="Filter by category">
+        {categories.map((c, i) => (
+          <button
+            key={c}
+            type="button"
+            onClick={() => {
+              setCategory(c);
+              setLeaf(null);
+              setPage(0);
+            }}
+            aria-pressed={category === c}
+            className={`${TABS[i % TABS.length]} ${i % 2 ? 'rotate-1' : '-rotate-1'} px-4 py-2 font-type text-sm text-bark shadow-sm transition-transform hover:-translate-y-0.5 ${
+              category === c ? 'outline outline-2 outline-offset-2 outline-bark' : ''
+            }`}
+          >
+            {c.toLowerCase()}
+          </button>
+        ))}
+      </div>
 
       {/* The pages: each is a sheet of lined paper reaching back to the
           binding, so it can turn like a page in a book */}
-      <div ref={pagesRef} className="relative mt-14 [perspective:2200px] sm:mt-8">
+      <div ref={pagesRef} className="relative mt-14 [perspective:2200px]">
         <div className={`relative -ml-[5.25rem] -mr-8 sm:-ml-24 sm:-mr-12 ${SHEET_PAD}`}>
           {renderPage(page)}
           {/* shadow the turning page casts on this one */}
