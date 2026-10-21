@@ -16,9 +16,9 @@ import Listen from '@/components/sections/Listen';
 import Newsletter from '@/components/sections/Newsletter';
 import { offerPages, storyPage } from '@/content/site';
 
-const title = 'My Story: Starting Over at 36 and Moving to Bali — Lena in the Wild';
+const title = 'My Story: Starting Over at 36 and Uprooting My Life to Bali — Lena in the Wild';
 const description =
-  'At 36 I left my PT business in Bondi, sold everything and moved to Bali. The burnout, the leap and what starting over in your 30s really looks like.';
+  'At 36 I left my PT business in Bondi, sold everything and uprooted my life to Bali. The burnout, the leap and what starting over in your 30s really looks like.';
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -44,7 +44,7 @@ type Look = { kind: 'tape'; colour: string; tilt: string } | { kind: 'brush'; co
 const CHAPTER_LOOKS: Record<string, Look> = {
   'Burning out in Bondi': { kind: 'tape', colour: 'bg-sage/80', tilt: '-rotate-2' },
   'My first solo trip to Bali': { kind: 'brush', colour: 'text-zing-green' },
-  'Moving to Bali at 36 with no plan': { kind: 'tape', colour: 'bg-zing-yellow', tilt: 'rotate-1' },
+  'Uprooting my life to Bali at 36 with no plan': { kind: 'tape', colour: 'bg-zing-yellow', tilt: 'rotate-1' },
   'Down to my last $500 in Ubud': { kind: 'brush', colour: 'text-sage' },
   'The turning point': { kind: 'tape', colour: 'bg-zing-green', tilt: '-rotate-1' },
   'Deciding to leave Sydney': { kind: 'hand' },
@@ -194,7 +194,7 @@ export default function MyStoryPage() {
                     )
                   ) : p.startsWith('## ') ? (
                     <div key={p} className="clear-both pt-8">
-                      {p.slice(3).startsWith('Moving to Bali') && <FlightPath />}
+                      {p.slice(3).startsWith('Uprooting my life to Bali') && <FlightPath />}
                     <h2 className="font-display text-3xl leading-snug text-bark">
                       <ChapterTitle>{p.slice(3)}</ChapterTitle>
                     </h2>

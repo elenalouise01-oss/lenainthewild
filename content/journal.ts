@@ -236,7 +236,7 @@ From a slower, more grounded, happy place.
       'At 36 I quit my 8-year PT career, left Sydney and booked a one-way ticket to Bali to reinvent my life. The fear, the knowing and how the leap began.',
     date: '2026-03-13',
     category: 'Wellness',
-    tags: ['leaving Sydney', 'moving to Bali', 'trusting your intuition', 'starting over at 36', 'quitting my job', 'reinventing your life', 'fear of change'],
+    tags: ['leaving Sydney', 'uprooting my life to Bali', 'trusting your intuition', 'starting over at 36', 'quitting my job', 'reinventing your life', 'fear of change'],
     image: { src: '/images/journal/leaping-into-the-unknown-part-1.webp', alt: 'Lena smiling with her suitcase in her empty apartment', pos: '50% 40%' },
     substackUrl: 'https://substack.com/home/post/p-190792316',
     offer: 'The 5 Day Reconnect',
@@ -346,10 +346,10 @@ You have a choice. You get to choose yourself.
     subtitle: 'I was in Bali. Sunsets, coconuts, villa life. And I was quietly falling apart. They say you can’t run from your problems. Turns out, they were right.',
     seoTitle: 'You Can’t Outrun Your Patterns: Falling Apart in Bali (Part 2)',
     description:
-      'I moved to Bali and brought my old patterns with me: the hustle, the scarcity, the 5am alarms. Why patterns follow you, and what falling apart taught me.',
+      'I uprooted my life to Bali and brought my old patterns with me: the hustle, the scarcity, the 5am alarms. Why patterns follow you, and what falling apart taught me.',
     date: '2026-03-24',
     category: 'Healing',
-    tags: ['moving to Bali', 'old patterns', 'scarcity mindset', 'intuition', 'Canggu vs Ubud', 'repeating patterns', 'starting over'],
+    tags: ['uprooting my life to Bali', 'old patterns', 'scarcity mindset', 'intuition', 'Canggu vs Ubud', 'repeating patterns', 'starting over'],
     image: { src: '/images/journal/leaping-into-the-unknown-part-2.webp', alt: 'Lena on the beach at sunset under a pink and orange sky', pos: '50% 50%' },
     offer: 'The 5 Day Reconnect',
     offerLine: 'If you’ve been ignoring a quiet pull and going back to what’s familiar, it’s time to start listening, before the universe makes you.',
@@ -362,7 +362,7 @@ What I didn’t realise was that I’d also packed something I didn’t intend t
 
 On the outside, it looked like I was living the dream. And on some level, I was. I’d just got to Bali — I was chasing sunsets, sipping coconuts, spending my days by the pool. I was surface-level happy.
 
-But underneath? I felt off. Ungrounded. Within a couple of months I was up, I was down — lost, confused, overwhelmed. And the plan I’d made to fund my life over here? The brands I’d been working with in Sydney who’d promised to keep working with me when I moved — it all fell through. I’d even landed new brand deals over here from Aus and those fell through too.
+But underneath? I felt off. Ungrounded. Within a couple of months I was up, I was down — lost, confused, overwhelmed. And the plan I’d made to fund my life over here? The brands I’d been working with in Sydney who’d promised to keep working with me when I left — it all fell through. I’d even landed new brand deals over here from Aus and those fell through too.
 
 The plan I’d built to sustain this new life was a bust. And I had not budgeted for this.
 

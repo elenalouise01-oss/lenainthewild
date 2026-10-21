@@ -48,7 +48,7 @@ const structuredData = [
       'Burnout recovery',
       'Nervous system regulation',
       'Slow living',
-      'Moving to Bali',
+      'Uprooting your life to Bali',
       'Embodiment',
       'Reiki',
     ],
