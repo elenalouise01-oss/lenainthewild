@@ -390,7 +390,7 @@ export const freedomFrequencyPage = {
     {
       q: 'Who is The Freedom Frequency for?',
       a: [
-        'The woman who built the life she wanted and still feels stuck and stagnant. If you know deep down there has to be more but don’t know how to access it yet, this is for you.',
+        'For anyone who has built the life they thought they wanted but still feels stuck or unfulfilled. If you know there’s more to life but aren’t sure how to create it, this is for you.',
       ],
     },
     {
