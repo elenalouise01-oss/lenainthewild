@@ -170,8 +170,8 @@ export default function OffersCarousel() {
             viewport={{ once: true, amount: 0.6 }}
             exit={{ opacity: 0, transition: { duration: 0.25 } }}
             transition={{ opacity: { duration: 0.4, delay: 1.2 }, default: { duration: 1.3, delay: 1.6, repeat: Infinity, ease: 'easeInOut' } }}
-            // Lights up on hover: grows a little with a soft green glow
-            whileHover={{ scale: 1.25, backgroundColor: 'rgba(190,229,176,1)', boxShadow: '0 0 20px 8px rgba(190,229,176,0.85)', transition: { duration: 0.2 } }}
+            // Lights up on hover: grows a little with a soft baby-pink glow
+            whileHover={{ scale: 1.25, backgroundColor: 'rgba(248,200,220,1)', boxShadow: '0 0 20px 8px rgba(248,200,220,0.9)', transition: { duration: 0.2 } }}
             whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
           >
             <Image src="/images/swipe-hand.png" alt="" width={32} height={32} className="h-8 w-8 max-w-none" />
