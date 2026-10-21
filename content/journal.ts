@@ -62,7 +62,7 @@ export const journal: JournalArticle[] = [
     description:
       'At 21, heartbroken with a degree I didn’t want to use, I left Sydney for a tiny Whitsundays island. My first leap toward freedom, before I had the words.',
     date: '2026-03-03',
-    category: 'Wild',
+    category: 'Travel',
     tags: ['first leap', 'freedom', 'island life', 'breaking free from the system', 'starting over', 'reinventing your life', 'living on your own terms'],
     image: { src: '/images/journal/breaking-free-from-the-system.webp', alt: 'A white sand beach and turquoise water below green hills', pos: '50% 50%' },
     substackUrl: 'https://substack.com/home/post/p-189725048',
@@ -640,7 +640,7 @@ The thing I was looking for on the outside was always something I needed to cult
     description:
       'Who decided we work Monday to Friday and spend weekends recovering? The surprising history of the five-day week, and why I’m living by my own rhythm.',
     date: '2026-04-09',
-    category: 'Wild',
+    category: 'Wellness',
     tags: ['five day work week', 'Monday to Friday', 'breaking free from the system', 'living on your own terms', 'rest', 'other people’s expectations'],
     image: { src: '/images/journal/who-decided-monday-to-friday.webp', alt: 'An infinity pool looking out over jungle and blue sky', pos: '50% 60%' },
     offer: 'The Freedom Frequency',
@@ -1426,7 +1426,7 @@ But there is another way. You don’t have to disappear to feel safe. You just h
     description:
       'Week 2 of learning to ride a scooter in Vietnam at 38: consistency, feeling the fear, speaking up, and the old wounds being a beginner brought up.',
     date: '2026-08-05',
-    category: 'Wild',
+    category: 'Travel',
     tags: ['fear of riding a scooter', 'learning a new skill', 'Vietnam', 'perfectionism', 'nervous system', 'courage', 'fear of change', 'self-compassion'],
     image: { src: '/images/journal/overcoming-fear-of-riding-a-scooter-week-2.webp', alt: 'Lena in a scooter helmet taking a mirror selfie in a lift', pos: '50% 40%' },
     offer: 'The 5 Day Reconnect',
@@ -1496,7 +1496,7 @@ I’m still on week 2. Still nervous most days. But I keep choosing to show up f
     description:
       'Week 3 of conquering my fear of riding a scooter in Vietnam, and the little gifts (a puppy, a water buffalo, the right bike) that proved the universe has my back.',
     date: '2026-08-12',
-    category: 'Wild',
+    category: 'Healing',
     tags: ['faith', 'the universe has your back', 'fear of riding a scooter', 'Da Nang', 'Hoi An', 'Vietnam', 'fear of change', 'self-trust'],
     image: { src: '/images/journal/be-a-little-delulu-the-universe-has-your-back.webp', alt: 'Lena smiling in a scooter helmet with two local kids', pos: '50% 75%' },
     offer: 'The Freedom Frequency',
