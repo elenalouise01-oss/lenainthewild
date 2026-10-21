@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { AnimatePresence, motion, useMotionValue, useSpring, type PanInfo } from 'framer-motion';
+import { AnimatePresence, motion, useDragControls, useMotionValue, useSpring, type PanInfo } from 'framer-motion';
 import Image from 'next/image';
 import Price from '@/components/Price';
 import { freedomSeeker, hero, offerLinks, offerPages, waitlistOffers } from '@/content/site';
@@ -48,6 +48,9 @@ export default function OffersCarousel() {
   const [moved, setMoved] = useState(false);
   // Set while a swipe is under way, so letting go doesn't also count as a click
   const dragged = useRef(false);
+  // Swipes start only from the artwork, never from a button or link on it,
+  // so a finger's small wobble on a button doesn't turn a tap into a swipe
+  const dragControls = useDragControls();
 
   // 3D tilt of the centre sleeve, following the pointer / drag.
   const tiltX = useMotionValue(0);
@@ -67,7 +70,8 @@ export default function OffersCarousel() {
   };
 
   const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (reduced) return;
+    // Tilt follows a mouse only: on a phone it would shift buttons under the finger
+    if (reduced || e.pointerType !== 'mouse') return;
     const r = e.currentTarget.getBoundingClientRect();
     const px = (e.clientX - r.left) / r.width - 0.5;
     const py = (e.clientY - r.top) / r.height - 0.5;
@@ -210,6 +214,11 @@ export default function OffersCarousel() {
       <motion.div
         className="relative aspect-square w-[min(60dvh,74vw)] cursor-grab touch-pan-y active:cursor-grabbing"
         drag={reduced ? false : 'x'}
+        dragControls={dragControls}
+        dragListener={false}
+        onPointerDown={(e) => {
+          if (!(e.target as HTMLElement).closest('a, button')) dragControls.start(e);
+        }}
         dragConstraints={{ left: 0, right: 0 }}
         dragElastic={0.18}
         onDragStart={() => {
@@ -383,7 +392,7 @@ function NowPlaying({
           <button
             type="button"
             onClick={stop(onDetails)}
-            className="-my-1 py-1 font-body text-[0.6rem] font-semibold uppercase tracking-widest2 text-zing-yellow underline decoration-zing-yellow/40 underline-offset-4 transition-colors hover:decoration-zing-yellow sm:text-[0.65rem]"
+            className="-my-3 -ml-2 px-2 py-3 font-body text-[0.6rem] font-semibold uppercase tracking-widest2 text-zing-yellow underline decoration-zing-yellow/40 underline-offset-4 transition-colors hover:decoration-zing-yellow sm:text-[0.65rem]"
           >
             Learn more +
           </button>
