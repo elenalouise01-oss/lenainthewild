@@ -1,8 +1,8 @@
 import Script from 'next/script';
 
-// Google Analytics 4. Does nothing until NEXT_PUBLIC_GA_MEASUREMENT_ID
-// (looks like G-XXXXXXXXXX) is set in Vercel's environment variables.
-const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+// Google Analytics 4. The Measurement ID is public (it ships in every page),
+// so it lives here; NEXT_PUBLIC_GA_MEASUREMENT_ID in Vercel overrides it.
+const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-T9DN97LKN4';
 
 export default function Analytics() {
   if (!GA_ID) return null;
