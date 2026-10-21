@@ -30,6 +30,20 @@ const COVERS: Record<string, { src: string; zoom?: number }> = {
 const lookFor = (i: number) => ({ ...LOOKS[i % LOOKS.length], ...COVERS[freedomSeeker.tiers[i].title] });
 
 const SWIPE_THRESHOLD = 60;
+
+// The swipe hint: a trail stretching out behind a fingertip as it slides left
+const SWIPE_LOOP = [
+  {
+    key: 'trail',
+    className: 'absolute -top-[0.4rem] left-0 h-3.5 w-24 origin-left rounded-full bg-gradient-to-r from-white/80 to-white/0',
+    animate: { opacity: [0, 0.9, 0.9, 0], x: [48, 48, -48, -48], scaleX: [0, 0, 1, 1] },
+  },
+  {
+    key: 'dot',
+    className: 'absolute -left-6 -top-6 h-12 w-12 rounded-full border-4 border-white/60 bg-white/85 shadow-[0_6px_18px_rgba(59,45,14,0.35)]',
+    animate: { opacity: [0, 1, 1, 0], x: [48, 48, -48, -48], scale: [1.15, 0.9, 0.9, 1.1] },
+  },
+];
 const MAX_TILT = 14;
 
 type Tier = (typeof freedomSeeker.tiers)[number];
@@ -154,23 +168,28 @@ export default function OffersCarousel() {
         transition={{ duration: 1.4, delay: 1.6, ease: 'easeInOut' }}
         className="relative"
       >
-      {/* A hand swiping across the sleeve, to show it can be swiped */}
+      {/* A fingertip touch sliding across the sleeve, leaving a soft
+          trail, to show it can be swiped */}
       <AnimatePresence>
         {!reduced && !moved && (
           <motion.div
             aria-hidden="true"
-            className="pointer-events-none absolute left-1/2 top-[42%] z-30 -ml-7 text-bark drop-shadow-[0_4px_10px_rgba(0,0,0,0.35)]"
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: [0, 1, 1, 1, 0], x: [40, 40, -50, -50, -50], rotate: [0, 0, -12, -12, -12] }}
+            className="pointer-events-none absolute left-1/2 top-[44%] z-30"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.6 }}
             exit={{ opacity: 0, transition: { duration: 0.2 } }}
-            transition={{ duration: 1.8, delay: 1.4, times: [0, 0.2, 0.6, 0.8, 1], ease: 'easeInOut', repeat: 2, repeatDelay: 0.6 }}
           >
-            <svg viewBox="0 0 24 24" className="h-14 w-14" fill="#ffffff" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
-              <path d="M18 11V10a2 2 0 0 0-4 0M14 10V9a2 2 0 0 0-4 0v1M10 9.5V4a2 2 0 0 0-4 0v10" fill="none" />
-              <path d="M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L6 14V4a2 2 0 0 1 4 0v5.5V9a2 2 0 0 1 4 0v1a2 2 0 0 1 4 0z" />
-              <path d="M10 9.5V14M14 10v4M18 11v3" fill="none" />
-            </svg>
+            {SWIPE_LOOP.map((part) => (
+              <motion.span
+                key={part.key}
+                className={part.className}
+                initial={{ opacity: 0, x: 48, ...(part.key === 'trail' ? { scaleX: 0 } : {}) }}
+                whileInView={part.animate}
+                viewport={{ once: true, amount: 0.6 }}
+                transition={{ duration: 1.6, delay: 1.4, times: [0, 0.15, 0.65, 1], ease: 'easeInOut', repeat: 2, repeatDelay: 0.5 }}
+              />
+            ))}
           </motion.div>
         )}
       </AnimatePresence>
