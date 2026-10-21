@@ -142,6 +142,14 @@ export default function OffersCarousel() {
         <h2 className="mt-2 font-display text-xl italic leading-tight text-bark sm:text-3xl">{freedomSeeker.heading}</h2>
       </div>
 
+      {/* A little nudge the first time the sleeves come into view, so it's
+          clear they move */}
+      <motion.div
+        initial={false}
+        whileInView={reduced ? undefined : { x: [0, -36, 0, -16, 0] }}
+        viewport={{ once: true, amount: 0.6 }}
+        transition={{ duration: 1.4, delay: 1.6, ease: 'easeInOut' }}
+      >
       <motion.div
         className="relative aspect-square w-[min(60dvh,74vw)] cursor-grab touch-pan-y active:cursor-grabbing"
         drag={reduced ? false : 'x'}
@@ -205,6 +213,39 @@ export default function OffersCarousel() {
           );
         })}
       </motion.div>
+      </motion.div>
+
+      {/* Swipe hint: arrows either side of one dot per offer */}
+      <div className="relative z-30 mt-10 flex flex-col items-center gap-3 sm:absolute sm:bottom-12 sm:mt-0">
+        <div className="flex items-center gap-4">
+          <button type="button" onClick={() => go(-1)} aria-label="Previous offer" className="rounded-full bg-bark/10 p-2 text-bark transition-colors hover:bg-bark/20">
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M15 5l-7 7 7 7" />
+            </svg>
+          </button>
+          <div className="flex items-center gap-2">
+            {tiers.map((tier, i) => (
+              <button
+                key={tier.title}
+                type="button"
+                onClick={() => go(i - active)}
+                aria-label={`Show ${tier.title}`}
+                aria-current={i === active ? 'true' : undefined}
+                className={`h-2.5 rounded-full transition-all duration-300 ${i === active ? 'w-7 bg-bark' : 'w-2.5 bg-bark/30 hover:bg-bark/50'}`}
+              />
+            ))}
+          </div>
+          <button type="button" onClick={() => go(1)} aria-label="Next offer" className="rounded-full bg-bark/10 p-2 text-bark transition-colors hover:bg-bark/20">
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+        <p className="font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-bark/70">
+          <span className="sm:hidden">{freedomSeeker.swipeHint}</span>
+          <span className="hidden sm:inline">{freedomSeeker.swipeHintDesktop}</span>
+        </p>
+      </div>
 
       <AnimatePresence>
         {details !== null && (

@@ -7,7 +7,7 @@ import DrawnLine from '@/components/DrawnLine';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionLabel from '@/components/SectionLabel';
 import TapeBanner from '@/components/TapeBanner';
-import WaitlistForm from '@/components/WaitlistForm';
+import WaitlistForm, { HEARTS } from '@/components/WaitlistForm';
 import { OPEN_FREE_PRACTICE } from '@/components/HomeCtas';
 import { leadMagnet, tutorialSheetUrl } from '@/content/site';
 import { useReducedMotion } from '@/lib/useReducedMotion';
@@ -37,17 +37,6 @@ function loadYouTubeApi() {
   });
   return ytApi;
 }
-
-// Where each heart in the thank-you burst flies to, and its colour.
-const HEARTS = [
-  { x: -90, y: -70, colour: 'text-zing-babypink' },
-  { x: -50, y: -110, colour: 'text-sage' },
-  { x: 0, y: -125, colour: 'text-zing-babypink' },
-  { x: 55, y: -105, colour: 'text-sage' },
-  { x: 95, y: -60, colour: 'text-zing-babypink' },
-  { x: -120, y: -20, colour: 'text-sage' },
-  { x: 125, y: -15, colour: 'text-zing-babypink' },
-];
 
 // The free tapping video offer on the home page. The button opens a pop-up
 // sign-up; once they've joined, it shows a button straight to the video.

@@ -249,8 +249,8 @@ export const freedomFrequencyPage = {
   waitlistHeading: 'Be the first to know',
   waitlistBody: 'Pop your details in and I’ll let you know as soon as The Freedom Frequency opens. Joining the waitlist is free, there’s nothing to pay now.',
   waitlistSent: {
-    heading: 'You’re on the list!',
-    body: 'Thank you for joining, {name}. I’ll email you as soon as The Freedom Frequency opens.',
+    heading: 'You’re in!',
+    body: 'Thank you for joining. I’ll email you as soon as The Freedom Frequency opens.',
   },
   storyLead: 'I teach and share a lifetime of tools, lessons, and learnings because I was exactly where you are four years ago.',
   storyParagraphs: [
@@ -277,7 +277,7 @@ export const freedomFrequencyPage = {
   ],
   courseHighlight: 'Sometimes, the starting point is understanding yourself.',
   closing: 'For the person who knows deep down there has to be more… but doesn’t know how to access it yet.',
-  next: { lead: 'Want to start with something smaller?', label: 'Start with The 5 Day Reconnect', href: '/5-day-reconnect' },
+  next: { lead: 'While you wait…', label: 'Start with The 5 Day Reconnect', href: '/5-day-reconnect' },
   // The six-part overview near the top of the page (structure Lena chose).
   overview: {
     whatItIs: {
@@ -408,6 +408,8 @@ type Tier = {
 export const freedomSeeker = {
   heading: 'Your Next Chapter Starts Here',
   label: 'The Freedom Seeker',
+  swipeHint: 'Swipe to see all 3 offerings',
+  swipeHintDesktop: 'Use the arrows to see all 3 offerings',
   headline: 'Your next chapter starts here:',
   sub: "You built the career, the home, the income. And now you're wondering why you still feel restless. Start here.",
   tiers: [

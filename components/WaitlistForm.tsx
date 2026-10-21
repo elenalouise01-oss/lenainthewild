@@ -1,8 +1,21 @@
 'use client';
 
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { socialLinks, waitlistSheetUrl } from '@/content/site';
 import { sendToInbox } from '@/lib/sendToInbox';
+import { useReducedMotion } from '@/lib/useReducedMotion';
+
+// The little burst of hearts on a thank-you (shared with the free practice pop-up)
+export const HEARTS = [
+  { x: -90, y: -70, colour: 'text-zing-babypink' },
+  { x: -50, y: -110, colour: 'text-sage' },
+  { x: 0, y: -125, colour: 'text-zing-babypink' },
+  { x: 55, y: -105, colour: 'text-sage' },
+  { x: 95, y: -60, colour: 'text-zing-babypink' },
+  { x: -120, y: -20, colour: 'text-sage' },
+  { x: 125, y: -15, colour: 'text-zing-babypink' },
+];
 
 // Waitlist sign-up for an offer that isn't open yet: name and email are
 // emailed to Lena, so visitors never have to leave the site.
@@ -37,6 +50,7 @@ export default function WaitlistForm({
 }) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle');
   const [firstName, setFirstName] = useState('');
+  const reduced = useReducedMotion();
 
   const join = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -63,15 +77,33 @@ export default function WaitlistForm({
 
   if (status === 'sent') {
     if (onSent) return null;
+    // Same feel as the free practice thank-you: "yay, name!", the heading
+    // springing in on yellow, and a burst of hearts.
     return (
-      <div className="mx-auto max-w-md rounded-sm bg-cream px-8 py-10 text-center text-bark shadow-xl" role="status">
-        <span aria-hidden="true" className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-sage font-display text-3xl text-bark">
-          ✓
-        </span>
-        <p className="mt-5 font-display text-3xl italic leading-tight sm:text-4xl">{sent.heading}</p>
-        <p className="mt-4 font-body text-base leading-relaxed text-umber">
-          {firstName ? sent.body.replace('{name}', firstName) : sent.body.replace(', {name}', '')}
-        </p>
+      <div className="relative mx-auto max-w-md rounded-sm bg-cream px-8 py-10 text-center text-bark shadow-xl" role="status">
+        {!reduced &&
+          HEARTS.map((h, i) => (
+            <motion.span
+              key={i}
+              aria-hidden="true"
+              className={`pointer-events-none absolute left-1/2 top-20 text-3xl ${h.colour}`}
+              initial={{ x: 0, y: 0, scale: 0, opacity: 1 }}
+              animate={{ x: h.x, y: h.y, scale: 1, opacity: 0 }}
+              transition={{ duration: 1.6, delay: 0.1 + i * 0.05, ease: 'easeOut' }}
+            >
+              ♡
+            </motion.span>
+          ))}
+        <p className="font-hand text-2xl text-bark/70">yay, {firstName || 'you'}!</p>
+        <motion.p
+          className="mt-3 inline-block -rotate-2 bg-zing-yellow px-4 py-1 font-display text-4xl italic leading-tight text-bark shadow-lg sm:text-5xl"
+          initial={{ scale: reduced ? 1 : 0.6, opacity: reduced ? 1 : 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ type: 'spring', stiffness: 220, damping: 12 }}
+        >
+          {sent.heading}
+        </motion.p>
+        <p className="mt-7 font-body text-base leading-relaxed text-umber">{sent.body.replace(', {name}', '')}</p>
       </div>
     );
   }
