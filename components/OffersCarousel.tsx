@@ -155,28 +155,21 @@ export default function OffersCarousel() {
         transition={{ duration: 1.4, delay: 1.6, ease: 'easeInOut' }}
         className="relative"
       >
-      {/* A swiping hand on the sleeve, to show it can be swiped with a finger */}
+      {/* A small swiping hand just off the sleeve's bottom-right corner, to
+          show it can be swiped with a finger */}
       <AnimatePresence>
         {!reduced && !moved && (
-          <motion.div
+          <motion.img
+            src="/images/swipe-hand.png"
+            alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute left-1/2 top-[38%] z-30 -ml-9 flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full bg-cream shadow-[0_8px_22px_rgba(59,45,14,0.35)]"
-            initial={{ opacity: 0, scale: 0.6 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            className="pointer-events-none absolute -right-2 top-full z-30 mt-3 h-8 w-8"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1, x: [4, -6, 4], rotate: [8, -10, 8] }}
             viewport={{ once: true, amount: 0.6 }}
-            exit={{ opacity: 0, scale: 0.6, transition: { duration: 0.25 } }}
-            transition={{ duration: 0.4, delay: 1.2 }}
-          >
-            <motion.img
-              src="/images/swipe-hand.png"
-              alt=""
-              className="h-12 w-12"
-              initial={{ x: 0, rotate: 0 }}
-              whileInView={{ x: [6, -8, 6], rotate: [8, -10, 8] }}
-              viewport={{ once: true, amount: 0.6 }}
-              transition={{ duration: 1.3, delay: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-            />
-          </motion.div>
+            exit={{ opacity: 0, transition: { duration: 0.25 } }}
+            transition={{ opacity: { duration: 0.4, delay: 1.2 }, default: { duration: 1.3, delay: 1.6, repeat: Infinity, ease: 'easeInOut' } }}
+          />
         )}
       </AnimatePresence>
       <motion.div
