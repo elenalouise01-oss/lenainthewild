@@ -55,7 +55,7 @@ export default async function ArticlePage({ params }: Props) {
     .slice(0, 3)
     .map(({ x }) => x);
 
-  const structuredData = [
+  const structuredData: object[] = [
     {
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
@@ -84,7 +84,20 @@ export default async function ArticlePage({ params }: Props) {
 
   return (
     <>
-      <JsonLd data={structuredData} />
+      <JsonLd
+        data={
+          a.faq
+            ? [
+                ...structuredData,
+                {
+                  '@context': 'https://schema.org',
+                  '@type': 'FAQPage',
+                  mainEntity: a.faq.map(({ q, a: answer }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: answer } })),
+                },
+              ]
+            : structuredData
+        }
+      />
       <SiteHeader active="Journal Entries" />
       <main>
         <article className="bg-cream px-6 pb-20 pt-16 sm:pb-28 sm:pt-24">
@@ -129,6 +142,29 @@ export default async function ArticlePage({ params }: Props) {
                 </p>
               );
             })}
+
+            {/* Quick answers to the questions people search for */}
+            {a.faq && (
+              <section className="mt-10 border-t border-bark/15 pt-10">
+                <h2 className="font-body text-xs font-semibold uppercase tracking-widest2 text-stone">Quick answers</h2>
+                <dl className="mt-6 space-y-6">
+                  {a.faq.map(({ q, a: answer }) => (
+                    <div key={q}>
+                      <dt className="font-display text-xl leading-snug text-bark sm:text-2xl">{q}</dt>
+                      <dd className="mt-2 font-body text-base leading-relaxed text-umber sm:text-lg">{answer}</dd>
+                    </div>
+                  ))}
+                </dl>
+                {a.faqSource && (
+                  <p className="mt-6 font-body text-xs text-stone">
+                    Source:{' '}
+                    <a href={a.faqSource.url} target="_blank" rel="noopener noreferrer" className="underline decoration-sage underline-offset-2">
+                      {a.faqSource.label}
+                    </a>
+                  </p>
+                )}
+              </section>
+            )}
 
             {a.substackUrl && (
               <p className="pt-4 font-body text-sm italic text-stone">

@@ -33,6 +33,11 @@ export type JournalArticle = {
   // The offer to point readers to at the end, and the line that leads into it.
   offer?: 'The 5 Day Reconnect' | 'The Freedom Frequency';
   offerLine?: string;
+  // Short answers to the questions people search for, shown at the end of
+  // the article and marked up so Google can lift them into its answer boxes.
+  faq?: { q: string; a: string }[];
+  // Where the quick answers' facts come from, shown in small print under them.
+  faqSource?: { label: string; url: string };
   text: string;
 };
 
@@ -641,6 +646,18 @@ The thing I was looking for on the outside was always something I needed to cult
       'Who invented the Monday to Friday work week, and who created the weekend? The surprising history of the five-day week, and why I’m living by my own rhythm.',
     date: '2026-04-09',
     category: 'Wellness',
+    faq: [
+      {
+        q: 'Who created the 5 day work week?',
+        a: 'Henry Ford made the five-day, 40-hour week mainstream in 1926, not for workers’ wellbeing, but because it boosted productivity and gave people time to spend money.',
+      },
+      {
+        q: 'Who started the 8 hour work day?',
+        a: 'Labour movements. During the Industrial Revolution, factory workers were grinding six to seven day weeks in brutal conditions, and they fought back for the eight hour workday.',
+      },
+      { q: 'Why is Sunday a day off?', a: 'Sunday became a rest day because of Christian tradition.' },
+    ],
+    faqSource: { label: 'History.com, “The 5-Day Work Week: How We Got Here”', url: 'https://www.history.com/articles/five-day-work-week-labor-movement' },
     tags: ['five day work week', 'Monday to Friday', 'breaking free from the system', 'living on your own terms', 'rest', 'other people’s expectations'],
     image: { src: '/images/journal/who-decided-monday-to-friday.webp', alt: 'An infinity pool looking out over jungle and blue sky', pos: '50% 60%' },
     offer: 'The Freedom Frequency',
