@@ -80,3 +80,23 @@ and `content/journal.ts`.
 - **Link style:** Lena isn't keen on the lilac underline on text links. Options
   A–D were mocked up (A: fine brown line, B: arrow only, C: editorial dash,
   D: outline pill). Waiting on her choice.
+
+## Parked idea: the third step (Naluri Socials) — not built yet
+
+Lena's idea (22 Oct 2026, from her notes and a voice memo). She's not ready to
+build it out; keep it in mind and don't add anything to the site until she says.
+
+- The journey: **5 Day Reconnect** (reconnect) → **The Freedom Frequency** (heal
+  the blocks/triggers, work out the life you want) → **new offer**: build a
+  personal brand / online business on your own terms, through social media.
+- It is NOT a social media service and NOT a separate business: it feeds into
+  Lena in the Wild. Her story: stuck in the hustle/system → personal brand → a
+  business aligned with her values, freedom first.
+- Includes how she uses AI to reclaim time (website, reels, carousels, skills,
+  video editing) while staying authentic, not generic "AI slop". Most of her
+  audience want their own remote/online business.
+- When she's ready: add it to the offers carousel as "Coming soon" (maybe with
+  a waitlist). Still to decide: name (options given: Naluri Socials / Build
+  Your Freedom Brand / The Freedom Business), sticker + Learn more wording
+  (a draft was shown, not approved), cover art (monkey style), waitlist or not.
+- Possible journal tab later for the business side (e.g. "building freedom").
