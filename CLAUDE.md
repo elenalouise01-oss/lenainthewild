@@ -100,3 +100,8 @@ build it out; keep it in mind and don't add anything to the site until she says.
   Your Freedom Brand / The Freedom Business), sticker + Learn more wording
   (a draft was shown, not approved), cover art (monkey style), waitlist or not.
 - Possible journal tab later for the business side (e.g. "building freedom").
+- The heart of it, in Lena's words: she became obsessed with freedom, with
+  creating a business that lets her travel and work whenever she wants. So she
+  started spending all her time learning AI: how to speed up what she was
+  already doing with social media, how to create, and how to turn all her
+  offerings into what she wanted through AI.
