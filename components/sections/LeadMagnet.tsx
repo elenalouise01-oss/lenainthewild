@@ -97,6 +97,15 @@ export default function LeadMagnet() {
     return () => controls.stop();
   }, [open, sent, draw]);
 
+  // Direct links (for Instagram DMs, emails and so on):
+  // lenainthewild.com/#free-practice opens the sign-up pop-up;
+  // lenainthewild.com/#tapping-practice opens it straight on the video.
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash === '#tapping-practice') setSent('');
+    if (hash === '#tapping-practice' || hash === '#free-practice') setOpen(true);
+  }, []);
+
   // Other buttons on the page (under the hero, after the FAQ) open this pop-up too.
   useEffect(() => {
     const show = () => setOpen(true);
