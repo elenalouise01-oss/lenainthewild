@@ -12,32 +12,6 @@ import { OPEN_FREE_PRACTICE } from '@/components/HomeCtas';
 import { leadMagnet, tutorialSheetUrl } from '@/content/site';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 
-// Just enough of the YouTube iframe API to know when the video is played.
-type YTPlayer = { playVideo?: () => void };
-type YTApi = { Player: new (el: HTMLIFrameElement, opts: { events: { onStateChange: (e: { data: number }) => void } }) => YTPlayer };
-declare global {
-  interface Window {
-    YT?: YTApi;
-    onYouTubeIframeAPIReady?: () => void;
-  }
-}
-
-let ytApi: Promise<YTApi> | null = null;
-function loadYouTubeApi() {
-  ytApi ??= new Promise((resolve) => {
-    if (window.YT?.Player) return resolve(window.YT);
-    const prev = window.onYouTubeIframeAPIReady;
-    window.onYouTubeIframeAPIReady = () => {
-      prev?.();
-      if (window.YT) resolve(window.YT);
-    };
-    const script = document.createElement('script');
-    script.src = 'https://www.youtube.com/iframe_api';
-    document.head.appendChild(script);
-  });
-  return ytApi;
-}
-
 // The free tapping video offer on the home page. The button opens a pop-up
 // sign-up; once they've joined, it shows a button straight to the video.
 // The pop-up closes on ×, Esc or a click outside.
@@ -50,31 +24,16 @@ export default function LeadMagnet() {
   const [sent, setSent] = useState<string | null>(null);
   // Once they press play, the video straightens up and fills the pop-up.
   const [playing, setPlaying] = useState(false);
-  const videoRef = useRef<HTMLIFrameElement>(null);
-  const playerRef = useRef<YTPlayer | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Listen to the YouTube player (its iframe API) to know when they press play.
+  // A new sign-up starts with the video waiting for play.
   useEffect(() => {
-    if (sent === null) {
-      setPlaying(false);
-      return;
-    }
-    let cancelled = false;
-    loadYouTubeApi().then((YT) => {
-      if (cancelled || !videoRef.current) return;
-      playerRef.current = new YT.Player(videoRef.current, {
-        events: { onStateChange: (e: { data: number }) => e.data === 1 && setPlaying(true) },
-      });
-    });
-    return () => {
-      cancelled = true;
-      playerRef.current = null;
-    };
+    if (sent === null) setPlaying(false);
   }, [sent]);
 
   const play = () => {
     setPlaying(true);
-    playerRef.current?.playVideo?.();
+    void videoRef.current?.play();
   };
   // Draws the doodle line in the pop-up each time it opens or changes.
   const draw = useMotionValue(0);
@@ -254,14 +213,20 @@ export default function LeadMagnet() {
                       {sent === null ? (
                         <Image src={leadMagnet.photo} alt={leadMagnet.photoAlt} fill sizes="13rem" className="object-cover object-[50%_30%]" />
                       ) : (
-                        <iframe
+                        // Lena's own video file (no YouTube logo or buttons over her captions)
+                        <video
                           ref={videoRef}
-                          src={`https://www.youtube-nocookie.com/embed/${leadMagnet.videoId}?rel=0&playsinline=1&enablejsapi=1`}
+                          poster="/videos/tapping-practice-poster.jpg"
+                          controls
+                          playsInline
+                          preload="metadata"
+                          onPlay={() => setPlaying(true)}
                           title={leadMagnet.title}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                          allowFullScreen
-                          className="absolute inset-0 h-full w-full"
-                        />
+                          className="absolute inset-0 h-full w-full object-cover"
+                        >
+                          <source src="/videos/tapping-practice.mp4" type="video/mp4" />
+                          <source src="/videos/tapping-practice.webm" type="video/webm" />
+                        </video>
                       )}
                     </div>
                     {!playing && (
