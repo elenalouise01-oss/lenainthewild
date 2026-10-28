@@ -1091,6 +1091,7 @@ export const photographyPage = {
     label: 'Why I do this',
     body: [
       'I’ve been through multiple transitions over my 39 years of life. To name a few of the more recent ones: the leap, uprooting my life from Sydney to Bali. The death of my old identity, and stepping into a new one. Letting go of old conditioning and an old way of living, for a life on my terms. And now, the next layer of that.',
+      'I wish I had a little photo album documenting each of those life transitions, celebrating me through every one of them.',
       'When I looked at my old photos, there was a disconnect. They didn’t reflect who I am now. I wanted to show the new me. Feminine, embodied, in my power, my inner wild woman finally let loose, in this new era.',
       'Every one of those moments was a pivotal transformation, and every one deserved celebrating. I want to be able to look back at them and say: wow, look how far I’ve come.',
       'That’s what I want to give you.',
@@ -1112,7 +1113,7 @@ export const photographyPage = {
     hype: 'I’ll be behind the camera cheering you on, hyping you up and celebrating the woman you’ve become.',
     note: 'Pricing and dates on enquiry.',
   },
-  galleryLabel: 'Reintroductions',
+  galleryLabel: 'Latest reintroductions',
   // One client per row of three
   gallery: [
     { src: '/images/photography/client-banana-leaves-hd.webp', alt: 'A client smiling between giant banana leaves', tall: true },
