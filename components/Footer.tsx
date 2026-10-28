@@ -9,6 +9,7 @@ import { goHome, scrollToTop } from '@/lib/goHome';
 // Footer links to pages that don't exist yet are hidden until they do.
 const REAL_ANCHORS: Record<string, string> = {
   'Journal Entries': '/journal',
+  Photography: '/photography',
   About: '/my-story',
   'Who I Help': '/life-design',
   Substack: 'https://substack.com/@lenainthewild',

@@ -9,6 +9,7 @@ export const nav = {
     { label: 'Who I Help', href: '/life-design' },
     { label: 'The Freedom Seeker', href: '#freedom-seeker', expandable: true },
     { label: 'Journal Entries', href: '/journal' },
+    { label: 'Photography', href: '/photography' },
     { label: "Let's Connect", href: '#contact' },
   ],
   subscribeLabel: 'Subscribe',
@@ -687,7 +688,7 @@ export const footer = {
     },
     {
       label: 'Get to Know Me',
-      links: ['About', 'Who I Help', 'Journal Entries'],
+      links: ['About', 'Who I Help', 'Journal Entries', 'Photography'],
     },
     {
       label: 'Connect',

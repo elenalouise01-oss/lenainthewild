@@ -14,6 +14,7 @@ const LINKS = [
   { label: 'Who I Help', href: '/life-design' },
   { label: 'The Freedom Seeker', href: '/#freedom-seeker' },
   { label: 'Journal Entries', href: '/journal' },
+  { label: 'Photography', href: '/photography' },
   { label: 'Contact', href: '/#contact' },
 ];
 
