@@ -1050,76 +1050,57 @@ export const storyPage: {
 };
 
 
-// The photography page (/photography): portraits for the person you're
-// becoming. An extension of Lena in the Wild that can stand on its own.
-// `brand` is a placeholder until Lena picks the name. The photos are
-// stand-ins from her own library: swap them for portfolio images as it
-// grows (each needs a src and alt; `tall` makes it a portrait-shaped tile).
+// The photography page (/photography): the "Let Me Reintroduce Myself"
+// photoshoot, mostly in Lena's own words from her notes. `brand` is the
+// working name until she decides. The gallery photos are stand-ins from her
+// own library: swap them for portfolio images as it grows (each needs a src
+// and alt; `tall` makes it a portrait-shaped tile).
 export const photographyPage = {
   brand: 'Naluri Photography',
-  title: 'Photography for the person you’re becoming.',
-  lead: 'Creative portraits for the chapter you’re stepping into.',
-  cta: 'Enquire about a shoot',
+  title: 'Let me reintroduce myself.',
+  lead: 'A photoshoot for the person you’ve become.',
+  cta: 'Book your reintroduction',
   hero: { src: '/images/lena-sunrise-hero.jpg', alt: 'A portrait at sunrise above the clouds' },
-  philosophy: {
-    line: 'You don’t need to become someone else to celebrate who you are.',
-    body: 'Maybe you’ve changed careers, started something of your own, moved somewhere new, or simply stopped shrinking to fit. These shoots mark that moment, as you are now. Not a finished version of you. This one.',
-  },
-  differentLabel: 'Not your usual photoshoot',
-  different: [
-    { title: 'Directed, not posed', body: 'We play with movement, light, styling and place until it feels like you.' },
-    { title: 'Your mood, your way', body: 'Bold, playful, sensual, soft or quietly understated. You set the tone.' },
-    { title: 'Editorial at heart', body: 'Images that feel more like a story in a magazine than a standard portrait.' },
-  ],
-  forLabel: 'This might be for you if',
-  forList: [
-    'You’re stepping into a new chapter and want to mark it',
-    'You want photos that feel like you, not a template',
-    'You love a bit of creativity, play and experimenting',
-    'You’re ready to be seen as you are now',
-  ],
-  galleryLabel: 'Portfolio',
-  gallery: [
-    { src: '/images/tapping-harbour.webp', alt: 'Seated portrait by the harbour, eyes closed', tall: true },
-    { src: '/images/story/greece-quad.jpg', alt: 'On a quad bike outside a whitewashed Greek building' },
-    { src: '/images/road/road-2.jpg', alt: 'Arm raised to the sky on a scooter in the hills', tall: true },
-    { src: '/images/road/scooter-rice-fields.jpg', alt: 'Laughing in a helmet beside rice fields', tall: true },
-    { src: '/images/hero.jpg', alt: 'From behind, hands in long dark hair' },
-    { src: '/images/story/pt-polaroid.jpg', alt: 'Studio portrait against lilac', tall: true },
-  ],
-  howLabel: 'How it works',
-  how: [
-    { title: 'Say hello', body: 'Tell me about the chapter you’re in and what you’d love to capture.' },
-    { title: 'Dream it up', body: 'We shape the mood, styling and location together.' },
-    { title: 'The shoot', body: 'Relaxed, creative and guided, so you can just be you.' },
-    { title: 'Your gallery', body: 'A curated collection of edited images of this chapter.' },
-  ],
-  // The two ways to shoot. No prices or set durations yet: Lena to confirm.
-  sessionsLabel: 'The shoots',
-  sessions: [
-    {
-      name: 'The Portrait Session',
-      body: 'One location, one mood, all you. A focused shoot for when you want a few images that feel completely like you.',
-    },
-    {
-      name: 'The Chapter Shoot',
-      body: 'A longer, more creative experience with different looks, locations and moods, to tell the whole story of who you’re becoming.',
-    },
-  ],
-  sessionsNote: 'Pricing and dates on enquiry.',
-  about: {
-    label: 'Behind the camera',
-    heading: 'Hi, I’m Lena.',
+  who: {
+    label: 'Who it’s for',
     body: [
-      'Photographer, designer and storyteller, with a Bachelor of Design and more than 13 years of creative work behind me.',
-      'I uprooted my life to Bali to stop living by everyone else’s rules, so I know what it feels like to step into a new chapter. I don’t just see your story, I feel it. That’s what I try to capture.',
+      'It’s for the person stepping into a new version of themselves. Maybe you’ve just gone through a huge life transition, started a new chapter, or been through an awakening. You had to turn inward and do a lot of deep internal work.',
+      'Now you’re ready to step back into the world and show off the new you. To reintroduce yourself.',
+      'But none of your camera roll really connects with who you are now. Sure, they’re nice photos, but they don’t represent the new you. This new version of who you’ve become.',
     ],
   },
+  why: {
+    label: 'A celebration of self',
+    body: [
+      'This is a celebration of the hard work. Of the transformational period you’ve just been through. Of the courage it took, the inner work, the letting go, the death of your old identity and stepping into the new.',
+      'This is a pivotal moment, and it deserves to be documented as big as a wedding or an anniversary.',
+    ],
+    quote: 'You’ve done the work. Now you get to be seen for it.',
+  },
+  story: {
+    label: 'Why I do this',
+    body: [
+      'I’ve been through multiple transitions over the past few years. The leap, uprooting my life from Sydney to Bali. The death of my old identity, and stepping into a new one. Letting go of old conditioning and an old way of living, for a life on my terms. And now, the next layer of that.',
+      'Every one of those moments was a pivotal transformation, and every one deserved celebrating. I want to be able to look back at them and say: wow, look how far I’ve come.',
+      'But when I looked at my old photos, there was a disconnect. They didn’t reflect who I am now. I wanted to show the new me. Feminine, embodied, in my power, in this new era.',
+      'That’s what I want to give you.',
+    ],
+    photo: { src: '/images/lena-sunrise-smile.jpg', alt: 'Lena smiling over her shoulder at sunrise' },
+  },
+  galleryLabel: 'Portfolio',
+  gallery: [
+    { src: '/images/story/canada-snowboard.jpg', alt: 'Sitting in the snow with a snowboard', tall: true },
+    { src: '/images/road/road-9.jpg', alt: 'Two friends laughing on a scooter', tall: true },
+    { src: '/images/hero.jpg', alt: 'From behind, hands in long dark hair' },
+    { src: '/images/road/scooter-rice-fields.jpg', alt: 'Laughing in a helmet beside rice fields', tall: true },
+    { src: '/images/story/pt-polaroid.jpg', alt: 'Studio portrait against lilac', tall: true },
+    { src: '/images/rainbow-beach.jpg', alt: 'A rainbow over a quiet beach' },
+  ],
   enquiry: {
-    heading: 'Let’s capture your next chapter',
-    body: 'Tell me a little about you and what you have in mind. I’ll be in touch.',
+    heading: 'Ready to reintroduce yourself?',
+    body: 'Tell me a little about you and the version of yourself you’re stepping into. I’ll be in touch.',
     dm: 'Or message me on Instagram',
-    chapterPlaceholder: 'The chapter you’re in, and what you’d love to capture',
+    chapterPlaceholder: 'Tell me about the new you',
     button: 'Send enquiry',
     sending: 'Sending…',
     sentHeading: 'Thank you!',

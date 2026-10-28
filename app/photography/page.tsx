@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
+import CinematicImage from '@/components/CinematicImage';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import PhotoEnquiryForm from '@/components/PhotoEnquiryForm';
@@ -9,9 +9,9 @@ import SiteHeader from '@/components/SiteHeader';
 import { photographyPage as page, socialLinks } from '@/content/site';
 import { absoluteUrl, breadcrumbs } from '@/lib/seo';
 
-const title = 'Portrait Photography for Your Next Chapter | Lena in the Wild';
+const title = 'Let Me Reintroduce Myself: A Portrait Photoshoot | Lena in the Wild';
 const description =
-  'Creative, editorial portrait shoots for anyone stepping into a new chapter: a new career, a new place, or simply feeling more like yourself.';
+  'A portrait photoshoot to celebrate the person you’ve become after a big life transition. Bright, editorial and cinematic, by Naluri Photography.';
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -21,11 +21,15 @@ export const metadata: Metadata = {
   twitter: { card: 'summary_large_image', title, description, images: [page.hero.src] },
 };
 
-const label = 'font-body text-xs font-semibold uppercase tracking-widest2';
+// Tiny spaced capitals for labels, and the reading measure for body copy.
+const label = 'font-body text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-stone';
+const body = 'font-body text-base leading-[1.9] text-umber sm:text-[1.05rem]';
 
-// Photography for the person you're becoming: an editorial, image-led page.
-// Photos and copy come from `photographyPage` in content/site.ts.
+// The "Let Me Reintroduce Myself" photoshoot: bright, editorial and
+// cinematic. Words and photos live in `photographyPage` (content/site.ts).
 export default function PhotographyPage() {
+  const [whoLead, ...whoRest] = page.who.body;
+
   return (
     <>
       <JsonLd
@@ -34,7 +38,7 @@ export default function PhotographyPage() {
           {
             '@context': 'https://schema.org',
             '@type': 'Service',
-            name: page.brand,
+            name: 'Let Me Reintroduce Myself photoshoot',
             serviceType: 'Portrait photography',
             description,
             url: absoluteUrl('/photography'),
@@ -43,125 +47,51 @@ export default function PhotographyPage() {
         ]}
       />
       <SiteHeader />
-      <main>
-        {/* Hero: the photograph first, the words over it */}
-        <section className="relative h-[88dvh] min-h-[32rem] overflow-hidden bg-bark">
-          <Image src={page.hero.src} alt={page.hero.alt} fill priority sizes="100vw" className="object-cover object-[50%_40%]" />
-          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-bark/85 via-bark/25 to-transparent" />
-          <div className="container-editorial absolute inset-x-0 bottom-0 px-6 pb-14 text-cream sm:pb-20">
-            <p className={`${label} text-cream/80`}>{page.brand}</p>
-            <h1 className="mt-5 max-w-3xl font-display text-5xl italic leading-[1.02] sm:text-7xl">{page.title}</h1>
-            <p className="mt-6 max-w-xl font-body text-base text-cream/85 sm:text-lg">{page.lead}</p>
-            <a
-              href="#enquire"
-              className="mt-9 inline-block border-b border-cream/60 pb-1 font-body text-xs font-semibold uppercase tracking-widest2 transition-colors hover:border-cream"
-            >
-              {page.cta} →
-            </a>
-          </div>
-        </section>
-
-        {/* The idea behind it, in one breath */}
-        <section className="bg-sand px-6 py-24 sm:py-36">
-          <ScrollReveal className="mx-auto max-w-3xl text-center">
-            <p className="font-display text-3xl italic leading-snug text-bark sm:text-5xl">{page.philosophy.line}</p>
-            <p className="mx-auto mt-8 max-w-xl font-body text-base leading-relaxed text-umber sm:text-lg">{page.philosophy.body}</p>
-          </ScrollReveal>
-        </section>
-
-        {/* Portfolio: tall and square tiles in loose columns */}
-        <section className="bg-cream px-4 py-20 sm:px-8 sm:py-28">
-          <p className={`${label} container-editorial px-2 text-stone`}>{page.galleryLabel}</p>
-          <div className="container-editorial mt-10 columns-2 gap-4 sm:gap-6 lg:columns-3">
-            {page.gallery.map((photo, i) => (
-              <ScrollReveal key={photo.src} delay={(i % 3) * 0.08} className="mb-4 break-inside-avoid sm:mb-6">
-                <div className={`relative overflow-hidden bg-linen ${photo.tall ? 'aspect-[4/5]' : 'aspect-square'}`}>
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, 50vw"
-                    className="object-cover transition-transform duration-700 hover:scale-[1.03]"
-                  />
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </section>
-
-        {/* What makes it different */}
-        <section className="bg-cream px-6 pb-24 sm:pb-32">
-          <div className="container-editorial border-t border-bark/15 pt-16 sm:pt-20">
-            <p className={`${label} text-stone`}>{page.differentLabel}</p>
-            <div className="mt-12 grid gap-12 sm:grid-cols-3 sm:gap-10">
-              {page.different.map((item, i) => (
-                <ScrollReveal key={item.title} delay={i * 0.1}>
-                  <p className="font-display text-sm text-stone">{String(i + 1).padStart(2, '0')}</p>
-                  <h2 className="mt-3 font-display text-2xl text-bark sm:text-3xl">{item.title}</h2>
-                  <p className="mt-3 font-body text-base leading-relaxed text-umber">{item.body}</p>
-                </ScrollReveal>
-              ))}
+      <main className="bg-cream">
+        {/* Opening: the title as a magazine cover line beside a tall portrait */}
+        <section className="px-6 pb-20 pt-12 sm:px-10 sm:pb-28 sm:pt-20">
+          <div className="mx-auto grid max-w-7xl items-end gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-20">
+            <ScrollReveal className="lg:pb-10">
+              <p className={label}>{page.brand}</p>
+              <h1 className="mt-8 font-display text-[3.4rem] leading-[0.95] tracking-tight text-bark sm:text-8xl lg:text-[7.5rem]">
+                Let me
+                <br />
+                <em>reintroduce</em>
+                <br />
+                myself.
+              </h1>
+              <p className="mt-10 max-w-sm font-body text-base leading-relaxed text-umber">{page.lead}</p>
+              <a
+                href="#enquire"
+                className="mt-10 inline-block border-b border-bark pb-1.5 font-body text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-bark transition-opacity hover:opacity-60"
+              >
+                {page.cta}
+              </a>
+            </ScrollReveal>
+            <div>
+              <CinematicImage
+                src="/images/tapping-harbour.webp"
+                alt="Seated portrait by the harbour, eyes closed"
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="aspect-[4/5]"
+                position="50% 35%"
+                priority
+                drift={8}
+              />
             </div>
           </div>
         </section>
 
-        {/* Who it's for, then how it works */}
-        <section className="bg-sand px-6 py-24 sm:py-32">
-          <div className="container-editorial grid gap-16 lg:grid-cols-2 lg:gap-24">
+        {/* Who it's for: label in the margin, words in a narrow column */}
+        <section className="px-6 py-20 sm:px-10 sm:py-32">
+          <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_2fr]">
             <ScrollReveal>
-              <h2 className="font-display text-3xl italic text-bark sm:text-4xl">{page.forLabel}</h2>
-              <ul className="mt-8 border-t border-bark/15">
-                {page.forList.map((item) => (
-                  <li key={item} className="border-b border-bark/15 py-4 font-body text-base text-umber sm:text-lg">
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <p className={label}>{page.who.label}</p>
             </ScrollReveal>
-            <ScrollReveal delay={0.1}>
-              <h2 className="font-display text-3xl italic text-bark sm:text-4xl">{page.howLabel}</h2>
-              <ol className="mt-8 space-y-8">
-                {page.how.map((step, i) => (
-                  <li key={step.title} className="flex gap-6">
-                    <span className="font-display text-3xl text-bark/30">{i + 1}</span>
-                    <div>
-                      <p className="font-display text-xl text-bark">{step.title}</p>
-                      <p className="mt-1 font-body text-base leading-relaxed text-umber">{step.body}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </ScrollReveal>
-          </div>
-        </section>
-
-        {/* The shoots on offer */}
-        <section className="bg-cream px-6 py-24 sm:py-32">
-          <div className="container-editorial">
-            <p className={`${label} text-stone`}>{page.sessionsLabel}</p>
-            <div className="mt-10 grid gap-px bg-bark/15 sm:grid-cols-2">
-              {page.sessions.map((session, i) => (
-                <ScrollReveal key={session.name} delay={i * 0.1} className="bg-cream py-8 sm:px-10 sm:py-12 sm:first:pl-0">
-                  <h2 className="font-display text-3xl italic text-bark sm:text-4xl">{session.name}</h2>
-                  <p className="mt-4 max-w-md font-body text-base leading-relaxed text-umber">{session.body}</p>
-                </ScrollReveal>
-              ))}
-            </div>
-            <p className="mt-8 font-body text-sm text-stone">{page.sessionsNote}</p>
-          </div>
-        </section>
-
-        {/* About Lena, briefly, with a portrait */}
-        <section className="bg-sand px-6 py-24 sm:py-32">
-          <div className="container-editorial grid items-center gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-24">
-            <ScrollReveal className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden">
-              <Image src="/images/lena-sunrise-smile.jpg" alt="Lena smiling over her shoulder at sunrise" fill sizes="(min-width: 1024px) 24rem, 90vw" className="object-cover object-[62%_50%]" />
-            </ScrollReveal>
-            <ScrollReveal delay={0.1}>
-              <p className={`${label} text-stone`}>{page.about.label}</p>
-              <h2 className="mt-4 font-display text-4xl italic text-bark sm:text-5xl">{page.about.heading}</h2>
-              {page.about.body.map((p) => (
-                <p key={p.slice(0, 20)} className="mt-5 max-w-lg font-body text-base leading-relaxed text-umber sm:text-lg">
+            <ScrollReveal delay={0.1} className="max-w-2xl">
+              <p className="font-display text-2xl leading-snug text-bark sm:text-[2rem]">{whoLead}</p>
+              {whoRest.map((p) => (
+                <p key={p.slice(0, 24)} className={`mt-7 ${body}`}>
                   {p}
                 </p>
               ))}
@@ -169,19 +99,108 @@ export default function PhotographyPage() {
           </div>
         </section>
 
-        {/* Enquiry */}
-        <section id="enquire" className="scroll-mt-20 bg-bark px-6 py-24 sm:py-32">
-          <div className="container-editorial grid gap-12 lg:grid-cols-2 lg:gap-24">
+        {/* A wide, letterboxed frame, like a film still */}
+        <section className="px-0 sm:px-10">
+          <CinematicImage
+            src={page.hero.src}
+            alt={page.hero.alt}
+            sizes="100vw"
+            className="mx-auto aspect-[4/3] max-w-7xl sm:aspect-[21/9]"
+            position="50% 45%"
+            drift={16}
+          />
+        </section>
+
+        {/* A celebration of self */}
+        <section className="px-6 py-24 sm:px-10 sm:py-36">
+          <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-24">
+            <CinematicImage
+              src="/images/road/road-2.jpg"
+              alt="Arm raised to the sky on a scooter in the hills"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="mx-auto aspect-[3/4] w-full max-w-md"
+              position="50% 30%"
+            />
             <ScrollReveal>
-              <h2 className="font-display text-4xl italic leading-tight text-cream sm:text-5xl">{page.enquiry.heading}</h2>
-              <p className="mt-6 max-w-md font-body text-base leading-relaxed text-cream/80">{page.enquiry.body}</p>
+              <p className={label}>{page.why.label}</p>
+              {page.why.body.map((p, i) => (
+                <p key={p.slice(0, 24)} className={i === 0 ? 'mt-8 font-display text-2xl leading-snug text-bark sm:text-3xl' : `mt-7 ${body}`}>
+                  {p}
+                </p>
+              ))}
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* The line to remember, given the whole width */}
+        <section className="border-y border-bark/10 px-6 py-24 sm:py-36">
+          <ScrollReveal className="mx-auto max-w-4xl text-center">
+            <p className="font-display text-4xl italic leading-[1.15] text-bark sm:text-6xl">{page.why.quote}</p>
+          </ScrollReveal>
+        </section>
+
+        {/* Portfolio: a staggered editorial grid */}
+        <section className="px-6 py-24 sm:px-10 sm:py-32">
+          <div className="mx-auto max-w-7xl">
+            <p className={label}>{page.galleryLabel}</p>
+            <div className="mt-14 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-8 sm:gap-y-16 lg:grid-cols-3">
+              {page.gallery.map((photo, i) => (
+                <ScrollReveal key={photo.src} delay={(i % 3) * 0.08} className={i % 3 === 1 ? 'lg:mt-24' : ''}>
+                  <CinematicImage
+                    src={photo.src}
+                    alt={photo.alt}
+                    sizes="(min-width: 1024px) 30vw, 50vw"
+                    className={photo.tall ? 'aspect-[4/5]' : 'aspect-square'}
+                    drift={6}
+                  />
+                  <p className="mt-3 font-body text-[0.6rem] tracking-[0.3em] text-stone">{String(i + 1).padStart(2, '0')}</p>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Why I do this: Lena's story beside her portrait */}
+        <section className="bg-sand px-6 py-24 sm:px-10 sm:py-36">
+          <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[1.2fr_1fr] lg:gap-24">
+            <ScrollReveal className="max-w-xl">
+              <p className={label}>{page.story.label}</p>
+              {page.story.body.map((p, i) => (
+                <p
+                  key={p.slice(0, 24)}
+                  className={
+                    i === page.story.body.length - 1
+                      ? 'mt-10 font-display text-3xl italic text-bark'
+                      : `${i === 0 ? 'mt-8' : 'mt-6'} ${body}`
+                  }
+                >
+                  {p}
+                </p>
+              ))}
+            </ScrollReveal>
+            <CinematicImage
+              src={page.story.photo.src}
+              alt={page.story.photo.alt}
+              sizes="(min-width: 1024px) 35vw, 100vw"
+              className="aspect-[4/5] w-full lg:mt-16"
+              position="62% 50%"
+            />
+          </div>
+        </section>
+
+        {/* Enquiry: bright and quiet */}
+        <section id="enquire" className="scroll-mt-20 px-6 py-24 sm:px-10 sm:py-36">
+          <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-24">
+            <ScrollReveal>
+              <h2 className="font-display text-5xl leading-[1.02] tracking-tight text-bark sm:text-7xl">{page.enquiry.heading}</h2>
+              <p className={`mt-8 max-w-sm ${body}`}>{page.enquiry.body}</p>
               <a
                 href={socialLinks.Instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-block border-b border-cream/50 pb-1 font-body text-xs font-semibold uppercase tracking-widest2 text-cream/85 transition-colors hover:border-cream"
+                className="mt-8 inline-block border-b border-bark/40 pb-1 font-body text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-bark transition-opacity hover:opacity-60"
               >
-                {page.enquiry.dm} →
+                {page.enquiry.dm}
               </a>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
@@ -190,11 +209,10 @@ export default function PhotographyPage() {
           </div>
         </section>
 
-        {/* A quiet nod to the wider work */}
-        <section className="bg-cream px-6 py-14 text-center">
-          <p className="font-display text-lg italic text-bark/80">
+        <section className="border-t border-bark/10 px-6 py-12 text-center">
+          <p className="font-body text-sm text-stone">
             {page.connection.line}{' '}
-            <Link href={page.connection.href} className="not-italic underline decoration-sage decoration-2 underline-offset-4 hover:decoration-bark">
+            <Link href={page.connection.href} className="text-bark underline underline-offset-4 hover:opacity-60">
               {page.connection.label}
             </Link>
           </p>
