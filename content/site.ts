@@ -1067,10 +1067,11 @@ export const photographyPage = {
   who: {
     label: 'Who it’s for',
     body: [
-      'It’s for the person stepping into a new version of themselves. Maybe you’ve just gone through a huge life transition, started a new chapter, or been through an awakening. You had to turn inward and do a lot of deep internal work.',
-      'Now you’re ready to step back into the world and show off the new you. To reintroduce yourself.',
-      'But none of your camera roll really connects with who you are now. Sure, they’re nice photos, but they don’t represent the new you. This new version of who you’ve become.',
-      'So when was the last time you saw a photo of yourself and thought, wow, I’m so damn proud of her. Look at me.',
+      'This is for the woman who has stepped into a new version of herself.',
+      'Maybe you’ve just been through a huge life transition, started a new chapter, or had an awakening. You turned inward and did the deep, quiet work nobody else saw.',
+      'None of your camera roll really connects with who you are now. They’re nice photos, they just don’t show the woman you’ve become.',
+      'It’s time to show the world what you’ve been working so hard on. The new you. It’s time to shine, baby girl!',
+      'When was the last time you saw a photo of yourself and thought, wow, I’m so damn proud of her. Look at me.',
     ],
   },
   era: 'Step into your most confident, magnetic, expansive era yet. It’s time to show the world the new you!',
