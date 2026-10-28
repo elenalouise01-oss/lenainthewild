@@ -1071,7 +1071,7 @@ export const photographyPage = {
     body: [
       'This is for the woman who has stepped into a new version of herself.',
       'Maybe you’ve just been through a huge life transition, started a new chapter, or had an awakening. You turned inward and did the deep, quiet work nobody else saw.',
-      'None of your camera roll really connects with who you are now. They’re nice photos, they just don’t show the woman you’ve become.',
+      'None of your camera roll really connects with the woman you are now. Sure, you’ve got nice photos of yourself, but they just don’t really feel connected to, or represent, the woman you’ve become or are becoming.',
       'It’s time to show the world what you’ve been working so hard on. The new you, and the person you’ve had to become to be here now. It’s time to shine, baby girl!',
       'When was the last time you saw a photo of yourself and thought, wow, I’m so damn proud of her. Look at me.',
     ],
