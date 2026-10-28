@@ -105,3 +105,9 @@ build it out; keep it in mind and don't add anything to the site until she says.
   started spending all her time learning AI: how to speed up what she was
   already doing with social media, how to create, and how to turn all her
   offerings into what she wanted through AI.
+
+## Photography page (/photography): for women only
+Lena confirmed (28 Oct 2026) the photography experience ("Let me reintroduce
+myself", Naluri Photography working name) is just for women. Unlike the rest
+of the site (gender-neutral), this page can use feminine language ("her",
+"hype woman", feminine energy).

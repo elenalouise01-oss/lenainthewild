@@ -1058,11 +1058,11 @@ export const storyPage: {
 export const photographyPage = {
   brand: 'Naluri Photography',
   title: 'Let me reintroduce myself.',
-  lead: 'A photoshoot for the person you’ve become.',
-  cta: 'Book your reintroduction',
+  lead: 'An immersive photography experience for the version of you that fought to be here.',
+  cta: 'Begin your reintroduction',
   // Client photos (location data stripped). Swap or add more any time.
-  hero: { src: '/images/photography/client-palms-laughing.webp', alt: 'A client laughing in the sun, sitting on a path beneath tall palms' },
-  still: { src: '/images/photography/client-garden-gaze.webp', alt: 'A client looking straight into the camera in a lush garden' },
+  hero: { src: '/images/photography/client-banana-leaves.webp', alt: 'A client smiling between giant banana leaves, in a pink top' },
+  still: { src: '/images/photography/lotus-pool.webp', alt: 'A pink lotus flower in front of a pool' },
   celebrationPhoto: { src: '/images/photography/client-garden-smile.webp', alt: 'A client smiling, long hair over her shoulders, in a tropical garden' },
   who: {
     label: 'Who it’s for',
@@ -1070,15 +1070,17 @@ export const photographyPage = {
       'It’s for the person stepping into a new version of themselves. Maybe you’ve just gone through a huge life transition, started a new chapter, or been through an awakening. You had to turn inward and do a lot of deep internal work.',
       'Now you’re ready to step back into the world and show off the new you. To reintroduce yourself.',
       'But none of your camera roll really connects with who you are now. Sure, they’re nice photos, but they don’t represent the new you. This new version of who you’ve become.',
+      'So when was the last time you saw a photo of yourself and thought, wow, I’m so damn proud of her. Look at me.',
     ],
   },
+  era: 'Step into your most confident, magnetic, expansive era yet. It’s time to show the world the new you!',
   why: {
     label: 'A celebration of self',
     body: [
       'This is a celebration of the hard work. Of the transformational period you’ve just been through. Of the courage it took, the inner work, the letting go, the death of your old identity and stepping into the new.',
       'This is a pivotal moment, and it deserves to be documented as big as a wedding or an anniversary.',
     ],
-    quote: 'You’ve done the work. Now you get to be seen for it.',
+    quote: 'You did the work. Now step into the light.',
   },
   story: {
     label: 'Why I do this',
@@ -1090,10 +1092,34 @@ export const photographyPage = {
     ],
     photo: { src: '/images/lena-sunrise-smile.jpg', alt: 'Lena smiling over her shoulder at sunrise' },
   },
+  gives: {
+    label: 'What this experience gives you',
+    items: [
+      { title: 'Permission', body: 'To take up space. To be bold, soft, sensual, playful, all of it. To stop shrinking.' },
+      { title: 'To be witnessed', body: 'Someone holding space for you to shine, and catching the moment you light up.' },
+      { title: 'A celebration', body: 'Of the courage it took, the parts of you that you let go, and the person who stayed.' },
+      { title: 'Proof', body: 'Images you’ll come back to on the hard days, to remember exactly who you are.' },
+    ],
+  },
+  experience: {
+    label: 'The experience',
+    body: 'One on one, guided from start to finish. We shape the mood, styling and location together, then I’ll hold the space while you play, laugh, move and let go. No stiff poses. Just you, fully you. Afterwards, you’ll receive a curated gallery of edited images.',
+    hype: 'I’ll be behind the camera cheering you on, hyping you up and celebrating the woman you’ve become.',
+    note: 'Pricing and dates on enquiry.',
+  },
   galleryLabel: 'Portfolio',
+  // Portraits with a few nature shots between them, to give the eye a rest
+  // Portraits with a few nature shots between them, ordered so the pinks,
+  // blues and greens spread evenly across the grid
   gallery: [
     { src: '/images/photography/client-rice-field-palm.webp', alt: 'A client laughing against a palm by the rice fields', tall: true },
+    { src: '/images/photography/client-hands-in-hair.webp', alt: 'A client laughing with her hands in her hair', tall: true },
+    { src: '/images/road/road-8.jpg', alt: 'A palm leaning over a quiet blue bay', tall: true },
+    { src: '/images/photography/client-namaste-bamboo.webp', alt: 'A client in quiet reflection under a bamboo roof', tall: true },
+    { src: '/images/reconnect/day-5.jpg', alt: 'A pink-lit cloud above the treetops at sunset', tall: true },
     { src: '/images/photography/client-palms-back.webp', alt: 'A client looking up at the palms', tall: true },
+    { src: '/images/photography/client-arm-raised-tree.webp', alt: 'A client with an arm raised under a leafy tree', tall: true },
+    { src: '/images/photography/client-palms-laughing.webp', alt: 'A client laughing in the sun beneath tall palms', tall: true },
     { src: '/images/photography/client-rice-field-dress.webp', alt: 'A client in a leopard dress in a green rice field', tall: true },
   ],
   enquiry: {
