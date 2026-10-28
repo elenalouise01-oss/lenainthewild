@@ -1056,7 +1056,7 @@ export const storyPage: {
 // stand-ins from her own library: swap them for portfolio images as it
 // grows (each needs a src and alt; `tall` makes it a portrait-shaped tile).
 export const photographyPage = {
-  brand: 'Photography by Lena',
+  brand: 'Naluri Photography',
   title: 'Photography for the person you’re becoming.',
   lead: 'Creative portraits for the chapter you’re stepping into.',
   cta: 'Enquire about a shoot',
@@ -1081,7 +1081,7 @@ export const photographyPage = {
   galleryLabel: 'Portfolio',
   gallery: [
     { src: '/images/tapping-harbour.webp', alt: 'Seated portrait by the harbour, eyes closed', tall: true },
-    { src: '/images/lena-sunrise-smile.jpg', alt: 'Smiling over a shoulder at sunrise' },
+    { src: '/images/story/greece-quad.jpg', alt: 'On a quad bike outside a whitewashed Greek building' },
     { src: '/images/road/road-2.jpg', alt: 'Arm raised to the sky on a scooter in the hills', tall: true },
     { src: '/images/road/scooter-rice-fields.jpg', alt: 'Laughing in a helmet beside rice fields', tall: true },
     { src: '/images/hero.jpg', alt: 'From behind, hands in long dark hair' },
@@ -1092,10 +1092,33 @@ export const photographyPage = {
     { title: 'Say hello', body: 'Tell me about the chapter you’re in and what you’d love to capture.' },
     { title: 'Dream it up', body: 'We shape the mood, styling and location together.' },
     { title: 'The shoot', body: 'Relaxed, creative and guided, so you can just be you.' },
+    { title: 'Your gallery', body: 'A curated collection of edited images of this chapter.' },
   ],
+  // The two ways to shoot. No prices or set durations yet: Lena to confirm.
+  sessionsLabel: 'The shoots',
+  sessions: [
+    {
+      name: 'The Portrait Session',
+      body: 'One location, one mood, all you. A focused shoot for when you want a few images that feel completely like you.',
+    },
+    {
+      name: 'The Chapter Shoot',
+      body: 'A longer, more creative experience with different looks, locations and moods, to tell the whole story of who you’re becoming.',
+    },
+  ],
+  sessionsNote: 'Pricing and dates on enquiry.',
+  about: {
+    label: 'Behind the camera',
+    heading: 'Hi, I’m Lena.',
+    body: [
+      'Photographer, designer and storyteller, with a Bachelor of Design and more than 13 years of creative work behind me.',
+      'I uprooted my life to Bali to stop living by everyone else’s rules, so I know what it feels like to step into a new chapter. I don’t just see your story, I feel it. That’s what I try to capture.',
+    ],
+  },
   enquiry: {
     heading: 'Let’s capture your next chapter',
     body: 'Tell me a little about you and what you have in mind. I’ll be in touch.',
+    dm: 'Or message me on Instagram',
     chapterPlaceholder: 'The chapter you’re in, and what you’d love to capture',
     button: 'Send enquiry',
     sending: 'Sending…',

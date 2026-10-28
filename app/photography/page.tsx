@@ -6,7 +6,7 @@ import JsonLd from '@/components/JsonLd';
 import PhotoEnquiryForm from '@/components/PhotoEnquiryForm';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteHeader from '@/components/SiteHeader';
-import { photographyPage as page } from '@/content/site';
+import { photographyPage as page, socialLinks } from '@/content/site';
 import { absoluteUrl, breadcrumbs } from '@/lib/seo';
 
 const title = 'Portrait Photography for Your Next Chapter | Lena in the Wild';
@@ -135,12 +135,54 @@ export default function PhotographyPage() {
           </div>
         </section>
 
+        {/* The shoots on offer */}
+        <section className="bg-cream px-6 py-24 sm:py-32">
+          <div className="container-editorial">
+            <p className={`${label} text-stone`}>{page.sessionsLabel}</p>
+            <div className="mt-10 grid gap-px bg-bark/15 sm:grid-cols-2">
+              {page.sessions.map((session, i) => (
+                <ScrollReveal key={session.name} delay={i * 0.1} className="bg-cream py-8 sm:px-10 sm:py-12 sm:first:pl-0">
+                  <h2 className="font-display text-3xl italic text-bark sm:text-4xl">{session.name}</h2>
+                  <p className="mt-4 max-w-md font-body text-base leading-relaxed text-umber">{session.body}</p>
+                </ScrollReveal>
+              ))}
+            </div>
+            <p className="mt-8 font-body text-sm text-stone">{page.sessionsNote}</p>
+          </div>
+        </section>
+
+        {/* About Lena, briefly, with a portrait */}
+        <section className="bg-sand px-6 py-24 sm:py-32">
+          <div className="container-editorial grid items-center gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-24">
+            <ScrollReveal className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden">
+              <Image src="/images/lena-sunrise-smile.jpg" alt="Lena smiling over her shoulder at sunrise" fill sizes="(min-width: 1024px) 24rem, 90vw" className="object-cover object-[62%_50%]" />
+            </ScrollReveal>
+            <ScrollReveal delay={0.1}>
+              <p className={`${label} text-stone`}>{page.about.label}</p>
+              <h2 className="mt-4 font-display text-4xl italic text-bark sm:text-5xl">{page.about.heading}</h2>
+              {page.about.body.map((p) => (
+                <p key={p.slice(0, 20)} className="mt-5 max-w-lg font-body text-base leading-relaxed text-umber sm:text-lg">
+                  {p}
+                </p>
+              ))}
+            </ScrollReveal>
+          </div>
+        </section>
+
         {/* Enquiry */}
         <section id="enquire" className="scroll-mt-20 bg-bark px-6 py-24 sm:py-32">
           <div className="container-editorial grid gap-12 lg:grid-cols-2 lg:gap-24">
             <ScrollReveal>
               <h2 className="font-display text-4xl italic leading-tight text-cream sm:text-5xl">{page.enquiry.heading}</h2>
               <p className="mt-6 max-w-md font-body text-base leading-relaxed text-cream/80">{page.enquiry.body}</p>
+              <a
+                href={socialLinks.Instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-block border-b border-cream/50 pb-1 font-body text-xs font-semibold uppercase tracking-widest2 text-cream/85 transition-colors hover:border-cream"
+              >
+                {page.enquiry.dm} →
+              </a>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
               <PhotoEnquiryForm />
