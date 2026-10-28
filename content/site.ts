@@ -1066,7 +1066,7 @@ export const photographyPage = {
   // Client photos (location data stripped). Swap or add more any time.
   // Swap back to the pink banana-leaves shot once the full-size file arrives
   hero: { src: '/images/photography/client-palms-laughing.webp', alt: 'A client laughing in the sun, sitting on a path beneath tall palms' },
-  still: { src: '/images/photography/lotus-pool.webp', alt: 'A pink lotus flower in front of a pool' },
+  still: { src: '/images/photography/lotus-pool-hd.webp', alt: 'A pink lotus flower in front of a pool' },
   celebrationPhoto: { src: '/images/photography/client-garden-smile.webp', alt: 'A client smiling, long hair over her shoulders, in a tropical garden' },
   who: {
     label: 'Who it’s for',
@@ -1115,12 +1115,12 @@ export const photographyPage = {
   galleryLabel: 'Reintroductions',
   // One client per row of three
   gallery: [
-    { src: '/images/photography/client-banana-leaves.webp', alt: 'A client smiling between giant banana leaves', tall: true },
-    { src: '/images/photography/client-hands-in-hair.webp', alt: 'A client laughing with her hands in her hair', tall: true },
-    { src: '/images/photography/client-arm-raised-tree.webp', alt: 'A client with an arm raised under a leafy tree', tall: true },
-    { src: '/images/photography/client-rice-field-palm.webp', alt: 'A client laughing against a palm by the rice fields', tall: true },
-    { src: '/images/photography/client-palms-back.webp', alt: 'A client looking up at the palms', tall: true },
-    { src: '/images/photography/client-rice-field-dress.webp', alt: 'A client in a leopard dress in a green rice field', tall: true },
+    { src: '/images/photography/client-banana-leaves-hd.webp', alt: 'A client smiling between giant banana leaves', tall: true },
+    { src: '/images/photography/client-hands-in-hair-hd.webp', alt: 'A client laughing with her hands in her hair', tall: true },
+    { src: '/images/photography/client-arm-raised-tree-hd.webp', alt: 'A client with an arm raised under a leafy tree', tall: true },
+    { src: '/images/photography/client-rice-field-palm-hd.webp', alt: 'A client laughing against a palm by the rice fields', tall: true },
+    { src: '/images/photography/client-palms-back-hd.webp', alt: 'A client looking up at the palms', tall: true },
+    { src: '/images/photography/client-rice-field-dress-hd.webp', alt: 'A client in a leopard dress in a green rice field', tall: true },
   ],
   enquiry: {
     heading: 'Ready to reintroduce yourself?',
