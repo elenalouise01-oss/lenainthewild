@@ -1095,7 +1095,7 @@ export const photographyPage = {
       'Every one of those moments was a pivotal transformation, and every one deserved celebrating. I want to be able to look back at them and say: wow, look how far I’ve come.',
       'That’s what I want to give you.',
     ],
-    photo: { src: '/images/lena-sunrise-smile.jpg', alt: 'Lena smiling over her shoulder at sunrise' },
+    photo: { src: '/images/photography/lena-portrait.webp', alt: 'Lena smiling with her camera among the lotus leaves' },
   },
   gives: {
     label: 'What this experience gives you',

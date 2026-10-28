@@ -181,7 +181,6 @@ export default function PhotographyPage() {
                     alt={photo.alt}
                     sizes="(min-width: 1024px) 30vw, 50vw"
                     className={photo.tall ? 'aspect-[4/5]' : 'aspect-square'}
-                    position={'pos' in photo ? photo.pos : undefined}
                     drift={6}
                   />
                 </ScrollReveal>
@@ -223,7 +222,7 @@ export default function PhotographyPage() {
               alt={page.story.photo.alt}
               sizes="(min-width: 1024px) 35vw, 100vw"
               className="aspect-[4/5] w-full lg:mt-16"
-              position="62% 50%"
+              position="40% 60%"
             />
           </div>
         </section>
