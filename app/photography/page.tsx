@@ -170,7 +170,7 @@ export default function PhotographyPage() {
         <section className="px-6 py-28 sm:px-12 sm:py-44">
           <div className="mx-auto max-w-6xl">
             <p className={label}>{page.galleryLabel}</p>
-            <div className="mt-16 grid grid-cols-2 gap-5 sm:gap-10 lg:grid-cols-3">
+            <div className="mt-16 grid grid-cols-3 gap-2 sm:gap-10">
               {page.gallery.map((photo, i) => (
                 <ScrollReveal key={photo.src} delay={(i % 3) * 0.08}>
                   <CinematicImage

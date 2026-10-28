@@ -33,7 +33,7 @@ export default function CinematicImage({
   return (
     <div ref={ref} className={`relative overflow-hidden bg-linen ${className}`}>
       <motion.div className="absolute -inset-y-[10%] inset-x-0" style={reduced ? undefined : { y }}>
-        <Image src={src} alt={alt} fill priority={priority} sizes={sizes} className="object-cover" style={{ objectPosition: position }} />
+        <Image src={src} alt={alt} fill priority={priority} sizes={sizes} quality={90} className="object-cover" style={{ objectPosition: position }} />
       </motion.div>
     </div>
   );
