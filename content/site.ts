@@ -1059,7 +1059,7 @@ export const storyPage: {
 export const photographyPage = {
   brand: 'Naluri Photography',
   experienceName: 'The Wild Soul',
-  tagline: 'For those who have reclaimed who they are and are ready to be seen.',
+  tagline: 'For the woman who has reclaimed her power and is ready to be seen.',
   title: 'Let me reintroduce myself.',
   lead: 'An immersive photography experience for the version of you that fought so damn hard to be here.',
   cta: 'Begin your reintroduction',
@@ -1103,7 +1103,7 @@ export const photographyPage = {
       { title: 'Permission', body: 'To take up space. To be bold, soft, sensual, playful, all of it. To stop shrinking.' },
       { title: 'To be witnessed', body: 'Someone holding space for you to shine, and catching the moment you light up.' },
       { title: 'A celebration', body: 'Of the courage it took, the parts of you that you let go, and the person who stayed.' },
-      { title: 'A beautiful memory', body: 'Images you’ll treasure forever, of a moment you’ll never forget: you, fully shining.' },
+      { title: 'A beautiful milestone moment', body: 'Images you’ll treasure forever. You, fully in your element, shining bright like the goddess you are.' },
     ],
   },
   experience: {
