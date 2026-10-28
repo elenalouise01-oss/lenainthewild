@@ -1081,7 +1081,7 @@ export const photographyPage = {
       'This is a celebration of the hard work. Of the transformational period you’ve just been through. Of the courage it took, the inner work, the letting go, the death of your old identity and stepping into the new.',
       'This is a pivotal moment, and it deserves to be documented as big as a wedding or an anniversary.',
     ],
-    quote: 'You did the work. Now step into the light.',
+    quote: 'You did the work. Now step into the light. Let’s show you off!',
   },
   story: {
     label: 'Why I do this',
@@ -1099,7 +1099,7 @@ export const photographyPage = {
       { title: 'Permission', body: 'To take up space. To be bold, soft, sensual, playful, all of it. To stop shrinking.' },
       { title: 'To be witnessed', body: 'Someone holding space for you to shine, and catching the moment you light up.' },
       { title: 'A celebration', body: 'Of the courage it took, the parts of you that you let go, and the person who stayed.' },
-      { title: 'Proof', body: 'Images you’ll come back to on the hard days, to remember exactly who you are.' },
+      { title: 'A beautiful memory', body: 'Images you’ll treasure forever, of a moment you’ll never forget: you, fully shining.' },
     ],
   },
   experience: {
