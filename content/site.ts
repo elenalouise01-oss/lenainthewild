@@ -1089,8 +1089,8 @@ export const photographyPage = {
     label: 'Why I do this',
     body: [
       'I’ve been through multiple transitions over the past few years. The leap, uprooting my life from Sydney to Bali. The death of my old identity, and stepping into a new one. Letting go of old conditioning and an old way of living, for a life on my terms. And now, the next layer of that.',
+      'When I looked at my old photos, there was a disconnect. They didn’t reflect who I am now. I wanted to show the new me. Feminine, embodied, in my power, my inner wild woman finally let loose, in this new era.',
       'Every one of those moments was a pivotal transformation, and every one deserved celebrating. I want to be able to look back at them and say: wow, look how far I’ve come.',
-      'But when I looked at my old photos, there was a disconnect. They didn’t reflect who I am now. I wanted to show the new me. Feminine, embodied, in my power, in this new era.',
       'That’s what I want to give you.',
     ],
     photo: { src: '/images/lena-sunrise-smile.jpg', alt: 'Lena smiling over her shoulder at sunrise' },
@@ -1119,6 +1119,9 @@ export const photographyPage = {
     { src: '/images/photography/client-rice-field-palm.webp', alt: 'A client laughing against a palm by the rice fields', tall: true },
     { src: '/images/photography/client-palms-back.webp', alt: 'A client looking up at the palms', tall: true },
     { src: '/images/photography/client-rice-field-dress.webp', alt: 'A client in a leopard dress in a green rice field', tall: true },
+    { src: '/images/photography/client-namaste-bamboo.webp', alt: 'A client in quiet reflection under a bamboo roof', tall: true },
+    { src: '/images/photography/client-warrior-pose.webp', alt: 'A client in warrior pose on a deck above the rice terraces', tall: true },
+    { src: '/images/photography/client-namaste-wide.webp', alt: 'A client with hands at her heart, looking out over the jungle', tall: true, pos: '62% 50%' },
   ],
   enquiry: {
     heading: 'Ready to reintroduce yourself?',
