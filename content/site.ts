@@ -1049,3 +1049,62 @@ export const storyPage: {
     "If something here resonates, a story, a photograph, a feeling, I'd love to hear from you, so come say hi.",
 };
 
+
+// The photography page (/photography): portraits for the person you're
+// becoming. An extension of Lena in the Wild that can stand on its own.
+// `brand` is a placeholder until Lena picks the name. The photos are
+// stand-ins from her own library: swap them for portfolio images as it
+// grows (each needs a src and alt; `tall` makes it a portrait-shaped tile).
+export const photographyPage = {
+  brand: 'Photography by Lena',
+  title: 'Photography for the person you’re becoming.',
+  lead: 'Creative portraits for the chapter you’re stepping into.',
+  cta: 'Enquire about a shoot',
+  hero: { src: '/images/lena-sunrise-hero.jpg', alt: 'A portrait at sunrise above the clouds' },
+  philosophy: {
+    line: 'You don’t need to become someone else to celebrate who you are.',
+    body: 'Maybe you’ve changed careers, started something of your own, moved somewhere new, or simply stopped shrinking to fit. These shoots mark that moment, as you are now. Not a finished version of you. This one.',
+  },
+  differentLabel: 'Not your usual photoshoot',
+  different: [
+    { title: 'Directed, not posed', body: 'We play with movement, light, styling and place until it feels like you.' },
+    { title: 'Your mood, your way', body: 'Bold, playful, sensual, soft or quietly understated. You set the tone.' },
+    { title: 'Editorial at heart', body: 'Images that feel more like a story in a magazine than a standard portrait.' },
+  ],
+  forLabel: 'This might be for you if',
+  forList: [
+    'You’re stepping into a new chapter and want to mark it',
+    'You want photos that feel like you, not a template',
+    'You love a bit of creativity, play and experimenting',
+    'You’re ready to be seen as you are now',
+  ],
+  galleryLabel: 'Portfolio',
+  gallery: [
+    { src: '/images/tapping-harbour.webp', alt: 'Seated portrait by the harbour, eyes closed', tall: true },
+    { src: '/images/lena-sunrise-smile.jpg', alt: 'Smiling over a shoulder at sunrise' },
+    { src: '/images/road/road-2.jpg', alt: 'Arm raised to the sky on a scooter in the hills', tall: true },
+    { src: '/images/road/scooter-rice-fields.jpg', alt: 'Laughing in a helmet beside rice fields', tall: true },
+    { src: '/images/hero.jpg', alt: 'From behind, hands in long dark hair' },
+    { src: '/images/story/pt-polaroid.jpg', alt: 'Studio portrait against lilac', tall: true },
+  ],
+  howLabel: 'How it works',
+  how: [
+    { title: 'Say hello', body: 'Tell me about the chapter you’re in and what you’d love to capture.' },
+    { title: 'Dream it up', body: 'We shape the mood, styling and location together.' },
+    { title: 'The shoot', body: 'Relaxed, creative and guided, so you can just be you.' },
+  ],
+  enquiry: {
+    heading: 'Let’s capture your next chapter',
+    body: 'Tell me a little about you and what you have in mind. I’ll be in touch.',
+    chapterPlaceholder: 'The chapter you’re in, and what you’d love to capture',
+    button: 'Send enquiry',
+    sending: 'Sending…',
+    sentHeading: 'Thank you!',
+    sentBody: 'Your enquiry is in. I’ll be in touch soon.',
+  },
+  connection: {
+    line: 'The inner side of this work lives at Lena in the Wild.',
+    label: 'Read my story',
+    href: '/my-story',
+  },
+};
