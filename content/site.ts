@@ -1121,9 +1121,6 @@ export const photographyPage = {
     { src: '/images/photography/client-rice-field-palm.webp', alt: 'A client laughing against a palm by the rice fields', tall: true },
     { src: '/images/photography/client-palms-back.webp', alt: 'A client looking up at the palms', tall: true },
     { src: '/images/photography/client-rice-field-dress.webp', alt: 'A client in a leopard dress in a green rice field', tall: true },
-    { src: '/images/photography/client-namaste-bamboo.webp', alt: 'A client in quiet reflection under a bamboo roof', tall: true },
-    { src: '/images/photography/client-warrior-pose.webp', alt: 'A client in warrior pose on a deck above the rice terraces', tall: true },
-    { src: '/images/photography/client-namaste-wide.webp', alt: 'A client with hands at her heart, looking out over the jungle', tall: true, pos: '62% 50%' },
   ],
   enquiry: {
     heading: 'Ready to reintroduce yourself?',
