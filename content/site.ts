@@ -1112,7 +1112,7 @@ export const photographyPage = {
     hype: 'I’ll be behind the camera cheering you on, hyping you up and celebrating the woman you’ve become.',
     note: 'Pricing and dates on enquiry.',
   },
-  galleryLabel: 'Portfolio',
+  galleryLabel: 'Reintroductions',
   // One client per row of three
   gallery: [
     { src: '/images/photography/client-banana-leaves.webp', alt: 'A client smiling between giant banana leaves', tall: true },
