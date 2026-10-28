@@ -1062,7 +1062,7 @@ export const photographyPage = {
   tagline: 'For the woman who has reclaimed her power and is ready to be seen.',
   title: 'Let me reintroduce myself.',
   lead: 'An immersive photography experience for the version of you that fought so damn hard to be here.',
-  cta: 'Begin your reintroduction',
+  cta: 'Begin your reintroduction era',
   // Client photos (location data stripped). Swap or add more any time.
   // Swap back to the pink banana-leaves shot once the full-size file arrives
   hero: { src: '/images/photography/client-palms-laughing.webp', alt: 'A client laughing in the sun, sitting on a path beneath tall palms' },
