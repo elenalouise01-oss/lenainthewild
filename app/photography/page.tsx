@@ -52,7 +52,9 @@ export default function PhotographyPage() {
         <section className="px-6 pb-28 pt-16 sm:px-12 sm:pb-44 sm:pt-28">
           <div className="mx-auto grid max-w-7xl items-end gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-20">
             <ScrollReveal className="lg:pb-10">
-              <p className={label}>{page.brand}</p>
+              <p className={label}>
+                {page.experienceName} · {page.brand}
+              </p>
               <h1 className="mt-8 font-display text-[3.4rem] leading-[0.95] tracking-tight text-bark sm:text-8xl lg:text-[7.5rem]">
                 Let me
                 <br />
@@ -60,7 +62,8 @@ export default function PhotographyPage() {
                 <br />
                 myself.
               </h1>
-              <p className="mt-10 max-w-sm font-body text-base leading-relaxed text-umber">{page.lead}</p>
+              <p className="mt-10 max-w-md font-display text-xl italic leading-snug text-bark sm:text-2xl">{page.tagline}</p>
+              <p className="mt-5 max-w-sm font-body text-base leading-relaxed text-umber">{page.lead}</p>
               <a
                 href="#enquire"
                 className="mt-10 inline-block border-b border-bark pb-1.5 font-body text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-bark transition-opacity hover:opacity-60"

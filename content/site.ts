@@ -1058,6 +1058,8 @@ export const storyPage: {
 // and alt; `tall` makes it a portrait-shaped tile).
 export const photographyPage = {
   brand: 'Naluri Photography',
+  experienceName: 'The Wild Soul',
+  tagline: 'For those who have reclaimed who they are and are ready to be seen.',
   title: 'Let me reintroduce myself.',
   lead: 'An immersive photography experience for the version of you that fought so damn hard to be here.',
   cta: 'Begin your reintroduction',
