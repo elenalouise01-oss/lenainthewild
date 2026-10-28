@@ -1065,7 +1065,7 @@ export const photographyPage = {
   cta: 'Begin your reintroduction era',
   // Client photos (location data stripped). Swap or add more any time.
   // Swap back to the pink banana-leaves shot once the full-size file arrives
-  hero: { src: '/images/photography/client-palms-laughing-hd.webp', alt: 'A client laughing in the sun, sitting on a path beneath tall palms' },
+  hero: { src: '/images/photography/client-palms-laughing-v2.webp', alt: 'A client laughing in the sun, sitting on a path beneath tall palms' },
   still: { src: '/images/photography/lotus-pool-hd.webp', alt: 'A pink lotus flower in front of a pool' },
   celebrationPhoto: { src: '/images/photography/client-garden-smile.webp', alt: 'A client smiling, long hair over her shoulders, in a tropical garden' },
   who: {
