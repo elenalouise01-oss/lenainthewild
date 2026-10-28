@@ -1073,7 +1073,7 @@ export const photographyPage = {
       'Maybe you’ve just been through a huge life transition, started a new chapter, or had an awakening. You turned inward and did the deep, quiet work nobody else saw.',
       'None of your camera roll really connects with the woman you are now. Sure, you’ve got nice photos of yourself, but they just don’t really feel connected to, or represent, the woman you’ve become or are becoming.',
       'It’s time to show the world what you’ve been working so hard on. The new you, and the person you’ve had to become to be here now. It’s time to shine, baby girl!',
-      'When was the last time you saw a photo of yourself and thought, wow, I’m so damn proud of her. Look at me.',
+      'When was the last time you saw a photo of yourself and thought, wow, I’m so damn proud of her. Look at me, I’m glowing.',
     ],
   },
   era: 'Step into your most confident, magnetic, expansive era yet. It’s time to show the world the new you!',
@@ -1081,7 +1081,7 @@ export const photographyPage = {
     label: 'A celebration of self',
     body: [
       'This is a celebration of the hard work. Of the transformational period you’ve just been through. Of the courage it took, the inner work, the letting go, the death of your old identity and stepping into the new.',
-      'This is a pivotal moment, and it deserves to be documented as big as a wedding or an anniversary.',
+      'This is a pivotal moment, and it deserves to be documented as a huge milestone in your life.',
     ],
     quote: 'You did the work. Now step into the light. Let’s show you off!',
   },
