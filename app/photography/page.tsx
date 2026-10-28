@@ -70,11 +70,11 @@ export default function PhotographyPage() {
             </ScrollReveal>
             <div>
               <CinematicImage
-                src="/images/tapping-harbour.webp"
-                alt="Seated portrait by the harbour, eyes closed"
+                src={page.hero.src}
+                alt={page.hero.alt}
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="aspect-[4/5]"
-                position="50% 35%"
+                position="50% 40%"
                 priority
                 drift={8}
               />
@@ -102,11 +102,11 @@ export default function PhotographyPage() {
         {/* A wide, letterboxed frame, like a film still */}
         <section className="px-0 sm:px-10">
           <CinematicImage
-            src={page.hero.src}
-            alt={page.hero.alt}
+            src={page.still.src}
+            alt={page.still.alt}
             sizes="100vw"
             className="mx-auto aspect-[4/3] max-w-7xl sm:aspect-[21/9]"
-            position="50% 45%"
+            position="50% 33%"
             drift={16}
           />
         </section>
@@ -115,8 +115,8 @@ export default function PhotographyPage() {
         <section className="px-6 py-24 sm:px-10 sm:py-36">
           <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-24">
             <CinematicImage
-              src="/images/road/road-2.jpg"
-              alt="Arm raised to the sky on a scooter in the hills"
+              src={page.celebrationPhoto.src}
+              alt={page.celebrationPhoto.alt}
               sizes="(min-width: 1024px) 40vw, 100vw"
               className="mx-auto aspect-[3/4] w-full max-w-md"
               position="50% 30%"

@@ -1060,7 +1060,10 @@ export const photographyPage = {
   title: 'Let me reintroduce myself.',
   lead: 'A photoshoot for the person you’ve become.',
   cta: 'Book your reintroduction',
-  hero: { src: '/images/lena-sunrise-hero.jpg', alt: 'A portrait at sunrise above the clouds' },
+  // Client photos (location data stripped). Swap or add more any time.
+  hero: { src: '/images/photography/client-palms-laughing.webp', alt: 'A client laughing in the sun, sitting on a path beneath tall palms' },
+  still: { src: '/images/photography/client-garden-gaze.webp', alt: 'A client looking straight into the camera in a lush garden' },
+  celebrationPhoto: { src: '/images/photography/client-garden-smile.webp', alt: 'A client smiling, long hair over her shoulders, in a tropical garden' },
   who: {
     label: 'Who it’s for',
     body: [
@@ -1089,12 +1092,9 @@ export const photographyPage = {
   },
   galleryLabel: 'Portfolio',
   gallery: [
-    { src: '/images/story/canada-snowboard.jpg', alt: 'Sitting in the snow with a snowboard', tall: true },
-    { src: '/images/road/road-9.jpg', alt: 'Two friends laughing on a scooter', tall: true },
-    { src: '/images/hero.jpg', alt: 'From behind, hands in long dark hair' },
-    { src: '/images/road/scooter-rice-fields.jpg', alt: 'Laughing in a helmet beside rice fields', tall: true },
-    { src: '/images/story/pt-polaroid.jpg', alt: 'Studio portrait against lilac', tall: true },
-    { src: '/images/rainbow-beach.jpg', alt: 'A rainbow over a quiet beach' },
+    { src: '/images/photography/client-rice-field-palm.webp', alt: 'A client laughing against a palm by the rice fields', tall: true },
+    { src: '/images/photography/client-palms-back.webp', alt: 'A client looking up at the palms', tall: true },
+    { src: '/images/photography/client-rice-field-dress.webp', alt: 'A client in a leopard dress in a green rice field', tall: true },
   ],
   enquiry: {
     heading: 'Ready to reintroduce yourself?',
