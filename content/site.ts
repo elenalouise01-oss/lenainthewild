@@ -141,6 +141,13 @@ export const leadMagnet = {
     body: 'Thank you, {name}. Your free tapping practice is ready whenever you are.',
   },
   watch: 'Start Your Free Practice',
+  // The card that appears when the video finishes, leading on to the 5 Day Reconnect
+  next: {
+    line: 'If you’re ready to reconnect with yourself, this is for you…',
+    title: 'The 5 Day Reconnect: an audio series',
+    cta: 'Explore here',
+    again: 'watch again',
+  },
 };
 
 export const fiveDayReconnectPage = {

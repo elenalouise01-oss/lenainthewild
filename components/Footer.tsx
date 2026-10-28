@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { footer, nav, offerLinks, offerPages, socialLinks } from '@/content/site';
-import { scrollToTop } from '@/lib/goHome';
+import { goHome, scrollToTop } from '@/lib/goHome';
 
 // Links that resolve to a real section on this page or a live offer page.
 // Footer links to pages that don't exist yet are hidden until they do.
@@ -124,7 +124,10 @@ export default function Footer({ playful = false }: { playful?: boolean }) {
       <div className={`container-editorial flex items-end justify-between gap-6 ${playful ? '' : 'mt-14 border-t border-bark/10 pt-8'}`}>
         <div>
           {/* The litw logo above the copyright line: deep brown, or butter yellow on lavender */}
-          <Image src={playful ? '/images/litw-logo-yellow.png' : '/images/litw-logo-brown.png'} alt={nav.logo} width={248} height={115} className="h-auto w-20" />
+          {/* Clicking the logo goes home (or glides to the top when already there) */}
+          <Link href="/" onClick={goHome} aria-label={`${nav.logo}: home`} className="inline-block transition-opacity hover:opacity-80">
+            <Image src={playful ? '/images/litw-logo-yellow.png' : '/images/litw-logo-brown.png'} alt={nav.logo} width={248} height={115} className="h-auto w-20" />
+          </Link>
           <p className={`mt-4 font-body text-xs ${playful ? 'text-bark/70' : 'text-stone'}`}>
             © {new Date().getFullYear()} {nav.logo} by Naluri Collective. All rights reserved.
           </p>

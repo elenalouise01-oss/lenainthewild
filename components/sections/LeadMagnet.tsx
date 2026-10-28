@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { AnimatePresence, animate, motion, useInView, useMotionValue } from 'framer-motion';
 import DrawnLine from '@/components/DrawnLine';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -24,6 +25,8 @@ export default function LeadMagnet() {
   const [sent, setSent] = useState<string | null>(null);
   // Once they press play, the video straightens up and fills the pop-up.
   const [playing, setPlaying] = useState(false);
+  // When the video finishes, a card invites them on to the 5 Day Reconnect.
+  const [ended, setEnded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // A new sign-up starts with the video waiting for play.
@@ -217,10 +220,14 @@ export default function LeadMagnet() {
                         <video
                           ref={videoRef}
                           poster="/videos/tapping-practice-poster.jpg"
-                          controls
+                          controls={!ended}
                           playsInline
                           preload="metadata"
-                          onPlay={() => setPlaying(true)}
+                          onPlay={() => {
+                            setPlaying(true);
+                            setEnded(false);
+                          }}
+                          onEnded={() => setEnded(true)}
                           title={leadMagnet.title}
                           className="absolute inset-0 h-full w-full object-cover"
                         >
@@ -228,6 +235,29 @@ export default function LeadMagnet() {
                           <source src="/videos/tapping-practice.webm" type="video/webm" />
                         </video>
                       )}
+                      {/* Next step once the practice is done */}
+                      <AnimatePresence>
+                        {ended && (
+                          <motion.div
+                            className="absolute inset-0 flex flex-col items-center justify-center bg-bark/90 px-4 text-center text-cream sm:px-5"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                          >
+                            <p className="font-display text-lg italic leading-snug sm:text-xl">{leadMagnet.next.line}</p>
+                            <p className="mt-4 font-body text-[0.65rem] font-semibold uppercase tracking-wider text-zing-yellow sm:text-xs">{leadMagnet.next.title}</p>
+                            <Link
+                              href="/5-day-reconnect"
+                              className="mt-5 rounded-full bg-sage px-5 py-2.5 font-body text-[0.65rem] font-semibold uppercase tracking-wider text-bark transition-transform hover:scale-105"
+                            >
+                              {leadMagnet.next.cta} →
+                            </Link>
+                            <button type="button" onClick={() => void videoRef.current?.play()} className="mt-2 py-2 font-hand text-base text-cream/85 underline underline-offset-4 sm:text-lg">
+                              {leadMagnet.next.again}
+                            </button>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                     {!playing && (
                       <p aria-hidden="true" className="absolute inset-x-0 bottom-2 text-center font-hand text-base text-bark sm:text-lg">
