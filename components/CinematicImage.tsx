@@ -15,6 +15,8 @@ export default function CinematicImage({
   position = '50% 50%',
   priority = false,
   drift = 12,
+  still = false,
+  imgClassName,
 }: {
   src: string;
   alt: string;
@@ -24,6 +26,10 @@ export default function CinematicImage({
   priority?: boolean;
   // How far (in %) the image travels while the frame crosses the screen.
   drift?: number;
+  // Show the whole frame with no drift (for photos that must not be cropped)
+  still?: boolean;
+  // Tailwind object-position classes, for a different crop per screen size
+  imgClassName?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
@@ -32,8 +38,17 @@ export default function CinematicImage({
 
   return (
     <div ref={ref} className={`relative overflow-hidden bg-linen ${className}`}>
-      <motion.div className="absolute -inset-y-[10%] inset-x-0" style={reduced ? undefined : { y }}>
-        <Image src={src} alt={alt} fill priority={priority} sizes={sizes} quality={90} className="object-cover" style={{ objectPosition: position }} />
+      <motion.div className={`absolute inset-x-0 ${still ? 'inset-y-0' : '-inset-y-[10%]'}`} style={reduced || still ? undefined : { y }}>
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          priority={priority}
+          sizes={sizes}
+          quality={90}
+          className={`object-cover ${imgClassName ?? ''}`}
+          style={imgClassName ? undefined : { objectPosition: position }}
+        />
       </motion.div>
     </div>
   );

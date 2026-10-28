@@ -119,8 +119,8 @@ export default function PhotographyPage() {
             alt={page.still.alt}
             sizes="(min-width: 1024px) 64rem, 100vw"
             className="mx-auto aspect-[4/5] max-w-md sm:aspect-[16/9] sm:max-w-5xl"
-            position="50% 45%"
-            drift={12}
+            still
+            imgClassName="object-[66%_50%] sm:object-center"
           />
         </section>
 

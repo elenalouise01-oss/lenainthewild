@@ -1090,7 +1090,7 @@ export const photographyPage = {
   story: {
     label: 'Why I do this',
     body: [
-      'I’ve been through multiple transitions over the past few years. The leap, uprooting my life from Sydney to Bali. The death of my old identity, and stepping into a new one. Letting go of old conditioning and an old way of living, for a life on my terms. And now, the next layer of that.',
+      'I’ve been through multiple transitions over my 39 years of life. To name a few of the more recent ones: the leap, uprooting my life from Sydney to Bali. The death of my old identity, and stepping into a new one. Letting go of old conditioning and an old way of living, for a life on my terms. And now, the next layer of that.',
       'When I looked at my old photos, there was a disconnect. They didn’t reflect who I am now. I wanted to show the new me. Feminine, embodied, in my power, my inner wild woman finally let loose, in this new era.',
       'Every one of those moments was a pivotal transformation, and every one deserved celebrating. I want to be able to look back at them and say: wow, look how far I’ve come.',
       'That’s what I want to give you.',
@@ -1108,7 +1108,7 @@ export const photographyPage = {
   },
   experience: {
     label: 'The experience',
-    body: 'One on one, guided from start to finish. We shape the mood, styling and location together, then I’ll hold the space while you play, laugh, move and let go. No stiff poses. Just you, fully you. Afterwards, you’ll receive a curated gallery of edited images.',
+    body: 'One on one, guided from start to finish. We shape the mood, styling and location together, then I’ll hold the space while you play, laugh, move and let go. Just you, fully embodying this version of you. Afterwards, you’ll receive a curated gallery of edited images.',
     hype: 'I’ll be behind the camera cheering you on, hyping you up and celebrating the woman you’ve become.',
     note: 'Pricing and dates on enquiry.',
   },
