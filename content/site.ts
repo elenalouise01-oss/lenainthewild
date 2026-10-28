@@ -1058,7 +1058,7 @@ export const storyPage: {
 export const photographyPage = {
   brand: 'Naluri Photography',
   title: 'Let me reintroduce myself.',
-  lead: 'An immersive photography experience for the version of you that fought to be here.',
+  lead: 'An immersive photography experience for the version of you that fought so damn hard to be here.',
   cta: 'Begin your reintroduction',
   // Client photos (location data stripped). Swap or add more any time.
   hero: { src: '/images/photography/client-banana-leaves.webp', alt: 'A client smiling between giant banana leaves, in a pink top' },
