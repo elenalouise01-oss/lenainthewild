@@ -187,6 +187,10 @@ export default function FiveDayReconnectPage() {
                 ))}
               </ol>
             </ScrollReveal>
+            {/* Buy straight after seeing all five days */}
+            <ScrollReveal delay={0.15} className="mt-14">
+              <BuyButton />
+            </ScrollReveal>
           </div>
         </section>
 
