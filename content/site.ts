@@ -164,6 +164,7 @@ export const fiveDayReconnectPage = {
     'You’re beginning to question the life you’ve built and feel a pull towards something different, even if you can’t quite put it into words yet.',
     'You’re ready to slow down, reconnect with yourself and start listening to your own intuition instead of constantly searching for answers outside yourself.',
   ],
+  insideCta: 'I want in',
   insideHeading: 'What’s inside',
   inside: 'Five short audio sessions: one per day, each one a simple tool to help you slow down, tune in and reconnect with yourself.',
   days: [
