@@ -24,6 +24,7 @@ Lena is a Reiki Master and certified embodiment coach, and a former personal tra
 - [My Story](${absoluteUrl('/my-story')}): uprooting her life to Bali at 36 and what starting over really looked like
 - [Who I Help](${absoluteUrl('/life-design')}): for anyone feeling stuck or unsure what they want from life
 - [Journal](${absoluteUrl('/journal')}): personal essays
+- [Photography](${absoluteUrl('/photography')}): The Wild Soul, an immersive portrait photography experience by Naluri Photography, for the woman who has reclaimed her power and is ready to be seen
 
 ## Offers
 
