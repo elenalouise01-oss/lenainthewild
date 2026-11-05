@@ -28,6 +28,7 @@ export default function QuizTeaser() {
             <SectionLabel className="!text-sage">{quizTeaser.label}</SectionLabel>
             <h2 className="mt-6 font-display text-display-3 italic leading-[1.1] text-cream">{quizTeaser.heading}</h2>
             <p className="mt-6 max-w-xl font-body text-base leading-relaxed text-cream/85 sm:text-lg">{quizTeaser.body}</p>
+            <p className="mt-6 font-display text-2xl italic text-cream sm:text-3xl">{quizTeaser.closing}</p>
             <div className="relative mt-10 inline-block">
               {/* A doodle line looping in from the card side to the button
                   (laptop only, where the card sits to the right) */}
