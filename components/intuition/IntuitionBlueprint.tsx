@@ -278,14 +278,14 @@ export default function IntuitionBlueprint() {
                         <span aria-hidden="true" className="h-4 w-4 shrink-0 border border-bark bg-gradient-to-b from-[#e4cdea] to-[#bf93c9]" />
                         {copy.explainer.diagram.defined.name}
                       </dt>
-                      <dd>{copy.explainer.diagram.defined.meaning}</dd>
+                      <dd className="font-hand text-lg leading-snug text-bark">{copy.explainer.diagram.defined.meaning}</dd>
                     </div>
                     <div className="flex items-center gap-3">
                       <dt className="flex w-24 shrink-0 items-center gap-2 font-hand text-xl text-bark">
                         <span aria-hidden="true" className="h-4 w-4 shrink-0 border border-bark bg-white" />
                         {copy.explainer.diagram.open.name}
                       </dt>
-                      <dd>{copy.explainer.diagram.open.meaning}</dd>
+                      <dd className="font-hand text-lg leading-snug text-bark">{copy.explainer.diagram.open.meaning}</dd>
                     </div>
                   </dl>
                 </figure>
