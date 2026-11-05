@@ -14,8 +14,8 @@ export default function QuizTeaser() {
       <div className="container-editorial grid items-center gap-14 lg:grid-cols-[3fr_2fr] lg:gap-20">
         <ScrollReveal className="mx-auto w-full max-w-[16rem] sm:max-w-xs lg:order-last">
           {/* The same white polaroid as the tapping practice, with the chart in it */}
-          <div className="relative -rotate-3 bg-cream p-3 shadow-2xl lg:rotate-3">
-            <div className="bg-porcelain px-3 pb-4 pt-6">
+          <div className="relative aspect-[346/615] -rotate-3 bg-cream p-3 shadow-2xl lg:rotate-3">
+            <div className="flex h-full w-full flex-col items-center justify-center bg-porcelain px-3">
               <BodygraphIllustration className="mx-auto h-auto w-full" />
               <p aria-hidden="true" className="mt-2 text-center font-hand text-lg text-bark">
                 {quizTeaser.scribble}
