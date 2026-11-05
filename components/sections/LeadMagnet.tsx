@@ -98,7 +98,7 @@ export default function LeadMagnet() {
           photo stays above the text. */}
       <div className="container-editorial grid items-center gap-14 lg:grid-cols-[2fr_3fr] lg:gap-20">
         <ScrollReveal className="mx-auto w-full max-w-[16rem] sm:max-w-xs">
-          <div className="relative aspect-[346/615] -rotate-3 bg-cream p-3 shadow-2xl lg:rotate-3">
+          <div className="relative aspect-[346/615] -rotate-3 bg-cream p-3 shadow-2xl">
             <div className="relative h-full w-full overflow-hidden">
               <Image src={leadMagnet.photo} alt={leadMagnet.photoAlt} fill sizes="20rem" className="object-cover" />
             </div>
