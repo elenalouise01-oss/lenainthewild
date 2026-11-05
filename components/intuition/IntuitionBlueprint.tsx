@@ -291,6 +291,9 @@ export default function IntuitionBlueprint() {
 
                 <h2 className="mt-16 font-display text-3xl italic leading-tight text-bark sm:text-5xl">{copy.explainer.authority.label}</h2>
                 <figure className="mt-8">
+                  <figcaption className="mb-8 font-body text-base leading-relaxed text-umber sm:text-lg">
+                    {copy.explainer.overview.focusStart} <TapeMark>{copy.explainer.overview.focusTape}</TapeMark>
+                  </figcaption>
                   <ul className="grid gap-4 sm:grid-cols-2">
                     {copy.explainer.overview.parts.map((part) => (
                       <li
@@ -306,9 +309,6 @@ export default function IntuitionBlueprint() {
                       </li>
                     ))}
                   </ul>
-                  <figcaption className="mt-5 font-body text-base leading-relaxed text-umber sm:text-lg">
-                    {copy.explainer.overview.focusStart} <TapeMark>{copy.explainer.overview.focusTape}</TapeMark>
-                  </figcaption>
                 </figure>
                 <p className="mt-6 font-body text-base leading-relaxed text-umber sm:text-lg">{copy.explainer.authority.body}</p>
 

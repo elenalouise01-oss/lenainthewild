@@ -39,7 +39,7 @@ export const intuitionBlueprint = {
       ],
       focusNote: 'this quiz!',
       // The middle part gets the lilac tape
-      focusStart: 'Your Human Design is made up of all four of these: your Type, Strategy, Authority and Profile.',
+      focusStart: 'Your Human Design is made up of four main parts: your Type, Strategy, Authority and Profile.',
       focusTape: 'This quiz focuses on your Authority: how you’re designed to make decisions.',
     },
     authority: {
