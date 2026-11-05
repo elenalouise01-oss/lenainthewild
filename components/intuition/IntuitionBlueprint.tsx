@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import DrawnLine from '@/components/DrawnLine';
+import ImageZoom from '@/components/ImageZoom';
 import SectionLabel from '@/components/SectionLabel';
 import TapeMark from '@/components/TapeMark';
 import { AUTHORITY_CENTER, AUTHORITY_FOR, authorities, intuitionBlueprint as copy } from '@/content/intuitionBlueprint';
@@ -291,7 +292,7 @@ export default function IntuitionBlueprint() {
 
                 <h2 className="mt-16 font-display text-3xl italic leading-tight text-bark sm:text-5xl">{copy.explainer.authority.label}</h2>
                 <figure className="mt-8">
-                  <Image
+                  <ImageZoom
                     src={copy.explainer.overview.src}
                     alt={copy.explainer.overview.alt}
                     width={1536}
