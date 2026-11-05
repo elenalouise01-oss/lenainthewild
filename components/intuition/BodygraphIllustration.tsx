@@ -29,6 +29,12 @@ function Moon({ x, y, r, flip = false }: { x: number; y: number; r: number; flip
   return <path d={d} fill={GOLD} fillOpacity={0.85} transform={flip ? `translate(${2 * x} 0) scale(-1 1)` : undefined} />;
 }
 
+// The left half of the figure, from the bottom of the body up to the top of
+// the head: widening body, arm, sloping shoulder, short neck, jaw, cheek and
+// forehead.
+const HALF_FIGURE =
+  'M118 520 C 125 495 136 460 140 440 C 150 410 156 380 158 350 C 160 320 162 300 172 290 C 180 278 190 271 205 267 C 225 262 250 257 260 252 C 266 248 267 240 267 226 L 266 212 C 260 205 252 196 250 186 C 248 180 246 176 244 168 C 240 155 240 145 241 138 C 244 108 268 86 300 86';
+
 export default function BodygraphIllustration({ className = '' }: { className?: string }) {
   // Rays around the head, alternating long and short
   const rays = Array.from({ length: 15 }, (_, i) => {
@@ -80,22 +86,20 @@ export default function BodygraphIllustration({ className = '' }: { className?: 
       <Moon x={100} y={182} r={20} />
       <Moon x={500} y={182} r={20} flip />
 
-      {/* The figure: head, neck, shoulders and body, in fine gold */}
-      <path
-        d="M168 600 C 158 560 154 500 153 440 C 154 410 155 380 157 340 C 160 300 175 266 200 254 C 225 244 255 236 267 226 L 267 210 C 263 204 255 198 250 190 C 243 180 239 165 241 140 C 244 108 270 88 300 88 C 330 88 356 108 359 140 C 361 165 357 180 350 190 C 345 198 337 204 333 210 L 333 226 C 345 236 375 244 400 254 C 425 266 440 300 443 340 C 445 380 446 410 447 440 C 446 500 442 560 432 600"
-        {...gold}
-        strokeWidth={1.4}
-      />
+      {/* The figure: one half traced from Lena's reference, mirrored so both
+          sides match exactly */}
+      <path d={HALF_FIGURE} {...gold} strokeWidth={1.4} />
+      <path d={HALF_FIGURE} {...gold} strokeWidth={1.4} transform="translate(600 0) scale(-1 1)" />
 
       {/* Channels: fine gold column with a darker centre line, curved loops and the crossing curve */}
       <line x1={294} y1={127} x2={294} y2={560} stroke={GOLD} strokeWidth={1} />
       <line x1={306} y1={127} x2={306} y2={560} stroke={GOLD} strokeWidth={1} />
       <line x1={300} y1={127} x2={300} y2={560} stroke={INK} strokeOpacity={0.75} strokeWidth={2.2} />
-      <ellipse cx={303} cy={427} rx={133} ry={170} fill="none" stroke={INK} strokeOpacity={0.7} strokeWidth={2.4} />
-      <ellipse cx={303} cy={432} rx={143} ry={180} {...gold} strokeWidth={1} />
-      <ellipse cx={303} cy={422} rx={123} ry={160} {...gold} strokeWidth={1} />
-      <path d="M213 470 C 262 428, 302 410, 341 410" {...gold} strokeWidth={1} />
-      <path d="M213 478 C 264 438, 304 420, 341 420" {...gold} strokeWidth={1} />
+      <ellipse cx={300} cy={427} rx={133} ry={170} fill="none" stroke={INK} strokeOpacity={0.7} strokeWidth={2.4} />
+      <ellipse cx={300} cy={432} rx={143} ry={180} {...gold} strokeWidth={1} />
+      <ellipse cx={300} cy={422} rx={123} ry={160} {...gold} strokeWidth={1} />
+      <path d="M214 470 C 262 428, 302 410, 341 410" {...gold} strokeWidth={1} />
+      <path d="M214 478 C 264 438, 304 420, 341 420" {...gold} strokeWidth={1} />
 
       {/* The nine centres, softly painted */}
       <polygon points="300,70 337,127 263,127" {...centre('pink')} />
@@ -103,10 +107,10 @@ export default function BodygraphIllustration({ className = '' }: { className?: 
       <rect x={273} y={230} width={54} height={53} rx={7} {...centre('yellow')} />
       <polygon points="300,314 343,357 300,400 257,357" {...centre('pink')} />
       <polygon points="341,383 393,410 341,437" {...centre('brown')} />
-      <polygon points="152,433 152,507 213,470" {...centre('lilac')} />
-      <polygon points="445,433 445,507 385,470" {...centre('pink')} />
-      <rect x={268} y={465} width={63} height={62} rx={7} {...centre('green')} />
-      <rect x={265} y={553} width={68} height={64} rx={7} {...centre('brown')} />
+      <polygon points="152,433 152,507 214,470" {...centre('lilac')} />
+      <polygon points="448,433 448,507 386,470" {...centre('pink')} />
+      <rect x={268.5} y={465} width={63} height={62} rx={7} {...centre('green')} />
+      <rect x={266} y={553} width={68} height={64} rx={7} {...centre('brown')} />
     </svg>
   );
 }
