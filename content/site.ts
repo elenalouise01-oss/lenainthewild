@@ -128,7 +128,7 @@ export const quizTeaser = {
   body: 'Discover your Human Design authority: your inner compass for knowing what’s right for you. It takes 1 minute.',
   cta: 'Take the free quiz',
   href: '/intuition-blueprint',
-  scribble: 'what does yours look like?',
+  scribble: 'your Human Design authority',
 };
 
 // The freebie at the end of each journal article: the quiz for articles about
