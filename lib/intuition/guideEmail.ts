@@ -43,7 +43,7 @@ export function guideEmail(authority: AuthorityKey, firstName?: string, chart?: 
     copy.result.reminder,
     '',
     'Sending positive vibes your way,',
-    'Lena',
+    'Lena x',
     '',
     copy.emailEnd.label.toUpperCase(),
     copy.emailEnd.body,
@@ -79,7 +79,7 @@ ${signal ? `${label(extras.signalsLabel)}${p(`${extras.signatureLabel}: ${signal
 ${chart ? `${label(extras.openLabel)}${open.length ? `${p(extras.openIntro)}<ul style="margin:0 0 16px;padding-left:20px;color:#52421b;font-size:16px;line-height:1.7;">${open.map((c) => `<li style="margin-bottom:10px;"><strong>Open ${esc(OPEN_CENTRES[c].name)}:</strong> ${esc(OPEN_CENTRES[c].question)}</li>`).join('')}</ul>` : p(extras.noOpen)}` : ''}
 ${p(copy.result.reminder, 'font-style:italic;')}
 ${p('Sending positive vibes your way,')}
-<p style="margin:0 0 32px;font-family:Georgia,serif;font-style:italic;font-size:22px;color:#3b2d0e;">Lena</p>
+<p style="margin:0 0 32px;font-family:Georgia,serif;font-style:italic;font-size:22px;color:#3b2d0e;">Lena x</p>
 <div style="background:#f1efe7;padding:28px 24px;text-align:center;">
 <p style="margin:0 0 10px;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#7b776f;">${esc(copy.emailEnd.label)}</p>
 <p style="margin:0 0 20px;font-size:16px;line-height:1.7;color:#52421b;">${esc(copy.emailEnd.body)}</p>
