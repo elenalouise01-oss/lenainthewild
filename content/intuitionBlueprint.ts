@@ -111,7 +111,7 @@ export const intuitionBlueprint = {
     sending: 'Sending…',
     invalidEmail: 'Please enter a valid email.',
     failed: 'Your guide didn’t send. Please try again later. Here’s your result.',
-    sent: 'Your results are below, and a copy is on its way to {email} to keep. Can’t see it? Check your promotions folder.',
+    sent: 'Sent to {email} so you can refer back to it any time, and you can also read your results right here. Can’t see the email? Check your promotions folder.',
   },
 
   result: {
