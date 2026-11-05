@@ -59,6 +59,7 @@ export default function IntuitionBlueprint() {
   const [consent, setConsent] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [nameError, setNameError] = useState('');
+  const [consentError, setConsentError] = useState('');
   const [sending, setSending] = useState(false);
   const [sentTo, setSentTo] = useState('');
   const [sendFailed, setSendFailed] = useState(false);
@@ -132,7 +133,8 @@ export default function IntuitionBlueprint() {
     const emailBad = !isValidEmail(trimmed);
     setNameError(nameMissing ? copy.email.nameError : '');
     setEmailError(emailBad ? copy.email.invalidEmail : '');
-    if (nameMissing || emailBad) return;
+    setConsentError(consent ? '' : copy.email.consentError);
+    if (nameMissing || emailBad || !consent) return;
     setSendFailed(false);
     setSending(true);
     const company = (new FormData(e.currentTarget).get('company') as string) || '';
@@ -505,10 +507,28 @@ export default function IntuitionBlueprint() {
                       </p>
                     )}
                   </div>
-                  <label className="flex cursor-pointer items-start gap-3 font-body text-sm leading-relaxed text-umber">
-                    <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-1 h-4 w-4 shrink-0 accent-bark" />
-                    {copy.email.consent}
-                  </label>
+                  <div>
+                    <label className="flex cursor-pointer items-start gap-3 font-body text-sm leading-relaxed text-umber">
+                      <input
+                        type="checkbox"
+                        required
+                        checked={consent}
+                        onChange={(e) => {
+                          setConsent(e.target.checked);
+                          if (e.target.checked) setConsentError('');
+                        }}
+                        aria-invalid={Boolean(consentError)}
+                        aria-describedby={consentError ? 'ib-consent-error' : undefined}
+                        className="mt-1 h-4 w-4 shrink-0 accent-bark"
+                      />
+                      {copy.email.consent}
+                    </label>
+                    {consentError && (
+                      <p id="ib-consent-error" className={`mt-2 ${errorText}`}>
+                        {consentError}
+                      </p>
+                    )}
+                  </div>
                   <p className="font-body text-xs leading-relaxed text-stone">{copy.email.privacy}</p>
                   <button type="submit" disabled={sending} className={`${pill} bg-bark text-cream`}>
                     {sending ? copy.email.sending : copy.email.submit}
