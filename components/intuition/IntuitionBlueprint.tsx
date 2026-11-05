@@ -465,18 +465,18 @@ export default function IntuitionBlueprint() {
         )}
 
         {stage === 'email' && chart && content && (
-          <motion.section key="email" {...fade} aria-labelledby="step-email" className="bg-zing-yellow px-6 py-14 sm:px-12 sm:py-20">
+          <motion.section key="email" {...fade} aria-labelledby="step-email" className="bg-bark px-6 py-14 sm:px-12 sm:py-20">
             <div className="mx-auto grid max-w-6xl items-start gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
               {/* The reveal: their authority and chart */}
               <div className="text-center lg:pt-6 lg:text-left">
-                <p className={`${label} text-bark/70`}>{copy.reveal.label}</p>
-                <p className="mt-5 font-hand text-3xl text-bark">{copy.reveal.scribble}</p>
-                <p className="mt-1 font-display text-[3.4rem] leading-[0.88] tracking-tight text-bark sm:text-8xl">
+                <p className={`${label} text-sage`}>{copy.reveal.label}</p>
+                <p className="mt-5 font-hand text-3xl text-zing-yellow">{copy.reveal.scribble}</p>
+                <p className="mt-1 font-display text-[3.4rem] leading-[0.88] tracking-tight text-cream sm:text-8xl">
                   {content.name.replace(/ Authority$/, '')}
                   <br />
-                  <em>Authority</em>
+                  <em className="text-zing-yellow">Authority</em>
                 </p>
-                <p className="mx-auto mt-6 max-w-md font-display text-2xl italic leading-snug text-bark lg:mx-0">{content.oneLine}</p>
+                <p className="mx-auto mt-6 max-w-md font-display text-2xl italic leading-snug text-cream/90 lg:mx-0">{content.oneLine}</p>
                 <div className="mx-auto mt-10 w-60 bg-white px-4 pb-4 pt-5 shadow-xl lg:mx-0">
                   <svg viewBox="0 0 600 660" className="h-auto w-full" role="img" aria-label="Your Human Design chart">
                     <IllustrationArt
@@ -490,7 +490,7 @@ export default function IntuitionBlueprint() {
 
               {/* Step 2: email */}
               <div className="relative bg-white px-6 py-10 shadow-xl sm:px-10">
-                <p className="absolute -top-9 right-4 rotate-3 font-hand text-2xl text-bark sm:right-10">{copy.email.scribble}</p>
+                <p className="absolute -top-9 right-4 rotate-3 font-hand text-2xl text-zing-yellow sm:right-10">{copy.email.scribble}</p>
                 <p className={`${label} text-stone`}>{copy.email.label}</p>
                 <h1 id="step-email" tabIndex={-1} className="mt-4 font-display text-3xl leading-tight text-bark focus:outline-none sm:text-4xl">
                   {copy.email.heading}
