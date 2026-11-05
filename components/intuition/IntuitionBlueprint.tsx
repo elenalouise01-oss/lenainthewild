@@ -204,15 +204,15 @@ export default function IntuitionBlueprint() {
                 <div className="mx-auto w-full max-w-[16rem] sm:max-w-xs lg:order-last">
                   <div className="relative -rotate-3 bg-cream p-3 pb-12 shadow-2xl lg:rotate-3">
                     <span aria-hidden="true" className="absolute -top-3 left-1/2 z-10 h-6 w-20 -translate-x-1/2 rotate-2 bg-zing-yellow/85 shadow-sm" />
-                    <div className="relative aspect-[2/3] overflow-hidden">
+                    <div className="relative aspect-[3/4] overflow-hidden">
                       <Image
-                        src="/images/intuition/meditation-sunrise.webp"
-                        alt="Someone meditating at sunrise in front of an arch of moon phases"
+                        src="/images/intuition/coffee-intuition-card.webp"
+                        alt="A cappuccino with latte art next to an oracle card that reads Intuition"
                         fill
                         priority
                         sizes="20rem"
                         className="object-cover"
-                        style={{ objectPosition: '50% 45%' }}
+                        style={{ objectPosition: '50% 50%' }}
                       />
                     </div>
                     <p aria-hidden="true" className="absolute inset-x-0 bottom-3 text-center font-hand text-lg text-bark">
