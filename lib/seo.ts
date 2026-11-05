@@ -17,6 +17,7 @@ export const PAGES = [
   { path: '/freedom-frequency', priority: 0.8 },
   { path: '/5-day-reconnect', priority: 0.8 },
   { path: '/photography', priority: 0.8 },
+  { path: '/intuition-blueprint', priority: 0.8 },
 ];
 
 export const absoluteUrl = (path: string) => `${SITE_URL}${path === '/' ? '' : path}`;
