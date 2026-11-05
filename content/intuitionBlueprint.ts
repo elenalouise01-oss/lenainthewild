@@ -171,8 +171,8 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     decisions: ['Feel the first rush, then wait.', 'Sleep on it. Then sleep on it again.', 'Clarity feels calm, not hyped. “Let me get back to you” is a full sentence.'],
     prompts: ['What have I said yes to on a high, then regretted?', 'What does calm clarity feel like in my body?', 'Who pressures me to answer straight away?'],
     exercise: {
-      title: 'Ride the wave',
-      steps: ['Pick one decision.', 'Each night for a week, rate it 1 (no) to 10 (yes).', 'Read it back. What stays the same underneath the ups and downs? That’s your answer.'],
+      title: 'The 24-hour rule',
+      steps: ['Next time someone asks you for something (a plan, a favour, a yes), say: “Let me get back to you.”', 'Sleep on it.', 'Check in tomorrow. Still a yes? Then it’s a yes.'],
     },
   },
 
@@ -184,8 +184,8 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     decisions: ['Respond to what’s in front of you, don’t think your way there.', 'Notice your first gut yes or no.', 'Act on it before your mind piles on the “shoulds”.'],
     prompts: ['When did my body say yes before I could explain why?', 'What am I saying yes to that my gut says no to?', 'Whose voice talks me out of my gut?'],
     exercise: {
-      title: 'The yes/no game',
-      steps: ['Have a friend fire quick yes/no questions at you.', 'Answer with a sound, not words: “uh-huh” or “uh-uh”.', 'Notice how a yes and a no feel in your belly. That’s your guide.'],
+      title: 'Ask your gut a yes/no question',
+      steps: ['Next small choice (what to eat, whether to go out), ask yourself: “Do I want this? Yes or no?”', 'Notice your body’s first reaction: a pull towards it, or a pull away.', 'Go with it, before your head jumps in.'],
     },
   },
 
@@ -197,8 +197,8 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     decisions: ['Trust the first quiet hit.', 'Don’t wait for a reason. It might never come.', 'Slow down enough to hear it.'],
     prompts: ['When was my instinct right, and I ignored it?', 'Where do I feel those quiet nudges in my body?', 'What drowns them out?'],
     exercise: {
-      title: 'The first-hit note',
-      steps: ['For a week, keep a note on your phone called “First hits”.', 'Every time you get a quick instinct, jot it down.', 'Note what happened. Notice how often it knew.'],
+      title: 'Follow one hunch today',
+      steps: ['Today, notice one quiet hunch: take a different way home, message someone, skip something.', 'Follow it, even if you can’t explain why.', 'See what happens.'],
     },
   },
 
@@ -211,8 +211,8 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     decisions: ['Ask: do I really want this?', 'Only commit when your heart’s in it.', 'Listen to what you say you want, out loud.'],
     prompts: ['What do I want, without justifying it?', 'Where have I said yes when my heart wasn’t in it?', 'Where am I still trying to prove myself?'],
     exercise: {
-      title: 'The “I want” voice note',
-      steps: ['Record a two-minute voice note starting every sentence with “I want…”.', 'Don’t edit yourself.', 'Play it back. Which lines sound alive, and which sound like obligation?'],
+      title: 'The “do I want this?” check',
+      steps: ['Before you say yes to anything today, ask: “Do I actually want this?”', 'If your heart’s not in it, say no (or “not right now”).', 'Notice how much lighter you feel.'],
     },
   },
 
@@ -224,8 +224,8 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     decisions: ['Talk it out with someone you trust.', 'You’re not after their advice. You’re listening to yourself.', 'Ask: does this sound like me?'],
     prompts: ['Who can I talk to without them trying to fix me?', 'When did I surprise myself with what I said?', 'Which choices feel like me, and which feel like someone else’s idea of me?'],
     exercise: {
-      title: 'Talk it out',
-      steps: ['Pick a decision.', 'Talk it through out loud for ten minutes (to a friend, or record yourself).', 'Write down the lines that felt true as you said them.'],
+      title: 'Say it out loud',
+      steps: ['Pick something you’re deciding.', 'Record a one-minute voice note talking it through.', 'Play it back. What sounded most like you?'],
     },
   },
 
@@ -238,8 +238,8 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     decisions: ['Talk it out with a few trusted people.', 'Notice how different places make you feel.', 'Take your time. Change where you are, then decide.'],
     prompts: ['Who helps me think clearly, and who leaves me confused?', 'Where do I feel most like myself?', 'What have I been going around in circles on?'],
     exercise: {
-      title: 'Three places, three chats',
-      steps: ['Talk one decision through with three people, in three different places.', 'After each, jot down what you heard yourself say.', 'Notice what kept coming up.'],
+      title: 'Change the scene',
+      steps: ['Take a decision you keep going around in circles on somewhere new: a walk, a café, the beach.', 'Say it out loud to someone you trust (or to yourself).', 'Notice what you hear yourself say.'],
     },
   },
 
@@ -251,8 +251,8 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     decisions: ['Give big decisions about 28 days.', 'Talk it through along the way.', 'Notice where you feel most clear. Your environment matters.'],
     prompts: ['Which places and people feel good to be around?', 'When was I rushed into a big decision?', 'Am I feeling my own feelings, or someone else’s?'],
     exercise: {
-      title: 'The 28-day diary',
-      steps: ['Pick one big decision and give it a full month.', 'Every few days, jot down how you feel, where you were and who you were with.', 'At the end, notice what stayed the same.'],
+      title: 'Give it a month',
+      steps: ['Write the decision in your phone notes with today’s date.', 'Once a week, add one line: how does it feel now?', 'Decide after about a month.'],
     },
   },
 };
