@@ -46,7 +46,7 @@ export function guideEmail(authority: AuthorityKey, firstName?: string, chart?: 
     '',
     `Come back to your guide any time: ${url}`,
     '',
-    'With love,',
+    'Sending positive vibes your way,',
     'Lena',
     '',
     copy.invitation.body,
@@ -80,7 +80,7 @@ ${chart ? `${label(extras.openLabel)}${open.length ? `${p(extras.openIntro)}<ul 
 ${p(copy.result.reminder, 'font-style:italic;')}
 <p style="margin:0 0 16px;font-size:16px;line-height:1.7;color:#52421b;">${esc(copy.book.line)} <a href="${esc(copy.book.href)}" style="color:#3b2d0e;"><em>${esc(copy.book.title)}</em></a> by ${esc(copy.book.author)}.</p>
 <p style="margin:28px 0;"><a href="${esc(url)}" style="display:inline-block;padding:14px 28px;border-radius:999px;background:#3b2d0e;color:#ffffff;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;">Come back to your guide</a></p>
-${p('With love,')}
+${p('Sending positive vibes your way,')}
 <p style="margin:0 0 32px;font-family:Georgia,serif;font-style:italic;font-size:22px;color:#3b2d0e;">Lena</p>
 <div style="border-top:1px solid #e6e6dd;padding-top:24px;">
 ${p(copy.invitation.body, 'font-size:14px;')}
