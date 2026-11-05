@@ -125,7 +125,7 @@ export const waitlistOffers = ['The Freedom Frequency'];
 export const quizTeaser = {
   label: 'Free Intuition Quiz',
   heading: 'How are you designed to make decisions?',
-  body: 'Discover your Human Design authority: your inner compass for knowing what’s right for you. Free, and it takes 2 minutes.',
+  body: 'Discover your Human Design authority: your inner compass for knowing what’s right for you. Free, and it takes 1 minute.',
   cta: 'Take the free quiz',
   href: '/intuition-blueprint',
   scribble: 'your chart',

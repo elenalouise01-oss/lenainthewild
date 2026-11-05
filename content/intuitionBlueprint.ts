@@ -8,7 +8,7 @@ export const intuitionBlueprint = {
   label: 'Free · Human Design',
   title: 'The Intuition Blueprint',
   subheading: 'Find out how you’re designed to make decisions, so you can stop overthinking and start trusting yourself.',
-  intro: 'Free, takes 2 minutes, and all you need is your birth date, time and place.',
+  intro: 'Free, takes 1 minute, and all you need is your birth date, time and place.',
   cta: 'Discover Your Intuition Blueprint',
   // Handwritten caption on the polaroid, and the spinning badge beside it
   polaroidCaption: 'trust the first yes',
@@ -16,7 +16,7 @@ export const intuitionBlueprint = {
   // The lilac tape that scrolls across under the opening
   tape: 'Stop overthinking · Hear yourself again · Trust your own yes',
   // Handwritten note beside the button
-  scribble: 'takes 2 minutes!',
+  scribble: 'takes 1 minute!',
   // The explainer for anyone new to Human Design
   explainer: {
     what: {
