@@ -35,7 +35,9 @@ function Moon({ x, y, r, flip = false }: { x: number; y: number; r: number; flip
 const HALF_FIGURE =
   'M118 520 C 125 495 136 460 140 440 C 150 410 156 380 158 350 C 160 320 162 300 172 290 C 180 278 190 271 205 267 C 225 262 250 257 260 252 C 266 248 267 240 267 226 L 266 212 C 260 205 252 196 250 186 C 248 180 246 176 244 168 C 240 155 240 145 241 138 C 244 108 268 86 300 86';
 
-export default function BodygraphIllustration({ className = '' }: { className?: string }) {
+// The drawing itself, in a 600 x 660 space, so it can also be placed inside a
+// bigger picture (the labelled version on the quiz page)
+export function IllustrationArt({ open = [] }: { open?: string[] }) {
   // Rays around the head, alternating long and short
   const rays = Array.from({ length: 15 }, (_, i) => {
     const a = ((-178.2 + i * 12.6) * Math.PI) / 180; // centred on straight up (-90°)
@@ -43,16 +45,17 @@ export default function BodygraphIllustration({ className = '' }: { className?: 
     return { x1: 300 + Math.cos(a) * 72, y1: 143 + Math.sin(a) * 72, x2: 300 + Math.cos(a) * len, y2: 143 + Math.sin(a) * len };
   });
   const gold = { fill: 'none', stroke: GOLD, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
-  const centre = (colour: keyof typeof WASH) => ({
-    fill: `url(#litw-wash-${colour})`,
+  // An open centre is left white; a defined one is softly painted
+  const centre = (colour: keyof typeof WASH, id: string) => ({
+    fill: open.includes(id) ? '#ffffff' : `url(#litw-wash-${colour})`,
     stroke: INK,
     strokeWidth: 1.6,
     strokeLinejoin: 'round' as const,
-    filter: 'url(#litw-grain)',
+    filter: open.includes(id) ? undefined : 'url(#litw-grain)',
   });
 
   return (
-    <svg viewBox="0 0 600 660" className={className} role="img" aria-label="An illustrated Human Design chart">
+    <g>
       <defs>
         {Object.entries(WASH).map(([name, [light, deep]]) => (
           <linearGradient key={name} id={`litw-wash-${name}`} x1="0" y1="0" x2="0.35" y2="1">
@@ -102,15 +105,23 @@ export default function BodygraphIllustration({ className = '' }: { className?: 
       <path d="M214 478 C 264 438, 304 420, 341 420" {...gold} strokeWidth={1} />
 
       {/* The nine centres, softly painted */}
-      <polygon points="300,70 337,127 263,127" {...centre('pink')} />
-      <polygon points="263,148 337,148 300,205" {...centre('lilac')} />
-      <rect x={273} y={230} width={54} height={53} rx={7} {...centre('yellow')} />
-      <polygon points="300,314 343,357 300,400 257,357" {...centre('pink')} />
-      <polygon points="341,383 393,410 341,437" {...centre('brown')} />
-      <polygon points="152,433 152,507 214,470" {...centre('lilac')} />
-      <polygon points="448,433 448,507 386,470" {...centre('pink')} />
-      <rect x={268.5} y={465} width={63} height={62} rx={7} {...centre('green')} />
-      <rect x={266} y={553} width={68} height={64} rx={7} {...centre('brown')} />
+      <polygon points="300,70 337,127 263,127" {...centre('pink', 'head')} />
+      <polygon points="263,148 337,148 300,205" {...centre('lilac', 'ajna')} />
+      <rect x={273} y={230} width={54} height={53} rx={7} {...centre('yellow', 'throat')} />
+      <polygon points="300,314 343,357 300,400 257,357" {...centre('pink', 'g')} />
+      <polygon points="341,383 393,410 341,437" {...centre('brown', 'heart')} />
+      <polygon points="152,433 152,507 214,470" {...centre('lilac', 'spleen')} />
+      <polygon points="448,433 448,507 386,470" {...centre('pink', 'solarPlexus')} />
+      <rect x={268.5} y={465} width={63} height={62} rx={7} {...centre('green', 'sacral')} />
+      <rect x={266} y={553} width={68} height={64} rx={7} {...centre('brown', 'root')} />
+    </g>
+  );
+}
+
+export default function BodygraphIllustration({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 600 660" className={className} role="img" aria-label="An illustrated Human Design chart">
+      <IllustrationArt />
     </svg>
   );
 }

@@ -1,83 +1,53 @@
-import { LINKS, SHAPES, type CenterId } from './BodygraphArt';
+import type { CenterId } from './BodygraphArt';
+import { IllustrationArt } from './BodygraphIllustration';
 
-// The example chart on the quiz page, with each of the nine centres named and
-// a dashed line from the name to its shape. On a phone only the names fit
-// (bigger, so they're readable); the meanings show from tablet size up.
-const OFFSET_X = 210;
-const OFFSET_Y = 10;
+// The quiz page's chart: the same illustration as the home page, with each of
+// the nine centres named and a fine dashed line from the name to its shape.
+// On a phone only the names fit (bigger, so they're readable); the meanings
+// show from tablet size up.
 
+// The illustration (600 x 660) sits in the middle of a 1060-wide picture
+const X = 230;
+const Y = 10;
+const SCALE = 0.9;
+const at = (x: number, y: number): [number, number] => [X + x * SCALE, Y + y * SCALE];
+
+// Each label: which side, its height (in illustration units) and the point on
+// the shape the line runs to
 const LABELS: { id: CenterId; side: 'left' | 'right'; y: number; to: [number, number] }[] = [
-  { id: 'head', side: 'left', y: 50, to: [128, 52] },
-  { id: 'ajna', side: 'right', y: 106, to: [170, 104] },
-  { id: 'throat', side: 'left', y: 196, to: [123, 193] },
-  { id: 'g', side: 'left', y: 286, to: [114, 282] },
-  { id: 'heart', side: 'right', y: 284, to: [236, 290] },
-  { id: 'solarPlexus', side: 'right', y: 372, to: [270, 371] },
-  { id: 'spleen', side: 'left', y: 384, to: [30, 371] },
-  { id: 'sacral', side: 'right', y: 462, to: [177, 398] },
-  { id: 'root', side: 'left', y: 468, to: [123, 451] },
+  { id: 'head', side: 'left', y: 92, to: [281, 99] },
+  { id: 'ajna', side: 'right', y: 160, to: [325, 160] },
+  { id: 'throat', side: 'left', y: 252, to: [273, 256] },
+  { id: 'g', side: 'left', y: 352, to: [257, 357] },
+  { id: 'heart', side: 'right', y: 400, to: [393, 410] },
+  { id: 'solarPlexus', side: 'right', y: 478, to: [448, 470] },
+  { id: 'spleen', side: 'left', y: 478, to: [152, 470] },
+  { id: 'sacral', side: 'right', y: 575, to: [331, 518] },
+  { id: 'root', side: 'left', y: 590, to: [266, 585] },
 ];
 
-export default function BodygraphLabelled({
-  names,
-  defined = [],
-  links = [],
-  fill = '#CBA1D4',
-}: {
-  names: Record<CenterId, { name: string; meaning: string }>;
-  defined?: CenterId[];
-  links?: [CenterId, CenterId][];
-  fill?: string;
-}) {
-  const on = new Set(defined);
-  const linkOn = (a: CenterId, b: CenterId) => links.some(([x, y]) => (x === a && y === b) || (x === b && y === a));
+// Open (white) centres in the example, so the key makes sense
+const OPEN: CenterId[] = ['head', 'ajna', 'heart', 'solarPlexus'];
+
+export default function BodygraphLabelled({ names }: { names: Record<CenterId, { name: string; meaning: string }> }) {
   return (
-    <svg viewBox="0 0 720 500" className="h-auto w-full" role="img" aria-label="An example Human Design chart with its nine energy centres labelled">
-      <g transform={`translate(${OFFSET_X} ${OFFSET_Y})`}>
-        {LINKS.map(([a, b]) => (
-          <line
-            key={`${a}-${b}`}
-            x1={SHAPES[a].cx}
-            y1={SHAPES[a].cy}
-            x2={SHAPES[b].cx}
-            y2={SHAPES[b].cy}
-            stroke="#3b2d0e"
-            strokeOpacity={linkOn(a, b) ? 1 : 0.16}
-            strokeWidth={linkOn(a, b) ? 5 : 1.5}
-            strokeLinecap="round"
-          />
-        ))}
-        {(Object.keys(SHAPES) as CenterId[]).map((id) => {
-          const s = SHAPES[id];
-          const common = { fill: on.has(id) ? fill : '#ffffff', stroke: '#3b2d0e', strokeWidth: 2.2, strokeLinejoin: 'round' as const };
-          return s.rect ? (
-            <rect key={id} x={s.rect[0]} y={s.rect[1]} width={s.rect[2]} height={s.rect[3]} rx={7} {...common} />
-          ) : (
-            <polygon key={id} points={s.points} {...common} />
-          );
-        })}
+    <svg viewBox="0 0 1060 620" className="h-auto w-full" role="img" aria-label="An illustrated Human Design chart with its nine energy centres labelled">
+      <g transform={`translate(${X} ${Y}) scale(${SCALE})`}>
+        <IllustrationArt open={OPEN} />
       </g>
       {LABELS.map(({ id, side, y, to }) => {
         const left = side === 'left';
-        const textX = left ? 196 : 524;
-        const lineStart = left ? 204 : 516;
+        const [tx, ty] = at(to[0], to[1]);
+        const [, ly] = at(0, y);
+        const textX = left ? 214 : 800;
+        const lineStart = left ? 222 : 792;
         return (
           <g key={id}>
-            <line
-              x1={lineStart}
-              y1={y - 6}
-              x2={to[0] + OFFSET_X}
-              y2={to[1] + OFFSET_Y}
-              stroke="#3b2d0e"
-              strokeOpacity={0.55}
-              strokeWidth={1.6}
-              strokeDasharray="4 4"
-              strokeLinecap="round"
-            />
-            <circle cx={to[0] + OFFSET_X} cy={to[1] + OFFSET_Y} r={3} fill="#3b2d0e" />
-            <text x={textX} y={y} textAnchor={left ? 'end' : 'start'} className="fill-bark font-body">
-              <tspan className="text-[30px] font-semibold sm:text-[17px]">{names[id].name}</tspan>
-              <tspan x={textX} dy="1.25em" className="hidden fill-umber text-[14px] sm:inline">
+            <line x1={lineStart} y1={ly - 6} x2={tx} y2={ty} stroke="#a8834f" strokeOpacity={0.9} strokeWidth={1.4} strokeDasharray="4 4" strokeLinecap="round" />
+            <circle cx={tx} cy={ty} r={3.2} fill="#3b2d0e" />
+            <text x={textX} y={ly} textAnchor={left ? 'end' : 'start'} className="fill-bark font-body">
+              <tspan className="text-[36px] font-semibold sm:text-[24px]">{names[id].name}</tspan>
+              <tspan x={textX} dy="1.3em" className="hidden fill-umber text-[19px] sm:inline">
                 {names[id].meaning}
               </tspan>
             </text>

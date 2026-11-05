@@ -260,11 +260,7 @@ export default function IntuitionBlueprint() {
                 <figure className="mt-8">
                   <figcaption className="font-body text-sm leading-relaxed text-umber">{copy.explainer.diagram.caption}</figcaption>
                   <div className="mt-6">
-                    <BodygraphLabelled
-                      names={copy.explainer.diagram.centres}
-                      defined={['throat', 'g', 'sacral', 'root']}
-                      links={[['throat', 'g'], ['sacral', 'root']]}
-                    />
+                    <BodygraphLabelled names={copy.explainer.diagram.centres} />
                   </div>
                   {/* On a phone the chart only fits the names, so the meanings are listed too */}
                   <ul className="mt-4 space-y-1 font-body text-sm text-umber sm:hidden">
@@ -274,11 +270,23 @@ export default function IntuitionBlueprint() {
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-4 font-hand text-lg leading-snug text-bark">
-                    {copy.explainer.diagram.defined}
-                    <br />
-                    {copy.explainer.diagram.open}
-                  </p>
+                  {/* Key */}
+                  <dl className="mx-auto mt-6 flex w-fit flex-col gap-3 border border-bark/15 px-5 py-4 font-body text-sm text-umber sm:flex-row sm:gap-8">
+                    <div className="flex items-center gap-3">
+                      <dt className="flex shrink-0 items-center gap-2 font-semibold text-bark">
+                        <span aria-hidden="true" className="h-4 w-4 shrink-0 border border-bark bg-gradient-to-b from-[#e4cdea] to-[#bf93c9]" />
+                        {copy.explainer.diagram.defined.name}
+                      </dt>
+                      <dd>{copy.explainer.diagram.defined.meaning}</dd>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <dt className="flex shrink-0 items-center gap-2 font-semibold text-bark">
+                        <span aria-hidden="true" className="h-4 w-4 shrink-0 border border-bark bg-white" />
+                        {copy.explainer.diagram.open.name}
+                      </dt>
+                      <dd>{copy.explainer.diagram.open.meaning}</dd>
+                    </div>
+                  </dl>
                 </figure>
 
                 <h2 className="mt-16 font-display text-3xl italic leading-tight text-bark sm:text-5xl">{copy.explainer.authority.label}</h2>

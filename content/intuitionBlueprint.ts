@@ -58,8 +58,9 @@ export const intuitionBlueprint = {
         sacral: { name: 'Sacral', meaning: 'life force, gut response' },
         root: { name: 'Root', meaning: 'pressure and drive' },
       },
-      defined: 'coloured in = defined',
-      open: 'white = open',
+      // The key under the chart
+      defined: { name: 'Defined', meaning: 'consistent energy that’s yours' },
+      open: { name: 'Open', meaning: 'where you take in and amplify others’ energy' },
     },
   },
 
