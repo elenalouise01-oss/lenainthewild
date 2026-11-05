@@ -69,9 +69,9 @@ export default function Home() {
       <Hero />
       <Section1 />
       <Section2 />
-      <LeadMagnet />
-      <Section3 />
       <QuizTeaser />
+      <Section3 />
+      <LeadMagnet />
       <WaitlistCta />
       <Faq />
       <Newsletter />
