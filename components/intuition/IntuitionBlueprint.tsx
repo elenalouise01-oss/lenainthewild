@@ -13,7 +13,7 @@ import type { CalculateOutcome, ChartSummary } from '@/lib/intuition/calculate';
 import { isValidEmail } from '@/lib/intuition/email';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 import AuthorityResult, { BlueprintInvitation } from './AuthorityResult';
-import BodygraphArt from './BodygraphArt';
+import { IllustrationArt } from './BodygraphIllustration';
 import BodygraphLabelled from './BodygraphLabelled';
 import ChartExtras from './ChartExtras';
 import PlaceSearch, { type PickedPlace } from './PlaceSearch';
@@ -477,14 +477,13 @@ export default function IntuitionBlueprint() {
                   <em>Authority</em>
                 </p>
                 <p className="mx-auto mt-6 max-w-md font-display text-2xl italic leading-snug text-bark lg:mx-0">{content.oneLine}</p>
-                <div className="mx-auto mt-10 w-44 -rotate-3 bg-white px-4 pb-4 pt-5 shadow-xl lg:mx-0">
-                  <BodygraphArt
-                    defined={chart.centerIds}
-                    definedLinks={chart.links}
-                    highlight={AUTHORITY_CENTER[chart.authority].center}
-                    fill="#CBA1D4"
-                    label="Your Human Design chart"
-                  />
+                <div className="mx-auto mt-10 w-60 bg-white px-4 pb-4 pt-5 shadow-xl lg:mx-0">
+                  <svg viewBox="0 0 600 660" className="h-auto w-full" role="img" aria-label="Your Human Design chart">
+                    <IllustrationArt
+                      open={['head', 'ajna', 'throat', 'g', 'heart', 'solarPlexus', 'sacral', 'spleen', 'root'].filter((c) => !chart.centerIds.includes(c as never))}
+                      highlight={AUTHORITY_CENTER[chart.authority].center}
+                    />
+                  </svg>
                   <p className="mt-2 text-center font-type text-[0.6rem] text-bark">{copy.reveal.chartCaption}</p>
                 </div>
               </div>
