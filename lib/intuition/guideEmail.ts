@@ -24,6 +24,7 @@ export function guideEmail(authority: AuthorityKey, firstName?: string, chart?: 
     a.oneLine,
     '',
     copy.result.meaningLabel.toUpperCase(),
+    `${copy.result.whereLabel}: ${a.where}`,
     ...a.meaning,
     ...(variant ? [variant] : []),
     '',
@@ -74,6 +75,7 @@ ${a.alsoCalled ? p(`Also called ${a.alsoCalled}.`, 'font-size:14px;color:#7b776f
 <p style="margin:12px 0 0;padding:18px 20px;background:#fffba0;font-family:Georgia,serif;font-style:italic;font-size:20px;line-height:1.4;color:#3b2d0e;">${esc(a.oneLine)}</p>
 
 ${heading(copy.result.meaningLabel)}
+<div style="margin:0 0 18px;padding:14px 18px;background:#f3e6f6;border-left:4px solid #CBA1D4;">${smallLabel(copy.result.whereLabel)}<p style="margin:0;font-family:Georgia,serif;font-style:italic;font-size:18px;line-height:1.45;color:#3b2d0e;">${esc(a.where)}</p></div>
 ${a.meaning.map((s) => p(s)).join('')}
 ${variant ? p(variant, 'border-left:3px solid #CBA1D4;padding-left:14px;') : ''}
 

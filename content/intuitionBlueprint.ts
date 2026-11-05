@@ -115,6 +115,7 @@ export const intuitionBlueprint = {
 
   result: {
     meaningLabel: 'What it means',
+    whereLabel: 'Where you feel it',
     decisionsLabel: 'How to use it',
     promptsLabel: 'Ask yourself',
     promptsIntro: 'Grab a journal.',
@@ -182,6 +183,8 @@ export type AuthorityContent = {
   name: string;
   alsoCalled?: string;
   oneLine: string;
+  // Where in the body it is, for people who want to know where to listen
+  where: string;
   meaning: string[];
   decisions: string[];
   prompts: string[];
@@ -212,6 +215,7 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     name: 'Emotional Authority',
     alsoCalled: 'Solar Plexus Authority',
     oneLine: 'No decisions in the heat of the moment. Your clarity comes with time.',
+    where: 'Your Solar Plexus, around your stomach (the solar plexus chakra).',
     meaning: ['Your emotions move in waves: high one day, low the next. Neither is the full truth. What stays steady through both is. (About half of all people have this.)'],
     decisions: ['Feel the first rush, then wait.', 'Sleep on it. Then sleep on it again.', 'Clarity feels calm, not hyped. “Let me get back to you” is a full sentence.'],
     prompts: ['What have I said yes to on a high, then regretted?', 'What does calm clarity feel like in my body?', 'Who pressures me to answer straight away?'],
@@ -225,6 +229,7 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     slug: 'sacral',
     name: 'Sacral Authority',
     oneLine: 'Your gut knows, right now, before your mind catches up.',
+    where: 'Your Sacral centre, in your lower belly just below your belly button (the sacral chakra).',
     meaning: ['Your answer is an instant body response: a pull towards (“uh-huh”) or a pull away (“uh-uh”). It speaks before you think.'],
     decisions: ['Respond to what’s in front of you, don’t think your way there.', 'Notice your first gut yes or no.', 'Act on it before your mind piles on the “shoulds”.'],
     prompts: ['When did my body say yes before I could explain why?', 'What am I saying yes to that my gut says no to?', 'Whose voice talks me out of my gut?'],
@@ -238,6 +243,7 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     slug: 'splenic',
     name: 'Splenic Authority',
     oneLine: 'A quiet, instant knowing. It speaks once, so listen the first time.',
+    where: 'Your Spleen centre, on the left side of your body: your body’s instinct for what’s safe and good for you.',
     meaning: ['Your intuition is a quiet hit in the moment: a feeling about a person, a place, a choice. No logic attached, and it won’t repeat itself.'],
     decisions: ['Trust the first quiet hit.', 'Don’t wait for a reason. It might never come.', 'Slow down enough to hear it.'],
     prompts: ['When was my instinct right, and I ignored it?', 'Where do I feel those quiet nudges in my body?', 'What drowns them out?'],
@@ -252,6 +258,7 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     name: 'Ego Authority',
     alsoCalled: 'Heart Authority',
     oneLine: 'If your heart’s not in it, it’s a no.',
+    where: 'Your Heart centre, in your chest around your heart.',
     meaning: ['Your answer comes from your will: what you genuinely want and are willing to commit to. Not arrogance. Heart.'],
     decisions: ['Ask: do I really want this?', 'Only commit when your heart’s in it.', 'Listen to what you say you want, out loud.'],
     prompts: ['What do I want, without justifying it?', 'Where have I said yes when my heart wasn’t in it?', 'Where am I still trying to prove myself?'],
@@ -265,6 +272,7 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     slug: 'self-projected',
     name: 'Self-Projected Authority',
     oneLine: 'You find your truth by hearing yourself say it out loud.',
+    where: 'Your G centre, in the middle of your chest (the heart chakra area): your sense of who you are.',
     meaning: ['Your clarity comes through your voice. As you talk things through, you hear what feels like you and what doesn’t.'],
     decisions: ['Talk it out with someone you trust.', 'You’re not after their advice. You’re listening to yourself.', 'Ask: does this sound like me?'],
     prompts: ['Who can I talk to without them trying to fix me?', 'When did I surprise myself with what I said?', 'Which choices feel like me, and which feel like someone else’s idea of me?'],
@@ -279,6 +287,7 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     name: 'Mental Authority',
     alsoCalled: 'Environmental Authority',
     oneLine: 'Your clarity comes from the right people, the right places, and time.',
+    where: 'Your head: your mind (around the third eye) and your voice.',
     meaning: ['There’s no single place in your body that holds your answer. Your mind is great at gathering perspectives, but it shouldn’t be the boss.'],
     decisions: ['Talk it out with a few trusted people.', 'Notice how different places make you feel.', 'Take your time. Change where you are, then decide.'],
     prompts: ['Who helps me think clearly, and who leaves me confused?', 'Where do I feel most like myself?', 'What have I been going around in circles on?'],
@@ -292,6 +301,7 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     slug: 'lunar',
     name: 'Lunar Authority',
     oneLine: 'Big decisions deserve a full moon cycle.',
+    where: 'Nowhere fixed. All your centres are open, so it’s about your surroundings, like the moon’s cycle.',
     meaning: ['You’re deeply open to the people and places around you, so your clarity takes time to settle. It’s the rarest authority (about 1% of people).'],
     decisions: ['Give big decisions about 28 days.', 'Talk it through along the way.', 'Notice where you feel most clear. Your environment matters.'],
     prompts: ['Which places and people feel good to be around?', 'When was I rushed into a big decision?', 'Am I feeling my own feelings, or someone else’s?'],

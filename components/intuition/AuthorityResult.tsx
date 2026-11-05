@@ -92,7 +92,11 @@ export default function AuthorityResult({
             <h2 className="font-display text-4xl text-bark sm:text-5xl">
               <TapeMark>{copy.result.meaningLabel}</TapeMark>
             </h2>
-            <div className="mt-8 space-y-5">
+            <p className="mt-8 border-l-4 border-sage bg-sage/15 px-5 py-4 font-body text-base leading-relaxed text-bark sm:text-[1.05rem]">
+              <span className="block font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-stone">{copy.result.whereLabel}</span>
+              <span className="mt-1 block font-display text-xl italic leading-snug">{a.where}</span>
+            </p>
+            <div className="mt-6 space-y-5">
               {a.meaning.map((p) => (
                 <p key={p.slice(0, 30)} className={body}>
                   {p}
