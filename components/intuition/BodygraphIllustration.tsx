@@ -37,7 +37,20 @@ const HALF_FIGURE =
 
 // The drawing itself, in a 600 x 660 space, so it can also be placed inside a
 // bigger picture (the labelled version on the quiz page)
-export function IllustrationArt({ open = [] }: { open?: string[] }) {
+// Where each centre sits in the drawing, for the dashed ring around one
+const CENTRE_AT: Record<string, [number, number, number]> = {
+  head: [300, 106, 44],
+  ajna: [300, 168, 44],
+  throat: [300, 256, 44],
+  g: [300, 357, 52],
+  heart: [360, 410, 38],
+  spleen: [176, 470, 48],
+  solarPlexus: [424, 470, 48],
+  sacral: [300, 496, 46],
+  root: [300, 585, 48],
+};
+
+export function IllustrationArt({ open = [], highlight = null }: { open?: string[]; highlight?: string | null }) {
   // Rays around the head, alternating long and short
   const rays = Array.from({ length: 15 }, (_, i) => {
     const a = ((-178.2 + i * 12.6) * Math.PI) / 180; // centred on straight up (-90°)
@@ -114,6 +127,20 @@ export function IllustrationArt({ open = [] }: { open?: string[] }) {
       <polygon points="448,433 448,507 386,470" {...centre('pink', 'solarPlexus')} />
       <rect x={268.5} y={465} width={63} height={62} rx={7} {...centre('green', 'sacral')} />
       <rect x={266} y={553} width={68} height={64} rx={7} {...centre('brown', 'root')} />
+      {highlight && CENTRE_AT[highlight] && (
+        <ellipse
+          cx={CENTRE_AT[highlight][0]}
+          cy={CENTRE_AT[highlight][1]}
+          rx={CENTRE_AT[highlight][2] + 6}
+          ry={CENTRE_AT[highlight][2]}
+          transform={`rotate(-8 ${CENTRE_AT[highlight][0]} ${CENTRE_AT[highlight][1]})`}
+          fill="none"
+          stroke="#3b2d0e"
+          strokeWidth={2.4}
+          strokeDasharray="7 7"
+          strokeLinecap="round"
+        />
+      )}
     </g>
   );
 }

@@ -11,7 +11,10 @@ import {
   intuitionBlueprint as copy,
 } from '@/content/intuitionBlueprint';
 import type { AuthorityKey } from '@/lib/intuition/bodygraph';
-import BodygraphArt, { type CenterId } from './BodygraphArt';
+import type { CenterId } from './BodygraphArt';
+import { IllustrationArt } from './BodygraphIllustration';
+
+const CENTRE_IDS: CenterId[] = ['head', 'ajna', 'throat', 'g', 'heart', 'solarPlexus', 'sacral', 'spleen', 'root'];
 
 const label = 'font-body text-[0.65rem] font-semibold uppercase tracking-[0.35em]';
 const body = 'font-body text-base leading-[1.85] text-umber sm:text-[1.05rem]';
@@ -47,16 +50,19 @@ export default function AuthorityResult({
       {/* The reveal */}
       <header className="overflow-hidden bg-bark px-6 pb-20 pt-16 text-cream sm:px-12 sm:pb-28 sm:pt-24">
         <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-          <div className="relative mx-auto w-full max-w-[19rem] lg:order-none">
-            <div className="-rotate-2 rounded-[1.75rem] bg-cream px-6 pb-5 pt-7 shadow-2xl">
-              <BodygraphArt
-                className="mx-auto w-full max-w-[13rem]"
-                defined={chart ? chart.centerIds : where.center ? [where.center] : []}
-                definedLinks={chart?.links ?? []}
-                highlight={where.center}
-                fill="#fffba0"
-                label={chart ? 'Your Human Design chart, with your defined centres coloured in' : `A Human Design chart, highlighting the ${a.name.toLowerCase()} centre`}
-              />
+          <div className="relative mx-auto w-full max-w-[22rem] lg:order-none">
+            <div className="rounded-[1.75rem] bg-cream px-5 pb-5 pt-6 shadow-2xl">
+              <svg
+                viewBox="0 0 600 660"
+                className="mx-auto h-auto w-full"
+                role="img"
+                aria-label={chart ? 'Your Human Design chart, with your defined centres coloured in and your open centres white' : `A Human Design chart, highlighting the ${a.name.toLowerCase()} centre`}
+              >
+                <IllustrationArt
+                  open={CENTRE_IDS.filter((c) => !(chart ? chart.centerIds : where.center ? [where.center] : []).includes(c))}
+                  highlight={where.center}
+                />
+              </svg>
               <p className="mt-3 text-center font-type text-[0.7rem] leading-snug text-bark">{chart ? chart.caption : a.name.toLowerCase()}</p>
             </div>
             <div className="relative mt-2 flex items-start gap-1 pl-4">
