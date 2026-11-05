@@ -26,6 +26,14 @@ export const intuitionBlueprint = {
         'Your chart shows how your energy works, where you soak up other people’s energy, and how you’re designed to make decisions.',
       ],
     },
+    // Lena's Human Design overview image, in the "What's an authority?" section
+    overview: {
+      src: '/images/intuition/human-design-overview.webp',
+      alt: 'Human Design overview: a meditating silhouette with the nine bodygraph centres glowing over it, and the four main parts of a chart: your Type (your natural energy), your Strategy (how to work with your energy), your Authority (your inner decision-making guidance) and your Profile (the lens through which you experience life).',
+      // The middle part gets the lilac tape
+      focusStart: 'Your Human Design is made up of all four of these: your Type, Strategy, Authority and Profile.',
+      focusTape: 'This quiz focuses on your Authority: how you’re designed to make decisions.',
+    },
     authority: {
       label: 'What’s an “authority”?',
       body: 'It’s Human Design’s word for your inner compass: the part of you that knows what’s right for you. For some people it’s a gut feeling. For others it’s a quiet instinct, emotions settling over time, or hearing themselves talk it through.',

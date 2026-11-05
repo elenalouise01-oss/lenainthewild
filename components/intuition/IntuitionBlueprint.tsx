@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import DrawnLine from '@/components/DrawnLine';
 import SectionLabel from '@/components/SectionLabel';
+import TapeMark from '@/components/TapeMark';
 import { AUTHORITY_CENTER, AUTHORITY_FOR, authorities, intuitionBlueprint as copy } from '@/content/intuitionBlueprint';
 import { sendToInbox } from '@/lib/sendToInbox';
 import { validateBirthInput, type FieldErrors } from '@/lib/intuition/birthInput';
@@ -281,6 +282,19 @@ export default function IntuitionBlueprint() {
                 </figure>
 
                 <h2 className="mt-16 font-display text-3xl italic leading-tight text-bark sm:text-5xl">{copy.explainer.authority.label}</h2>
+                <figure className="mt-8">
+                  <Image
+                    src={copy.explainer.overview.src}
+                    alt={copy.explainer.overview.alt}
+                    width={1536}
+                    height={1024}
+                    sizes="(min-width: 768px) 42rem, 100vw"
+                    className="h-auto w-full shadow-xl"
+                  />
+                  <figcaption className="mt-5 font-body text-base leading-relaxed text-umber sm:text-lg">
+                    {copy.explainer.overview.focusStart} <TapeMark>{copy.explainer.overview.focusTape}</TapeMark>
+                  </figcaption>
+                </figure>
                 <p className="mt-6 font-body text-base leading-relaxed text-umber sm:text-lg">{copy.explainer.authority.body}</p>
 
                 <h2 className="mt-16 font-display text-3xl italic leading-tight text-bark sm:text-5xl">{copy.explainer.why.label}</h2>
