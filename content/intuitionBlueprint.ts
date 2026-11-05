@@ -150,6 +150,16 @@ export const intuitionBlueprint = {
     ],
   },
 
+  // The end of the results email: one main button, two small links
+  emailEnd: {
+    label: 'Your next step',
+    body: 'Ready to start hearing yourself again? The 5 Day Reconnect is five short audio practices to get out of your head and back into your body.',
+    cta: 'Start the 5 Day Reconnect',
+    href: '/5-day-reconnect',
+    resultsLink: 'See your results again',
+    siteLink: 'Visit lenainthewild.com',
+  },
+
   // Lena's book recommendation, at the end of every result
   book: {
     label: 'Want to go deeper?',

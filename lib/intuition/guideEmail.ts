@@ -44,13 +44,15 @@ export function guideEmail(authority: AuthorityKey, firstName?: string, chart?: 
     '',
     `${copy.book.line} ${copy.book.title} by ${copy.book.author}: ${copy.book.href}`,
     '',
-    `Come back to your guide any time: ${url}`,
-    '',
     'Sending positive vibes your way,',
     'Lena',
     '',
-    copy.invitation.body,
-    ...copy.invitation.links.map((l) => `${l.label}: ${absoluteUrl(l.href)}`),
+    copy.emailEnd.label.toUpperCase(),
+    copy.emailEnd.body,
+    `${copy.emailEnd.cta}: ${absoluteUrl(copy.emailEnd.href)}`,
+    '',
+    `${copy.emailEnd.resultsLink}: ${url}`,
+    `${copy.emailEnd.siteLink}: ${absoluteUrl('/')}`,
   ].join('\n');
 
   const p = (s: string, extra = '') => `<p style="margin:0 0 16px;font-size:16px;line-height:1.7;color:#52421b;${extra}">${esc(s)}</p>`;
@@ -79,13 +81,14 @@ ${signal ? `${label(extras.signalsLabel)}${p(`${extras.signatureLabel}: ${signal
 ${chart ? `${label(extras.openLabel)}${open.length ? `${p(extras.openIntro)}<ul style="margin:0 0 16px;padding-left:20px;color:#52421b;font-size:16px;line-height:1.7;">${open.map((c) => `<li style="margin-bottom:10px;"><strong>Open ${esc(OPEN_CENTRES[c].name)}:</strong> ${esc(OPEN_CENTRES[c].question)}</li>`).join('')}</ul>` : p(extras.noOpen)}` : ''}
 ${p(copy.result.reminder, 'font-style:italic;')}
 <p style="margin:0 0 16px;font-size:16px;line-height:1.7;color:#52421b;">${esc(copy.book.line)} <a href="${esc(copy.book.href)}" style="color:#3b2d0e;"><em>${esc(copy.book.title)}</em></a> by ${esc(copy.book.author)}.</p>
-<p style="margin:28px 0;"><a href="${esc(url)}" style="display:inline-block;padding:14px 28px;border-radius:999px;background:#3b2d0e;color:#ffffff;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;">Come back to your guide</a></p>
 ${p('Sending positive vibes your way,')}
 <p style="margin:0 0 32px;font-family:Georgia,serif;font-style:italic;font-size:22px;color:#3b2d0e;">Lena</p>
-<div style="border-top:1px solid #e6e6dd;padding-top:24px;">
-${p(copy.invitation.body, 'font-size:14px;')}
-${copy.invitation.links.map((l) => `<p style="margin:0 0 8px;font-size:14px;"><a href="${esc(absoluteUrl(l.href))}" style="color:#3b2d0e;">${esc(l.label)}</a></p>`).join('')}
+<div style="background:#f1efe7;padding:28px 24px;text-align:center;">
+<p style="margin:0 0 10px;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#7b776f;">${esc(copy.emailEnd.label)}</p>
+<p style="margin:0 0 20px;font-size:16px;line-height:1.7;color:#52421b;">${esc(copy.emailEnd.body)}</p>
+<a href="${esc(absoluteUrl(copy.emailEnd.href))}" style="display:inline-block;padding:14px 28px;border-radius:999px;background:#CBA1D4;color:#3b2d0e;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;">${esc(copy.emailEnd.cta)}</a>
 </div>
+<p style="margin:24px 0 0;text-align:center;font-size:14px;"><a href="${esc(url)}" style="color:#3b2d0e;">${esc(copy.emailEnd.resultsLink)}</a> &nbsp;·&nbsp; <a href="${esc(absoluteUrl('/'))}" style="color:#3b2d0e;">${esc(copy.emailEnd.siteLink)}</a></p>
 </div></body></html>`;
 
   return { subject, text, html };
