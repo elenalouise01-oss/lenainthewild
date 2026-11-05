@@ -10,7 +10,7 @@ export const nav = {
     { label: 'The Freedom Seeker', href: '#freedom-seeker', expandable: true },
     { label: 'Journal Entries', href: '/journal' },
     { label: 'Photography', href: '/photography' },
-    { label: 'Free Quiz', href: '/intuition-blueprint' },
+    { label: 'Intuition Quiz', href: '/intuition-blueprint' },
     { label: "Let's Connect", href: '#contact' },
   ],
   subscribeLabel: 'Subscribe',

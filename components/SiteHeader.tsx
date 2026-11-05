@@ -15,7 +15,7 @@ const LINKS = [
   { label: 'The Freedom Seeker', href: '/#freedom-seeker' },
   { label: 'Journal Entries', href: '/journal' },
   { label: 'Photography', href: '/photography' },
-  { label: 'Free Quiz', href: '/intuition-blueprint' },
+  { label: 'Intuition Quiz', href: '/intuition-blueprint' },
   { label: 'Contact', href: '/#contact' },
 ];
 
