@@ -5,7 +5,7 @@ import type { AuthorityKey } from '@/lib/intuition/bodygraph';
 // purpose: it's a lead magnet, not an essay.
 
 export const intuitionBlueprint = {
-  label: 'Free · Human Design',
+  label: 'Free Intuition Quiz',
   title: 'The Intuition Blueprint',
   subheading: 'Use your Human Design to find out how you’re designed to make decisions, so you can stop overthinking and start trusting yourself.',
   intro: 'Free, takes 1 minute, and all you need is your birth date, time and place.',
