@@ -28,6 +28,7 @@ export default function ImageZoom({
 
   useEffect(() => {
     if (!open) return;
+    const back = opener.current;
     closer.current?.focus();
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
     document.addEventListener('keydown', onKey);
@@ -36,7 +37,7 @@ export default function ImageZoom({
     return () => {
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = overflow;
-      opener.current?.focus();
+      back?.focus();
     };
   }, [open]);
 

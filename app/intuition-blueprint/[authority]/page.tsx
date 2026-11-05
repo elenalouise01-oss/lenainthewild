@@ -4,12 +4,14 @@ import { notFound } from 'next/navigation';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import AuthorityResult, { BlueprintInvitation } from '@/components/intuition/AuthorityResult';
+import ChartExtras from '@/components/intuition/ChartExtras';
 import SiteHeader from '@/components/SiteHeader';
 import { AUTHORITY_FOR, authorities, authorityBySlug, intuitionBlueprint as copy } from '@/content/intuitionBlueprint';
 import type { AuthorityKey } from '@/lib/intuition/bodygraph';
+import { readChart } from '@/lib/intuition/chartLink';
 import { absoluteUrl } from '@/lib/seo';
 
-type Props = { params: Promise<{ authority: string }> };
+type Props = { params: Promise<{ authority: string }>; searchParams: Promise<Record<string, string | string[] | undefined>> };
 
 export function generateStaticParams() {
   return Object.values(authorities).map((a) => ({ authority: a.slug }));
@@ -32,14 +34,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// One authority's guide, to come back to (linked from the guide email).
-// Shows the guide's content only: a personal result needs a calculation.
-export default async function AuthorityGuidePage({ params }: Props) {
+// One authority's guide. Opened from someone's results email, the link also
+// carries their chart (defined centres, Type), so it's redrawn as theirs.
+export default async function AuthorityGuidePage({ params, searchParams }: Props) {
   const a = authorityBySlug((await params).authority);
   if (!a) notFound();
   const path = `/intuition-blueprint/${a.slug}`;
   // The first chart authority that uses this guide (Ego's two forms share one)
   const key = (Object.keys(AUTHORITY_FOR) as AuthorityKey[]).find((k) => authorities[AUTHORITY_FOR[k]] === a)!;
+  const mine = readChart(await searchParams, a.slug);
 
   return (
     <>
@@ -56,7 +59,17 @@ export default async function AuthorityGuidePage({ params }: Props) {
       />
       <SiteHeader />
       <main className="bg-cream">
-        <AuthorityResult authority={key} generic lead="" eyebrow={copy.guidePage.label} />
+        {mine ? (
+          <>
+            <AuthorityResult
+              authority={mine.authority}
+              chart={{ centerIds: mine.centers, links: mine.links, caption: copy.reveal.chartCaption }}
+            />
+            <ChartExtras type={mine.type} definedCenters={mine.centers} />
+          </>
+        ) : (
+          <AuthorityResult authority={key} generic lead="" eyebrow={copy.guidePage.label} />
+        )}
         <p className="mx-auto max-w-3xl px-6 pb-24 pt-14 text-center font-body text-sm text-stone print:hidden">
           {copy.guidePage.notYours}{' '}
           <Link href="/intuition-blueprint" className="text-bark underline underline-offset-4 hover:opacity-60">

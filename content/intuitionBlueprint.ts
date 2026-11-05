@@ -159,6 +159,7 @@ export const intuitionBlueprint = {
     cta: 'Start the 5 Day Reconnect',
     href: '/5-day-reconnect',
     resultsLink: 'See your results again',
+    chartLink: 'See your chart',
     siteLink: 'Visit lenainthewild.com',
   },
 

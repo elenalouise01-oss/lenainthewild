@@ -19,7 +19,7 @@ export type Signup = {
   email: string;
   firstName?: string;
   authority: AuthorityKey;
-  chart?: { type: HdType; definedCenters: Center[] };
+  chart?: { type: HdType; definedCenters: Center[]; links?: [Center, Center][] };
   marketingConsent: boolean;
   consentWording: string;
 };

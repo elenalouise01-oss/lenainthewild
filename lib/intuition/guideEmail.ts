@@ -1,6 +1,7 @@
 import { AUTHORITY_FOR, EGO_VARIANTS, OPEN_CENTRES, TYPE_SIGNALS, authorities, extras, intuitionBlueprint as copy } from '@/content/intuitionBlueprint';
 import { absoluteUrl } from '@/lib/seo';
 import { openCentresToShow } from '@/components/intuition/centres';
+import { chartPath } from './chartLink';
 import { type AuthorityKey, type Center, type HdType } from './bodygraph';
 
 // The personalised guide email, built from the same content file as the
@@ -9,7 +10,9 @@ import { type AuthorityKey, type Center, type HdType } from './bodygraph';
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 // `chart` adds the personal extras: the Type's on-track feeling and the open centres
-export function guideEmail(authority: AuthorityKey, firstName?: string, chart?: { type: HdType; definedCenters: Center[] }) {
+export function guideEmail(authority: AuthorityKey, firstName?: string, chart?: { type: HdType; definedCenters: Center[]; links?: [Center, Center][] }) {
+  // Their own results page, with their chart drawn (no birth details in the link)
+  const chartUrl = chart ? absoluteUrl(chartPath({ authority, type: chart.type, centers: chart.definedCenters, links: chart.links ?? [] })) : null;
   const signal = chart ? TYPE_SIGNALS[chart.type] : null;
   const open = chart ? openCentresToShow(chart.definedCenters) : [];
   const a = authorities[AUTHORITY_FOR[authority]];
@@ -39,7 +42,7 @@ export function guideEmail(authority: AuthorityKey, firstName?: string, chart?: 
     ...a.exercise.steps.map((s, i) => `${i + 1}. ${s}`),
     '',
     ...(signal ? [extras.signalsLabel.toUpperCase(), `${extras.signatureLabel}: ${signal.signature}. ${extras.notSelfLabel}: ${signal.notSelf}.`, signal.body, ''] : []),
-    ...(chart ? [extras.openLabel.toUpperCase(), ...(open.length ? [extras.openIntro, ...open.map((c) => `- Open ${OPEN_CENTRES[c].name}: ${OPEN_CENTRES[c].question}`)] : [extras.noOpen]), ''] : []),
+    ...(chart ? [extras.openLabel.toUpperCase(), ...(open.length ? [extras.openIntro, ...open.map((c) => `- Open ${OPEN_CENTRES[c].name}: ${OPEN_CENTRES[c].question}`)] : [extras.noOpen]), ...(chartUrl ? [`${copy.emailEnd.chartLink}: ${chartUrl}`] : []), ''] : []),
     copy.result.reminder,
     '',
     'Sending positive vibes your way,',
@@ -112,7 +115,7 @@ ${
   chart
     ? `${heading(extras.openLabel)}${
         open.length
-          ? `${p(extras.openIntro)}${open
+          ? `${p(extras.openIntro)}${chartUrl ? `<p style="margin:-6px 0 16px;font-size:15px;"><a href="${esc(chartUrl)}" style="color:#3b2d0e;font-weight:600;">${esc(copy.emailEnd.chartLink)} &rarr;</a></p>` : ''}${open
               .map(
                 (c) =>
                   `<div style="border-top:1px dashed #cbb8a0;padding:12px 0;"><p style="margin:0 0 2px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#7b776f;">Open ${esc(OPEN_CENTRES[c].name)}</p><p style="margin:0;font-family:Georgia,serif;font-style:italic;font-size:18px;line-height:1.4;color:#3b2d0e;">${esc(OPEN_CENTRES[c].question)}</p></div>`,
