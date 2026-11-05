@@ -1,15 +1,16 @@
-// An illustrated Human Design bodygraph in Lena in the Wild's colours: a soft
-// sun behind a fine-line figure, the nine centres, curved channels, little
-// sparkles, crescent moons and leaves. Decorative (used on the home page).
+// An illustrated Human Design bodygraph in Lena in the Wild's colours, drawn
+// to the proportions of Lena's reference: a soft sun behind a fine-line
+// head-and-shoulders figure, the nine centres, curved channels, sparkles,
+// crescent moons, a dotted halo and outline-only leaves. Decorative.
 
+const BROWN = '#52421b';
 const INK = '#3b2d0e';
-const COLOURS = {
+const C = {
   lilac: '#CBA1D4',
   yellow: '#FDECA8',
   pink: '#f8c8dc',
   green: '#bee5b0',
   blush: '#e8cfc1',
-  brown: '#52421b',
 };
 
 function Sparkle({ x, y, s }: { x: number; y: number; s: number }) {
@@ -17,110 +18,102 @@ function Sparkle({ x, y, s }: { x: number; y: number; s: number }) {
   return (
     <path
       d={`M${x} ${y - s} Q${x + k} ${y - k} ${x + s} ${y} Q${x + k} ${y + k} ${x} ${y + s} Q${x - k} ${y + k} ${x - s} ${y} Q${x - k} ${y - k} ${x} ${y - s} Z`}
-      fill={COLOURS.brown}
-      fillOpacity={0.75}
+      fill={BROWN}
+      fillOpacity={0.7}
     />
   );
 }
 
 function Moon({ x, y, r, flip = false }: { x: number; y: number; r: number; flip?: boolean }) {
-  // A crescent: the outer arc of one circle and the inner arc of a smaller one
   const d = `M${x} ${y - r} A${r} ${r} 0 1 0 ${x} ${y + r} A${r * 0.5} ${r} 0 1 1 ${x} ${y - r} Z`;
-  return <path d={d} fill={COLOURS.brown} fillOpacity={0.7} transform={flip ? `translate(${2 * x} 0) scale(-1 1)` : undefined} />;
+  return <path d={d} fill={BROWN} fillOpacity={0.6} transform={flip ? `translate(${2 * x} 0) scale(-1 1)` : undefined} />;
 }
 
-// One leaf, pointing right from the origin
-const LEAF = 'M0 0 C 20 -19 64 -19 88 0 C 64 19 20 19 0 0 Z';
+// One outline-only leaf, pointing right from the origin
+const LEAF = 'M0 0 C 16 -14 50 -14 70 0 C 50 14 16 14 0 0 Z M6 0 L 64 0';
 
 function Sprig() {
-  const leaves: [number, number, number, string][] = [
-    [44, 742, -115, COLOURS.green],
-    [52, 724, -40, COLOURS.lilac],
-    [70, 690, -125, COLOURS.green],
-    [80, 668, -55, COLOURS.green],
-    [100, 636, -130, COLOURS.lilac],
-    [112, 612, -70, COLOURS.green],
+  const leaves: [number, number, number][] = [
+    [62, 610, -150],
+    [70, 596, -60],
+    [84, 566, -160],
+    [92, 548, -75],
+    [106, 516, -170],
+    [112, 498, -90],
   ];
   return (
-    <g>
-      <path d="M36 770 C 60 720, 90 660, 120 580" fill="none" stroke={COLOURS.brown} strokeOpacity={0.5} strokeWidth={1.6} strokeLinecap="round" />
-      {leaves.map(([x, y, rot, fill], i) => (
-        <path key={i} d={LEAF} transform={`translate(${x} ${y}) rotate(${rot})`} fill={fill} stroke={COLOURS.brown} strokeOpacity={0.35} strokeWidth={1} />
+    <g fill="none" stroke={BROWN} strokeOpacity={0.55} strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M140 640 C 110 600, 96 560, 112 486" />
+      {leaves.map(([x, y, rot], i) => (
+        <path key={i} d={LEAF} transform={`translate(${x + 40} ${y}) rotate(${rot})`} />
       ))}
     </g>
   );
 }
 
 export default function BodygraphIllustration({ className = '' }: { className?: string }) {
-  const rays = Array.from({ length: 13 }, (_, i) => {
-    const a = ((-168 + i * 13) * Math.PI) / 180;
-    const cx = 300;
-    const cy = 168;
-    return { x1: cx + Math.cos(a) * 104, y1: cy + Math.sin(a) * 104, x2: cx + Math.cos(a) * (i % 2 ? 140 : 156), y2: cy + Math.sin(a) * (i % 2 ? 140 : 156) };
+  // Rays around the head
+  const rays = Array.from({ length: 15 }, (_, i) => {
+    const a = ((-176 + i * 12.6) * Math.PI) / 180;
+    const len = i % 2 ? 98 : 112;
+    return { x1: 300 + Math.cos(a) * 70, y1: 143 + Math.sin(a) * 70, x2: 300 + Math.cos(a) * len, y2: 143 + Math.sin(a) * len };
   });
-  const shape = { stroke: INK, strokeWidth: 2, strokeLinejoin: 'round' as const };
+  // Dotted halo: the top of a big circle, over the head and down both sides
+  const halo = 'M58 400 A 263 263 0 1 1 542 400';
+  const shape = { stroke: INK, strokeWidth: 1.8, strokeLinejoin: 'round' as const };
+  const line = { fill: 'none', stroke: BROWN, strokeLinecap: 'round' as const };
 
   return (
-    <svg viewBox="0 0 600 770" className={className} role="img" aria-label="An illustrated Human Design chart">
-      <defs>
-        <radialGradient id="litw-sun" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor={COLOURS.yellow} stopOpacity={0.95} />
-          <stop offset="70%" stopColor={COLOURS.blush} stopOpacity={0.55} />
-          <stop offset="100%" stopColor={COLOURS.blush} stopOpacity={0} />
-        </radialGradient>
-      </defs>
-
+    <svg viewBox="0 0 600 660" className={className} role="img" aria-label="An illustrated Human Design chart">
       {/* Sun, rays, dotted halo */}
-      <circle cx={300} cy={300} r={232} fill={COLOURS.blush} fillOpacity={0.55} />
-      <circle cx={300} cy={190} r={120} fill="url(#litw-sun)" />
+      <circle cx={300} cy={180} r={180} fill={C.blush} fillOpacity={0.6} />
       {rays.map((r, i) => (
-        <line key={i} {...r} stroke={COLOURS.brown} strokeOpacity={0.55} strokeWidth={1.6} strokeLinecap="round" />
+        <line key={i} {...r} stroke={BROWN} strokeOpacity={0.55} strokeWidth={1.3} strokeLinecap="round" />
       ))}
-      <circle cx={300} cy={340} r={268} fill="none" stroke={COLOURS.brown} strokeOpacity={0.5} strokeWidth={3.2} strokeDasharray="0.1 13" strokeLinecap="round" />
+      <path d={halo} {...line} strokeOpacity={0.55} strokeWidth={2.6} strokeDasharray="0.1 11" />
 
       {/* Sparkles and moons */}
-      <Sparkle x={300} y={34} s={26} />
-      <Sparkle x={58} y={430} s={14} />
-      <Sparkle x={542} y={430} s={14} />
-      <Sparkle x={300} y={752} s={14} />
-      <Moon x={92} y={238} r={26} />
-      <Moon x={508} y={238} r={26} flip />
+      <Sparkle x={300} y={22} s={20} />
+      <Sparkle x={88} y={312} s={11} />
+      <Sparkle x={512} y={312} s={11} />
+      <Sparkle x={300} y={640} s={12} />
+      <Moon x={100} y={182} r={20} />
+      <Moon x={500} y={182} r={20} flip />
 
-      {/* Leaves */}
+      {/* Outline-only leaves in the bottom corners */}
       <Sprig />
       <g transform="translate(600 0) scale(-1 1)">
         <Sprig />
       </g>
 
-      {/* The figure */}
+      {/* The figure: head, neck and shoulders */}
       <path
-        d="M96 770 C 100 560, 140 462, 204 432 C 244 412, 274 400, 278 360 L 280 274 C 250 262, 226 224, 226 172 C 226 116, 262 78, 300 78 C 338 78, 374 116, 374 172 C 374 224, 350 262, 320 274 L 322 360 C 326 400, 356 412, 396 432 C 460 462, 500 560, 504 770"
-        fill="none"
-        stroke={COLOURS.brown}
-        strokeOpacity={0.5}
-        strokeWidth={1.6}
+        d="M153 440 C 154 410 155 380 157 340 C 160 300 175 266 200 254 C 225 244 255 236 267 226 L 267 210 C 263 204 255 198 250 190 C 243 180 239 165 241 140 C 244 108 270 88 300 88 C 330 88 356 108 359 140 C 361 165 357 180 350 190 C 345 198 337 204 333 210 L 333 226 C 345 236 375 244 400 254 C 425 266 440 300 443 340 C 445 380 446 410 447 440"
+        {...line}
+        strokeOpacity={0.6}
+        strokeWidth={1.5}
       />
 
-      {/* Channels: the central column and the curved loops */}
-      {[292, 300, 308].map((x) => (
-        <line key={x} x1={x} y1={165} x2={x} y2={640} stroke={COLOURS.brown} strokeOpacity={0.55} strokeWidth={x === 300 ? 2.6 : 1.2} />
+      {/* Channels: the central column, the curved loops and the crossing curve */}
+      {[294, 300, 306].map((x) => (
+        <line key={x} x1={x} y1={127} x2={x} y2={560} stroke={BROWN} strokeOpacity={0.6} strokeWidth={x === 300 ? 2.4 : 1.1} />
       ))}
-      <ellipse cx={300} cy={520} rx={150} ry={178} fill="none" stroke={COLOURS.brown} strokeOpacity={0.85} strokeWidth={3} />
-      <ellipse cx={300} cy={524} rx={162} ry={190} fill="none" stroke={COLOURS.brown} strokeOpacity={0.4} strokeWidth={1.2} />
-      <ellipse cx={300} cy={516} rx={138} ry={166} fill="none" stroke={COLOURS.brown} strokeOpacity={0.4} strokeWidth={1.2} />
-      <path d="M222 575 C 290 505, 352 482, 430 492" fill="none" stroke={COLOURS.brown} strokeOpacity={0.5} strokeWidth={1.2} />
-      <path d="M222 583 C 292 515, 354 494, 430 502" fill="none" stroke={COLOURS.brown} strokeOpacity={0.5} strokeWidth={1.2} />
+      <ellipse cx={303} cy={427} rx={133} ry={170} {...line} strokeOpacity={0.85} strokeWidth={2.8} />
+      <ellipse cx={303} cy={432} rx={143} ry={180} {...line} strokeOpacity={0.4} strokeWidth={1.1} />
+      <ellipse cx={303} cy={422} rx={123} ry={160} {...line} strokeOpacity={0.4} strokeWidth={1.1} />
+      <path d="M213 470 C 262 428, 302 410, 341 410" {...line} strokeOpacity={0.5} strokeWidth={1.1} />
+      <path d="M213 478 C 264 438, 304 420, 341 420" {...line} strokeOpacity={0.5} strokeWidth={1.1} />
 
       {/* The nine centres */}
-      <polygon points="300,94 346,166 254,166" fill={COLOURS.pink} {...shape} />
-      <polygon points="254,186 346,186 300,254" fill={COLOURS.lilac} {...shape} />
-      <rect x={264} y={288} width={72} height={72} rx={9} fill={COLOURS.yellow} {...shape} />
-      <polygon points="300,392 348,440 300,488 252,440" fill={COLOURS.pink} {...shape} />
-      <polygon points="378,468 432,492 380,516" fill={COLOURS.brown} {...shape} />
-      <polygon points="150,535 150,615 224,575" fill={COLOURS.lilac} {...shape} />
-      <polygon points="450,535 450,615 376,575" fill={COLOURS.pink} {...shape} />
-      <rect x={264} y={540} width={72} height={72} rx={9} fill={COLOURS.green} {...shape} />
-      <rect x={262} y={640} width={76} height={74} rx={9} fill={COLOURS.brown} {...shape} />
+      <polygon points="300,70 337,127 263,127" fill={C.pink} {...shape} />
+      <polygon points="263,148 337,148 300,205" fill={C.lilac} {...shape} />
+      <rect x={273} y={230} width={54} height={53} rx={7} fill={C.yellow} {...shape} />
+      <polygon points="300,314 343,357 300,400 257,357" fill={C.pink} {...shape} />
+      <polygon points="341,383 393,410 341,437" fill={BROWN} {...shape} />
+      <polygon points="152,433 152,507 213,470" fill={C.lilac} {...shape} />
+      <polygon points="445,433 445,507 385,470" fill={C.pink} {...shape} />
+      <rect x={268} y={465} width={63} height={62} rx={7} fill={C.green} {...shape} />
+      <rect x={265} y={553} width={68} height={64} rx={7} fill={BROWN} {...shape} />
     </svg>
   );
 }
