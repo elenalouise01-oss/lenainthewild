@@ -94,10 +94,10 @@ export default function LeadMagnet() {
 
   return (
     <section id="free-video" className="bg-sage px-6 py-28 sm:py-36">
-      {/* Photo on the right on a laptop, opposite My Story's photo, so the
-          page zig-zags; on a phone it stays above the text. */}
-      <div className="container-editorial grid items-center gap-14 lg:grid-cols-[3fr_2fr] lg:gap-20">
-        <ScrollReveal className="mx-auto w-full max-w-[16rem] sm:max-w-xs lg:order-last">
+      {/* Photo on the left on a laptop, text on the right; on a phone the
+          photo stays above the text. */}
+      <div className="container-editorial grid items-center gap-14 lg:grid-cols-[2fr_3fr] lg:gap-20">
+        <ScrollReveal className="mx-auto w-full max-w-[16rem] sm:max-w-xs">
           <div className="relative aspect-[346/615] -rotate-3 bg-cream p-3 shadow-2xl lg:rotate-3">
             <div className="relative h-full w-full overflow-hidden">
               <Image src={leadMagnet.photo} alt={leadMagnet.photoAlt} fill sizes="20rem" className="object-cover" />
@@ -113,13 +113,13 @@ export default function LeadMagnet() {
             <p className="mt-6 max-w-xl font-body text-base leading-relaxed text-bark/85 sm:text-lg">{leadMagnet.body}</p>
             <p className="mt-6 font-display text-2xl italic text-bark sm:text-3xl">{leadMagnet.closing}</p>
             <div ref={ctaRef} className="relative mt-10 inline-block">
-              {/* A doodle line looping in from the photo side to the button
+              {/* A doodle line looping in from the photo (on the left) to the button
                   (laptop only, where the photo sits to the right) */}
               <DrawnLine
                 progress={homeDraw}
                 viewBox="0 0 300 100"
                 colour="#3b2d0e"
-                className="absolute left-full top-1/2 ml-4 hidden h-[100px] w-[300px] -translate-y-[78%] lg:block"
+                className="absolute right-full top-1/2 mr-3 hidden h-[60px] w-[150px] -translate-y-[78%] -scale-x-100 lg:block"
                 d="M292 14 C 240 8, 196 22, 190 48 C 186 70, 216 76, 222 58 C 228 38, 186 34, 150 58 C 116 80, 60 86, 12 80"
                 arrow="M24 72 L11 80 L23 88"
               />
