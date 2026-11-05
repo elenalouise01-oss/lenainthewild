@@ -9,7 +9,7 @@ export const intuitionBlueprint = {
   title: 'The Intuition Blueprint',
   subheading: 'Find out how you’re designed to make decisions, so you can stop overthinking and start trusting yourself.',
   intro: 'Free, takes 2 minutes, and all you need is your birth date, time and place.',
-  cta: 'Discover Your Authority',
+  cta: 'Discover Your Intuition Blueprint',
   // Handwritten caption on the polaroid, and the spinning badge beside it
   polaroidCaption: 'trust the first yes',
   badge: 'free · human design · free · human design · ',
