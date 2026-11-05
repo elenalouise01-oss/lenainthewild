@@ -1,4 +1,4 @@
-import { bodygraph, CENTER_NAMES, type AuthorityKey, type HdType } from './bodygraph';
+import { bodygraph, CENTER_NAMES, GATE_CENTER, type AuthorityKey, type Center, type HdType } from './bodygraph';
 import { parseDate, parseTime, validateBirthInput, type BirthInput, type FieldErrors } from './birthInput';
 import { designMoment, longitudes } from './ephemeris';
 import { placeById } from './places';
@@ -12,6 +12,9 @@ export type ChartSummary = {
   type: HdType;
   profile: string;
   definedCenters: string[];
+  // For drawing the chart: defined centres, and centre pairs joined by a defined channel
+  centerIds: Center[];
+  links: [Center, Center][];
   // What was calculated, shown to the visitor so they can check it
   birth: {
     place: string;
@@ -68,6 +71,8 @@ export function calculateChart(input: Partial<Record<keyof BirthInput, unknown>>
       type: chart.type,
       profile: chart.profile,
       definedCenters: chart.definedCenters.map((c) => CENTER_NAMES[c]),
+      centerIds: chart.definedCenters,
+      links: chart.definedChannels.map(([a, b]) => [GATE_CENTER[a], GATE_CENTER[b]] as [Center, Center]),
       birth: {
         place: place.label,
         localTime: `${date.day} ${MONTHS[date.month - 1]} ${date.year}, ${input.time}`,

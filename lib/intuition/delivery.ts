@@ -1,4 +1,4 @@
-import type { AuthorityKey } from './bodygraph';
+import type { AuthorityKey, Center, HdType } from './bodygraph';
 import { guideEmail } from './guideEmail';
 
 // Sends the guide and records the sign-up through a Google Apps Script web
@@ -16,6 +16,7 @@ export type Signup = {
   email: string;
   firstName?: string;
   authority: AuthorityKey;
+  chart?: { type: HdType; definedCenters: Center[] };
   marketingConsent: boolean;
   consentWording: string;
 };
@@ -31,7 +32,7 @@ export async function deliverGuide(signup: Signup): Promise<DeliveryResult> {
   const secret = process.env.INTUITION_GUIDE_SCRIPT_SECRET;
   if (!url || !secret) return { ok: false, reason: 'not-configured' };
 
-  const email = guideEmail(signup.authority, signup.firstName);
+  const email = guideEmail(signup.authority, signup.firstName, signup.chart);
   try {
     const res = await fetch(url, {
       method: 'POST',

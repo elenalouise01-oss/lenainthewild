@@ -34,6 +34,7 @@ export async function POST(req: Request) {
     email,
     firstName: firstName || undefined,
     authority: outcome.chart.authority,
+    chart: { type: outcome.chart.type, definedCenters: outcome.chart.centerIds },
     marketingConsent: body.marketingConsent === true,
     consentWording: copy.email.consent,
   });

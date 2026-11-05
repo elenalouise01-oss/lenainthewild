@@ -14,7 +14,14 @@ export default function PlaceSearch({
   help,
   empty,
   error,
+  inline = false,
+  inputClassName,
+  describedBy,
 }: {
+  // Inline: sits inside a sentence; the parent shows the help and error text
+  inline?: boolean;
+  inputClassName?: string;
+  describedBy?: string;
   value: PickedPlace | null;
   onChange: (place: PickedPlace | null) => void;
   label: string;
@@ -101,8 +108,8 @@ export default function PlaceSearch({
   const showList = open && query.trim().length >= 2 && (results.length > 0 || searched);
 
   return (
-    <div ref={wrapper} className="relative">
-      <label htmlFor={`${id}-input`} className="block font-body text-[0.7rem] font-semibold uppercase tracking-widest2 text-bark">
+    <div ref={wrapper} className={inline ? 'relative inline-block w-full align-baseline sm:w-auto' : 'relative'}>
+      <label htmlFor={`${id}-input`} className={inline ? 'sr-only' : 'block font-body text-[0.7rem] font-semibold uppercase tracking-widest2 text-bark'}>
         {label}
       </label>
       <input
@@ -113,7 +120,7 @@ export default function PlaceSearch({
         aria-controls={listId}
         aria-autocomplete="list"
         aria-activedescendant={active >= 0 ? `${id}-opt-${active}` : undefined}
-        aria-describedby={`${helpId}${error ? ` ${errorId}` : ''}`}
+        aria-describedby={inline ? describedBy : `${helpId}${error ? ` ${errorId}` : ''}`}
         aria-invalid={Boolean(error)}
         autoComplete="off"
         spellCheck={false}
@@ -125,13 +132,21 @@ export default function PlaceSearch({
         }}
         onFocus={() => results.length && setOpen(true)}
         onKeyDown={onKeyDown}
-        className={`mt-3 w-full rounded-none border-b bg-transparent px-0 py-3 font-body text-lg text-bark placeholder:text-stone/70 focus:outline-none ${
-          error ? 'border-rose' : 'border-bark/30 focus:border-bark'
-        }`}
+        className={
+          inputClassName ??
+          `mt-3 w-full rounded-none border-b bg-transparent px-0 py-3 font-body text-lg text-bark placeholder:text-stone/70 focus:outline-none ${
+            error ? 'border-rose' : 'border-bark/30 focus:border-bark'
+          }`
+        }
       />
       {loading && <span className="absolute right-0 top-10 font-body text-xs text-stone" aria-hidden="true">…</span>}
       {showList && (
-        <ul id={listId} role="listbox" aria-label={label} className="absolute z-20 mt-2 max-h-72 w-full overflow-auto border border-bark/15 bg-white shadow-lg">
+        <ul
+          id={listId}
+          role="listbox"
+          aria-label={label}
+          className="absolute left-0 z-20 mt-2 max-h-72 w-full min-w-[18rem] overflow-auto border border-bark/15 bg-white text-left not-italic shadow-lg"
+        >
           {results.length === 0 ? (
             <li className="px-4 py-3 font-body text-sm text-stone">{empty}</li>
           ) : (
@@ -151,10 +166,12 @@ export default function PlaceSearch({
           )}
         </ul>
       )}
-      <p id={helpId} className="mt-2 font-body text-xs leading-relaxed text-stone">
-        {help}
-      </p>
-      {error && (
+      {!inline && (
+        <p id={helpId} className="mt-2 font-body text-xs leading-relaxed text-stone">
+          {help}
+        </p>
+      )}
+      {!inline && error && (
         <p id={errorId} className="mt-2 font-body text-sm text-[#a2363a]">
           {error}
         </p>

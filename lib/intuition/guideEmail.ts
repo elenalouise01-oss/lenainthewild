@@ -1,13 +1,16 @@
-import { AUTHORITY_FOR, EGO_VARIANTS, authorities, intuitionBlueprint as copy } from '@/content/intuitionBlueprint';
+import { AUTHORITY_FOR, EGO_VARIANTS, OPEN_CENTRES, TYPE_SIGNALS, authorities, extras, intuitionBlueprint as copy } from '@/content/intuitionBlueprint';
 import { absoluteUrl } from '@/lib/seo';
-import type { AuthorityKey } from './bodygraph';
+import { CENTERS, type AuthorityKey, type Center, type HdType } from './bodygraph';
 
 // The personalised guide email, built from the same content file as the
 // result page so the two always match the authority that was calculated.
 
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-export function guideEmail(authority: AuthorityKey, firstName?: string) {
+// `chart` adds the personal extras: the Type's on-track feeling and the open centres
+export function guideEmail(authority: AuthorityKey, firstName?: string, chart?: { type: HdType; definedCenters: Center[] }) {
+  const signal = chart ? TYPE_SIGNALS[chart.type] : null;
+  const open = chart ? CENTERS.filter((c) => !chart.definedCenters.includes(c)) : [];
   const a = authorities[AUTHORITY_FOR[authority]];
   const variant = authority === 'ego-manifested' || authority === 'ego-projected' ? EGO_VARIANTS[authority] : null;
   const url = absoluteUrl(`/intuition-blueprint/${a.slug}`);
@@ -34,6 +37,8 @@ export function guideEmail(authority: AuthorityKey, firstName?: string) {
     `${copy.result.exerciseLabel.toUpperCase()}: ${a.exercise.title}`,
     ...a.exercise.steps.map((s, i) => `${i + 1}. ${s}`),
     '',
+    ...(signal ? [extras.signalsLabel.toUpperCase(), `${extras.signatureLabel}: ${signal.signature}. ${extras.notSelfLabel}: ${signal.notSelf}.`, signal.body, ''] : []),
+    ...(chart ? [extras.openLabel.toUpperCase(), ...(open.length ? [extras.openIntro, ...open.map((c) => `- Open ${OPEN_CENTRES[c].name}: ${OPEN_CENTRES[c].question}`)] : [extras.noOpen]), ''] : []),
     copy.result.reminder,
     '',
     `Come back to your guide any time: ${url}`,
@@ -67,6 +72,8 @@ ${p(copy.result.promptsIntro)}
 <ol style="margin:0 0 16px;padding-left:20px;color:#52421b;font-size:16px;line-height:1.7;">${a.prompts.map((q) => `<li style="margin-bottom:10px;">${esc(q)}</li>`).join('')}</ol>
 ${label(`${copy.result.exerciseLabel}: ${a.exercise.title}`)}
 <ol style="margin:0 0 16px;padding-left:20px;color:#52421b;font-size:16px;line-height:1.7;">${a.exercise.steps.map((s) => `<li style="margin-bottom:10px;">${esc(s)}</li>`).join('')}</ol>
+${signal ? `${label(extras.signalsLabel)}${p(`${extras.signatureLabel}: ${signal.signature}. ${extras.notSelfLabel}: ${signal.notSelf}.`, 'font-weight:600;')}${p(signal.body)}` : ''}
+${chart ? `${label(extras.openLabel)}${open.length ? `${p(extras.openIntro)}<ul style="margin:0 0 16px;padding-left:20px;color:#52421b;font-size:16px;line-height:1.7;">${open.map((c) => `<li style="margin-bottom:10px;"><strong>Open ${esc(OPEN_CENTRES[c].name)}:</strong> ${esc(OPEN_CENTRES[c].question)}</li>`).join('')}</ul>` : p(extras.noOpen)}` : ''}
 ${p(copy.result.reminder, 'font-style:italic;')}
 <p style="margin:28px 0;"><a href="${esc(url)}" style="display:inline-block;padding:14px 28px;border-radius:999px;background:#3b2d0e;color:#ffffff;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;">Come back to your guide</a></p>
 ${p('With love,')}

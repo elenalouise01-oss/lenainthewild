@@ -1,99 +1,121 @@
 import type { AuthorityKey } from '@/lib/intuition/bodygraph';
 
 // Every word of The Intuition Blueprint (/intuition-blueprint) lives here,
-// so the copy can be edited without touching the code.
+// so the copy can be edited without touching the code. Kept short on
+// purpose: it's a lead magnet, not an essay.
 
 export const intuitionBlueprint = {
-  label: 'A free Lena in the Wild experience',
+  label: 'Free · Human Design',
   title: 'The Intuition Blueprint',
   subheading: 'Discover your Human Design authority and explore how you’re designed to make decisions.',
-  intro:
-    'Ever wondered why some decisions feel like an immediate yes or no, while others leave you going around in circles? Your Human Design chart offers a framework for exploring how you make decisions and reconnecting with your inner guidance.',
+  intro: 'Stuck in your head? Second-guessing every choice? Find out how you’re actually designed to decide.',
   cta: 'Discover Your Authority',
-  // The little tilted label on the photo
-  sticker: 'How do you decide?',
-  how: {
-    label: 'How it works',
-    steps: [
-      { title: 'Your birth details', body: 'Your date, time and place of birth. That’s all I need.' },
-      { title: 'Your chart, calculated', body: 'The positions of the Sun, Moon and planets at your birth, and about three months before it, mapped onto your Human Design chart.' },
-      { title: 'Your authority', body: 'The part of your chart that describes how you’re designed to make decisions, with prompts and a practice to explore it.' },
-    ],
+  // Handwritten caption on the polaroid, and the spinning badge beside it
+  polaroidCaption: 'trust the first yes',
+  badge: 'free · human design · free · human design · ',
+  // The lilac tape that scrolls across under the opening
+  tape: 'Sleep on it · Trust the first hit · Your gut already knows · Hear yourself say it',
+  // Handwritten note beside the button
+  scribble: 'takes 2 minutes!',
+  // The short explainer for anyone new to Human Design
+  explainer: {
+    what: {
+      label: 'What is Human Design?',
+      body: 'A map of how you’re wired, based on when and where you were born.',
+    },
+    focus: {
+      label: 'Why your authority?',
+      body: 'It shows how you’re designed to make decisions, so you can stop overthinking and start trusting yourself again.',
+    },
   },
-  note: 'Human Design isn’t science, and it doesn’t decide anything for you. Think of it as a lens: a different way of looking at how you make decisions, so you can get to know your own inner guidance again.',
+  // The middle part gets the lilac tape
+  note: {
+    start: 'Not science, and not a rulebook.',
+    tape: 'Just a lens',
+    end: 'to help you hear yourself again.',
+  },
 
   form: {
     label: 'Step 1 of 2',
     heading: 'When and where were you born?',
+    // The form reads as one sentence: "I was born on … at … in …"
+    sentence: { start: 'I was born on', at: 'at', in: 'in' },
+    timeNote: 'the exact time matters! check your birth certificate',
     dateLabel: 'Date of birth',
     timeLabel: 'Exact birth time',
-    timeHelp:
-      'The time matters. Some parts of your chart change within minutes, and your authority can change within a few hours. Your birth certificate is the best place to find it. If you only know roughly, use your best guess and treat the result as a starting point.',
+    timeHelp: 'Don’t know the exact time? Use your best guess.',
     placeLabel: 'Birth town or city',
     placePlaceholder: 'Start typing, e.g. Sydney',
-    placeHelp: 'Pick your town from the list. If it isn’t there, choose the nearest bigger town in the same time zone.',
-    placeEmpty: 'No places found. Try a nearby bigger town, or add the country after a comma.',
-    privacy: 'Your birth details are only used to calculate your chart. They aren’t saved.',
+    placeHelp: 'Can’t find your town? Pick the nearest bigger one.',
+    placeEmpty: 'Nothing found. Try a nearby bigger town.',
+    privacy: 'Your birth details aren’t saved.',
     submit: 'Calculate my authority',
     back: 'Back',
-    calculating: 'Calculating your chart…',
-    skippedTime:
-      'The clocks jumped forward that night where you were born, so that exact time never showed on a clock there. Please double-check your birth time (your birth certificate is the best source).',
-    ambiguousTime: 'The clocks went back an hour that night where you were born, so that time happened twice. Which one were you born in?',
-    error: 'Something went wrong calculating your chart. Please try again in a moment.',
+    calculating: 'Calculating…',
+    skippedTime: 'The clocks jumped forward that night, so that time didn’t exist there. Please double-check your birth time.',
+    ambiguousTime: 'The clocks went back that night, so that time happened twice. Which one were you?',
+    error: 'Something went wrong. Please try again.',
     attribution: 'Place names from GeoNames (CC BY 4.0).',
   },
 
   reveal: {
     label: 'Your authority',
     prefix: 'You have',
+    scribble: 'ooh, you have…',
+    chartCaption: 'your chart',
   },
 
   email: {
     label: 'Step 2 of 2',
-    heading: 'Where should I send your Intuition Blueprint?',
-    body: 'Your full guide, straight to your inbox: what your authority means, how it shows up in decisions, journal prompts and a simple practice to start trusting yourself again. Keep it, come back to it, try it on your next big decision.',
+    heading: 'Want your full guide?',
+    scribble: 'free!',
+    body: 'I’ll email you your guide, with prompts and a simple practice to start trusting yourself.',
     nameLabel: 'First name (optional)',
     emailLabel: 'Email',
-    consent: 'Yes, also send me emails from Lena in the Wild: new journal entries, practices and offers. I can unsubscribe at any time.',
-    privacy:
-      'I’ll only use your email to send your guide and, if you tick the box, Lena in the Wild emails. Your email, first name, authority and your choice about emails are saved securely so I can do that. Your birth details are never saved. Ask me to delete your details any time at nalurisocials@gmail.com.',
+    consent: 'Also send me Lena’s emails. Unsubscribe any time.',
+    privacy: 'I only save your email, name and result. Never your birth details. Want them deleted? Email nalurisocials@gmail.com.',
     submit: 'Send me my guide',
     sending: 'Sending…',
-    skip: 'Not now, just show me my result',
-    invalidEmail: 'Please enter a valid email address.',
-    failed: 'Sorry, your guide didn’t send. Please try again, or read your result below.',
-    sent: 'Done! Your Intuition Blueprint is on its way to {email}. If you can’t see it in a few minutes, check your promotions or spam folder.',
+    skip: 'No thanks, just show me',
+    invalidEmail: 'Please enter a valid email.',
+    failed: 'Your guide didn’t send. Please try again later. Here’s your result.',
+    sent: 'Sent to {email}! Check your promotions folder if you can’t see it.',
   },
 
   result: {
     meaningLabel: 'What it means',
-    decisionsLabel: 'How it guides decisions',
-    promptsLabel: 'Questions to sit with',
-    promptsIntro: 'Grab a journal. There are no right answers, only what’s true for you.',
+    decisionsLabel: 'How to use it',
+    promptsLabel: 'Ask yourself',
+    promptsIntro: 'Grab a journal.',
     exerciseLabel: 'Try this',
-    calculatedLabel: 'What I calculated',
+    calculatedLabel: 'Your chart details',
     typeLabel: 'Type',
     profileLabel: 'Profile',
     centersLabel: 'Defined centres',
     birthLabel: 'Born',
-    beforeNineteenSeventy:
-      'Time zone records from before 1970 are less complete in some places. If your birthplace used different clock rules back then, your result may differ.',
-    save: 'Save or print this page',
-    again: 'Calculate another chart',
-    guideLink: 'Open your guide’s own page',
-    emailMe: 'Email me this guide',
-    noCenters: 'None (every centre is open)',
-    reminder: 'Human Design is a tool for reflection, not a rulebook. Take what feels true and leave the rest.',
+    beforeNineteenSeventy: 'Born before 1970? Old time zone records can be patchy, so double-check if it doesn’t feel right.',
+    save: 'Save or print',
+    again: 'Try another chart',
+    guideLink: 'Your guide’s page',
+    emailMe: 'Email me this',
+    noCenters: 'None (all open)',
+    reminder: 'Take what feels true. Leave the rest.',
   },
 
   invitation: {
     label: 'Keep going',
-    heading: 'Ready to hear yourself again?',
-    body: 'Knowing your authority is one thing. Trusting it takes practice, and a little quiet. That’s what I’m here for.',
+    offer: {
+      title: 'The 5 Day Reconnect',
+      body: 'Five short audio practices to get out of your head and hear yourself again.',
+      cta: 'Have a look',
+      href: '/5-day-reconnect',
+      image: '/images/cover-reconnect-monkey.webp',
+      scribble: 'start here',
+    },
+    heading: 'Ready to trust yourself again?',
+    body: 'Knowing your authority is step one. Hearing it takes a little quiet.',
     links: [
-      { label: 'Read: How to trust your intuition and stop abandoning yourself', href: '/journal/trust-your-intuition-stop-abandoning-yourself' },
-      { label: 'Try The 5 Day Reconnect', href: '/5-day-reconnect' },
+      { label: 'Read: How to trust your intuition', href: '/journal/trust-your-intuition-stop-abandoning-yourself' },
       { label: 'Read my story', href: '/my-story' },
     ],
   },
@@ -101,8 +123,8 @@ export const intuitionBlueprint = {
   // The guide pages (/intuition-blueprint/[authority]) for people coming back
   guidePage: {
     label: 'The Intuition Blueprint',
-    notYours: 'Don’t know your authority yet?',
-    calculate: 'Calculate yours',
+    notYours: 'Don’t know yours yet?',
+    calculate: 'Find out here',
   },
 };
 
@@ -131,10 +153,8 @@ export const AUTHORITY_FOR: Record<AuthorityKey, keyof typeof authorities> = {
 };
 
 export const EGO_VARIANTS: Record<'ego-manifested' | 'ego-projected', string> = {
-  'ego-manifested':
-    'Your chart shows Ego Manifested authority: your Heart centre connects straight to your Throat, so your truth tends to come out in what you say in the moment. Listen to the words that come out of your mouth before your mind tidies them up.',
-  'ego-projected':
-    'Your chart shows Ego Projected authority: your Heart centre connects to your G centre (your sense of self and direction). Your clarity comes from talking it out with someone you trust and hearing what you actually want.',
+  'ego-manifested': 'Yours is Ego Manifested: your truth comes out in what you say. Listen to your words before your mind edits them.',
+  'ego-projected': 'Yours is Ego Projected: talk it out with someone you trust, and listen for what you actually want.',
 };
 
 export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 'selfProjected' | 'mental' | 'lunar', AuthorityContent> = {
@@ -142,29 +162,13 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     slug: 'emotional',
     name: 'Emotional Authority',
     alsoCalled: 'Solar Plexus Authority',
-    oneLine: 'There’s no truth in the moment. Your clarity comes with time.',
-    meaning: [
-      'In Human Design, Emotional Authority comes from a defined Solar Plexus, the centre linked to feelings, moods and desire. It’s the most common authority: around half of all charts have it.',
-      'Your emotions move in a wave. Some days everything feels exciting and possible, other days the same thing feels heavy or wrong. Neither the high nor the low is the full truth. The truth is what stays steady once you’ve felt your way through both.',
-    ],
-    decisions: [
-      'The traditional advice is simple, and not always easy: don’t decide in the heat of the moment. When something lands in front of you, notice the first rush of yes or no, then give it time. Sleep on it. Then sleep on it again.',
-      'Clarity tends to arrive as a calm, settled feeling rather than a spike of excitement. For bigger decisions that might take days or weeks. You’re allowed to say “Let me get back to you”.',
-    ],
-    prompts: [
-      'Think of a decision you made on a high or a low that you later regretted. What were you feeling at the time?',
-      'What does “calm clarity” feel like in your body, compared with excitement or panic?',
-      'Where in your life do you feel pressured to answer straight away? Who or what is creating that pressure?',
-      'What decision are you holding right now? How has your feeling about it changed over the past week?',
-    ],
+    oneLine: 'No decisions in the heat of the moment. Your clarity comes with time.',
+    meaning: ['Your emotions move in waves: high one day, low the next. Neither is the full truth. What stays steady through both is. (About half of all people have this.)'],
+    decisions: ['Feel the first rush, then wait.', 'Sleep on it. Then sleep on it again.', 'Clarity feels calm, not hyped. “Let me get back to you” is a full sentence.'],
+    prompts: ['What have I said yes to on a high, then regretted?', 'What does calm clarity feel like in my body?', 'Who pressures me to answer straight away?'],
     exercise: {
-      title: 'Track your wave for seven days',
-      steps: [
-        'Pick one decision you’re currently sitting with.',
-        'Each evening for a week, write down how you feel about it from 1 (a clear no) to 10 (a clear yes), plus one word for your overall mood that day.',
-        'At the end of the week, read it back. Notice what stays the same underneath the ups and downs.',
-        'That steady thread is the clarity worth trusting.',
-      ],
+      title: 'Ride the wave',
+      steps: ['Pick one decision.', 'Each night for a week, rate it 1 (no) to 10 (yes).', 'Read it back. What stays the same underneath the ups and downs? That’s your answer.'],
     },
   },
 
@@ -172,28 +176,12 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     slug: 'sacral',
     name: 'Sacral Authority',
     oneLine: 'Your gut knows, right now, before your mind catches up.',
-    meaning: [
-      'In Human Design, Sacral Authority comes from a defined Sacral centre: your life-force energy, the centre linked to work, vitality and what you have energy for. It belongs to Generators and Manifesting Generators.',
-      'Your Sacral speaks in the moment, through your body rather than your thoughts. It often shows up as a sound or a pull: an “uh-huh” that moves you towards something, or an “uh-uh” that pulls you away.',
-    ],
-    decisions: [
-      'Traditionally, your guidance comes from responding to what’s in front of you rather than trying to think your way to an answer. Something comes up, and your gut gives an instant yes or no.',
-      'Your mind will happily jump in with “but you should” or “but what if”. The practice is noticing the first response and giving it a voice before the reasons and stories pile on.',
-    ],
-    prompts: [
-      'When did your body say yes to something before you could explain why?',
-      'What are you currently saying yes to that your gut quietly says no to?',
-      'How does your energy feel at the end of a day spent on things you actually wanted to do, compared with things you felt you should do?',
-      'Whose voice do you hear when you talk yourself out of a gut response?',
-    ],
+    meaning: ['Your answer is an instant body response: a pull towards (“uh-huh”) or a pull away (“uh-uh”). It speaks before you think.'],
+    decisions: ['Respond to what’s in front of you, don’t think your way there.', 'Notice your first gut yes or no.', 'Act on it before your mind piles on the “shoulds”.'],
+    prompts: ['When did my body say yes before I could explain why?', 'What am I saying yes to that my gut says no to?', 'Whose voice talks me out of my gut?'],
     exercise: {
-      title: 'The yes/no question game',
-      steps: [
-        'Ask a friend to ask you simple yes/no questions, out loud, without warning: “Do you want toast?” “Do you want to go to the beach today?”',
-        'Answer with a sound before words: “uh-huh” or “uh-uh”. Don’t think about it.',
-        'Notice the feeling in your belly with each answer: expansion and pull, or contraction and heaviness.',
-        'Once you know that feeling, start asking yourself yes/no questions about small everyday choices, and work up to bigger ones.',
-      ],
+      title: 'The yes/no game',
+      steps: ['Have a friend fire quick yes/no questions at you.', 'Answer with a sound, not words: “uh-huh” or “uh-uh”.', 'Notice how a yes and a no feel in your belly. That’s your guide.'],
     },
   },
 
@@ -201,28 +189,12 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     slug: 'splenic',
     name: 'Splenic Authority',
     oneLine: 'A quiet, instant knowing. It speaks once, so listen the first time.',
-    meaning: [
-      'In Human Design, Splenic Authority comes from a defined Spleen, the oldest awareness centre, linked to intuition, instinct and what keeps you safe and well.',
-      'Your intuition is spontaneous and quiet. It doesn’t shout and it doesn’t repeat itself. It might be a subtle hit, a feeling about a person or place, or a sense that you should (or shouldn’t) go somewhere, often with no logical reason attached.',
-    ],
-    decisions: [
-      'Traditionally, your guidance lives in the moment. The instinct you feel right now is about right now. It doesn’t build or wait like emotional clarity does, so if you sit on it for too long, it can be gone.',
-      'The practice is trusting that first quiet hit, especially when your mind wants a reason. Your mind can come up with the reasons later.',
-    ],
-    prompts: [
-      'Think of a time your instinct was right and you didn’t listen. What did it feel like when the hit came?',
-      'Where in your body do you notice those quiet nudges?',
-      'What gets in the way of hearing them: noise, rushing, other people’s opinions?',
-      'When have you followed a feeling about a person or place, and how did it turn out?',
-    ],
+    meaning: ['Your intuition is a quiet hit in the moment: a feeling about a person, a place, a choice. No logic attached, and it won’t repeat itself.'],
+    decisions: ['Trust the first quiet hit.', 'Don’t wait for a reason. It might never come.', 'Slow down enough to hear it.'],
+    prompts: ['When was my instinct right, and I ignored it?', 'Where do I feel those quiet nudges in my body?', 'What drowns them out?'],
     exercise: {
-      title: 'The first-hit journal',
-      steps: [
-        'For one week, carry a note on your phone called “First hits”.',
-        'Every time you get a quick instinct (take this road, call that friend, don’t eat that, leave now), write it down with the time.',
-        'Write whether you followed it, then what happened.',
-        'At the end of the week, read it back and notice how often that quiet voice knew.',
-      ],
+      title: 'The first-hit note',
+      steps: ['For a week, keep a note on your phone called “First hits”.', 'Every time you get a quick instinct, jot it down.', 'Note what happened. Notice how often it knew.'],
     },
   },
 
@@ -230,29 +202,13 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     slug: 'ego',
     name: 'Ego Authority',
     alsoCalled: 'Heart Authority',
-    oneLine: 'Your truth lives in what you actually want and what you’re willing to commit to.',
-    meaning: [
-      'In Human Design, Ego Authority comes from a defined Heart (or Ego) centre, linked to willpower, self-worth and keeping your promises. It’s one of the rarer authorities.',
-      '“Ego” here doesn’t mean arrogance. It means your will: what you genuinely want, and what you have the heart to give your energy to.',
-    ],
-    decisions: [
-      'Traditionally, the question for you is “Do I really want this?” Is your heart in it? If you commit to something your heart isn’t in, your willpower runs dry and keeping your word becomes a struggle.',
-      'Your clarity often comes through your own voice, in the words you say about what you want, more than through careful thinking.',
-    ],
-    prompts: [
-      'What do I want, for me, without justifying it?',
-      'Where have I said yes when my heart wasn’t in it? What did it cost me?',
-      'Which promises in my life feel light to keep, and which feel heavy?',
-      'Where am I proving my worth instead of following what I want?',
-    ],
+    oneLine: 'If your heart’s not in it, it’s a no.',
+    meaning: ['Your answer comes from your will: what you genuinely want and are willing to commit to. Not arrogance. Heart.'],
+    decisions: ['Ask: do I really want this?', 'Only commit when your heart’s in it.', 'Listen to what you say you want, out loud.'],
+    prompts: ['What do I want, without justifying it?', 'Where have I said yes when my heart wasn’t in it?', 'Where am I still trying to prove myself?'],
     exercise: {
       title: 'The “I want” voice note',
-      steps: [
-        'Choose a decision in front of you.',
-        'Record a voice note starting every sentence with “I want…”. Keep going for two minutes without editing yourself.',
-        'Play it back and listen for the sentences that sound alive, and the ones that sound like obligation.',
-        'Ask yourself: what am I willing to commit to, fully?',
-      ],
+      steps: ['Record a two-minute voice note starting every sentence with “I want…”.', 'Don’t edit yourself.', 'Play it back. Which lines sound alive, and which sound like obligation?'],
     },
   },
 
@@ -260,58 +216,26 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     slug: 'self-projected',
     name: 'Self-Projected Authority',
     oneLine: 'You find your truth by hearing yourself say it out loud.',
-    meaning: [
-      'In Human Design, Self-Projected Authority comes from a defined G centre (linked to identity, direction and love) connected to the Throat. It’s found in Projectors.',
-      'Your guidance isn’t a gut feeling or an emotional wave. It shows up in your own voice: as you talk something through, you hear what feels like you, and what doesn’t.',
-    ],
-    decisions: [
-      'Traditionally, you find clarity by talking things out with people you trust, not to get their advice but to hear yourself. The other person is a sounding board.',
-      'Listen for whether what you’re saying sounds like your direction and your identity. Does it feel true to who you are, and does it bring you joy?',
-    ],
-    prompts: [
-      'Who are the people you can talk to without them trying to fix or advise you?',
-      'When did you last surprise yourself by what you said out loud?',
-      'Which choices in your life feel like “me”, and which feel like someone else’s idea of me?',
-      'What direction do you keep talking about but haven’t taken yet?',
-    ],
+    meaning: ['Your clarity comes through your voice. As you talk things through, you hear what feels like you and what doesn’t.'],
+    decisions: ['Talk it out with someone you trust.', 'You’re not after their advice. You’re listening to yourself.', 'Ask: does this sound like me?'],
+    prompts: ['Who can I talk to without them trying to fix me?', 'When did I surprise myself with what I said?', 'Which choices feel like me, and which feel like someone else’s idea of me?'],
     exercise: {
-      title: 'Talk it out, then listen back',
-      steps: [
-        'Pick a decision and ask someone you trust to just listen for ten minutes. No advice, no opinions.',
-        'Talk it through out loud. If no one’s around, record yourself talking instead.',
-        'Afterwards, write down the sentences that felt true as you said them.',
-        'Notice the difference between what you think you should do and what you heard yourself say.',
-      ],
+      title: 'Talk it out',
+      steps: ['Pick a decision.', 'Talk it through out loud for ten minutes (to a friend, or record yourself).', 'Write down the lines that felt true as you said them.'],
     },
   },
 
   mental: {
     slug: 'mental',
     name: 'Mental Authority',
-    alsoCalled: 'Environmental or Outer Authority, sometimes described as no inner authority',
+    alsoCalled: 'Environmental Authority',
     oneLine: 'Your clarity comes from the right people, the right places, and time.',
-    meaning: [
-      'In Human Design, Mental Authority describes a Projector chart with no defined centres below the Throat, so the definition sits in the Head, Ajna and Throat. Because none of the inner authorities apply, it’s sometimes called “no inner authority”.',
-      'That doesn’t mean your mind should make your decisions. Your mind is brilliant at gathering perspectives, but it can argue both sides forever. Your clarity comes from outside your head: from people you trust and environments that feel good.',
-    ],
-    decisions: [
-      'Traditionally, the practice is to talk through your decisions with a few trusted sounding boards, and to notice how you feel in different places. You’re hearing yourself, not taking their advice.',
-      'Give yourself time, and notice which environments help you think clearly. Sometimes the answer is to change where you are, then decide.',
-    ],
-    prompts: [
-      'Which people help you think clearly, and which leave you more confused?',
-      'Where do you feel most like yourself: by the ocean, in a café, at home, in nature?',
-      'What decision have you been going around in circles on? Have you said it out loud to anyone?',
-      'When has a change of environment changed your mind?',
-    ],
+    meaning: ['There’s no single place in your body that holds your answer. Your mind is great at gathering perspectives, but it shouldn’t be the boss.'],
+    decisions: ['Talk it out with a few trusted people.', 'Notice how different places make you feel.', 'Take your time. Change where you are, then decide.'],
+    prompts: ['Who helps me think clearly, and who leaves me confused?', 'Where do I feel most like myself?', 'What have I been going around in circles on?'],
     exercise: {
-      title: 'Three places, three conversations',
-      steps: [
-        'Choose a decision you’re weighing up.',
-        'Talk it through with three different people you trust, ideally in three different places.',
-        'After each conversation, write a few lines about what you heard yourself say and how the place felt.',
-        'Read them together. Notice what kept coming up in your own words.',
-      ],
+      title: 'Three places, three chats',
+      steps: ['Talk one decision through with three people, in three different places.', 'After each, jot down what you heard yourself say.', 'Notice what kept coming up.'],
     },
   },
 
@@ -319,30 +243,60 @@ export const authorities: Record<'emotional' | 'sacral' | 'splenic' | 'ego' | 's
     slug: 'lunar',
     name: 'Lunar Authority',
     oneLine: 'Big decisions deserve a full moon cycle.',
-    meaning: [
-      'In Human Design, Lunar Authority belongs to Reflectors, the rarest type (around 1% of people), whose charts have no defined centres at all.',
-      'You’re deeply open to the people and places around you, sampling and reflecting back the energy of your environment. That makes you incredibly wise about others, and means your own clarity takes time to settle.',
-    ],
-    decisions: [
-      'Traditionally, the advice is to take around a full lunar cycle, about 28 days, before making a big decision. The Moon moves through every part of your chart in that time, so you get to experience the decision from every angle.',
-      'Talk it through with trusted people along the way, and notice where you are when you feel most clear. Your environment matters a lot.',
-    ],
-    prompts: [
-      'Which places and people feel good for you to be around?',
-      'When have you felt rushed into a big decision? What happened?',
-      'How do you know when you’re feeling your own feelings versus someone else’s?',
-      'What would change if you gave yourself a full month for your next big decision?',
-    ],
+    meaning: ['You’re deeply open to the people and places around you, so your clarity takes time to settle. It’s the rarest authority (about 1% of people).'],
+    decisions: ['Give big decisions about 28 days.', 'Talk it through along the way.', 'Notice where you feel most clear. Your environment matters.'],
+    prompts: ['Which places and people feel good to be around?', 'When was I rushed into a big decision?', 'Am I feeling my own feelings, or someone else’s?'],
     exercise: {
-      title: 'A 28-day decision diary',
-      steps: [
-        'Choose one big decision and give yourself a full moon cycle (about 28 days) before committing.',
-        'Every few days, jot down how you feel about it, where you were and who you’d been with.',
-        'Talk it through with two or three trusted people over the month.',
-        'At the end, read it all back. Notice what stayed consistent across different days, places and people.',
-      ],
+      title: 'The 28-day diary',
+      steps: ['Pick one big decision and give it a full month.', 'Every few days, jot down how you feel, where you were and who you were with.', 'At the end, notice what stayed the same.'],
     },
   },
+};
+
+// Where each authority lives in the chart, for the handwritten note on the drawing
+export const AUTHORITY_CENTER: Record<AuthorityKey, { center: 'head' | 'ajna' | 'throat' | 'g' | 'heart' | 'sacral' | 'solarPlexus' | 'spleen' | 'root' | null; note: string }> = {
+  emotional: { center: 'solarPlexus', note: 'your emotions' },
+  sacral: { center: 'sacral', note: 'your gut' },
+  splenic: { center: 'spleen', note: 'your instinct' },
+  'ego-manifested': { center: 'heart', note: 'your heart' },
+  'ego-projected': { center: 'heart', note: 'your heart' },
+  'self-projected': { center: 'g', note: 'your sense of self' },
+  mental: { center: 'ajna', note: 'your mind: a sounding board' },
+  lunar: { center: null, note: 'all open, like the moon' },
+};
+
+// "How you'll know you're on track": each Type's feeling of alignment, and
+// the feeling that says something's off (Human Design's "not-self" theme)
+export const TYPE_SIGNALS: Record<'Generator' | 'Manifesting Generator' | 'Projector' | 'Manifestor' | 'Reflector', { signature: string; notSelf: string; body: string }> = {
+  Generator: { signature: 'Satisfaction', notSelf: 'Frustration', body: 'Frustration means you said yes to something your gut didn’t want.' },
+  'Manifesting Generator': { signature: 'Satisfaction', notSelf: 'Frustration or anger', body: 'Frustration or anger means you skipped your gut and pushed ahead anyway.' },
+  Projector: { signature: 'Success', notSelf: 'Bitterness', body: 'Bitterness means you’re giving your energy where it isn’t valued.' },
+  Manifestor: { signature: 'Peace', notSelf: 'Anger', body: 'Anger means you feel controlled, or you acted without letting people know.' },
+  Reflector: { signature: 'Surprise', notSelf: 'Disappointment', body: 'Disappointment means your environment isn’t right for you.' },
+};
+
+// "What can drown out your inner voice": open centres take in other people's
+// energy. Each has a classic question to catch the pattern.
+export const OPEN_CENTRES: Record<string, { name: string; question: string }> = {
+  head: { name: 'Head', question: 'Am I stuck thinking about things that don’t matter to me?' },
+  ajna: { name: 'Mind', question: 'Am I pretending to be certain?' },
+  throat: { name: 'Throat', question: 'Am I talking just to be seen or fill the silence?' },
+  g: { name: 'Identity', question: 'Am I looking to others for love and direction?' },
+  heart: { name: 'Heart', question: 'Am I still trying to prove myself?' },
+  solarPlexus: { name: 'Emotions', question: 'Am I avoiding the truth to keep the peace?' },
+  sacral: { name: 'Energy', question: 'Do I know when enough is enough?' },
+  spleen: { name: 'Instinct', question: 'Am I holding on to what isn’t good for me?' },
+  root: { name: 'Pressure', question: 'Am I rushing just to make the pressure stop?' },
+};
+
+export const extras = {
+  signalsLabel: 'How you’ll know',
+  signalsIntro: 'After a decision, check in with how you feel.',
+  signatureLabel: 'On track',
+  notSelfLabel: 'Off track',
+  openLabel: 'What drowns out your inner voice',
+  openIntro: 'Your open (white) centres are where you soak up other people’s energy. Catch yourself with these:',
+  noOpen: 'All your centres are defined. Your work is staying true to yourself when others want otherwise.',
 };
 
 export function authorityBySlug(slug: string): AuthorityContent | undefined {
