@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import BodygraphArt from '@/components/intuition/BodygraphArt';
+import BodygraphIllustration from '@/components/intuition/BodygraphIllustration';
 import ScrollReveal from '@/components/ScrollReveal';
 import SectionLabel from '@/components/SectionLabel';
 import { quizTeaser } from '@/content/site';
@@ -10,17 +10,10 @@ export default function QuizTeaser() {
   return (
     <section id="free-quiz" className="bg-sage px-6 py-28 sm:py-36">
       <div className="container-editorial grid items-center gap-14 lg:grid-cols-[2fr_3fr] lg:gap-20">
-        <ScrollReveal className="mx-auto w-full max-w-[14rem] sm:max-w-[16rem]">
-          <div className="relative -rotate-3 bg-cream p-5 pb-12 shadow-2xl">
+        <ScrollReveal className="mx-auto w-full max-w-[17rem] sm:max-w-[20rem]">
+          <div className="relative -rotate-3 bg-porcelain p-4 pb-12 shadow-2xl">
             <span aria-hidden="true" className="absolute -top-3 left-1/2 z-10 h-6 w-20 -translate-x-1/2 rotate-2 bg-zing-yellow/85 shadow-sm" />
-            <BodygraphArt
-              className="mx-auto w-full"
-              defined={['throat', 'g', 'sacral', 'spleen', 'root']}
-              definedLinks={[['throat', 'g'], ['sacral', 'root'], ['spleen', 'root']]}
-              highlight="sacral"
-              fill="#CBA1D4"
-              label="An example Human Design chart"
-            />
+            <BodygraphIllustration className="mx-auto h-auto w-full" />
             <p aria-hidden="true" className="absolute inset-x-0 bottom-3 text-center font-hand text-lg text-bark">
               {quizTeaser.scribble}
             </p>
