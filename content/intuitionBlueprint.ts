@@ -22,7 +22,7 @@ export const intuitionBlueprint = {
     what: {
       label: 'What is Human Design?',
       body: [
-        'Human Design is a self-discovery tool. It uses your birth date, time and place to create a chart of how you’re wired, drawing on astrology, the I Ching, the Kabbalah and the chakras.',
+        'Human Design is a self-discovery tool. It uses your birth date, time and place to create a chart of how you’re uniquely wired, drawing on astrology, the I Ching, the Kabbalah and the chakras, so you can make aligned decisions, understand your energy and live in a way that feels more like you.',
         'Your chart shows how your energy works, where you soak up other people’s energy, and how you’re designed to make decisions.',
       ],
     },
