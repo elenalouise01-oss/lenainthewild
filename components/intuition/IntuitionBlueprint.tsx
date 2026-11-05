@@ -272,16 +272,16 @@ export default function IntuitionBlueprint() {
                     ))}
                   </ul>
                   {/* Key */}
-                  <dl className="mx-auto mt-6 flex w-fit flex-col gap-3 border border-bark/15 px-5 py-4 font-body text-sm text-umber sm:flex-row sm:gap-8">
+                  <dl className="mx-auto mt-6 flex w-fit flex-col gap-3 border border-bark/15 px-5 py-4 font-body text-sm text-umber">
                     <div className="flex items-center gap-3">
-                      <dt className="flex shrink-0 items-center gap-2 font-semibold text-bark">
+                      <dt className="flex w-24 shrink-0 items-center gap-2 font-hand text-xl text-bark">
                         <span aria-hidden="true" className="h-4 w-4 shrink-0 border border-bark bg-gradient-to-b from-[#e4cdea] to-[#bf93c9]" />
                         {copy.explainer.diagram.defined.name}
                       </dt>
                       <dd>{copy.explainer.diagram.defined.meaning}</dd>
                     </div>
                     <div className="flex items-center gap-3">
-                      <dt className="flex shrink-0 items-center gap-2 font-semibold text-bark">
+                      <dt className="flex w-24 shrink-0 items-center gap-2 font-hand text-xl text-bark">
                         <span aria-hidden="true" className="h-4 w-4 shrink-0 border border-bark bg-white" />
                         {copy.explainer.diagram.open.name}
                       </dt>
