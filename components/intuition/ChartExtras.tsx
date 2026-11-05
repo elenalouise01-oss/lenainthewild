@@ -1,6 +1,6 @@
-import StoryConnector from '@/components/StoryConnector';
+import LeadDown from './LeadDown';
 import TapeMark from '@/components/TapeMark';
-import { CENTER_ORDER } from '@/components/intuition/centres';
+import { openCentresToShow } from '@/components/intuition/centres';
 import { OPEN_CENTRES, TYPE_SIGNALS, extras } from '@/content/intuitionBlueprint';
 import type { HdType } from '@/lib/intuition/bodygraph';
 import type { CenterId } from './BodygraphArt';
@@ -11,12 +11,12 @@ const body = 'font-body text-base leading-[1.85] text-umber sm:text-[1.05rem]';
 // being on track, and the open centres that can drown out their intuition.
 export default function ChartExtras({ type, definedCenters }: { type: HdType; definedCenters: CenterId[] }) {
   const signal = TYPE_SIGNALS[type];
-  const open = CENTER_ORDER.filter((c) => !definedCenters.includes(c));
+  const open = openCentresToShow(definedCenters);
 
   return (
     <div className="bg-cream px-6 sm:px-12">
       <div className="mx-auto max-w-3xl">
-        <StoryConnector shape="swoop-right" />
+        <LeadDown />
 
         <section>
           <h2 className="font-display text-4xl text-bark sm:text-5xl">
@@ -36,7 +36,7 @@ export default function ChartExtras({ type, definedCenters }: { type: HdType; de
           <p className={`mt-6 ${body}`}>{signal.body}</p>
         </section>
 
-        <StoryConnector shape="swoop-left" />
+        <LeadDown />
 
         <section>
           <h2 className="font-display text-4xl text-bark sm:text-5xl">

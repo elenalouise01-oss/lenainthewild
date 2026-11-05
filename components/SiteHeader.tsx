@@ -38,13 +38,13 @@ export default function SiteHeader({ active }: { active?: string }) {
           {nav.logo}
         </Link>
 
-        <nav className="flex items-center gap-2 sm:gap-5 lg:gap-7">
-          <ul className="hidden items-center gap-7 xl:flex">
+        <nav className="flex items-center gap-2 sm:gap-5 lg:gap-7 xl:gap-4 2xl:gap-7">
+          <ul className="hidden items-center gap-4 xl:flex 2xl:gap-7">
             {LINKS.map((link) => (
               <li key={link.label}>
                 <Link
                   href={link.href}
-                  className={`whitespace-nowrap font-body text-[0.65rem] font-semibold uppercase tracking-widest2 transition-colors hover:text-bark ${
+                  className={`whitespace-nowrap font-body text-[0.65rem] font-semibold uppercase tracking-[0.18em] transition-colors hover:text-bark 2xl:tracking-widest2 ${
                     active === link.label
                       ? 'text-bark underline decoration-bark/40 underline-offset-8'
                       : 'text-bark/60'

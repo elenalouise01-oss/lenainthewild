@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import DrawnLine from '@/components/DrawnLine';
-import StoryConnector from '@/components/StoryConnector';
+import LeadDown from './LeadDown';
 import TapeMark from '@/components/TapeMark';
 import {
   AUTHORITY_CENTER,
@@ -102,7 +102,7 @@ export default function AuthorityResult({
             </div>
           </section>
 
-          <StoryConnector shape="swoop-right" />
+          <LeadDown />
 
           <section>
             <h2 className="font-display text-4xl text-bark sm:text-5xl">
@@ -120,7 +120,7 @@ export default function AuthorityResult({
             </ul>
           </section>
 
-          <StoryConnector shape="swoop-left" />
+          <LeadDown />
 
           <section className="-rotate-1 bg-zing-babypink px-6 py-12 shadow-sm sm:px-12">
             <div className="rotate-1">
@@ -137,7 +137,7 @@ export default function AuthorityResult({
             </div>
           </section>
 
-          <StoryConnector shape="short-curl" />
+          <LeadDown />
 
           <section className="bg-sage/40 p-3">
             <div className="border-2 border-dashed border-bark/40 px-6 py-10 sm:px-10">

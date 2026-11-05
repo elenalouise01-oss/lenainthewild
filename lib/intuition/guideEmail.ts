@@ -1,6 +1,7 @@
 import { AUTHORITY_FOR, EGO_VARIANTS, OPEN_CENTRES, TYPE_SIGNALS, authorities, extras, intuitionBlueprint as copy } from '@/content/intuitionBlueprint';
 import { absoluteUrl } from '@/lib/seo';
-import { CENTERS, type AuthorityKey, type Center, type HdType } from './bodygraph';
+import { openCentresToShow } from '@/components/intuition/centres';
+import { type AuthorityKey, type Center, type HdType } from './bodygraph';
 
 // The personalised guide email, built from the same content file as the
 // result page so the two always match the authority that was calculated.
@@ -10,7 +11,7 @@ const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 // `chart` adds the personal extras: the Type's on-track feeling and the open centres
 export function guideEmail(authority: AuthorityKey, firstName?: string, chart?: { type: HdType; definedCenters: Center[] }) {
   const signal = chart ? TYPE_SIGNALS[chart.type] : null;
-  const open = chart ? CENTERS.filter((c) => !chart.definedCenters.includes(c)) : [];
+  const open = chart ? openCentresToShow(chart.definedCenters) : [];
   const a = authorities[AUTHORITY_FOR[authority]];
   const variant = authority === 'ego-manifested' || authority === 'ego-projected' ? EGO_VARIANTS[authority] : null;
   const url = absoluteUrl(`/intuition-blueprint/${a.slug}`);
