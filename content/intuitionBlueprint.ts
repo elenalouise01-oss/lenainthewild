@@ -7,7 +7,7 @@ import type { AuthorityKey } from '@/lib/intuition/bodygraph';
 export const intuitionBlueprint = {
   label: 'Free · Human Design',
   title: 'The Intuition Blueprint',
-  subheading: 'Find out how you’re designed to make decisions, so you can stop overthinking and start trusting yourself.',
+  subheading: 'Use your Human Design to find out how you’re designed to make decisions, so you can stop overthinking and start trusting yourself.',
   intro: 'Free, takes 1 minute, and all you need is your birth date, time and place.',
   cta: 'Discover Your Intuition Blueprint',
   // Handwritten caption on the polaroid, and the spinning badge beside it
