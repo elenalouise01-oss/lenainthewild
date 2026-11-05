@@ -317,11 +317,11 @@ export const AUTHORITY_CENTER: Record<AuthorityKey, { center: 'head' | 'ajna' | 
 // "How you'll know you're on track": each Type's feeling of alignment, and
 // the feeling that says something's off (Human Design's "not-self" theme)
 export const TYPE_SIGNALS: Record<'Generator' | 'Manifesting Generator' | 'Projector' | 'Manifestor' | 'Reflector', { signature: string; notSelf: string; body: string }> = {
-  Generator: { signature: 'Satisfaction', notSelf: 'Frustration', body: 'Frustration means you said yes to something your gut didn’t want.' },
-  'Manifesting Generator': { signature: 'Satisfaction', notSelf: 'Frustration or anger', body: 'Frustration or anger means you skipped your gut and pushed ahead anyway.' },
-  Projector: { signature: 'Success', notSelf: 'Bitterness', body: 'Bitterness means you’re giving your energy where it isn’t valued.' },
-  Manifestor: { signature: 'Peace', notSelf: 'Anger', body: 'Anger means you feel controlled, or you acted without letting people know.' },
-  Reflector: { signature: 'Surprise', notSelf: 'Disappointment', body: 'Disappointment means your environment isn’t right for you.' },
+  Generator: { signature: 'Satisfaction', notSelf: 'Frustration', body: 'Satisfaction is that settled, full feeling after doing something your gut said yes to. Frustration means you said yes to something it didn’t want.' },
+  'Manifesting Generator': { signature: 'Satisfaction', notSelf: 'Frustration or anger', body: 'Satisfaction (and a sense of peace) means you followed your gut. Frustration or anger means you skipped it and pushed ahead anyway.' },
+  Projector: { signature: 'Success', notSelf: 'Bitterness', body: 'Success feels like being seen, valued and invited in. Bitterness means you’re giving your energy where it isn’t valued.' },
+  Manifestor: { signature: 'Peace', notSelf: 'Anger', body: 'Peace feels like moving freely on your own impulses. Anger means you feel controlled, or you acted without letting people know.' },
+  Reflector: { signature: 'Surprise', notSelf: 'Disappointment', body: 'Surprise is that delight when life feels fresh and right. Disappointment means your environment isn’t right for you.' },
 };
 
 // "What can drown out your inner voice": open centres take in other people's
