@@ -4,10 +4,9 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import DrawnLine from '@/components/DrawnLine';
-import SpinningBadge from '@/components/SpinningBadge';
-import TapeBanner from '@/components/TapeBanner';
-import TapeMark from '@/components/TapeMark';
+import SectionLabel from '@/components/SectionLabel';
 import { AUTHORITY_CENTER, AUTHORITY_FOR, authorities, intuitionBlueprint as copy } from '@/content/intuitionBlueprint';
+import { sendToInbox } from '@/lib/sendToInbox';
 import { validateBirthInput, type FieldErrors } from '@/lib/intuition/birthInput';
 import type { CalculateOutcome, ChartSummary } from '@/lib/intuition/calculate';
 import { isValidEmail } from '@/lib/intuition/email';
@@ -59,6 +58,7 @@ export default function IntuitionBlueprint() {
   const [firstName, setFirstName] = useState('');
   const [consent, setConsent] = useState(false);
   const [emailError, setEmailError] = useState('');
+  const [nameError, setNameError] = useState('');
   const [sending, setSending] = useState(false);
   const [sentTo, setSentTo] = useState('');
   const [sendFailed, setSendFailed] = useState(false);
@@ -103,7 +103,7 @@ export default function IntuitionBlueprint() {
       if (json.status === 'ok') {
         setChart(json.chart);
         setEmailEnabled(Boolean(json.emailEnabled));
-        setStage(json.emailEnabled ? 'email' : 'result');
+        setStage('email');
       } else if (json.status === 'invalid') {
         setErrors(json.errors);
       } else if (json.status === 'ambiguous-time') {
@@ -120,40 +120,57 @@ export default function IntuitionBlueprint() {
     }
   };
 
+  // Name and email unlock the full result. Every sign-up is emailed to
+  // Lena's inbox (like the free practice sign-ups); when the guide emails are
+  // set up, the guide is emailed to them too.
   const sendGuide = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (sending) return;
+    if (sending || !chart || !content) return;
+    const name = firstName.trim();
     const trimmed = email.trim();
-    if (!isValidEmail(trimmed)) {
-      setEmailError(copy.email.invalidEmail);
-      return;
-    }
-    setEmailError('');
+    const nameMissing = !name;
+    const emailBad = !isValidEmail(trimmed);
+    setNameError(nameMissing ? copy.email.nameError : '');
+    setEmailError(emailBad ? copy.email.invalidEmail : '');
+    if (nameMissing || emailBad) return;
     setSendFailed(false);
     setSending(true);
     const company = (new FormData(e.currentTarget).get('company') as string) || '';
-    try {
-      const res = await fetch('/api/intuition-blueprint/guide', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ birth: birth(), email: trimmed, firstName, marketingConsent: consent, company }),
-      });
-      const json = (await res.json()) as { ok: boolean; field?: string; message?: string };
-      if (json.ok) {
-        setSentTo(trimmed);
-        setStage('result');
-      } else if (json.field === 'email') {
-        setEmailError(json.message || copy.email.invalidEmail);
-      } else {
-        setSendFailed(true);
-        setStage('result');
+    if (company) return; // spam trap
+
+    const lead = new FormData();
+    lead.append('name', name);
+    lead.append('email', trimmed);
+    lead.append('authority', content.name);
+    lead.append('marketing_emails', consent ? 'Yes' : 'No');
+    const toInbox = sendToInbox(lead, `Intuition Blueprint sign-up: ${name}`);
+
+    let guideSent = false;
+    let guideFailed = false;
+    if (emailEnabled) {
+      try {
+        const res = await fetch('/api/intuition-blueprint/guide', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ birth: birth(), email: trimmed, firstName: name, marketingConsent: consent, company }),
+        });
+        const json = (await res.json()) as { ok: boolean; field?: string; message?: string };
+        if (!json.ok && json.field === 'email') {
+          setEmailError(json.message || copy.email.invalidEmail);
+          setSending(false);
+          return;
+        }
+        guideSent = json.ok;
+        guideFailed = !json.ok;
+      } catch {
+        guideFailed = true;
       }
-    } catch {
-      setSendFailed(true);
-      setStage('result');
-    } finally {
-      setSending(false);
     }
+    await toInbox;
+    setSentTo(guideSent ? trimmed : '');
+    setSendFailed(guideFailed);
+    setSending(false);
+    setStage('result');
   };
 
   const restart = () => {
@@ -177,32 +194,13 @@ export default function IntuitionBlueprint() {
       <AnimatePresence mode="wait" initial={false}>
         {stage === 'intro' && (
           <motion.div key="intro" {...fade}>
-            {/* Opening: bold and dark, like the home page */}
-            <section aria-labelledby="step-intro" className="overflow-hidden bg-bark px-6 pb-16 pt-14 text-cream sm:px-12 sm:pb-20 sm:pt-24">
-              <div className="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-[1.25fr_1fr]">
-                <div>
-                  <p className={`${label} text-sage`}>{copy.label}</p>
-                  <h1 id="step-intro" tabIndex={-1} className="mt-6 font-display text-[3.5rem] leading-[0.88] tracking-tight focus:outline-none sm:text-[7rem] lg:text-[8.5rem]">
-                    The <em className="text-zing-yellow">Intuition</em>
-                    <br />
-                    Blueprint
-                  </h1>
-                  <p className="mt-8 max-w-lg font-display text-2xl italic leading-snug text-cream/90">{copy.subheading}</p>
-                  <p className="mt-5 max-w-lg font-body text-base leading-[1.85] text-cream/75">{copy.intro}</p>
-                  <div className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2">
-                    <button type="button" onClick={() => setStage('birth')} className={`${pill} bg-sage text-bark`}>
-                      {copy.cta} <span aria-hidden="true">→</span>
-                    </button>
-                    <span className="flex items-center gap-1" aria-hidden="true">
-                      <DrawnLine viewBox="0 0 80 50" d="M76 30 C 56 44, 30 44, 8 22" arrow="M18 16 L6 20 L12 32" colour="#fffef5" className="h-10 w-16" />
-                      <span className="-rotate-3 font-hand text-2xl text-zing-yellow">{copy.scribble}</span>
-                    </span>
-                  </div>
-                </div>
-
-                <div className="relative mx-auto w-64 sm:w-80">
-                  <div className="rotate-[4deg] bg-white p-3 pb-14 shadow-2xl">
-                    <div className="relative aspect-[4/5]">
+            {/* Opening: the same layout and sizes as the free practice section on the home page */}
+            <section aria-labelledby="step-intro" className="bg-bark px-6 py-28 sm:py-36">
+              <div className="container-editorial grid items-center gap-14 lg:grid-cols-[3fr_2fr] lg:gap-20">
+                <div className="mx-auto w-full max-w-[16rem] sm:max-w-xs lg:order-last">
+                  <div className="relative -rotate-3 bg-cream p-3 pb-12 shadow-2xl lg:rotate-3">
+                    <span aria-hidden="true" className="absolute -top-3 left-1/2 z-10 h-6 w-20 -translate-x-1/2 rotate-2 bg-zing-yellow/85 shadow-sm" />
+                    <div className="relative aspect-[4/5] overflow-hidden">
                       <Image
                         src="/images/lena-sunrise-smile.jpg"
                         alt="Lena smiling over her shoulder at sunrise above the clouds"
@@ -213,50 +211,71 @@ export default function IntuitionBlueprint() {
                         style={{ objectPosition: '82% 55%' }}
                       />
                     </div>
-                    <p className="absolute bottom-4 left-0 right-0 text-center font-hand text-2xl text-bark">{copy.polaroidCaption}</p>
+                    <p aria-hidden="true" className="absolute inset-x-0 bottom-3 text-center font-hand text-lg text-bark">
+                      {copy.polaroidCaption}
+                    </p>
                   </div>
-                  <SpinningBadge text={copy.badge} className="absolute -left-10 -top-10" />
-                  <div className="absolute -bottom-8 -right-6 flex h-20 w-20 rotate-[-10deg] items-center justify-center rounded-full bg-sage shadow-lg sm:h-24 sm:w-24">
-                    <Image src="/images/litw-logo-yellow.png" alt="" width={120} height={60} className="w-14 sm:w-16" />
+                </div>
+                <div className="text-center lg:text-left">
+                  <SectionLabel className="!text-sage">{copy.label}</SectionLabel>
+                  <h1 id="step-intro" tabIndex={-1} className="mt-6 font-display text-5xl leading-[1] text-cream focus:outline-none sm:text-7xl">
+                    {copy.title}
+                  </h1>
+                  <p className="mx-auto mt-6 max-w-xl font-display text-2xl italic leading-snug text-cream sm:text-3xl lg:mx-0">{copy.subheading}</p>
+                  <p className="mx-auto mt-6 max-w-xl font-body text-base leading-relaxed text-cream/85 sm:text-lg lg:mx-0">{copy.intro}</p>
+                  <div className="relative mt-10 inline-block">
+                    {/* A doodle line looping in from the photo to the button (laptop only) */}
+                    <DrawnLine
+                      viewBox="0 0 300 100"
+                      colour="#ffffff"
+                      className="absolute left-full top-1/2 ml-4 hidden h-[100px] w-[300px] -translate-y-[78%] lg:block"
+                      d="M292 14 C 240 8, 196 22, 190 48 C 186 70, 216 76, 222 58 C 228 38, 186 34, 150 58 C 116 80, 60 86, 12 80"
+                      arrow="M24 72 L11 80 L23 88"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setStage('birth')}
+                      className="rounded-full bg-sage px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest2 text-bark transition-transform hover:scale-105"
+                    >
+                      {copy.cta} →
+                    </button>
                   </div>
                 </div>
               </div>
             </section>
-            <TapeBanner text={copy.tape} strip="bg-sage text-bark" className="-mt-8 bg-transparent" />
 
-            {/* Human Design, for fresh eyes: short and sweet */}
-            <section className="bg-cream px-6 pb-24 pt-16 sm:px-12 sm:pb-32 sm:pt-20">
-              <div className="mx-auto max-w-5xl">
-                <div className="grid items-start gap-12 md:grid-cols-[7rem_1fr_1fr] md:gap-10">
-                  <div className="flex items-center gap-4 md:block">
-                    <BodygraphArt className="w-20 shrink-0 md:w-24" defined={['throat', 'g', 'sacral', 'root']} definedLinks={[['throat', 'g'], ['sacral', 'root']]} fill="#CBA1D4" label="An example Human Design chart" />
-                    <p className="font-hand text-lg leading-snug text-bark md:mt-3">
-                      coloured in = defined
-                      <br />
-                      white = open
-                    </p>
-                  </div>
-                  <div>
-                    <h2 className="font-display text-3xl text-bark sm:text-4xl">
-                      <TapeMark>{copy.explainer.what.label}</TapeMark>
-                    </h2>
-                    <p className={`mt-5 ${body}`}>{copy.explainer.what.body}</p>
-                  </div>
-                  <div>
-                    <h2 className="font-display text-3xl text-bark sm:text-4xl">
-                      <TapeMark colour="rgba(255,251,160,0.95)">{copy.explainer.focus.label}</TapeMark>
-                    </h2>
-                    <p className={`mt-5 ${body}`}>{copy.explainer.focus.body}</p>
-                  </div>
-                </div>
-                <div className="mt-14 flex flex-col items-center gap-6 text-center">
-                  <p className="max-w-2xl font-body text-sm leading-relaxed text-stone">
-                    {copy.note.start} <TapeMark>{copy.note.tape}</TapeMark> {copy.note.end}
+            {/* Human Design for fresh eyes: the same layout as "This is for you if" on the 5 Day Reconnect page */}
+            <section className="bg-cream px-6 py-24 sm:py-32">
+              <div className="mx-auto max-w-2xl">
+                <h2 className="font-display text-3xl italic leading-tight text-bark sm:text-5xl">{copy.explainer.what.label}</h2>
+                {copy.explainer.what.body.map((p) => (
+                  <p key={p.slice(0, 20)} className="mt-6 font-body text-base leading-relaxed text-umber sm:text-lg">
+                    {p}
                   </p>
-                  <button type="button" onClick={() => setStage('birth')} className={`${pill} bg-bark text-cream`}>
-                    {copy.cta} <span aria-hidden="true">→</span>
-                  </button>
+                ))}
+                <div className="mt-8 flex items-center gap-5">
+                  <BodygraphArt className="w-20 shrink-0" defined={['throat', 'g', 'sacral', 'root']} definedLinks={[['throat', 'g'], ['sacral', 'root']]} fill="#CBA1D4" label="An example Human Design chart" />
+                  <p className="font-hand text-lg leading-snug text-bark">
+                    coloured in = defined
+                    <br />
+                    white = open
+                  </p>
                 </div>
+
+                <h2 className="mt-16 font-display text-3xl italic leading-tight text-bark sm:text-5xl">{copy.explainer.authority.label}</h2>
+                <p className="mt-6 font-body text-base leading-relaxed text-umber sm:text-lg">{copy.explainer.authority.body}</p>
+
+                <h2 className="mt-16 font-display text-3xl italic leading-tight text-bark sm:text-5xl">{copy.explainer.why.label}</h2>
+                <p className="mt-6 font-body text-base leading-relaxed text-umber sm:text-lg">{copy.explainer.why.body}</p>
+
+                <button
+                  type="button"
+                  onClick={() => setStage('birth')}
+                  className="mt-12 rounded-full bg-bark px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest2 text-cream transition-transform hover:scale-105"
+                >
+                  {copy.cta} →
+                </button>
+                <p className="mt-6 font-body text-xs italic text-bark/70">{copy.explainer.disclaimer}</p>
               </div>
             </section>
           </motion.div>
@@ -430,7 +449,10 @@ export default function IntuitionBlueprint() {
                 <h1 id="step-email" tabIndex={-1} className="mt-4 font-display text-3xl leading-tight text-bark focus:outline-none sm:text-4xl">
                   {copy.email.heading}
                 </h1>
-                <p className={`mt-5 ${body}`}>{copy.email.body}</p>
+                <p className={`mt-5 ${body}`}>
+                  {copy.email.body}
+                  {emailEnabled && ` ${copy.email.bodyEmailCopy}`}
+                </p>
 
                 <form onSubmit={sendGuide} noValidate className="mt-8 space-y-7">
                   {/* Spam trap: hidden from people, bots fill it in */}
@@ -443,11 +465,21 @@ export default function IntuitionBlueprint() {
                       id="ib-name"
                       type="text"
                       autoComplete="given-name"
+                      required
                       maxLength={60}
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
-                      className="mt-2 w-full rounded-none border-0 border-b-2 border-bark/30 bg-transparent px-0 py-2 font-display text-2xl text-bark focus:border-bark focus:outline-none"
+                      aria-invalid={Boolean(nameError)}
+                      aria-describedby={nameError ? 'ib-name-error' : undefined}
+                      className={`mt-2 w-full rounded-none border-0 border-b-2 bg-transparent px-0 py-2 font-display text-2xl text-bark focus:outline-none ${
+                        nameError ? 'border-[#8f2328]' : 'border-bark/30 focus:border-bark'
+                      }`}
                     />
+                    {nameError && (
+                      <p id="ib-name-error" className={`mt-2 ${errorText}`}>
+                        {nameError}
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label htmlFor="ib-email" className="block font-body text-[0.7rem] font-semibold uppercase tracking-widest2 text-bark">
@@ -478,14 +510,9 @@ export default function IntuitionBlueprint() {
                     {copy.email.consent}
                   </label>
                   <p className="font-body text-xs leading-relaxed text-stone">{copy.email.privacy}</p>
-                  <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center">
-                    <button type="submit" disabled={sending} className={`${pill} bg-bark text-cream`}>
-                      {sending ? copy.email.sending : copy.email.submit}
-                    </button>
-                    <button type="button" onClick={() => setStage('result')} className={quiet}>
-                      {copy.email.skip}
-                    </button>
-                  </div>
+                  <button type="submit" disabled={sending} className={`${pill} bg-bark text-cream`}>
+                    {sending ? copy.email.sending : copy.email.submit}
+                  </button>
                 </form>
               </div>
             </div>
@@ -550,11 +577,6 @@ export default function IntuitionBlueprint() {
                   <button type="button" onClick={restart} className={quiet}>
                     {copy.result.again}
                   </button>
-                  {!sentTo && emailEnabled && (
-                    <button type="button" onClick={() => setStage('email')} className={quiet}>
-                      {copy.result.emailMe}
-                    </button>
-                  )}
                 </div>
               </aside>
             </div>

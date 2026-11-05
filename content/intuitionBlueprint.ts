@@ -7,32 +7,34 @@ import type { AuthorityKey } from '@/lib/intuition/bodygraph';
 export const intuitionBlueprint = {
   label: 'Free · Human Design',
   title: 'The Intuition Blueprint',
-  subheading: 'Discover your Human Design authority and explore how you’re designed to make decisions.',
-  intro: 'Stuck in your head? Second-guessing every choice? Find out how you’re actually designed to decide.',
+  subheading: 'Find out how you’re designed to make decisions, so you can stop overthinking and start trusting yourself.',
+  intro: 'Free, takes 2 minutes, and all you need is your birth date, time and place.',
   cta: 'Discover Your Authority',
   // Handwritten caption on the polaroid, and the spinning badge beside it
   polaroidCaption: 'trust the first yes',
   badge: 'free · human design · free · human design · ',
   // The lilac tape that scrolls across under the opening
-  tape: 'Sleep on it · Trust the first hit · Your gut already knows · Hear yourself say it',
+  tape: 'Stop overthinking · Hear yourself again · Trust your own yes',
   // Handwritten note beside the button
   scribble: 'takes 2 minutes!',
-  // The short explainer for anyone new to Human Design
+  // The explainer for anyone new to Human Design
   explainer: {
     what: {
       label: 'What is Human Design?',
-      body: 'A map of how you’re wired, based on when and where you were born.',
+      body: [
+        'Human Design is a self-discovery tool. It uses your birth date, time and place to create a chart of how you’re wired, drawing on astrology, the I Ching, the Kabbalah and the chakras.',
+        'Your chart shows how your energy works, where you soak up other people’s energy, and how you’re designed to make decisions.',
+      ],
     },
-    focus: {
-      label: 'Why your authority?',
-      body: 'It shows how you’re designed to make decisions, so you can stop overthinking and start trusting yourself again.',
+    authority: {
+      label: 'What’s an “authority”?',
+      body: 'It’s Human Design’s word for your inner compass: the part of you that knows what’s right for you. For some people it’s a gut feeling. For others it’s a quiet instinct, emotions settling over time, or hearing themselves talk it through.',
     },
-  },
-  // The middle part gets the lilac tape
-  note: {
-    start: 'Not science, and not a rulebook.',
-    tape: 'Just a lens',
-    end: 'to help you hear yourself again.',
+    why: {
+      label: 'Why find yours?',
+      body: 'Most of us were taught to decide with our heads: weigh it up, ask everyone else, do what we “should”. If you feel stuck, overthink everything or have lost touch with what you actually want, knowing how you’re designed to decide is a simple place to start trusting yourself again.',
+    },
+    disclaimer: 'Human Design isn’t science. Use it as a tool for self-reflection.',
   },
 
   form: {
@@ -67,16 +69,18 @@ export const intuitionBlueprint = {
 
   email: {
     label: 'Step 2 of 2',
-    heading: 'Want your full guide?',
-    scribble: 'free!',
-    body: 'I’ll email you your guide, with prompts and a simple practice to start trusting yourself.',
-    nameLabel: 'First name (optional)',
+    heading: 'Where should I send your results?',
+    scribble: 'nearly there!',
+    body: 'Pop in your name and email to see your full results: what it means, how to use it, journal prompts and a simple practice.',
+    // Added when the guide emails are set up
+    bodyEmailCopy: 'I’ll email you a copy too.',
+    nameLabel: 'First name',
+    nameError: 'Please add your first name.',
     emailLabel: 'Email',
     consent: 'Also send me Lena’s emails. Unsubscribe any time.',
     privacy: 'I only save your email, name and result. Never your birth details. Want them deleted? Email nalurisocials@gmail.com.',
-    submit: 'Send me my guide',
+    submit: 'Show me my results',
     sending: 'Sending…',
-    skip: 'No thanks, just show me',
     invalidEmail: 'Please enter a valid email.',
     failed: 'Your guide didn’t send. Please try again later. Here’s your result.',
     sent: 'Sent to {email}! Check your promotions folder if you can’t see it.',
@@ -97,7 +101,6 @@ export const intuitionBlueprint = {
     save: 'Save or print',
     again: 'Try another chart',
     guideLink: 'Your guide’s page',
-    emailMe: 'Email me this',
     noCenters: 'None (all open)',
     reminder: 'Take what feels true. Leave the rest.',
   },

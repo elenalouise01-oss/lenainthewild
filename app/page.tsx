@@ -9,6 +9,7 @@ import Section1 from '@/components/sections/Section1';
 import Section2 from '@/components/sections/Section2';
 import LeadMagnet from '@/components/sections/LeadMagnet';
 import Section3, { ComeSayHi } from '@/components/sections/Section3';
+import QuizTeaser from '@/components/sections/QuizTeaser';
 
 // Who the site is about, for search engines. Only facts stated on the site.
 const structuredData = [
@@ -70,6 +71,7 @@ export default function Home() {
       <Section2 />
       <LeadMagnet />
       <Section3 />
+      <QuizTeaser />
       <WaitlistCta />
       <Faq />
       <Newsletter />
