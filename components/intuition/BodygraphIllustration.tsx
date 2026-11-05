@@ -1,119 +1,112 @@
 // An illustrated Human Design bodygraph in Lena in the Wild's colours, drawn
-// to the proportions of Lena's reference: a soft sun behind a fine-line
-// head-and-shoulders figure, the nine centres, curved channels, sparkles,
-// crescent moons, a dotted halo and outline-only leaves. Decorative.
+// to the proportions of Lena's reference: fine gold linework (figure, rays,
+// dotted halo, sparkles, moons, channels) and softly painted centres with a
+// light paper grain. Decorative.
 
-const BROWN = '#52421b';
+const GOLD = '#a8834f';
 const INK = '#3b2d0e';
-const C = {
-  lilac: '#CBA1D4',
-  yellow: '#FDECA8',
-  pink: '#f8c8dc',
-  green: '#bee5b0',
-  blush: '#e8cfc1',
+// Each centre colour as a soft wash: lighter at the top, deeper at the bottom
+const WASH: Record<string, [string, string]> = {
+  pink: ['#fbe1ea', '#efb7ca'],
+  lilac: ['#e4cdea', '#bf93c9'],
+  yellow: ['#fff6cf', '#f6dd8e'],
+  green: ['#dcf0d3', '#a9d69a'],
+  brown: ['#7a6236', '#4a3a17'],
 };
 
 function Sparkle({ x, y, s }: { x: number; y: number; s: number }) {
-  const k = s * 0.14;
+  const k = s * 0.12;
   return (
     <path
       d={`M${x} ${y - s} Q${x + k} ${y - k} ${x + s} ${y} Q${x + k} ${y + k} ${x} ${y + s} Q${x - k} ${y + k} ${x - s} ${y} Q${x - k} ${y - k} ${x} ${y - s} Z`}
-      fill={BROWN}
-      fillOpacity={0.7}
+      fill={GOLD}
     />
   );
 }
 
 function Moon({ x, y, r, flip = false }: { x: number; y: number; r: number; flip?: boolean }) {
-  const d = `M${x} ${y - r} A${r} ${r} 0 1 0 ${x} ${y + r} A${r * 0.5} ${r} 0 1 1 ${x} ${y - r} Z`;
-  return <path d={d} fill={BROWN} fillOpacity={0.6} transform={flip ? `translate(${2 * x} 0) scale(-1 1)` : undefined} />;
-}
-
-// One outline-only leaf, pointing right from the origin
-const LEAF = 'M0 0 C 16 -14 50 -14 70 0 C 50 14 16 14 0 0 Z M6 0 L 64 0';
-
-function Sprig() {
-  const leaves: [number, number, number][] = [
-    [62, 610, -150],
-    [70, 596, -60],
-    [84, 566, -160],
-    [92, 548, -75],
-    [106, 516, -170],
-    [112, 498, -90],
-  ];
-  return (
-    <g fill="none" stroke={BROWN} strokeOpacity={0.55} strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M140 640 C 110 600, 96 560, 112 486" />
-      {leaves.map(([x, y, rot], i) => (
-        <path key={i} d={LEAF} transform={`translate(${x + 40} ${y}) rotate(${rot})`} />
-      ))}
-    </g>
-  );
+  const d = `M${x} ${y - r} A${r} ${r} 0 1 0 ${x} ${y + r} A${r * 0.55} ${r} 0 1 1 ${x} ${y - r} Z`;
+  return <path d={d} fill={GOLD} fillOpacity={0.85} transform={flip ? `translate(${2 * x} 0) scale(-1 1)` : undefined} />;
 }
 
 export default function BodygraphIllustration({ className = '' }: { className?: string }) {
-  // Rays around the head
+  // Rays around the head, alternating long and short
   const rays = Array.from({ length: 15 }, (_, i) => {
     const a = ((-176 + i * 12.6) * Math.PI) / 180;
-    const len = i % 2 ? 98 : 112;
-    return { x1: 300 + Math.cos(a) * 70, y1: 143 + Math.sin(a) * 70, x2: 300 + Math.cos(a) * len, y2: 143 + Math.sin(a) * len };
+    const len = i % 2 ? 100 : 116;
+    return { x1: 300 + Math.cos(a) * 72, y1: 143 + Math.sin(a) * 72, x2: 300 + Math.cos(a) * len, y2: 143 + Math.sin(a) * len };
   });
-  // Dotted halo: the top of a big circle, over the head and down both sides
-  const halo = 'M58 400 A 263 263 0 1 1 542 400';
-  const shape = { stroke: INK, strokeWidth: 1.8, strokeLinejoin: 'round' as const };
-  const line = { fill: 'none', stroke: BROWN, strokeLinecap: 'round' as const };
+  const gold = { fill: 'none', stroke: GOLD, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
+  const centre = (colour: keyof typeof WASH) => ({
+    fill: `url(#litw-wash-${colour})`,
+    stroke: INK,
+    strokeWidth: 1.6,
+    strokeLinejoin: 'round' as const,
+    filter: 'url(#litw-grain)',
+  });
 
   return (
     <svg viewBox="0 0 600 660" className={className} role="img" aria-label="An illustrated Human Design chart">
-      {/* Sun, rays, dotted halo */}
-      <circle cx={300} cy={180} r={180} fill={C.blush} fillOpacity={0.6} />
+      <defs>
+        {Object.entries(WASH).map(([name, [light, deep]]) => (
+          <linearGradient key={name} id={`litw-wash-${name}`} x1="0" y1="0" x2="0.35" y2="1">
+            <stop offset="0%" stopColor={light} />
+            <stop offset="100%" stopColor={deep} />
+          </linearGradient>
+        ))}
+        {/* A light paper grain over the painted centres */}
+        <filter id="litw-grain" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" result="noise" />
+          <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0.3  0 0 0 0 0.22  0 0 0 0 0.1  0 0 0 0.16 0" result="grain" />
+          <feComposite in="grain" in2="SourceGraphic" operator="in" result="grainIn" />
+          <feMerge>
+            <feMergeNode in="SourceGraphic" />
+            <feMergeNode in="grainIn" />
+          </feMerge>
+        </filter>
+      </defs>
+
+      {/* Rays and dotted halo */}
       {rays.map((r, i) => (
-        <line key={i} {...r} stroke={BROWN} strokeOpacity={0.55} strokeWidth={1.3} strokeLinecap="round" />
+        <line key={i} {...r} stroke={GOLD} strokeOpacity={0.85} strokeWidth={1.2} strokeLinecap="round" />
       ))}
-      <path d={halo} {...line} strokeOpacity={0.55} strokeWidth={2.6} strokeDasharray="0.1 11" />
+      <path d="M58 400 A 263 263 0 1 1 542 400" {...gold} strokeWidth={2.6} strokeDasharray="0.1 11" />
 
       {/* Sparkles and moons */}
-      <Sparkle x={300} y={22} s={20} />
+      <Sparkle x={300} y={24} s={20} />
       <Sparkle x={88} y={312} s={11} />
       <Sparkle x={512} y={312} s={11} />
-      <Sparkle x={300} y={640} s={12} />
+      <Sparkle x={300} y={642} s={12} />
       <Moon x={100} y={182} r={20} />
       <Moon x={500} y={182} r={20} flip />
 
-      {/* Outline-only leaves in the bottom corners */}
-      <Sprig />
-      <g transform="translate(600 0) scale(-1 1)">
-        <Sprig />
-      </g>
-
-      {/* The figure: head, neck and shoulders */}
+      {/* The figure: head, neck, shoulders and body, in fine gold */}
       <path
-        d="M153 440 C 154 410 155 380 157 340 C 160 300 175 266 200 254 C 225 244 255 236 267 226 L 267 210 C 263 204 255 198 250 190 C 243 180 239 165 241 140 C 244 108 270 88 300 88 C 330 88 356 108 359 140 C 361 165 357 180 350 190 C 345 198 337 204 333 210 L 333 226 C 345 236 375 244 400 254 C 425 266 440 300 443 340 C 445 380 446 410 447 440"
-        {...line}
-        strokeOpacity={0.6}
-        strokeWidth={1.5}
+        d="M168 600 C 158 560 154 500 153 440 C 154 410 155 380 157 340 C 160 300 175 266 200 254 C 225 244 255 236 267 226 L 267 210 C 263 204 255 198 250 190 C 243 180 239 165 241 140 C 244 108 270 88 300 88 C 330 88 356 108 359 140 C 361 165 357 180 350 190 C 345 198 337 204 333 210 L 333 226 C 345 236 375 244 400 254 C 425 266 440 300 443 340 C 445 380 446 410 447 440 C 446 500 442 560 432 600"
+        {...gold}
+        strokeWidth={1.4}
       />
 
-      {/* Channels: the central column, the curved loops and the crossing curve */}
-      {[294, 300, 306].map((x) => (
-        <line key={x} x1={x} y1={127} x2={x} y2={560} stroke={BROWN} strokeOpacity={0.6} strokeWidth={x === 300 ? 2.4 : 1.1} />
-      ))}
-      <ellipse cx={303} cy={427} rx={133} ry={170} {...line} strokeOpacity={0.85} strokeWidth={2.8} />
-      <ellipse cx={303} cy={432} rx={143} ry={180} {...line} strokeOpacity={0.4} strokeWidth={1.1} />
-      <ellipse cx={303} cy={422} rx={123} ry={160} {...line} strokeOpacity={0.4} strokeWidth={1.1} />
-      <path d="M213 470 C 262 428, 302 410, 341 410" {...line} strokeOpacity={0.5} strokeWidth={1.1} />
-      <path d="M213 478 C 264 438, 304 420, 341 420" {...line} strokeOpacity={0.5} strokeWidth={1.1} />
+      {/* Channels: fine gold column with a darker centre line, curved loops and the crossing curve */}
+      <line x1={294} y1={127} x2={294} y2={560} stroke={GOLD} strokeWidth={1} />
+      <line x1={306} y1={127} x2={306} y2={560} stroke={GOLD} strokeWidth={1} />
+      <line x1={300} y1={127} x2={300} y2={560} stroke={INK} strokeOpacity={0.75} strokeWidth={2.2} />
+      <ellipse cx={303} cy={427} rx={133} ry={170} fill="none" stroke={INK} strokeOpacity={0.7} strokeWidth={2.4} />
+      <ellipse cx={303} cy={432} rx={143} ry={180} {...gold} strokeWidth={1} />
+      <ellipse cx={303} cy={422} rx={123} ry={160} {...gold} strokeWidth={1} />
+      <path d="M213 470 C 262 428, 302 410, 341 410" {...gold} strokeWidth={1} />
+      <path d="M213 478 C 264 438, 304 420, 341 420" {...gold} strokeWidth={1} />
 
-      {/* The nine centres */}
-      <polygon points="300,70 337,127 263,127" fill={C.pink} {...shape} />
-      <polygon points="263,148 337,148 300,205" fill={C.lilac} {...shape} />
-      <rect x={273} y={230} width={54} height={53} rx={7} fill={C.yellow} {...shape} />
-      <polygon points="300,314 343,357 300,400 257,357" fill={C.pink} {...shape} />
-      <polygon points="341,383 393,410 341,437" fill={BROWN} {...shape} />
-      <polygon points="152,433 152,507 213,470" fill={C.lilac} {...shape} />
-      <polygon points="445,433 445,507 385,470" fill={C.pink} {...shape} />
-      <rect x={268} y={465} width={63} height={62} rx={7} fill={C.green} {...shape} />
-      <rect x={265} y={553} width={68} height={64} rx={7} fill={BROWN} {...shape} />
+      {/* The nine centres, softly painted */}
+      <polygon points="300,70 337,127 263,127" {...centre('pink')} />
+      <polygon points="263,148 337,148 300,205" {...centre('lilac')} />
+      <rect x={273} y={230} width={54} height={53} rx={7} {...centre('yellow')} />
+      <polygon points="300,314 343,357 300,400 257,357" {...centre('pink')} />
+      <polygon points="341,383 393,410 341,437" {...centre('brown')} />
+      <polygon points="152,433 152,507 213,470" {...centre('lilac')} />
+      <polygon points="445,433 445,507 385,470" {...centre('pink')} />
+      <rect x={268} y={465} width={63} height={62} rx={7} {...centre('green')} />
+      <rect x={265} y={553} width={68} height={64} rx={7} {...centre('brown')} />
     </svg>
   );
 }
