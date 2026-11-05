@@ -18,7 +18,7 @@ export const SHAPES: Record<CenterId, { points?: string; rect?: [number, number,
 };
 
 // Centre pairs joined by at least one channel
-const LINKS: [CenterId, CenterId][] = [
+export const LINKS: [CenterId, CenterId][] = [
   ['head', 'ajna'], ['ajna', 'throat'], ['throat', 'g'], ['throat', 'heart'], ['throat', 'spleen'], ['throat', 'sacral'],
   ['throat', 'solarPlexus'], ['g', 'heart'], ['g', 'sacral'], ['g', 'spleen'], ['heart', 'spleen'], ['heart', 'solarPlexus'],
   ['sacral', 'spleen'], ['sacral', 'solarPlexus'], ['sacral', 'root'], ['spleen', 'root'], ['solarPlexus', 'root'],

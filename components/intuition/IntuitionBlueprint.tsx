@@ -13,6 +13,7 @@ import { isValidEmail } from '@/lib/intuition/email';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 import AuthorityResult, { BlueprintInvitation } from './AuthorityResult';
 import BodygraphArt from './BodygraphArt';
+import BodygraphLabelled from './BodygraphLabelled';
 import ChartExtras from './ChartExtras';
 import PlaceSearch, { type PickedPlace } from './PlaceSearch';
 
@@ -255,23 +256,28 @@ export default function IntuitionBlueprint() {
                     {p}
                   </p>
                 ))}
-                <figure className="mt-8 flex items-center gap-6">
-                  <BodygraphArt className="w-24 shrink-0" defined={['throat', 'g', 'sacral', 'root']} definedLinks={[['throat', 'g'], ['sacral', 'root']]} fill="#CBA1D4" label="An example Human Design chart" />
-                  <figcaption>
-                    <p className="font-body text-sm leading-relaxed text-umber">{copy.explainer.diagram.caption}</p>
-                    <ul className="mt-3 space-y-1 font-body text-sm text-umber">
-                      {copy.explainer.diagram.centres.map((c) => (
-                        <li key={c.name}>
-                          <span className="font-semibold text-bark">{c.name}:</span> {c.meaning}
-                        </li>
-                      ))}
-                    </ul>
-                    <p className="mt-3 font-hand text-lg leading-snug text-bark">
-                      {copy.explainer.diagram.defined}
-                      <br />
-                      {copy.explainer.diagram.open}
-                    </p>
-                  </figcaption>
+                <figure className="mt-8">
+                  <figcaption className="font-body text-sm leading-relaxed text-umber">{copy.explainer.diagram.caption}</figcaption>
+                  <div className="mt-6">
+                    <BodygraphLabelled
+                      names={copy.explainer.diagram.centres}
+                      defined={['throat', 'g', 'sacral', 'root']}
+                      links={[['throat', 'g'], ['sacral', 'root']]}
+                    />
+                  </div>
+                  {/* On a phone the chart only fits the names, so the meanings are listed too */}
+                  <ul className="mt-4 space-y-1 font-body text-sm text-umber sm:hidden">
+                    {Object.values(copy.explainer.diagram.centres).map((c) => (
+                      <li key={c.name}>
+                        <span className="font-semibold text-bark">{c.name}:</span> {c.meaning}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-4 font-hand text-lg leading-snug text-bark">
+                    {copy.explainer.diagram.defined}
+                    <br />
+                    {copy.explainer.diagram.open}
+                  </p>
                 </figure>
 
                 <h2 className="mt-16 font-display text-3xl italic leading-tight text-bark sm:text-5xl">{copy.explainer.authority.label}</h2>
