@@ -42,6 +42,8 @@ export function guideEmail(authority: AuthorityKey, firstName?: string, chart?: 
     ...(chart ? [extras.openLabel.toUpperCase(), ...(open.length ? [extras.openIntro, ...open.map((c) => `- Open ${OPEN_CENTRES[c].name}: ${OPEN_CENTRES[c].question}`)] : [extras.noOpen]), ''] : []),
     copy.result.reminder,
     '',
+    `${copy.book.line} ${copy.book.title} by ${copy.book.author}: ${copy.book.href}`,
+    '',
     `Come back to your guide any time: ${url}`,
     '',
     'With love,',
@@ -76,6 +78,7 @@ ${label(`${copy.result.exerciseLabel}: ${a.exercise.title}`)}
 ${signal ? `${label(extras.signalsLabel)}${p(`${extras.signatureLabel}: ${signal.signature}. ${extras.notSelfLabel}: ${signal.notSelf}.`, 'font-weight:600;')}${p(signal.body)}` : ''}
 ${chart ? `${label(extras.openLabel)}${open.length ? `${p(extras.openIntro)}<ul style="margin:0 0 16px;padding-left:20px;color:#52421b;font-size:16px;line-height:1.7;">${open.map((c) => `<li style="margin-bottom:10px;"><strong>Open ${esc(OPEN_CENTRES[c].name)}:</strong> ${esc(OPEN_CENTRES[c].question)}</li>`).join('')}</ul>` : p(extras.noOpen)}` : ''}
 ${p(copy.result.reminder, 'font-style:italic;')}
+<p style="margin:0 0 16px;font-size:16px;line-height:1.7;color:#52421b;">${esc(copy.book.line)} <a href="${esc(copy.book.href)}" style="color:#3b2d0e;"><em>${esc(copy.book.title)}</em></a> by ${esc(copy.book.author)}.</p>
 <p style="margin:28px 0;"><a href="${esc(url)}" style="display:inline-block;padding:14px 28px;border-radius:999px;background:#3b2d0e;color:#ffffff;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;">Come back to your guide</a></p>
 ${p('With love,')}
 <p style="margin:0 0 32px;font-family:Georgia,serif;font-style:italic;font-size:22px;color:#3b2d0e;">Lena</p>

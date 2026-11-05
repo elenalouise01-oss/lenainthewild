@@ -155,6 +155,17 @@ export default function AuthorityResult({
           </section>
 
           <p className="mx-auto mt-14 max-w-xl text-center font-hand text-2xl leading-snug text-bark">{copy.result.reminder}</p>
+
+          <aside className="mx-auto mt-14 max-w-xl border-t border-dashed border-bark/30 pt-10 text-center">
+            <p className={`${label} text-stone`}>{copy.book.label}</p>
+            <p className="mt-4 font-body text-base leading-relaxed text-umber sm:text-lg">
+              {copy.book.line}{' '}
+              <a href={copy.book.href} target="_blank" rel="noopener noreferrer" className="font-display italic text-bark underline decoration-sage decoration-2 underline-offset-4 hover:decoration-bark">
+                {copy.book.title}
+              </a>{' '}
+              by {copy.book.author}.
+            </p>
+          </aside>
         </div>
       </div>
     </article>

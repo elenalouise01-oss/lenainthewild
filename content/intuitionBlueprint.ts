@@ -150,6 +150,15 @@ export const intuitionBlueprint = {
     ],
   },
 
+  // Lena's book recommendation, at the end of every result
+  book: {
+    label: 'Want to go deeper?',
+    line: 'If you want to explore the rest of your Human Design, I’d recommend',
+    title: 'Human Design',
+    author: 'Jenna Zoe',
+    href: 'https://www.penguinrandomhouse.com/books/717075/human-design-by-jenna-zoe',
+  },
+
   // The guide pages (/intuition-blueprint/[authority]) for people coming back
   guidePage: {
     label: 'The Intuition Blueprint',
