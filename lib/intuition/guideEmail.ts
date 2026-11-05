@@ -51,6 +51,9 @@ export function guideEmail(authority: AuthorityKey, firstName?: string, chart?: 
     '',
     `${copy.emailEnd.resultsLink}: ${url}`,
     `${copy.emailEnd.siteLink}: ${absoluteUrl('/')}`,
+    '',
+    'www.lenainthewild.com',
+    '@lenainthewild on Instagram: https://www.instagram.com/lenainthewild/',
   ].join('\n');
 
   const p = (s: string, extra = '') => `<p style="margin:0 0 16px;font-size:16px;line-height:1.7;color:#52421b;${extra}">${esc(s)}</p>`;
@@ -59,7 +62,7 @@ export function guideEmail(authority: AuthorityKey, firstName?: string, chart?: 
 
   const html = `<!doctype html><html><body style="margin:0;padding:0;background:#f1efe7;">
 <div style="max-width:560px;margin:0 auto;padding:40px 24px;font-family:Montserrat,Helvetica,Arial,sans-serif;background:#ffffff;">
-<p style="margin:0 0 28px;font-family:Georgia,serif;font-style:italic;font-size:20px;color:#3b2d0e;">Lena in the Wild</p>
+<p style="margin:0 0 28px;text-align:center;"><a href="${esc(absoluteUrl('/'))}"><img src="${esc(absoluteUrl('/images/litw-logo-brown.png'))}" alt="Lena in the Wild" width="110" height="51" style="display:inline-block;width:110px;height:auto;border:0;" /></a></p>
 ${p(hello)}
 <p style="margin:0 0 8px;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#7b776f;">${esc(copy.title)}</p>
 <h1 style="margin:0 0 12px;font-family:Georgia,serif;font-weight:400;font-size:34px;line-height:1.1;color:#3b2d0e;">${esc(a.name)}</h1>
@@ -86,6 +89,10 @@ ${p('Sending positive vibes your way,')}
 <a href="${esc(absoluteUrl(copy.emailEnd.href))}" style="display:inline-block;padding:14px 28px;border-radius:999px;background:#CBA1D4;color:#3b2d0e;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;">${esc(copy.emailEnd.cta)}</a>
 </div>
 <p style="margin:24px 0 0;text-align:center;font-size:14px;"><a href="${esc(url)}" style="color:#3b2d0e;">${esc(copy.emailEnd.resultsLink)}</a> &nbsp;·&nbsp; <a href="${esc(absoluteUrl('/'))}" style="color:#3b2d0e;">${esc(copy.emailEnd.siteLink)}</a></p>
+<div style="margin-top:32px;border-top:1px solid #e6e6dd;padding-top:20px;text-align:center;font-size:13px;line-height:1.8;color:#7b776f;">
+<a href="${esc(absoluteUrl('/'))}" style="color:#3b2d0e;text-decoration:none;font-weight:600;">www.lenainthewild.com</a><br />
+<a href="https://www.instagram.com/lenainthewild/" style="color:#7b776f;text-decoration:none;">@lenainthewild on Instagram</a>
+</div>
 </div></body></html>`;
 
   return { subject, text, html };
