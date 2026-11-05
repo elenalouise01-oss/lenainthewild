@@ -355,7 +355,10 @@ export const extras = {
   signatureLabel: 'On track',
   notSelfLabel: 'Off track',
   openLabel: 'What drowns out your inner voice',
-  openIntro: 'Your open (white) centres are where you soak up other people’s energy. Catch yourself with these:',
+  // In the email, where there's no chart to look at
+  openIntro: 'Your chart has nine energy centres. The “open” ones are where you take in and amplify other people’s energy, so it’s easy to lose touch with yourself there. Here are yours, with a question to catch yourself:',
+  // On the results page, where their chart is shown at the top
+  openIntroPage: 'Your chart has nine energy centres. The “open” ones (the white shapes in your chart at the top) are where you take in and amplify other people’s energy, so it’s easy to lose touch with yourself there. Here are yours, with a question to catch yourself:',
   noOpen: 'All your centres are defined. Your work is staying true to yourself when others want otherwise.',
 };
 

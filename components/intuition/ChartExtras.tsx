@@ -44,7 +44,7 @@ export default function ChartExtras({ type, definedCenters }: { type: HdType; de
           </h2>
           {open.length ? (
             <>
-              <p className={`mt-6 ${body}`}>{extras.openIntro}</p>
+              <p className={`mt-6 ${body}`}>{extras.openIntroPage}</p>
               <ul className="mt-8 divide-y divide-dashed divide-bark/30 border-y border-dashed border-bark/30">
                 {open.map((c) => (
                   <li key={c} className="grid gap-1 py-5 sm:grid-cols-[13rem_1fr] sm:gap-6">
