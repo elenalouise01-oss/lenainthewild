@@ -7,10 +7,13 @@ import { guideEmail } from './guideEmail';
 // choice) and emails the guide from Lena's Gmail. The script code and setup
 // steps are in docs/intuition-blueprint.md.
 //
-// Both settings are server-only environment variables, so the script's
-// address and secret never reach the browser:
-//   INTUITION_GUIDE_SCRIPT_URL     the web app URL (…/exec)
+// The script's address is below (harmless on its own: the script ignores any
+// request without the secret). The secret is a server-only environment
+// variable in Vercel, never in this public code:
 //   INTUITION_GUIDE_SCRIPT_SECRET  a long random string, also saved in the script
+//   INTUITION_GUIDE_SCRIPT_URL     optional: overrides the address below
+const SCRIPT_URL =
+  'https://script.google.com/macros/s/AKfycbwU5fuSCtNlA4vKIK7m9V1mBHBPNIjstXgnv3SM64AZgALGBNvC7179T-mwM4WI-AR_WQ/exec';
 
 export type Signup = {
   email: string;
@@ -24,11 +27,11 @@ export type Signup = {
 export type DeliveryResult = { ok: true } | { ok: false; reason: 'not-configured' | 'failed' };
 
 export function deliveryConfigured(): boolean {
-  return Boolean(process.env.INTUITION_GUIDE_SCRIPT_URL && process.env.INTUITION_GUIDE_SCRIPT_SECRET);
+  return Boolean(process.env.INTUITION_GUIDE_SCRIPT_SECRET);
 }
 
 export async function deliverGuide(signup: Signup): Promise<DeliveryResult> {
-  const url = process.env.INTUITION_GUIDE_SCRIPT_URL;
+  const url = process.env.INTUITION_GUIDE_SCRIPT_URL || SCRIPT_URL;
   const secret = process.env.INTUITION_GUIDE_SCRIPT_SECRET;
   if (!url || !secret) return { ok: false, reason: 'not-configured' };
 
