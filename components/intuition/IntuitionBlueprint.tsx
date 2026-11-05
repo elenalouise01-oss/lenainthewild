@@ -259,6 +259,13 @@ export default function IntuitionBlueprint() {
                   <BodygraphArt className="w-24 shrink-0" defined={['throat', 'g', 'sacral', 'root']} definedLinks={[['throat', 'g'], ['sacral', 'root']]} fill="#CBA1D4" label="An example Human Design chart" />
                   <figcaption>
                     <p className="font-body text-sm leading-relaxed text-umber">{copy.explainer.diagram.caption}</p>
+                    <ul className="mt-3 grid gap-x-6 gap-y-1 font-body text-sm text-umber sm:grid-cols-2">
+                      {copy.explainer.diagram.centres.map((c) => (
+                        <li key={c.name}>
+                          <span className="font-semibold text-bark">{c.name}:</span> {c.meaning}
+                        </li>
+                      ))}
+                    </ul>
                     <p className="mt-3 font-hand text-lg leading-snug text-bark">
                       {copy.explainer.diagram.defined}
                       <br />

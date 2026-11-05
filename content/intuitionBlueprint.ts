@@ -37,7 +37,19 @@ export const intuitionBlueprint = {
     disclaimer: 'Human Design isn’t science. Use it as a tool for self-reflection.',
     // The little example chart beside "What is Human Design?"
     diagram: {
-      caption: 'This is what a Human Design chart looks like. It’s called a bodygraph: the nine shapes are your energy centres (like your gut, your heart and your mind), and the lines are the channels that connect them.',
+      caption: 'This is what a Human Design chart looks like. It’s called a bodygraph: the nine shapes are your energy centres, and the lines are the channels that connect them.',
+      // The nine centres, top of the chart to bottom
+      centres: [
+        { name: 'Head', meaning: 'inspiration' },
+        { name: 'Ajna', meaning: 'thinking' },
+        { name: 'Throat', meaning: 'communication' },
+        { name: 'G centre', meaning: 'identity and direction' },
+        { name: 'Heart', meaning: 'willpower and self-worth' },
+        { name: 'Sacral', meaning: 'life force and gut response' },
+        { name: 'Solar Plexus', meaning: 'emotions' },
+        { name: 'Spleen', meaning: 'instinct and intuition' },
+        { name: 'Root', meaning: 'pressure and drive' },
+      ],
       defined: 'coloured in = defined',
       open: 'white = open',
     },
