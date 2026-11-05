@@ -255,14 +255,17 @@ export default function IntuitionBlueprint() {
                     {p}
                   </p>
                 ))}
-                <div className="mt-8 flex items-center gap-5">
-                  <BodygraphArt className="w-20 shrink-0" defined={['throat', 'g', 'sacral', 'root']} definedLinks={[['throat', 'g'], ['sacral', 'root']]} fill="#CBA1D4" label="An example Human Design chart" />
-                  <p className="font-hand text-lg leading-snug text-bark">
-                    coloured in = defined
-                    <br />
-                    white = open
-                  </p>
-                </div>
+                <figure className="mt-8 flex items-center gap-6">
+                  <BodygraphArt className="w-24 shrink-0" defined={['throat', 'g', 'sacral', 'root']} definedLinks={[['throat', 'g'], ['sacral', 'root']]} fill="#CBA1D4" label="An example Human Design chart" />
+                  <figcaption>
+                    <p className="font-body text-sm leading-relaxed text-umber">{copy.explainer.diagram.caption}</p>
+                    <p className="mt-3 font-hand text-lg leading-snug text-bark">
+                      {copy.explainer.diagram.defined}
+                      <br />
+                      {copy.explainer.diagram.open}
+                    </p>
+                  </figcaption>
+                </figure>
 
                 <h2 className="mt-16 font-display text-3xl italic leading-tight text-bark sm:text-5xl">{copy.explainer.authority.label}</h2>
                 <p className="mt-6 font-body text-base leading-relaxed text-umber sm:text-lg">{copy.explainer.authority.body}</p>

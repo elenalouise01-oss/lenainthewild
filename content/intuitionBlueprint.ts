@@ -35,6 +35,12 @@ export const intuitionBlueprint = {
       body: 'Most of us were taught to decide with our heads: weigh it up, ask everyone else, do what we “should”. If you feel stuck, overthink everything or have lost touch with what you actually want, knowing how you’re designed to decide is a simple place to start trusting yourself again.',
     },
     disclaimer: 'Human Design isn’t science. Use it as a tool for self-reflection.',
+    // The little example chart beside "What is Human Design?"
+    diagram: {
+      caption: 'This is what a Human Design chart looks like. It’s called a bodygraph: the nine shapes are your energy centres (like your gut, your heart and your mind), and the lines are the channels that connect them.',
+      defined: 'coloured in = defined',
+      open: 'white = open',
+    },
   },
 
   form: {
