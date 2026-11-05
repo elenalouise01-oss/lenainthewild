@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import DrawnLine from '@/components/DrawnLine';
-import ImageZoom from '@/components/ImageZoom';
 import SectionLabel from '@/components/SectionLabel';
 import TapeMark from '@/components/TapeMark';
 import { AUTHORITY_CENTER, AUTHORITY_FOR, authorities, intuitionBlueprint as copy } from '@/content/intuitionBlueprint';
@@ -292,14 +291,21 @@ export default function IntuitionBlueprint() {
 
                 <h2 className="mt-16 font-display text-3xl italic leading-tight text-bark sm:text-5xl">{copy.explainer.authority.label}</h2>
                 <figure className="mt-8">
-                  <ImageZoom
-                    src={copy.explainer.overview.src}
-                    alt={copy.explainer.overview.alt}
-                    width={1536}
-                    height={1024}
-                    sizes="(min-width: 768px) 42rem, 100vw"
-                    className="h-auto w-full shadow-xl"
-                  />
+                  <ul className="grid gap-4 sm:grid-cols-2">
+                    {copy.explainer.overview.parts.map((part) => (
+                      <li
+                        key={part.name}
+                        className={`relative px-6 py-5 ${'focus' in part && part.focus ? 'bg-sage/35 ring-2 ring-bark' : 'border border-bark/15 bg-porcelain/60'}`}
+                      >
+                        {'focus' in part && part.focus && (
+                          <span className="absolute -top-4 right-4 rotate-3 bg-zing-yellow px-3 py-0.5 font-hand text-lg text-bark shadow-sm">{copy.explainer.overview.focusNote}</span>
+                        )}
+                        <p className="font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-stone">Your</p>
+                        <p className="font-display text-3xl italic text-bark">{part.name}</p>
+                        <p className="mt-2 font-body text-sm leading-relaxed text-umber">{part.body}</p>
+                      </li>
+                    ))}
+                  </ul>
                   <figcaption className="mt-5 font-body text-base leading-relaxed text-umber sm:text-lg">
                     {copy.explainer.overview.focusStart} <TapeMark>{copy.explainer.overview.focusTape}</TapeMark>
                   </figcaption>

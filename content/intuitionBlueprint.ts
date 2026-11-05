@@ -30,6 +30,14 @@ export const intuitionBlueprint = {
     overview: {
       src: '/images/intuition/human-design-overview.webp',
       alt: 'Human Design overview: a meditating silhouette with the nine bodygraph centres glowing over it, and the four main parts of a chart: your Type (your natural energy), your Strategy (how to work with your energy), your Authority (your inner decision-making guidance) and your Profile (the lens through which you experience life).',
+      // The four main parts of a chart, shown as cards (Authority highlighted)
+      parts: [
+        { name: 'Type', body: 'Your natural energy and how you’re designed to move through life.' },
+        { name: 'Strategy', body: 'The approach that helps you work with your energy, not against it.' },
+        { name: 'Authority', body: 'Your inner decision-making guidance, to help you make choices that feel right.', focus: true },
+        { name: 'Profile', body: 'The lens through which you experience life and learn.' },
+      ],
+      focusNote: 'this quiz!',
       // The middle part gets the lilac tape
       focusStart: 'Your Human Design is made up of all four of these: your Type, Strategy, Authority and Profile.',
       focusTape: 'This quiz focuses on your Authority: how you’re designed to make decisions.',
