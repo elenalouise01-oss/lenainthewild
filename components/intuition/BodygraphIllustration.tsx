@@ -38,7 +38,7 @@ const HALF_FIGURE =
 export default function BodygraphIllustration({ className = '' }: { className?: string }) {
   // Rays around the head, alternating long and short
   const rays = Array.from({ length: 15 }, (_, i) => {
-    const a = ((-176 + i * 12.6) * Math.PI) / 180;
+    const a = ((-178.2 + i * 12.6) * Math.PI) / 180; // centred on straight up (-90°)
     const len = i % 2 ? 100 : 116;
     return { x1: 300 + Math.cos(a) * 72, y1: 143 + Math.sin(a) * 72, x2: 300 + Math.cos(a) * len, y2: 143 + Math.sin(a) * len };
   });

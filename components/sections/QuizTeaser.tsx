@@ -11,7 +11,7 @@ export default function QuizTeaser() {
     <section id="free-quiz" className="bg-sage px-6 py-28 sm:py-36">
       <div className="container-editorial grid items-center gap-14 lg:grid-cols-[2fr_3fr] lg:gap-20">
         <ScrollReveal className="mx-auto w-full max-w-[17rem] sm:max-w-[20rem]">
-          <div className="relative -rotate-3 bg-porcelain p-4 pb-12 shadow-2xl">
+          <div className="relative bg-porcelain p-4 pb-12 shadow-2xl">
             <span aria-hidden="true" className="absolute -top-3 left-1/2 z-10 h-6 w-20 -translate-x-1/2 rotate-2 bg-zing-yellow/85 shadow-sm" />
             <BodygraphIllustration className="mx-auto h-auto w-full" />
             <p aria-hidden="true" className="absolute inset-x-0 bottom-3 text-center font-hand text-lg text-bark">
