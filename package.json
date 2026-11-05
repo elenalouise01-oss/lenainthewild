@@ -6,9 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "tsx --test lib/intuition/*.test.ts"
   },
   "dependencies": {
+    "astronomia": "4.2.0",
+    "astronomy-engine": "2.1.19",
     "framer-motion": "^11.15.0",
     "next": "15.5.24",
     "react": "^18.3.1",
@@ -23,6 +26,7 @@
     "eslint-config-next": "15.5.24",
     "postcss": "^8.5.1",
     "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   }
 }

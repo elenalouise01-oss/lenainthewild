@@ -10,6 +10,7 @@ export const nav = {
     { label: 'The Freedom Seeker', href: '#freedom-seeker', expandable: true },
     { label: 'Journal Entries', href: '/journal' },
     { label: 'Photography', href: '/photography' },
+    { label: 'Free Quiz', href: '/intuition-blueprint' },
     { label: "Let's Connect", href: '#contact' },
   ],
   subscribeLabel: 'Subscribe',
@@ -119,6 +120,47 @@ export const waitlistOffers = ['The Freedom Frequency'];
 // button opens a pop-up sign-up; once they've joined, the video plays right
 // in the pop-up (from Lena's YouTube). Sign-ups go to her inbox and the
 // waitlist Google Sheet.
+// The Intuition Blueprint quiz, on the home page (lilac section after
+// "A life that actually feels like you")
+export const quizTeaser = {
+  label: 'Free Human Design quiz',
+  heading: 'How are you designed to make decisions?',
+  body: 'Discover your Human Design authority: your inner compass for knowing what’s right for you. Free, and it takes 2 minutes.',
+  cta: 'Take the free quiz',
+  href: '/intuition-blueprint',
+  scribble: 'your chart',
+};
+
+// The freebie at the end of each journal article: the quiz for articles about
+// intuition, decisions and old patterns; the tapping practice for overwhelm,
+// burnout and the nervous system (every other article)
+export const freebies = {
+  quiz: {
+    line: 'Not sure what you actually want? Find out how you’re designed to make decisions.',
+    cta: 'Take the free quiz',
+    href: '/intuition-blueprint',
+  },
+  tapping: {
+    line: 'Feeling overwhelmed and stuck in your head? Try my free guided tapping practice.',
+    cta: 'Get the free practice',
+    href: '/#free-practice',
+  },
+  quizArticles: [
+    'trust-your-intuition-stop-abandoning-yourself',
+    'avoiding-men-im-attracted-to',
+    'living-out-an-old-story',
+    'triggers-are-clues-healing-core-wounds',
+    'losing-myself-in-relationships-codependency',
+    'performative-energy-wearing-a-mask',
+    'perfectionism-feeling-behind-in-life',
+    'leaping-into-the-unknown-part-1',
+    'leaping-into-the-unknown-part-2',
+    'breaking-free-from-the-system',
+    'who-decided-monday-to-friday',
+    'be-a-little-delulu-the-universe-has-your-back',
+  ],
+};
+
 export const leadMagnet = {
   label: 'Free guided tapping practice',
   // The small label above the home page section's headline

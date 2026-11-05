@@ -1,0 +1,43 @@
+import Link from 'next/link';
+import BodygraphArt from '@/components/intuition/BodygraphArt';
+import ScrollReveal from '@/components/ScrollReveal';
+import SectionLabel from '@/components/SectionLabel';
+import { quizTeaser } from '@/content/site';
+
+// The Intuition Blueprint quiz on the home page: lilac, so it reads as its own
+// thing, apart from the free tapping practice higher up.
+export default function QuizTeaser() {
+  return (
+    <section id="free-quiz" className="bg-sage px-6 py-28 sm:py-36">
+      <div className="container-editorial grid items-center gap-14 lg:grid-cols-[2fr_3fr] lg:gap-20">
+        <ScrollReveal className="mx-auto w-full max-w-[14rem] sm:max-w-[16rem]">
+          <div className="relative -rotate-3 bg-cream p-5 pb-12 shadow-2xl">
+            <span aria-hidden="true" className="absolute -top-3 left-1/2 z-10 h-6 w-20 -translate-x-1/2 rotate-2 bg-zing-yellow/85 shadow-sm" />
+            <BodygraphArt
+              className="mx-auto w-full"
+              defined={['throat', 'g', 'sacral', 'spleen', 'root']}
+              definedLinks={[['throat', 'g'], ['sacral', 'root'], ['spleen', 'root']]}
+              highlight="sacral"
+              fill="#CBA1D4"
+              label="An example Human Design chart"
+            />
+            <p aria-hidden="true" className="absolute inset-x-0 bottom-3 text-center font-hand text-lg text-bark">
+              {quizTeaser.scribble}
+            </p>
+          </div>
+        </ScrollReveal>
+        <ScrollReveal delay={0.1} className="text-center lg:text-left">
+          <SectionLabel className="!text-bark/70">{quizTeaser.label}</SectionLabel>
+          <h2 className="mt-6 font-display text-display-3 italic leading-[1.1] text-bark">{quizTeaser.heading}</h2>
+          <p className="mx-auto mt-6 max-w-xl font-body text-base leading-relaxed text-bark/85 sm:text-lg lg:mx-0">{quizTeaser.body}</p>
+          <Link
+            href={quizTeaser.href}
+            className="mt-10 inline-block rounded-full bg-bark px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest2 text-cream transition-transform hover:scale-105"
+          >
+            {quizTeaser.cta} →
+          </Link>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}

@@ -1,3 +1,4 @@
+import { authorities } from '@/content/intuitionBlueprint';
 import { sortedJournal } from '@/content/journal';
 import { fiveDayReconnectPage, freedomFrequencyPage, hero } from '@/content/site';
 import { SITE_NAME, absoluteUrl } from '@/lib/seo';
@@ -10,6 +11,10 @@ export const dynamic = 'force-static';
 export function GET() {
   const articles = sortedJournal()
     .map((a) => `- [${a.title}](${absoluteUrl(`/journal/${a.slug}`)}): ${a.description}`)
+    .join('\n');
+
+  const guides = Object.values(authorities)
+    .map((a) => `- [${a.name}](${absoluteUrl(`/intuition-blueprint/${a.slug}`)}): ${a.oneLine}`)
     .join('\n');
 
   const body = `# ${SITE_NAME}
@@ -30,6 +35,14 @@ Lena is a Reiki Master and certified embodiment coach, and a former personal tra
 
 - [${fiveDayReconnectPage.title}](${absoluteUrl('/5-day-reconnect')}): ${fiveDayReconnectPage.subtitle} Self-paced audio journey, $33 AUD.
 - [${freedomFrequencyPage.title}](${absoluteUrl('/freedom-frequency')}): an embodied, self-paced six-week online course to understand what's keeping you stuck and create a life that feels like yours. Coming soon; the waitlist is open and free to join.
+
+## Free: The Intuition Blueprint
+
+- [The Intuition Blueprint](${absoluteUrl('/intuition-blueprint')}): a free tool that calculates your Human Design chart from your birth date, time and place and shows your Inner Authority (how you're designed to make decisions), with journal prompts and a practice. Human Design is offered as a tool for reflection, not science.
+
+Guides to each authority:
+
+${guides}
 
 ## Journal
 

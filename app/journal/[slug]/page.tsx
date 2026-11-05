@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Footer from '@/components/Footer';
+import FreebieBand from '@/components/FreebieBand';
 import JsonLd from '@/components/JsonLd';
 import SiteHeader from '@/components/SiteHeader';
 import Newsletter from '@/components/sections/Newsletter';
@@ -178,6 +179,7 @@ export default async function ArticlePage({ params }: Props) {
           </div>
         </article>
 
+        <FreebieBand slug={a.slug} />
         {/* A gentle next step */}
         <section className="bg-sand px-6 py-16 text-center sm:py-20">
           <div className="mx-auto max-w-xl">

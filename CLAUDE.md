@@ -111,3 +111,14 @@ Lena confirmed (28 Oct 2026) the photography experience ("Let me reintroduce
 myself", Naluri Photography working name) is just for women. Unlike the rest
 of the site (gender-neutral), this page can use feminine language ("her",
 "hype woman", feminine energy).
+
+## The Intuition Blueprint (/intuition-blueprint), built 5 Nov 2026
+Free Human Design lead magnet, live since 5 Nov 2026 (built on the
+`intuition-blueprint` branch, merged into main). Name, email and a consent tick
+box are required to see the full result; each sign-up is emailed to Lena's
+inbox (Web3Forms). Also on the home page (lilac section after Section 3), in
+both menus ("Free Quiz"), and at the end of journal articles (`freebies` in
+content/site.ts picks quiz or tapping practice per article). Setup, how it calculates and how it was
+verified: `docs/intuition-blueprint.md`. Copy: `content/intuitionBlueprint.ts`.
+Tests: `npm test`. Guide emails need two Vercel env vars plus an Apps Script
+(see the doc); without them the email step is skipped, never faked.
