@@ -1,5 +1,4 @@
 import Footer from '@/components/Footer';
-import { WaitlistCta } from '@/components/HomeCtas';
 import JsonLd from '@/components/JsonLd';
 import { SAME_AS, SITE_NAME, absoluteUrl } from '@/lib/seo';
 import Faq from '@/components/sections/Faq';
@@ -72,7 +71,6 @@ export default function Home() {
       <QuizTeaser />
       <Section3 />
       <LeadMagnet />
-      <WaitlistCta />
       <Faq />
       <Newsletter />
       <ComeSayHi />
