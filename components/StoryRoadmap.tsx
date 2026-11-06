@@ -223,50 +223,79 @@ function ArtMap() {
   );
 }
 
-// Phone: one even S-curve down the middle, the stops alternating sides
+// Phone: the road runs side to side across the screen, three stops a row,
+// swinging round a loop at each edge into the next row, so the whole
+// journey fits in a few screens instead of one long scroll.
 function SnakeMap() {
   const stops = storyRoadmap.stops;
-  const top = 70;
-  // Stops alternate sides, so each one can use the space beside its
-  // neighbours: the road bends every 100 px and the stops tuck in tight.
-  const step = 100; // px between stops
-  const swing = 15; // % the road swings either side of the middle
-  const height = top + (stops.length - 1) * step + 90;
-  const side = (i: number) => (i % 2 === 0 ? -1 : 1); // the road bends left for the first stop
+  const per = 3;
+  const rows = Math.ceil(stops.length / per);
+  const rowH = 205; // px from one row of road to the next
+  const above = 118; // px above the road for the pictures
+  const left = 12;
+  const right = 88; // % across where the rows end and the loops begin
+  const bulge = 10; // % the loops swing out past the rows, so they're round
+  const wave = 7; // px the road waves up and down along a row
+  const height = above + (rows - 1) * rowH + 100;
+  const colX = (c: number) => left + ((c + 0.5) / per) * (right - left);
+  const roadY = (row: number, x: number) => above + row * rowH + wave * Math.sin(((x - left) / (right - left)) * Math.PI * 2);
+  const place = (i: number) => {
+    const row = Math.floor(i / per);
+    const k = i % per;
+    const back = row % 2 === 1;
+    return { row, back, col: back ? per - 1 - k : k };
+  };
+  const firstX = colX(0);
+  const last = place(stops.length - 1);
+  const lastX = colX(last.col);
+
+  // The road as points: along each row, then round a half-oval loop to the next
   const pts: string[] = [];
-  for (let y = top; y <= top + (stops.length - 1) * step; y += 4) {
-    pts.push(`${50 - swing * Math.cos((Math.PI * (y - top)) / step)},${y}`);
+  for (let row = 0; row < rows; row++) {
+    const back = row % 2 === 1;
+    const from = row === 0 ? firstX : back ? right : left;
+    const to = row === rows - 1 ? lastX : back ? left : right;
+    for (let n = 0; n <= 60; n++) {
+      const x = from + ((to - from) * n) / 60;
+      pts.push(`${x},${roadY(row, x)}`);
+    }
+    if (row < rows - 1) {
+      const y0 = roadY(row, to);
+      const y1 = roadY(row + 1, to);
+      for (let n = 1; n < 30; n++) {
+        const t = (n / 30) * Math.PI;
+        pts.push(`${to + (back ? -1 : 1) * bulge * Math.sin(t)},${(y0 + y1) / 2 - ((y1 - y0) / 2) * Math.cos(t)}`);
+      }
+    }
   }
+
   return (
     <div className="relative lg:hidden" style={{ height }}>
       <svg aria-hidden="true" viewBox={`0 0 100 ${height}`} preserveAspectRatio="none" className="absolute inset-0 h-full w-full overflow-visible">
-        <polyline points={pts.join(' ')} fill="none" stroke="#7A6236" strokeWidth={16} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
-        <polyline points={pts.join(' ')} fill="none" stroke="#ffffff" strokeWidth={1.6} strokeDasharray="8 7" vectorEffect="non-scaling-stroke" />
+        <polyline points={pts.join(' ')} fill="none" stroke="#7A6236" strokeWidth={13} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+        <polyline points={pts.join(' ')} fill="none" stroke="#ffffff" strokeWidth={1.4} strokeDasharray="7 6" vectorEffect="non-scaling-stroke" />
       </svg>
-      <span aria-hidden="true" className="absolute -translate-x-1/2 -rotate-6 whitespace-nowrap font-hand text-xl text-bark" style={{ top: top - 58, left: `${50 - swing}%` }}>
-        {storyRoadmap.start}
-      </span>
       <ol>
         {stops.map((stop, i) => {
-          const pinX = 50 + side(i) * swing;
-          const y = top + i * step;
+          const p = place(i);
+          const x = colX(p.col);
+          const y = roadY(p.row, x);
           return (
             <li key={stop.title}>
-              <span className="absolute -translate-x-1/2 -translate-y-full" style={{ top: y, left: `${pinX}%` }}>
+              {/* The picture above the road */}
+              <span className="absolute flex w-[30%] -translate-x-1/2 justify-center" style={{ left: `${x}%`, bottom: height - y + 30 }}>
+                <span className="origin-bottom scale-[0.72]">
+                  <Visual stop={stop} i={i} photoW="w-[4.5rem]" />
+                </span>
+              </span>
+              <span className="absolute z-10 -translate-x-1/2 -translate-y-full" style={{ top: y + 3, left: `${x}%` }}>
                 <Pin kind={stop.kind} />
               </span>
-              {/* The stop's picture and words, on the other side of the road */}
-              <span className="absolute flex w-[44%] -translate-y-1/2 flex-col items-center" style={{ top: y, [side(i) < 0 ? 'right' : 'left']: '1%' }}>
-                <span className="origin-bottom scale-[0.85]">
-                  <Visual stop={stop} i={i} photoW="w-16" />
-                </span>
-                <StopText stop={stop} lines={false} className="mt-0.5 [&>span:nth-child(2)]:text-base" />
+              {/* The words under the road */}
+              <span className="absolute w-[28%] -translate-x-1/2 text-center" style={{ top: y + 13, left: `${x}%` }}>
+                <span className="block font-body text-[0.5rem] font-semibold uppercase tracking-[0.18em] text-stone">{stop.when}</span>
+                <span className="mt-0.5 block font-hand text-[0.78rem] leading-[1.15] text-bark">{stop.title}</span>
               </span>
-              {stop.road && i > 0 && (
-                <span aria-hidden="true" className="absolute -translate-x-1/2 -translate-y-1/2" style={{ top: y - step / 2, left: '50%' }}>
-                  {stop.road === 'plane' ? <Plane dir="down" /> : <Heart />}
-                </span>
-              )}
             </li>
           );
         })}
