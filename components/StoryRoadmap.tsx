@@ -223,78 +223,107 @@ function ArtMap() {
   );
 }
 
-// Phone: the road runs side to side across the screen, three stops a row,
-// swinging round a loop at each edge into the next row, so the whole
-// journey fits in a few screens instead of one long scroll.
+// Phone: a snake like Lena's sketch. Each lap is a smooth gentle wave across
+// the screen, joined at the edges by perfectly round half-circle loops, two
+// stops a lap. Drawn in a 390-wide space that scales evenly with the screen,
+// so the loops stay round on every phone.
+const PW = 390;
+const PH_TOP = 112; // above the first lap, for its pictures
+const PH_ROW = 192; // from one lap to the next (the loop's diameter)
+const PH_LEFT = 98;
+const PH_RIGHT = 292; // where the laps end and the loops begin
+const PH_SAG = 12; // how much each lap waves
+const PH_PINS = [118, 272]; // where the two stops sit across a lap
+
 function SnakeMap() {
   const stops = storyRoadmap.stops;
-  const per = 3;
-  const rows = Math.ceil(stops.length / per);
-  const rowH = 205; // px from one row of road to the next
-  const above = 118; // px above the road for the pictures
-  const left = 12;
-  const right = 88; // % across where the rows end and the loops begin
-  const bulge = 10; // % the loops swing out past the rows, so they're round
-  const wave = 7; // px the road waves up and down along a row
-  const height = above + (rows - 1) * rowH + 100;
-  const colX = (c: number) => left + ((c + 0.5) / per) * (right - left);
-  const roadY = (row: number, x: number) => above + row * rowH + wave * Math.sin(((x - left) / (right - left)) * Math.PI * 2);
+  const per = 2;
+  const laps = Math.ceil(stops.length / per);
+  const height = PH_TOP + (laps - 1) * PH_ROW + 96;
+  const R = PH_ROW / 2;
   const place = (i: number) => {
-    const row = Math.floor(i / per);
+    const lap = Math.floor(i / per);
+    const back = lap % 2 === 1;
     const k = i % per;
-    const back = row % 2 === 1;
-    return { row, back, col: back ? per - 1 - k : k };
+    return { lap, back, x: PH_PINS[back ? per - 1 - k : k] };
   };
-  const firstX = colX(0);
-  const last = place(stops.length - 1);
-  const lastX = colX(last.col);
-
-  // The road as points: along each row, then round a half-oval loop to the next
-  const pts: string[] = [];
-  for (let row = 0; row < rows; row++) {
-    const back = row % 2 === 1;
-    const from = row === 0 ? firstX : back ? right : left;
-    const to = row === rows - 1 ? lastX : back ? left : right;
-    for (let n = 0; n <= 60; n++) {
-      const x = from + ((to - from) * n) / 60;
-      pts.push(`${x},${roadY(row, x)}`);
-    }
-    if (row < rows - 1) {
-      const y0 = roadY(row, to);
-      const y1 = roadY(row + 1, to);
-      for (let n = 1; n < 30; n++) {
-        const t = (n / 30) * Math.PI;
-        pts.push(`${to + (back ? -1 : 1) * bulge * Math.sin(t)},${(y0 + y1) / 2 - ((y1 - y0) / 2) * Math.cos(t)}`);
+  // One lap: two curves meeting in the middle, level at both ends so they
+  // flow straight into the round loops
+  const lapCurves = (lap: number) => {
+    const y = PH_TOP + lap * PH_ROW;
+    const back = lap % 2 === 1;
+    const [x0, x1] = back ? [PH_RIGHT, PH_LEFT] : [PH_LEFT, PH_RIGHT];
+    const xm = (x0 + x1) / 2;
+    const ym = y + (lap % 2 ? -PH_SAG : PH_SAG);
+    const k = (x1 - x0) / 4;
+    return [
+      [x0, y, x0 + k, y, xm - k, ym, xm, ym],
+      [xm, ym, xm + k, ym, x1 - k, y, x1, y],
+    ];
+  };
+  const bez = (c: number[], t: number) => {
+    const u = 1 - t;
+    return [0, 1].map((o) => u * u * u * c[o] + 3 * u * u * t * c[2 + o] + 3 * u * t * t * c[4 + o] + t * t * t * c[6 + o]);
+  };
+  // Where the road is (down the page) at a point across a lap
+  const roadY = (lap: number, x: number) => {
+    let best = [Infinity, 0];
+    for (const c of lapCurves(lap)) {
+      for (let n = 0; n <= 80; n++) {
+        const [bx, by] = bez(c, n / 80);
+        const dx = Math.abs(bx - x);
+        if (dx < best[0]) best = [dx, by];
       }
     }
+    return best[1];
+  };
+
+  // The road: from the first stop, lap by lap, ending at the last stop
+  const first = place(0);
+  const last = place(stops.length - 1);
+  let d = '';
+  for (let lap = 0; lap < laps; lap++) {
+    const curves = lapCurves(lap);
+    const pts: number[][] = [];
+    for (const c of curves) for (let n = 0; n <= 40; n++) pts.push(bez(c, n / 40));
+    const back = lap % 2 === 1;
+    const keep = pts.filter(([x]) => {
+      if (lap === 0 && x < first.x) return false;
+      if (lap === laps - 1) return back ? x >= last.x : x <= last.x;
+      return true;
+    });
+    d += (lap === 0 ? 'M' : ' L') + keep.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`).join(' L');
+    if (lap < laps - 1) {
+      const y = PH_TOP + lap * PH_ROW;
+      d += ` A ${R} ${R} 0 0 ${back ? 0 : 1} ${back ? PH_LEFT : PH_RIGHT} ${y + PH_ROW}`;
+    }
   }
+  const pct = (v: number, of: number) => `${(v / of) * 100}%`;
 
   return (
-    <div className="relative lg:hidden" style={{ height }}>
-      <svg aria-hidden="true" viewBox={`0 0 100 ${height}`} preserveAspectRatio="none" className="absolute inset-0 h-full w-full overflow-visible">
-        <polyline points={pts.join(' ')} fill="none" stroke="#7A6236" strokeWidth={13} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
-        <polyline points={pts.join(' ')} fill="none" stroke="#ffffff" strokeWidth={1.4} strokeDasharray="7 6" vectorEffect="non-scaling-stroke" />
+    <div className="relative mx-auto w-full max-w-[26rem] lg:hidden" style={{ aspectRatio: `${PW} / ${height}` }}>
+      <svg aria-hidden="true" viewBox={`0 0 ${PW} ${height}`} className="absolute inset-0 h-full w-full overflow-visible">
+        <path d={d} fill="none" stroke="#7A6236" strokeWidth={13} strokeLinecap="round" strokeLinejoin="round" />
+        <path d={d} fill="none" stroke="#ffffff" strokeWidth={1.4} strokeDasharray="7 6" />
       </svg>
       <ol>
         {stops.map((stop, i) => {
           const p = place(i);
-          const x = colX(p.col);
-          const y = roadY(p.row, x);
+          const y = roadY(p.lap, p.x);
+          const pos = { left: pct(p.x, PW), top: pct(y, height) };
           return (
             <li key={stop.title}>
-              {/* The picture above the road */}
-              <span className="absolute flex w-[30%] -translate-x-1/2 justify-center" style={{ left: `${x}%`, bottom: height - y + 30 }}>
-                <span className="origin-bottom scale-[0.72]">
+              <span className="absolute flex w-[40%] -translate-x-1/2 -translate-y-full justify-center pb-8" style={pos}>
+                <span className="origin-bottom scale-[0.66]">
                   <Visual stop={stop} i={i} photoW="w-[4.5rem]" />
                 </span>
               </span>
-              <span className="absolute z-10 -translate-x-1/2 -translate-y-full" style={{ top: y + 3, left: `${x}%` }}>
+              <span className="absolute z-10 -translate-x-1/2 -translate-y-full" style={{ ...pos, marginTop: 3 }}>
                 <Pin kind={stop.kind} />
               </span>
-              {/* The words under the road */}
-              <span className="absolute w-[28%] -translate-x-1/2 text-center" style={{ top: y + 13, left: `${x}%` }}>
+              <span className="absolute mt-3 w-[38%] -translate-x-1/2 text-center" style={pos}>
                 <span className="block font-body text-[0.5rem] font-semibold uppercase tracking-[0.18em] text-stone">{stop.when}</span>
-                <span className="mt-0.5 block font-hand text-[0.78rem] leading-[1.15] text-bark">{stop.title}</span>
+                <span className="mt-0.5 block font-hand text-[0.8rem] leading-[1.15] text-bark">{stop.title}</span>
               </span>
             </li>
           );
