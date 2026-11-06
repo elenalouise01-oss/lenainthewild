@@ -149,6 +149,7 @@ type Layout = {
   edge: number; // % of the width kept clear at each side for the turns
   slope: number; // px each lap drops from one side to the other
   loop: number; // how far the loops swing out past the edge (of 1000)
+  arch: number; // px each lap arches up in the middle
   textW: string; // width of the words under each pin
   photoW: string; // polaroid width
   lines: boolean; // show the extra lines under each title (not on a phone, to keep it short)
@@ -156,9 +157,9 @@ type Layout = {
 };
 
 const LAYOUTS: Layout[] = [
-  { per: 2, lap: 300, top: 170, bottom: 110, edge: 12, slope: 40, loop: 120, lines: false, textW: 'w-[8.25rem]', photoW: 'w-[4.5rem]', show: 'block sm:hidden' },
-  { per: 3, lap: 360, top: 170, bottom: 150, edge: 9, slope: 50, loop: 120, lines: true, textW: 'w-[9.5rem]', photoW: 'w-20', show: 'hidden sm:block lg:hidden' },
-  { per: 4, lap: 360, top: 170, bottom: 150, edge: 9, slope: 50, loop: 120, lines: true, textW: 'w-44', photoW: 'w-[5.5rem]', show: 'hidden lg:block' },
+  { per: 2, lap: 300, top: 170, bottom: 110, edge: 12, slope: 30, loop: 20, arch: 0, lines: false, textW: 'w-[7.75rem]', photoW: 'w-[4.5rem]', show: 'block sm:hidden' },
+  { per: 3, lap: 360, top: 170, bottom: 150, edge: 12, slope: 40, loop: 40, arch: 34, lines: true, textW: 'w-[9.5rem]', photoW: 'w-20', show: 'hidden sm:block lg:hidden' },
+  { per: 4, lap: 360, top: 170, bottom: 150, edge: 10, slope: 40, loop: 50, arch: 40, lines: true, textW: 'w-44', photoW: 'w-[5.5rem]', show: 'hidden lg:block' },
 ];
 
 // The road is drawn in a box 1000 wide (stretched to the page) and as many
@@ -178,51 +179,47 @@ function RoadMap({ l }: { l: Layout }) {
     return { lap, k, col: back ? l.per - 1 - k : k, back, y: l.top + lap * l.lap };
   };
 
-  // Build the road, like a ribbon snaking down the page: each lap is one
-  // smooth curve sloping gently down across the page, and at the end of a lap
-  // the road swings round a big, round loop into the next.
-  type Seg = [number, number, number, number, number, number, number, number]; // x0 y0 x1 y1 x2 y2 x3 y3
-  const lapSegs: Seg[] = [];
-  let d = '';
-  for (let lap = 0; lap < laps; lap++) {
-    const back = lap % 2 === 1;
-    const last = lap === laps - 1;
-    const y0 = l.top + lap * l.lap;
-    const lastCol = place(stops.length - 1).col;
-    const x0 = lap === 0 ? colX(0) : back ? right : left;
-    const x3 = last ? colX(lastCol) : back ? left : right;
-    const y3 = y0 + l.slope * (Math.abs(x3 - x0) / (right - left));
-    const pull = (x3 - x0) * 0.45;
-    const seg: Seg = [x0, y0, x0 + pull, y0, x3 - pull, y3, x3, y3];
-    lapSegs.push(seg);
-    if (lap === 0) d += `M${x0} ${y0}`;
-    d += ` C ${seg[2]} ${seg[3]}, ${seg[4]} ${seg[5]}, ${x3} ${y3}`;
-    if (!last) {
-      // The loop: a smooth round oval out past the edge, down to the start
-      // of the next lap (no straight sides)
-      const yNext = y0 + l.lap;
-      d += ` A ${l.loop} ${(yNext - y3) / 2} 0 0 ${back ? 0 : 1} ${x3} ${yNext}`;
-    }
-  }
-  // Where the road is (down the map) at a point across a lap
-  const roadY = (lap: number, x: number) => {
-    const [x0, y0, x1, y1, x2, y2, x3, y3] = lapSegs[lap];
-    let best = { dx: Infinity, y: y0 };
-    for (let n = 0; n <= 200; n++) {
-      const t = n / 200;
-      const u = 1 - t;
-      const bx = u * u * u * x0 + 3 * u * u * t * x1 + 3 * u * t * t * x2 + t * t * t * x3;
-      const dx = Math.abs(bx - x);
-      if (dx < best.dx) best = { dx, y: u * u * u * y0 + 3 * u * u * t * y1 + 3 * u * t * t * y2 + t * t * t * y3 };
-    }
-    return best.y;
+  // Build the road as one smooth ribbon snaking down the page, like Lena's
+  // sketch. Every pin is a point the road passes through: along a lap the
+  // pins rise and fall in a gentle arch, and between laps the road swings out
+  // round a big, round loop. A smooth curve is drawn through all the points,
+  // so there are no straight bits or corners anywhere.
+  const pinY = (i: number) => {
+    const p = place(i);
+    const frac = l.per === 1 ? 0.5 : p.k / (l.per - 1); // 0 at the start of the lap, 1 at the end
+    return p.y + l.slope * frac - l.arch * Math.sin(Math.PI * frac);
   };
-  const pinY = (i: number) => roadY(place(i).lap, colX(place(i).col));
+  const pts: [number, number][] = [];
+  stops.forEach((_, i) => {
+    const p = place(i);
+    pts.push([colX(p.col), pinY(i)]);
+    const endOfLap = p.k === l.per - 1 && i < stops.length - 1;
+    if (endOfLap) {
+      // The far point of the loop, out past the last pin, half way down to the next lap
+      const out = p.back ? -l.loop : 1000 + l.loop;
+      pts.push([out, (pinY(i) + pinY(i + 1)) / 2]);
+    }
+  });
+  // A smooth curve through every point (Catmull-Rom, as Bezier curves)
+  let d = `M${pts[0][0]} ${pts[0][1]}`;
+  for (let n = 0; n < pts.length - 1; n++) {
+    const p0 = pts[Math.max(0, n - 1)];
+    const p1 = pts[n];
+    const p2 = pts[n + 1];
+    const p3 = pts[Math.min(pts.length - 1, n + 2)];
+    const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
+    const c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+    d += ` C ${c1[0]} ${c1[1]}, ${c2[0]} ${c2[1]}, ${p2[0]} ${p2[1]}`;
+  }
   // Half way along the road from the stop before, where a plane or heart sits
   const before = (i: number) => {
-    const p = place(i);
-    const x = colX(p.col) + (p.back ? 1 : -1) * ((right - left) / l.per / 2);
-    return { x, y: roadY(p.lap, x) };
+    const a = place(i - 1);
+    const b = place(i);
+    if (a.lap !== b.lap) {
+      const out = a.back ? -l.loop : 1000 + l.loop;
+      return { x: out * 0.92 + colX(a.col) * 0.08, y: (pinY(i - 1) + pinY(i)) / 2 };
+    }
+    return { x: (colX(a.col) + colX(b.col)) / 2, y: (pinY(i - 1) + pinY(i)) / 2 - l.arch * 0.15 };
   };
   const pct = (x: number) => `${x / 10}%`;
 
@@ -252,7 +249,10 @@ function RoadMap({ l }: { l: Layout }) {
               {/* Below the road */}
               <span className={`absolute left-0 top-4 -translate-x-1/2 text-center ${l.textW}`}>
                 <span className="block font-hand text-lg leading-none text-stone">{stop.when}</span>
-                <span className="mt-1 block font-display text-[0.95rem] italic leading-snug text-bark">{stop.title}</span>
+                <span className="mt-1 block font-display text-[0.95rem] italic leading-snug text-bark">
+                  {/* a soft paper patch so the road passes neatly behind the words */}
+                  <span className="box-decoration-clone rounded bg-sand/90 px-1">{stop.title}</span>
+                </span>
                 {l.lines &&
                   stop.lines?.map((line) => (
                   <span key={line} className="mt-0.5 block font-body text-[0.7rem] leading-snug text-umber">
