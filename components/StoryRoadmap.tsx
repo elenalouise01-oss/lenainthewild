@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { storyRoadmap, type RoadmapKind, type RoadmapStop } from '@/content/site';
+import { ROAD_PATH, ROAD_VIEWBOX } from './roadmapRoad';
 
 // "My story at a glance": Lena's life as a winding road on a little map.
 //
@@ -159,98 +160,65 @@ function StopText({ stop, lines, className = '' }: { stop: RoadmapStop; lines: b
   );
 }
 
-const DASH = { fill: 'none', stroke: INK, strokeOpacity: 0.75, strokeWidth: 3, strokeDasharray: '9 8', strokeLinecap: 'round' as const, vectorEffect: 'non-scaling-stroke' as const };
 
-// Laptop and tablet: the road runs across the page in rows with a gentle
-// arch, joined at the ends by true half circles, every one the same size.
-type Laps = { per: number; r: number; arch: number; top: number; bottom: number; textW: string; photoW: string; show: string };
-const LAPS: Laps[] = [
-  { per: 2, r: 150, arch: 22, top: 160, bottom: 140, textW: 'w-36', photoW: 'w-20', show: 'hidden sm:block lg:hidden' },
-  { per: 4, r: 165, arch: 26, top: 160, bottom: 150, textW: 'w-40', photoW: 'w-[5.5rem]', show: 'hidden lg:block' },
+// Laptop: Lena's winding road (traced from her artwork) as a map, 900 px
+// wide. Each stop has a pin on the road and its own clear space beside it
+// for the picture and words. Positions are in the drawing's 1024 x 1536 space.
+const MAP_W = 900;
+const K = MAP_W / 1024;
+type Spot = { pin: [number, number]; box: [number, number, number]; stack?: boolean };
+const SPOTS: Spot[] = [
+  { pin: [190, 230], box: [40, 36, 300] }, // born
+  { pin: [430, 231], box: [365, 70, 200], stack: true }, // high school
+  { pin: [650, 211], box: [600, 40, 300] }, // college
+  { pin: [620, 298], box: [795, 262, 215], stack: true }, // break up, Leap 1.0
+  { pin: [601, 432], box: [40, 300, 400] }, // Canada
+  { pin: [450, 526], box: [330, 546, 440] }, // back to Sydney
+  { pin: [250, 694], box: [40, 728, 330] }, // corporate career
+  { pin: [561, 664], box: [400, 728, 200], stack: true }, // corporate job 2.0
+  { pin: [740, 756], box: [850, 585, 165], stack: true }, // personal trainer, Leap 3.0
+  { pin: [781, 872], box: [440, 924, 370] }, // burnout
+  { pin: [854, 1047], box: [720, 1100, 290] }, // first solo trip to Bali
+  { pin: [559, 1066], box: [330, 1100, 370] }, // the sign
+  { pin: [197, 1079], box: [40, 885, 370] }, // uprooted to Bali, Leap 4.0
+  { pin: [39, 1169], box: [80, 1100, 230], stack: true }, // Ubud, rock bottom 2.0
+  { pin: [641, 1284], box: [730, 1335, 280] }, // turning point
+  { pin: [455, 1460], box: [60, 1335, 360] }, // now
 ];
 
-function LapMap({ l }: { l: Laps }) {
+function ArtMap() {
   const stops = storyRoadmap.stops;
-  const laps = Math.ceil(stops.length / l.per);
-  const lap = 2 * l.r; // rows are a loop's height apart
-  const height = l.top + (laps - 1) * lap + l.bottom;
-  const rowY = (row: number) => l.top + row * lap;
-  const place = (i: number) => {
-    const row = Math.floor(i / l.per);
-    const k = i % l.per;
-    const back = row % 2 === 1;
-    const col = back ? l.per - 1 - k : k;
-    return { row, k, back, t: (col + 0.5) / l.per };
-  };
-  const archY = (t: number) => l.arch * Math.sin(Math.PI * t) ** 2; // 0 at the ends of a row
-  const x = (t: number) => `calc(${l.r}px + ${t} * (100% - ${2 * l.r}px))`;
-  const pinY = (i: number) => rowY(place(i).row) - archY(place(i).t);
-  const first = place(0);
-  const last = place(stops.length - 1);
-
   return (
-    <div className={`relative ${l.show}`} style={{ height }}>
-      {Array.from({ length: laps }, (_, row) => {
-        // The row: only from the first stop on the first row, and to the last stop on the last
-        const t0 = row === 0 ? first.t : row === laps - 1 && last.back ? last.t : 0;
-        const t1 = row === laps - 1 && !last.back ? last.t : 1;
-        const pts: string[] = [];
-        for (let n = 0; n <= 100; n++) {
-          const t = t0 + ((t1 - t0) * n) / 100;
-          pts.push(`${t * 1000},${l.arch + 2 - archY(t)}`);
-        }
-        const back = row % 2 === 1;
-        return (
-          <div key={row}>
-            <svg aria-hidden="true" viewBox={`0 0 1000 ${l.arch + 4}`} preserveAspectRatio="none" className="absolute overflow-visible" style={{ left: l.r, width: `calc(100% - ${2 * l.r}px)`, top: rowY(row) - l.arch - 2, height: l.arch + 4 }}>
-              <polyline points={pts.join(' ')} {...DASH} />
-            </svg>
-            {row < laps - 1 && (
-              <svg aria-hidden="true" viewBox={`0 0 ${l.r} ${lap}`} className="absolute overflow-visible" style={{ top: rowY(row), width: l.r, height: lap, [back ? 'left' : 'right']: 0 }}>
-                <path d={back ? `M ${l.r} 0 A ${l.r} ${l.r} 0 0 0 ${l.r} ${lap}` : `M 0 0 A ${l.r} ${l.r} 0 0 1 0 ${lap}`} {...DASH} />
-              </svg>
-            )}
-          </div>
-        );
-      })}
-
-      <span aria-hidden="true" className="absolute -translate-x-full -translate-y-1/2 -rotate-6 whitespace-nowrap pr-6 font-hand text-xl text-bark" style={{ top: pinY(0), left: x(first.t) }}>
+    <div className="relative mx-auto hidden lg:block" style={{ width: MAP_W, height: 1536 * K }}>
+      <svg aria-hidden="true" viewBox={ROAD_VIEWBOX} className="absolute inset-0 h-full w-full">
+        <path d={ROAD_PATH} fill="none" stroke="#7A6236" strokeWidth={22} strokeLinecap="round" strokeLinejoin="round" />
+        <path d={ROAD_PATH} fill="none" stroke="#ffffff" strokeWidth={2.2} strokeDasharray="10 9" />
+      </svg>
+      <span aria-hidden="true" className="absolute -rotate-6 whitespace-nowrap font-hand text-2xl text-bark" style={{ left: 50 * K, top: 212 * K }}>
         {storyRoadmap.start}
       </span>
-
       <ol>
         {stops.map((stop, i) => {
-          const p = place(i);
+          const s = SPOTS[i];
+          if (!s) return null;
           return (
-            <li key={stop.title} className="absolute" style={{ top: pinY(i), left: x(p.t) }}>
-              <span className="absolute bottom-7 left-0 flex -translate-x-1/2 flex-col items-center">
-                <Visual stop={stop} i={i} photoW={l.photoW} />
-              </span>
-              <span className="absolute bottom-0 left-0 -translate-x-1/2">
+            <li key={stop.title}>
+              <span className="absolute z-10 -translate-x-1/2 -translate-y-full" style={{ left: s.pin[0] * K, top: s.pin[1] * K + 3 }}>
                 <Pin kind={stop.kind} />
               </span>
-              <StopText stop={stop} lines className={`absolute left-0 top-3 -translate-x-1/2 ${l.textW}`} />
+              <div
+                className={`absolute flex ${s.stack ? 'flex-col items-center gap-2' : 'items-center gap-4'}`}
+                style={{ left: s.box[0] * K, top: s.box[1] * K, width: s.box[2] * K }}
+              >
+                <span className="flex shrink-0 justify-center">
+                  <Visual stop={stop} i={i} photoW="w-[5.25rem]" />
+                </span>
+                <StopText stop={stop} lines className={s.stack ? '' : '!text-left'} />
+              </div>
             </li>
           );
         })}
       </ol>
-
-      {/* A plane on the road into each move, a heart into the good bits */}
-      {stops.map((stop, i) => {
-        if (!stop.road || i === 0) return null;
-        const a = place(i - 1);
-        const b = place(i);
-        const onLoop = a.row !== b.row;
-        const tm = (a.t + b.t) / 2;
-        const pos = onLoop
-          ? { top: rowY(a.row) + l.r, left: a.back ? '0px' : '100%' }
-          : { top: rowY(b.row) - archY(tm), left: x(tm) };
-        return (
-          <span key={`road-${stop.title}`} aria-hidden="true" className="absolute -translate-x-1/2 -translate-y-1/2" style={pos}>
-            {stop.road === 'plane' ? <Plane dir={onLoop ? 'down' : b.back ? 'left' : 'right'} /> : <Heart />}
-          </span>
-        );
-      })}
     </div>
   );
 }
@@ -268,9 +236,10 @@ function SnakeMap() {
     pts.push(`${50 - swing * Math.cos((Math.PI * (y - top)) / step)},${y}`);
   }
   return (
-    <div className="relative sm:hidden" style={{ height }}>
+    <div className="relative lg:hidden" style={{ height }}>
       <svg aria-hidden="true" viewBox={`0 0 100 ${height}`} preserveAspectRatio="none" className="absolute inset-0 h-full w-full overflow-visible">
-        <polyline points={pts.join(' ')} {...DASH} />
+        <polyline points={pts.join(' ')} fill="none" stroke="#7A6236" strokeWidth={16} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+        <polyline points={pts.join(' ')} fill="none" stroke="#ffffff" strokeWidth={1.6} strokeDasharray="8 7" vectorEffect="non-scaling-stroke" />
       </svg>
       <span aria-hidden="true" className="absolute -translate-x-1/2 -rotate-6 whitespace-nowrap font-hand text-xl text-bark" style={{ top: top - 58, left: `${50 - swing}%` }}>
         {storyRoadmap.start}
@@ -317,9 +286,7 @@ export default function StoryRoadmap() {
 
         <div className="mt-6">
           <SnakeMap />
-          {LAPS.map((l) => (
-            <LapMap key={l.per} l={l} />
-          ))}
+          <ArtMap />
         </div>
 
         <p className="mt-6 text-center">
