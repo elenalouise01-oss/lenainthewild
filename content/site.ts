@@ -1111,6 +1111,8 @@ export type RoadmapStop = {
   road?: 'plane' | 'heart';
   // A passport-style stamp beside the stop
   stamp?: string;
+  // For a stop without a photo: one of Lena's stickers
+  sticker?: 'flower' | 'star' | 'star-scribble' | 'butterfly' | 'bow';
 };
 export const storyRoadmap: { label: string; heading: string; intro: string; start: string; stops: RoadmapStop[]; readOn: string } = {
   label: 'Short on time?',
@@ -1118,9 +1120,9 @@ export const storyRoadmap: { label: string; heading: string; intro: string; star
   intro: 'The leaps, the rock bottoms and everything in between. The full story is below.',
   start: 'let’s go!',
   stops: [
-    { when: '1987', title: 'Elena was born', stamp: 'Sydney', lines: ['Sydney, Australia'], kind: 'start', flag: 'hello world' },
-    { when: '2005', title: 'Finished high school', kind: 'step' },
-    { when: '2008', title: 'Graduated from college', lines: ['Graphic Design Degree'], kind: 'step' },
+    { when: '1987', title: 'Elena was born', sticker: 'flower', stamp: 'Sydney', lines: ['Sydney, Australia'], kind: 'start', flag: 'hello world' },
+    { when: '2005', title: 'Finished high school', sticker: 'star', kind: 'step' },
+    { when: '2008', title: 'Graduated from college', sticker: 'star-scribble', lines: ['Graphic Design Degree'], kind: 'step' },
     {
       when: '20??',
       title: 'Break up of 8 years with my high school sweetheart', road: 'plane', stamp: 'Whitsundays',
@@ -1144,7 +1146,7 @@ export const storyRoadmap: { label: string; heading: string; intro: string; star
     },
     {
       when: '20??',
-      title: 'Started my corporate career as a graphic designer',
+      title: 'Started my corporate career as a graphic designer', sticker: 'bow',
       lines: ['Got fired for speaking up (never been fired in my life)'],
       kind: 'step',
     },
@@ -1204,7 +1206,7 @@ export const storyRoadmap: { label: string; heading: string; intro: string; star
     },
     {
       when: 'the next day',
-      title: 'The turning point',
+      title: 'The turning point', sticker: 'butterfly',
       lines: ['A “random” $777 refund, then work started flowing in'],
       kind: 'turning point',
       flag: 'Turning point',
