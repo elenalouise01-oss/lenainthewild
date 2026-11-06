@@ -10,8 +10,8 @@ import { storyRoadmap, type RoadmapKind, type RoadmapStop } from '@/content/site
 // torn paper); below it, the year and a few words. Planes on the road mark
 // the moves. Four stops a lap on a laptop, three on a tablet, two on a phone.
 //
-// The road snakes down like a ribbon: smooth sloping laps and big round
-// loops at the ends, and the pins always sit exactly on it.
+// On a laptop or tablet the road runs in gently arched rows joined by true
+// half-circle loops; on a phone it is one even S-curve down the middle.
 
 const INK = '#3b2d0e';
 const COLOUR: Record<RoadmapKind, { bg: string; hex: string }> = {
@@ -59,9 +59,10 @@ function Pin({ kind }: { kind: RoadmapKind }) {
 }
 
 // A little plane sticker on the road (white die-cut edge), facing the way the road goes
-function Plane({ left }: { left: boolean }) {
+function Plane({ dir }: { dir: 'left' | 'right' | 'down' }) {
+  const turn = { left: '-rotate-90', right: 'rotate-90', down: 'rotate-180' }[dir];
   return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className={`h-6 w-6 drop-shadow-sm ${left ? '-rotate-90' : 'rotate-90'}`}>
+    <svg aria-hidden="true" viewBox="0 0 24 24" className={`h-6 w-6 drop-shadow-sm ${turn}`}>
       <path
         d="M21 16v-2l-8-5V3.5C13 2.67 12.33 2 11.5 2S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"
         fill={INK}
@@ -141,96 +142,79 @@ function Visual({ stop, i, photoW }: { stop: RoadmapStop; i: number; photoW: str
   return stop.stamp ? <Stamp text={stop.stamp} className="h-14 w-14 -rotate-12" /> : null;
 }
 
-type Layout = {
-  per: number; // stops a lap
-  lap: number; // px between laps
-  top: number; // px above the first lap (for the first polaroids)
-  bottom: number; // px below the last lap (for its words)
-  edge: number; // % of the width kept clear at each side for the turns
-  slope: number; // px each lap drops from one side to the other
-  loop: number; // how far the loops swing out past the edge (of 1000)
-  arch: number; // px each lap arches up in the middle
-  textW: string; // width of the words under each pin
-  photoW: string; // polaroid width
-  lines: boolean; // show the extra lines under each title (not on a phone, to keep it short)
-  show: string;
-};
+// The words under a stop: the year as a small label, the heading in Lena's
+// handwriting, and a line or two of plain text
+function StopText({ stop, lines, className = '' }: { stop: RoadmapStop; lines: boolean; className?: string }) {
+  return (
+    <span className={`block text-center ${className}`}>
+      <span className="block font-body text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-stone">{stop.when}</span>
+      <span className="mt-0.5 block font-hand text-lg leading-tight text-bark">{stop.title}</span>
+      {lines &&
+        stop.lines?.map((line) => (
+          <span key={line} className="mt-0.5 block font-body text-[0.7rem] leading-snug text-umber">
+            {line}
+          </span>
+        ))}
+    </span>
+  );
+}
 
-const LAYOUTS: Layout[] = [
-  { per: 2, lap: 300, top: 170, bottom: 110, edge: 12, slope: 30, loop: 20, arch: 0, lines: false, textW: 'w-[7.75rem]', photoW: 'w-[4.5rem]', show: 'block sm:hidden' },
-  { per: 3, lap: 360, top: 170, bottom: 150, edge: 12, slope: 40, loop: 40, arch: 34, lines: true, textW: 'w-[9.5rem]', photoW: 'w-20', show: 'hidden sm:block lg:hidden' },
-  { per: 4, lap: 360, top: 170, bottom: 150, edge: 10, slope: 40, loop: 50, arch: 40, lines: true, textW: 'w-44', photoW: 'w-[5.5rem]', show: 'hidden lg:block' },
+const DASH = { fill: 'none', stroke: INK, strokeOpacity: 0.75, strokeWidth: 3, strokeDasharray: '9 8', strokeLinecap: 'round' as const, vectorEffect: 'non-scaling-stroke' as const };
+
+// Laptop and tablet: the road runs across the page in rows with a gentle
+// arch, joined at the ends by true half circles, every one the same size.
+type Laps = { per: number; r: number; arch: number; top: number; bottom: number; textW: string; photoW: string; show: string };
+const LAPS: Laps[] = [
+  { per: 2, r: 150, arch: 22, top: 160, bottom: 140, textW: 'w-36', photoW: 'w-20', show: 'hidden sm:block lg:hidden' },
+  { per: 4, r: 165, arch: 26, top: 160, bottom: 150, textW: 'w-40', photoW: 'w-[5.5rem]', show: 'hidden lg:block' },
 ];
 
-// The road is drawn in a box 1000 wide (stretched to the page) and as many
-// px high as the map, so it can curve freely while the pins, which sit on
-// the same grid, stay exactly on it.
-function RoadMap({ l }: { l: Layout }) {
+function LapMap({ l }: { l: Laps }) {
   const stops = storyRoadmap.stops;
   const laps = Math.ceil(stops.length / l.per);
-  const height = l.top + (laps - 1) * l.lap + l.slope + l.bottom;
-  const left = l.edge * 10;
-  const right = 1000 - left;
-  const colX = (c: number) => left + ((c + 0.5) / l.per) * (right - left); // 0-1000
+  const lap = 2 * l.r; // rows are a loop's height apart
+  const height = l.top + (laps - 1) * lap + l.bottom;
+  const rowY = (row: number) => l.top + row * lap;
   const place = (i: number) => {
-    const lap = Math.floor(i / l.per);
+    const row = Math.floor(i / l.per);
     const k = i % l.per;
-    const back = lap % 2 === 1; // this lap runs right to left
-    return { lap, k, col: back ? l.per - 1 - k : k, back, y: l.top + lap * l.lap };
+    const back = row % 2 === 1;
+    const col = back ? l.per - 1 - k : k;
+    return { row, k, back, t: (col + 0.5) / l.per };
   };
-
-  // Build the road as one smooth ribbon snaking down the page, like Lena's
-  // sketch. Every pin is a point the road passes through: along a lap the
-  // pins rise and fall in a gentle arch, and between laps the road swings out
-  // round a big, round loop. A smooth curve is drawn through all the points,
-  // so there are no straight bits or corners anywhere.
-  const pinY = (i: number) => {
-    const p = place(i);
-    const frac = l.per === 1 ? 0.5 : p.k / (l.per - 1); // 0 at the start of the lap, 1 at the end
-    return p.y + l.slope * frac - l.arch * Math.sin(Math.PI * frac);
-  };
-  const pts: [number, number][] = [];
-  stops.forEach((_, i) => {
-    const p = place(i);
-    pts.push([colX(p.col), pinY(i)]);
-    const endOfLap = p.k === l.per - 1 && i < stops.length - 1;
-    if (endOfLap) {
-      // The far point of the loop, out past the last pin, half way down to the next lap
-      const out = p.back ? -l.loop : 1000 + l.loop;
-      pts.push([out, (pinY(i) + pinY(i + 1)) / 2]);
-    }
-  });
-  // A smooth curve through every point (Catmull-Rom, as Bezier curves)
-  let d = `M${pts[0][0]} ${pts[0][1]}`;
-  for (let n = 0; n < pts.length - 1; n++) {
-    const p0 = pts[Math.max(0, n - 1)];
-    const p1 = pts[n];
-    const p2 = pts[n + 1];
-    const p3 = pts[Math.min(pts.length - 1, n + 2)];
-    const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
-    const c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
-    d += ` C ${c1[0]} ${c1[1]}, ${c2[0]} ${c2[1]}, ${p2[0]} ${p2[1]}`;
-  }
-  // Half way along the road from the stop before, where a plane or heart sits
-  const before = (i: number) => {
-    const a = place(i - 1);
-    const b = place(i);
-    if (a.lap !== b.lap) {
-      const out = a.back ? -l.loop : 1000 + l.loop;
-      return { x: out * 0.92 + colX(a.col) * 0.08, y: (pinY(i - 1) + pinY(i)) / 2 };
-    }
-    return { x: (colX(a.col) + colX(b.col)) / 2, y: (pinY(i - 1) + pinY(i)) / 2 - l.arch * 0.15 };
-  };
-  const pct = (x: number) => `${x / 10}%`;
+  const archY = (t: number) => l.arch * Math.sin(Math.PI * t) ** 2; // 0 at the ends of a row
+  const x = (t: number) => `calc(${l.r}px + ${t} * (100% - ${2 * l.r}px))`;
+  const pinY = (i: number) => rowY(place(i).row) - archY(place(i).t);
+  const first = place(0);
+  const last = place(stops.length - 1);
 
   return (
     <div className={`relative ${l.show}`} style={{ height }}>
-      <svg aria-hidden="true" viewBox={`0 0 1000 ${height}`} preserveAspectRatio="none" className="pointer-events-none absolute inset-0 h-full w-full overflow-visible">
-        <path d={d} fill="none" stroke={INK} strokeOpacity={0.75} strokeWidth={3} strokeDasharray="9 8" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
-      </svg>
+      {Array.from({ length: laps }, (_, row) => {
+        // The row: only from the first stop on the first row, and to the last stop on the last
+        const t0 = row === 0 ? first.t : row === laps - 1 && last.back ? last.t : 0;
+        const t1 = row === laps - 1 && !last.back ? last.t : 1;
+        const pts: string[] = [];
+        for (let n = 0; n <= 100; n++) {
+          const t = t0 + ((t1 - t0) * n) / 100;
+          pts.push(`${t * 1000},${l.arch + 2 - archY(t)}`);
+        }
+        const back = row % 2 === 1;
+        return (
+          <div key={row}>
+            <svg aria-hidden="true" viewBox={`0 0 1000 ${l.arch + 4}`} preserveAspectRatio="none" className="absolute overflow-visible" style={{ left: l.r, width: `calc(100% - ${2 * l.r}px)`, top: rowY(row) - l.arch - 2, height: l.arch + 4 }}>
+              <polyline points={pts.join(' ')} {...DASH} />
+            </svg>
+            {row < laps - 1 && (
+              <svg aria-hidden="true" viewBox={`0 0 ${l.r} ${lap}`} className="absolute overflow-visible" style={{ top: rowY(row), width: l.r, height: lap, [back ? 'left' : 'right']: 0 }}>
+                <path d={back ? `M ${l.r} 0 A ${l.r} ${l.r} 0 0 0 ${l.r} ${lap}` : `M 0 0 A ${l.r} ${l.r} 0 0 1 0 ${lap}`} {...DASH} />
+              </svg>
+            )}
+          </div>
+        );
+      })}
 
-      {/* Where the road starts */}
-      <span aria-hidden="true" className="absolute -translate-x-full -translate-y-1/2 -rotate-6 whitespace-nowrap pr-5 font-hand text-xl text-bark" style={{ top: pinY(0) + 2, left: pct(colX(0)) }}>
+      <span aria-hidden="true" className="absolute -translate-x-full -translate-y-1/2 -rotate-6 whitespace-nowrap pr-6 font-hand text-xl text-bark" style={{ top: pinY(0), left: x(first.t) }}>
         {storyRoadmap.start}
       </span>
 
@@ -238,43 +222,82 @@ function RoadMap({ l }: { l: Layout }) {
         {stops.map((stop, i) => {
           const p = place(i);
           return (
-            <li key={stop.title} className="absolute" style={{ top: pinY(i), left: pct(colX(p.col)) }}>
-              {/* Above the road */}
+            <li key={stop.title} className="absolute" style={{ top: pinY(i), left: x(p.t) }}>
               <span className="absolute bottom-7 left-0 flex -translate-x-1/2 flex-col items-center">
                 <Visual stop={stop} i={i} photoW={l.photoW} />
               </span>
               <span className="absolute bottom-0 left-0 -translate-x-1/2">
                 <Pin kind={stop.kind} />
               </span>
-              {/* Below the road */}
-              <span className={`absolute left-0 top-4 -translate-x-1/2 text-center ${l.textW}`}>
-                <span className="block font-hand text-lg leading-none text-stone">{stop.when}</span>
-                <span className="mt-1 block font-display text-[0.95rem] italic leading-snug text-bark">
-                  {/* a soft paper patch so the road passes neatly behind the words */}
-                  <span className="box-decoration-clone rounded bg-sand/90 px-1">{stop.title}</span>
-                </span>
-                {l.lines &&
-                  stop.lines?.map((line) => (
-                  <span key={line} className="mt-0.5 block font-body text-[0.7rem] leading-snug text-umber">
-                    {line}
-                  </span>
-                ))}
-              </span>
+              <StopText stop={stop} lines className={`absolute left-0 top-3 -translate-x-1/2 ${l.textW}`} />
             </li>
           );
         })}
       </ol>
 
-      {/* On the road on the way into a stop: a plane for a move, a heart for the good bits */}
+      {/* A plane on the road into each move, a heart into the good bits */}
       {stops.map((stop, i) => {
         if (!stop.road || i === 0) return null;
-        const b = before(i);
+        const a = place(i - 1);
+        const b = place(i);
+        const onLoop = a.row !== b.row;
+        const tm = (a.t + b.t) / 2;
+        const pos = onLoop
+          ? { top: rowY(a.row) + l.r, left: a.back ? '0px' : '100%' }
+          : { top: rowY(b.row) - archY(tm), left: x(tm) };
         return (
-          <span key={`road-${stop.title}`} aria-hidden="true" className="absolute -translate-x-1/2 -translate-y-1/2" style={{ top: b.y, left: pct(b.x) }}>
-            {stop.road === 'plane' ? <Plane left={place(i).back} /> : <Heart />}
+          <span key={`road-${stop.title}`} aria-hidden="true" className="absolute -translate-x-1/2 -translate-y-1/2" style={pos}>
+            {stop.road === 'plane' ? <Plane dir={onLoop ? 'down' : b.back ? 'left' : 'right'} /> : <Heart />}
           </span>
         );
       })}
+    </div>
+  );
+}
+
+// Phone: one even S-curve down the middle, the stops alternating sides
+function SnakeMap() {
+  const stops = storyRoadmap.stops;
+  const top = 70;
+  const step = 160; // px between stops
+  const swing = 17; // % the road swings either side of the middle
+  const height = top + (stops.length - 1) * step + 150;
+  const side = (i: number) => (i % 2 === 0 ? -1 : 1); // the road bends left for the first stop
+  const pts: string[] = [];
+  for (let y = top; y <= top + (stops.length - 1) * step; y += 4) {
+    pts.push(`${50 - swing * Math.cos((Math.PI * (y - top)) / step)},${y}`);
+  }
+  return (
+    <div className="relative sm:hidden" style={{ height }}>
+      <svg aria-hidden="true" viewBox={`0 0 100 ${height}`} preserveAspectRatio="none" className="absolute inset-0 h-full w-full overflow-visible">
+        <polyline points={pts.join(' ')} {...DASH} />
+      </svg>
+      <span aria-hidden="true" className="absolute -translate-x-1/2 -rotate-6 whitespace-nowrap font-hand text-xl text-bark" style={{ top: top - 58, left: `${50 - swing}%` }}>
+        {storyRoadmap.start}
+      </span>
+      <ol>
+        {stops.map((stop, i) => {
+          const pinX = 50 + side(i) * swing;
+          const y = top + i * step;
+          return (
+            <li key={stop.title}>
+              <span className="absolute -translate-x-1/2 -translate-y-full" style={{ top: y, left: `${pinX}%` }}>
+                <Pin kind={stop.kind} />
+              </span>
+              {/* The stop's picture and words, on the other side of the road */}
+              <span className="absolute flex w-[44%] -translate-y-1/2 flex-col items-center" style={{ top: y, [side(i) < 0 ? 'right' : 'left']: '1%' }}>
+                <Visual stop={stop} i={i} photoW="w-[4.25rem]" />
+                <StopText stop={stop} lines={false} className="mt-2" />
+              </span>
+              {stop.road && i > 0 && (
+                <span aria-hidden="true" className="absolute -translate-x-1/2 -translate-y-1/2" style={{ top: y - step / 2, left: '50%' }}>
+                  {stop.road === 'plane' ? <Plane dir="down" /> : <Heart />}
+                </span>
+              )}
+            </li>
+          );
+        })}
+      </ol>
     </div>
   );
 }
@@ -293,8 +316,9 @@ export default function StoryRoadmap() {
         </header>
 
         <div className="mt-6">
-          {LAYOUTS.map((l) => (
-            <RoadMap key={l.per} l={l} />
+          <SnakeMap />
+          {LAPS.map((l) => (
+            <LapMap key={l.per} l={l} />
           ))}
         </div>
 
