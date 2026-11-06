@@ -223,57 +223,48 @@ function ArtMap() {
   );
 }
 
-// Phone: a snake like Lena's sketch. Each lap is a smooth gentle wave across
-// the screen, joined at the edges by perfectly round half-circle loops, two
-// stops a lap. Drawn in a 390-wide space that scales evenly with the screen,
-// so the loops stay round on every phone.
+// Phone: a compact snake like Lena's sketch. Each lap is one smooth curve
+// sloping gently across the screen (no bumps), joined at the edges by
+// perfectly round half-circle loops, three stops a lap so the whole journey
+// fits in about a screen and a half. Drawn in a 390-wide space that scales
+// evenly with the screen, so the loops stay round on every phone.
 const PW = 390;
-const PH_TOP = 112; // above the first lap, for its pictures
-const PH_ROW = 192; // from one lap to the next (the loop's diameter)
-const PH_LEFT = 98;
-const PH_RIGHT = 292; // where the laps end and the loops begin
-const PH_SAG = 12; // how much each lap waves
-const PH_PINS = [118, 272]; // where the two stops sit across a lap
+const PH_TOP = 84; // above the first lap, for its pictures
+const PH_ROW = 152; // from one lap to the next
+const PH_SLOPE = 12; // how far each lap drops from one end to the other
+const PH_LEFT = 74;
+const PH_RIGHT = 316; // where the laps end and the loops begin
+const PH_PINS = [96, 195, 294]; // where the three stops sit across a lap
 
 function SnakeMap() {
   const stops = storyRoadmap.stops;
-  const per = 2;
+  const per = PH_PINS.length;
   const laps = Math.ceil(stops.length / per);
-  const height = PH_TOP + (laps - 1) * PH_ROW + 96;
-  const R = PH_ROW / 2;
+  const height = PH_TOP + (laps - 1) * PH_ROW + PH_SLOPE + 64;
+  const R = (PH_ROW - PH_SLOPE) / 2;
   const place = (i: number) => {
     const lap = Math.floor(i / per);
     const back = lap % 2 === 1;
     const k = i % per;
     return { lap, back, x: PH_PINS[back ? per - 1 - k : k] };
   };
-  // One lap: two curves meeting in the middle, level at both ends so they
-  // flow straight into the round loops
-  const lapCurves = (lap: number) => {
+  // One lap: a single smooth curve, level at both ends so it flows straight
+  // into the round loops
+  const lapCurve = (lap: number) => {
     const y = PH_TOP + lap * PH_ROW;
-    const back = lap % 2 === 1;
-    const [x0, x1] = back ? [PH_RIGHT, PH_LEFT] : [PH_LEFT, PH_RIGHT];
-    const xm = (x0 + x1) / 2;
-    const ym = y + (lap % 2 ? -PH_SAG : PH_SAG);
-    const k = (x1 - x0) / 4;
-    return [
-      [x0, y, x0 + k, y, xm - k, ym, xm, ym],
-      [xm, ym, xm + k, ym, x1 - k, y, x1, y],
-    ];
+    const [x0, x1] = lap % 2 ? [PH_RIGHT, PH_LEFT] : [PH_LEFT, PH_RIGHT];
+    const k = (x1 - x0) * 0.4;
+    return [x0, y, x0 + k, y, x1 - k, y + PH_SLOPE, x1, y + PH_SLOPE];
   };
   const bez = (c: number[], t: number) => {
     const u = 1 - t;
     return [0, 1].map((o) => u * u * u * c[o] + 3 * u * u * t * c[2 + o] + 3 * u * t * t * c[4 + o] + t * t * t * c[6 + o]);
   };
-  // Where the road is (down the page) at a point across a lap
   const roadY = (lap: number, x: number) => {
     let best = [Infinity, 0];
-    for (const c of lapCurves(lap)) {
-      for (let n = 0; n <= 80; n++) {
-        const [bx, by] = bez(c, n / 80);
-        const dx = Math.abs(bx - x);
-        if (dx < best[0]) best = [dx, by];
-      }
+    for (let n = 0; n <= 120; n++) {
+      const [bx, by] = bez(lapCurve(lap), n / 120);
+      if (Math.abs(bx - x) < best[0]) best = [Math.abs(bx - x), by];
     }
     return best[1];
   };
@@ -283,10 +274,9 @@ function SnakeMap() {
   const last = place(stops.length - 1);
   let d = '';
   for (let lap = 0; lap < laps; lap++) {
-    const curves = lapCurves(lap);
-    const pts: number[][] = [];
-    for (const c of curves) for (let n = 0; n <= 40; n++) pts.push(bez(c, n / 40));
     const back = lap % 2 === 1;
+    const pts: number[][] = [];
+    for (let n = 0; n <= 60; n++) pts.push(bez(lapCurve(lap), n / 60));
     const keep = pts.filter(([x]) => {
       if (lap === 0 && x < first.x) return false;
       if (lap === laps - 1) return back ? x >= last.x : x <= last.x;
@@ -303,8 +293,8 @@ function SnakeMap() {
   return (
     <div className="relative mx-auto w-full max-w-[26rem] lg:hidden" style={{ aspectRatio: `${PW} / ${height}` }}>
       <svg aria-hidden="true" viewBox={`0 0 ${PW} ${height}`} className="absolute inset-0 h-full w-full overflow-visible">
-        <path d={d} fill="none" stroke="#7A6236" strokeWidth={13} strokeLinecap="round" strokeLinejoin="round" />
-        <path d={d} fill="none" stroke="#ffffff" strokeWidth={1.4} strokeDasharray="7 6" />
+        <path d={d} fill="none" stroke="#7A6236" strokeWidth={11} strokeLinecap="round" strokeLinejoin="round" />
+        <path d={d} fill="none" stroke="#ffffff" strokeWidth={1.2} strokeDasharray="6 5" />
       </svg>
       <ol>
         {stops.map((stop, i) => {
@@ -313,17 +303,17 @@ function SnakeMap() {
           const pos = { left: pct(p.x, PW), top: pct(y, height) };
           return (
             <li key={stop.title}>
-              <span className="absolute flex w-[40%] -translate-x-1/2 -translate-y-full justify-center pb-8" style={pos}>
-                <span className="origin-bottom scale-[0.66]">
+              <span className="absolute flex w-[30%] -translate-x-1/2 -translate-y-full justify-center pb-6" style={pos}>
+                <span className="origin-bottom scale-[0.52]">
                   <Visual stop={stop} i={i} photoW="w-[4.5rem]" />
                 </span>
               </span>
-              <span className="absolute z-10 -translate-x-1/2 -translate-y-full" style={{ ...pos, marginTop: 3 }}>
+              <span className="absolute z-10 -translate-x-1/2 -translate-y-full scale-75" style={{ ...pos, marginTop: 4, transformOrigin: 'bottom' }}>
                 <Pin kind={stop.kind} />
               </span>
-              <span className="absolute mt-3 w-[38%] -translate-x-1/2 text-center" style={pos}>
-                <span className="block font-body text-[0.5rem] font-semibold uppercase tracking-[0.18em] text-stone">{stop.when}</span>
-                <span className="mt-0.5 block font-hand text-[0.8rem] leading-[1.15] text-bark">{stop.title}</span>
+              <span className="absolute mt-2 w-[26%] -translate-x-1/2 text-center" style={pos}>
+                <span className="block font-body text-[0.45rem] font-semibold uppercase tracking-[0.16em] text-stone">{stop.when}</span>
+                <span className="block font-hand text-[0.68rem] leading-[1.1] text-bark">{stop.title}</span>
               </span>
             </li>
           );
