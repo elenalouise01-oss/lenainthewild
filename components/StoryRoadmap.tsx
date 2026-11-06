@@ -227,9 +227,11 @@ function ArtMap() {
 function SnakeMap() {
   const stops = storyRoadmap.stops;
   const top = 70;
-  const step = 160; // px between stops
-  const swing = 17; // % the road swings either side of the middle
-  const height = top + (stops.length - 1) * step + 150;
+  // Stops alternate sides, so each one can use the space beside its
+  // neighbours: the road bends every 100 px and the stops tuck in tight.
+  const step = 100; // px between stops
+  const swing = 15; // % the road swings either side of the middle
+  const height = top + (stops.length - 1) * step + 90;
   const side = (i: number) => (i % 2 === 0 ? -1 : 1); // the road bends left for the first stop
   const pts: string[] = [];
   for (let y = top; y <= top + (stops.length - 1) * step; y += 4) {
@@ -255,8 +257,10 @@ function SnakeMap() {
               </span>
               {/* The stop's picture and words, on the other side of the road */}
               <span className="absolute flex w-[44%] -translate-y-1/2 flex-col items-center" style={{ top: y, [side(i) < 0 ? 'right' : 'left']: '1%' }}>
-                <Visual stop={stop} i={i} photoW="w-[4.25rem]" />
-                <StopText stop={stop} lines={false} className="mt-2" />
+                <span className="origin-bottom scale-[0.85]">
+                  <Visual stop={stop} i={i} photoW="w-16" />
+                </span>
+                <StopText stop={stop} lines={false} className="mt-0.5 [&>span:nth-child(2)]:text-base" />
               </span>
               {stop.road && i > 0 && (
                 <span aria-hidden="true" className="absolute -translate-x-1/2 -translate-y-1/2" style={{ top: y - step / 2, left: '50%' }}>
