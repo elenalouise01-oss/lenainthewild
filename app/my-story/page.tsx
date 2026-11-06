@@ -11,6 +11,7 @@ import { absoluteUrl, breadcrumbs } from '@/lib/seo';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteHeader from '@/components/SiteHeader';
 import StoryConnector from '@/components/StoryConnector';
+import StoryRoadmap from '@/components/StoryRoadmap';
 import TapeBanner from '@/components/TapeBanner';
 import Listen from '@/components/sections/Listen';
 import Newsletter from '@/components/sections/Newsletter';
@@ -147,7 +148,10 @@ export default function MyStoryPage() {
         {/* Tape across the bottom of the photo */}
         <TapeBanner text="leaping into the unknown" mark="heart" className="relative z-10 -mt-12 -mb-12" />
 
-        <section className="overflow-x-clip bg-cream px-6 py-24 sm:py-32">
+        {/* The quick version: a life roadmap for anyone short on time */}
+        <StoryRoadmap />
+
+        <section id="full-story" className="overflow-x-clip bg-cream px-6 py-24 sm:py-32">
           <div className="relative mx-auto max-w-2xl">
             <ScrollReveal>
               <h1 className="font-display text-4xl leading-tight text-bark sm:text-6xl">{storyPage.storyTitle}</h1>

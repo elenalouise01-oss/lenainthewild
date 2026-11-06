@@ -1095,6 +1095,132 @@ export const storyPage: {
 };
 
 
+// "My story at a glance" on the My Story page: Lena's life roadmap, for
+// anyone short on time. A dashed road weaves down the page past each stop;
+// `flag` is the little flag at the stop, `kind` its colour. Dates marked ??
+// are still to come from Lena.
+export type RoadmapKind = 'start' | 'leap' | 'rock bottom' | 'low' | 'sign' | 'turning point' | 'now' | 'step';
+export type RoadmapStop = {
+  when: string;
+  title: string;
+  lines?: string[];
+  flag?: string;
+  kind: RoadmapKind;
+  photo?: { src: string; alt: string; caption: string; pos?: string };
+  // How the road arrives at this stop: a paper plane (a move) or a heart loop
+  road?: 'plane' | 'heart';
+  // A passport-style stamp beside the stop
+  stamp?: string;
+};
+export const storyRoadmap: { label: string; heading: string; intro: string; start: string; stops: RoadmapStop[]; readOn: string } = {
+  label: 'Short on time?',
+  heading: 'My story at a glance',
+  intro: 'The leaps, the rock bottoms and everything in between. The full story is below.',
+  start: 'let’s go!',
+  stops: [
+    { when: '1987', title: 'Elena was born', stamp: 'Sydney', lines: ['Sydney, Australia'], kind: 'start', flag: 'hello world' },
+    { when: '2005', title: 'Finished high school', kind: 'step' },
+    { when: '2008', title: 'Graduated from college', lines: ['Graphic Design Degree'], kind: 'step' },
+    {
+      when: '20??',
+      title: 'Break up of 8 years with my high school sweetheart', road: 'plane', stamp: 'Whitsundays',
+      lines: ['Moved to the Whitsundays to live and work on Brampton Island', 'Then to Daydream Island'],
+      kind: 'leap',
+      flag: 'Leap 1.0',
+      photo: { src: '/images/story/island-bestie.jpg', alt: 'Lena and her friend in their resort uniforms on an island in the Whitsundays', caption: 'island life' },
+    },
+    {
+      when: '20??',
+      title: 'Moved to Canada', road: 'plane', stamp: 'Canada',
+      kind: 'leap',
+      flag: 'Leap 2.0',
+      photo: { src: '/images/story/canada-snowboard.jpg', alt: 'Lena sitting in the snow with her snowboard in Canada', caption: 'canada', pos: '68% 50%' },
+    },
+    {
+      when: '20??',
+      title: 'Moved back to Sydney', road: 'plane', stamp: 'Sydney',
+      lines: ['Living off dole payments and rental assistance', 'Working in retail, hospitality and ?? jobs in between', 'Break up of 3 years'],
+      kind: 'low',
+    },
+    {
+      when: '20??',
+      title: 'Started my corporate career as a graphic designer',
+      lines: ['Got fired for speaking up (never been fired in my life)'],
+      kind: 'step',
+    },
+    {
+      when: '20??',
+      title: 'Corporate job 2.0',
+      lines: ['Hit rock bottom', 'Break up from a toxic relationship of 3.5 years'],
+      kind: 'rock bottom',
+      flag: 'Rock bottom',
+    },
+    {
+      when: '20??',
+      title: 'Changed careers and became a personal trainer', road: 'heart',
+      lines: ['8 years building a PT business in the busiest gym in Bondi'],
+      kind: 'leap',
+      flag: 'Leap 3.0',
+      photo: { src: '/images/story/pt-polaroid.jpg', alt: 'Lena smiling in her personal trainer uniform', caption: 'PT era' },
+    },
+    {
+      when: '2021',
+      title: 'Burning out in Bondi',
+      lines: ['Fully booked and miserable, then bedridden with pneumonia in Europe'],
+      kind: 'low',
+      flag: 'Burnout',
+      photo: { src: '/images/story/bedridden.jpg', alt: 'Lena lying sick in a hotel bed during her Europe trip', caption: 'bedridden (again)' },
+    },
+    {
+      when: '2023',
+      title: 'My first solo trip to Bali', road: 'plane', stamp: 'Bali',
+      lines: ['It felt like home'],
+      kind: 'turning point',
+      flag: 'A taste of freedom',
+      photo: { src: '/images/lena-sunrise.jpg', alt: 'Lena at sunrise above the clouds', caption: 'free' },
+    },
+    {
+      when: '20??',
+      title: 'Asked for a sign',
+      lines: ['Saw a big rainbow over Balmoral beach and resigned the next day'],
+      kind: 'sign',
+      flag: 'My sign',
+      photo: { src: '/images/rainbow-beach.jpg', alt: 'A rainbow over the beach', caption: 'the rainbow' },
+    },
+    {
+      when: '20??',
+      title: 'Uprooted my life from Sydney to Bali at 36', road: 'plane', stamp: 'One way',
+      lines: ['Sold everything and boarded a one-way flight with no plan'],
+      kind: 'leap',
+      flag: 'Leap 4.0',
+      photo: { src: '/images/story-packing-up.webp', alt: 'Lena with her suitcase in her empty apartment', caption: 'one-way ticket' },
+    },
+    {
+      when: '4 months in',
+      title: 'Down to my last $500 in Ubud', stamp: 'Ubud',
+      lines: ['My dark night of the soul'],
+      kind: 'rock bottom',
+      flag: 'Rock bottom 2.0',
+    },
+    {
+      when: 'the next day',
+      title: 'The turning point',
+      lines: ['A “random” $777 refund, then work started flowing in'],
+      kind: 'turning point',
+      flag: 'Turning point',
+    },
+    {
+      when: 'now',
+      title: 'Reinventing life on my own terms',
+      lines: ['Lena in the Wild was born'],
+      kind: 'now',
+      flag: 'You are here',
+      photo: { src: '/images/lena-sunrise-smile.jpg', alt: 'Lena smiling at sunrise', caption: 'me now' },
+    },
+  ],
+  readOn: 'the full story ↓',
+};
+
 // The photography page (/photography): the "Let Me Reintroduce Myself"
 // photoshoot, mostly in Lena's own words from her notes. `brand` is the
 // working name until she decides. The gallery photos are stand-ins from her
