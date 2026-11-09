@@ -124,9 +124,13 @@ export default async function ArticlePage({ params }: Props) {
               if (block.type === 'listen') return <p key={i} className="font-body text-sm italic text-stone">🎧 {block.text}</p>;
               if (block.type === 'list')
                 return (
-                  <ul key={i} className="list-disc space-y-2 pl-6 font-body text-base leading-relaxed text-umber marker:text-sage sm:text-lg">
+                  // Little hearts for bullets, as in Lena's Substack
+                  <ul key={i} className="space-y-2 font-body text-base leading-relaxed text-umber sm:text-lg">
                     {block.items.map((item) => (
-                      <li key={item}>{item}</li>
+                      <li key={item} className="grid grid-cols-[1.5rem_1fr] items-baseline">
+                        <span aria-hidden="true" className="text-lg leading-none text-bark/70">♡</span>
+                        <span>{item}</span>
+                      </li>
                     ))}
                   </ul>
                 );
