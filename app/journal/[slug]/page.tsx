@@ -32,6 +32,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+// The Freedom Frequency isn't open yet: until it is, articles that point to
+// it show the 5 Day Reconnect instead (their own Freedom Frequency lines are
+// kept for when it opens). Set to true to switch it back on.
+const FREEDOM_FREQUENCY_OPEN = false;
+const offerFor = (a: { offer?: string; offerLine?: string }) =>
+  a.offer === 'The Freedom Frequency' && !FREEDOM_FREQUENCY_OPEN
+    ? { offer: 'The 5 Day Reconnect' as const, line: undefined }
+    : { offer: a.offer, line: a.offerLine };
+
 const OFFER_LINE: Record<string, string> = {
   'The 5 Day Reconnect': 'If this feels familiar, start here: five days of simple practices to get out of your head and back into your body.',
   'The Freedom Frequency': 'If you’re ready to go deeper, this is everything I learned going from stuck to breaking free.',
@@ -45,6 +54,7 @@ export default async function ArticlePage({ params }: Props) {
 
   const path = `/journal/${a.slug}`;
   const blocks = parseArticle(a.text);
+  const offer = offerFor(a);
   const list = sortedJournal();
   const next = list[(list.findIndex((x) => x.slug === a.slug) + 1) % list.length];
   // Three related articles: same category first, then shared tags.
@@ -183,18 +193,18 @@ export default async function ArticlePage({ params }: Props) {
           </div>
         </article>
 
-        <FreebieBand slug={a.slug} />
+        <FreebieBand />
         {/* A gentle next step */}
         <section className="bg-sand px-6 py-16 text-center sm:py-20">
           <div className="mx-auto max-w-xl">
-            {a.offer && offerPages[a.offer] ? (
+            {offer.offer && offerPages[offer.offer] ? (
               <>
-                <p className="font-display text-2xl italic leading-snug text-bark sm:text-3xl">{a.offerLine ?? OFFER_LINE[a.offer]}</p>
+                <p className="font-display text-2xl italic leading-snug text-bark sm:text-3xl">{offer.line ?? OFFER_LINE[offer.offer]}</p>
                 <Link
-                  href={offerPages[a.offer]}
+                  href={offerPages[offer.offer]}
                   className="mt-6 inline-block py-2 font-body text-xs font-semibold uppercase tracking-wider text-bark underline decoration-sage decoration-2 underline-offset-8 hover:decoration-bark sm:tracking-widest2"
                 >
-                  {a.offer}{' '}→
+                  {offer.offer}{' '}→
                 </Link>
               </>
             ) : (

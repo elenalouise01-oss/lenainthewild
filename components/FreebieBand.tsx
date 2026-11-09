@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { freebies } from '@/content/site';
 
-// The free thing that fits an article, just before its "next step": the quiz
-// for intuition and decisions, the tapping practice for everything else.
-export default function FreebieBand({ slug }: { slug: string }) {
-  const kind = freebies.quizArticles.includes(slug) ? freebies.quiz : freebies.tapping;
+// The free quiz, just before each article's "next step". (For now every
+// article offers the quiz; freebies.quizArticles and freebies.tapping are kept
+// in case the tapping practice goes back on some articles.)
+export default function FreebieBand() {
+  const kind = freebies.quiz;
   return (
     <section className="bg-sage px-6 py-14 text-center sm:py-16">
       <div className="mx-auto max-w-xl">
