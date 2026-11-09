@@ -1556,6 +1556,104 @@ So if you’re contemplating whether or not to do the thing that scares you, rem
 If you’re still doubting, collect the data. Write down all the times the universe has supported you, and start making that belief 110% real from the proof in your own life. You’ve got this! ✨
 `,
   },
+  {
+    slug: 'signs-youve-outgrown-your-environment',
+    title: '9 Signs You’ve Outgrown Your Environment',
+    subtitle: 'In the past, whenever I’d outgrown something, I always knew it way before I walked away.',
+    seoTitle: '9 Signs You’ve Outgrown Your Environment (and It’s Time to Leave)',
+    description:
+      'Avoidance, exhaustion, guilt for wanting more: the 9 signs I’d outgrown my PT career in Bondi, and how learning to trust my intuition changed everything.',
+    date: '2026-11-09',
+    category: 'Self-Trust',
+    tags: ['signs you’ve outgrown your environment', 'outgrowing your life', 'feeling stuck', 'trust your intuition', 'fear of the unknown', 'when to leave', 'career change', 'Human Design authority'],
+    image: { src: '/images/journal/signs-youve-outgrown-your-environment.webp', alt: 'A coffee on a wooden table beside an intuition oracle card', pos: '50% 78%' },
+    substackUrl: 'https://lenainthewild.substack.com/p/9-signs-youve-outgrown-your-environment',
+    offer: 'The Freedom Frequency',
+    offerLine: 'If you know you’ve outgrown where you are but you’re scared to leap, this is everything I learned going from stuck to free.',
+    faq: [
+      {
+        q: 'What are the signs you’ve outgrown your environment?',
+        a: 'Avoiding it, doing the bare minimum, dreaming about leaving, always needing rest to recover, feeling stuck, looking to others for answers, guilt for wanting more, feeling out of line with your values, and negativity towards it.',
+      },
+      {
+        q: 'Why do we stay in situations we’ve outgrown?',
+        a: 'Fear of the unknown and of what we might lose, like the relationship, the pay, the security or the safety, or fear of making the wrong decision. That fear often outweighs the discomfort of staying.',
+      },
+      {
+        q: 'How do you know if it’s time to leave?',
+        a: 'Listen to your intuition, then ask yourself: realistically, what’s the worst that could happen? And what’s the best that could happen?',
+      },
+    ],
+    text: `
+Back then I’d wait to the point until the universe gave me no other option but to leave. It would literally have to push me out.
+
+I remember getting kicked out of a home I’d just moved into with my ex, after my intuition had clearly told me NO. Another time, hitting absolute rock bottom, completely broke and broken - months prior my intuition had been telling me to move location, it was so obvious on reflection, but I didn’t listen…
+
+When something is no longer in alignment, it’s easy to keep pushing through out of routine, habit and comfort. And when I say environment, I’m referring to outgrowing any situation - a relationship, a friendship, a work relationship, a career, a business, a location, an identity or role you’ve held for years.
+
+This isn’t to say the environment or the person is necessarily bad. It’s just not right for you anymore. You’ve outgrown it.
+
+One of my biggest examples - was the last 2 years of my personal training career. I’d spent 8 years building my business in the busiest gym in Bondi, which had once been my dream, and my body had been trying to tell me it was time to go. My energy was so low, I was constantly depleted, anxious, up and down. Something that used to light me up so much no longer did. My body felt so heavy, and I was so exhausted every single day.
+
+## Other signs that were showing up for me at that time
+
+- Avoidance - I didn’t want to do any work and I was avoiding going into the gym where I worked. I wanted to be there as little time as possible.
+- Doing the bare minimum - I was doing the absolute bare minimum of hours and clients (just enough to pay the bills to get by).
+- Dreaming about leaving or quitting - All I wanted to do was quit, and I was constantly thinking about how I could make that happen. Researching what I needed to do to get out. (At the time it was building an online business.)
+- Constantly needing rest to recover from it - It didn’t matter how much rest I got, I was constantly depleted from doing way less work than I was doing before. I was so confused, like I’m doing less, how am I more tired?
+- Feeling constantly stuck/trapped - I was no longer growing, it was just a constant stagnation loop and I kept trying to find answers, a way out, but ending up back at square one.
+- Looking outside myself for answers - I kept asking psychologists, healers and mentors what I should do, hoping someone would give me permission to leave.
+- Feeling guilty for wanting more - It all looked good from the outside, so I felt ungrateful for being unhappy.
+- Misaligned - What once was aligned with my values was no longer the case. When I started I wanted to be the busiest trainer in that gym, I’d reached that point in my career and I hated it. All I wanted now was freedom and to travel and work anywhere in the world, and this job was the opposite of that, keeping me completely stuck.
+- Negativity - I felt really negative towards the job, the gym, and the people around me. Which coming from me is very weird I’m usually a very positive, happy person.
+
+If you’re noticing these signs and any of this sounds familiar, maybe it’s worth assessing whether this is still the right fit for you anymore.
+
+The thing is when we are stuck in these situations we already know we aren’t happy in it anymore. But the fear of the unknown, the fear that we might lose something, whether it’s the relationship, the pay, the financial security, the connections or the safety. Or making the wrong decision. That’s what keeps us stuck.
+
+## Ignoring my intuition
+
+Every time I’ve been in one of these transitional periods, I’ve felt stuck and knew I needed to leave. Eg.
+
+My 8-year relationship: I was too scared to leave out of fear I’d regret it, even though I knew I wasn’t happy.
+
+My career pivot from graphic design to PT: I hated my work environment and I was depressed. There was the societal pressure that I was too old to change careers, losing the stable pay cheque, and the fear of making a mistake.
+
+My toxic relationship of 3.5 years: I was unhappy but too scared to make the wrong decision.
+
+That’s only naming a few. But every single time, I ignored my intuition and ended up worse off.
+
+> The fear of what we’ll potentially lose outweighs the discomfort of staying in an environment that’s making us unhappy.
+
+What’s that saying? Ignore your intuition at your own peril?
+
+## So anyway, the point I’m trying to make
+
+Over the years I’ve ignored my intuition and it’s gotten me into many shitty situations in my life. I’ve known I wasn’t happy in my environment or relationship, but I didn’t listen. I’d wait until I was pushed out.
+
+Fast forward until now, and I live my life guided by my intuition, from choosing what cafe I go to each day to bigger decisions. Intuition is like a muscle, and self-belief and trust go hand in hand.
+
+The more you choose to listen and follow your inner voice, the more trust you build in yourself and the faster you get at making decisions for yourself. No longer needing to outsource your decisions or questions. You back yourself 100% to decide for you.
+
+I went from being trapped in unhealthy environments for years, paralysed by indecision and fear (it took me 2 years to walk away from my PT career), to trusting myself to make those decisions in a fraction of the time.
+
+## The questions that always help me
+
+Realistically, what’s the worst that could happen?
+
+And I actually like to focus on: what’s the best that could happen?
+
+If this resonates and you’re currently struggling with a big decision or life transition, ask yourself those questions.
+
+The thing I wasted so much time doing was seeking answers and advice from others (psychologists, healers, mentors), thinking they know better or would give me permission to leave. I wish back then I knew about Human Design and what my design was.
+
+I became obsessed with a book about it. If you haven’t heard of it, Human Design is a system that uses your birth date, time and place to create a chart of how you’re uniquely designed to move through life, including how you’re meant to make decisions. Your authority is the part of that chart that shows you how to make decisions that are right for you, so instead of overthinking or asking everyone else, (which is what I was doing constantly) you learn which inner signal to trust.
+
+For me, my response is sacral, which means my answers come from my gut. I feel a yes or a no in my body in the moment, before my mind gets involved, then need to sit on it before deciding. This helped me so much because it makes so much sense of how I make decisions and why I always needed time with things before I could say yes or no.
+
+I’ve created a free quiz so you can figure out your authority, your inner compass for knowing what’s right for you. It only takes 1 minute.
+`,
+  },
 ];
 
 export const journalPage = {

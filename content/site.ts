@@ -147,6 +147,7 @@ export const freebies = {
     href: '/#free-practice',
   },
   quizArticles: [
+    'signs-youve-outgrown-your-environment',
     'trust-your-intuition-stop-abandoning-yourself',
     'avoiding-men-im-attracted-to',
     'living-out-an-old-story',
