@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { instagramPublicReply } from '@/content/instagramDms';
+import { instagramPublicReplies, pickOne } from '@/content/instagramDms';
 import { apiFromEnv, commentsFromPayload, matchKeyword, replyToComment, sendPrivateReply, validSignature } from '@/lib/instagram/instagram';
 
 export const runtime = 'nodejs';
@@ -45,7 +45,7 @@ export async function POST(req: Request) {
     console.log(`Meta webhook: ${comments.length} comment(s) received`);
     for (const c of comments) {
       // Our own public reply fires this webhook again: never answer ourselves.
-      if (c.fromId === c.ownerId || c.text.trim() === instagramPublicReply) {
+      if (c.fromId === c.ownerId || instagramPublicReplies.includes(c.text.trim())) {
         console.log(`${c.source} comment skipped: written by the account itself`);
         continue;
       }
@@ -55,10 +55,13 @@ export async function POST(req: Request) {
         continue;
       }
       // One private reply per comment, ever, so a send is never retried.
-      const sent = await sendPrivateReply(api, c, hit.dm);
+      const dm = pickOne(hit.dms);
+      if (!dm) continue;
+      const sent = await sendPrivateReply(api, c, dm);
       console.log(`${c.source} DM for ${hit.keyword}: ${sent ? 'sent' : 'FAILED (see error above)'}`);
-      if (sent && instagramPublicReply) {
-        const replied = await replyToComment(api, c, instagramPublicReply);
+      const publicReply = pickOne(instagramPublicReplies);
+      if (sent && publicReply) {
+        const replied = await replyToComment(api, c, publicReply);
         console.log(`${c.source} public reply: ${replied ? 'sent' : 'FAILED (see error above)'}`);
       }
     }

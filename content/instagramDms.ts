@@ -8,20 +8,41 @@
 export type InstagramKeyword = {
   /** The word people comment. Matched on its own, any capitalisation. */
   keyword: string;
-  /** The private DM they receive. */
-  dm: string;
+  /** The private DM they receive. One version is picked at random each time. */
+  dms: string[];
 };
+
+const QUIZ = 'https://www.lenainthewild.com/intuition-blueprint';
+const PRACTICE = 'https://www.lenainthewild.com/#free-practice';
+const PRACTICE_NOTE = 'Pop in your name and email and the video is yours.';
 
 export const instagramKeywords: InstagramKeyword[] = [
   {
     keyword: 'LEAP',
-    dm: 'Hi! Here’s your free intuition quiz 💜 https://www.lenainthewild.com/intuition-blueprint\n\nLena',
+    dms: [
+      `Hi! Here’s your free intuition quiz 💜 ${QUIZ}\n\nLena`,
+      `Hey! Your free intuition quiz is here ✨ ${QUIZ}\n\nLena`,
+      `Here you go! Your free intuition quiz 🦋 ${QUIZ}\n\nLena`,
+    ],
   },
   {
     keyword: 'UNSTUCK',
-    dm: 'Hi! Here’s your free mindfulness practice 💜 https://www.lenainthewild.com/#free-practice\n\nPop in your name and email and the video is yours.\n\nLena',
+    dms: [
+      `Hi! Here’s your free mindfulness practice 💜 ${PRACTICE}\n\n${PRACTICE_NOTE}\n\nLena`,
+      `Hey! Your free mindfulness practice is here ✨ ${PRACTICE}\n\n${PRACTICE_NOTE}\n\nLena`,
+      `Here you go! Your free mindfulness practice 🦋 ${PRACTICE}\n\n${PRACTICE_NOTE}\n\nLena`,
+    ],
   },
 ];
 
-// A short public reply under their comment. Set to '' to turn it off.
-export const instagramPublicReply = 'Sent! Check your DMs 💜';
+// Short public replies under their comment; one is picked at random each time.
+// Use an empty list to turn the public reply off.
+export const instagramPublicReplies: string[] = [
+  'Sent! Check your DMs 💜',
+  'Just sent it to your DMs ✨',
+  'On its way to your DMs 🤍',
+  'It’s in your DMs now 🦋',
+];
+
+/** Picks one of several versions at random, so the messages don't all look identical. */
+export const pickOne = <T,>(options: T[]): T | undefined => options[Math.floor(Math.random() * options.length)];
