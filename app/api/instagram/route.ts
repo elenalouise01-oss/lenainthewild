@@ -36,12 +36,26 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Bad JSON' }, { status: 400 });
   }
 
-  for (const c of commentsFromPayload(payload)) {
-    if (c.fromId === c.igId) continue; // never reply to our own comments
+  // Short log lines (no names, comments or keys) so it's easy to see in
+  // Vercel's logs what happened to each comment.
+  const comments = commentsFromPayload(payload);
+  console.log(`Instagram webhook: ${comments.length} comment(s) received`);
+  for (const c of comments) {
+    if (c.fromId === c.igId) {
+      console.log('Instagram comment skipped: it was from the account itself');
+      continue; // never reply to our own comments
+    }
     const hit = matchKeyword(c.text);
-    if (!hit) continue;
+    if (!hit) {
+      console.log('Instagram comment skipped: no keyword matched');
+      continue;
+    }
     const sent = await sendPrivateReply(c.igId, c.commentId, hit.dm, accessToken);
-    if (sent && instagramPublicReply) await replyToComment(c.commentId, instagramPublicReply, accessToken);
+    console.log(`Instagram DM for ${hit.keyword}: ${sent ? 'sent' : 'FAILED (see error above)'}`);
+    if (sent && instagramPublicReply) {
+      const replied = await replyToComment(c.commentId, instagramPublicReply, accessToken);
+      console.log(`Instagram public reply: ${replied ? 'sent' : 'FAILED (see error above)'}`);
+    }
   }
 
   // Always answer 200 quickly so Meta doesn't keep retrying.
