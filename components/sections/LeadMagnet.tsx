@@ -292,6 +292,8 @@ export default function LeadMagnet() {
                             sendingLabel="Sending…"
                             onSent={setSent}
                             sheetUrl={tutorialSheetUrl}
+                            consent={leadMagnet.consent}
+                            consentError={leadMagnet.consentError}
                             buttonClass="bg-sage text-bark"
                             fieldClass="border-bark bg-bark text-cream placeholder:text-cream/60 focus:border-sage"
                           />

@@ -35,6 +35,8 @@ export default function WaitlistForm({
   onSent,
   buttonClass,
   sheetUrl = waitlistSheetUrl,
+  consent,
+  consentError,
   fieldClass = 'border-bark/20 bg-cream text-bark placeholder:text-bark/45 focus:border-bark',
 }: {
   offer: string;
@@ -46,16 +48,27 @@ export default function WaitlistForm({
   onSent?: (firstName: string) => void;
   buttonClass?: string;
   sheetUrl?: string;
+  // Wording for the required "yes, email me" tick box, and what to say if it's
+  // left empty. Leave out to show no tick box.
+  consent?: string;
+  consentError?: string;
   fieldClass?: string;
 }) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle');
   const [firstName, setFirstName] = useState('');
+  const [agreed, setAgreed] = useState(false);
+  const [showConsentError, setShowConsentError] = useState(false);
   const reduced = useReducedMotion();
 
   const join = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (consent && !agreed) {
+      setShowConsentError(true);
+      return;
+    }
     const data = new FormData(e.currentTarget);
     data.append('waitlist', offer);
+    if (consent) data.append('marketing_emails', 'Yes');
     const first = String(data.get('name') ?? '').trim().split(/\s+/)[0];
     setFirstName(first);
     setStatus('sending');
@@ -122,6 +135,29 @@ export default function WaitlistForm({
         <span className="sr-only">Email</span>
         <input name="email" type="email" autoComplete="email" required placeholder="Your email" className={field} />
       </label>
+      {consent && (
+        <div className="px-2">
+          <label className={`flex cursor-pointer items-start gap-3 font-body text-sm leading-relaxed ${dark ? 'text-cream/85' : 'text-umber'}`}>
+            <input
+              type="checkbox"
+              checked={agreed}
+              onChange={(e) => {
+                setAgreed(e.target.checked);
+                if (e.target.checked) setShowConsentError(false);
+              }}
+              aria-invalid={showConsentError}
+              aria-describedby={showConsentError ? 'consent-error' : undefined}
+              className={`mt-1 h-4 w-4 shrink-0 ${dark ? 'accent-zing-babypink' : 'accent-bark'}`}
+            />
+            {consent}
+          </label>
+          {showConsentError && (
+            <p id="consent-error" className={`mt-2 font-body text-sm ${dark ? 'text-cream' : 'text-bark'}`} role="alert">
+              {consentError}
+            </p>
+          )}
+        </div>
+      )}
       {status === 'failed' && (
         <p className={`px-2 font-body text-sm ${dark ? 'text-cream' : 'text-bark'}`} role="alert">
           Sorry, that didn’t go through. Please try again, or message me on Instagram{' '}

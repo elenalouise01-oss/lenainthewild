@@ -271,7 +271,7 @@ export default function FreedomFrequencyPage() {
             <p className="mt-14 font-body text-xs font-semibold uppercase tracking-widest2 text-zing-babypink">{page.waitlistHeading}</p>
             <p className="mx-auto mt-3 max-w-md font-body text-base leading-relaxed text-cream/80">{page.waitlistBody}</p>
             <div className="mt-8">
-              <WaitlistForm offer={page.title} cta={page.cta} sent={page.waitlistSent} dark />
+              <WaitlistForm offer={page.title} cta={page.cta} sent={page.waitlistSent} consent={page.waitlistConsent} consentError={page.waitlistConsentError} dark />
             </div>
           </ScrollReveal>
         </section>
