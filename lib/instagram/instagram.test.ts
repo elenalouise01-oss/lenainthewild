@@ -1,7 +1,7 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { createHmac } from 'node:crypto';
-import { commentsFromPayload, matchKeyword, validSignature } from './instagram';
+import { apiFromEnv, commentsFromPayload, matchKeyword, validSignature } from './instagram';
 
 // Run with: npm test
 
@@ -45,7 +45,28 @@ describe('commentsFromPayload', () => {
         },
       ],
     };
-    assert.deepEqual(commentsFromPayload(payload), [{ igId: 'IG1', commentId: 'C1', fromId: 'U1', text: 'LEAP' }]);
+    assert.deepEqual(commentsFromPayload(payload), [{ source: 'instagram', ownerId: 'IG1', commentId: 'C1', fromId: 'U1', text: 'LEAP' }]);
     assert.deepEqual(commentsFromPayload(null), []);
+  });
+});
+
+describe('Facebook Page comments', () => {
+  const feed = (value: object) => ({ object: 'page', entry: [{ id: 'PAGE1', changes: [{ field: 'feed', value }] }] });
+  const base = { item: 'comment', verb: 'add', comment_id: 'FC1', post_id: 'PAGE1_POST', parent_id: 'PAGE1_POST', from: { id: 'U9' }, message: 'unstuck' };
+  it('reads a top-level comment (its parent is the post)', () => {
+    assert.deepEqual(commentsFromPayload(feed(base)), [{ source: 'facebook', ownerId: 'PAGE1', commentId: 'FC1', fromId: 'U9', text: 'unstuck' }]);
+  });
+  it('skips replies to other comments, edits and likes', () => {
+    assert.deepEqual(commentsFromPayload(feed({ ...base, parent_id: 'SOME_OTHER_COMMENT' })), []);
+    assert.deepEqual(commentsFromPayload(feed({ ...base, verb: 'edited' })), []);
+    assert.deepEqual(commentsFromPayload(feed({ ...base, item: 'like' })), []);
+  });
+});
+
+describe('apiFromEnv', () => {
+  it('prefers the Page token, falls back to the Instagram token, else null', () => {
+    assert.equal(apiFromEnv({ META_PAGE_ACCESS_TOKEN: 'p', INSTAGRAM_ACCESS_TOKEN: 'i' })?.mode, 'page');
+    assert.equal(apiFromEnv({ INSTAGRAM_ACCESS_TOKEN: 'i' })?.mode, 'instagram');
+    assert.equal(apiFromEnv({}), null);
   });
 });

@@ -165,3 +165,9 @@ that shows what happened to each comment in Vercel Request Logs.
   to 24 h to show. Idea for next time: the **Facebook Login route** (Page token
   from Graph API Explorer) matches these permissions and could also cover
   Facebook comments; it needs a code change (graph.facebook.com, Page-based).
+- **Page route built (12 Nov 2026, from a guide Lena found, "Kill your ManyChat bill"):**
+  the guide says the webhook must be registered for BOTH the `page` and `instagram`
+  objects and the app activated on the Page, using a Page access token. The code
+  now supports it (set `META_PAGE_ACCESS_TOKEN`; falls back to
+  `INSTAGRAM_ACCESS_TOKEN`), handles Facebook `feed` comments too, and always
+  answers 200. Steps: `docs/instagram-dms.md` ("Page route").

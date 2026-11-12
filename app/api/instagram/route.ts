@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server';
 import { instagramPublicReply } from '@/content/instagramDms';
-import { commentsFromPayload, matchKeyword, replyToComment, sendPrivateReply, validSignature } from '@/lib/instagram/instagram';
+import { apiFromEnv, commentsFromPayload, matchKeyword, replyToComment, sendPrivateReply, validSignature } from '@/lib/instagram/instagram';
 
 export const runtime = 'nodejs';
 
-// Instagram webhook: comment a keyword, get a DM. Needs three env vars in Vercel:
-//   INSTAGRAM_VERIFY_TOKEN, INSTAGRAM_APP_SECRET, INSTAGRAM_ACCESS_TOKEN
+// Instagram + Facebook webhook: comment a keyword, get a DM. Env vars in Vercel:
+//   INSTAGRAM_VERIFY_TOKEN, INSTAGRAM_APP_SECRET (the Meta app secret), and
+//   META_PAGE_ACCESS_TOKEN (Page route, preferred) or INSTAGRAM_ACCESS_TOKEN.
 // See docs/instagram-dms.md.
 
 // Meta calls this once when you save the webhook, to check the address is yours.
@@ -21,8 +22,8 @@ export async function GET(req: Request) {
 // Meta calls this for every new comment.
 export async function POST(req: Request) {
   const secret = process.env.INSTAGRAM_APP_SECRET;
-  const accessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
-  if (!secret || !accessToken) return NextResponse.json({ error: 'Not set up' }, { status: 503 });
+  const api = apiFromEnv();
+  if (!secret || !api) return NextResponse.json({ error: 'Not set up' }, { status: 503 });
 
   const raw = await req.text();
   if (!validSignature(raw, req.headers.get('x-hub-signature-256'), secret)) {
@@ -37,25 +38,32 @@ export async function POST(req: Request) {
   }
 
   // Short log lines (no names, comments or keys) so it's easy to see in
-  // Vercel's logs what happened to each comment.
-  const comments = commentsFromPayload(payload);
-  console.log(`Instagram webhook: ${comments.length} comment(s) received`);
-  for (const c of comments) {
-    if (c.fromId === c.igId) {
-      console.log('Instagram comment skipped: it was from the account itself');
-      continue; // never reply to our own comments
+  // Vercel's logs what happened to each comment. Whatever goes wrong below, we
+  // still answer 200: if we returned an error Meta would resend the whole batch.
+  try {
+    const comments = commentsFromPayload(payload);
+    console.log(`Meta webhook: ${comments.length} comment(s) received`);
+    for (const c of comments) {
+      // Our own public reply fires this webhook again: never answer ourselves.
+      if (c.fromId === c.ownerId || c.text.trim() === instagramPublicReply) {
+        console.log(`${c.source} comment skipped: written by the account itself`);
+        continue;
+      }
+      const hit = matchKeyword(c.text);
+      if (!hit) {
+        console.log(`${c.source} comment skipped: no keyword matched`);
+        continue;
+      }
+      // One private reply per comment, ever, so a send is never retried.
+      const sent = await sendPrivateReply(api, c, hit.dm);
+      console.log(`${c.source} DM for ${hit.keyword}: ${sent ? 'sent' : 'FAILED (see error above)'}`);
+      if (sent && instagramPublicReply) {
+        const replied = await replyToComment(api, c, instagramPublicReply);
+        console.log(`${c.source} public reply: ${replied ? 'sent' : 'FAILED (see error above)'}`);
+      }
     }
-    const hit = matchKeyword(c.text);
-    if (!hit) {
-      console.log('Instagram comment skipped: no keyword matched');
-      continue;
-    }
-    const sent = await sendPrivateReply(c.igId, c.commentId, hit.dm, accessToken);
-    console.log(`Instagram DM for ${hit.keyword}: ${sent ? 'sent' : 'FAILED (see error above)'}`);
-    if (sent && instagramPublicReply) {
-      const replied = await replyToComment(c.commentId, instagramPublicReply, accessToken);
-      console.log(`Instagram public reply: ${replied ? 'sent' : 'FAILED (see error above)'}`);
-    }
+  } catch (err) {
+    console.error('Meta webhook handler failed', String(err));
   }
 
   // Always answer 200 quickly so Meta doesn't keep retrying.

@@ -43,3 +43,33 @@ Exact requirements are confirmed on Meta's screens during review.
 
 Nothing here replies unless all three env vars are set; without them the
 webhook returns "Not set up" and does nothing.
+
+
+## Page route (preferred): Instagram AND Facebook comments
+
+Added 12 Nov 2026 after a guide Lena found ("Kill your ManyChat bill"). Meta's
+Page-based setup needs the webhook registered for BOTH the `page` and the
+`instagram` objects, and the app activated on the Facebook Page. The earlier
+Instagram-login route only did the Instagram part, and Meta sent no real comments.
+
+In Vercel set (Production), then redeploy:
+- `META_PAGE_ACCESS_TOKEN`: a Page access token (below). When set, the code uses
+  graph.facebook.com. If it is not set, the old `INSTAGRAM_ACCESS_TOKEN` is used.
+- `INSTAGRAM_APP_SECRET`: the **Meta app secret** (App settings, Basic).
+- `INSTAGRAM_VERIFY_TOKEN`: unchanged.
+
+In Meta (LITW app):
+1. **Webhooks → Page:** callback `https://www.lenainthewild.com/api/instagram`,
+   same verify phrase, subscribe to **feed**.
+2. **Webhooks → Instagram:** already set, with **comments** subscribed.
+3. **Graph API Explorer** (Tools menu): pick the LITW app, add permissions
+   `pages_show_list`, `pages_read_engagement`, `pages_manage_metadata`,
+   `pages_messaging`, `instagram_basic`, `instagram_manage_comments`,
+   `instagram_manage_messages`, click Generate Access Token, then choose the
+   Page and copy the **Page access token** into Vercel.
+4. Still in Graph API Explorer, with that Page token, send
+   `POST /{page-id}/subscribed_apps?subscribed_fields=feed` to activate the app
+   on the Page.
+
+Test with a second account that is not @lenainthewild. Read the Messages column in
+Vercel's Request Logs: it says what happened to each comment.
