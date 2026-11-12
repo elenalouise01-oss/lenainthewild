@@ -19,7 +19,7 @@ export const instagramKeywords: InstagramKeyword[] = [
   },
   {
     keyword: 'UNSTUCK',
-    dm: 'Hi! Here’s your free guided tapping practice 💜 https://www.lenainthewild.com/#free-practice\n\nPop in your name and email and the video is yours.\n\nLena',
+    dm: 'Hi! Here’s your free mindfulness practice 💜 https://www.lenainthewild.com/#free-practice\n\nPop in your name and email and the video is yours.\n\nLena',
   },
 ];
 
