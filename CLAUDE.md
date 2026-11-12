@@ -81,6 +81,15 @@ and `content/journal.ts`.
   A–D were mocked up (A: fine brown line, B: arrow only, C: editorial dash,
   D: outline pill). Waiting on her choice.
 
+- **Intuition Blueprint age group (Lena said "list for later", 12 Nov 2026):**
+  Lena wants to know which age groups come through the quiz. Plan: save only an
+  age group (e.g. 25-34) worked out from the birth date, and still never save
+  the birth date, time or place. Needs: a new column in the "Intuition
+  Blueprint Sign-ups" sheet plus a small change to its Apps Script
+  (`docs/intuition-blueprint-apps-script.gs`), and new wording on the quiz form
+  (currently "I only save your email, name and result. Never your birth
+  details."). Show Lena the exact wording first. Do it after the Instagram setup.
+
 ## Parked idea: the third step (Naluri Socials) — not built yet
 
 Lena's idea (22 Oct 2026, from her notes and a voice memo). She's not ready to
