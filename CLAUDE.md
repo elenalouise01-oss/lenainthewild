@@ -132,7 +132,7 @@ verified: `docs/intuition-blueprint.md`. Copy: `content/intuitionBlueprint.ts`.
 Tests: `npm test`. Guide emails need two Vercel env vars plus an Apps Script
 (see the doc); without them the email step is skipped, never faked.
 
-## Instagram comment-to-DM (LEAP / UNSTUCK): status, 12 Nov 2026
+## Instagram comment-to-DM (LEAP / UNSTUCK): WORKING since 12 Nov 2026
 Replaces a ManyChat membership. Setup guide: `docs/instagram-dms.md`. Wording:
 `content/instagramDms.ts` (approved by Lena: LEAP = free intuition quiz,
 UNSTUCK = free mindfulness practice sign-up at `/#free-practice`, public reply
@@ -144,7 +144,7 @@ that shows what happened to each comment in Vercel Request Logs.
   `INSTAGRAM_APP_SECRET` = the *Instagram* app secret, `INSTAGRAM_VERIFY_TOKEN`);
   webhook verified, **comments** subscribed; Meta's Test button gives POST 200.
   Privacy page `/privacy` is live and set as the app's Privacy policy URL.
-- **Not working yet:** a real comment (LEAP) from a second account
+- **(History, fixed)** a real comment (LEAP) from a second account
   (activeinstinct.lena, added as Instagram Tester) produced no new request in
   Vercel logs, so Meta isn't sending it. Own-account comments are ignored on purpose.
 - **Next, in order:** (1) Webhook Subscription switch Off/On (API setup with
@@ -171,3 +171,14 @@ that shows what happened to each comment in Vercel Request Logs.
   now supports it (set `META_PAGE_ACCESS_TOKEN`; falls back to
   `INSTAGRAM_ACCESS_TOKEN`), handles Facebook `feed` comments too, and always
   answers 200. Steps: `docs/instagram-dms.md` ("Page route").
+- **WORKING (12 Nov 2026):** the Page route fixed it. What made it work, in order:
+  Messenger use case added to the LITW app; @lenainthewild linked to the Facebook
+  **Page** "Naluri Collective" (a personal profile link does not work); webhook
+  registered for BOTH `page` (feed) and `instagram` (comments); app activated on the
+  Page (`POST {page-id}/subscribed_apps?subscribed_fields=feed`); Page access token
+  from Graph API Explorer as `META_PAGE_ACCESS_TOKEN`; `INSTAGRAM_APP_SECRET` is the
+  Meta app secret (App settings, Basic). LEAP from activeinstinct.lena sent the DM.
+- **TODO:** the Page token must be the long-lived one (Access Token Debugger,
+  "Extend Access Token", then `GET {page-id}?fields=access_token`), otherwise it
+  expires in hours. Check UNSTUCK too. Comments on posts shared to Lena's personal
+  Facebook profile can't be automated; only the Page and Instagram.

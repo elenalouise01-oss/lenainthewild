@@ -73,3 +73,16 @@ In Meta (LITW app):
 
 Test with a second account that is not @lenainthewild. Read the Messages column in
 Vercel's Request Logs: it says what happened to each comment.
+
+
+## What finally worked (12 Nov 2026)
+- The Instagram account must be linked to a Facebook **Page** (here "Naluri Collective"),
+  not just a personal profile.
+- Add the **Messenger** use case to the Meta app so `pages_messaging`,
+  `pages_manage_metadata` and `instagram_manage_messages` become available.
+- Webhooks: register the callback for **Page** (feed) AND **Instagram** (comments).
+- Activate the app on the Page: Graph API Explorer, POST
+  `{page-id}/subscribed_apps?subscribed_fields=feed`, using the **Page token**.
+- Make the Page token permanent: user token, Access Token Debugger "Extend Access
+  Token", then GET `{page-id}?fields=access_token`.
+- Test with a second account, never the brand account (own comments are skipped).
