@@ -21,6 +21,13 @@ export default function Navigation({ className = '', iconClassName = '', childre
   const [open, setOpen] = useState(false);
   const reduced = useReducedMotion();
   const overlayRef = useRef<HTMLDivElement>(null);
+  // When the menu opened, so the tap that opened it can't also close it
+  const openedAt = useRef(0);
+  const touchFrom = useRef<{ x: number; y: number } | null>(null);
+  const show = () => {
+    if (!open) openedAt.current = Date.now();
+    setOpen(true);
+  };
 
   useEffect(() => {
     if (!open) return;
@@ -48,15 +55,33 @@ export default function Navigation({ className = '', iconClassName = '', childre
         // Hover opens it for a mouse only. On phones a tap is just a click:
         // iPhones turn a tap into a fake hover first, which can swallow the tap.
         onPointerEnter={(e) => {
-          if (e.pointerType === 'mouse') setOpen(true);
+          if (e.pointerType === 'mouse') show();
         }}
         onFocus={(e) => {
-          if (e.currentTarget.matches(':focus-visible')) setOpen(true);
+          if (e.currentTarget.matches(':focus-visible')) show();
         }}
-        onClick={() => setOpen(true)}
-        className={iconClassName}
+        // On phones, open as soon as the finger lifts (iPhones can swallow the
+        // click on something that's moving, like the spinning badge), and
+        // cancel the phone's follow-up click so it can't land on a link in
+        // the menu and close it again. A swipe that starts here still scrolls.
+        onTouchStart={(e) => {
+          const t = e.touches[0];
+          touchFrom.current = { x: t.clientX, y: t.clientY };
+        }}
+        onTouchEnd={(e) => {
+          const t = e.changedTouches[0];
+          const from = touchFrom.current;
+          if (from && Math.abs(t.clientX - from.x) < 12 && Math.abs(t.clientY - from.y) < 12) {
+            e.preventDefault();
+            show();
+          }
+        }}
+        onClick={show}
+        className={`relative touch-manipulation p-2 -m-2 [-webkit-tap-highlight-color:transparent] ${iconClassName}`}
       >
-        {children}
+        {/* The moving graphics ignore touches, so a tap always lands on the
+            still button underneath them */}
+        <span className="pointer-events-none contents">{children}</span>
       </button>
 
       <AnimatePresence>
@@ -69,7 +94,7 @@ export default function Navigation({ className = '', iconClassName = '', childre
             transition={{ duration: reduced ? 0.01 : 0.35, ease: EASE }}
             className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white px-6"
             onClick={(e) => {
-              if (e.target === overlayRef.current) setOpen(false);
+              if (e.target === overlayRef.current && Date.now() - openedAt.current > 500) setOpen(false);
             }}
           >
             <button
