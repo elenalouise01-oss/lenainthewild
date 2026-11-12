@@ -156,3 +156,12 @@ that shows what happened to each comment in Vercel Request Logs.
 - Lena is tired of this; keep steps short, one at a time, no jargon.
 - Facebook comments are NOT covered (Instagram posts auto-share to Facebook);
   would need a separate Messenger/Page setup.
+- **Meta "Testing" page (seen 12 Nov 2026):** the Instagram use case shows "Testing
+  not started". It lists permissions that each need 1 successful API test call
+  before App Review: pages_read_engagement, instagram_manage_comments,
+  business_management, plus ads_read and ads_management (from the unneeded
+  Marketing API use case; consider removing that use case). instagram_business_*
+  show 0 test calls. Test calls are made with Graph API Explorer and can take up
+  to 24 h to show. Idea for next time: the **Facebook Login route** (Page token
+  from Graph API Explorer) matches these permissions and could also cover
+  Facebook comments; it needs a code change (graph.facebook.com, Page-based).
