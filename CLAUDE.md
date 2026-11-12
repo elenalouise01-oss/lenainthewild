@@ -131,3 +131,28 @@ content/site.ts picks quiz or tapping practice per article). Setup, how it calcu
 verified: `docs/intuition-blueprint.md`. Copy: `content/intuitionBlueprint.ts`.
 Tests: `npm test`. Guide emails need two Vercel env vars plus an Apps Script
 (see the doc); without them the email step is skipped, never faked.
+
+## Instagram comment-to-DM (LEAP / UNSTUCK): status, 12 Nov 2026
+Replaces a ManyChat membership. Setup guide: `docs/instagram-dms.md`. Wording:
+`content/instagramDms.ts` (approved by Lena: LEAP = free intuition quiz,
+UNSTUCK = free mindfulness practice sign-up at `/#free-practice`, public reply
+"Sent! Check your DMs 💜"). Webhook: `app/api/instagram/route.ts`, with logging
+that shows what happened to each comment in Vercel Request Logs.
+
+- **Done:** code live; Meta app "LITW" published; Instagram account @lenainthewild
+  added with a token; 3 Vercel env vars set (`INSTAGRAM_ACCESS_TOKEN`,
+  `INSTAGRAM_APP_SECRET` = the *Instagram* app secret, `INSTAGRAM_VERIFY_TOKEN`);
+  webhook verified, **comments** subscribed; Meta's Test button gives POST 200.
+  Privacy page `/privacy` is live and set as the app's Privacy policy URL.
+- **Not working yet:** a real comment (LEAP) from a second account
+  (activeinstinct.lena, added as Instagram Tester) produced no new request in
+  Vercel logs, so Meta isn't sending it. Own-account comments are ignored on purpose.
+- **Next, in order:** (1) Webhook Subscription switch Off/On (API setup with
+  Instagram login, step 2) and re-save webhook + re-subscribe **comments**;
+  (2) retest and read the Messages column in Request Logs (new logging);
+  (3) if Meta still sends nothing, apply for **Advanced access** (App Review) for
+  instagram_business_manage_comments and _manage_messages. Lena's app already has
+  all three permissions on "Ready for testing".
+- Lena is tired of this; keep steps short, one at a time, no jargon.
+- Facebook comments are NOT covered (Instagram posts auto-share to Facebook);
+  would need a separate Messenger/Page setup.
