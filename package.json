@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "tsx --test lib/intuition/*.test.ts"
+    "test": "tsx --test lib/intuition/*.test.ts lib/instagram/*.test.ts"
   },
   "dependencies": {
     "astronomia": "4.2.0",

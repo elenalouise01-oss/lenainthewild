@@ -181,6 +181,9 @@ export const leadMagnet = {
   // Lena's YouTube Short: played in the pop-up, and linked from the button
   videoId: 'ftCp6dJRSZo',
   videoUrl: 'https://youtube.com/shorts/ftCp6dJRSZo',
+  consent:
+    'By ticking this box, you agree to receive emails from Lena in the Wild, including your free practice, tips, updates and offers. You can unsubscribe at any time.',
+  consentError: 'Please tick the box to get your free practice.',
   sent: {
     heading: 'It’s yours!',
     body: 'Thank you, {name}. Your free tapping practice is ready whenever you are.',
@@ -301,6 +304,9 @@ export const freedomFrequencyPage = {
   priceNote: 'at launch',
   waitlistHeading: 'Be the first to know',
   waitlistBody: 'Pop your details in and I’ll let you know as soon as The Freedom Frequency opens. Joining the waitlist is free, there’s nothing to pay now.',
+  waitlistConsent:
+    'By ticking this box, you agree to receive emails from Lena in the Wild, including waitlist updates, tips and offers. You can unsubscribe at any time.',
+  waitlistConsentError: 'Please tick the box to join the waitlist.',
   waitlistSent: {
     heading: 'You’re in!',
     body: 'Thank you for joining. I’ll email you as soon as The Freedom Frequency opens.',

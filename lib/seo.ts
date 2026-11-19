@@ -18,6 +18,7 @@ export const PAGES = [
   { path: '/5-day-reconnect', priority: 0.8 },
   { path: '/photography', priority: 0.8 },
   { path: '/intuition-blueprint', priority: 0.8 },
+  { path: '/privacy', priority: 0.3 },
 ];
 
 export const absoluteUrl = (path: string) => `${SITE_URL}${path === '/' ? '' : path}`;
