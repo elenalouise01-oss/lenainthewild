@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import Footer from '@/components/Footer';
+import JsonLd from '@/components/JsonLd';
 import SiteHeader from '@/components/SiteHeader';
 import { privacyPage as page } from '@/content/privacy';
+import { breadcrumbs } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: { absolute: page.metaTitle },
@@ -18,6 +20,7 @@ const h3 = 'font-body text-xs font-semibold uppercase tracking-widest2 text-bark
 export default function PrivacyPage() {
   return (
     <>
+      <JsonLd data={[breadcrumbs(page.title, '/privacy')]} />
       <SiteHeader />
       <main className="bg-cream px-6 py-24 sm:py-32">
         <article className="mx-auto max-w-2xl">
