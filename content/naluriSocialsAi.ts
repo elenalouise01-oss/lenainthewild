@@ -1,57 +1,64 @@
-// The Naluri Socials AI page (/naluri-socials-ai): Lena's own words.
+// The Naluri Socials AI page (/naluri-socials-ai), in Lena's words.
 // Positioning and voice: docs/naluri-socials-ai.md.
 
 export const naluriSocialsAi = {
   label: 'Naluri Socials AI',
-  title: 'Your social media workflow, powered by AI. Built around your business.',
-  lead: 'You didn’t start a business to spend all your time creating content.',
+  eyebrow: 'For women building a business on their own terms',
+  title: 'You didn’t start a business to spend all your time creating content.',
   intro:
-    'You started it for freedom, to work on your own terms and live the life you want. But somewhere along the way, social media became another full-time job.',
+    'I set you up with AI that does most of your social media for you, in your branding and your voice, so you can put your time into your business.',
   photo: { src: '/images/lena-sunrise-smile.jpg', alt: 'Lena smiling at sunrise above the clouds' },
 
-  story: {
-    heading: 'I’ve been there.',
-    body: 'When I was a PT, I was building my online business on the side because I wanted freedom and to work from anywhere. Content took so much of my time and energy. Since then I’ve worked as a social media specialist and gone all in on automation and AI, and built the system I wish I’d had back then.',
-  },
-
-  system: {
-    heading: 'Not another AI tool. Your own customised content system.',
-    body: 'I build you a set of custom Claude skills: AI workflows set up for your business, your brand and your voice, and built from my eight years of experience in social media. Each skill handles a part of the process a social media specialist would, so you’re never starting from scratch.',
-  },
-
-  skills: {
-    heading: 'What your skills can do',
+  pain: {
+    heading: 'If this is you',
     items: [
-      'Build your social media strategy and content plan',
-      'Come up with content ideas tailored to your brand',
-      'Edit your reels and design your carousels, in your branding',
-      'Write your captions in your voice',
-      'Reply to your DMs',
-      'Plus other skills tailored to the way you work',
+      'You know you need to post, but by the time you sit down you’re exhausted',
+      'You’re coming up with every idea, caption and video from scratch',
+      'Social media is taking hours you’d rather spend on your business',
+      'You want freedom, not a second job as a content creator',
     ],
+  },
+
+  setup: {
+    heading: 'What I set up for you',
+    intro:
+      'Custom Claude skills, made for your business. I’ve worked in social media for eight years, and these skills do the jobs I’d normally do for a client:',
+    items: [
+      'Your social media strategy',
+      'Your content plan and ideas',
+      'Reel editing',
+      'Carousels and static posts, designed in your branding',
+      'Custom GIFs',
+      'Captions and content writing',
+      'DM replies',
+      'Content scheduling',
+      'And anything else that fits how you work',
+    ],
+  },
+
+  story: {
+    heading: 'Why I made this',
+    body: 'When I was a PT, I was building my online business on the side because I wanted freedom and to work from anywhere. Content took so much of my time and energy. Since then I’ve worked as a social media specialist and learnt everything I can about automation and AI. This is what I wish I’d had back then.',
   },
 
   how: {
     heading: 'How it works',
     steps: [
-      { title: 'We get to know your business', body: 'Your brand, audience, voice and goals.' },
-      { title: 'I build your Claude skills', body: 'Around your business and the way you want to show up online.' },
-      { title: 'You take the reins', body: 'With less of the content workload on your shoulders.' },
+      {
+        title: 'We get to know your business',
+        body: 'We spend time really understanding your business, your audience and how you want to show up, and teach your AI all of it.',
+      },
+      {
+        title: 'I build your content system',
+        body: 'All your social media processes, set up to sound like you, speak straight to your niche, and look the way you like. Human, not AI slop.',
+      },
+      {
+        title: 'You run it, with support when you need it',
+        body: 'I show you how to use everything, and I’m here if you need changes or help along the way.',
+      },
     ],
   },
 
-  fit: {
-    heading: 'This is for you if…',
-    yes: [
-      'You’re building your business alongside a job, or you’ve just gone out on your own',
-      'You know how you want to show up online, you just don’t want it taking all your time',
-      'You’d rather own your system than pay someone to post for you',
-    ],
-    noHeading: 'It’s not for you if…',
-    no: ['You want someone to run your social media for you indefinitely'],
-  },
-
-  // DRAFT answers: Lena to rewrite in her own words before this goes live
   faq: {
     heading: 'Questions',
     items: [
@@ -62,7 +69,7 @@ export const naluriSocialsAi = {
     ],
   },
 
+  closing: 'Your business should support the life you want, not take all your time.',
   spots: 'I’m taking 2 founding clients.',
-  closing: 'Your business should support the life you want to live, not take all your time.',
-  cta: { label: 'Let’s talk', href: 'https://ig.me/m/lenainthewild' },
+  cta: { label: 'Book a free chat', href: 'https://ig.me/m/lenainthewild' },
 };
