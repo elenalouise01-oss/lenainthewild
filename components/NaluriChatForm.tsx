@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { naluriSocialsAi } from '@/content/naluriSocialsAi';
 import { sendToInbox } from '@/lib/sendToInbox';
 
-// "Book a free chat" for Naluri Socials AI: name, email, their business and
-// what they'd love help with, emailed to Lena.
+// "Book a free chat" for Naluri Socials AI: name, email, business, goal and
+// whether they're ready to invest, emailed to Lena (readiness in the subject).
 export default function NaluriChatForm() {
   const copy = naluriSocialsAi.form;
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle');
@@ -14,7 +14,7 @@ export default function NaluriChatForm() {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     setStatus('sending');
-    const ok = await sendToInbox(data, `Naluri Socials AI chat: ${data.get('name')}`);
+    const ok = await sendToInbox(data, `Naluri Socials AI chat: ${data.get('name')} (${data.get('ready')})`);
     setStatus(ok ? 'sent' : 'failed');
   };
 
@@ -47,9 +47,20 @@ export default function NaluriChatForm() {
         <input name="business" required placeholder={copy.businessPlaceholder} className={field} />
       </label>
       <label>
-        <span className="sr-only">{copy.helpPlaceholder}</span>
-        <textarea name="message" rows={3} placeholder={copy.helpPlaceholder} className={`${field} resize-none`} />
+        <span className="sr-only">{copy.goalPlaceholder}</span>
+        <textarea name="goal" rows={2} required placeholder={copy.goalPlaceholder} className={`${field} resize-none`} />
       </label>
+      <fieldset className="mt-6">
+        <legend className="font-body text-base text-cream">{copy.readyQuestion}</legend>
+        <div className="mt-4 flex flex-col gap-3">
+          {copy.readyOptions.map((option) => (
+            <label key={option} className="flex cursor-pointer items-center gap-3 font-body text-base text-cream/85">
+              <input type="radio" name="ready" value={option} required className="h-4 w-4 accent-sage" />
+              {option}
+            </label>
+          ))}
+        </div>
+      </fieldset>
       {status === 'failed' && (
         <p role="alert" className="font-body text-sm text-cream">
           {copy.failed}
@@ -58,7 +69,7 @@ export default function NaluriChatForm() {
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="mt-6 self-center rounded-full bg-sage px-9 py-4 font-body text-xs font-semibold uppercase tracking-widest2 text-bark transition-transform hover:scale-105 disabled:opacity-60"
+        className="mt-2 self-center rounded-full bg-sage px-9 py-4 font-body text-xs font-semibold uppercase tracking-widest2 text-bark transition-transform hover:scale-105 disabled:opacity-60"
       >
         {status === 'sending' ? 'Sending…' : `${copy.button} →`}
       </button>

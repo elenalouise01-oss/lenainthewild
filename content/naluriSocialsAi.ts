@@ -38,7 +38,7 @@ export const naluriSocialsAi = {
 
   story: {
     heading: 'Why I made this',
-    body: 'When I was a PT, I was building my online business on the side because I wanted freedom and to work from anywhere. For years, I ran a full-time personal training business while posting daily on socials. Did it work? Sure. But it also led to burnout, exhaustion, and eventually going MIA from socials for months. Since then I’ve worked as a social media specialist and learnt everything I can about automation and AI. Now I post less and work less, but I’ve built more than I ever did back then, and this is the system I wish I’d had.',
+    body: 'For years, I ran a full-time personal training business while building my online business on the side, posting daily on socials. Did it work? Sure. But it also led to burnout, exhaustion, and eventually going MIA from socials for months. Since then I’ve worked as a social media specialist and learnt everything I can about automation and AI. Now I post less and work less, but I’ve built more than I ever did back then, and this is the system I wish I’d had.',
   },
 
   how: {
@@ -75,7 +75,9 @@ export const naluriSocialsAi = {
   cta: { label: 'Book a free chat', href: '#book-a-chat' },
   form: {
     businessPlaceholder: 'What’s your business? (or your Instagram)',
-    helpPlaceholder: 'What would you love help with? (optional)',
+    goalPlaceholder: 'What’s your main goal with social media right now?',
+    readyQuestion: 'Are you ready to invest time, energy & money into this right now?',
+    readyOptions: ['Yes, I’m all in!', 'I’m curious but have a few questions', 'Not sure yet'],
     button: 'Book a free chat',
     sentHeading: 'Thank you!',
     sentBody: 'I’ll be in touch by email within a couple of days to find a time to chat.',
