@@ -92,7 +92,7 @@ export default function NaluriSocialsAiPage() {
             <ScrollReveal delay={0.1} className="mx-auto w-full max-w-[18rem] sm:max-w-sm">
               <figure className="rotate-2 bg-white p-3 pb-12 shadow-2xl">
                 <div className="relative aspect-[4/5] overflow-hidden">
-                  <Image src={page.photo.src} alt={page.photo.alt} fill priority sizes="24rem" className="object-cover" />
+                  <Image src={page.photo.src} alt={page.photo.alt} fill priority sizes="24rem" className="object-cover" style={{ objectPosition: page.photo.pos }} />
                 </div>
               </figure>
             </ScrollReveal>

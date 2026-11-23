@@ -7,7 +7,7 @@ export const naluriSocialsAi = {
   title: 'You didn’t start a business to become a full-time content creator.',
   intro:
     'I set you up with AI that does most of your social media for you, in your branding and your voice, so you can put your time into your business.',
-  photo: { src: '/images/lena-sunrise-smile.jpg', alt: 'Lena smiling at sunrise above the clouds' },
+  photo: { src: '/images/naluri-socials-ai-lena.webp', alt: 'Lena smiling in a yellow outfit among tropical plants', pos: '45% 40%' },
 
   pain: {
     heading: 'If this is you',
