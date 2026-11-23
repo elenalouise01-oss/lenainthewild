@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
+import NaluriChatForm from '@/components/NaluriChatForm';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteHeader from '@/components/SiteHeader';
 import { naluriSocialsAi as page } from '@/content/naluriSocialsAi';
@@ -40,8 +41,6 @@ function Cta({ tone = 'dark' }: { tone?: 'dark' | 'light' }) {
   return (
     <a
       href={page.cta.href}
-      target="_blank"
-      rel="noopener noreferrer"
       className={`inline-flex items-center gap-3 rounded-full px-9 py-4 font-body text-xs font-semibold uppercase tracking-widest2 transition-transform hover:scale-105 ${
         tone === 'dark' ? 'bg-bark text-cream' : 'bg-sage text-bark'
       }`}
@@ -156,12 +155,12 @@ export default function NaluriSocialsAiPage() {
         </section>
 
         {/* The next step */}
-        <section className="bg-bark px-6 py-24 text-center sm:py-32">
-          <div className="mx-auto max-w-2xl">
+        <section id="book-a-chat" className="scroll-mt-24 bg-bark px-6 py-24 text-center sm:py-32">
+          <div className="mx-auto max-w-xl">
             <p className="font-display text-3xl italic leading-snug text-cream sm:text-5xl">{page.closing}</p>
             <p className="mt-8 font-hand text-2xl text-zing-yellow sm:text-3xl">{page.spots}</p>
-            <div className="mt-8">
-              <Cta tone="light" />
+            <div className="mt-10">
+              <NaluriChatForm />
             </div>
           </div>
         </section>

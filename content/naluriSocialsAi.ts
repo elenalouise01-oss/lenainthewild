@@ -71,5 +71,14 @@ export const naluriSocialsAi = {
 
   closing: 'Your business should support the life you want, not take all your time.',
   spots: 'I’m taking 2 founding clients.',
-  cta: { label: 'Book a free chat', href: 'https://ig.me/m/lenainthewild' },
+  // The buttons jump down to the form at the bottom of the page
+  cta: { label: 'Book a free chat', href: '#book-a-chat' },
+  form: {
+    businessPlaceholder: 'What’s your business? (or your Instagram)',
+    helpPlaceholder: 'What would you love help with? (optional)',
+    button: 'Book my free chat',
+    sentHeading: 'Thank you!',
+    sentBody: 'I’ll be in touch by email within a couple of days to find a time to chat.',
+    failed: 'Sorry, that didn’t go through. Please try again, or email me at nalurisocials@gmail.com.',
+  },
 };
