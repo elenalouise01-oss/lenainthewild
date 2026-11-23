@@ -9,7 +9,7 @@ import { absoluteUrl, breadcrumbs } from '@/lib/seo';
 
 const title = 'Naluri Socials AI: Spend Less Time on Social Media';
 const description =
-  'Custom Claude skills set up for your business, in your branding and your voice, so social media takes less of your time. For women building a business on their own terms.';
+  'Custom Claude skills set up for your business, in your branding and your voice, so social media takes less of your time, while you build your dream business.';
 
 export const metadata: Metadata = {
   title: { absolute: title },

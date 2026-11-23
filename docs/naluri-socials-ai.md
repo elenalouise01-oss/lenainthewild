@@ -16,24 +16,23 @@ Not an AI business that happens to do social media: an experienced specialist wh
 automated her own processes and knowledge.
 
 ## Who it speaks to
-Not generic small business owners. Women building online businesses, personal brands
-and independent income streams because they want a different way of living. They don't
+Not generic small business owners. People (any gender) building online businesses,
+personal brands and independent income streams because they want a different way of living. They don't
 necessarily want to build a huge agency or become full-time content creators. They
 want flexibility, autonomy and freedom, and they don't want running their social media
 to become another full-time job.
 
-(Note: the main Lena in the Wild site avoids "woman" and stays gender-neutral; Naluri
-Socials AI, like the photography page, speaks to women.)
+(Lena, 23 Nov: keep it gender-neutral, it's for anyone, not just women.)
 
 ## Positioning line
-**Naluri Socials AI: an AI-powered social media system for women building businesses
+**Naluri Socials AI: an AI-powered social media system for people building businesses
 on their own terms.**
 Combining eight years of social media expertise with custom-built Claude skills,
-Naluri Socials AI helps women automate their content creation workflows, manage their
+Naluri Socials AI helps people automate their content creation workflows, manage their
 social media and create more capacity to focus on growing their businesses.
 
 ## The thread across the whole brand
-Not teaching women to be more productive so they can work harder: helping them create
+Not teaching people to be more productive so they can work harder: helping them create
 a different relationship with work, business and freedom. That's what connects Lena in
 the Wild and Naluri Socials AI.
 
