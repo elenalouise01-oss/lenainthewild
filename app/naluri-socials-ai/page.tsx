@@ -74,7 +74,7 @@ export default function NaluriSocialsAiPage() {
           },
         ]}
       />
-      <SiteHeader active="Naluri Socials AI" />
+      <SiteHeader active="For Business Owners" />
       <main className="bg-cream">
         {/* Who it's for, the problem, the result */}
         <section className="px-6 pb-20 pt-16 sm:px-12 sm:pb-28 sm:pt-24">

@@ -14,8 +14,8 @@ const LINKS = [
   { label: 'Who I Help', href: '/life-design' },
   { label: 'The Freedom Seeker', href: '/#freedom-seeker' },
   { label: 'Journal Entries', href: '/journal' },
+  { label: 'For Business Owners', href: '/naluri-socials-ai' },
   { label: 'Photography', href: '/photography' },
-  { label: 'Naluri Socials AI', href: '/naluri-socials-ai' },
   { label: 'Intuition Quiz', href: '/intuition-blueprint' },
   { label: 'Contact', href: '/#contact' },
 ];
@@ -39,13 +39,13 @@ export default function SiteHeader({ active }: { active?: string }) {
           {nav.logo}
         </Link>
 
-        <nav className="flex items-center gap-2 sm:gap-5 lg:gap-7 min-[1340px]:gap-3 min-[1760px]:gap-7">
-          <ul className="hidden items-center gap-3 min-[1340px]:flex min-[1760px]:gap-7">
+        <nav className="flex items-center gap-2 sm:gap-5 lg:gap-7 min-[1366px]:gap-3 min-[1900px]:gap-7">
+          <ul className="hidden items-center gap-3 min-[1366px]:flex min-[1900px]:gap-7">
             {LINKS.map((link) => (
               <li key={link.label}>
                 <Link
                   href={link.href}
-                  className={`whitespace-nowrap font-body text-[0.65rem] font-semibold uppercase tracking-[0.12em] transition-colors hover:text-bark min-[1760px]:tracking-widest2 ${
+                  className={`whitespace-nowrap font-body text-[0.65rem] font-semibold uppercase tracking-[0.12em] transition-colors hover:text-bark min-[1900px]:tracking-widest2 ${
                     active === link.label
                       ? 'text-bark underline decoration-bark/40 underline-offset-8'
                       : 'text-bark/60'
@@ -84,7 +84,7 @@ export default function SiteHeader({ active }: { active?: string }) {
             onClick={() => setOpen((o) => !o)}
             aria-expanded={open}
             aria-controls="site-menu"
-            className="flex items-center gap-2 border border-bark px-3 py-2 font-body text-[0.62rem] font-semibold uppercase tracking-widest2 text-bark min-[1340px]:hidden"
+            className="flex items-center gap-2 border border-bark px-3 py-2 font-body text-[0.62rem] font-semibold uppercase tracking-widest2 text-bark min-[1366px]:hidden"
           >
             {open ? 'Close' : 'Menu'}
             <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
@@ -95,7 +95,7 @@ export default function SiteHeader({ active }: { active?: string }) {
       </div>
 
       {open && (
-        <div id="site-menu" className="border-t border-bark/10 bg-white px-6 pb-8 pt-4 min-[1340px]:hidden">
+        <div id="site-menu" className="border-t border-bark/10 bg-white px-6 pb-8 pt-4 min-[1366px]:hidden">
           <ul className="container-editorial flex flex-col">
             {[{ label: 'Home', href: '/' }, ...LINKS, { label: 'Subscribe', href: '/#subscribe' }].map((link) => (
               <li key={link.label}>
