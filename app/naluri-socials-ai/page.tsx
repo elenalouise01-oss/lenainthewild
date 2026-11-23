@@ -113,15 +113,59 @@ export default function NaluriSocialsAiPage() {
           </div>
         </section>
 
+        {/* Who it's for */}
+        <section className="px-6 py-20 sm:px-12 sm:py-28">
+          <div className="mx-auto grid max-w-4xl gap-12 sm:grid-cols-[1.4fr_1fr] sm:gap-16">
+            <ScrollReveal>
+              <h2 className="font-display text-3xl italic text-bark sm:text-4xl">{page.fit.heading}</h2>
+              <ul className="mt-6 space-y-3">
+                {page.fit.yes.map((item) => (
+                  <li key={item} className={`grid grid-cols-[1.75rem_1fr] items-baseline ${body}`}>
+                    <span aria-hidden="true" className="text-lg leading-none text-bark/70">♡</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </ScrollReveal>
+            <ScrollReveal delay={0.05}>
+              <h2 className="font-display text-3xl italic text-bark/70 sm:text-4xl">{page.fit.noHeading}</h2>
+              <ul className="mt-6 space-y-3">
+                {page.fit.no.map((item) => (
+                  <li key={item} className={`grid grid-cols-[1.75rem_1fr] items-baseline ${body}`}>
+                    <span aria-hidden="true" className="text-lg leading-none text-bark/40">×</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* Questions */}
+        <section className="bg-sand px-6 py-20 sm:px-12 sm:py-28">
+          <div className="mx-auto max-w-3xl">
+            <h2 className="font-display text-3xl italic text-bark sm:text-4xl">{page.faq.heading}</h2>
+            <dl className="mt-8 space-y-8">
+              {page.faq.items.map(({ q, a }) => (
+                <div key={q}>
+                  <dt className="font-display text-xl leading-snug text-bark sm:text-2xl">{q}</dt>
+                  <dd className={`mt-2 ${body}`}>{a}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+
         {/* Close */}
         <section className="bg-bark px-6 py-24 text-center sm:py-32">
           <div className="mx-auto max-w-2xl">
             <p className="font-display text-3xl italic leading-snug text-cream sm:text-5xl">{page.closing}</p>
+            <p className="mt-8 font-hand text-2xl text-zing-yellow sm:text-3xl">{page.spots}</p>
             <a
               href={page.cta.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-12 inline-flex items-center gap-3 rounded-full bg-sage px-9 py-4 font-body text-xs font-semibold uppercase tracking-widest2 text-bark transition-transform hover:scale-105"
+              className="mt-8 inline-flex items-center gap-3 rounded-full bg-sage px-9 py-4 font-body text-xs font-semibold uppercase tracking-widest2 text-bark transition-transform hover:scale-105"
             >
               {page.cta.label} →
             </a>

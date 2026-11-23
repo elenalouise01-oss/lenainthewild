@@ -40,6 +40,29 @@ export const naluriSocialsAi = {
     ],
   },
 
+  fit: {
+    heading: 'This is for you if…',
+    yes: [
+      'You’re building your business alongside a job, or you’ve just gone out on your own',
+      'You know how you want to show up online, you just don’t want it taking all your time',
+      'You’d rather own your system than pay someone to post for you',
+    ],
+    noHeading: 'It’s not for you if…',
+    no: ['You want someone to run your social media for you indefinitely'],
+  },
+
+  // DRAFT answers: Lena to rewrite in her own words before this goes live
+  faq: {
+    heading: 'Questions',
+    items: [
+      { q: 'Do I need to be techy?', a: 'Not at all. I set everything up for you and show you exactly how to use it.' },
+      { q: 'What do I need to have?', a: 'A paid Claude plan (about $20 a month). I’ll walk you through the rest.' },
+      { q: 'Will it sound like me?', a: 'Yes. Your skills are built around your brand, your voice and the way you talk to your audience.' },
+      { q: 'What if I get stuck after handover?', a: 'You’re not on your own. Ongoing support is there if you need changes, troubleshooting or extra help.' },
+    ],
+  },
+
+  spots: 'I’m taking 2 founding clients.',
   closing: 'Your business should support the life you want to live, not take all your time.',
   cta: { label: 'Let’s talk', href: 'https://ig.me/m/lenainthewild' },
 };
