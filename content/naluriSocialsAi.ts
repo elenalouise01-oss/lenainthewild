@@ -38,7 +38,7 @@ export const naluriSocialsAi = {
 
   story: {
     heading: 'Why I made this',
-    body: 'When I was a PT, I was building my online business on the side because I wanted freedom and to work from anywhere. Content took so much of my time and energy. Since then I’ve worked as a social media specialist and learnt everything I can about automation and AI. Now I post less and work less, but I’ve built more than I ever did back then, and this is the system I wish I’d had.',
+    body: 'When I was a PT, I was building my online business on the side because I wanted freedom and to work from anywhere. For years, I ran a full-time personal training business while posting daily on socials. Did it work? Sure. But it also led to burnout, exhaustion, and eventually going MIA from socials for months. Since then I’ve worked as a social media specialist and learnt everything I can about automation and AI. Now I post less and work less, but I’ve built more than I ever did back then, and this is the system I wish I’d had.',
   },
 
   how: {
