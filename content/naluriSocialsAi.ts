@@ -3,7 +3,7 @@
 
 export const naluriSocialsAi = {
   label: 'Naluri Socials AI',
-  eyebrow: 'For women building a business on their own terms',
+  eyebrow: 'For women building their dream business',
   title: 'You didn’t start a business to become a full-time content creator.',
   intro:
     'I set you up with AI that does most of your social media for you, in your branding and your voice, so you can put your time into your business.',
