@@ -56,7 +56,7 @@ export const naluriSocialsAi = {
     heading: 'Questions',
     items: [
       { q: 'Do I need to be techy?', a: 'Not at all. I set everything up for you and show you exactly how to use it.' },
-      { q: 'What do I need to have?', a: 'A paid Claude plan (about $20 a month). I’ll walk you through the rest.' },
+      { q: 'What do I need to have?', a: 'A Claude account with Claude Code. I’ll walk you through setting it up.' },
       { q: 'Will it sound like me?', a: 'Yes. Your skills are built around your brand, your voice and the way you talk to your audience.' },
       { q: 'What if I get stuck after handover?', a: 'You’re not on your own. Ongoing support is there if you need changes, troubleshooting or extra help.' },
     ],
