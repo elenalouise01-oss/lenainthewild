@@ -76,7 +76,7 @@ export const naluriSocialsAi = {
   form: {
     businessPlaceholder: 'What’s your business? (or your Instagram)',
     helpPlaceholder: 'What would you love help with? (optional)',
-    button: 'Book my free chat',
+    button: 'Book a free chat',
     sentHeading: 'Thank you!',
     sentBody: 'I’ll be in touch by email within a couple of days to find a time to chat.',
     failed: 'Sorry, that didn’t go through. Please try again, or email me at nalurisocials@gmail.com.',
