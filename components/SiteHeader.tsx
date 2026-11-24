@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { nav, socialLinks } from '@/content/site';
 
@@ -9,19 +9,62 @@ import { nav, socialLinks } from '@/content/site';
 // outlined Subscribe button on the right. On phones and tablets the links
 // and Subscribe fold into a Menu button that drops down a big, easy-to-tap
 // list.
-const LINKS = [
+type NavLink = { label: string; href: string };
+type NavItem = NavLink & { children?: NavLink[] };
+
+// Kept short on purpose (Lena, 24 Nov: the old menu was too text heavy).
+// Items with children open a small dropdown on laptops and are grouped in
+// the phone menu.
+const LINKS: NavItem[] = [
   { label: 'About', href: '/my-story' },
   { label: 'Who I Help', href: '/life-design' },
-  { label: 'The Freedom Seeker', href: '/#freedom-seeker' },
+  {
+    label: 'Work With Me',
+    href: '/#freedom-seeker',
+    children: [
+      { label: 'The Freedom Seeker', href: '/#freedom-seeker' },
+      { label: 'The Business Owner', href: '/naluri-socials-ai' },
+      { label: 'The Wild Soul', href: '/photography' },
+    ],
+  },
+  {
+    label: 'Freebies',
+    href: '/intuition-blueprint',
+    children: [
+      { label: 'Intuition Quiz', href: '/intuition-blueprint' },
+      { label: 'Guided Tapping Practice', href: '/#free-practice' },
+    ],
+  },
   { label: 'Journal Entries', href: '/journal' },
-  { label: 'For Business Owners', href: '/naluri-socials-ai' },
-  { label: 'Photography', href: '/photography' },
-  { label: 'Intuition Quiz', href: '/intuition-blueprint' },
   { label: 'Contact', href: '/#contact' },
 ];
 
+// The page's own label can be a dropdown item (e.g. "Photography"); the
+// matching top-level item is then underlined too.
+const isActive = (item: NavItem, active?: string) =>
+  active === item.label || !!item.children?.some((c) => c.label === active);
+
 export default function SiteHeader({ active }: { active?: string }) {
   const [open, setOpen] = useState(false);
+  const [dropdown, setDropdown] = useState<string | null>(null);
+  const menuRef = useRef<HTMLUListElement>(null);
+
+  // Close a laptop dropdown on Escape or a click anywhere else
+  useEffect(() => {
+    if (!dropdown) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setDropdown(null);
+    };
+    const onClick = (e: MouseEvent) => {
+      if (!menuRef.current?.contains(e.target as Node)) setDropdown(null);
+    };
+    window.addEventListener('keydown', onKey);
+    document.addEventListener('click', onClick);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.removeEventListener('click', onClick);
+    };
+  }, [dropdown]);
 
   useEffect(() => {
     if (!open) return;
@@ -39,22 +82,58 @@ export default function SiteHeader({ active }: { active?: string }) {
           {nav.logo}
         </Link>
 
-        <nav className="flex items-center gap-2 sm:gap-5 lg:gap-7 min-[1366px]:gap-3 min-[1900px]:gap-7">
-          <ul className="hidden items-center gap-3 min-[1366px]:flex min-[1900px]:gap-7">
-            {LINKS.map((link) => (
-              <li key={link.label}>
-                <Link
-                  href={link.href}
-                  className={`whitespace-nowrap font-body text-[0.65rem] font-semibold uppercase tracking-[0.12em] transition-colors hover:text-bark min-[1900px]:tracking-widest2 ${
-                    active === link.label
-                      ? 'text-bark underline decoration-bark/40 underline-offset-8'
-                      : 'text-bark/60'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+        <nav className="flex items-center gap-2 sm:gap-5 lg:gap-7 xl:gap-6">
+          <ul ref={menuRef} className="hidden items-center gap-6 xl:flex 2xl:gap-8">
+            {LINKS.map((link) => {
+              const cls = `whitespace-nowrap font-body text-[0.65rem] font-semibold uppercase tracking-widest2 transition-colors hover:text-bark ${
+                isActive(link, active) ? 'text-bark underline decoration-bark/40 underline-offset-8' : 'text-bark/60'
+              }`;
+              if (!link.children) {
+                return (
+                  <li key={link.label}>
+                    <Link href={link.href} className={cls}>
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              }
+              const isOpen = dropdown === link.label;
+              return (
+                <li key={link.label} className="relative" onMouseEnter={() => setDropdown(link.label)} onMouseLeave={() => setDropdown(null)}>
+                  <button
+                    type="button"
+                    aria-expanded={isOpen}
+                    aria-haspopup="true"
+                    onClick={() => setDropdown(isOpen ? null : link.label)}
+                    className={`inline-flex items-center gap-1.5 ${cls}`}
+                  >
+                    {link.label}
+                    <svg viewBox="0 0 10 6" className={`h-1.5 w-2.5 transition-transform ${isOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                      <path d="M1 1l4 4 4-4" />
+                    </svg>
+                  </button>
+                  {isOpen && (
+                    <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4">
+                      <ul className="min-w-[13rem] border border-bark/10 bg-white py-2 shadow-lg">
+                        {link.children.map((child) => (
+                          <li key={child.label}>
+                            <Link
+                              href={child.href}
+                              onClick={() => setDropdown(null)}
+                              className={`block whitespace-nowrap px-5 py-3 font-body text-[0.65rem] font-semibold uppercase tracking-widest2 transition-colors hover:bg-sand hover:text-bark ${
+                                active === child.label ? 'text-bark' : 'text-bark/70'
+                              }`}
+                            >
+                              {child.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </li>
+              );
+            })}
           </ul>
 
           <div className="flex items-center text-bark/70">
@@ -84,7 +163,7 @@ export default function SiteHeader({ active }: { active?: string }) {
             onClick={() => setOpen((o) => !o)}
             aria-expanded={open}
             aria-controls="site-menu"
-            className="flex items-center gap-2 border border-bark px-3 py-2 font-body text-[0.62rem] font-semibold uppercase tracking-widest2 text-bark min-[1366px]:hidden"
+            className="flex items-center gap-2 border border-bark px-3 py-2 font-body text-[0.62rem] font-semibold uppercase tracking-widest2 text-bark xl:hidden"
           >
             {open ? 'Close' : 'Menu'}
             <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
@@ -95,21 +174,42 @@ export default function SiteHeader({ active }: { active?: string }) {
       </div>
 
       {open && (
-        <div id="site-menu" className="border-t border-bark/10 bg-white px-6 pb-8 pt-4 min-[1366px]:hidden">
+        <div id="site-menu" className="border-t border-bark/10 bg-white px-6 pb-8 pt-4 xl:hidden">
           <ul className="container-editorial flex flex-col">
-            {[{ label: 'Home', href: '/' }, ...LINKS, { label: 'Subscribe', href: '/#subscribe' }].map((link) => (
-              <li key={link.label}>
-                <Link
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className={`block border-b border-bark/10 py-4 font-display text-2xl transition-colors hover:text-bark ${
-                    active === link.label ? 'italic text-bark' : 'text-bark/80'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            {[{ label: 'Home', href: '/' } as NavItem, ...LINKS, { label: 'Subscribe', href: '/#subscribe' }].map((link) =>
+              link.children ? (
+                <li key={link.label} className="border-b border-bark/10 py-4">
+                  <p className="font-body text-[0.65rem] font-semibold uppercase tracking-widest2 text-stone">{link.label}</p>
+                  <ul className="mt-1">
+                    {link.children.map((child) => (
+                      <li key={child.label}>
+                        <Link
+                          href={child.href}
+                          onClick={() => setOpen(false)}
+                          className={`block py-2 pl-4 font-display text-2xl transition-colors hover:text-bark ${
+                            active === child.label ? 'italic text-bark' : 'text-bark/80'
+                          }`}
+                        >
+                          {child.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ) : (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className={`block border-b border-bark/10 py-4 font-display text-2xl transition-colors hover:text-bark ${
+                      active === link.label ? 'italic text-bark' : 'text-bark/80'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ),
+            )}
           </ul>
         </div>
       )}

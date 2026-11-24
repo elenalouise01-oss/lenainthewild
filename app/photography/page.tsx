@@ -46,7 +46,7 @@ export default function PhotographyPage() {
           },
         ]}
       />
-      <SiteHeader active="Photography" />
+      <SiteHeader active="The Wild Soul" />
       <main className="bg-cream">
         {/* Opening: the title as a magazine cover line beside a tall portrait */}
         <section className="px-6 pb-28 pt-16 sm:px-12 sm:pb-44 sm:pt-28">
