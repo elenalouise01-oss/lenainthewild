@@ -67,8 +67,16 @@ export const naluriSocialsAi = {
         poster: '/videos/naluri-hub-landing-poster.jpg',
         alt: 'A whole week of content laid out in a client’s own content hub',
       },
-      null,
-      null,
+      {
+        src: '/videos/naluri-reel-editor.mp4',
+        poster: '/videos/naluri-reel-editor-poster.jpg',
+        alt: 'Claude editing a reel inside a client’s own reel editor',
+      },
+      {
+        src: '/videos/naluri-carousel-editor.mp4',
+        poster: '/videos/naluri-carousel-editor-poster.jpg',
+        alt: 'Claude building a carousel inside a client’s own carousel editor',
+      },
     ] as Array<{ src: string; poster: string; alt: string } | null>,
   },
 
