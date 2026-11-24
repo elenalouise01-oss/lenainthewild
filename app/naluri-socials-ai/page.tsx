@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import DemoVideoGrid from '@/components/DemoVideoGrid';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import NaluriChatForm from '@/components/NaluriChatForm';
@@ -137,6 +138,11 @@ export default function NaluriSocialsAiPage() {
               ))}
             </ol>
           </div>
+        </section>
+
+        {/* See it in action */}
+        <section className="bg-cream px-6 py-20 sm:px-12 sm:py-24">
+          <DemoVideoGrid heading={page.how.demoHeading} demos={page.how.demos} />
         </section>
 
         {/* Questions */}

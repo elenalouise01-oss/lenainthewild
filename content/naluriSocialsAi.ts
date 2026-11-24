@@ -57,6 +57,19 @@ export const naluriSocialsAi = {
         body: 'I show you how to use everything, and I’m here if you need changes or help along the way.',
       },
     ],
+    // Short vertical demo clips showing step 2 (the content system) in action.
+    // Up to 3 slots — add a video's src/poster here and it replaces the
+    // placeholder; leave a slot as null until its clip is ready.
+    demoHeading: 'See it in action',
+    demos: [
+      {
+        src: '/videos/naluri-hub-landing.mp4',
+        poster: '/videos/naluri-hub-landing-poster.jpg',
+        alt: 'A whole week of content laid out in a client’s own content hub',
+      },
+      null,
+      null,
+    ] as Array<{ src: string; poster: string; alt: string } | null>,
   },
 
   faq: {
