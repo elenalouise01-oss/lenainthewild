@@ -22,7 +22,7 @@ export const naluriSocialsAi = {
   setup: {
     heading: 'What I set up for you',
     intro:
-      'Custom Claude skills, made for your business. I’ve worked in social media for eight years, and these skills do the jobs I’d normally do for a client:',
+      'Custom Claude skills, made for your business. I’ve worked in social media and digital marketing for nine years, and these skills do the jobs I’d normally do for a client:',
     items: [
       'Your social media strategy',
       'Your content plan and ideas',
@@ -38,7 +38,7 @@ export const naluriSocialsAi = {
 
   story: {
     heading: 'Why I made this',
-    body: 'For years, I ran a full-time personal training business while building my online business on the side, posting daily on socials. Did it work? Sure. But it also led to burnout, exhaustion, and eventually going MIA from socials for months. Since then I’ve worked as a social media specialist and learnt everything I can about automation and AI. Now I post less and work less, but I’ve built more than I ever did back then, and this is the system I wish I’d had.',
+    body: 'For years, I ran a full-time personal training business while building my online business on the side, posting daily on socials. Did it work? Sure. But it also led to burnout, exhaustion, and eventually going MIA from socials for months. Since then I’ve worked as a social media specialist and learnt everything I can about automation and AI. I used to spend 5 to 10+ hours editing every reel from scratch in CapCut — now that happens in the background while I work on my business. And when I cut back from posting daily to just a couple of times a week, nothing dropped: not my following, not my engagement. Now I post less and work less, but I’ve built more than I ever did back then, and this is the system I wish I’d had.',
   },
 
   how: {
