@@ -45,10 +45,6 @@ export default function NaluriSocialsAiPricingPage() {
             </Link>
             <h1 className="mt-8 font-display text-4xl leading-tight text-bark sm:text-6xl">{page.heading}</h1>
             <p className={`mx-auto mt-5 max-w-md ${body}`}>{page.intro}</p>
-            <div className="mx-auto mt-8 inline-flex flex-col items-center gap-1 rounded-[2rem] bg-sage px-10 py-6 shadow-xl sm:flex-row sm:gap-4 sm:px-12">
-              <span className="font-display text-4xl text-bark sm:text-5xl">{page.price}</span>
-              <span className="font-body text-xs font-semibold uppercase tracking-widest2 text-bark/70">{page.priceNote}</span>
-            </div>
           </div>
         </section>
 
@@ -72,6 +68,11 @@ export default function NaluriSocialsAiPricingPage() {
                   <Hearts items={m.bullets} />
                 </div>
               ))}
+            </div>
+
+            <div className="mx-auto mt-10 flex w-fit flex-col items-center gap-1 rounded-[2rem] bg-sage px-10 py-6 text-center shadow-xl sm:flex-row sm:gap-4 sm:px-12">
+              <span className="font-display text-4xl text-bark sm:text-5xl">{page.price}</span>
+              <span className="font-body text-xs font-semibold uppercase tracking-widest2 text-bark/70">{page.priceNote}</span>
             </div>
           </div>
         </section>

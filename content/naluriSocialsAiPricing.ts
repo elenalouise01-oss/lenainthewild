@@ -53,10 +53,10 @@ export const naluriSocialsAiPricing = {
 
   alsoIncludedHeading: 'Also Included',
   alsoIncluded: [
+    'Comment keyword DM automation with a custom message, link and public reply — no ManyChat or separate DM automation subscription needed.',
     'Weekly content planned for approval, with talking points for talking reels',
     'Captions in your brand voice',
-    'Content approval before scheduling or publishing',
-    'Comment keyword DM automation, with an automatic DM and public reply',
+    'Final approval before scheduling and publishing',
   ],
 
   buildHeading: 'Build & Payment',
