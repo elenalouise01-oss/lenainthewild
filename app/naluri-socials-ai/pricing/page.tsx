@@ -80,7 +80,7 @@ export default function NaluriSocialsAiPricingPage() {
               ))}
             </div>
 
-            <div className="mt-6 text-center">
+            <div className="mt-10 text-center">
               <a
                 href={page.depositLink.href}
                 target="_blank"
