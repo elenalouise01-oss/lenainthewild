@@ -69,8 +69,8 @@ export default function NaluriSocialsAiPricingPage() {
               ))}
             </div>
 
-            <div className="mx-auto mt-10 flex w-fit flex-col items-center gap-1 rounded-[2rem] bg-sage px-10 py-6 text-center shadow-xl sm:flex-row sm:gap-4 sm:px-12">
-              <span className="font-display text-4xl text-bark sm:text-5xl">{page.price}</span>
+            <div className="mx-auto mt-16 flex w-fit flex-col items-center gap-1 rounded-[2rem] bg-sage px-10 py-6 text-center shadow-xl sm:mt-20 sm:flex-row sm:gap-4 sm:px-12">
+              <span className="font-display text-3xl text-bark sm:text-4xl">{page.price}</span>
               <span className="font-body text-xs font-semibold uppercase tracking-widest2 text-bark/70">{page.priceNote}</span>
             </div>
           </div>
