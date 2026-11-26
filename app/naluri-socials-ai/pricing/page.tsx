@@ -62,7 +62,6 @@ export default function NaluriSocialsAiPricingPage() {
                     <div>
                       <p className="font-display text-2xl text-bark sm:text-3xl">{m.title}</p>
                       <p className={`mt-1.5 ${body}`}>{m.tagline}</p>
-                      {'note' in m && m.note && <p className={`mt-1 italic ${body}`}>{m.note}</p>}
                     </div>
                   </div>
                   <Hearts items={m.bullets} />

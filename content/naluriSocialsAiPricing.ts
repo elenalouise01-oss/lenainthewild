@@ -13,8 +13,7 @@ export const naluriSocialsAiPricing = {
   modules: [
     {
       title: 'Custom Content Studio',
-      tagline: 'The home base for your content ideas, planning and performance.',
-      note: 'A private space customised with your logo and brand colours.',
+      tagline: 'Your own branded space for content ideas, planning and performance.',
       bullets: [
         'Dashboard: See upcoming posts, content awaiting approval, key numbers and what’s working',
         'Strategy: content strategy, goals, niche, audience pain points, content pillars and offers in one place.',
@@ -28,14 +27,14 @@ export const naluriSocialsAiPricing = {
       tagline: 'Turns raw footage into a finished reel, edited the way you like it.',
       image: { src: '/videos/naluri-reel-editor-poster.jpg', alt: 'The custom reel editor, showing fonts, captions and style controls' },
       bullets: [
-        'Picks the strongest parts of a talking video and shapes them into a shorter reel',
-        'Pulls transcripts from your talking head videos',
-        'Cuts pauses, stumbles and repeats',
+        'Edits regular reels and short-form reels',
+        'Pulls transcripts from talking videos',
+        'Selects the best moments or the sections you choose from your transcript, then cleanly edits them into a shorter reel.',
+        'Cuts pauses, stumbles and repeats, while keeping the video flowing naturally.',
         'Reframes the shot and adds video animation effects',
-        'Adds animated text, captions timed to your voice, graphics, photo pop-ups and sound effects.',
-        'Review the reel and request edits before final rendering.',
-        'Designs the reel cover',
-        'Also creates short-form reels',
+        'Adds animated text, captions timed to your voice, graphics, photo pop-ups and sound effects',
+        'Review the reel and request edits before final rendering',
+        'Reel cover design',
       ],
     },
     {
