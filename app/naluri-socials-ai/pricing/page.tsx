@@ -5,13 +5,20 @@ import SiteHeader from '@/components/SiteHeader';
 import { naluriSocialsAiPricing as page } from '@/content/naluriSocialsAiPricing';
 
 const title = 'Naluri Socials AI: Pricing';
+const description = 'Custom AI Content System pricing and what’s included — Naluri Socials AI.';
+const ogImage = '/images/naluri-socials-ai-pricing-og.jpg';
 
 // Not in PAGES (lib/seo.ts), so it's left out of the sitemap, and this
 // page-level noindex keeps it out of search — it's meant to be shared as
 // a direct link after a chat, not browsed to from the site itself.
+// Still gets its own social-share card (title/description/image) so
+// sharing this link doesn't show the site-wide Lena in the Wild preview.
 export const metadata: Metadata = {
   title: { absolute: title },
+  description,
   robots: { index: false, follow: false },
+  openGraph: { title, description, images: [{ url: ogImage, alt: 'Naluri Socials AI' }] },
+  twitter: { card: 'summary_large_image', title, description, images: [ogImage] },
 };
 
 const body = 'font-body text-base leading-[1.85] text-umber sm:text-lg';
