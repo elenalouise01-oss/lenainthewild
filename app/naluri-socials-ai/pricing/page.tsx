@@ -73,6 +73,12 @@ export default function NaluriSocialsAiPricingPage() {
               <span className="font-display text-3xl text-bark sm:text-4xl">{page.price}</span>
               <span className="font-body text-xs font-semibold uppercase tracking-widest2 text-bark/70">{page.priceNote}</span>
             </div>
+
+            <div className="mx-auto mt-8 flex flex-col items-center gap-1.5 text-center">
+              {page.paymentTerms.map((term) => (
+                <p key={term} className="font-body text-sm font-semibold text-bark sm:text-base">{term}</p>
+              ))}
+            </div>
           </div>
         </section>
 

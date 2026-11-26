@@ -7,6 +7,7 @@ export const naluriSocialsAiPricing = {
   heading: 'Custom AI Content System',
   price: '$3,750 AUD',
   priceNote: 'One-time investment',
+  paymentTerms: ['50% deposit to begin ($1,875)', '50% on completion, before handover ($1,875)'],
   intro: 'A content system built around your business, brand and way of creating content.',
 
   includedHeading: 'What’s Included',
@@ -71,8 +72,6 @@ export const naluriSocialsAiPricing = {
       value:
         'The system will be developed in stages over approximately 6–8 weeks. We’ll work through each part progressively, allowing for Claude’s weekly usage limits.',
     },
-    { label: 'Deposit', value: '50% to begin ($1,875)' },
-    { label: 'Final payment', value: '50% on completion, before handover ($1,875)' },
     {
       label: 'System Setup & Handover',
       value:
