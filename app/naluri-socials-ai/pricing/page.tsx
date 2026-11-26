@@ -6,7 +6,7 @@ import { naluriSocialsAiPricing as page } from '@/content/naluriSocialsAiPricing
 
 const title = 'Naluri Socials AI: Pricing';
 const description = 'Custom AI Content System pricing and what’s included — Naluri Socials AI.';
-const ogImage = '/images/naluri-socials-ai-pricing-og.jpg';
+const ogImage = '/images/naluri-socials-ai-pricing-og.png';
 
 // Not in PAGES (lib/seo.ts), so it's left out of the sitemap, and this
 // page-level noindex keeps it out of search — it's meant to be shared as
