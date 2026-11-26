@@ -79,6 +79,17 @@ export default function NaluriSocialsAiPricingPage() {
                 <p key={term} className="font-body text-sm font-semibold text-bark sm:text-base">{term}</p>
               ))}
             </div>
+
+            <div className="mt-6 text-center">
+              <a
+                href={page.depositLink.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 rounded-full bg-bark px-9 py-4 font-body text-xs font-semibold uppercase tracking-widest2 text-cream transition-transform hover:scale-105"
+              >
+                {page.depositLink.label} →
+              </a>
+            </div>
           </div>
         </section>
 

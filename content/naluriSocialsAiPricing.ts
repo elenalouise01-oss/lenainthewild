@@ -8,6 +8,7 @@ export const naluriSocialsAiPricing = {
   price: '$3,750 AUD',
   priceNote: 'One-time investment',
   paymentTerms: ['50% deposit to begin ($1,875)', '50% on completion, before handover ($1,875)'],
+  depositLink: { label: 'Pay Deposit', href: 'https://buy.stripe.com/4gM8wP4fXcligfA8B7frW00' },
   intro: 'A content system built around your business, brand and way of creating content.',
 
   includedHeading: 'What’s Included',
