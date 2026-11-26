@@ -54,7 +54,9 @@ export const naluriSocialsAiPricing = {
   alsoIncluded: [
     'Comment keyword DM automation with a custom message, link and public reply — no ManyChat or separate DM automation subscription needed.',
     'Weekly content planned for approval, with talking points for talking reels',
-    'Captions in your brand voice',
+    'Content writing and captions in your brand voice.',
+    'Content scheduling.',
+    'Custom GIFs for reels, powered by OpenAI. (optional, approx. $10 AUD/month in usage credits)',
   ],
 
   buildHeading: 'Build & Payment',
@@ -92,7 +94,7 @@ export const naluriSocialsAiPricing = {
 
   goodToKnowHeading: 'Good to Know',
   goodToKnow: [
-    'This isn’t a standalone app. It runs through custom skills in Claude Code, and you can keep using it after handover.',
+    'This isn’t a standalone app. It runs through custom skills in Claude Code.',
     'You’ll need a Claude Pro subscription with Claude Code (roughly A$30–35/month) and an Instagram professional account. Insights require connecting Instagram and aren’t live; they update when an analysis is run.',
     'DM automation needs extra setup, including web hosting, and may need Meta’s approval.',
     'Hosting, third-party subscriptions and usage fees are separate.',
