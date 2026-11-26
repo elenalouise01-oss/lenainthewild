@@ -95,8 +95,7 @@ export const naluriSocialsAiPricing = {
   goodToKnowHeading: 'Good to Know',
   goodToKnow: [
     'This isn’t a standalone app. It runs through custom skills in Claude Code, and you can keep using it after handover.',
-    'You’ll need a paid Claude account and an Instagram professional account. Insights require connecting Instagram and aren’t live; they update when an analysis is run.',
-    'We’ll confirm your computer is compatible before starting.',
+    'You’ll need a Claude Pro subscription with Claude Code (roughly A$30–35/month) and an Instagram professional account. Insights require connecting Instagram and aren’t live; they update when an analysis is run.',
     'DM automation needs extra setup, including web hosting, and may need Meta’s approval.',
     'Hosting, third-party subscriptions and usage fees are separate.',
   ],
