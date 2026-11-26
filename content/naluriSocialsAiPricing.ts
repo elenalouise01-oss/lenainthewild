@@ -55,7 +55,6 @@ export const naluriSocialsAiPricing = {
     'Comment keyword DM automation with a custom message, link and public reply — no ManyChat or separate DM automation subscription needed.',
     'Weekly content planned for approval, with talking points for talking reels',
     'Captions in your brand voice',
-    'Final approval before scheduling and publishing',
   ],
 
   buildHeading: 'Build & Payment',

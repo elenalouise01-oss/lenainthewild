@@ -114,7 +114,13 @@ export default function NaluriSocialsAiPricingPage() {
         <section className="bg-sand px-6 py-16 sm:px-12 sm:py-24">
           <div className="mx-auto max-w-2xl">
             <h2 className={`text-center ${h2}`}>{page.goodToKnowHeading}</h2>
-            <Hearts items={page.goodToKnow} tone="text-bark/50" />
+            <ul className="mt-5 space-y-3">
+              {page.goodToKnow.map((item) => (
+                <li key={item} className="font-body text-sm leading-[1.85] text-bark/60">
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       </main>
